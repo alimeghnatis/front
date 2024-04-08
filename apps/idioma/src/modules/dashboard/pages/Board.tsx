@@ -2,9 +2,13 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { graphql } from 'react-relay'
+import {
+  graphql, useMutation,
+} from 'react-relay'
 import Template from '../layer/Main.js'
-import { useBoardContext } from '../components/index.js'
+import {
+  useBoardContext, AdditionForm,
+} from '../components/index.js'
 
 /*
 const FRAGMENT = graphql`
@@ -20,8 +24,10 @@ const FRAGMENT = graphql`
 
 function Board() {
   const { data } = useBoardContext()
+
   return (
     <>
+      <AdditionForm />
       <h1>Board </h1>
       <pre
         style={{

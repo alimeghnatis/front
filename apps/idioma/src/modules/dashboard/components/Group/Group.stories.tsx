@@ -3,12 +3,12 @@
 
 import { Meta, StoryObj } from "@storybook/react";
 //import { Meta, StoryFn } from '@storybook/react'
-import Component from "./Textarea.js";
+import Component from "./Group.js";
 //import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 //import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title: "modules/dashboard/Textarea",
+  title: "modules/dashboard/Group",
   component: Component
   /*
   decorators: [
@@ -27,18 +27,18 @@ export default meta;
 
 export const Base: StoryObj<typeof Component> = {
   args: {
-    children: "Sample Textarea"
+    children: "Sample Group"
   }
 };
 
 /*
 export const Base: StoryFn<typeof Component> = () => (
-  <Component>Sample Textarea</Component>
+  <Component>Sample Group</Component>
 )
 */
 
 /*
-const Template: StoryFn<typeof Component> = (args) => <Textarea {...args} />
+const Template: StoryFn<typeof Component> = (args) => <Group {...args} />
                                                      
 export const Base: StoryFn<typeof Component> = Template.bind({})
 Base.args = {

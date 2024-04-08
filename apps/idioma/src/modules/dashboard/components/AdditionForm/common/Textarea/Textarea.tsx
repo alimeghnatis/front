@@ -22,13 +22,11 @@ function Textarea({
   className: userClassName,
   style,
   children,
+  value,
+  setValue,
 }: // ...otherProps
 
 InferProps<typeof Textarea.propTypes>): React.ReactElement {
-  const [
-    value,
-    setValue,
-  ] = useState('')
   const [
     rows,
     setRows,
@@ -97,6 +95,12 @@ Textarea.propTypes = {
 
   /** The children JSX */
   children:PropTypes.node,
+
+  /** The value of the textarea */
+  value:PropTypes.string,
+
+  /** The function to set the value of the textarea */
+  setValue:PropTypes.func,
 }
 
 export default Textarea

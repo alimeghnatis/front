@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/ui",
-  "version": "3.4.5",
+  "version": "3.4.6",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -28,7 +28,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/assets": "^3.0.0",
+    "@aztlan/assets": "^3.4.6",
     "@aztlan/babel-preset-react-relay-app": "^3.1.2",
     "@aztlan/eslint-config-base": "^3.4.0",
     "@aztlan/react-scripts": "^3.4.0",

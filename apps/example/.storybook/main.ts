@@ -14,7 +14,10 @@ const {
   stories,
 } = configureSharedConfig({
   location:__dirname,
-  assets:[`${getAbsolutePath('@aztlan/assets')}/fonts`]
+  assets:[
+    `${getAbsolutePath('@aztlan/assets')}/fonts`,
+    `${getAbsolutePath('@aztlan/assets')}/favicons`,
+  ]
   //alias:['react', 'react-dom', 'react-relay']
 })
 

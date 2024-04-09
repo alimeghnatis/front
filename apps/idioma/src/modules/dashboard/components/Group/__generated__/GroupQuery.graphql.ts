@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e4403a23bf9e0027bdb657cca4eb1d20>>
+ * @generated SignedSource<<62b8292ed4e6eb6363ffa9792739bc73>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -122,6 +122,13 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
+                        "name": "language",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
                         "name": "correctedContent",
                         "storageKey": null
                       },
@@ -155,12 +162,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0573359ca2e12be311a883d78d4e1ed6",
+    "cacheID": "6ca2a68b7c29b6737d9831de4488dbd3",
     "id": null,
     "metadata": {},
     "name": "GroupQuery",
     "operationKind": "query",
-    "text": "query GroupQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment GroupExpressionFragment on ExpressionNode {\n  id\n  content\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions {\n    edges {\n      node {\n        ...GroupExpressionFragment\n        id\n      }\n    }\n  }\n}\n"
+    "text": "query GroupQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment GroupExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions {\n    edges {\n      node {\n        ...GroupExpressionFragment\n        id\n      }\n    }\n  }\n}\n"
   }
 };
 })();

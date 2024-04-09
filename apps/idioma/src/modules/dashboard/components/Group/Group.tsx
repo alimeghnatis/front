@@ -17,6 +17,7 @@ const FRAGMENT_EXPRESSION = graphql`
   fragment GroupExpressionFragment on ExpressionNode {
     id
     content
+    language
     correctedContent
     grammarExplanation
     wordsExplanation

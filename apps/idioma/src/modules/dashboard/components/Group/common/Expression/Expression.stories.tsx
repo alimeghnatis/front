@@ -32,6 +32,7 @@ const FRAGMENT = graphql`
   fragment ExpressionFragment on ExpressionNode {
     id
     content
+    correctedContent
     language
   }
 `
@@ -51,9 +52,10 @@ const relay = {
   variables    :{},
   mockResolvers:{
     ExpressionNode:() => ({
-      id      :'1',
-      content :'Sample Expression',
-      language:'es',
+      id              :'1',
+      content         :'Sample Expression',
+      correctedContent:'Sample Corrected Expression',
+      language        :'es',
     }),
   },
 }

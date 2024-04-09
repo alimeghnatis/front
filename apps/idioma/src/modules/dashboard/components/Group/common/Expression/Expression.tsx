@@ -43,15 +43,23 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        'grid',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      {JSON.stringify(
-        result, null, 2,
-      )}
+      <div className="language">{result.language}</div>
+      <div className="expression">
+        {result.correctedContent || result.content}
+      </div>
+      <div className="tools">
+        <button>&lt;</button>
+        <button>?</button>
+        <button>*</button>
+        <button>x</button>
+      </div>
     </div>
   )
 }

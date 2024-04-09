@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<24c0f3e63b6a2023aea18dd36f804f88>>
+ * @generated SignedSource<<db5b06d98d2949cef49c0cd4860b3bea>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type GroupExpressionFragment$data = {
   readonly created: any;
   readonly grammarExplanation: string | null | undefined;
   readonly id: string;
+  readonly language: string;
   readonly wordsExplanation: string | null | undefined;
   readonly " $fragmentType": "GroupExpressionFragment";
 };
@@ -42,6 +43,13 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "ScalarField",
       "name": "content",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "language",
       "storageKey": null
     },
     {
@@ -77,6 +85,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "cfea410c659bbbc21e0f7ada55b236fe";
+(node as any).hash = "71d93cf22b29774fec767783ec390e1a";
 
 export default node;

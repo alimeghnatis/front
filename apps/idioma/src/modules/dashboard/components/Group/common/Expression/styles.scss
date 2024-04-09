@@ -2,9 +2,22 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.expression{
+$span-language: 1;
+$span-tools: 2;
+$subtotal-span: $span-language + $span-tools;
 
+.#{bem.$base}.expression {
+  > .language {
+    grid-column-end: span $span-language;
+  }
+
+  > .expression {
+    grid-column-end: span calc(var(--columns) - #{$subtotal-span});
+  }
+
+  > .tools {
+    grid-column-end: span $span-tools;
+  }
 }
-
 
 

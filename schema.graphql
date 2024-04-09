@@ -125,7 +125,7 @@ type BoardNode implements SearchNode {
   defaultForUser: UserNode
   memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int): GroupNodeConnection!
-  fragments(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
 
 interface SearchNode {
@@ -252,7 +252,7 @@ type GroupNode implements SearchNode {
   """The ID of the object"""
   id: ID!
   board: BoardNode!
-  fragments(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
 
 type ExpressionNodeConnection {
@@ -428,18 +428,8 @@ type Mutation {
 }
 
 type CreateBoardMutationPayload {
-  id: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  name: String
-  isPublic: Boolean
-  language: String
-  defaultForUser: String
-  users: String
+  """The created/updated instance."""
+  instance: BoardNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]
@@ -461,18 +451,8 @@ input CreateBoardMutationInput {
 }
 
 type UpdateBoardMutationPayload {
-  id: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  name: String
-  isPublic: Boolean
-  language: String
-  defaultForUser: String
-  users: String
+  """The created/updated instance."""
+  instance: BoardNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]
@@ -500,14 +480,8 @@ input DeleteBoardMutationInput {
 }
 
 type CreateGroupMutationPayload {
-  id: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  board: String
+  """The created/updated instance."""
+  instance: GroupNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]
@@ -521,14 +495,8 @@ input CreateGroupMutationInput {
 }
 
 type UpdateGroupMutationPayload {
-  id: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  board: String
+  """The created/updated instance."""
+  instance: GroupNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]
@@ -553,25 +521,8 @@ input DeleteGroupMutationInput {
 }
 
 type CreateExpressionMutationPayload {
-  id: String
-  board: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  language: String
-  content: String
-  correctedContent: String
-  category: String
-  audioUrl: String
-  audioKey: String
-  generalExplanation: String
-  grammarExplanation: String
-  wordsExplanation: String
-  variant: String
-  group: String
+  """The created/updated instance."""
+  instance: ExpressionNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]
@@ -596,25 +547,8 @@ input CreateExpressionMutationInput {
 }
 
 type UpdateExpressionMutationPayload {
-  id: String
-
-  """The date and time at which the object was created."""
-  created: DateTime
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime
-  language: String
-  content: String
-  correctedContent: String
-  category: String
-  audioUrl: String
-  audioKey: String
-  generalExplanation: String
-  grammarExplanation: String
-  wordsExplanation: String
-  variant: String
-  group: String
-  board: String
+  """The created/updated instance."""
+  instance: ExpressionNode
 
   """May contain more than one error for same field."""
   errors: [ErrorType]

@@ -21,14 +21,16 @@ const MUTATION_CREATE_EXPRESSION = graphql`
     $input: CreateExpressionMutationInput!
   ) {
     createExpression(input: $input) {
-      id
-      generalExplanation
-      grammarExplanation
-      wordsExplanation
-      audioUrl
-      audioKey
-      created
-      updated
+      instance {
+        id
+        generalExplanation
+        grammarExplanation
+        wordsExplanation
+        audioUrl
+        audioKey
+        created
+        updated
+      }
       errors {
         field
         messages

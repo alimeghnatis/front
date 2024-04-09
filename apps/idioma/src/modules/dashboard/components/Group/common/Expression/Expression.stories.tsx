@@ -1,15 +1,18 @@
 /* @aztlan/generator-front 3.4.0 */
-//import * as React from 'react'
+// import * as React from 'react'
 
-import { Meta, StoryObj } from "@storybook/react";
-//import { Meta, StoryFn } from '@storybook/react'
-import Component from "./Expression.js";
-//import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-//import decorators from "story-utils/decorators.js";
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
+// import { Meta, StoryFn } from '@storybook/react'
+import { graphql } from 'react-relay'
+import Component from './Expression.js'
+// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
+// import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title: "modules/dashboard/Group/common/Expression",
-  component: Component
+  title    :'modules/dashboard/Group/common/Expression',
+  component:Component,
   /*
   decorators: [
     //decorators.app,
@@ -20,27 +23,42 @@ const meta: Meta<typeof Component> = {
   }
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
-  },*/
-};
+  }, */
+}
 
-export default meta;
+export default meta
+
+const FRAGMENT = graphql`
+  fragment ExpressionFragment on ExpressionNode {
+    id
+    content
+    language
+  }
+`
+
+const relay = {
+  query:graphql`
+    query ExpressionQuery {
+      expression(id: "1") {
+        ...ExpressionFragment
+      }
+    }
+  `,
+  getReferenceEntry:(data) => [
+    'data',
+    data.expression,
+  ],
+  variables    :{},
+  mockResolvers:{
+    ExpressionNode:() => ({
+      id      :'1',
+      content :'Sample Expression',
+      language:'es',
+    }),
+  },
+}
 
 export const Base: StoryObj<typeof Component> = {
-  args: {
-    children: "Sample Expression"
-  }
-};
-
-/*
-export const Base: StoryFn<typeof Component> = () => (
-  <Component>Sample Expression</Component>
-)
-*/
-
-/*
-const Template: StoryFn<typeof Component> = (args) => <Expression {...args} />
-                                                     
-export const Base: StoryFn<typeof Component> = Template.bind({})
-Base.args = {
-  children:'Sample Button',
-}*/
+  args      :{ FRAGMENT },
+  parameters:{ relay },
+}

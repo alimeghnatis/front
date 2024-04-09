@@ -6,8 +6,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-
-
+import { useFragment } from 'react-relay'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression'
@@ -19,56 +18,59 @@ const componentClassName = 'expression'
  */
 function Expression({
   id,
-  className:userClassName,
+  className: userClassName,
   style,
-  children,
-  //...otherProps
+  FRAGMENT,
+  data,
+}: // ...otherProps
 
-}: InferProps<typeof Expression.propTypes>): React.ReactElement {
-  
-
-
-  useInsertionEffect(() => {
+InferProps<typeof Expression.propTypes>): React.ReactElement {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
-  
-  return(
+  const result = useFragment(
+    FRAGMENT, data,
+  )
+
+  return (
     <div
       id={id}
       className={[
-        
         baseClassName,
-        
         componentClassName,
         userClassName,
       ]
         .filter((e) => e)
         .join(' ')}
-      style={ style }
-      //{...otherProps}
+      style={style}
+      // {...otherProps}
     >
-      {children}
+      {JSON.stringify(
+        result, null, 2,
+      )}
     </div>
   )
 }
 
-
 Expression.propTypes = {
   /** The HTML id for this element */
-  id: PropTypes.string,
-  
+  id:PropTypes.string,
+
   /** The HTML class names for this element */
-  className: PropTypes.string,
-  
+  className:PropTypes.string,
+
   /** The React-written, css properties for this element. */
-  style: PropTypes.objectOf(PropTypes.string),
-  
-  /** The children JSX */
-  children: PropTypes.node,
+  style:PropTypes.objectOf(PropTypes.string),
+
+  /** The fragment to use */
+  FRAGMENT:PropTypes.any,
+
+  /** The data to use */
+  data:PropTypes.any,
 }
 
-
 export default Expression
-

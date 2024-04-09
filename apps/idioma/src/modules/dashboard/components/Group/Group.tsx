@@ -4,13 +4,25 @@ import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-
+import {
+  useFragment, graphql,
+} from 'react-relay'
 import styleNames from '@aztlan/bem'
-
-
+import { Expression } from './common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'group'
+
+const FRAGMENT_EXPRESSION = graphql`
+  fragment GroupExpressionFragment on ExpressionNode {
+    id
+    content
+    correctedContent
+    grammarExplanation
+    wordsExplanation
+    created
+  }
+`
 
 /**
  * description
@@ -19,56 +31,63 @@ const componentClassName = 'group'
  */
 function Group({
   id,
-  className:userClassName,
+  className: userClassName,
   style,
-  children,
-  //...otherProps
+  FRAGMENT,
+  data,
+}: // ...otherProps
 
-}: InferProps<typeof Group.propTypes>): React.ReactElement {
-  
+InferProps<typeof Group.propTypes>): React.ReactElement {
+  const result = useFragment(
+    FRAGMENT, data,
+  )
 
-
-  useInsertionEffect(() => {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
-  
-  return(
+  return (
     <div
       id={id}
       className={[
-        
         baseClassName,
-        
         componentClassName,
         userClassName,
       ]
         .filter((e) => e)
         .join(' ')}
-      style={ style }
-      //{...otherProps}
+      style={style}
+      // {...otherProps}
     >
-      {children}
+      {result.expressions.edges.map((edge) => (
+        <Expression
+          key={edge.node.id}
+          FRAGMENT={FRAGMENT_EXPRESSION}
+          data={edge.node}
+        />
+      ))}
     </div>
   )
 }
 
-
 Group.propTypes = {
   /** The HTML id for this element */
-  id: PropTypes.string,
-  
+  id:PropTypes.string,
+
   /** The HTML class names for this element */
-  className: PropTypes.string,
-  
+  className:PropTypes.string,
+
   /** The React-written, css properties for this element. */
-  style: PropTypes.objectOf(PropTypes.string),
-  
-  /** The children JSX */
-  children: PropTypes.node,
+  style:PropTypes.objectOf(PropTypes.string),
+
+  /** The fragment to use */
+  FRAGMENT:PropTypes.any,
+
+  /** The data to use */
+  data:PropTypes.any,
 }
 
-
 export default Group
-

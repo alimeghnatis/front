@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0efa23b0a6c4ac2ab2ce70836fb2e778>>
+ * @generated SignedSource<<6b90274c3c066f4daebc6a7010712281>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -30,18 +30,20 @@ export type AdditionFormCreateExpressionMutation$variables = {
 };
 export type AdditionFormCreateExpressionMutation$data = {
   readonly createExpression: {
-    readonly audioKey: string | null | undefined;
-    readonly audioUrl: string | null | undefined;
-    readonly created: any | null | undefined;
     readonly errors: ReadonlyArray<{
       readonly field: string;
       readonly messages: ReadonlyArray<string>;
     } | null | undefined> | null | undefined;
-    readonly generalExplanation: string | null | undefined;
-    readonly grammarExplanation: string | null | undefined;
-    readonly id: string | null | undefined;
-    readonly updated: any | null | undefined;
-    readonly wordsExplanation: string | null | undefined;
+    readonly instance: {
+      readonly audioKey: string | null | undefined;
+      readonly audioUrl: string | null | undefined;
+      readonly created: any;
+      readonly generalExplanation: string | null | undefined;
+      readonly grammarExplanation: string | null | undefined;
+      readonly id: string;
+      readonly updated: any;
+      readonly wordsExplanation: string | null | undefined;
+    } | null | undefined;
   } | null | undefined;
 };
 export type AdditionFormCreateExpressionMutation = {
@@ -75,57 +77,68 @@ v1 = [
       {
         "alias": null,
         "args": null,
-        "kind": "ScalarField",
-        "name": "id",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "generalExplanation",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "grammarExplanation",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "wordsExplanation",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "audioUrl",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "audioKey",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "created",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "updated",
+        "concreteType": "ExpressionNode",
+        "kind": "LinkedField",
+        "name": "instance",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "generalExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "grammarExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "wordsExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "audioUrl",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "audioKey",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "created",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "updated",
+            "storageKey": null
+          }
+        ],
         "storageKey": null
       },
       {
@@ -175,16 +188,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "f0293395b0c12555b23e8653bfa1b128",
+    "cacheID": "79ffa9ea9d309411657e20a5cd5085a0",
     "id": null,
     "metadata": {},
     "name": "AdditionFormCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    id\n    generalExplanation\n    grammarExplanation\n    wordsExplanation\n    audioUrl\n    audioKey\n    created\n    updated\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      updated\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "761f0ab4669a106ad19da6b84c9d9315";
+(node as any).hash = "9cb22f0a655d544bd39bbdfaf239c9db";
 
 export default node;

@@ -9,7 +9,11 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import {
-  useFragment, graphql,
+  useFragment,
+  graphql,
+  useMutation,
+  RecordSourceSelectorProxy,
+  ConnectionHandler,
 } from 'react-relay'
 
 const baseClassName = styleNames.base
@@ -28,6 +32,14 @@ const FRAGMENT = graphql`
   }
 `
 
+const MUTATION_DELETE = graphql`
+  mutation ExpressionDeleteMutation($input: DeleteExpressionMutationInput!) {
+    deleteExpression(input: $input) {
+      success
+    }
+  }
+`
+
 /**
  * description
  * @param {InferProps<typeof Expression.propTypes>} props -
@@ -38,6 +50,7 @@ function Expression({
   className: userClassName,
   style,
   data,
+  groupID,
 }: // ...otherProps
 
 InferProps<typeof Expression.propTypes>): React.ReactElement {
@@ -60,6 +73,46 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         audioRef.current.play()
       }
     }, [audioRef],
+  )
+
+  const [
+    deleteExpression,
+    isDeleteInFlight,
+  ] = useMutation(MUTATION_DELETE)
+
+  const handleDelete = useCallback(
+    (): void => {
+      const isConfirmed = confirm('Are you sure you want to delete this expression?')
+      if (!isConfirmed) {
+        return
+      }
+      deleteExpression({
+        variables:{ input: { id: atob(result.id).split(':')[1] } },
+        updater  :(store: RecordSourceSelectorProxy) => {
+          const groupRecord = store.get(groupID)
+          const connectionRecord = ConnectionHandler.getConnection(
+            groupRecord,
+            'GroupFragment_expressions',
+          )
+          ConnectionHandler.deleteNode(
+            connectionRecord, result.id,
+          )
+        },
+        optimisticUpdater:(store: RecordSourceSelectorProxy) => {
+          const groupRecord = store.get(groupID)
+          const connectionRecord = ConnectionHandler.getConnection(
+            groupRecord,
+            'GroupFragment_expressions',
+          )
+          ConnectionHandler.deleteNode(
+            connectionRecord, result.id,
+          )
+        },
+      })
+    }, [
+      result.id,
+      deleteExpression,
+    ],
   )
 
   return (
@@ -90,7 +143,12 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         <button onClick={playAudio}>&lt;</button>
         <button>?</button>
         <button>*</button>
-        <button>x</button>
+        <button
+          disabled={isDeleteInFlight}
+          onClick={handleDelete}
+        >
+          x
+        </button>
       </div>
     </div>
   )

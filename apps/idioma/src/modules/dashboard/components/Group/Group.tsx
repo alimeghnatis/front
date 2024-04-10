@@ -51,6 +51,10 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
     }, [],
   )
 
+  if (!result.expressions.edges.length) {
+    return null
+  }
+
   return (
     <div
       id={id}
@@ -69,6 +73,7 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
         <Expression
           key={edge.node.id}
           data={edge.node}
+          groupID={result.id}
         />
       ))}
     </div>

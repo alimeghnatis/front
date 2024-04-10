@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6b90274c3c066f4daebc6a7010712281>>
+ * @generated SignedSource<<c82d55b0b83c58e5f0de1d7a7f21a208>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,7 +21,9 @@ export type CreateExpressionMutationInput = {
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;
   id?: string | null | undefined;
-  language?: string | null | undefined;
+  iso6391?: string | null | undefined;
+  iso6392?: string | null | undefined;
+  iso6393: string;
   variant?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };

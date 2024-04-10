@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bbe282b897f775da2a1b7d495d102c65>>
+ * @generated SignedSource<<0b8b9025cbb6a8b65de14403ee1e6c42>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -54,38 +54,52 @@ v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "language",
+  "name": "iso6391",
   "storageKey": null
 },
-v5 = [
+v5 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6392",
+  "storageKey": null
+},
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6393",
+  "storageKey": null
+},
+v7 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 100
   }
 ],
-v6 = [
+v8 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 30
   }
 ],
-v7 = {
+v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v8 = {
+v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v9 = {
+v11 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -157,9 +171,11 @@ return {
             "storageKey": null
           },
           (v4/*: any*/),
+          (v5/*: any*/),
+          (v6/*: any*/),
           {
             "alias": null,
-            "args": (v5/*: any*/),
+            "args": (v7/*: any*/),
             "concreteType": "GroupNodeConnection",
             "kind": "LinkedField",
             "name": "groups",
@@ -185,7 +201,7 @@ return {
                       (v3/*: any*/),
                       {
                         "alias": null,
-                        "args": (v6/*: any*/),
+                        "args": (v8/*: any*/),
                         "concreteType": "ExpressionNodeConnection",
                         "kind": "LinkedField",
                         "name": "expressions",
@@ -216,6 +232,8 @@ return {
                                     "storageKey": null
                                   },
                                   (v4/*: any*/),
+                                  (v5/*: any*/),
+                                  (v6/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -245,42 +263,42 @@ return {
                                     "storageKey": null
                                   },
                                   (v3/*: any*/),
-                                  (v7/*: any*/)
+                                  (v9/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v8/*: any*/)
+                              (v10/*: any*/)
                             ],
                             "storageKey": null
                           },
-                          (v9/*: any*/)
+                          (v11/*: any*/)
                         ],
                         "storageKey": "expressions(first:30)"
                       },
                       {
                         "alias": null,
-                        "args": (v6/*: any*/),
+                        "args": (v8/*: any*/),
                         "filters": null,
                         "handle": "connection",
                         "key": "GroupFragment_expressions",
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
-                      (v7/*: any*/)
+                      (v9/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v8/*: any*/)
+                  (v10/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v9/*: any*/)
+              (v11/*: any*/)
             ],
             "storageKey": "groups(first:100)"
           },
           {
             "alias": null,
-            "args": (v5/*: any*/),
+            "args": (v7/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "BoardFragment_groups",
@@ -293,12 +311,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "5373d7125d61a26f0bf18898e729dc1d",
+    "cacheID": "ef93216ceb536240809085ecfcca3737",
     "id": null,
     "metadata": {},
     "name": "MainLayerBoardProviderRefetchQuery",
     "operationKind": "query",
-    "text": "query MainLayerBoardProviderRefetchQuery(\n  $id: ID\n) {\n  ...MainLayerBoardProviderFragment_1Bmzm5\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  language\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment MainLayerBoardProviderFragment_1Bmzm5 on Query {\n  board(id: $id) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n  }\n}\n"
+    "text": "query MainLayerBoardProviderRefetchQuery(\n  $id: ID\n) {\n  ...MainLayerBoardProviderFragment_1Bmzm5\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment MainLayerBoardProviderFragment_1Bmzm5 on Query {\n  board(id: $id) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n  }\n}\n"
   }
 };
 })();

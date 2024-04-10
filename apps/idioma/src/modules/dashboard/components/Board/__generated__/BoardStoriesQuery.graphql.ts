@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e0fcc158b5a2f638a0414c6cf04ae8ce>>
+ * @generated SignedSource<<8f7d356aac81f8957e685f1e300b1a3c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -40,45 +40,59 @@ v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "language",
+  "name": "iso6391",
   "storageKey": null
 },
 v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
+  "name": "iso6392",
+  "storageKey": null
+},
+v4 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6393",
+  "storageKey": null
+},
+v5 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
   "name": "created",
   "storageKey": null
 },
-v4 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 100
   }
 ],
-v5 = [
+v7 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 30
   }
 ],
-v6 = {
+v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v7 = {
+v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v8 = {
+v10 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -147,9 +161,11 @@ return {
           (v1/*: any*/),
           (v2/*: any*/),
           (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
           {
             "alias": null,
-            "args": (v4/*: any*/),
+            "args": (v6/*: any*/),
             "concreteType": "GroupNodeConnection",
             "kind": "LinkedField",
             "name": "groups",
@@ -172,10 +188,10 @@ return {
                     "plural": false,
                     "selections": [
                       (v1/*: any*/),
-                      (v3/*: any*/),
+                      (v5/*: any*/),
                       {
                         "alias": null,
-                        "args": (v5/*: any*/),
+                        "args": (v7/*: any*/),
                         "concreteType": "ExpressionNodeConnection",
                         "kind": "LinkedField",
                         "name": "expressions",
@@ -206,6 +222,8 @@ return {
                                     "storageKey": null
                                   },
                                   (v2/*: any*/),
+                                  (v3/*: any*/),
+                                  (v4/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -234,43 +252,43 @@ return {
                                     "name": "audioUrl",
                                     "storageKey": null
                                   },
-                                  (v3/*: any*/),
-                                  (v6/*: any*/)
+                                  (v5/*: any*/),
+                                  (v8/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v7/*: any*/)
+                              (v9/*: any*/)
                             ],
                             "storageKey": null
                           },
-                          (v8/*: any*/)
+                          (v10/*: any*/)
                         ],
                         "storageKey": "expressions(first:30)"
                       },
                       {
                         "alias": null,
-                        "args": (v5/*: any*/),
+                        "args": (v7/*: any*/),
                         "filters": null,
                         "handle": "connection",
                         "key": "GroupFragment_expressions",
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
-                      (v6/*: any*/)
+                      (v8/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v7/*: any*/)
+                  (v9/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v8/*: any*/)
+              (v10/*: any*/)
             ],
             "storageKey": "groups(first:100)"
           },
           {
             "alias": null,
-            "args": (v4/*: any*/),
+            "args": (v6/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "BoardFragment_groups",
@@ -283,12 +301,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "bd9beaa5b6afcd03203579419f4a0e21",
+    "cacheID": "5f9f83cf35a0e5e4e1b69ba180e93039",
     "id": null,
     "metadata": {},
     "name": "BoardStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardFragment\n    id\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  language\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query BoardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardFragment\n    id\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

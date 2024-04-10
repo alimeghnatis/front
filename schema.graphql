@@ -118,9 +118,11 @@ type BoardNode implements SearchNode {
 
   """The ID of the object"""
   id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   name: String!
   isPublic: Boolean!
-  language: String!
   users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
   defaultForUser: UserNode
   memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
@@ -281,9 +283,11 @@ type ExpressionNode implements SearchNode {
 
   """The ID of the object"""
   id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   group: GroupNode!
   board: BoardNode!
-  language: String!
   content: String!
   correctedContent: String
   category: String!
@@ -443,9 +447,11 @@ type ErrorType {
 
 input CreateBoardMutationInput {
   id: String
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   name: String!
   isPublic: Boolean
-  language: String
   defaultForUser: String
   clientMutationId: String
 }
@@ -461,9 +467,11 @@ type UpdateBoardMutationPayload {
 
 input UpdateBoardMutationInput {
   id: String
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   name: String!
   isPublic: Boolean
-  language: String
   defaultForUser: String
   clientMutationId: String
 }
@@ -532,7 +540,9 @@ type CreateExpressionMutationPayload {
 input CreateExpressionMutationInput {
   id: String
   board: String
-  language: String
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   content: String!
   correctedContent: String
   category: String
@@ -557,7 +567,9 @@ type UpdateExpressionMutationPayload {
 
 input UpdateExpressionMutationInput {
   id: String
-  language: String
+  iso6391: String
+  iso6392: String
+  iso6393: String!
   content: String!
   correctedContent: String
   category: String

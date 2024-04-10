@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fc8a4fc5f811c2dc693116db8f0923f8>>
+ * @generated SignedSource<<7e34048813f934f09de10a542edd4b03>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,9 @@ export type BoardFragment$data = {
     } | null | undefined>;
   };
   readonly id: string;
-  readonly language: string;
+  readonly iso6391: string | null | undefined;
+  readonly iso6392: string | null | undefined;
+  readonly iso6393: string;
   readonly " $fragmentType": "BoardFragment";
 };
 export type BoardFragment$key = {
@@ -56,7 +58,21 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "language",
+      "name": "iso6391",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6392",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6393",
       "storageKey": null
     },
     {
@@ -148,6 +164,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "0a23f78e39bfda0e4884ad5dfbb78b92";
+(node as any).hash = "e9eb7f3dbd48ae6925260f524022a2fd";
 
 export default node;

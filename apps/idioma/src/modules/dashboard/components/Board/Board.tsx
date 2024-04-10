@@ -17,7 +17,9 @@ const componentClassName = 'board'
 const FRAGMENT = graphql`
   fragment BoardFragment on BoardNode {
     id
-    language
+    iso6391
+    iso6392
+    iso6393
     created
     groups(first: 100) @connection(key: "BoardFragment_groups") {
       edges {

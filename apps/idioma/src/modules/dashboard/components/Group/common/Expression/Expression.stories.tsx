@@ -46,7 +46,9 @@ const relay = {
       id              :'1',
       content         :'Sample Expression',
       correctedContent:'Sample Corrected Expression',
-      language        :'es',
+      iso6391         :'es',
+      iso6392         :'spa',
+      iso6393         :'spa',
     }),
   },
 }

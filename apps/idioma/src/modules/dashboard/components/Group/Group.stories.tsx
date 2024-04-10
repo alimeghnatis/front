@@ -51,7 +51,7 @@ const relay = {
         {
           node:{
             id              :'1',
-            language        :'es',
+            iso6391         :'es',
             created         :'2021-09-01T00:00:00Z',
             content         :'Sample Expression',
             correctedContent:'Sample Expression',
@@ -60,7 +60,7 @@ const relay = {
         {
           node:{
             id              :'2',
-            language        :'eng',
+            iso6391         :'en',
             created         :'2021-09-02T00:00:00Z',
             content         :'Roses are red, violets are blue',
             correctedContent:'Roses are red, violets are blue',
@@ -69,7 +69,7 @@ const relay = {
         {
           node:{
             id              :'3',
-            language        :'eng',
+            iso6391         :'es',
             created         :'2021-09-03T00:00:00Z',
             content         :'I am a sample expression, you know?',
             correctedContent:'I am a sample expression, you know?',

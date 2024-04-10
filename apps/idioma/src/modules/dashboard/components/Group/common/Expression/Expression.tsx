@@ -23,7 +23,9 @@ const FRAGMENT = graphql`
   fragment ExpressionFragment on ExpressionNode {
     id
     content
-    language
+    iso6391
+    iso6392
+    iso6393
     correctedContent
     grammarExplanation
     wordsExplanation
@@ -129,7 +131,9 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      <div className="language">{result.language}</div>
+      <div className="language">
+        {result.iso6391 || result.iso6392 || result.iso6393}
+      </div>
       <div className="expression">
         {result.correctedContent || result.content}
       </div>

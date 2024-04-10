@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<20c33c5a039d9ec90480e3a70c053ea6>>
+ * @generated SignedSource<<f42084a74aba74be5b8a61a04e54d22d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,9 @@ export type ExpressionFragment$data = {
   readonly created: any;
   readonly grammarExplanation: string | null | undefined;
   readonly id: string;
-  readonly language: string;
+  readonly iso6391: string | null | undefined;
+  readonly iso6392: string | null | undefined;
+  readonly iso6393: string;
   readonly wordsExplanation: string | null | undefined;
   readonly " $fragmentType": "ExpressionFragment";
 };
@@ -50,7 +52,21 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "language",
+      "name": "iso6391",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6392",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6393",
       "storageKey": null
     },
     {
@@ -93,6 +109,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "e22426292a5fd9b6ff46d76e1ddeea6b";
+(node as any).hash = "18456ed3bd1ec99692891c3fa2cab0e1";
 
 export default node;

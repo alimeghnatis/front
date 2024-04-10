@@ -11,7 +11,7 @@ import Component from './Expression.js'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'modules/dashboard/Group/common/Expression',
+  title    :'modules/dashboard/Board/Group/Expression',
   component:Component,
   /*
   decorators: [
@@ -28,18 +28,9 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-const FRAGMENT = graphql`
-  fragment ExpressionFragment on ExpressionNode {
-    id
-    content
-    correctedContent
-    language
-  }
-`
-
 const relay = {
   query:graphql`
-    query ExpressionQuery {
+    query ExpressionStoriesQuery {
       expression(id: "1") {
         ...ExpressionFragment
       }
@@ -61,6 +52,6 @@ const relay = {
 }
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{ FRAGMENT },
+  args      :{},
   parameters:{ relay },
 }

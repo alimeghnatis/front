@@ -25,6 +25,7 @@ const FRAGMENT = graphql`
       name
       created
       updated
+      ...BoardFragment
     }
   }
 `

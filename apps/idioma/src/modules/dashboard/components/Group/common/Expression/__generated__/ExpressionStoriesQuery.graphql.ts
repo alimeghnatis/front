@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<11f2d87f6c3ed3f0dc1081d6831ff859>>
+ * @generated SignedSource<<b01981e917a23288366d6c9807cb88e2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionQuery$variables = Record<PropertyKey, never>;
-export type ExpressionQuery$data = {
+export type ExpressionStoriesQuery$variables = Record<PropertyKey, never>;
+export type ExpressionStoriesQuery$data = {
   readonly expression: {
     readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
   } | null | undefined;
 };
-export type ExpressionQuery = {
-  response: ExpressionQuery$data;
-  variables: ExpressionQuery$variables;
+export type ExpressionStoriesQuery = {
+  response: ExpressionStoriesQuery$data;
+  variables: ExpressionStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -34,7 +34,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ExpressionQuery",
+    "name": "ExpressionStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -60,7 +60,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "ExpressionQuery",
+    "name": "ExpressionStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -116,6 +116,13 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "audioUrl",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "created",
             "storageKey": null
           }
@@ -125,16 +132,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7f631169b27ce1232f8a908877dc7592",
+    "cacheID": "c65757df65ae44c095966289440b3e53",
     "id": null,
     "metadata": {},
-    "name": "ExpressionQuery",
+    "name": "ExpressionStoriesQuery",
     "operationKind": "query",
-    "text": "query ExpressionQuery {\n  expression(id: \"1\") {\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  created\n}\n"
+    "text": "query ExpressionStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "44f88caffd8876a30010990f63d5c72f";
+(node as any).hash = "588eda946a9db099ef098c19f77f802d";
 
 export default node;

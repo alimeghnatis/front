@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7565a1a443d785e57deb887214eb6d2c>>
+ * @generated SignedSource<<20c33c5a039d9ec90480e3a70c053ea6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,9 +11,14 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ExpressionFragment$data = {
+  readonly audioUrl: string | null | undefined;
   readonly content: string;
+  readonly correctedContent: string | null | undefined;
+  readonly created: any;
+  readonly grammarExplanation: string | null | undefined;
   readonly id: string;
   readonly language: string;
+  readonly wordsExplanation: string | null | undefined;
   readonly " $fragmentType": "ExpressionFragment";
 };
 export type ExpressionFragment$key = {
@@ -47,12 +52,47 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "language",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "correctedContent",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "grammarExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "wordsExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "audioUrl",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "created",
+      "storageKey": null
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "936e96b35322d0e41bad7384a21e14cd";
+(node as any).hash = "e22426292a5fd9b6ff46d76e1ddeea6b";
 
 export default node;

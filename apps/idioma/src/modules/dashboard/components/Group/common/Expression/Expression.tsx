@@ -1,15 +1,32 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useCallback, useInsertionEffect, useRef,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { useFragment } from 'react-relay'
+import {
+  useFragment, graphql,
+} from 'react-relay'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression'
+
+const FRAGMENT = graphql`
+  fragment ExpressionFragment on ExpressionNode {
+    id
+    content
+    language
+    correctedContent
+    grammarExplanation
+    wordsExplanation
+    audioUrl
+    created
+  }
+`
 
 /**
  * description
@@ -20,7 +37,6 @@ function Expression({
   id,
   className: userClassName,
   style,
-  FRAGMENT,
   data,
 }: // ...otherProps
 
@@ -34,6 +50,16 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
 
   const result = useFragment(
     FRAGMENT, data,
+  )
+
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const playAudio = useCallback(
+    (): void => {
+      if (audioRef.current) {
+        audioRef.current.play()
+      }
+    }, [audioRef],
   )
 
   return (
@@ -54,8 +80,14 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       <div className="expression">
         {result.correctedContent || result.content}
       </div>
+      <audio ref={audioRef}>
+        <source
+          src={result.audioUrl}
+          type="audio/mpeg"
+        />
+      </audio>
       <div className="tools">
-        <button>&lt;</button>
+        <button onClick={playAudio}>&lt;</button>
         <button>?</button>
         <button>*</button>
         <button>x</button>
@@ -73,9 +105,6 @@ Expression.propTypes = {
 
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
-
-  /** The fragment to use */
-  FRAGMENT:PropTypes.any,
 
   /** The data to use */
   data:PropTypes.any,

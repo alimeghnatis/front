@@ -10,7 +10,7 @@ import { RawProvider as Component } from './Provider.js'
 import { useBoardContext } from './hooks/index.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'common/Board/Provider',
+  title     :'modules/dashboard/Board/Provider',
   component :Component,
   decorators:[
     /*

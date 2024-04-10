@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bb5ba74c82024e7b373ee78764335004>>
+ * @generated SignedSource<<cc672b310619e6dd6d64159f965f5c35>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type GroupQuery$variables = Record<PropertyKey, never>;
-export type GroupQuery$data = {
+export type GroupStoriesQuery$variables = Record<PropertyKey, never>;
+export type GroupStoriesQuery$data = {
   readonly group: {
     readonly " $fragmentSpreads": FragmentRefs<"GroupFragment">;
   } | null | undefined;
 };
-export type GroupQuery = {
-  response: GroupQuery$data;
-  variables: GroupQuery$variables;
+export type GroupStoriesQuery = {
+  response: GroupStoriesQuery$data;
+  variables: GroupStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -42,13 +42,20 @@ v2 = {
   "kind": "ScalarField",
   "name": "created",
   "storageKey": null
-};
+},
+v3 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 30
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "GroupQuery",
+    "name": "GroupStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -74,7 +81,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "GroupQuery",
+    "name": "GroupStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -88,7 +95,7 @@ return {
           (v2/*: any*/),
           {
             "alias": null,
-            "args": null,
+            "args": (v3/*: any*/),
             "concreteType": "ExpressionNodeConnection",
             "kind": "LinkedField",
             "name": "expressions",
@@ -146,15 +153,70 @@ return {
                         "name": "wordsExplanation",
                         "storageKey": null
                       },
-                      (v2/*: any*/)
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "audioUrl",
+                        "storageKey": null
+                      },
+                      (v2/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__typename",
+                        "storageKey": null
+                      }
                     ],
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "cursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "kind": "LinkedField",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "endCursor",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "hasNextPage",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "expressions(first:30)"
+          },
+          {
+            "alias": null,
+            "args": (v3/*: any*/),
+            "filters": null,
+            "handle": "connection",
+            "key": "GroupFragment_expressions",
+            "kind": "LinkedHandle",
+            "name": "expressions"
           }
         ],
         "storageKey": "group(id:\"1\")"
@@ -162,16 +224,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e77d2a057a1ab80d0c847765fcac38d4",
+    "cacheID": "49ac02c2d33b57ab5041ff60183013e5",
     "id": null,
     "metadata": {},
-    "name": "GroupQuery",
+    "name": "GroupStoriesQuery",
     "operationKind": "query",
-    "text": "query GroupQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n      }\n    }\n  }\n}\n"
+    "text": "query GroupStoriesQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "af964161f376d0273db1918604076c7a";
+(node as any).hash = "546f34506db7901741d285d785280082";
 
 export default node;

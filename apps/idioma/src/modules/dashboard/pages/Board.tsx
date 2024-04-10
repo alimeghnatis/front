@@ -7,7 +7,7 @@ import {
 } from 'react-relay'
 import Template from '../layer/Main.js'
 import {
-  useBoardContext, AdditionForm,
+  useBoardContext, AdditionForm, Board,
 } from '../components/index.js'
 
 /*
@@ -22,13 +22,14 @@ const FRAGMENT = graphql`
   }
 ` */
 
-function Board() {
+function BoardPage() {
   const { data } = useBoardContext()
 
   return (
     <>
       <AdditionForm />
       <h1>Board </h1>
+      {/*
       <pre
         style={{
           whiteSpace:'pre-wrap',
@@ -38,9 +39,10 @@ function Board() {
         {JSON.stringify(
           data, null, 2,
         )}
-      </pre>
+      </pre> */}
+      <Board data={data} />
     </>
   )
 }
 
-export default Board
+export default BoardPage

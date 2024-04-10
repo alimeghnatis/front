@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bbe282b897f775da2a1b7d495d102c65>>
+ * @generated SignedSource<<e0fcc158b5a2f638a0414c6cf04ae8ce>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,37 +10,37 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type MainLayerBoardProviderRefetchQuery$variables = {
-  id?: string | null | undefined;
+export type BoardStoriesQuery$variables = Record<PropertyKey, never>;
+export type BoardStoriesQuery$data = {
+  readonly board: {
+    readonly " $fragmentSpreads": FragmentRefs<"BoardFragment">;
+  } | null | undefined;
 };
-export type MainLayerBoardProviderRefetchQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"MainLayerBoardProviderFragment">;
-};
-export type MainLayerBoardProviderRefetchQuery = {
-  response: MainLayerBoardProviderRefetchQuery$data;
-  variables: MainLayerBoardProviderRefetchQuery$variables;
+export type BoardStoriesQuery = {
+  response: BoardStoriesQuery$data;
+  variables: BoardStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "id"
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
+    "kind": "Literal",
     "name": "id",
-    "variableName": "id"
+    "value": "1"
   }
 ],
-v2 = {
+v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "language",
   "storageKey": null
 },
 v3 = {
@@ -50,42 +50,35 @@ v3 = {
   "name": "created",
   "storageKey": null
 },
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "language",
-  "storageKey": null
-},
-v5 = [
+v4 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 100
   }
 ],
-v6 = [
+v5 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 30
   }
 ],
-v7 = {
+v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v8 = {
+v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v9 = {
+v8 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -112,15 +105,26 @@ v9 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "MainLayerBoardProviderRefetchQuery",
+    "name": "BoardStoriesQuery",
     "selections": [
       {
-        "args": (v1/*: any*/),
-        "kind": "FragmentSpread",
-        "name": "MainLayerBoardProviderFragment"
+        "alias": null,
+        "args": (v0/*: any*/),
+        "concreteType": "BoardNode",
+        "kind": "LinkedField",
+        "name": "board",
+        "plural": false,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "BoardFragment"
+          }
+        ],
+        "storageKey": "board(id:\"1\")"
       }
     ],
     "type": "Query",
@@ -128,38 +132,24 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "MainLayerBoardProviderRefetchQuery",
+    "name": "BoardStoriesQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v0/*: any*/),
         "concreteType": "BoardNode",
         "kind": "LinkedField",
         "name": "board",
         "plural": false,
         "selections": [
+          (v1/*: any*/),
           (v2/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "name",
-            "storageKey": null
-          },
           (v3/*: any*/),
           {
             "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "updated",
-            "storageKey": null
-          },
-          (v4/*: any*/),
-          {
-            "alias": null,
-            "args": (v5/*: any*/),
+            "args": (v4/*: any*/),
             "concreteType": "GroupNodeConnection",
             "kind": "LinkedField",
             "name": "groups",
@@ -181,11 +171,11 @@ return {
                     "name": "node",
                     "plural": false,
                     "selections": [
-                      (v2/*: any*/),
+                      (v1/*: any*/),
                       (v3/*: any*/),
                       {
                         "alias": null,
-                        "args": (v6/*: any*/),
+                        "args": (v5/*: any*/),
                         "concreteType": "ExpressionNodeConnection",
                         "kind": "LinkedField",
                         "name": "expressions",
@@ -207,7 +197,7 @@ return {
                                 "name": "node",
                                 "plural": false,
                                 "selections": [
-                                  (v2/*: any*/),
+                                  (v1/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -215,7 +205,7 @@ return {
                                     "name": "content",
                                     "storageKey": null
                                   },
-                                  (v4/*: any*/),
+                                  (v2/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -245,42 +235,42 @@ return {
                                     "storageKey": null
                                   },
                                   (v3/*: any*/),
-                                  (v7/*: any*/)
+                                  (v6/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v8/*: any*/)
+                              (v7/*: any*/)
                             ],
                             "storageKey": null
                           },
-                          (v9/*: any*/)
+                          (v8/*: any*/)
                         ],
                         "storageKey": "expressions(first:30)"
                       },
                       {
                         "alias": null,
-                        "args": (v6/*: any*/),
+                        "args": (v5/*: any*/),
                         "filters": null,
                         "handle": "connection",
                         "key": "GroupFragment_expressions",
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
-                      (v7/*: any*/)
+                      (v6/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v8/*: any*/)
+                  (v7/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v9/*: any*/)
+              (v8/*: any*/)
             ],
             "storageKey": "groups(first:100)"
           },
           {
             "alias": null,
-            "args": (v5/*: any*/),
+            "args": (v4/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "BoardFragment_groups",
@@ -288,21 +278,21 @@ return {
             "name": "groups"
           }
         ],
-        "storageKey": null
+        "storageKey": "board(id:\"1\")"
       }
     ]
   },
   "params": {
-    "cacheID": "5373d7125d61a26f0bf18898e729dc1d",
+    "cacheID": "bd9beaa5b6afcd03203579419f4a0e21",
     "id": null,
     "metadata": {},
-    "name": "MainLayerBoardProviderRefetchQuery",
+    "name": "BoardStoriesQuery",
     "operationKind": "query",
-    "text": "query MainLayerBoardProviderRefetchQuery(\n  $id: ID\n) {\n  ...MainLayerBoardProviderFragment_1Bmzm5\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  language\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment MainLayerBoardProviderFragment_1Bmzm5 on Query {\n  board(id: $id) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n  }\n}\n"
+    "text": "query BoardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardFragment\n    id\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  language\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  language\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "4172f721eb2eb5004bf53f2265166e62";
+(node as any).hash = "09b011704ca3c12e1f7ce1c0a4c41b2b";
 
 export default node;

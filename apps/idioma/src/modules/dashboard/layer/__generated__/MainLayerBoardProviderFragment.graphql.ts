@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<995b45abf0b2325443af6d2e1995ec3e>>
+ * @generated SignedSource<<1ec5b319d0acefed978fcef63e16e1dd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type MainLayerBoardProviderFragment$data = {
     readonly id: string;
     readonly name: string;
     readonly updated: any;
+    readonly " $fragmentSpreads": FragmentRefs<"BoardFragment">;
   } | null | undefined;
   readonly " $fragmentType": "MainLayerBoardProviderFragment";
 };
@@ -85,6 +86,11 @@ const node: ReaderFragment = {
           "kind": "ScalarField",
           "name": "updated",
           "storageKey": null
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "BoardFragment"
         }
       ],
       "storageKey": null
@@ -94,6 +100,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "941d8fd3c616c8bf0eb0e5e1632390d4";
+(node as any).hash = "4172f721eb2eb5004bf53f2265166e62";
 
 export default node;

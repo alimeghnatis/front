@@ -8,7 +8,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
 import {
-  graphql, useMutation,
+  graphql, useMutation, ConnectionHandler,
 } from 'react-relay'
 import { Textarea } from './common/index.js'
 import { useBoardContext } from '../Board/index.js'
@@ -18,10 +18,11 @@ const componentClassName = 'addition-form'
 
 const MUTATION_CREATE_EXPRESSION = graphql`
   mutation AdditionFormCreateExpressionMutation(
-    $input: CreateExpressionMutationInput!
+    $input: CreateExpressionMutationInput! #$connections: [ID!]!
   ) {
     createExpression(input: $input) {
       instance {
+        #@appendNode(connections: $connections, edgeTypeName: "ExpressionNodeEdge")
         id
         generalExplanation
         grammarExplanation
@@ -69,7 +70,9 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
     setInputValue,
   ] = useState('')
 
-  const { uuid: boardUUID } = useBoardContext()
+  const {
+    id: boardID, uuid: boardUUID,
+  } = useBoardContext()
 
   const [
     commitCreateExpression,
@@ -78,6 +81,10 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
 
   const createExpression = useCallback(
     () => {
+      const connectionID = ConnectionHandler.getConnectionID(
+        boardID,
+        'BoardFragment_groups',
+      )
       commitCreateExpression({
         variables:{
           input:{
@@ -85,7 +92,17 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
             content:inputValue,
             board  :boardUUID,
           },
+          connections:[connectionID],
         },
+      /*
+        updater:(store) => {
+          const payload = store.getRootField('createExpression')
+          const instance = payload.getLinkedRecord('instance')
+          const newEdge =
+          // const expression = payload.getLinkedRecord('expression')
+          // const expressionProxy = store.get(expression.getDataID())
+          // expressionProxy.setValue(instance, 'expression')
+        } */
       })
     }, [inputValue],
   )

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<243b7145e0b785bb654565b8867c827b>>
+ * @generated SignedSource<<fc8a4fc5f811c2dc693116db8f0923f8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,21 +10,22 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type GroupFragment$data = {
+export type BoardFragment$data = {
   readonly created: any;
-  readonly expressions: {
+  readonly groups: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"GroupFragment">;
       } | null | undefined;
     } | null | undefined>;
   };
   readonly id: string;
-  readonly " $fragmentType": "GroupFragment";
+  readonly language: string;
+  readonly " $fragmentType": "BoardFragment";
 };
-export type GroupFragment$key = {
-  readonly " $data"?: GroupFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"GroupFragment">;
+export type BoardFragment$key = {
+  readonly " $data"?: BoardFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"BoardFragment">;
 };
 
 const node: ReaderFragment = {
@@ -37,12 +38,12 @@ const node: ReaderFragment = {
         "cursor": null,
         "direction": "forward",
         "path": [
-          "expressions"
+          "groups"
         ]
       }
     ]
   },
-  "name": "GroupFragment",
+  "name": "BoardFragment",
   "selections": [
     {
       "alias": null,
@@ -55,21 +56,28 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "language",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "created",
       "storageKey": null
     },
     {
-      "alias": "expressions",
+      "alias": "groups",
       "args": null,
-      "concreteType": "ExpressionNodeConnection",
+      "concreteType": "GroupNodeConnection",
       "kind": "LinkedField",
-      "name": "__GroupFragment_expressions_connection",
+      "name": "__BoardFragment_groups_connection",
       "plural": false,
       "selections": [
         {
           "alias": null,
           "args": null,
-          "concreteType": "ExpressionNodeEdge",
+          "concreteType": "GroupNodeEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -77,7 +85,7 @@ const node: ReaderFragment = {
             {
               "alias": null,
               "args": null,
-              "concreteType": "ExpressionNode",
+              "concreteType": "GroupNode",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
@@ -85,7 +93,7 @@ const node: ReaderFragment = {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "ExpressionFragment"
+                  "name": "GroupFragment"
                 },
                 {
                   "alias": null,
@@ -136,10 +144,10 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "GroupNode",
+  "type": "BoardNode",
   "abstractKey": null
 };
 
-(node as any).hash = "d6bc5b7458fde4d07797754cc6212cca";
+(node as any).hash = "0a23f78e39bfda0e4884ad5dfbb78b92";
 
 export default node;

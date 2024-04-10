@@ -8,19 +8,21 @@ import {
   useFragment, graphql,
 } from 'react-relay'
 import styleNames from '@aztlan/bem'
-import { Expression } from './common/index.js'
+import { Group } from '../Group/index.js'
+import { AdditionForm } from '../AdditionForm/index.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'group'
+const componentClassName = 'board'
 
 const FRAGMENT = graphql`
-  fragment GroupFragment on GroupNode {
+  fragment BoardFragment on BoardNode {
     id
+    language
     created
-    expressions(first: 30) @connection(key: "GroupFragment_expressions") {
+    groups(first: 100) @connection(key: "BoardFragment_groups") {
       edges {
         node {
-          ...ExpressionFragment
+          ...GroupFragment
         }
       }
     }
@@ -29,17 +31,17 @@ const FRAGMENT = graphql`
 
 /**
  * description
- * @param {InferProps<typeof Group.propTypes>} props -
- * @returns {React.ReactElement} - Rendered Group
+ * @param {InferProps<typeof Board.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Board
  */
-function Group({
+function Board({
   id,
   className: userClassName,
   style,
   data,
 }: // ...otherProps
 
-InferProps<typeof Group.propTypes>): React.ReactElement {
+InferProps<typeof Board.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
@@ -58,24 +60,25 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'container',
+        'grid',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      {result.expressions.edges.map((edge) => (
-        <Expression
+      {result.groups?.edges.map((edge) => (
+        <Group
           key={edge.node.id}
           data={edge.node}
         />
       ))}
+      <AdditionForm />
     </div>
   )
 }
 
-Group.propTypes = {
+Board.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -89,4 +92,4 @@ Group.propTypes = {
   data:PropTypes.any,
 }
 
-export default Group
+export default Board

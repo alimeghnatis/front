@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bf62888f633a5b09742693704ba173f3>>
+ * @generated SignedSource<<fc86d13ec11781f5261a7b5738ddcd44>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionStoriesQuery$variables = Record<PropertyKey, never>;
-export type ExpressionStoriesQuery$data = {
+export type ExpressionDetailsStoriesQuery$variables = Record<PropertyKey, never>;
+export type ExpressionDetailsStoriesQuery$data = {
   readonly expression: {
-    readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment">;
   } | null | undefined;
 };
-export type ExpressionStoriesQuery = {
-  response: ExpressionStoriesQuery$data;
-  variables: ExpressionStoriesQuery$variables;
+export type ExpressionDetailsStoriesQuery = {
+  response: ExpressionDetailsStoriesQuery$data;
+  variables: ExpressionDetailsStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -34,7 +34,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ExpressionStoriesQuery",
+    "name": "ExpressionDetailsStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -47,7 +47,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "ExpressionFragment"
+            "name": "ExpressionDetailsFragment"
           }
         ],
         "storageKey": "expression(id:\"1\")"
@@ -60,7 +60,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "ExpressionStoriesQuery",
+    "name": "ExpressionDetailsStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -75,13 +75,6 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "id",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "content",
             "storageKey": null
           },
           {
@@ -109,7 +102,35 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "content",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "correctedContent",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "grammarExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "generalExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "wordsExplanation",
             "storageKey": null
           },
           {
@@ -132,16 +153,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "208ac13d6cfa29d9d0f5e22c9c7086be",
+    "cacheID": "9876c7f88f9ade5e8bdb071fba64da90",
     "id": null,
     "metadata": {},
-    "name": "ExpressionStoriesQuery",
+    "name": "ExpressionDetailsStoriesQuery",
     "operationKind": "query",
-    "text": "query ExpressionStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n}\n"
+    "text": "query ExpressionDetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionDetailsFragment\n    id\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "588eda946a9db099ef098c19f77f802d";
+(node as any).hash = "a6143c9b693619fc1e03b90d54bf07b3";
 
 export default node;

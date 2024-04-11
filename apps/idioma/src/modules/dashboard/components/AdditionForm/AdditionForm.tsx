@@ -24,6 +24,8 @@ const MUTATION_CREATE_EXPRESSION = graphql`
       instance {
         #@appendNode(connections: $connections, edgeTypeName: "ExpressionNodeEdge")
         id
+        content
+        correctedContent
         generalExplanation
         grammarExplanation
         wordsExplanation

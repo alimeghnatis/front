@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<80783b3c49ce156a1f00f5f0d7cdd89f>>
+ * @generated SignedSource<<93d13fddfb4a99db89ed960ec6156a8b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,40 +10,36 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionFragment$data = {
+export type ExpressionDetailsFragment$data = {
   readonly audioUrl: string | null | undefined;
   readonly content: string;
   readonly correctedContent: string | null | undefined;
   readonly created: any;
+  readonly generalExplanation: string | null | undefined;
+  readonly grammarExplanation: string | null | undefined;
   readonly id: string;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
-  readonly " $fragmentType": "ExpressionFragment";
+  readonly wordsExplanation: string | null | undefined;
+  readonly " $fragmentType": "ExpressionDetailsFragment";
 };
-export type ExpressionFragment$key = {
-  readonly " $data"?: ExpressionFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+export type ExpressionDetailsFragment$key = {
+  readonly " $data"?: ExpressionDetailsFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "ExpressionFragment",
+  "name": "ExpressionDetailsFragment",
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
       "name": "id",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "content",
       "storageKey": null
     },
     {
@@ -71,7 +67,35 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "content",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "correctedContent",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "grammarExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "generalExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "wordsExplanation",
       "storageKey": null
     },
     {
@@ -93,6 +117,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "7ca09874f48eefbbd44bd6e3453af5e1";
+(node as any).hash = "05c86e5ccdf60d74ddd30116625239da";
 
 export default node;

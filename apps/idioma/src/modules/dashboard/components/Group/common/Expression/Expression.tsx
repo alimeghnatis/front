@@ -27,8 +27,6 @@ const FRAGMENT = graphql`
     iso6392
     iso6393
     correctedContent
-    grammarExplanation
-    wordsExplanation
     audioUrl
     created
   }
@@ -88,28 +86,21 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       if (!isConfirmed) {
         return
       }
+      const updater = (store: RecordSourceSelectorProxy) => {
+        const groupRecord = store.get(groupID)
+        const connectionRecord = ConnectionHandler.getConnection(
+          groupRecord,
+          'GroupFragment_expressions',
+        )
+        ConnectionHandler.deleteNode(
+          connectionRecord, result.id,
+        )
+      }
+
       deleteExpression({
-        variables:{ input: { id: atob(result.id).split(':')[1] } },
-        updater  :(store: RecordSourceSelectorProxy) => {
-          const groupRecord = store.get(groupID)
-          const connectionRecord = ConnectionHandler.getConnection(
-            groupRecord,
-            'GroupFragment_expressions',
-          )
-          ConnectionHandler.deleteNode(
-            connectionRecord, result.id,
-          )
-        },
-        optimisticUpdater:(store: RecordSourceSelectorProxy) => {
-          const groupRecord = store.get(groupID)
-          const connectionRecord = ConnectionHandler.getConnection(
-            groupRecord,
-            'GroupFragment_expressions',
-          )
-          ConnectionHandler.deleteNode(
-            connectionRecord, result.id,
-          )
-        },
+        variables        :{ input: { id: atob(result.id).split(':')[1] } },
+        updater,
+        optimisticUpdater:updater,
       })
     }, [
       result.id,

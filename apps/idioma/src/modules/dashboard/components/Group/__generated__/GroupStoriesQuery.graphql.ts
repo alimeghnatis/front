@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<58e8c6978e52d6794f40bfc453db8193>>
+ * @generated SignedSource<<fc3b5597e34678874cdc0e384fa6b3e4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -157,20 +157,6 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "grammarExplanation",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "wordsExplanation",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
                         "name": "audioUrl",
                         "storageKey": null
                       },
@@ -238,12 +224,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7957c5e484cc2415cad3581dba5f8be7",
+    "cacheID": "eb1c11997c258b1485f1a8ebbc587c23",
     "id": null,
     "metadata": {},
     "name": "GroupStoriesQuery",
     "operationKind": "query",
-    "text": "query GroupStoriesQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  grammarExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query GroupStoriesQuery {\n  group(id: \"1\") {\n    ...GroupFragment\n    id\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

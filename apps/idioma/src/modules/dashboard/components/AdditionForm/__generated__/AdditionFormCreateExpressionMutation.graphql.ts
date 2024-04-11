@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c82d55b0b83c58e5f0de1d7a7f21a208>>
+ * @generated SignedSource<<120f3bf6632d6aa51a5b5572db0eff90>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -39,6 +39,8 @@ export type AdditionFormCreateExpressionMutation$data = {
     readonly instance: {
       readonly audioKey: string | null | undefined;
       readonly audioUrl: string | null | undefined;
+      readonly content: string;
+      readonly correctedContent: string | null | undefined;
       readonly created: any;
       readonly generalExplanation: string | null | undefined;
       readonly grammarExplanation: string | null | undefined;
@@ -89,6 +91,20 @@ v1 = [
             "args": null,
             "kind": "ScalarField",
             "name": "id",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "content",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "correctedContent",
             "storageKey": null
           },
           {
@@ -190,16 +206,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "79ffa9ea9d309411657e20a5cd5085a0",
+    "cacheID": "b0e6f9e4b083f3424d3cab81ef08a5ad",
     "id": null,
     "metadata": {},
     "name": "AdditionFormCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      updated\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      updated\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9cb22f0a655d544bd39bbdfaf239c9db";
+(node as any).hash = "36c725354497de2ab25e27022825fe0c";
 
 export default node;

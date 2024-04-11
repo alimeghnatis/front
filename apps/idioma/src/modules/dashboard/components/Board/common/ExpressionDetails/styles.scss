@@ -1,0 +1,16 @@
+/* @aztlan/generator-front 3.4.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.expression-details {
+  .label {
+    font-weight: 700;
+    grid-column-end: span 3;
+  }
+
+  .field {
+    grid-column: 4 / -1;
+  }
+}
+
+

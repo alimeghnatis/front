@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d0ac18a4880d38cde00f83a0e89a158>>
+ * @generated SignedSource<<33e3dc5f4aa4154e05e5775b06a09d09>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -239,6 +239,27 @@ return {
                                     "storageKey": null
                                   },
                                   (v5/*: any*/),
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "grammarExplanation",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "generalExplanation",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "wordsExplanation",
+                                    "storageKey": null
+                                  },
                                   (v8/*: any*/)
                                 ],
                                 "storageKey": null
@@ -287,12 +308,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d58361bd994d4b4bbb7ee025175e958d",
+    "cacheID": "455ef6abfa2ff82006f69c5c943a8c68",
     "id": null,
     "metadata": {},
     "name": "BoardStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardFragment\n    id\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query BoardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardFragment\n    id\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n  ...ExpressionDetailsFragment\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

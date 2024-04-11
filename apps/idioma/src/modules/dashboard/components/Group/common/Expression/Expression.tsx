@@ -7,6 +7,8 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+import { Link } from 'react-router-dom'
+
 import styleNames from '@aztlan/bem'
 import {
   useFragment,
@@ -15,6 +17,9 @@ import {
   RecordSourceSelectorProxy,
   ConnectionHandler,
 } from 'react-relay'
+
+import { useBoardContext } from '../../../Board/index.js'
+import { ExpressionDetails } from '../../../Board/common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression'
@@ -29,6 +34,7 @@ const FRAGMENT = graphql`
     correctedContent
     audioUrl
     created
+    ...ExpressionDetailsFragment
   }
 `
 
@@ -60,6 +66,12 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
+
+  const {
+    baseBoardUrl,
+    getExpressionDetailsUrl,
+    currentExpressionId,
+  } = useBoardContext()
 
   const result = useFragment(
     FRAGMENT, data,
@@ -122,28 +134,37 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      <div className="language">
-        {result.iso6391 || result.iso6392 || result.iso6393}
+      <div className="grid container general">
+        <div className="language">
+          <strong>{result.iso6391 || result.iso6392 || result.iso6393}</strong>
+        </div>
+        <div className="expression">
+          {result.correctedContent || result.content}
+        </div>
+        <audio ref={audioRef}>
+          <source
+            src={result.audioUrl}
+            type="audio/mpeg"
+          />
+        </audio>
+        <div className="tools">
+          <button onClick={playAudio}>&lt;</button>
+          <Link to={getExpressionDetailsUrl?.(result.id)}>
+            <button>?</button>
+          </Link>
+          <button>*</button>
+          <button
+            disabled={isDeleteInFlight}
+            onClick={handleDelete}
+          >
+            x
+          </button>
+        </div>
       </div>
-      <div className="expression">
-        {result.correctedContent || result.content}
-      </div>
-      <audio ref={audioRef}>
-        <source
-          src={result.audioUrl}
-          type="audio/mpeg"
-        />
-      </audio>
-      <div className="tools">
-        <button onClick={playAudio}>&lt;</button>
-        <button>?</button>
-        <button>*</button>
-        <button
-          disabled={isDeleteInFlight}
-          onClick={handleDelete}
-        >
-          x
-        </button>
+      <div className="grid container detail">
+        {currentExpressionId === result.id && (
+          <ExpressionDetails data={result} />
+        )}
       </div>
     </div>
   )

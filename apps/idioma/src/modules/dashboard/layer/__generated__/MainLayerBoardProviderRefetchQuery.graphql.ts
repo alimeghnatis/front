@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<76e18303034a67a83848643eefb11026>>
+ * @generated SignedSource<<51d90e7b721f5fab7a0118f7d84ff546>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -249,6 +249,27 @@ return {
                                     "storageKey": null
                                   },
                                   (v3/*: any*/),
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "grammarExplanation",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "generalExplanation",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "wordsExplanation",
+                                    "storageKey": null
+                                  },
                                   (v9/*: any*/)
                                 ],
                                 "storageKey": null
@@ -297,12 +318,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "03d0a3f194fb8d2e23e5e098c5d54f15",
+    "cacheID": "6833a672b35d8529a94c09088d799271",
     "id": null,
     "metadata": {},
     "name": "MainLayerBoardProviderRefetchQuery",
     "operationKind": "query",
-    "text": "query MainLayerBoardProviderRefetchQuery(\n  $id: ID\n) {\n  ...MainLayerBoardProviderFragment_1Bmzm5\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment MainLayerBoardProviderFragment_1Bmzm5 on Query {\n  board(id: $id) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n  }\n}\n"
+    "text": "query MainLayerBoardProviderRefetchQuery(\n  $id: ID\n) {\n  ...MainLayerBoardProviderFragment_1Bmzm5\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 100) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n  ...ExpressionDetailsFragment\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment MainLayerBoardProviderFragment_1Bmzm5 on Query {\n  board(id: $id) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n  }\n}\n"
   }
 };
 })();

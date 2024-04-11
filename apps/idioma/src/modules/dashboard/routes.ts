@@ -39,6 +39,7 @@ export const internalRoutes = [
     path:[
       paths.absolute.BOARD_HOME,
       paths.absolute.BOARD_HOME2,
+      paths.absolute.BOARD_EXPRESSION_DETAILS,
     ],
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Board.js')),
     exact    :true,

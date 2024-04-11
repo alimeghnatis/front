@@ -1,11 +1,14 @@
 import * as React from 'react'
 import {
-  useMemo, useEffect,
+  useMemo, useEffect, useCallback,
 } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  useParams, useLocation, matchPath,
+  useParams,
+  useLocation,
+  matchPath,
+  generatePath,
 } from 'react-router-dom'
 import {
   useRefetchableFragment, GraphQLTaggedNode,
@@ -37,15 +40,32 @@ function RawProvider({
   data,
   basePath,
   baseBoardPath,
+  expressionDetailsPath,
 }: // ...otherProps
 InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   // const { board: currentBoardId } = useParams()
   const location = useLocation()
-  const match = matchPath(
-    location.pathname, { path: baseBoardPath },
+
+  const {
+    currentBoardId, currentExpressionId,
+  } = useMemo(
+    () => {
+      const boardMatch = matchPath(
+        location.pathname, { path: baseBoardPath },
+      )
+      const boardMatchParam = boardMatch?.params.board
+      const expressionMatch = matchPath(
+        location.pathname, { path: expressionDetailsPath },
+      )
+      const expressionMatchParam = expressionMatch?.params.expression
+      return {
+        currentBoardId     :isGlobalId(boardMatchParam) ? boardMatchParam : null,
+        currentExpressionId:isGlobalId(expressionMatchParam)
+          ? expressionMatchParam
+          : null,
+      }
+    }, [location.pathname],
   )
-  const boardMatchParam = match?.params.board
-  const currentBoardId = isGlobalId(boardMatchParam) ? boardMatchParam : null
 
   const [
     result,
@@ -65,20 +85,49 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     }, [currentBoardId],
   )
 
+  const baseBoardUrl = useMemo(
+    () => {
+      if (selectedBoard) {
+        return generatePath(
+          baseBoardPath, { board: selectedBoard.id },
+        )
+      }
+      return null
+    }, [selectedBoard],
+  )
+
+  const getExpressionDetailsUrl = useCallback(
+    (expressionId: string): string => generatePath(
+      expressionDetailsPath, {
+        board     :selectedBoard.id,
+        expression:expressionId,
+      },
+    ),
+    [selectedBoard],
+  )
+
   const contextValue = useMemo(
     () => ({
       data:selectedBoard,
       id  :selectedBoard?.id,
       uuid:selectedBoard && atob(selectedBoard.id).split(':')[1],
       currentBoardId,
+      currentExpressionId,
       basePath,
       baseBoardPath,
+      baseBoardUrl,
+      expressionDetailsPath,
+      getExpressionDetailsUrl,
     }),
     [
       baseBoardPath,
+      expressionDetailsPath,
+      getExpressionDetailsUrl,
       basePath,
+      baseBoardUrl,
       selectedBoard,
       currentBoardId,
+      currentExpressionId,
       data,
     ],
   )
@@ -98,6 +147,9 @@ RawProvider.propTypes = {
 
   /** The base board path */
   baseBoardPath:PropTypes.string,
+
+  /** The expression details path */
+  expressionDetailsPath:PropTypes.string,
 
   /** The data to use */
   data:PropTypes.any,

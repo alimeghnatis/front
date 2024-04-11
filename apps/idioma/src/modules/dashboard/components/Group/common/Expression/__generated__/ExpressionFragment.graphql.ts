@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<80783b3c49ce156a1f00f5f0d7cdd89f>>
+ * @generated SignedSource<<8c31b32a3bfe8b5c80720087eb7d558f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type ExpressionFragment$data = {
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
+  readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment">;
   readonly " $fragmentType": "ExpressionFragment";
 };
 export type ExpressionFragment$key = {
@@ -87,12 +88,17 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "created",
       "storageKey": null
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "ExpressionDetailsFragment"
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "7ca09874f48eefbbd44bd6e3453af5e1";
+(node as any).hash = "f93663e3eab6af4671d5beb0d9991735";
 
 export default node;

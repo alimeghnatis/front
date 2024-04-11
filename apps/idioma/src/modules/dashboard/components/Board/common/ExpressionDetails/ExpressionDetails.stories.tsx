@@ -44,6 +44,7 @@ const relay = {
   mockResolvers:{
     ExpressionNode:() => ({
       id                :'RXhwcmVzc2lvbk5vZGU6MzU2Zjc2NTMtNDhiMS00OWI1LTgzOWEtMjQ5YjczMThlYzlj',
+      iso6391           :'de',
       content           :'Um einen platten Reifen zu reparieren',
       correctedContent  :'Um einen platten Reifen zu reparieren.',
       generalExplanation:"This is a German sentence. The general meaning is 'To repair a flat tire.'",

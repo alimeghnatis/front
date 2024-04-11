@@ -82,6 +82,10 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
     >
       <div className="label">Content</div>
       <div className="field">{result.correctedContent}</div>
+      <div className="label">ISO 639</div>
+      <div className="field">
+        {result.iso6391 || result.iso6392 || result.iso6393}
+      </div>
       <div className="label">General Explanation</div>
       <div
         className="field"
@@ -92,21 +96,27 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
         className="field"
         dangerouslySetInnerHTML={{ __html: marked.parse(result.grammarExplanation) }}
       />
+      <div className="label">Content</div>
+      <div className="field">{result.correctedContent}</div>
       <div className="label">Word by word</div>
       <div
         className="field"
         dangerouslySetInnerHTML={{ __html: marked.parse(result.wordsExplanation) }}
       />
-      <div className="label">Audio</div>
-      <div className="field">
-        <audio ref={audioRef}>
-          <source
-            src={result.audioUrl}
-            type="audio/mpeg"
-          />
-        </audio>
-        <button onClick={playAudio}>Play</button>
-      </div>
+      {result.audioUrl && (
+        <>
+          <div className="label">Audio</div>
+          <div className="field">
+            <audio ref={audioRef}>
+              <source
+                src={result.audioUrl}
+                type="audio/mpeg"
+              />
+            </audio>
+            <button onClick={playAudio}>Play</button>
+          </div>
+        </>
+      )}
       <div className="label">Created</div>
       <div className="field">{result.created}</div>
     </div>

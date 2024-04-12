@@ -47,7 +47,9 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   const location = useLocation()
 
   const {
-    currentBoardId, currentExpressionId,
+    currentBoardId,
+    currentExpressionId,
+    currentExpressionActionSlug,
   } = useMemo(
     () => {
       const boardMatch = matchPath(
@@ -58,11 +60,13 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
         location.pathname, { path: expressionDetailsPath },
       )
       const expressionMatchParam = expressionMatch?.params.expression
+      const expressionActionSlugMatchParam = expressionMatch?.params.slug
       return {
         currentBoardId     :isGlobalId(boardMatchParam) ? boardMatchParam : null,
         currentExpressionId:isGlobalId(expressionMatchParam)
           ? expressionMatchParam
           : null,
+        currentExpressionActionSlug:expressionActionSlugMatchParam,
       }
     }, [location.pathname],
   )
@@ -97,10 +101,13 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   )
 
   const getExpressionDetailsUrl = useCallback(
-    (expressionId: string): string => generatePath(
+    (
+      expressionId: string, slug: string,
+    ): string => generatePath(
       expressionDetailsPath, {
         board     :selectedBoard.id,
         expression:expressionId,
+        slug,
       },
     ),
     [selectedBoard],
@@ -113,6 +120,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       uuid:selectedBoard && atob(selectedBoard.id).split(':')[1],
       currentBoardId,
       currentExpressionId,
+      currentExpressionActionSlug,
       basePath,
       baseBoardPath,
       baseBoardUrl,
@@ -128,6 +136,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       selectedBoard,
       currentBoardId,
       currentExpressionId,
+      currentExpressionActionSlug,
       data,
     ],
   )

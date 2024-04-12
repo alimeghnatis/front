@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useCallback, useInsertionEffect, useRef,
+  useCallback, useInsertionEffect, useRef, useMemo,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -71,6 +71,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     baseBoardUrl,
     getExpressionDetailsUrl,
     currentExpressionId,
+    currentExpressionActionSlug,
   } = useBoardContext()
 
   const result = useFragment(
@@ -120,6 +121,48 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     ],
   )
 
+  const {
+    detailsLink, variantLink,
+  } = useMemo(
+    () => {
+      const isCurrent = currentExpressionId === result.id
+      const detailsType = 'details'
+      const variantType = 'variant'
+
+      let detailsLink = getExpressionDetailsUrl?.(
+        result.id, detailsType,
+      )
+      let variantLink = getExpressionDetailsUrl?.(
+        result.id, variantType,
+      )
+
+      if (isCurrent) {
+        if (currentExpressionActionSlug === 'details') {
+          detailsLink = baseBoardUrl
+          variantLink = getExpressionDetailsUrl?.(
+            result.id, variantType,
+          )
+        } else if (currentExpressionActionSlug === 'variant') {
+          detailsLink = getExpressionDetailsUrl?.(
+            result.id, detailsType,
+          )
+          variantLink = baseBoardUrl
+        }
+      }
+
+      return {
+        detailsLink,
+        variantLink,
+      }
+    }, [
+      currentExpressionId,
+      currentExpressionActionSlug,
+      result.id,
+      baseBoardUrl,
+      getExpressionDetailsUrl,
+    ],
+  )
+
   return (
     <div
       id={id}
@@ -149,16 +192,12 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         </audio>
         <div className="tools">
           <button onClick={playAudio}>&lt;</button>
-          <Link
-            to={
-              currentExpressionId === result.id
-                ? baseBoardUrl
-                : getExpressionDetailsUrl?.(result.id)
-            }
-          >
+          <Link to={detailsLink}>
             <button>?</button>
           </Link>
-          <button>*</button>
+          <Link to={variantLink}>
+            <button>*</button>
+          </Link>
           <button
             disabled={isDeleteInFlight}
             onClick={handleDelete}
@@ -167,11 +206,19 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           </button>
         </div>
       </div>
-      <div className="grid container detail">
-        {currentExpressionId === result.id && (
-          <ExpressionDetails data={result} />
-        )}
-      </div>
+      {currentExpressionId === result.id && (
+        <>
+          {currentExpressionActionSlug === 'details' && (
+            <div className="grid container detail">
+              <ExpressionDetails data={result} />
+            </div>
+          )}
+
+          {currentExpressionActionSlug === 'variant' && (
+            <div className="grid container variant">TEST</div>
+          )}
+        </>
+      )}
     </div>
   )
 }

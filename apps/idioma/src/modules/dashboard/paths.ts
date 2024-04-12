@@ -13,7 +13,7 @@ export default getPaths(
     NEW_BOARD               :'/new-board',
     BOARD_HOME              :`/${BOARD_PARAM}`,
     BOARD_HOME2             :`/${BOARD_PARAM}/home`,
-    BOARD_EXPRESSION_DETAILS:`/${BOARD_PARAM}/${EXPRESSION_PARAM}`,
+    BOARD_EXPRESSION_DETAILS:`/${BOARD_PARAM}/${EXPRESSION_PARAM}/${SLUG_PARAM}`,
     BOARD_SETTINGS          :`/${BOARD_PARAM}/settings`,
   },
 )

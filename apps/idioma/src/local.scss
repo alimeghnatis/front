@@ -8,6 +8,24 @@ main.grid {
   grid-template-rows: auto 1fr auto;
 }
 
+.main-row {
+  overflow: hidden;
+}
+
+.canvas {
+  //overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
+
+  > .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    //overflow: auto;
+  }
+}
+
 .container {
   position: relative;
 }

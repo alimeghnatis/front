@@ -27,9 +27,8 @@ function BoardPage() {
 
   return (
     <>
-      <AdditionForm />
-      <h1>Board </h1>
       {/*
+      <h1>Board </h1>
       <pre
         style={{
           whiteSpace:'pre-wrap',
@@ -41,6 +40,7 @@ function BoardPage() {
         )}
       </pre> */}
       <Board data={data} />
+      <AdditionForm />
     </>
   )
 }

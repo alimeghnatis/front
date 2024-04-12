@@ -3,7 +3,9 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.board {
-  padding-bottom: calc(var(--gap) * 4);
+  //padding-bottom: calc(var(--gap) * 4);
+  height: 100%;
+  overflow: auto;
 }
 
 

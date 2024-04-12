@@ -20,7 +20,7 @@ const FRAGMENT = graphql`
   fragment BoardFragment on BoardNode
     @refetchable(queryName: "BoardFragmentPaginationQuery")
     @argumentDefinitions(
-      count: { type: "Int", defaultValue: 15 }
+      count: { type: "Int", defaultValue: 22 }
       cursor: { type: "String", defaultValue: null }
     ) {
     id
@@ -75,7 +75,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting && hasNext && !isLoadingNext) {
-            loadNext(15) // Load more items, adjust number as needed
+          // loadNext(15) // Load more items, adjust number as needed
           }
         },
         {
@@ -124,7 +124,6 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         {isLoadingNext && 'loading'}
         {!hasNext && 'no more'}
       </div>
-      <AdditionForm />
     </div>
   )
 }

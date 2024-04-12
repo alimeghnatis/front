@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<42662ff26644e0cc4f8d5a6ca6240853>>
+ * @generated SignedSource<<faed4f3d1040210e1f9db3ec63bfb5bc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,7 +28,7 @@ export type BoardFragmentPaginationQuery = {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "defaultValue": 15,
+    "defaultValue": 22,
     "kind": "LocalArgument",
     "name": "count"
   },
@@ -353,16 +353,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a6321447cf8f48970e83837c578ac486",
+    "cacheID": "b2d15313376f3d13a72c4ca58b60d15e",
     "id": null,
     "metadata": {},
     "name": "BoardFragmentPaginationQuery",
     "operationKind": "query",
-    "text": "query BoardFragmentPaginationQuery(\n  $count: Int = 15\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...BoardFragment_1G22uz\n    id\n  }\n}\n\nfragment BoardFragment_1G22uz on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n  ...ExpressionDetailsFragment\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query BoardFragmentPaginationQuery(\n  $count: Int = 22\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...BoardFragment_1G22uz\n    id\n  }\n}\n\nfragment BoardFragment_1G22uz on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n  ...ExpressionDetailsFragment\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 30) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3c96466ea50707f367ad368f7b885e17";
+(node as any).hash = "76aaf22a57a24dc657d8d1e94f30331c";
 
 export default node;

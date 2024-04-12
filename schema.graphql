@@ -109,7 +109,7 @@ type Query {
   ): Node
 }
 
-type BoardNode implements SearchNode {
+type BoardNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
 
@@ -131,6 +131,12 @@ type BoardNode implements SearchNode {
 }
 
 interface SearchNode {
+  """The ID of the object"""
+  id: ID!
+}
+
+"""An object with an ID"""
+interface Node {
   """The ID of the object"""
   id: ID!
 }
@@ -221,12 +227,6 @@ type UserNode implements Node {
   defaultBoard: BoardNode
 }
 
-"""An object with an ID"""
-interface Node {
-  """The ID of the object"""
-  id: ID!
-}
-
 type GroupNodeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
@@ -244,7 +244,7 @@ type GroupNodeEdge {
   cursor: String!
 }
 
-type GroupNode implements SearchNode {
+type GroupNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
 
@@ -274,7 +274,7 @@ type ExpressionNodeEdge {
   cursor: String!
 }
 
-type ExpressionNode implements SearchNode {
+type ExpressionNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
 
@@ -344,7 +344,7 @@ type BoardMembershipNodeEdge {
   cursor: String!
 }
 
-type BoardMembershipNode implements SearchNode {
+type BoardMembershipNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
 
@@ -449,7 +449,7 @@ input CreateBoardMutationInput {
   id: String
   iso6391: String
   iso6392: String
-  iso6393: String!
+  iso6393: String
   name: String!
   isPublic: Boolean
   defaultForUser: String
@@ -469,7 +469,7 @@ input UpdateBoardMutationInput {
   id: String
   iso6391: String
   iso6392: String
-  iso6393: String!
+  iso6393: String
   name: String!
   isPublic: Boolean
   defaultForUser: String
@@ -542,7 +542,7 @@ input CreateExpressionMutationInput {
   board: String
   iso6391: String
   iso6392: String
-  iso6393: String!
+  iso6393: String
   content: String!
   correctedContent: String
   category: String
@@ -569,7 +569,7 @@ input UpdateExpressionMutationInput {
   id: String
   iso6391: String
   iso6392: String
-  iso6393: String!
+  iso6393: String
   content: String!
   correctedContent: String
   category: String

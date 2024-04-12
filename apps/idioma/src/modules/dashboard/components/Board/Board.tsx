@@ -1,11 +1,13 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useEffect, useInsertionEffect, useRef,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  useFragment, graphql,
+  usePaginationFragment, graphql,
 } from 'react-relay'
 import styleNames from '@aztlan/bem'
 import { Group } from '../Group/index.js'
@@ -15,13 +17,19 @@ const baseClassName = styleNames.base
 const componentClassName = 'board'
 
 const FRAGMENT = graphql`
-  fragment BoardFragment on BoardNode {
+  fragment BoardFragment on BoardNode
+    @refetchable(queryName: "BoardFragmentPaginationQuery")
+    @argumentDefinitions(
+      count: { type: "Int", defaultValue: 15 }
+      cursor: { type: "String", defaultValue: null }
+    ) {
     id
     iso6391
     iso6392
     iso6393
     created
-    groups(first: 100) @connection(key: "BoardFragment_groups") {
+    groups(first: $count, after: $cursor)
+      @connection(key: "BoardFragment_groups") {
       edges {
         node {
           ...GroupFragment
@@ -44,15 +52,52 @@ function Board({
 }: // ...otherProps
 
 InferProps<typeof Board.propTypes>): React.ReactElement {
-  const result = useFragment(
-    FRAGMENT, data,
-  )
-
   useInsertionEffect(
     () => {
     // @ts-ignore
       import('./styles.scss')
     }, [],
+  )
+
+  const {
+    data: result,
+    loadNext,
+    hasNext,
+    isLoadingNext,
+  } = usePaginationFragment(
+    FRAGMENT, data,
+  )
+
+  const loadMoreRef = useRef<HTMLDivElement>(null)
+
+  useEffect(
+    () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && hasNext && !isLoadingNext) {
+            loadNext(15) // Load more items, adjust number as needed
+          }
+        },
+        {
+          threshold :1.0,
+          rootMargin:'0px 0px 60% 0px',
+        },
+      )
+
+      if (loadMoreRef.current) {
+        observer.observe(loadMoreRef.current)
+      }
+
+      return () => {
+        if (loadMoreRef.current) {
+          observer.unobserve(loadMoreRef.current)
+        }
+      }
+    }, [
+      hasNext,
+      isLoadingNext,
+      loadNext,
+    ],
   )
 
   return (
@@ -75,6 +120,10 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
           data={edge.node}
         />
       ))}
+      <div ref={loadMoreRef}>
+        {isLoadingNext && 'loading'}
+        {!hasNext && 'no more'}
+      </div>
       <AdditionForm />
     </div>
   )

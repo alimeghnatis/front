@@ -19,13 +19,18 @@ import paths from '../paths.js'
 const FRAGMENT = graphql`
   fragment MainLayerBoardProviderFragment on Query
     @refetchable(queryName: "MainLayerBoardProviderRefetchQuery")
-    @argumentDefinitions(id: { type: "ID" }) {
+    @argumentDefinitions(
+      id: { type: "ID" }
+      #boardGroupCount: { type: "Int" }
+      #boardGroupCursor: { type: "String" }
+    ) {
     board(id: $id) {
       id
       name
       created
       updated
       ...BoardFragment
+      #@arguments(count: $boardGroupCount, cursor: $boardGroupCursor)
     }
   }
 `

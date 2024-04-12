@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7e34048813f934f09de10a542edd4b03>>
+ * @generated SignedSource<<467125679d4c1490b94e6c3479017432>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,7 +8,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type BoardFragment$data = {
   readonly created: any;
@@ -30,20 +30,53 @@ export type BoardFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"BoardFragment">;
 };
 
-const node: ReaderFragment = {
-  "argumentDefinitions": [],
+import BoardFragmentPaginationQuery_graphql from './BoardFragmentPaginationQuery.graphql';
+
+const node: ReaderFragment = (function(){
+var v0 = [
+  "groups"
+];
+return {
+  "argumentDefinitions": [
+    {
+      "defaultValue": 15,
+      "kind": "LocalArgument",
+      "name": "count"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "cursor"
+    }
+  ],
   "kind": "Fragment",
   "metadata": {
     "connection": [
       {
-        "count": null,
-        "cursor": null,
+        "count": "count",
+        "cursor": "cursor",
         "direction": "forward",
-        "path": [
-          "groups"
-        ]
+        "path": (v0/*: any*/)
       }
-    ]
+    ],
+    "refetch": {
+      "connection": {
+        "forward": {
+          "count": "count",
+          "cursor": "cursor"
+        },
+        "backward": null,
+        "path": (v0/*: any*/)
+      },
+      "fragmentPathInResult": [
+        "node"
+      ],
+      "operation": BoardFragmentPaginationQuery_graphql,
+      "identifierInfo": {
+        "identifierField": "id",
+        "identifierQueryVariableName": "id"
+      }
+    }
   },
   "name": "BoardFragment",
   "selections": [
@@ -163,7 +196,8 @@ const node: ReaderFragment = {
   "type": "BoardNode",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "e9eb7f3dbd48ae6925260f524022a2fd";
+(node as any).hash = "3c96466ea50707f367ad368f7b885e17";
 
 export default node;

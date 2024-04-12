@@ -67,7 +67,11 @@ function Application({
                 maintenance={config.maintenance}
                 ssrHostname={ssrHostname}
                 QUERY_APPLICATION={QUERY_APPLICATION}
-                // applicationQueryVariables={{ organization: 'atest.com' }}
+                // applicationQueryVariables={{
+                //  organization: 'atest.com',
+                //  boardGroupCount :10,
+                //  boardGroupCursor:null,
+                // }}
                 defaultRedirectionAfterLogin="/d/profile"
               >
                 <ThemeWrapper>

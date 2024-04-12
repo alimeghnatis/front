@@ -149,7 +149,13 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         </audio>
         <div className="tools">
           <button onClick={playAudio}>&lt;</button>
-          <Link to={getExpressionDetailsUrl?.(result.id)}>
+          <Link
+            to={
+              currentExpressionId === result.id
+                ? baseBoardUrl
+                : getExpressionDetailsUrl?.(result.id)
+            }
+          >
             <button>?</button>
           </Link>
           <button>*</button>

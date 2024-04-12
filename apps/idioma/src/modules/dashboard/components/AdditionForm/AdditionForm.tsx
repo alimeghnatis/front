@@ -38,12 +38,6 @@ const MUTATION_CREATE_EXPRESSION = graphql`
         field
         messages
       }
-      #expression {
-      #  id
-      #  text
-      #  created
-      #  updated
-      #}
     }
   }
 `

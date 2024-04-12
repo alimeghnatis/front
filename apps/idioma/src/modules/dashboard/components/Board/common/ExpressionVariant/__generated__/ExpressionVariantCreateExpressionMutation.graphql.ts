@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c603a1848e76d5b00dedd81409d06d90>>
+ * @generated SignedSource<<e7e493e292a34b82fd49e8f71321f18f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -31,10 +31,10 @@ export type CreateExpressionMutationInput = {
   variantWord?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
-export type AdditionFormCreateExpressionMutation$variables = {
+export type ExpressionVariantCreateExpressionMutation$variables = {
   input: CreateExpressionMutationInput;
 };
-export type AdditionFormCreateExpressionMutation$data = {
+export type ExpressionVariantCreateExpressionMutation$data = {
   readonly createExpression: {
     readonly errors: ReadonlyArray<{
       readonly field: string;
@@ -49,14 +49,15 @@ export type AdditionFormCreateExpressionMutation$data = {
       readonly generalExplanation: string | null | undefined;
       readonly grammarExplanation: string | null | undefined;
       readonly id: string;
-      readonly updated: any;
+      readonly variantName: string | null | undefined;
+      readonly variantWord: string | null | undefined;
       readonly wordsExplanation: string | null | undefined;
     } | null | undefined;
   } | null | undefined;
 };
-export type AdditionFormCreateExpressionMutation = {
-  response: AdditionFormCreateExpressionMutation$data;
-  variables: AdditionFormCreateExpressionMutation$variables;
+export type ExpressionVariantCreateExpressionMutation = {
+  response: ExpressionVariantCreateExpressionMutation$data;
+  variables: ExpressionVariantCreateExpressionMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -157,7 +158,14 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "updated",
+            "name": "variantName",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "variantWord",
             "storageKey": null
           }
         ],
@@ -197,7 +205,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "AdditionFormCreateExpressionMutation",
+    "name": "ExpressionVariantCreateExpressionMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -206,20 +214,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "AdditionFormCreateExpressionMutation",
+    "name": "ExpressionVariantCreateExpressionMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "b0e6f9e4b083f3424d3cab81ef08a5ad",
+    "cacheID": "079b5d76ef87f10fb81402dd1bf8f3f8",
     "id": null,
     "metadata": {},
-    "name": "AdditionFormCreateExpressionMutation",
+    "name": "ExpressionVariantCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      updated\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation ExpressionVariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      variantName\n      variantWord\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "36c725354497de2ab25e27022825fe0c";
+(node as any).hash = "0e83f0e6c3ece3bec4d033eb2b3db230";
 
 export default node;

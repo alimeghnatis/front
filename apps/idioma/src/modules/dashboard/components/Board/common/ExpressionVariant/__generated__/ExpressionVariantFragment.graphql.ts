@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ce32706ffa5dd913f85837002c070d1c>>
+ * @generated SignedSource<<1e01e57498034800aa0db03fd1e9b0de>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,41 +10,31 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionFragment$data = {
-  readonly audioUrl: string | null | undefined;
+export type ExpressionVariantFragment$data = {
   readonly content: string;
-  readonly correctedContent: string | null | undefined;
   readonly created: any;
   readonly id: string;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
-  readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment" | "ExpressionVariantFragment">;
-  readonly " $fragmentType": "ExpressionFragment";
+  readonly " $fragmentType": "ExpressionVariantFragment";
 };
-export type ExpressionFragment$key = {
-  readonly " $data"?: ExpressionFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+export type ExpressionVariantFragment$key = {
+  readonly " $data"?: ExpressionVariantFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"ExpressionVariantFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "ExpressionFragment",
+  "name": "ExpressionVariantFragment",
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
       "name": "id",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "content",
       "storageKey": null
     },
     {
@@ -72,14 +62,7 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "correctedContent",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "audioUrl",
+      "name": "content",
       "storageKey": null
     },
     {
@@ -88,22 +71,12 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "created",
       "storageKey": null
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "ExpressionDetailsFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "ExpressionVariantFragment"
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "d835ff2277ddea373418f0f852456d8c";
+(node as any).hash = "c56b986335da0772a063748a137739f8";
 
 export default node;

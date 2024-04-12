@@ -290,13 +290,18 @@ type ExpressionNode implements SearchNode & Node {
   board: BoardNode!
   content: String!
   correctedContent: String
+  correction: String
   category: String!
   audioUrl: String
   audioKey: String
+  variant: String
   generalExplanation: String
   grammarExplanation: String
   wordsExplanation: String
-  variant: String
+  variantName: String
+  variantFrom: ExpressionNode
+  variantWord: String
+  variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
 
 type PermissionNodeConnection {
@@ -543,16 +548,20 @@ input CreateExpressionMutationInput {
   iso6391: String
   iso6392: String
   iso6393: String
-  content: String!
+  content: String
   correctedContent: String
+  correction: String
   category: String
   audioUrl: String
   audioKey: String
+  variant: String
   generalExplanation: String
   grammarExplanation: String
   wordsExplanation: String
-  variant: String
+  variantName: String
+  variantWord: String
   group: String
+  variantFrom: String
   clientMutationId: String
 }
 
@@ -572,15 +581,19 @@ input UpdateExpressionMutationInput {
   iso6393: String
   content: String!
   correctedContent: String
+  correction: String
   category: String
   audioUrl: String
   audioKey: String
+  variant: String
   generalExplanation: String
   grammarExplanation: String
   wordsExplanation: String
-  variant: String
+  variantName: String
+  variantWord: String
   group: String!
   board: String!
+  variantFrom: String
   clientMutationId: String
 }
 

@@ -78,6 +78,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      key={result.id}
       // {...otherProps}
     >
       <div className="label">Content</div>

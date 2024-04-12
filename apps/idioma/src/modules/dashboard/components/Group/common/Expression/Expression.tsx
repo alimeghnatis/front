@@ -19,7 +19,10 @@ import {
 } from 'react-relay'
 
 import { useBoardContext } from '../../../Board/index.js'
-import { ExpressionDetails } from '../../../Board/common/index.js'
+import {
+  ExpressionDetails,
+  ExpressionVariant,
+} from '../../../Board/common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression'
@@ -35,6 +38,7 @@ const FRAGMENT = graphql`
     audioUrl
     created
     ...ExpressionDetailsFragment
+    ...ExpressionVariantFragment
   }
 `
 
@@ -209,13 +213,11 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       {currentExpressionId === result.id && (
         <>
           {currentExpressionActionSlug === 'details' && (
-            <div className="grid container detail">
-              <ExpressionDetails data={result} />
-            </div>
+            <ExpressionDetails data={result} />
           )}
 
           {currentExpressionActionSlug === 'variant' && (
-            <div className="grid container variant">TEST</div>
+            <ExpressionVariant data={result} />
           )}
         </>
       )}

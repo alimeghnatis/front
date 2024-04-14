@@ -29,6 +29,7 @@ const FRAGMENT = graphql`
     wordsExplanation
     audioUrl
     created
+    changes
   }
 `
 
@@ -118,6 +119,8 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
           </div>
         </>
       )}
+      <div className="label">Changes</div>
+      <div className="field">{result.changes}</div>
       <div className="label">Created</div>
       <div className="field">{result.created}</div>
     </div>

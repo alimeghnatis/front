@@ -32,7 +32,9 @@ const MUTATION_CREATE_EXPRESSION = graphql`
         audioUrl
         audioKey
         created
-        updated
+        group {
+          id
+        }
       }
       errors {
         field

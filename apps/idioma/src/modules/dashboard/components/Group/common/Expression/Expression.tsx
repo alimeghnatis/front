@@ -237,6 +237,9 @@ Expression.propTypes = {
 
   /** The data to use */
   data:PropTypes.any,
+
+  /** The group global ID */
+  groupID:PropTypes.string,
 }
 
 export default Expression

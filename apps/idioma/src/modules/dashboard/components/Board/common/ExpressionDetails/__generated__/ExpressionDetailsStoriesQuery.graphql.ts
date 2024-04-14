@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fc86d13ec11781f5261a7b5738ddcd44>>
+ * @generated SignedSource<<82c234a2ebba81c7be48dfe06da3f385>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -146,6 +146,13 @@ return {
             "kind": "ScalarField",
             "name": "created",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "changes",
+            "storageKey": null
           }
         ],
         "storageKey": "expression(id:\"1\")"
@@ -153,12 +160,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9876c7f88f9ade5e8bdb071fba64da90",
+    "cacheID": "4f5d3cb48b3dccb653fb49a465ec6df1",
     "id": null,
     "metadata": {},
     "name": "ExpressionDetailsStoriesQuery",
     "operationKind": "query",
-    "text": "query ExpressionDetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionDetailsFragment\n    id\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n}\n"
+    "text": "query ExpressionDetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionDetailsFragment\n    id\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n"
   }
 };
 })();

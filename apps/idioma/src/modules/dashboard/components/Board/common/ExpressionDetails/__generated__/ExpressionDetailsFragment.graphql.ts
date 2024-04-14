@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<93d13fddfb4a99db89ed960ec6156a8b>>
+ * @generated SignedSource<<e61be91850dc896ab8c9d7e4b3640643>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ExpressionDetailsFragment$data = {
   readonly audioUrl: string | null | undefined;
+  readonly changes: string | null | undefined;
   readonly content: string;
   readonly correctedContent: string | null | undefined;
   readonly created: any;
@@ -111,12 +112,19 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "created",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "changes",
+      "storageKey": null
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "05c86e5ccdf60d74ddd30116625239da";
+(node as any).hash = "f74c787d91755c973f3d36b21c9b306c";
 
 export default node;

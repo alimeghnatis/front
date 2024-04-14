@@ -290,7 +290,7 @@ type ExpressionNode implements SearchNode & Node {
   board: BoardNode!
   content: String!
   correctedContent: String
-  correction: String
+  changes: String
   category: String!
   audioUrl: String
   audioKey: String
@@ -550,7 +550,7 @@ input CreateExpressionMutationInput {
   iso6393: String
   content: String
   correctedContent: String
-  correction: String
+  changes: String
   category: String
   audioUrl: String
   audioKey: String
@@ -581,7 +581,7 @@ input UpdateExpressionMutationInput {
   iso6393: String
   content: String!
   correctedContent: String
-  correction: String
+  changes: String
   category: String
   audioUrl: String
   audioKey: String

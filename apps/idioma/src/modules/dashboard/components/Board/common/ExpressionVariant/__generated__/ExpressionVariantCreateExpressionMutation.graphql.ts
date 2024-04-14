@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e7e493e292a34b82fd49e8f71321f18f>>
+ * @generated SignedSource<<c61bc45b41c7f46f53438c63473f6803>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,10 +14,10 @@ export type CreateExpressionMutationInput = {
   audioUrl?: string | null | undefined;
   board?: string | null | undefined;
   category?: string | null | undefined;
+  changes?: string | null | undefined;
   clientMutationId?: string | null | undefined;
   content?: string | null | undefined;
   correctedContent?: string | null | undefined;
-  correction?: string | null | undefined;
   generalExplanation?: string | null | undefined;
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;

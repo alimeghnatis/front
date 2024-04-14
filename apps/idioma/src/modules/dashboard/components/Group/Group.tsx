@@ -17,7 +17,7 @@ const FRAGMENT = graphql`
   fragment GroupFragment on GroupNode {
     id
     created
-    expressions(first: 30) @connection(key: "GroupFragment_expressions") {
+    expressions(first: 50) @connection(key: "GroupFragment_expressions") {
       edges {
         node {
           ...ExpressionFragment

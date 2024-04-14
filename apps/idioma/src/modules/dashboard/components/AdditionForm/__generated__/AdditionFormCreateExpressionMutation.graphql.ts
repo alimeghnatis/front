@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c603a1848e76d5b00dedd81409d06d90>>
+ * @generated SignedSource<<44a75df1970226d6219c4e34a9aefd83>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,10 +14,10 @@ export type CreateExpressionMutationInput = {
   audioUrl?: string | null | undefined;
   board?: string | null | undefined;
   category?: string | null | undefined;
+  changes?: string | null | undefined;
   clientMutationId?: string | null | undefined;
   content?: string | null | undefined;
   correctedContent?: string | null | undefined;
-  correction?: string | null | undefined;
   generalExplanation?: string | null | undefined;
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;
@@ -48,8 +48,10 @@ export type AdditionFormCreateExpressionMutation$data = {
       readonly created: any;
       readonly generalExplanation: string | null | undefined;
       readonly grammarExplanation: string | null | undefined;
+      readonly group: {
+        readonly id: string;
+      };
       readonly id: string;
-      readonly updated: any;
       readonly wordsExplanation: string | null | undefined;
     } | null | undefined;
   } | null | undefined;
@@ -67,7 +69,14 @@ var v0 = [
     "name": "input"
   }
 ],
-v1 = [
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v2 = [
   {
     "alias": null,
     "args": [
@@ -90,13 +99,7 @@ v1 = [
         "name": "instance",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          },
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -156,8 +159,13 @@ v1 = [
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "updated",
+            "concreteType": "GroupNode",
+            "kind": "LinkedField",
+            "name": "group",
+            "plural": false,
+            "selections": [
+              (v1/*: any*/)
+            ],
             "storageKey": null
           }
         ],
@@ -198,7 +206,7 @@ return {
     "kind": "Fragment",
     "metadata": null,
     "name": "AdditionFormCreateExpressionMutation",
-    "selections": (v1/*: any*/),
+    "selections": (v2/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
@@ -207,19 +215,19 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "AdditionFormCreateExpressionMutation",
-    "selections": (v1/*: any*/)
+    "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "b0e6f9e4b083f3424d3cab81ef08a5ad",
+    "cacheID": "1274990b4f8ffa4bec551e0ce2a42b10",
     "id": null,
     "metadata": {},
     "name": "AdditionFormCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      updated\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      audioUrl\n      audioKey\n      created\n      group {\n        id\n      }\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "36c725354497de2ab25e27022825fe0c";
+(node as any).hash = "794b5d15f681a098881ee1c4372e7d1e";
 
 export default node;

@@ -67,6 +67,58 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
     }, [audioRef],
   )
 
+  const contentMap = [
+    {
+      label  :'Content',
+      payload:result.correctedContent || result.content,
+    },
+    {
+      label  :'ISO 639',
+      payload:result.iso6391 || result.iso6392 || result.iso6393,
+    },
+    {
+      condition:result.generalExplanation,
+      label    :'General',
+      payload  :result.generalExplanation,
+      marked   :true,
+    },
+    {
+      condition:result.grammarExplanation,
+      label    :'Grammar',
+      payload  :result.grammarExplanation,
+      marked   :true,
+    },
+    {
+      condition:result.wordsExplanation,
+      label    :'Word by word',
+      payload  :result.wordsExplanation,
+      marked   :true,
+    },
+    {
+      condition:result.audioUrl,
+      label    :'Audio',
+      payload  :(
+        <>
+          <audio ref={audioRef}>
+            <source
+              src={result.audioUrl}
+              type="audio/mpeg"
+            />
+          </audio>
+          <button onClick={playAudio}>Play</button>
+        </>
+      ),
+    },
+    {
+      label  :'Changes',
+      payload:result.changes,
+    },
+    {
+      label  :'Created',
+      payload:result.created,
+    },
+  ]
+
   return (
     <div
       id={id}
@@ -82,47 +134,22 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
       key={result.id}
       // {...otherProps}
     >
-      <div className="label">Content</div>
-      <div className="field">{result.correctedContent}</div>
-      <div className="label">ISO 639</div>
-      <div className="field">
-        {result.iso6391 || result.iso6392 || result.iso6393}
-      </div>
-      <div className="label">General Explanation</div>
-      <div
-        className="field"
-        dangerouslySetInnerHTML={{ __html: marked.parse(result.generalExplanation) }}
-      />
-      <div className="label">Grammar</div>
-      <div
-        className="field"
-        dangerouslySetInnerHTML={{ __html: marked.parse(result.grammarExplanation) }}
-      />
-      <div className="label">Content</div>
-      <div className="field">{result.correctedContent}</div>
-      <div className="label">Word by word</div>
-      <div
-        className="field"
-        dangerouslySetInnerHTML={{ __html: marked.parse(result.wordsExplanation) }}
-      />
-      {result.audioUrl && (
+      {contentMap.map(({
+        condition, ...field
+      }) => (condition || condition === undefined ? (
         <>
-          <div className="label">Audio</div>
-          <div className="field">
-            <audio ref={audioRef}>
-              <source
-                src={result.audioUrl}
-                type="audio/mpeg"
-              />
-            </audio>
-            <button onClick={playAudio}>Play</button>
-          </div>
+          <div className="label">{field.label}</div>
+          <div
+            className="field"
+            dangerouslySetInnerHTML={
+                field.marked
+                  ? { __html: marked.parse(field.payload) }
+                  : undefined
+              }
+            children={!field.marked ? field.payload : undefined}
+          />
         </>
-      )}
-      <div className="label">Changes</div>
-      <div className="field">{result.changes}</div>
-      <div className="label">Created</div>
-      <div className="field">{result.created}</div>
+      ) : null))}
     </div>
   )
 }

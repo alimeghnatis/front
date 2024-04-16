@@ -114,12 +114,14 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      {result.groups?.edges.map((edge) => (
+      {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
+      result?.groups?.edges.map((edge) => (
         <Group
           key={edge.node.id}
           data={edge.node}
         />
-      ))}
+      ))
+}
       <div ref={loadMoreRef}>
         {isLoadingNext && 'loading'}
         {!hasNext && 'no more'}

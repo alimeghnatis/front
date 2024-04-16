@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ce32706ffa5dd913f85837002c070d1c>>
+ * @generated SignedSource<<e7edb8dd78a479694400a85028d3c00f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,18 +8,18 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ExpressionFragment$data = {
-  readonly audioUrl: string | null | undefined;
   readonly content: string;
   readonly correctedContent: string | null | undefined;
   readonly created: any;
   readonly id: string;
+  readonly isProcessed: boolean;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
-  readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment" | "ExpressionVariantFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"AudioButtonFragment" | "DeleteButtonFragment" | "ExpressionDetailsFragment" | "ExpressionVariantFragment">;
   readonly " $fragmentType": "ExpressionFragment";
 };
 export type ExpressionFragment$key = {
@@ -27,10 +27,24 @@ export type ExpressionFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
 };
 
+import ExpressionRefetchQuery_graphql from './ExpressionRefetchQuery.graphql';
+
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "refetch": {
+      "connection": null,
+      "fragmentPathInResult": [
+        "node"
+      ],
+      "operation": ExpressionRefetchQuery_graphql,
+      "identifierInfo": {
+        "identifierField": "id",
+        "identifierQueryVariableName": "id"
+      }
+    }
+  },
   "name": "ExpressionFragment",
   "selections": [
     {
@@ -79,15 +93,25 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "audioUrl",
+      "name": "created",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "created",
+      "name": "isProcessed",
       "storageKey": null
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "AudioButtonFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "DeleteButtonFragment"
     },
     {
       "args": null,
@@ -104,6 +128,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "d835ff2277ddea373418f0f852456d8c";
+(node as any).hash = "7b3a001ec1cc2385f8a2318e331b76c6";
 
 export default node;

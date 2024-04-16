@@ -18,7 +18,7 @@ $subtotal-span: $span-language + $span-tools;
 
 .#{bem.$base}.expression {
   &.#{bem.$modifier-loading} {
-    animation: loading-background 60s linear forwards;
+    animation: loading-background 10s linear forwards;
   }
 
   .general {

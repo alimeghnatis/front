@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4168a8bf2e24646bb35e33240dde7162>>
+ * @generated SignedSource<<d6bf09ab76284a018480f55ef18cf21a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type CreateExpressionMutationInput = {
   audioKey?: string | null | undefined;
   audioUrl?: string | null | undefined;
@@ -22,6 +23,7 @@ export type CreateExpressionMutationInput = {
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;
   id?: string | null | undefined;
+  isProcessed?: boolean | null | undefined;
   iso6391?: string | null | undefined;
   iso6392?: string | null | undefined;
   iso6393?: string | null | undefined;
@@ -42,20 +44,7 @@ export type ExpressionVariantCreateExpressionMutation$data = {
       readonly messages: ReadonlyArray<string>;
     } | null | undefined> | null | undefined;
     readonly instance: {
-      readonly audioKey: string | null | undefined;
-      readonly audioUrl: string | null | undefined;
-      readonly content: string;
-      readonly correctedContent: string | null | undefined;
-      readonly created: any;
-      readonly generalExplanation: string | null | undefined;
-      readonly grammarExplanation: string | null | undefined;
-      readonly id: string;
-      readonly iso6391: string | null | undefined;
-      readonly iso6392: string | null | undefined;
-      readonly iso6393: string;
-      readonly variantName: string | null | undefined;
-      readonly variantWord: string | null | undefined;
-      readonly wordsExplanation: string | null | undefined;
+      readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment" | "ExpressionFragment">;
     } | null | undefined;
   } | null | undefined;
 };
@@ -83,115 +72,6 @@ v2 = [
   }
 ],
 v3 = {
-  "alias": null,
-  "args": null,
-  "concreteType": "ExpressionNode",
-  "kind": "LinkedField",
-  "name": "instance",
-  "plural": false,
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "content",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "correctedContent",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "generalExplanation",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "grammarExplanation",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "wordsExplanation",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "iso6393",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "iso6392",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "iso6391",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "audioUrl",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "audioKey",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "created",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "variantName",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "variantWord",
-      "storageKey": null
-    }
-  ],
-  "storageKey": null
-},
-v4 = {
   "alias": null,
   "args": null,
   "concreteType": "ErrorType",
@@ -234,8 +114,28 @@ return {
         "name": "createExpression",
         "plural": false,
         "selections": [
-          (v3/*: any*/),
-          (v4/*: any*/)
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "ExpressionNode",
+            "kind": "LinkedField",
+            "name": "instance",
+            "plural": false,
+            "selections": [
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "ExpressionDetailsFragment"
+              },
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "ExpressionFragment"
+              }
+            ],
+            "storageKey": null
+          },
+          (v3/*: any*/)
         ],
         "storageKey": null
       }
@@ -260,7 +160,101 @@ return {
         "name": "createExpression",
         "plural": false,
         "selections": [
-          (v3/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "ExpressionNode",
+            "kind": "LinkedField",
+            "name": "instance",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "iso6391",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "iso6392",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "iso6393",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "content",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "correctedContent",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "grammarExplanation",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "generalExplanation",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "wordsExplanation",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "audioUrl",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "created",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "changes",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -282,23 +276,23 @@ return {
               }
             ]
           },
-          (v4/*: any*/)
+          (v3/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "664a23de76de45cbaca0a0089a6dea1f",
+    "cacheID": "a01c9e5e6d8d5c23c4a7307c381e6f9f",
     "id": null,
     "metadata": {},
     "name": "ExpressionVariantCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation ExpressionVariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      id\n      content\n      correctedContent\n      generalExplanation\n      grammarExplanation\n      wordsExplanation\n      iso6393\n      iso6392\n      iso6391\n      audioUrl\n      audioKey\n      created\n      variantName\n      variantWord\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation ExpressionVariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionDetailsFragment\n      ...ExpressionFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  audioUrl\n  created\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "18a365884a28e749bc3379190088c047";
+(node as any).hash = "bf25cf6252cae4f0e188473f14597a24";
 
 export default node;

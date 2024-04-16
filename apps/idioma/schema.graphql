@@ -301,6 +301,8 @@ type ExpressionNode implements SearchNode & Node {
   variantName: String
   variantFrom: ExpressionNode
   variantWord: String
+  isProcessed: Boolean!
+  Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
 
@@ -560,6 +562,7 @@ input CreateExpressionMutationInput {
   wordsExplanation: String
   variantName: String
   variantWord: String
+  isProcessed: Boolean
   group: String
   variantFrom: String
   clientMutationId: String
@@ -591,6 +594,7 @@ input UpdateExpressionMutationInput {
   wordsExplanation: String
   variantName: String
   variantWord: String
+  isProcessed: Boolean
   group: String!
   board: String!
   variantFrom: String

@@ -18,6 +18,7 @@ import {
   ConnectionHandler,
 } from 'react-relay'
 import { useBoardContext } from '../../hooks/index.js'
+import optimisticExpression from '../../../optimisticExpression.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-variant'
@@ -43,20 +44,10 @@ const MUTATION_CREATE_VARIANT = graphql`
           connections: $connections
           edgeTypeName: "ExpressionNodeEdge"
         ) {
-        id
-        content
-        correctedContent
-        generalExplanation
-        grammarExplanation
-        wordsExplanation
-        iso6393
-        iso6392
-        iso6391
-        audioUrl
-        audioKey
-        created
-        variantName
-        variantWord
+        ...ExpressionDetailsFragment
+        ...ExpressionFragment
+        #variantName
+        #variantWord
       }
       errors {
         field
@@ -120,11 +111,12 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
         optimisticResponse:{
           createExpression:{
             instance:{
-              id         :btoa(`ExpressionNode:${Math.random()}`),
-              content    :'Loading',
-              iso6391    :variables.iso6391 || result.iso6391,
-              variantName:variables.tone,
-              variantWord:variables.word,
+              ...optimisticExpression,
+              id     :btoa(`ExpressionNode:${Math.random()}`),
+              iso6391:variables.iso6391 || result.iso6391,
+              created:new Date().toISOString(),
+              // variantName:variables.tone,
+              // variantWord:variables.word,
             },
             errors:null,
           },

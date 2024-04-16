@@ -12,27 +12,25 @@ import {
 } from 'react-relay'
 import { Textarea } from './common/index.js'
 import { useBoardContext } from '../Board/index.js'
+import optimisticExpression from '../optimisticExpression.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'addition-form'
 
 const MUTATION_CREATE_EXPRESSION = graphql`
   mutation AdditionFormCreateExpressionMutation(
-    $input: CreateExpressionMutationInput! #$connections: [ID!]!
+    $input: CreateExpressionMutationInput!
+    $connections: [ID!]!
   ) {
     createExpression(input: $input) {
       instance {
-        #@appendNode(connections: $connections, edgeTypeName: "ExpressionNodeEdge")
-        id
-        content
-        correctedContent
-        generalExplanation
-        grammarExplanation
-        wordsExplanation
-        audioUrl
-        audioKey
-        created
-        group {
+        ...ExpressionFragment
+        ...ExpressionDetailsFragment
+        group
+          @prependNode(
+            connections: $connections
+            edgeTypeName: "GroupNodeEdge"
+          ) {
           ...GroupFragment
         }
       }
@@ -104,6 +102,12 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
 
   const createExpression = useCallback(
     () => {
+      const connectionID = ConnectionHandler.getConnectionID(
+        boardID,
+        'BoardFragment_groups',
+      )
+      const tempID = btoa(`ExpressionNode:${Math.random()}`)
+      const tempCreated = new Date().toISOString()
       commitCreateExpression({
         variables:{
           input:{
@@ -111,21 +115,34 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
             content:inputValue,
             board  :boardUUID,
           },
+          connections:[connectionID],
         },
         optimisticResponse:{
           createExpression:{
             instance:{
-              id     :btoa(`ExpressionNode:${Math.random()}`),
-              content:'Loading',
-              group  :{
+              ...optimisticExpression,
+              id              :tempID,
+              content         :inputValue,
+              correctedContent:inputValue,
+              created         :tempCreated,
+              group           :{
                 id         :btoa(`GroupNode:${Math.random()}`),
+                created    :tempCreated,
                 expressions:{
+                  pageInfo:{
+                    hasNextPage:false,
+                    endCursor  :null,
+                  },
                   edges:[
                     {
-                      node:{
-                        id     :btoa(`ExpressionNode:${Math.random()}`),
-                        content:inputValue,
-                        iso6391:'**',
+                      cursor:btoa(`ExpressionNode:${Math.random()}`),
+                      node  :{
+                        ...optimisticExpression,
+                        id              :tempID,
+                        content         :inputValue,
+                        correctedContent:inputValue,
+                        created         :tempCreated,
+                        __typename      :'ExpressionNode',
                       },
                     },
                   ],
@@ -135,12 +152,6 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
             errors:null,
           },
         },
-        optimisticUpdater:(store) => updater(
-          store, boardID,
-        ),
-        updater:(store) => updater(
-          store, boardID,
-        ),
       })
     }, [inputValue],
   )

@@ -9,4 +9,5 @@ export default {
   wordsExplanation  :'Loading',
   audioUrl          :'',
   changes           :'Loading',
+  isProcessed       :false,
 }

@@ -37,6 +37,7 @@ const FRAGMENT = graphql`
     correctedContent
     audioUrl
     created
+    isProcessed
     ...ExpressionDetailsFragment
     ...ExpressionVariantFragment
   }
@@ -49,6 +50,23 @@ const MUTATION_DELETE = graphql`
     }
   }
 `
+
+/**
+ * Determines if the result is unprocessed and was created less than a minute ago.
+ * @param {boolean} isProcessed - Indicates if the result has been processed.
+ * @param {string} created - ISO 8601 string of the creation time.
+ * @returns {boolean} - True if unprocessed and created less than a minute ago.
+ */
+const checkRecentUnprocessed = (
+  isProcessed: boolean,
+  created: string,
+): boolean => {
+  const creationTime = new Date(created)
+  const currentTime = new Date()
+  const oneMinuteAgo = new Date(currentTime.getTime() - 60000) // 60,000 milliseconds
+
+  return !isProcessed && creationTime > oneMinuteAgo
+}
 
 /**
  * description
@@ -167,6 +185,16 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     ],
   )
 
+  const isRecentAndUnprocessed = useMemo(
+    () => checkRecentUnprocessed(
+      result.isProcessed, result.created,
+    ),
+    [
+      result.isProcessed,
+      result.created,
+    ],
+  )
+
   return (
     <div
       id={id}
@@ -174,6 +202,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        isRecentAndUnprocessed && styleNames.modifierLoading,
         'grid',
       ]
         .filter((e) => e)

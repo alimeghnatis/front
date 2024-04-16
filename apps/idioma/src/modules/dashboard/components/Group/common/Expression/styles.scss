@@ -6,7 +6,21 @@ $span-language: 1;
 $span-tools: 2;
 $subtotal-span: $span-language + $span-tools;
 
+@keyframes loading-background {
+  0% {
+    background: lightblue;
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
 .#{bem.$base}.expression {
+  &.#{bem.$modifier-loading} {
+    animation: loading-background 60s linear forwards;
+  }
+
   .general {
     > .language {
       grid-column-end: span $span-language;

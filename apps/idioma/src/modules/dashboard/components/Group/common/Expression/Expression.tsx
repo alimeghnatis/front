@@ -188,12 +188,14 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         <div className="expression">
           {result.correctedContent || result.content}
         </div>
-        <audio ref={audioRef}>
-          <source
-            src={result.audioUrl}
-            type="audio/mpeg"
-          />
-        </audio>
+        {result.audioUrl && (
+          <audio ref={audioRef}>
+            <source
+              src={result.audioUrl}
+              type="audio/mpeg"
+            />
+          </audio>
+        )}
         <div className="tools">
           <button onClick={playAudio}>&lt;</button>
           <Link to={detailsLink}>
@@ -217,7 +219,10 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           )}
 
           {currentExpressionActionSlug === 'variant' && (
-            <ExpressionVariant data={result} />
+            <ExpressionVariant
+              data={result}
+              groupID={groupID}
+            />
           )}
         </>
       )}

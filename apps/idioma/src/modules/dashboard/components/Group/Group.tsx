@@ -67,6 +67,7 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      key={result.id}
       // {...otherProps}
     >
       {result.expressions.edges.map((edge) => (

@@ -33,7 +33,7 @@ const MUTATION_CREATE_EXPRESSION = graphql`
         audioKey
         created
         group {
-          id
+          ...GroupFragment
         }
       }
       errors {
@@ -43,6 +43,31 @@ const MUTATION_CREATE_EXPRESSION = graphql`
     }
   }
 `
+
+const updater = (
+  store, boardID,
+) => {
+  const boardRecord = store.get(boardID)
+  const connectionRecord = ConnectionHandler.getConnection(
+    boardRecord,
+    'BoardFragment_groups',
+  )
+  const payload = store.getRootField('createExpression')
+  const instance = payload.getLinkedRecord('instance')
+  const groupRecord = instance.getLinkedRecord('group')
+  const newGroupEdge = ConnectionHandler.createEdge(
+    store,
+    connectionRecord,
+    groupRecord,
+    'GroupNodeEdge',
+  )
+  ConnectionHandler.insertEdgeBefore(
+    connectionRecord, newGroupEdge,
+  )
+  // Ideally, we would construct the edge from the instance.
+  // However, the updater API does not support several updates.
+  // This means we need to unefficiently fetch the edge again from the group.
+}
 
 /**
  * description
@@ -79,10 +104,6 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
 
   const createExpression = useCallback(
     () => {
-      const connectionID = ConnectionHandler.getConnectionID(
-        boardID,
-        'BoardFragment_groups',
-      )
       commitCreateExpression({
         variables:{
           input:{
@@ -90,17 +111,36 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
             content:inputValue,
             board  :boardUUID,
           },
-          connections:[connectionID],
         },
-      /*
-        updater:(store) => {
-          const payload = store.getRootField('createExpression')
-          const instance = payload.getLinkedRecord('instance')
-          const newEdge =
-          // const expression = payload.getLinkedRecord('expression')
-          // const expressionProxy = store.get(expression.getDataID())
-          // expressionProxy.setValue(instance, 'expression')
-        } */
+        optimisticResponse:{
+          createExpression:{
+            instance:{
+              id     :btoa(`ExpressionNode:${Math.random()}`),
+              content:'Loading',
+              group  :{
+                id         :btoa(`GroupNode:${Math.random()}`),
+                expressions:{
+                  edges:[
+                    {
+                      node:{
+                        id     :btoa(`ExpressionNode:${Math.random()}`),
+                        content:inputValue,
+                        iso6391:'**',
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+            errors:null,
+          },
+        },
+        optimisticUpdater:(store) => updater(
+          store, boardID,
+        ),
+        updater:(store) => updater(
+          store, boardID,
+        ),
       })
     }, [inputValue],
   )

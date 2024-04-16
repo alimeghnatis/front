@@ -34,17 +34,24 @@ const FRAGMENT = graphql`
 `
 const MUTATION_CREATE_VARIANT = graphql`
   mutation ExpressionVariantCreateExpressionMutation(
-    $input: CreateExpressionMutationInput! #$connections: [ID!]!
+    $input: CreateExpressionMutationInput!
+    $connections: [ID!]!
   ) {
     createExpression(input: $input) {
-      instance {
-        #@appendNode(connections: $connections, edgeTypeName: "ExpressionNodeEdge")
+      instance
+        @appendNode(
+          connections: $connections
+          edgeTypeName: "ExpressionNodeEdge"
+        ) {
         id
         content
         correctedContent
         generalExplanation
         grammarExplanation
         wordsExplanation
+        iso6393
+        iso6392
+        iso6391
         audioUrl
         audioKey
         created
@@ -69,6 +76,7 @@ function ExpressionVariant({
   className: userClassName,
   style,
   data,
+  groupID,
 }: // ...otherProps
 
 InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
@@ -94,11 +102,11 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
 
   const onSubmit = useCallback(
     (variables) => {
-      /*
       const connectionID = ConnectionHandler.getConnectionID(
-        boardID,
-        'BoardFragment_groups',
-      ) */
+        groupID,
+        'GroupFragment_expressions',
+      )
+      history.push(baseBoardUrl)
       commitCreateVariant({
         variables:{
           input:{
@@ -107,21 +115,23 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
             variantWord:variables.word,
             variantFrom:atob(result.id).split(':')[1],
           },
-          // connections:[connectionID],
+          connections:[connectionID],
+        },
+        optimisticResponse:{
+          createExpression:{
+            instance:{
+              id         :btoa(`ExpressionNode:${Math.random()}`),
+              content    :'Loading',
+              iso6391    :variables.iso6391 || result.iso6391,
+              variantName:variables.tone,
+              variantWord:variables.word,
+            },
+            errors:null,
+          },
         },
         onCompleted:(response) => {
-          // history.push(baseBoardUrl)
           // console.log(response)
         },
-        /*
-        updater:(store) => {
-          const payload = store.getRootField('createExpression')
-          const instance = payload.getLinkedRecord('instance')
-          const newEdge =
-          // const expression = payload.getLinkedRecord('expression')
-          // const expressionProxy = store.get(expression.getDataID())
-          // expressionProxy.setValue(instance, 'expression')
-        } */
       })
     },
     [
@@ -344,6 +354,9 @@ ExpressionVariant.propTypes = {
 
   /** The data to use */
   data:PropTypes.any,
+
+  /** The group global ID */
+  groupID:PropTypes.string,
 }
 
 export default ExpressionVariant

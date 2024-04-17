@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a5b9aff57ecfded6b5551ee2662cc3be>>
+ * @generated SignedSource<<d75f90a6feb4705022de898b89822728>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,6 +23,7 @@ export type CreateExpressionMutationInput = {
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;
   id?: string | null | undefined;
+  isBookmarked?: boolean | null | undefined;
   isProcessed?: boolean | null | undefined;
   iso6391?: string | null | undefined;
   iso6392?: string | null | undefined;
@@ -258,6 +259,13 @@ return {
                 "kind": "ScalarField",
                 "name": "isProcessed",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "isBookmarked",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -290,12 +298,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8b3f2600e3b83d007bb00b230b54958d",
+    "cacheID": "37121ef840b406e4b652f095ee08a85c",
     "id": null,
     "metadata": {},
     "name": "ExpressionVariantCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation ExpressionVariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionDetailsFragment\n      ...ExpressionFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "mutation ExpressionVariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionDetailsFragment\n      ...ExpressionFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();

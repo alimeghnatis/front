@@ -34,6 +34,15 @@ function AudioButton({
       }
     }, [audioRef],
   )
+
+  const playAudioSlow = useCallback(
+    (): void => {
+      if (audioRef.current) {
+        audioRef.current.playbackRate = 0.65
+        audioRef.current.play()
+      }
+    }, [audioRef],
+  )
   //
   //
   return (
@@ -46,12 +55,20 @@ function AudioButton({
           />
         </audio>
       )}
+
       <button
         onClick={playAudio}
         disabled={!result.audioUrl}
         {...props}
       >
         &lt;
+      </button>
+      <button
+        onClick={playAudioSlow}
+        disabled={!result.audioUrl}
+        {...props}
+      >
+        65
       </button>
     </>
   )

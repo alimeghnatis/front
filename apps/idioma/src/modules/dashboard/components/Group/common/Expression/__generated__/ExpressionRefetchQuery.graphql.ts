@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c4267c4c9542d20b7f01028fcee89321>>
+ * @generated SignedSource<<8fe8574a4323a27b16beda83032baf46>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -149,6 +149,13 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
+                "name": "isBookmarked",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
                 "name": "audioUrl",
                 "storageKey": null
               },
@@ -190,16 +197,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "de5faef71ea178ddbd6de7365632fe7c",
+    "cacheID": "5e11e9c4252f229121d6a73088741481",
     "id": null,
     "metadata": {},
     "name": "ExpressionRefetchQuery",
     "operationKind": "query",
-    "text": "query ExpressionRefetchQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "query ExpressionRefetchQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7b3a001ec1cc2385f8a2318e331b76c6";
+(node as any).hash = "267dde0208ff0e69c10cd81756abb490";
 
 export default node;

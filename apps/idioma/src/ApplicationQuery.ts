@@ -4,9 +4,8 @@ import { graphql } from 'react-relay'
 export const QUERY_APPLICATION = graphql`
   query ApplicationQuery(
     $loginRequestedResource: String!
-    $board: ID
-  ) #$boardGroupCount: Int
-  #$boardGroupCursor: String
+    $board: ID #$boardGroupCount: Int
+  ) #$boardGroupCursor: String
   {
     viewer {
       id
@@ -46,7 +45,7 @@ export const FRAGMENT_VIEWER = graphql`
     ...ProfileFragment
     ...ProfileDashboardFragment
     ...ApplicationQueryAuthenticationDebugFragment
-    boardMemberships {
+    boardMemberships(first: 50) {
       ...HeaderGroupViewerBoardMembershipsFragment
       ...HomeBoardMembershipsFragment
       ...NavigationBoardMembershipsFragment

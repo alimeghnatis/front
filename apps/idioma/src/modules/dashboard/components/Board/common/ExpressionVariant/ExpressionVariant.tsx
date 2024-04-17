@@ -23,7 +23,7 @@ import optimisticExpression from '../../../optimisticExpression.js'
 const baseClassName = styleNames.base
 const componentClassName = 'expression-variant'
 
-const FRAGMENT = graphql`
+const FRAGMENT_EXPRESSION = graphql`
   fragment ExpressionVariantFragment on ExpressionNode {
     id
     iso6391
@@ -33,6 +33,14 @@ const FRAGMENT = graphql`
     created
   }
 `
+
+const FRAGMENT_BOARD = graphql`
+  fragment ExpressionVariantBoardFragment on BoardNode {
+    id
+    enabledLanguages
+  }
+`
+
 const MUTATION_CREATE_VARIANT = graphql`
   mutation ExpressionVariantCreateExpressionMutation(
     $input: CreateExpressionMutationInput!
@@ -80,7 +88,9 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
 
   const history = useHistory()
 
-  const { baseBoardUrl } = useBoardContext()
+  const {
+    data: boardData, baseBoardUrl,
+  } = useBoardContext()
 
   const [
     commitCreateVariant,
@@ -88,7 +98,11 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
   ] = useMutation(MUTATION_CREATE_VARIANT)
 
   const result = useFragment(
-    FRAGMENT, data,
+    FRAGMENT_EXPRESSION, data,
+  )
+
+  const boardResult = useFragment(
+    FRAGMENT_BOARD, boardData,
   )
 
   const onSubmit = useCallback(
@@ -101,7 +115,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
       commitCreateVariant({
         variables:{
           input:{
-            iso6391    :variables.iso6391,
+            iso6393    :variables.iso6393,
             variantName:variables.tone,
             variantWord:variables.word,
             variantFrom:atob(result.id).split(':')[1],
@@ -113,7 +127,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
             instance:{
               ...optimisticExpression,
               id     :btoa(`ExpressionNode:${Math.random()}`),
-              iso6391:variables.iso6391 || result.iso6391,
+              iso6393:variables.iso6393 || result.iso6393,
               created:new Date().toISOString(),
               // variantName:variables.tone,
               // variantWord:variables.word,
@@ -211,10 +225,18 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
                 value:'more neutral',
                 label:'more neutral',
               },
+              {
+                value:'more berlin slang of 1980',
+                label:'more berlin slang of 1980',
+              },
+              {
+                value:'more munich slang of 1980',
+                label:'more munich slang of 1980',
+              },
             ],
           },
           {
-            name    :'iso6391',
+            name    :'iso6393',
             label   :'lang',
             type    :'choices',
             optional:true,
@@ -223,98 +245,10 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
                 value:null,
                 label:'original',
               },
-              {
-                value:'en',
-                label:'English',
-              }, // de, es, fr, it, pt, ru, zh, pl, ja, ko, ar, hi, bn, ur, fa, tr, nl, el, sv, no, da, fi,
-              {
-                value:'de',
-                label:'German',
-              },
-              {
-                value:'es',
-                label:'Spanish',
-              },
-              {
-                value:'fr',
-                label:'French',
-              },
-              {
-                value:'it',
-                label:'Italian',
-              },
-              {
-                value:'pt',
-                label:'Portuguese',
-              },
-              {
-                value:'ru',
-                label:'Russian',
-              },
-              {
-                value:'zh',
-                label:'Chinese',
-              },
-              {
-                value:'pl',
-                label:'Polish',
-              },
-              {
-                value:'ja',
-                label:'Japanese',
-              },
-              {
-                value:'ko',
-                label:'Korean',
-              },
-              {
-                value:'ar',
-                label:'Arabic',
-              },
-              {
-                value:'hi',
-                label:'Hindi',
-              },
-              {
-                value:'bn',
-                label:'Bengali',
-              },
-              {
-                value:'ur',
-                label:'Urdu',
-              },
-              {
-                value:'fa',
-                label:'Persian',
-              },
-              {
-                value:'tr',
-                label:'Turkish',
-              },
-              {
-                value:'nl',
-                label:'Dutch',
-              },
-              {
-                value:'el',
-                label:'Greek',
-              },
-              {
-                value:'sv',
-                label:'Swedish',
-              },
-              {
-                value:'no',
-                label:'Norwegian',
-              },
-              {
-                value:'da',
-                label:'Danish',
-              },
-              {
-                value:'fi',
-                label:'Finnish',
-              },
+              ...JSON.parse(boardResult.enabledLanguages).map((lang) => ({
+                value:lang,
+                label:lang,
+              })),
             ],
           },
           /*

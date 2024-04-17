@@ -16,7 +16,7 @@ import {
 
 import { useBoardContext } from '../../../Board/index.js'
 import {
-  AudioButton, DeleteButton,
+  AudioButton, DeleteButton, BookmarkButton,
 } from './common/index.js'
 import useExpressionLinks from './useExpressionLinks.js'
 import checkRecentUnprocessed from './checkRecentUnprocessed.js'
@@ -39,8 +39,10 @@ const FRAGMENT = graphql`
     correctedContent
     created
     isProcessed
+    isBookmarked
     ...AudioButtonFragment
     ...DeleteButtonFragment
+    ...BookmarkButtonFragment
     ...ExpressionDetailsFragment
     ...ExpressionVariantFragment
   }
@@ -134,6 +136,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         isNew && styleNames.modifierLoading,
+        result.isBookmarked && 'bookmarked',
         // isRecentAndUnprocessed && styleNames.modifierLoading,
         'grid',
       ]
@@ -151,6 +154,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         </div>
         <div className="tools">
           <AudioButton data={result} />
+          <BookmarkButton data={result} />
           <Link to={detailsLink}>
             <button>?</button>
           </Link>

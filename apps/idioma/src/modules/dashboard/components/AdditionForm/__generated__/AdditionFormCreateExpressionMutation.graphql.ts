@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<053384289b717efb6bfb00dc8f2fd04a>>
+ * @generated SignedSource<<4d1cca74ed32a8bcb2e8383a256260cb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,6 +23,7 @@ export type CreateExpressionMutationInput = {
   grammarExplanation?: string | null | undefined;
   group?: string | null | undefined;
   id?: string | null | undefined;
+  isBookmarked?: boolean | null | undefined;
   isProcessed?: boolean | null | undefined;
   iso6391?: string | null | undefined;
   iso6392?: string | null | undefined;
@@ -159,38 +160,45 @@ v12 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "audioUrl",
+  "name": "isBookmarked",
   "storageKey": null
 },
 v13 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "grammarExplanation",
+  "name": "audioUrl",
   "storageKey": null
 },
 v14 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "generalExplanation",
+  "name": "grammarExplanation",
   "storageKey": null
 },
 v15 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "wordsExplanation",
+  "name": "generalExplanation",
   "storageKey": null
 },
 v16 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
+  "name": "wordsExplanation",
+  "storageKey": null
+},
+v17 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
   "name": "changes",
   "storageKey": null
 },
-v17 = [
+v18 = [
   {
     "kind": "Literal",
     "name": "first",
@@ -298,6 +306,7 @@ return {
               (v14/*: any*/),
               (v15/*: any*/),
               (v16/*: any*/),
+              (v17/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -310,7 +319,7 @@ return {
                   (v10/*: any*/),
                   {
                     "alias": null,
-                    "args": (v17/*: any*/),
+                    "args": (v18/*: any*/),
                     "concreteType": "ExpressionNodeConnection",
                     "kind": "LinkedField",
                     "name": "expressions",
@@ -345,6 +354,7 @@ return {
                               (v14/*: any*/),
                               (v15/*: any*/),
                               (v16/*: any*/),
+                              (v17/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -395,7 +405,7 @@ return {
                   },
                   {
                     "alias": null,
-                    "args": (v17/*: any*/),
+                    "args": (v18/*: any*/),
                     "filters": null,
                     "handle": "connection",
                     "key": "GroupFragment_expressions",
@@ -436,12 +446,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e5f0cdc06aef145048a5bfe3309d47db",
+    "cacheID": "81015d9ea6d2d34321d76d68b2a914d0",
     "id": null,
     "metadata": {},
     "name": "AdditionFormCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionFragment\n      ...ExpressionDetailsFragment\n      group {\n        ...GroupFragment\n        id\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "mutation AdditionFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionFragment\n      ...ExpressionDetailsFragment\n      group {\n        ...GroupFragment\n        id\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

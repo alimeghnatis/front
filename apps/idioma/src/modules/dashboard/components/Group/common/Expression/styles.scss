@@ -21,6 +21,10 @@ $subtotal-span: $span-language + $span-tools;
     animation: loading-background 10s linear forwards;
   }
 
+  &.bookmarked {
+    background: lightpink;
+  }
+
   .general {
     > .language {
       grid-column-end: span $span-language;

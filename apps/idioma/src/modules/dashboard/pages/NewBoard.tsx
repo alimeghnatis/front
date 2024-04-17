@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
 import Template from '../layer/Main.js'
+import { BoardCreateForm } from '../components/index.js'
 
 /*
 const FRAGMENT = graphql`
@@ -18,7 +19,15 @@ const FRAGMENT = graphql`
 ` */
 
 function NewBoard() {
-  return <h1>New Board</h1>
+  return (
+    <div
+      className="grid container"
+      style={{ overflow: 'auto' }}
+    >
+      <h1>New board</h1>
+      <BoardCreateForm />
+    </div>
+  )
 }
 
 export default NewBoard

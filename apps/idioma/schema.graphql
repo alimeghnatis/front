@@ -1,4 +1,5 @@
 type Query {
+  iso639pt2: [LanguageType]
   board(
     """The ID of the object"""
     id: ID
@@ -109,6 +110,15 @@ type Query {
   ): Node
 }
 
+type LanguageType {
+  name: String!
+  pt1: String
+  pt2b: String!
+  pt2t: String!
+  pt3: String!
+  audio: Boolean!
+}
+
 type BoardNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
@@ -125,6 +135,9 @@ type BoardNode implements SearchNode & Node {
   isPublic: Boolean!
   users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
   defaultForUser: UserNode
+  isDefault: Boolean!
+  explanationsLanguage: String!
+  enabledLanguages: JSONString!
   memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int): GroupNodeConnection!
   expressions(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
@@ -302,6 +315,7 @@ type ExpressionNode implements SearchNode & Node {
   variantFrom: ExpressionNode
   variantWord: String
   isProcessed: Boolean!
+  isBookmarked: Boolean!
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
@@ -395,6 +409,14 @@ type BoardNodeEdge {
 }
 
 """
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+"""
 Graphene type representing a fruit with value, label, and optional disabled state.
 """
 type FruitType {
@@ -429,7 +451,6 @@ type Mutation {
   createExpression(input: CreateExpressionMutationInput!): CreateExpressionMutationPayload
   updateExpression(input: UpdateExpressionMutationInput!): UpdateExpressionMutationPayload
   deleteExpression(input: DeleteExpressionMutationInput!): DeleteExpressionMutationPayload
-  testAiConnector(input: String!): TestAIConnectorMutation
   verifyToken(input: VerifyInput!): VerifyPayload
   refreshToken(input: RefreshInput!): RefreshPayload
   deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
@@ -459,6 +480,9 @@ input CreateBoardMutationInput {
   iso6393: String
   name: String!
   isPublic: Boolean
+  isDefault: Boolean
+  explanationsLanguage: String
+  enabledLanguages: JSONString
   defaultForUser: String
   clientMutationId: String
 }
@@ -479,6 +503,9 @@ input UpdateBoardMutationInput {
   iso6393: String
   name: String!
   isPublic: Boolean
+  isDefault: Boolean
+  explanationsLanguage: String
+  enabledLanguages: JSONString
   defaultForUser: String
   clientMutationId: String
 }
@@ -563,6 +590,7 @@ input CreateExpressionMutationInput {
   variantName: String
   variantWord: String
   isProcessed: Boolean
+  isBookmarked: Boolean
   group: String
   variantFrom: String
   clientMutationId: String
@@ -582,7 +610,7 @@ input UpdateExpressionMutationInput {
   iso6391: String
   iso6392: String
   iso6393: String
-  content: String!
+  content: String
   correctedContent: String
   changes: String
   category: String
@@ -595,8 +623,9 @@ input UpdateExpressionMutationInput {
   variantName: String
   variantWord: String
   isProcessed: Boolean
-  group: String!
-  board: String!
+  isBookmarked: Boolean
+  group: String
+  board: String
   variantFrom: String
   clientMutationId: String
 }
@@ -610,10 +639,6 @@ type DeleteExpressionMutationPayload {
 input DeleteExpressionMutationInput {
   id: String!
   clientMutationId: String
-}
-
-type TestAIConnectorMutation {
-  output: String
 }
 
 type VerifyPayload {

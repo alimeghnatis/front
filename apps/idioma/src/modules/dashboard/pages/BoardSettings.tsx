@@ -2,23 +2,22 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { graphql } from 'react-relay'
 import Template from '../layer/Main.js'
-
-/*
-const FRAGMENT = graphql`
-  fragment BoardSettingsDashboardFragment on UserNode {
-    firstName
-    lastName
-    created
-    updated
-    email
-    profilePicture
-  }
-` */
+import {
+  useBoardContext, BoardUpdateForm,
+} from '../components/index.js'
 
 function BoardSettings() {
-  return <h1>Board Settings</h1>
+  const { data } = useBoardContext()
+  return (
+    <div
+      className="grid container"
+      style={{ overflow: 'auto' }}
+    >
+      <h1>BoardSettings </h1>
+      <BoardUpdateForm data={data} />
+    </div>
+  )
 }
 
 export default BoardSettings

@@ -7,6 +7,7 @@ export default {
   grammarExplanation:'Loading',
   generalExplanation:'Loading',
   wordsExplanation  :'Loading',
+  isBookmarked      :false,
   audioUrl          :'',
   changes           :'Loading',
   isProcessed       :false,

@@ -16,12 +16,29 @@ import {
   NavigationHeader, useViewer,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
-import { useFragment } from 'react-relay'
+import {
+  graphql, useFragment,
+} from 'react-relay'
 import { useBoardContext } from '../../hooks/index.js'
 // import { NavigationHeader } from '@aztlan/ui'
 
 const baseClassName = styleNames.base
 const componentClassName = 'select-header'
+
+const FRAGMENT = graphql`
+  fragment SelectHeaderFragment on BoardMembershipNodeConnection {
+    edges {
+      node {
+        id
+        role
+        board {
+          id
+          name
+        }
+      }
+    }
+  }
+`
 
 /**
  * description
@@ -33,7 +50,6 @@ function RawSelectHeader({
   className: userClassName,
   style,
   children,
-  FRAGMENT,
   data,
   ...otherProps
 }: InferProps<typeof RawSelectHeader.propTypes>): React.ReactElement {
@@ -145,9 +161,6 @@ RawSelectHeader.propTypes = {
   /** The children JSX */
   children:PropTypes.node,
 
-  /** The fragment to use */
-  FRAGMENT:PropTypes.any,
-
   /** The data to use */
   data:PropTypes.any,
 }
@@ -163,4 +176,5 @@ function SelectHeader(props) {
 }
 
 export { RawSelectHeader }
+
 export default SelectHeader

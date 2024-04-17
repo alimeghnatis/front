@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c2d53cbaaaba6d052b4a9451cb9bc32d>>
+ * @generated SignedSource<<b560f93bd093a35a902e193163e51290>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,7 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ApplicationQueryViewerFragment$data = {
   readonly boardMemberships: {
-    readonly " $fragmentSpreads": FragmentRefs<"HeaderGroupViewerBoardMembershipsFragment" | "HomeBoardMembershipsFragment" | "NavigationBoardMembershipsFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"HomeBoardMembershipsFragment" | "NavigationBoardMembershipsFragment" | "SelectHeaderFragment">;
   };
   readonly created: any;
   readonly email: string;
@@ -117,7 +117,13 @@ const node: ReaderFragment = {
     },
     {
       "alias": null,
-      "args": null,
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "first",
+          "value": 50
+        }
+      ],
       "concreteType": "BoardMembershipNodeConnection",
       "kind": "LinkedField",
       "name": "boardMemberships",
@@ -126,7 +132,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "HeaderGroupViewerBoardMembershipsFragment"
+          "name": "SelectHeaderFragment"
         },
         {
           "args": null,
@@ -139,13 +145,13 @@ const node: ReaderFragment = {
           "name": "NavigationBoardMembershipsFragment"
         }
       ],
-      "storageKey": null
+      "storageKey": "boardMemberships(first:50)"
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "bce5f4ccc99a1d9b222bed3b065db432";
+(node as any).hash = "069a95bf49b0207bb29fffd41e3b5ab1";
 
 export default node;

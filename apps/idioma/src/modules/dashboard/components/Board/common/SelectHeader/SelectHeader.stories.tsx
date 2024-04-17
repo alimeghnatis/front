@@ -15,21 +15,6 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-const FRAGMENT = graphql`
-  fragment SelectHeaderFragment on BoardMembershipNodeConnection {
-    edges {
-      node {
-        id
-        role
-        board {
-          id
-          name
-        }
-      }
-    }
-  }
-`
-
 const relay = {
   query:graphql`
     query SelectHeaderQuery {
@@ -72,6 +57,6 @@ const relay = {
 }
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{ FRAGMENT },
+  args      :{},
   parameters:{ relay },
 }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<103a61c9399921bae2d492ae0ecfa9d3>>
+ * @generated SignedSource<<908e8a9a1e10b04fb2850ab7dcb528ee>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,6 +10,7 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
+export type ExpressionsBoardMembershipRoleChoices = "ADMIN" | "MEMBER" | "OWNER" | "%future added value";
 export type CreateBoardMutationInput = {
   clientMutationId?: string | null | undefined;
   defaultForUser?: string | null | undefined;
@@ -24,6 +25,7 @@ export type CreateBoardMutationInput = {
   name: string;
 };
 export type BoardCreateFormCreateMutation$variables = {
+  connections: ReadonlyArray<string>;
   input: CreateBoardMutationInput;
 };
 export type BoardCreateFormCreateMutation$data = {
@@ -38,6 +40,18 @@ export type BoardCreateFormCreateMutation$data = {
       readonly id: string;
       readonly isDefault: boolean;
       readonly isPublic: boolean;
+      readonly memberships: {
+        readonly edges: ReadonlyArray<{
+          readonly node: {
+            readonly board: {
+              readonly id: string;
+              readonly name: string;
+            };
+            readonly id: string;
+            readonly role: ExpressionsBoardMembershipRoleChoices;
+          } | null | undefined;
+        } | null | undefined>;
+      };
       readonly name: string;
       readonly " $fragmentSpreads": FragmentRefs<"BoardFragment" | "BoardUpdateFormFragment" | "ExpressionVariantBoardFragment">;
     } | null | undefined;
@@ -49,63 +63,98 @@ export type BoardCreateFormCreateMutation = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "input"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "connections"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "input"
+},
+v2 = [
   {
     "kind": "Variable",
     "name": "input",
     "variableName": "input"
   }
 ],
-v2 = {
+v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
 },
-v3 = {
+v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "name",
   "storageKey": null
 },
-v4 = {
+v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "isPublic",
   "storageKey": null
 },
-v5 = {
+v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "isDefault",
   "storageKey": null
 },
-v6 = {
+v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "explanationsLanguage",
   "storageKey": null
 },
-v7 = {
+v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "enabledLanguages",
   "storageKey": null
 },
-v8 = {
+v9 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "BoardMembershipNode",
+  "kind": "LinkedField",
+  "name": "node",
+  "plural": false,
+  "selections": [
+    (v3/*: any*/),
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "role",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "BoardNode",
+      "kind": "LinkedField",
+      "name": "board",
+      "plural": false,
+      "selections": [
+        (v3/*: any*/),
+        (v4/*: any*/)
+      ],
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v10 = {
   "alias": null,
   "args": null,
   "concreteType": "ErrorType",
@@ -130,63 +179,63 @@ v8 = {
   ],
   "storageKey": null
 },
-v9 = {
+v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6391",
   "storageKey": null
 },
-v10 = {
+v12 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6392",
   "storageKey": null
 },
-v11 = {
+v13 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6393",
   "storageKey": null
 },
-v12 = {
+v14 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "created",
   "storageKey": null
 },
-v13 = [
+v15 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 20
   }
 ],
-v14 = [
+v16 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 50
   }
 ],
-v15 = {
+v17 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v16 = {
+v18 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v17 = {
+v19 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -213,14 +262,17 @@ v17 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "BoardCreateFormCreateMutation",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": "CreateBoardMutationPayload",
         "kind": "LinkedField",
         "name": "createBoard",
@@ -234,12 +286,35 @@ return {
             "name": "instance",
             "plural": false,
             "selections": [
-              (v2/*: any*/),
               (v3/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
               (v6/*: any*/),
               (v7/*: any*/),
+              (v8/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "BoardMembershipNodeConnection",
+                "kind": "LinkedField",
+                "name": "memberships",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "BoardMembershipNodeEdge",
+                    "kind": "LinkedField",
+                    "name": "edges",
+                    "plural": true,
+                    "selections": [
+                      (v9/*: any*/)
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
               {
                 "args": null,
                 "kind": "FragmentSpread",
@@ -258,7 +333,7 @@ return {
             ],
             "storageKey": null
           },
-          (v8/*: any*/)
+          (v10/*: any*/)
         ],
         "storageKey": null
       }
@@ -268,13 +343,16 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "BoardCreateFormCreateMutation",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": "CreateBoardMutationPayload",
         "kind": "LinkedField",
         "name": "createBoard",
@@ -288,19 +366,63 @@ return {
             "name": "instance",
             "plural": false,
             "selections": [
-              (v2/*: any*/),
               (v3/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
               (v6/*: any*/),
               (v7/*: any*/),
-              (v9/*: any*/),
-              (v10/*: any*/),
-              (v11/*: any*/),
-              (v12/*: any*/),
+              (v8/*: any*/),
               {
                 "alias": null,
-                "args": (v13/*: any*/),
+                "args": null,
+                "concreteType": "BoardMembershipNodeConnection",
+                "kind": "LinkedField",
+                "name": "memberships",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "BoardMembershipNodeEdge",
+                    "kind": "LinkedField",
+                    "name": "edges",
+                    "plural": true,
+                    "selections": [
+                      (v9/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "filters": null,
+                        "handle": "appendNode",
+                        "key": "",
+                        "kind": "LinkedHandle",
+                        "name": "node",
+                        "handleArgs": [
+                          {
+                            "kind": "Variable",
+                            "name": "connections",
+                            "variableName": "connections"
+                          },
+                          {
+                            "kind": "Literal",
+                            "name": "edgeTypeName",
+                            "value": "BoardMembershipNodeEdge"
+                          }
+                        ]
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              (v11/*: any*/),
+              (v12/*: any*/),
+              (v13/*: any*/),
+              (v14/*: any*/),
+              {
+                "alias": null,
+                "args": (v15/*: any*/),
                 "concreteType": "GroupNodeConnection",
                 "kind": "LinkedField",
                 "name": "groups",
@@ -322,11 +444,11 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
-                          (v12/*: any*/),
+                          (v3/*: any*/),
+                          (v14/*: any*/),
                           {
                             "alias": null,
-                            "args": (v14/*: any*/),
+                            "args": (v16/*: any*/),
                             "concreteType": "ExpressionNodeConnection",
                             "kind": "LinkedField",
                             "name": "expressions",
@@ -348,7 +470,7 @@ return {
                                     "name": "node",
                                     "plural": false,
                                     "selections": [
-                                      (v2/*: any*/),
+                                      (v3/*: any*/),
                                       {
                                         "alias": null,
                                         "args": null,
@@ -356,9 +478,9 @@ return {
                                         "name": "content",
                                         "storageKey": null
                                       },
-                                      (v9/*: any*/),
-                                      (v10/*: any*/),
                                       (v11/*: any*/),
+                                      (v12/*: any*/),
+                                      (v13/*: any*/),
                                       {
                                         "alias": null,
                                         "args": null,
@@ -366,7 +488,7 @@ return {
                                         "name": "correctedContent",
                                         "storageKey": null
                                       },
-                                      (v12/*: any*/),
+                                      (v14/*: any*/),
                                       {
                                         "alias": null,
                                         "args": null,
@@ -416,42 +538,42 @@ return {
                                         "name": "changes",
                                         "storageKey": null
                                       },
-                                      (v15/*: any*/)
+                                      (v17/*: any*/)
                                     ],
                                     "storageKey": null
                                   },
-                                  (v16/*: any*/)
+                                  (v18/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v17/*: any*/)
+                              (v19/*: any*/)
                             ],
                             "storageKey": "expressions(first:50)"
                           },
                           {
                             "alias": null,
-                            "args": (v14/*: any*/),
+                            "args": (v16/*: any*/),
                             "filters": null,
                             "handle": "connection",
                             "key": "GroupFragment_expressions",
                             "kind": "LinkedHandle",
                             "name": "expressions"
                           },
-                          (v15/*: any*/)
+                          (v17/*: any*/)
                         ],
                         "storageKey": null
                       },
-                      (v16/*: any*/)
+                      (v18/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v17/*: any*/)
+                  (v19/*: any*/)
                 ],
                 "storageKey": "groups(first:20)"
               },
               {
                 "alias": null,
-                "args": (v13/*: any*/),
+                "args": (v15/*: any*/),
                 "filters": null,
                 "handle": "connection",
                 "key": "BoardFragment_groups",
@@ -461,23 +583,23 @@ return {
             ],
             "storageKey": null
           },
-          (v8/*: any*/)
+          (v10/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "b8d7517045aa3f3dde85164fb3b5a294",
+    "cacheID": "7634d6006b331f82059546458f93c957",
     "id": null,
     "metadata": {},
     "name": "BoardCreateFormCreateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardCreateFormCreateMutation(\n  $input: CreateBoardMutationInput!\n) {\n  createBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      explanationsLanguage\n      enabledLanguages\n      ...BoardFragment\n      ...BoardUpdateFormFragment\n      ...ExpressionVariantBoardFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "mutation BoardCreateFormCreateMutation(\n  $input: CreateBoardMutationInput!\n) {\n  createBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      explanationsLanguage\n      enabledLanguages\n      memberships {\n        edges {\n          node {\n            id\n            role\n            board {\n              id\n              name\n            }\n          }\n        }\n      }\n      ...BoardFragment\n      ...BoardUpdateFormFragment\n      ...ExpressionVariantBoardFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f25ee5b6ec8a4583f1cdcd47857b160c";
+(node as any).hash = "a4d5e09942747d40e70549ebb61e078e";
 
 export default node;

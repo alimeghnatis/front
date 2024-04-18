@@ -9,10 +9,12 @@ import { graphql } from 'react-relay'
 import Component from './BoardUpdateForm.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
+import decorators from '../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
-  title    :'modules/dashboard/BoardForm/BoardUpdateForm',
-  component:Component,
+  title     :'modules/dashboard/BoardForm/BoardUpdateForm',
+  component :Component,
+  decorators:[decorators.components.Router],
   /*
   decorators: [
     //decorators.app,

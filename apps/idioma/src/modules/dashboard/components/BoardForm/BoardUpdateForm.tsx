@@ -12,6 +12,7 @@ import {
 import { SimpleForm } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from './useBoardFormFields.js'
+import DeleteBoardButton from './DeleteBoardButton.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board-settings-form'
@@ -23,6 +24,7 @@ const FRAGMENT = graphql`
     isPublic
     explanationsLanguage
     enabledLanguages
+    ...DeleteBoardButtonFragment
   }
 `
 
@@ -111,27 +113,32 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
     [result],
   )
 
+  const isDefault = result?.isDefault === true
+
   return (
-    <SimpleForm
-      id={id}
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-        'grid container',
-      ]
-        .filter(Boolean)
-        .join(' ')}
-      style={style}
-      fields={fields}
-      fieldProps={{
-        spanLabelDesktop  :1,
-        spanContentDesktop:9,
-      }}
-      defaultValues={parsedInstance}
-      isInFlight={isInFlight}
-      onSubmit={handleUpdate}
-    />
+    <>
+      <SimpleForm
+        id={id}
+        className={[
+          baseClassName,
+          componentClassName,
+          userClassName,
+          'grid container',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        style={style}
+        fields={fields}
+        fieldProps={{
+          spanLabelDesktop  :1,
+          spanContentDesktop:9,
+        }}
+        defaultValues={parsedInstance}
+        isInFlight={isInFlight}
+        onSubmit={handleUpdate}
+      />
+      {!isDefault && <DeleteBoardButton data={result} />}
+    </>
   )
 }
 

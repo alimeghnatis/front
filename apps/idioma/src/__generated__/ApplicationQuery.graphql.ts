@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6c18ee26232837166108b18ae54c5c4a>>
+ * @generated SignedSource<<29be90093ae69f059756207522c144c1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -98,45 +98,17 @@ v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "iso6391",
+  "name": "__typename",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "iso6392",
-  "storageKey": null
-},
-v12 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "iso6393",
-  "storageKey": null
-},
-v13 = [
-  {
-    "kind": "Literal",
-    "name": "first",
-    "value": 20
-  }
-],
-v14 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-},
-v15 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v16 = {
+v12 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -160,7 +132,35 @@ v16 = {
     }
   ],
   "storageKey": null
-};
+},
+v13 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6391",
+  "storageKey": null
+},
+v14 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6392",
+  "storageKey": null
+},
+v15 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "iso6393",
+  "storageKey": null
+},
+v16 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 20
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": [
@@ -314,15 +314,27 @@ return {
                           (v9/*: any*/)
                         ],
                         "storageKey": null
-                      }
+                      },
+                      (v10/*: any*/)
                     ],
                     "storageKey": null
-                  }
+                  },
+                  (v11/*: any*/)
                 ],
                 "storageKey": null
-              }
+              },
+              (v12/*: any*/)
             ],
             "storageKey": "boardMemberships(first:50)"
+          },
+          {
+            "alias": null,
+            "args": (v8/*: any*/),
+            "filters": null,
+            "handle": "connection",
+            "key": "useBoardMembershipsFragment_boardMemberships",
+            "kind": "LinkedHandle",
+            "name": "boardMemberships"
           }
         ],
         "storageKey": null
@@ -339,12 +351,12 @@ return {
           (v9/*: any*/),
           (v6/*: any*/),
           (v7/*: any*/),
-          (v10/*: any*/),
-          (v11/*: any*/),
-          (v12/*: any*/),
+          (v13/*: any*/),
+          (v14/*: any*/),
+          (v15/*: any*/),
           {
             "alias": null,
-            "args": (v13/*: any*/),
+            "args": (v16/*: any*/),
             "concreteType": "GroupNodeConnection",
             "kind": "LinkedField",
             "name": "groups",
@@ -400,9 +412,9 @@ return {
                                     "name": "content",
                                     "storageKey": null
                                   },
-                                  (v10/*: any*/),
-                                  (v11/*: any*/),
-                                  (v12/*: any*/),
+                                  (v13/*: any*/),
+                                  (v14/*: any*/),
+                                  (v15/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -460,15 +472,15 @@ return {
                                     "name": "changes",
                                     "storageKey": null
                                   },
-                                  (v14/*: any*/)
+                                  (v10/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v15/*: any*/)
+                              (v11/*: any*/)
                             ],
                             "storageKey": null
                           },
-                          (v16/*: any*/)
+                          (v12/*: any*/)
                         ],
                         "storageKey": "expressions(first:50)"
                       },
@@ -481,21 +493,21 @@ return {
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
-                      (v14/*: any*/)
+                      (v10/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v15/*: any*/)
+                  (v11/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v16/*: any*/)
+              (v12/*: any*/)
             ],
             "storageKey": "groups(first:20)"
           },
           {
             "alias": null,
-            "args": (v13/*: any*/),
+            "args": (v16/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "BoardFragment_groups",
@@ -548,12 +560,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "85890ec0d84cd0791d8851d20a9b8f42",
+    "cacheID": "2c313a1460ff29aa6ce16cdf9619b86a",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...MainLayerBoardProviderFragment_3dXtFF\n  ...LoginButtonFragment_2Xypug\n  time\n  ...LoginButtonViewerFragment\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...ProfileDashboardFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  boardMemberships(first: 50) {\n    ...SelectHeaderFragment\n    ...HomeBoardMembershipsFragment\n    ...NavigationBoardMembershipsFragment\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment HomeBoardMembershipsFragment on BoardMembershipNodeConnection {\n  edges {\n    node {\n      id\n      role\n      board {\n        id\n        name\n      }\n    }\n  }\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonViewerFragment on Query {\n  viewer {\n    id\n  }\n}\n\nfragment MainLayerBoardProviderFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...ExpressionVariantBoardFragment\n  }\n}\n\nfragment NavigationBoardMembershipsFragment on BoardMembershipNodeConnection {\n  edges {\n    node {\n      id\n      role\n      board {\n        id\n        name\n      }\n    }\n  }\n}\n\nfragment ProfileDashboardFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment SelectHeaderFragment on BoardMembershipNodeConnection {\n  edges {\n    node {\n      id\n      role\n      board {\n        id\n        name\n      }\n    }\n  }\n}\n"
+    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...MainLayerBoardProviderFragment_3dXtFF\n  ...LoginButtonFragment_2Xypug\n  time\n  ...LoginButtonViewerFragment\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...ProfileDashboardFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  ...useBoardMembershipsFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonViewerFragment on Query {\n  viewer {\n    id\n  }\n}\n\nfragment MainLayerBoardProviderFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...ExpressionVariantBoardFragment\n  }\n}\n\nfragment ProfileDashboardFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment useBoardMembershipsFragment on UserNode {\n  boardMemberships(first: 50) {\n    edges {\n      node {\n        id\n        role\n        board {\n          id\n          name\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

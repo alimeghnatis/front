@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c2077cd01af89b3b4a63a368f0d84940>>
+ * @generated SignedSource<<8b535cd7cdf1888e7631c229c3e12e86>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -111,12 +111,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7e044ac7cfed54ef15611c83cc0bba3d",
+    "cacheID": "19ed2255471d2a371eab236d63b15e56",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormQuery",
     "operationKind": "query",
-    "text": "query BoardUpdateFormQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n}\n"
+    "text": "query BoardUpdateFormQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
   }
 };
 })();

@@ -106,20 +106,23 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
   )
 
   const onSubmit = useCallback(
-    (variables) => {
+    (rawInput) => {
       const connectionID = ConnectionHandler.getConnectionID(
         groupID,
         'GroupFragment_expressions',
       )
       history.push(baseBoardUrl)
+
+      const input = {
+        iso6393    :rawInput.iso6393 ? rawInput.iso6393 : undefined,
+        variantName:rawInput.variantName ? rawInput.variantName : undefined,
+        variantWord:rawInput.variantWord ? rawInput.variantWord : undefined,
+        variantFrom:atob(result.id).split(':')[1],
+      }
+
       commitCreateVariant({
         variables:{
-          input:{
-            iso6393    :variables.iso6393,
-            variantName:variables.tone,
-            variantWord:variables.word,
-            variantFrom:atob(result.id).split(':')[1],
-          },
+          input,
           connections:[connectionID],
         },
         optimisticResponse:{
@@ -172,7 +175,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
         isInFlight={isInFlight}
         fields={[
           {
-            name    :'word',
+            name    :'variantWord',
             label   :'word',
             type    :'choices',
             optional:true,
@@ -188,7 +191,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
             ],
           },
           {
-            name    :'tone',
+            name    :'variantName',
             label   :'tone',
             type    :'choices',
             optional:true,

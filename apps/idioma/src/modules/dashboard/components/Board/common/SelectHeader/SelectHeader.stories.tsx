@@ -15,6 +15,7 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
+/*
 const relay = {
   query:graphql`
     query SelectHeaderQuery {
@@ -54,9 +55,9 @@ const relay = {
       ],
     }),
   },
-}
+} */
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{},
-  parameters:{ relay },
+  args:{},
+  // parameters:{ relay },
 }

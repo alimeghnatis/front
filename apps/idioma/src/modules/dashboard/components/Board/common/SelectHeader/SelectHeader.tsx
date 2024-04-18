@@ -20,11 +20,13 @@ import {
   graphql, useFragment,
 } from 'react-relay'
 import { useBoardContext } from '../../hooks/index.js'
+import { useBoardMemberships } from '../../../hooks/index.js'
 // import { NavigationHeader } from '@aztlan/ui'
 
 const baseClassName = styleNames.base
 const componentClassName = 'select-header'
 
+/*
 const FRAGMENT = graphql`
   fragment SelectHeaderFragment on BoardMembershipNodeConnection {
     edges {
@@ -39,6 +41,7 @@ const FRAGMENT = graphql`
     }
   }
 `
+  */
 
 /**
  * description
@@ -64,9 +67,8 @@ function RawSelectHeader({
     basePath, baseBoardPath, currentBoardId,
   } = useBoardContext()
 
-  const result = useFragment(
-    FRAGMENT, data,
-  )
+  // const result = useBoardMemberships()
+  const result = data
 
   const [
     selectedBoardId,
@@ -166,10 +168,10 @@ RawSelectHeader.propTypes = {
 }
 
 function SelectHeader(props) {
-  const { data } = useViewer()
+  const result = useBoardMemberships()
   return (
     <RawSelectHeader
-      data={data.boardMemberships}
+      data={result}
       {...props}
     />
   )

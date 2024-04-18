@@ -11,31 +11,13 @@ import {
   // BoardProvider,
   // HeaderGroup,
   Navigation,
+  useBoardMemberships,
 } from '../components/index.js'
-
-const FRAGMENT = graphql`
-  fragment HomeBoardMembershipsFragment on BoardMembershipNodeConnection {
-    edges {
-      node {
-        id
-        role
-        board {
-          id
-          name
-        }
-      }
-    }
-  }
-`
 
 function Home({
   wireframe, ...props
 }) {
-  const { data } = useViewer()
-
-  const result = useFragment(
-    FRAGMENT, data.boardMemberships,
-  )
+  const result = useBoardMemberships()
 
   const boardMemberships = result?.edges || {}
 

@@ -44,11 +44,7 @@ export const FRAGMENT_VIEWER = graphql`
     ...ProfileFragment
     ...ProfileDashboardFragment
     ...ApplicationQueryAuthenticationDebugFragment
-    boardMemberships(first: 50) {
-      ...SelectHeaderFragment
-      ...HomeBoardMembershipsFragment
-      ...NavigationBoardMembershipsFragment
-    }
+    ...useBoardMembershipsFragment
   }
 `
 

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b560f93bd093a35a902e193163e51290>>
+ * @generated SignedSource<<c8895e795c29198cccd79a19f69defb5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,9 +11,6 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ApplicationQueryViewerFragment$data = {
-  readonly boardMemberships: {
-    readonly " $fragmentSpreads": FragmentRefs<"HomeBoardMembershipsFragment" | "NavigationBoardMembershipsFragment" | "SelectHeaderFragment">;
-  };
   readonly created: any;
   readonly email: string;
   readonly firstName: string;
@@ -23,7 +20,7 @@ export type ApplicationQueryViewerFragment$data = {
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
-  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ProfileDashboardFragment" | "ProfileFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ProfileDashboardFragment" | "ProfileFragment" | "useBoardMembershipsFragment">;
   readonly " $fragmentType": "ApplicationQueryViewerFragment";
 };
 export type ApplicationQueryViewerFragment$key = {
@@ -116,42 +113,15 @@ const node: ReaderFragment = {
       "name": "ApplicationQueryAuthenticationDebugFragment"
     },
     {
-      "alias": null,
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "first",
-          "value": 50
-        }
-      ],
-      "concreteType": "BoardMembershipNodeConnection",
-      "kind": "LinkedField",
-      "name": "boardMemberships",
-      "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "SelectHeaderFragment"
-        },
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "HomeBoardMembershipsFragment"
-        },
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "NavigationBoardMembershipsFragment"
-        }
-      ],
-      "storageKey": "boardMemberships(first:50)"
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "useBoardMembershipsFragment"
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "069a95bf49b0207bb29fffd41e3b5ab1";
+(node as any).hash = "ae051c695cd048c062621b3fed16f86c";
 
 export default node;

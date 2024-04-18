@@ -7,17 +7,29 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  graphql, useFragment, useMutation,
+  useHistory, generatePath,
+} from 'react-router-dom'
+import {
+  graphql,
+  useFragment,
+  useMutation,
+  ConnectionHandler,
 } from 'react-relay'
-import { SimpleForm } from '@aztlan/ui'
+import {
+  useViewer, SimpleForm,
+} from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from './useBoardFormFields.js'
+import { useBoardContext } from '../Board/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board-settings-form'
 
 const MUTATION_UPDATE = graphql`
-  mutation BoardCreateFormCreateMutation($input: CreateBoardMutationInput!) {
+  mutation BoardCreateFormCreateMutation(
+    $input: CreateBoardMutationInput!
+    $connections: [ID!]!
+  ) {
     createBoard(input: $input) {
       instance {
         id
@@ -26,6 +38,22 @@ const MUTATION_UPDATE = graphql`
         isDefault
         explanationsLanguage
         enabledLanguages
+        memberships {
+          edges {
+            node
+              @appendNode(
+                connections: $connections
+                edgeTypeName: "BoardMembershipNodeEdge"
+              ) {
+              id
+              role
+              board {
+                id
+                name
+              }
+            }
+          }
+        }
         ...BoardFragment
         ...BoardUpdateFormFragment
         ...ExpressionVariantBoardFragment
@@ -43,10 +71,11 @@ const MUTATION_UPDATE = graphql`
  * @param {InferProps<typeof BoardCreateForm.propTypes>} props -
  * @returns {React.ReactElement} - Rendered BoardCreateForm
  */
-function BoardCreateForm({
+function RawBoardCreateForm({
   id,
   className: userClassName,
   style,
+  userID,
 }: // ...otherProps
 
 InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
@@ -58,9 +87,13 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
   )
 
   const [
-    updateBoard,
+    createBoard,
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
+
+  const { baseBoardPath } = useBoardContext()
+
+  const history = useHistory()
 
   const handleCreate = useCallback(
     (rawInput) => {
@@ -69,20 +102,61 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         enabledLanguages:JSON.stringify(rawInput.enabledLanguages),
       }
 
-      updateBoard({
-        variables:{ input },
-        /*
+      const connectionID = ConnectionHandler.getConnectionID(
+        userID,
+        'useBoardMembershipsFragment_boardMemberships',
+      )
+      const tempId = btoa(`BoardMembershipNode:${Math.random()}`)
+
+      createBoard({
+        variables:{
+          input,
+          connections:[connectionID],
+        },
         optimisticResponse:{
-          updateBoard:{
+          createBoard:{
             instance:{
               ...input,
+              id       :tempId,
+              isDefault:false,
+              iso6391  :null,
+              iso6392  :null,
+              iso6393  :input.explanationsLanguage,
+              created  :new Date().toISOString(),
+              groups   :{
+                pageInfo:{
+                  hasNextPage:false,
+                  endCursor  :null,
+                },
+                edges:[],
+              },
+              memberships:{
+                edges:[
+                  {
+                    node:{
+                      id   :btoa(`BoardMembershipNode:${Math.random()}`),
+                      role :'OWNER',
+                      board:{
+                        id  :tempId,
+                        name:input.name,
+                      },
+                    },
+                  },
+                ],
+              },
             },
             errors:null,
           },
-        }, */
+        },
+        onCompleted:(res) => {
+          const newPath = generatePath(
+            baseBoardPath, { board: res.createBoard.instance.id },
+          )
+          history.push(newPath)
+        },
       })
     },
-    [updateBoard],
+    [createBoard],
   )
 
   const fields = useBoardFormFields({})
@@ -127,7 +201,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
   )
 }
 
-BoardCreateForm.propTypes = {
+RawBoardCreateForm.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -139,6 +213,22 @@ BoardCreateForm.propTypes = {
 
   /** The data to use */
   data:PropTypes.any,
+
+  /** The user ID */
+  userID:PropTypes.string,
+}
+
+export { RawBoardCreateForm }
+
+function BoardCreateForm(props) {
+  const { data } = useViewer()
+
+  return (
+    <RawBoardCreateForm
+      userID={data?.id}
+      {...props}
+    />
+  )
 }
 
 export default BoardCreateForm

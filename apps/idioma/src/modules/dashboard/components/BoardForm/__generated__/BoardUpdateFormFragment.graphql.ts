@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1bf4cc57784d4b2612a880119735b87b>>
+ * @generated SignedSource<<344b84254f3602cf54b76529e3beb1e7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type BoardUpdateFormFragment$data = {
   readonly id: string;
   readonly isPublic: boolean;
   readonly name: string;
+  readonly " $fragmentSpreads": FragmentRefs<"DeleteBoardButtonFragment">;
   readonly " $fragmentType": "BoardUpdateFormFragment";
 };
 export type BoardUpdateFormFragment$key = {
@@ -63,12 +64,17 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "enabledLanguages",
       "storageKey": null
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "DeleteBoardButtonFragment"
     }
   ],
   "type": "BoardNode",
   "abstractKey": null
 };
 
-(node as any).hash = "9e959f6ec017f23f996da976f2f7a40c";
+(node as any).hash = "d90b1008491be24efe8a40a48cb091ba";
 
 export default node;

@@ -1,42 +1,21 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import {
-  useFragment, graphql,
-} from 'react-relay'
-import {
   NestedNavigation, useApplicationContext,
   useAuthenticationContext,
-  useViewer,
 } from '@aztlan/ui'
 // import { useOrganizationContext } from '@ldmnet/ui'
 import { useParams } from 'react-router-dom'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
 import paths from '../paths.js'
+import { useBoardMemberships } from './hooks/index.js'
 // import getRootItem from './navigationConfig.js'
 // import type { Item } from '@aztlan/ui/dist/esm/common/Navigation/'
 
-const FRAGMENT = graphql`
-  fragment NavigationBoardMembershipsFragment on BoardMembershipNodeConnection {
-    edges {
-      node {
-        id
-        role
-        board {
-          id
-          name
-        }
-      }
-    }
-  }
-`
-
 function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
-  const { data } = useViewer()
   const { logout } = useAuthenticationContext()
-  const result = useFragment(
-    FRAGMENT, data.boardMemberships,
-  )
+  const result = useBoardMemberships()
   /*
 
   const rootItem = useMemo(

@@ -92,7 +92,7 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
   ] = useState('')
 
   const {
-    id: boardID, uuid: boardUUID,
+    id: boardID, uuid: boardUUID, containerRef,
   } = useBoardContext()
 
   const [
@@ -135,7 +135,7 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
                   },
                   edges:[
                     {
-                      cursor:btoa(`ExpressionNode:${Math.random()}`),
+                      cursor:tempID,
                       node  :{
                         ...optimisticExpression,
                         id              :tempID,
@@ -151,6 +151,12 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
             },
             errors:null,
           },
+        },
+        optimisticUpdater:(store) => {
+          containerRef.current?.scrollTo({
+            top     :containerRef.current.scrollHeight,
+            behavior:'smooth',
+          })
         },
       })
     }, [inputValue],
@@ -171,22 +177,24 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <Textarea
-        className="span-6 md-span-8"
+        className="span-6 md-span-9"
         value={inputValue}
         setValue={setInputValue}
       />
+      {/*
       <button
         disabled={isInFlight}
         type="button"
       >
         G+
       </button>
+          */}
       <button
         disabled={isInFlight}
         onClick={createExpression}
         type="button"
       >
-        B+
+        Add
       </button>
     </form>
   )

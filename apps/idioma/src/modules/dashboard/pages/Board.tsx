@@ -22,6 +22,21 @@ const FRAGMENT = graphql`
   }
 ` */
 
+const QUERY = graphql`
+  query BoardSingleQuery($board: ID!) {
+    board(id: $board) {
+      id
+      name
+      created
+      updated
+      ...BoardFragment
+      ...BoardUpdateFormFragment
+      ...ExpressionVariantBoardFragment
+    }
+  }
+`
+export { QUERY }
+
 function BoardPage() {
   const { data } = useBoardContext()
 

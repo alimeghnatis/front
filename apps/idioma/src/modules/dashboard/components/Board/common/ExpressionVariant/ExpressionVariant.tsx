@@ -19,6 +19,7 @@ import {
 } from 'react-relay'
 import { useBoardContext } from '../../hooks/index.js'
 import optimisticExpression from '../../../optimisticExpression.js'
+import useExpressionVariantFields from './useExpressionVariantFields.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-variant'
@@ -89,7 +90,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
   const history = useHistory()
 
   const {
-    data: boardData, baseBoardUrl,
+    data: boardData, baseBoardUrl, containerRef,
   } = useBoardContext()
 
   const [
@@ -138,6 +139,19 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
             errors:null,
           },
         },
+        optimisticUpdater:(store) => {
+          /*
+          const target = document.getElementById(groupID)
+          const positionToScrollTo = target.offsetTop
+            + target.offsetHeight
+            - containerRef.current.clientHeight
+
+          containerRef.current?.scrollTo({
+            top     :positionToScrollTo,
+            behavior:'smooth',
+          }) */
+        },
+
         onCompleted:(response) => {
           // console.log(response)
         },
@@ -147,6 +161,10 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
       commitCreateVariant,
       result,
     ],
+  )
+
+  const fields = useExpressionVariantFields(
+    result, boardResult,
   )
 
   return (
@@ -173,99 +191,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
         }}
         onSubmit={onSubmit}
         isInFlight={isInFlight}
-        fields={[
-          {
-            name    :'variantWord',
-            label   :'word',
-            type    :'choices',
-            optional:true,
-            options :[
-              {
-                value:null,
-                label:'All words',
-              },
-              ...result.content.split(' ').map((word) => ({
-                value:word,
-                label:word,
-              })),
-            ],
-          },
-          {
-            name    :'variantName',
-            label   :'tone',
-            type    :'choices',
-            optional:true,
-            options :[
-              {
-                value:'more formal',
-                label:'more formal',
-              },
-              {
-                value:'more informal',
-                label:'more informal',
-              },
-              {
-                value:'more slang',
-                label:'more slang',
-              },
-              {
-                value:'more vulgar',
-                label:'more vulgar',
-              },
-              {
-                value:'more polite',
-                label:'more polite',
-              },
-              {
-                value:'more litterary',
-                label:'more litterary',
-              },
-              {
-                value:'more antiquated',
-                label:'more antiquated',
-              },
-              {
-                value:'more neutral',
-                label:'more neutral',
-              },
-              {
-                value:'more berlin slang of 1980',
-                label:'more berlin slang isDefault',
-              },
-              {
-                value:'more munich slang of 1980',
-                label:'more munich slang of 1980',
-              },
-            ],
-          },
-          {
-            name    :'iso6393',
-            label   :'lang',
-            type    :'choices',
-            optional:true,
-            options :[
-              {
-                value:null,
-                label:'original',
-              },
-              ...JSON.parse(boardResult.enabledLanguages).map((lang) => ({
-                value:lang,
-                label:lang,
-              })),
-            ],
-          },
-          /*
-          {
-            name :'iso6393',
-            label:'Iso6393',
-            type :'text',
-          },
-          {
-            name :'created',
-            label:'Created',
-            type :'text',
-          }, */
-        ]}
+        fields={fields}
       />
     </div>
   )

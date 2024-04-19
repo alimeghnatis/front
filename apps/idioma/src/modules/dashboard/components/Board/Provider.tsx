@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  useMemo, useEffect, useCallback,
+  useMemo, useEffect, useCallback, useRef,
 } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
@@ -113,6 +113,8 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     [selectedBoard],
   )
 
+  const containerRef = useRef(null)
+
   const contextValue = useMemo(
     () => ({
       data:selectedBoard,
@@ -126,6 +128,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       baseBoardUrl,
       expressionDetailsPath,
       getExpressionDetailsUrl,
+      containerRef,
     }),
     [
       baseBoardPath,
@@ -138,6 +141,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       currentExpressionId,
       currentExpressionActionSlug,
       data,
+      containerRef,
     ],
   )
 

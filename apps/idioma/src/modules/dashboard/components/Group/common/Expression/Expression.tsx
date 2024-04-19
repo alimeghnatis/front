@@ -1,7 +1,11 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useMemo, useEffect, useState,
+  useInsertionEffect,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -128,9 +132,11 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     () => isRecentAndUnprocessed, [],
   )
 
+  const expressionRef = useRef(null)
+
   return (
     <div
-      id={id}
+      id={id || result.id}
       className={[
         baseClassName,
         componentClassName,
@@ -143,6 +149,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      ref={expressionRef}
       // {...otherProps}
     >
       <div className="grid container general">
@@ -177,6 +184,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           />
         </div>
       </div>
+
       {currentExpressionId === result.id && (
         <>
           {currentExpressionActionSlug === 'details' && (

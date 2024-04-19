@@ -6,6 +6,7 @@ import paths from './paths.js'
 
 import Layer from './layer/Main.js'
 import { QUERY as QUERY_LANGUAGE_CHOICES } from './components/BoardForm/useBoardFormFields.js'
+import { QUERY as QUERY_BOARD } from './pages/Board.js'
 // import QUERY_VIEW from './pages/ViewQuery.js'
 
 export const internalRoutes = [
@@ -47,6 +48,7 @@ export const internalRoutes = [
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Board.js')),
     exact    :true,
     isPrivate:true,
+    QUERY    :QUERY_BOARD,
   },
 ]
 

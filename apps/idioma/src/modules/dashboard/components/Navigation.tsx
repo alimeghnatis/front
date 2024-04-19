@@ -55,15 +55,13 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           displayItemsAs:'group',
           items         :result?.edges.map((edge) => {
             const { node } = edge
-            console.log(
-              '>', atob(node.board.id),
-            )
             return {
               label:node.board.name,
               url  :paths.generatePath(
                 'BOARD_HOME', { board: node.board.id },
               ),
-              items:[
+              Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
+              items    :[
                 {
                   displayItemsAs:'group',
                   items         :[
@@ -72,6 +70,7 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
                       url  :paths.generatePath(
                         'BOARD_HOME2', { board: node.board.id },
                       ),
+                      Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
                     },
                   ],
                 },
@@ -115,9 +114,6 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
       result,
       result?.edges,
     ],
-  )
-  console.log(
-    'NAV result', result,
   )
 
   return (

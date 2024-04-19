@@ -57,7 +57,7 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
 
   return (
     <div
-      id={id}
+      id={id || result.id}
       className={[
         baseClassName,
         componentClassName,

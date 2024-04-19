@@ -12,6 +12,7 @@ import {
 import styleNames from '@aztlan/bem'
 import { Group } from '../Group/index.js'
 import { AdditionForm } from '../AdditionForm/index.js'
+import { useBoardContext } from './hooks/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board'
@@ -70,17 +71,23 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
 
   const loadMoreRef = useRef<HTMLDivElement>(null)
 
+  const { containerRef } = useBoardContext()
+
   useEffect(
     () => {
       const observer = new IntersectionObserver(
         (entries) => {
+          console.log(
+            'entries', entries[0],
+          )
           if (entries[0].isIntersecting && hasNext && !isLoadingNext) {
             loadNext(15)
           }
         },
         {
-          threshold :1.0,
-          rootMargin:'0px 0px 60% 0px',
+          threshold :0,
+          rootMargin:'0px 0px 0px 0px',
+        // root      :containerRef.current,
         },
       )
 
@@ -94,11 +101,14 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         }
       }
     }, [
+      loadMoreRef.current,
       hasNext,
       isLoadingNext,
       loadNext,
     ],
   )
+
+  const edges = [...(result?.groups?.edges || [])].reverse()
 
   return (
     <div
@@ -112,19 +122,35 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      ref={containerRef}
       // {...otherProps}
     >
-      {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
-      result?.groups?.edges.map((edge) => (
-        <Group
-          key={edge.node.id}
-          data={edge.node}
-        />
-      ))
+      {!result?.groups?.edges.length && (
+        <div className="container">
+          Start by adding an expression using the form at the bottom.
+        </div>
+      )}
+      <div className="groups">
+        {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
+        edges.map((edge) => (
+          <Group
+            key={edge.node.id}
+            data={edge.node}
+          />
+        ))
 }
-      <div ref={loadMoreRef}>
-        {isLoadingNext && 'loading'}
-        {!hasNext && 'no more'}
+      </div>
+      <div
+        // ref={loadMoreRef}
+        id="load-more"
+        className="container"
+      >
+        <div
+          ref={loadMoreRef}
+          className="ref"
+        />
+        {isLoadingNext && 'Loading.'}
+        {!hasNext && 'No more to load'}
       </div>
     </div>
   )

@@ -90,6 +90,10 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           url  :paths.generatePath('PROFILE'),
         },
         {
+          label:'Help',
+          url  :paths.generatePath('HELP'),
+        },
+        {
           label    :'Logout',
           Component:() => <button onClick={logout}>Logout</button>,
         },

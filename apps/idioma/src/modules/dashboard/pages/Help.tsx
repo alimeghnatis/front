@@ -1,0 +1,19 @@
+/* @aztlan/generator-front 1.4.1 */
+import * as React from 'react'
+import {
+  useEffect, useState,
+} from 'react'
+import { Link } from 'react-router-dom'
+import Template from '../layer/Main.js'
+import Content from './Help.mdx'
+
+function Help() {
+  return (
+    <>
+      <h1>Help</h1>
+      <Content />
+    </>
+  )
+}
+
+export default Help

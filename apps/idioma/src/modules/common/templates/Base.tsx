@@ -31,7 +31,7 @@ const routeMap = [
     label:'Login',
   },
   {
-    url  :'profile',
+    url  :'/d/profile',
     label:'Profile',
   },
   {

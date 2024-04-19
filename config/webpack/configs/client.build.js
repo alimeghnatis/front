@@ -36,6 +36,7 @@ export default (inputs) => {
 
     module:{
       rules:[
+        rules.mdx,
         rules.ts,
         rules.scssProd,
       ],

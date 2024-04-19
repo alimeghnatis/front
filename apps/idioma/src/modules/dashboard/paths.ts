@@ -11,6 +11,7 @@ export default getPaths(
     HOME2                   :'/home',
     PROFILE                 :'/profile',
     NEW_BOARD               :'/new-board',
+    HELP                    :'/help',
     BOARD_HOME              :`/${BOARD_PARAM}`,
     BOARD_HOME2             :`/${BOARD_PARAM}/home`,
     BOARD_EXPRESSION_DETAILS:`/${BOARD_PARAM}/${EXPRESSION_PARAM}/${SLUG_PARAM}`,

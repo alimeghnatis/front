@@ -287,5 +287,9 @@ export default (inputs) => ({
       test:/\.html$/,
       use :'raw-loader',
     },
+    mdx:{
+      test:/\.mdx?$/,
+      use :'@mdx-js/loader',
+    },
   },
 })

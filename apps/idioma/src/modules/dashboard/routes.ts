@@ -33,6 +33,12 @@ export const internalRoutes = [
     QUERY    :QUERY_LANGUAGE_CHOICES,
   },
   {
+    path     :[paths.absolute.HELP],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Help.js')),
+    exact    :true,
+    isPrivate:true,
+  },
+  {
     path     :[paths.absolute.BOARD_SETTINGS],
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/BoardSettings.js')),
     exact    :true,

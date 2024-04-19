@@ -106,7 +106,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         userID,
         'useBoardMembershipsFragment_boardMemberships',
       )
-      const tempId = btoa(`BoardMembershipNode:${Math.random()}`)
+      const tempId = btoa(`BoardNode:${Math.random()}`)
 
       createBoard({
         variables:{

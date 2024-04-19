@@ -76,6 +76,17 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
 
+  const parsedInstance = useMemo(
+    () => ({
+      id                  :result.id,
+      name                :result.name,
+      isPublic            :result.isPublic,
+      explanationsLanguage:result.explanationsLanguage,
+      enabledLanguages    :JSON.parse(result.enabledLanguages),
+    }),
+    [result],
+  )
+
   const handleUpdate = useCallback(
     (rawInput) => {
       const input = {
@@ -89,7 +100,8 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
         optimisticResponse:{
           updateBoard:{
             instance:{
-              ...result,
+              isDefault:result.isDefault,
+              ...parsedInstance,
               ...input,
             },
             errors:null,
@@ -104,14 +116,6 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
   )
 
   const fields = useBoardFormFields(result)
-
-  const parsedInstance = useMemo(
-    () => ({
-      ...result,
-      enabledLanguages:JSON.parse(result.enabledLanguages),
-    }),
-    [result],
-  )
 
   const isDefault = result?.isDefault === true
 

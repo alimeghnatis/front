@@ -82,6 +82,9 @@ function BookmarkButton({
       onClick={handleBookmark}
       key={result.id}
       style={{ background: result.isBookmarked ? 'red' : 'white' }}
+      title={
+        result.isBookmarked ? 'Unbookmark expression' : 'Bookmark expression'
+      }
       {...props}
     >
       !

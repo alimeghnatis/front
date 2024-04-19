@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import {
   NestedNavigation, useApplicationContext,
   useAuthenticationContext,
+  PrefetchLink as Link,
 } from '@aztlan/ui'
 // import { useOrganizationContext } from '@ldmnet/ui'
 import { useParams } from 'react-router-dom'
@@ -43,8 +44,9 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           displayItemsAs:'group',
           items         :[
             {
-              label:'*New Board',
-              url  :paths.generatePath('NEW_BOARD'),
+              label    :'*New Board',
+              url      :paths.generatePath('NEW_BOARD'),
+              Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
             },
           ],
         },
@@ -53,6 +55,9 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           displayItemsAs:'group',
           items         :result?.edges.map((edge) => {
             const { node } = edge
+            console.log(
+              '>', atob(node.board.id),
+            )
             return {
               label:node.board.name,
               url  :paths.generatePath(
@@ -75,6 +80,7 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
                   url  :paths.generatePath(
                     'BOARD_SETTINGS', { board: node.board.id },
                   ),
+                  Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
                 },
               ],
             }
@@ -105,13 +111,20 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
         }, */
       ],
 
-    }), [],
+    }), [
+      result,
+      result?.edges,
+    ],
+  )
+  console.log(
+    'NAV result', result,
   )
 
   return (
     <NestedNavigation
       rootItem={rootItem}
-      // key={result?.name}
+      key={result?.edges[result?.edges.length - 1]?.node?.board.id}
+      // key={result?.edges}
     >
       {children}
     </NestedNavigation>

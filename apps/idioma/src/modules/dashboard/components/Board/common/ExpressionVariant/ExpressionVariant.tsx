@@ -130,7 +130,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
             instance:{
               ...optimisticExpression,
               id     :btoa(`ExpressionNode:${Math.random()}`),
-              iso6393:variables.iso6393 || result.iso6393,
+              iso6393:rawInput.iso6393 || result.iso6393,
               created:new Date().toISOString(),
               // variantName:variables.tone,
               // variantWord:variables.word,
@@ -230,7 +230,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
               },
               {
                 value:'more berlin slang of 1980',
-                label:'more berlin slang of 1980',
+                label:'more berlin slang isDefault',
               },
               {
                 value:'more munich slang of 1980',

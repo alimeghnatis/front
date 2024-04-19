@@ -75,6 +75,7 @@ function DeleteButton({
       disabled={isDeleteInFlight}
       onClick={handleDelete}
       key={result.id}
+      title="Delete expression"
       {...props}
     >
       x

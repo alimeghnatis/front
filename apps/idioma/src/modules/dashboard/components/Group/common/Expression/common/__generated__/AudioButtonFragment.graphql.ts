@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<21e345590cfc751ba28a6d680cec23bb>>
+ * @generated SignedSource<<4a084b6a7036c70e43afe4fad97c8e3a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,9 @@ import { FragmentRefs } from "relay-runtime";
 export type AudioButtonFragment$data = {
   readonly audioUrl: string | null | undefined;
   readonly id: string;
+  readonly iso6391: string | null | undefined;
+  readonly iso6392: string | null | undefined;
+  readonly iso6393: string;
   readonly " $fragmentType": "AudioButtonFragment";
 };
 export type AudioButtonFragment$key = {
@@ -39,12 +42,33 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "audioUrl",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6391",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6392",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "iso6393",
+      "storageKey": null
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "05b3f1316defda30a4a481a1f49f9891";
+(node as any).hash = "14f9d247b1fedecaf91241a72b3e38c4";
 
 export default node;

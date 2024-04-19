@@ -4,6 +4,18 @@ import {
   withErrorHandling, addGraphQLOptions,
 } from '@aztlan/ui'
 
+const QUERY = graphql`
+  query useBoardFormFieldsLanguagesOptionsQuery {
+    iso639pt2 {
+      name
+      pt2t
+      audio
+    }
+  }
+`
+
+export { QUERY }
+
 const useBoardFormFields = (instance) => {
   const fields = useMemo(
     () => [
@@ -51,14 +63,8 @@ const useBoardFormFields = (instance) => {
         extensions :[
           withErrorHandling,
           addGraphQLOptions(
-            graphql`
-              query useBoardFormFieldsLanguagesOptionsQuery {
-                iso639pt2 {
-                  name
-                  pt2t
-                }
-              }
-            `,
+            QUERY,
+
             'iso639pt2',
             {
               transformData:(d) => d.map(({
@@ -86,17 +92,7 @@ const useBoardFormFields = (instance) => {
         extensions:[
           withErrorHandling,
           addGraphQLOptions(
-            graphql`
-              query useBoardFormFieldsLanguagesOptions2Query {
-                iso639pt2 {
-                  name
-                  pt2t
-                  audio
-                }
-              }
-            `,
-            'iso639pt2',
-            {
+            QUERY, 'iso639pt2', {
               transformData:(d) => d.map(({
                 pt2t, name, audio,
               }) => ({

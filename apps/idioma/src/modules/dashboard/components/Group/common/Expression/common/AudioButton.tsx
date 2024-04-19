@@ -14,6 +14,9 @@ const FRAGMENT = graphql`
   fragment AudioButtonFragment on ExpressionNode {
     id
     audioUrl
+    iso6391
+    iso6392
+    iso6393
   }
 `
 
@@ -43,6 +46,8 @@ function AudioButton({
       }
     }, [audioRef],
   )
+
+  const language = result.iso6391 || result.iso6392 || result.iso6393
   //
   //
   return (
@@ -59,6 +64,9 @@ function AudioButton({
       <button
         onClick={playAudio}
         disabled={!result.audioUrl}
+        title={
+          result.audioUrl ? 'Play audio' : `Language ${language} has no audio`
+        }
         {...props}
       >
         &lt;
@@ -66,6 +74,11 @@ function AudioButton({
       <button
         onClick={playAudioSlow}
         disabled={!result.audioUrl}
+        title={
+          result.audioUrl
+            ? 'Play audio at 65% speed'
+            : `Language ${language} has no audio`
+        }
         {...props}
       >
         65

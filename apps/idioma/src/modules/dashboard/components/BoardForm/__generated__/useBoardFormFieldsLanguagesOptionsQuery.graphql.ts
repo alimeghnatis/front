@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<05b52c1bd134108e0f016e5b99e3ba6a>>
+ * @generated SignedSource<<d1a8a8dc60eea4e314d7a85b4d742eb1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type useBoardFormFieldsLanguagesOptionsQuery$variables = Record<PropertyKey, never>;
 export type useBoardFormFieldsLanguagesOptionsQuery$data = {
   readonly iso639pt2: ReadonlyArray<{
+    readonly audio: boolean;
     readonly name: string;
     readonly pt2t: string;
   } | null | undefined> | null | undefined;
@@ -44,6 +45,13 @@ var v0 = [
         "kind": "ScalarField",
         "name": "pt2t",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "audio",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -67,16 +75,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "196dfbc9a0ea09573dea3fd0d83f9a41",
+    "cacheID": "5eba004e540267e5017c1655bbaacee2",
     "id": null,
     "metadata": {},
     "name": "useBoardFormFieldsLanguagesOptionsQuery",
     "operationKind": "query",
-    "text": "query useBoardFormFieldsLanguagesOptionsQuery {\n  iso639pt2 {\n    name\n    pt2t\n  }\n}\n"
+    "text": "query useBoardFormFieldsLanguagesOptionsQuery {\n  iso639pt2 {\n    name\n    pt2t\n    audio\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c2493e8c7ddb4b77975867d5d0636084";
+(node as any).hash = "9ed9fd3c2a910085d1b7f719307d83dc";
 
 export default node;

@@ -156,10 +156,20 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           <AudioButton data={result} />
           <BookmarkButton data={result} />
           <Link to={detailsLink}>
-            <button>?</button>
+            <button
+              type="button"
+              title="Display expression details and explanations"
+            >
+              ?
+            </button>
           </Link>
           <Link to={variantLink}>
-            <button>*</button>
+            <button
+              type="button"
+              title="Create a new variant of this expression"
+            >
+              *
+            </button>
           </Link>
           <DeleteButton
             data={result}

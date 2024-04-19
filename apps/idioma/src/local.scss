@@ -6,6 +6,30 @@ html {
 
 main.grid {
   grid-template-rows: auto 1fr auto;
+
+  > nav {
+    height: 100%;
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      > :last-child {
+        margin-top: auto !important;
+      }
+    }
+  }
+
+  > .canvas {
+    height: 100%;
+    overflow: hidden;
+
+    > .container {
+      height: 100%;
+      overflow: auto;
+    }
+  }
 }
 
 .main-row {

@@ -2,9 +2,14 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.search-header{
-
+@mixin background {
+  background-color: var(--near);
+  background-image: repeating-linear-gradient(45deg, var(--hard-near) 0, var(--hard-near) 1px, transparent 0, transparent 50%);
+  background-size: 10px 10px;
 }
 
+.#{bem.$base}.search-header {
+  @include background;
+}
 
 

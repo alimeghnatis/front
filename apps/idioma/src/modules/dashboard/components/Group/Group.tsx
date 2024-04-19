@@ -11,7 +11,7 @@ import styleNames from '@aztlan/bem'
 import { Expression } from './common/index.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'group'
+const componentClassName = 'exp-group'
 
 const FRAGMENT = graphql`
   fragment GroupFragment on GroupNode {

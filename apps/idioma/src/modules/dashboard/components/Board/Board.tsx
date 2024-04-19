@@ -130,7 +130,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
           Start by adding an expression using the form at the bottom.
         </div>
       )}
-      <div className="groups">
+      <div className="groups container">
         {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
         edges.map((edge) => (
           <Group

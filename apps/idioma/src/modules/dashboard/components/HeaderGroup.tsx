@@ -8,6 +8,7 @@ import {
   NestedNavigation,
 } from '@aztlan/ui'
 import { graphql } from 'react-relay'
+import { withDebug } from '@aztlan/react-hooks'
 import {
   SelectBoardHeader, SearchBoardHeader,
 } from './Board/index.js'
@@ -44,6 +45,10 @@ const QUERY_SEARCH_BOARD = graphql`
   }
 `
 
+const ViewerNavigationHeader = withDebug(() => (
+  <NavigationHeader left="viewer">User not connected</NavigationHeader>
+))
+
 function HeaderGroup({
   wireframe,
   before,
@@ -60,7 +65,7 @@ function HeaderGroup({
       {!wireframe ? (
         <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />
       ) : (
-        <NavigationHeader left="viewer">User not connected</NavigationHeader>
+        <ViewerNavigationHeader />
       )}
       <NavigationDebugHeader
         items={debugRouteMap}

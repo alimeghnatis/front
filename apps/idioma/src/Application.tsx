@@ -78,6 +78,7 @@ function Application({
                   <AuthenticationProvider
                     MUTATION_LOGOUT={MUTATION_LOGOUT}
                     FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+                    loginPath="/"
                   >
                     <SwitchRoutes
                       items={routes}

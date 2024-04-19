@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
+import { withDebug } from '@aztlan/react-hooks'
 import {
   NavigationHeader,
   Field,
@@ -137,4 +138,4 @@ function SearchHeader(props) {
   )
 }
 
-export default SearchHeader
+export default withDebug(SearchHeader)

@@ -1,13 +1,22 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useLazyLoadQuery } from 'react-relay'
+import {
+  useLazyLoadQuery, graphql,
+} from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
-import { PrefetchLink } from '@aztlan/ui'
-import { QueryTesterQuery } from '../ui/QueryTester/__generated__/QueryTesterQuery.graphql.js'
+import {
+  useAuthenticationResource,
+  useApplicationContext,
+  useViewer,
+  LoginButton,
+} from '@aztlan/ui'
+import * as PropTypes from 'prop-types'
+import {
+  Link, useLocation,
+} from 'react-router-dom'
 import Template from '../../common/templates/Base.js'
-import { QueryTester } from '../ui/index.js'
 
 const m = defineMessages({
   title:{
@@ -16,31 +25,85 @@ const m = defineMessages({
   },
   welcome:{
     description   :'Message to greet the user.',
-    defaultMessage:'welcome to idioma.io, {name}!!!',
+    // defaultMessage:'welcome to idioma.io, {name}!!!',
+    defaultMessage:'Please login using the following button.',
+  },
+  afterLogin:{
+    description   :'Message to greet the user.',
+    defaultMessage:'After login you will be redirected to {resource}.',
   },
 })
 
-function Home() {
-  const data = useLazyLoadQuery(
-    QueryTester.QUERY,
-    {},
-    { fetchPolicy: 'store-or-network' },
-  ) as QueryTesterQuery['response']
+const FRAGMENT = graphql`
+  fragment HomeLoginButtonFragment on Query
+    @argumentDefinitions(resource: { type: "String!" }) {
+    oAuth2Links(resource: $resource) {
+      google
+    }
+  }
+`
 
+function RawHome({
+  resource, data,
+}) {
   const { formatMessage } = useIntl()
+
+  const location = useLocation()
+
   return (
-    <Template title={formatMessage(m.title)}>
-      <React.Suspense fallback="Loading QueryTester">
-        <QueryTester data={data} />
-      </React.Suspense>
-      <p className="container">
+    <div className="grid container">
+      <div className="container">
+        {location.state?.reason && (
+        <p>
+          {' '}
+          {location.state.reason}
+        </p>
+        )}
+        <p>{formatMessage(m.welcome)}</p>
+        <LoginButton
+          FRAGMENT={FRAGMENT}
+          data={data}
+        />
+      </div>
+      <p>
         {formatMessage(
-          m.welcome, { name: 'd5' },
+          m.afterLogin, { resource },
         )}
       </p>
-      <p className="container">
-        <PrefetchLink to="/formtest">PREFETCH</PrefetchLink>
-      </p>
+    </div>
+  )
+}
+
+RawHome.propTypes = {
+  data    :PropTypes.object,
+  resource:PropTypes.string,
+}
+
+function Home() {
+  const { formatMessage } = useIntl()
+  const {
+    data, defaultRedirectionAfterLogin,
+  } = useApplicationContext()
+  const { data: viewerData } = useViewer()
+  const resource = useAuthenticationResource()
+  if (!viewerData?.id) {
+    return (
+      <Template title={formatMessage(m.title)}>
+        <RawHome
+          resource={resource}
+          data={data}
+        />
+      </Template>
+    )
+  }
+  return (
+    <Template title={formatMessage(m.title)}>
+      <div className="container">
+        <p>You are already logged in.</p>
+        <p>
+          <Link to={defaultRedirectionAfterLogin}>Access account</Link>
+        </p>
+      </div>
     </Template>
   )
 }

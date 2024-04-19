@@ -70,6 +70,12 @@ const useExpressionVariantFields = (
         ],
       },
       {
+        name    :'variantName',
+        label   :'tone',
+        optional:true,
+        type    :'text',
+      },
+      {
         name    :'iso6393',
         label   :'lang',
         type    :'choices',

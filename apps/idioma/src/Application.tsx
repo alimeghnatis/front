@@ -72,7 +72,7 @@ function Application({
                 //  boardGroupCount :10,
                 //  boardGroupCursor:null,
                 // }}
-                defaultRedirectionAfterLogin="/d/profile"
+                defaultRedirectionAfterLogin="/d/help"
               >
                 <ThemeWrapper>
                   <AuthenticationProvider

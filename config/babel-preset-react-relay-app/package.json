@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/babel-preset-react-relay-app",
-  "version": "3.1.2",
+  "version": "3.4.7",
   "description": "",
   "main": "index.js",
   "author": "",
@@ -9,7 +9,7 @@
     "@aztlan/eslint-config": "^0.2.0"
   },
   "dependencies": {
-    "@aztlan/babel-preset-react": "^3.1.2",
+    "@aztlan/babel-preset-react": "^3.4.7",
     "babel-plugin-formatjs": "^10.5.14",
     "babel-plugin-relay": "^16.2.0"
   }

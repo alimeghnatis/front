@@ -1,3 +1,24 @@
-# Help
+## Welcome
 
-This is a help page.
+Thank you for taking the time to test this small application. Your help is greatly appreciated and I will take into account all your feedback to improve the app and make it as useful as it can be !
+
+## What is this app ?
+
+This app is a small tool to help you learn new languages. You can add new expressions, and get explanations in your native language. You can also listen to the pronunciation of the expressions.
+
+This app is not meant to replace learning methods, but only to be a complement to them. It is meant to bridge the gap between the theoretical knowledge of a language and the practical use of it. A way to think of it is an enhanced notepad where you can store expressions and their meanings.
+
+## How to use it ?
+
+The main section of the app are the `Boards`. The `Boards` are a collection of `Expression` arranged by `Group`. You can add an `Expression` to a `Board` by writing in the bottom Textarea and clicking on the `Add` button. 
+
+`Expressions` can be interacted with in several ways. You can click on the `<` or the `65` button to listen to the pronunciation of the expression. You can click on the `*` button to generate variants the expression. The `?` button will display the explanations of the expression. You can click on the `x` button to remove the expression from the board. The `!` button will bookmark the expression.
+
+You can configure the explanation language in the `Settings` section. You can also configure the languages available for variants generation the same `Settings` section.
+
+## Known issues
+
+- The app relying on a nondeterministic API response, sometimes when adding an Expression, the language is not detected properly, leading to an error where the Expression is not saved. In this case, please try again. Sometimes, it helps to try with a longer sentence, or adding punctuation. For instance `Let's go to the beach` is more likely to be detected as English than `Let's go`.
+- In some cases, the explanations are not written using the right language. This is a known issue and we are working on it.
+- When using rare languages, the explanations might not function properly. 
+- In some cases, the audio is not saved properly. If you experience this issue, please try again.

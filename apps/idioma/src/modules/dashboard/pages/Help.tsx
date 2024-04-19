@@ -9,10 +9,10 @@ import Content from './Help.mdx'
 
 function Help() {
   return (
-    <>
+    <div style={{ overflow: 'auto' }}>
       <h1>Help</h1>
       <Content />
-    </>
+    </div>
   )
 }
 

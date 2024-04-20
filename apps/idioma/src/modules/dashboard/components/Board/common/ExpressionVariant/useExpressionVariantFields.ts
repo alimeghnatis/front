@@ -28,6 +28,10 @@ const useExpressionVariantFields = (
         optional:true,
         options :[
           {
+            value:'more polite',
+            label:'more polite',
+          },
+          {
             value:'more formal',
             label:'more formal',
           },
@@ -44,10 +48,6 @@ const useExpressionVariantFields = (
             label:'more vulgar',
           },
           {
-            value:'more polite',
-            label:'more polite',
-          },
-          {
             value:'more litterary',
             label:'more litterary',
           },
@@ -60,20 +60,21 @@ const useExpressionVariantFields = (
             label:'more neutral',
           },
           {
-            value:'more berlin slang of 1980',
-            label:'more berlin slang of 1980',
-          },
-          {
-            value:'more munich slang of 1980',
-            label:'more munich slang of 1980',
+            value:'other',
+            label:'other',
           },
         ],
       },
       {
-        name    :'variantName',
-        label   :'tone',
-        optional:true,
-        type    :'text',
+        name       :'variantNameOther',
+        label      :'tone',
+        optional   :true,
+        type       :'text',
+        placeholder:'more royal, more childish, more berlin slang of 1980',
+        condition  :[
+          ['variantName'],
+          ([variantName]) => variantName === 'other',
+        ],
       },
       {
         name    :'iso6393',

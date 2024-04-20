@@ -113,10 +113,13 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
         'GroupFragment_expressions',
       )
       history.push(baseBoardUrl)
+      const variantName = rawInput.variantName === 'other'
+        ? rawInput.variantNameOther
+        : rawInput.variantName || undefined
 
       const input = {
         iso6393    :rawInput.iso6393 ? rawInput.iso6393 : undefined,
-        variantName:rawInput.variantName ? rawInput.variantName : undefined,
+        variantName,
         variantWord:rawInput.variantWord ? rawInput.variantWord : undefined,
         variantFrom:atob(result.id).split(':')[1],
       }

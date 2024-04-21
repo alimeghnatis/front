@@ -3,6 +3,8 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.expression-details {
+  background: var(--near);
+
   .label {
     font-weight: 700;
     grid-column-end: span 3;

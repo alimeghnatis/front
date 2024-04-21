@@ -86,7 +86,7 @@ const useExpressionVariantFields = (
             value:null,
             label:'original',
           },
-          ...JSON.parse(boardInstance.enabledLanguages).map((lang) => ({
+          ...JSON.parse(boardInstance?.enabledLanguages || '[]').map((lang) => ({
             value:lang,
             label:lang,
           })),

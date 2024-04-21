@@ -7,11 +7,13 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+import { MobilePopup } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
   useFragment, graphql, useMutation,
 } from 'react-relay'
 import { marked } from 'marked'
+import { useBoardContext } from '../../hooks/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-details'
@@ -56,6 +58,8 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
+
+  const { baseBoardUrl } = useBoardContext()
 
   const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -120,7 +124,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
   ]
 
   return (
-    <div
+    <MobilePopup
       id={id}
       className={[
         baseClassName,
@@ -132,6 +136,9 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       key={result.id}
+      title="Expression details"
+      closeLink={baseBoardUrl}
+      fixed
       // {...otherProps}
     >
       {contentMap.map(({
@@ -150,7 +157,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
           />
         </>
       ) : null))}
-    </div>
+    </MobilePopup>
   )
 }
 

@@ -8,7 +8,9 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { SimpleForm } from '@aztlan/ui'
+import {
+  MobilePopup, SimpleForm,
+} from '@aztlan/ui'
 
 import { useHistory } from 'react-router-dom'
 import {
@@ -171,32 +173,36 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
   )
 
   return (
-    <div
+    <MobilePopup
       id={id}
       className={[
         baseClassName,
         componentClassName,
         userClassName,
-        'grid container',
+        // 'grid container',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
+      closeLink={baseBoardUrl}
+      // closeContent="x"
+      title="Create a new variant"
+      fixed
       // {...otherProps}
     >
       <SimpleForm
         className="container"
         fieldProps={{
-          spanLabel         :2,
+          spanLabel         :8,
           spanLabelDesktop  :1,
-          spanContent       :6,
+          spanContent       :8,
           spanContentDesktop:9,
         }}
         onSubmit={onSubmit}
         isInFlight={isInFlight}
         fields={fields}
       />
-    </div>
+    </MobilePopup>
   )
 }
 

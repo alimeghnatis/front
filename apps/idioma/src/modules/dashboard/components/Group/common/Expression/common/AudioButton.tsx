@@ -29,22 +29,53 @@ function AudioButton({
   )
 
   const audioRef = useRef<HTMLAudioElement>(null)
+  const audioSlowRef = useRef<HTMLAudioElement>(null)
 
   const playAudio = useCallback(
-    (): void => {
-      if (audioRef.current) {
-        audioRef.current.play()
+    (
+      playbackRate, ref,
+    ) => {
+      const audio = ref.current
+
+      document.querySelectorAll('audio').forEach((a) => {
+        if (a !== audio) {
+          a.pause()
+          a.currentTime = 0
+        }
+      })
+
+      if (audio) {
+        if (!audio.paused) {
+          audio.pause()
+          audio.currentTime = 0 // Reset the audio position to the start
+        } else {
+          audio.playbackRate = playbackRate
+          audio.play()
+        }
       }
-    }, [audioRef],
+    }, [],
+  )
+
+  const playAudioNormal = useCallback(
+    (): void => {
+      playAudio(
+        1, audioRef,
+      )
+    }, [
+      playAudio,
+      audioRef,
+    ],
   )
 
   const playAudioSlow = useCallback(
     (): void => {
-      if (audioRef.current) {
-        audioRef.current.playbackRate = 0.65
-        audioRef.current.play()
-      }
-    }, [audioRef],
+      playAudio(
+        0.65, audioSlowRef,
+      )
+    }, [
+      playAudio,
+      audioSlowRef,
+    ],
   )
 
   const language = result.iso6391 || result.iso6392 || result.iso6393
@@ -60,9 +91,17 @@ function AudioButton({
           />
         </audio>
       )}
+      {result.audioUrl && (
+        <audio ref={audioSlowRef}>
+          <source
+            src={result.audioUrl}
+            type="audio/mpeg"
+          />
+        </audio>
+      )}
 
       <button
-        onClick={playAudio}
+        onClick={playAudioNormal}
         disabled={!result.audioUrl}
         title={
           result.audioUrl ? 'Play audio' : `Language ${language} has no audio`

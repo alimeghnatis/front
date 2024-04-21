@@ -44,7 +44,7 @@ function LayerProvider({
     <BoardProvider
       FRAGMENT={FRAGMENT}
       basePath={paths.absolute.HOME}
-      baseBoardPath={paths.absolute.BOARD_HOME}
+      baseBoardPath={paths.absolute.BOARD_HOME2}
       expressionDetailsPath={paths.absolute.BOARD_EXPRESSION_DETAILS}
     >
       <Navigation {...props}>{children}</Navigation>

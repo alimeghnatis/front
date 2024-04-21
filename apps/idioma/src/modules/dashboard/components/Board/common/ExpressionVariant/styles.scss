@@ -2,9 +2,8 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.expression-variant{
-
+.#{bem.$base}.expression-variant {
+  background: var(--near);
 }
-
 
 

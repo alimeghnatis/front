@@ -15,6 +15,7 @@ const meta: Meta<typeof Component> = {
   title     :'modules/dashboard/Board',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'fullscreen' },
   /*
   decorators: [
     //decorators.app,
@@ -23,9 +24,7 @@ const meta: Meta<typeof Component> = {
   argTypes: {
     backgroundColor: { control: "color" }
   }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+  */
 }
 
 export default meta

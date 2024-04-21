@@ -153,13 +153,13 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <div className="grid container general">
-        <div className="language">
+        <div className="language manual-mobile-only">
           <strong>{result.iso6391 || result.iso6392 || result.iso6393}</strong>
         </div>
-        <div className="expression">
-          {result.correctedContent || result.content}
+        <div className="expression manual-mobile-only">
+          <p>{result.correctedContent || result.content}</p>
         </div>
-        <div className="tools">
+        <div className="tools manual-mobile-only">
           <AudioButton data={result} />
           <BookmarkButton data={result} />
           <Link to={detailsLink}>

@@ -15,6 +15,7 @@ const meta: Meta<typeof Component> = {
   title     :'modules/dashboard/Board/Group/Expression',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'fullscreen' },
   /*
   argTypes: {
     backgroundColor: { control: "color" }
@@ -43,10 +44,11 @@ const relay = {
     ExpressionNode:() => ({
       id              :'1',
       content         :'Sample Expression',
-      correctedContent:'Sample Corrected Expression',
+      correctedContent:'This is an expression that is used as a sample for the storybook.',
       iso6391         :'es',
       iso6392         :'spa',
       iso6393         :'spa',
+      isBookmarked    :false,
     }),
   },
 }

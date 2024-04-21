@@ -22,17 +22,12 @@ const meta: Meta<typeof Component> = {
       </div>
     ),
   ],
+  parameters:{ layout: 'fullscreen' },
   /*
-  decorators: [
-    //decorators.app,
-    //storyfn => <div className="">{ storyfn() }</div>,
-  ]
   argTypes: {
     backgroundColor: { control: "color" }
   }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+   */
 }
 
 export default meta

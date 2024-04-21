@@ -130,7 +130,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'grid container',
+        // 'grid container',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -141,22 +141,24 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
       fixed
       // {...otherProps}
     >
-      {contentMap.map(({
-        condition, ...field
-      }) => (condition || condition === undefined ? (
-        <>
-          <div className="label">{field.label}</div>
-          <div
-            className="field"
-            dangerouslySetInnerHTML={
-                field.marked
-                  ? { __html: marked.parse(field.payload) }
-                  : undefined
-              }
-            children={!field.marked ? field.payload : undefined}
-          />
-        </>
-      ) : null))}
+      <div className="grid container">
+        {contentMap.map(({
+          condition, ...field
+        }) => (condition || condition === undefined ? (
+          <>
+            <div className="label span-8 md-span-2">{field.label}</div>
+            <div
+              className="field span-8 md-span-8"
+              dangerouslySetInnerHTML={
+                  field.marked
+                    ? { __html: marked.parse(field.payload) }
+                    : undefined
+                }
+              children={!field.marked ? field.payload : undefined}
+            />
+          </>
+        ) : null))}
+      </div>
     </MobilePopup>
   )
 }

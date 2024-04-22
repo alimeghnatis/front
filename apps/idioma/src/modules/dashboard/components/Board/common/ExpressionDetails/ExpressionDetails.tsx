@@ -14,6 +14,7 @@ import {
 } from 'react-relay'
 import { marked } from 'marked'
 import { useBoardContext } from '../../hooks/index.js'
+import { RatingForm } from './common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-details'
@@ -32,6 +33,7 @@ const FRAGMENT = graphql`
     audioUrl
     created
     changes
+    ...RatingFormFragment
   }
 `
 
@@ -123,6 +125,11 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
     },
   ]
 
+  const spanLabel = 8
+  const spanLabelDesktop = 2
+  const spanContent = 8
+  const spanContentDesktop = 8
+
   return (
     <MobilePopup
       id={id}
@@ -146,9 +153,25 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
           condition, ...field
         }) => (condition || condition === undefined ? (
           <>
-            <div className="label span-8 md-span-2">{field.label}</div>
             <div
-              className="field span-8 md-span-8"
+              className={[
+                'label',
+                `span-${spanLabel}`,
+                `md-span-${spanLabelDesktop}`,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              {field.label}
+            </div>
+            <div
+              className={[
+                'field',
+                `span-${spanContent}`,
+                `md-span-${spanContentDesktop}`,
+              ]
+                .filter(Boolean)
+                .join(' ')}
               dangerouslySetInnerHTML={
                   field.marked
                     ? { __html: marked.parse(field.payload) }
@@ -158,6 +181,13 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
             />
           </>
         ) : null))}
+        <RatingForm
+          data={result}
+          spanLabel={spanLabel}
+          spanLabelDesktop={spanLabelDesktop}
+          spanContent={spanContent}
+          spanContentDesktop={spanContentDesktop}
+        />
       </div>
     </MobilePopup>
   )

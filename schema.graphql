@@ -316,6 +316,11 @@ type ExpressionNode implements SearchNode & Node {
   variantWord: String
   isProcessed: Boolean!
   isBookmarked: Boolean!
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
@@ -591,6 +596,11 @@ input CreateExpressionMutationInput {
   variantWord: String
   isProcessed: Boolean
   isBookmarked: Boolean
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
   group: String
   variantFrom: String
   clientMutationId: String
@@ -624,6 +634,11 @@ input UpdateExpressionMutationInput {
   variantWord: String
   isProcessed: Boolean
   isBookmarked: Boolean
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
   group: String
   board: String
   variantFrom: String

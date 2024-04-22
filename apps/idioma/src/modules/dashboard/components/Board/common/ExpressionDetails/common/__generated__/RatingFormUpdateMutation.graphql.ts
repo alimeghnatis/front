@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0b98ed77303d246ddb6fc5b8a7e23ea8>>
+ * @generated SignedSource<<b03203ea4122bcea39e8f51da23b8a40>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -38,10 +38,10 @@ export type UpdateExpressionMutationInput = {
   variantWord?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
-export type BookmarkButtonMutation$variables = {
+export type RatingFormUpdateMutation$variables = {
   input: UpdateExpressionMutationInput;
 };
-export type BookmarkButtonMutation$data = {
+export type RatingFormUpdateMutation$data = {
   readonly updateExpression: {
     readonly errors: ReadonlyArray<{
       readonly field: string;
@@ -49,13 +49,14 @@ export type BookmarkButtonMutation$data = {
     } | null | undefined> | null | undefined;
     readonly instance: {
       readonly id: string;
-      readonly isBookmarked: boolean;
+      readonly rating: number | null | undefined;
+      readonly ratingComment: string | null | undefined;
     } | null | undefined;
   } | null | undefined;
 };
-export type BookmarkButtonMutation = {
-  response: BookmarkButtonMutation$data;
-  variables: BookmarkButtonMutation$variables;
+export type RatingFormUpdateMutation = {
+  response: RatingFormUpdateMutation$data;
+  variables: RatingFormUpdateMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -100,7 +101,14 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "isBookmarked",
+            "name": "rating",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "ratingComment",
             "storageKey": null
           }
         ],
@@ -140,7 +148,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "BookmarkButtonMutation",
+    "name": "RatingFormUpdateMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -149,20 +157,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "BookmarkButtonMutation",
+    "name": "RatingFormUpdateMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "28e05d70cf5a5c34353c0f27c741a16d",
+    "cacheID": "aef8275fafd6b9753eceadcedc00e280",
     "id": null,
     "metadata": {},
-    "name": "BookmarkButtonMutation",
+    "name": "RatingFormUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BookmarkButtonMutation(\n  $input: UpdateExpressionMutationInput!\n) {\n  updateExpression(input: $input) {\n    instance {\n      id\n      isBookmarked\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation RatingFormUpdateMutation(\n  $input: UpdateExpressionMutationInput!\n) {\n  updateExpression(input: $input) {\n    instance {\n      id\n      rating\n      ratingComment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "37609259b5d558ed8d4cd63f010b979f";
+(node as any).hash = "0349401a65a0b64cd26f95d905299c1c";
 
 export default node;

@@ -28,6 +28,22 @@ const useExpressionVariantFields = (
         optional:true,
         options :[
           {
+            value:'language level A2',
+            label:'level A2',
+          },
+          {
+            value:'language level B1',
+            label:'level B1',
+          },
+          {
+            value:'language level B2',
+            label:'level B2',
+          },
+          {
+            value:'language level C1',
+            label:'level C1',
+          },
+          {
             value:'more polite',
             label:'more polite',
           },

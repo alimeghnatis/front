@@ -2,9 +2,22 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.form {
-  .#{bem.$base}.#{bem.$element-navigation}{
+$span-submit-actions: 2;
 
+.#{bem.$base}.modular-form {
+  align-items: start;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  .#{bem.$base}.submit-bar {
+    align-items: end;
+
+    > .content {
+      grid-column: 1/#{-1-$span-submit-actions};
+    }
+
+    > .actions {
+      grid-column-end: span $span-submit-actions;
+    }
   }
 }
 

@@ -21,7 +21,7 @@ export const Base: StoryObj<typeof Component> = {
   args:{
     className:'grid',
 
-    onSubmit      :(data) => alert(JSON.stringify(
+    onSubmit:(data) => alert(JSON.stringify(
       data, null, 2,
     )),
     children:[
@@ -72,13 +72,13 @@ export const Base: StoryObj<typeof Component> = {
           },
         ]}
       />,
-      <div>Some additional content goes here</div>,
+      <Form.SubmitBar />,
     ],
     fieldProps:{
       spanLabel         :8,
-      spanLabelDesktop  :3,
+      spanLabelDesktop  :4,
       spanContent       :8,
-      spanContentDesktop:6,
+      spanContentDesktop:10,
     },
   },
 }

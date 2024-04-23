@@ -12,13 +12,15 @@ import styleNames from '@aztlan/bem'
 // @ts-ignore
 import type { ModularFormProps } from './types.js'
 import { ModularFormPropTypes } from './types.js'
-import { Section } from './common/index.js'
+import {
+  Section, SubmitBar,
+} from './common/index.js'
 
 import Context from './Context.js'
 // import Content from './common/Content.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'form'
+const componentClassName = 'modular-form'
 
 /**
  * This is the component description.
@@ -86,5 +88,6 @@ function ModularForm({
 ModularForm.propTypes = ModularFormPropTypes
 
 ModularForm.Section = Section
+ModularForm.SubmitBar = SubmitBar
 
 export default ModularForm

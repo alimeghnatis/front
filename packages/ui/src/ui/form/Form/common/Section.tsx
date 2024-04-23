@@ -12,7 +12,7 @@ import {
 } from '../types.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'form'
+const componentClassName = 'form-section'
 
 /**
  * A section of a form that renders a set of fields.

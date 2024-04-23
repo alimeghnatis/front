@@ -19,7 +19,8 @@ const Form = Component
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    className     :'grid',
+    className:'grid',
+
     loadInitialUrl:true,
     onSubmit      :(data) => alert(JSON.stringify(
       data, null, 2,
@@ -34,10 +35,11 @@ export const Base: StoryObj<typeof Component> = {
       <Form.Navigation.VerticalMenu
         desktopOnly={false}
         key="vm"
-      /> */ <Form.Content
+      /> <Form.Content
         className="span-8 md-span-9"
         key="inputs"
-      />,
+      />, */
+      <div>TST</div>,
     ],
     fieldProps:{
       spanLabel         :8,
@@ -186,6 +188,7 @@ export const Multipart: StoryObj<typeof Component> = {
         className="container"
         key="spacer"
       />,
+      /*
       <Form.Navigation.Header
         fixed
         hideOnDesktop={false}
@@ -208,7 +211,7 @@ export const Multipart: StoryObj<typeof Component> = {
       <Form.Navigation.Paginator
         className="span-8 md-start-4 md-span-11"
         key="ipaginator"
-      />,
+      />, */
     ],
     type:'multipart',
   },

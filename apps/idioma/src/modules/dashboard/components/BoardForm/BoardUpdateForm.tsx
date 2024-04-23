@@ -141,17 +141,25 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       defaultValues={parsedInstance}
       onSubmit={handleUpdate}
     >
-      <ModularForm.Section fields={fields}>
-        {!isDefault && (
-          <>
-            <h2 className="container">Danger Zone</h2>
-            <p className="span-8 md-span-2">Delete board</p>
-            <div className="span-8">
-              <DeleteBoardButton data={result} />
-            </div>
-          </>
-        )}
-      </ModularForm.Section>
+      <div
+        className="container"
+        style={{
+          overflow:'auto',
+          height  :'100%',
+        }}
+      >
+        <ModularForm.Section fields={fields}>
+          {!isDefault && (
+            <>
+              <h2 className="container">Danger Zone</h2>
+              <p className="span-8 md-span-2">Delete board</p>
+              <div className="span-8">
+                <DeleteBoardButton data={result} />
+              </div>
+            </>
+          )}
+        </ModularForm.Section>
+      </div>
       <ModularForm.SubmitBar
         submitText="Update"
         disabled={isInFlight}

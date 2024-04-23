@@ -10,9 +10,9 @@ $span-submit-actions: 2;
   height: 100%;
   overflow: hidden;
   .#{bem.$base}.form-section {
-    grid-auto-rows: max-content;
-    height: 100%;
-    overflow: auto;
+    //grid-auto-rows: max-content;
+    //height: 100%;
+    //overflow: auto;
   }
   .#{bem.$base}.submit-bar {
     align-items: end;

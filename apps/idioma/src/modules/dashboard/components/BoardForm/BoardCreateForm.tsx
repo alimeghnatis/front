@@ -197,7 +197,15 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
       defaultValues={defaultValues}
       onSubmit={handleCreate}
     >
-      <ModularForm.Section fields={fields} />
+      <div
+        className="container"
+        style={{
+          overflow:'auto',
+          height  :'100%',
+        }}
+      >
+        <ModularForm.Section fields={fields} />
+      </div>
       <ModularForm.SubmitBar
         submitText="Create"
         disabled={isInFlight}

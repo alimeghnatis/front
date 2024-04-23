@@ -37,7 +37,7 @@ export const typeShared = {
   ]),
 }
 
-const basePropTypes = {
+export const basePropTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 

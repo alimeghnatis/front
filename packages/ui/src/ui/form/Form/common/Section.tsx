@@ -5,9 +5,9 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.js'
 
 import { Field } from '../../Field/index.js'
+import { basePropTypes } from '../types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -26,9 +26,9 @@ function Section({
   label,
   description,
   fields,
+  sharedFieldProps,
+  children,
 }: InferProps<typeof Section.propTypes>): React.ReactElement {
-  const { sharedFieldProps } = useForm()
-
   return (
     <Element
       id={id}
@@ -59,6 +59,7 @@ function Section({
           {...fieldProps}
         />
       ))}
+      {children}
     </Element>
   )
 }
@@ -87,6 +88,12 @@ Section.propTypes = {
 
   /** The fields to be rendered */
   fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
+
+  /** The shared field props */
+  sharedFieldProps:basePropTypes.fieldProps,
+
+  /** The children to render */
+  children:PropTypes.node,
 }
 
 export default Section

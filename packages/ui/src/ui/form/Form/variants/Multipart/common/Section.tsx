@@ -4,66 +4,27 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import styleNames from '@aztlan/bem'
 import useForm from '../useForm.js'
-
+import { Section } from '../../../common/index.js'
 import { Field } from '../../../../Field/index.js'
-
-const baseClassName = styleNames.base
-const componentClassName = 'form'
 
 /**
  * A section of a form that renders a set of fields.
- * @param {InferProps<typeof Section.propTypes>} props -
+ * @param {InferProps<typeof MultipartFormSection.propTypes>} props -
  * @return {React.ReactElement} - The rendered component
  */
-function Section({
-  id,
-  className: userClassName,
-  style,
-  as: Element = 'div',
-  index,
-  label,
-  description,
-  fields,
-}: InferProps<typeof Section.propTypes>): React.ReactElement {
+function MultipartFormSection(props: InferProps<typeof MultipartFormSection.propTypes>): React.ReactElement {
   const { sharedFieldProps } = useForm()
 
   return (
-    <Element
-      id={id}
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-        'grid container',
-      ]
-        .filter((e) => e)
-        .join(' ')}
-      style={style}
-      // {...otherProps}
-    >
-      <div className="container">
-        <h2>
-          {index + 1}
-          .
-          {label}
-          {' '}
-        </h2>
-        {description && <p>{description}</p>}
-      </div>
-      {fields.map((fieldProps) => (
-        <Field
-          key={fieldProps.name}
-          {...sharedFieldProps}
-          {...fieldProps}
-        />
-      ))}
-    </Element>
+    <Section
+      sharedFieldProps={sharedFieldProps}
+      {...props}
+    />
   )
 }
 
-Section.propTypes = {
+MultipartFormSection.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -89,4 +50,4 @@ Section.propTypes = {
   fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
 }
 
-export default Section
+export default MultipartFormSection

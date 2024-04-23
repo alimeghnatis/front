@@ -53,6 +53,20 @@ export const Base: StoryObj<typeof Component> = {
             },
           },
           {
+            type    :'text',
+            label   :'Username',
+            name    :'username',
+            optional:true,
+          },
+          {
+            type        :'password',
+            label       :'Password',
+            name        :'password',
+            autoComplete:'new-password',
+            optional    :true,
+            description :'Do not try something like "password123" or "12345678"',
+          },
+          {
             type         :'email',
             label        :'Email',
             name         :'email',

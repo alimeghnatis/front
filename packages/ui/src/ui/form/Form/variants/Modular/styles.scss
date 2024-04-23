@@ -8,6 +8,12 @@ $span-submit-actions: 2;
   align-items: start;
   grid-template-rows: 1fr auto;
   height: 100%;
+  overflow: hidden;
+  .#{bem.$base}.form-section {
+    grid-auto-rows: max-content;
+    height: 100%;
+    overflow: auto;
+  }
   .#{bem.$base}.submit-bar {
     align-items: end;
 

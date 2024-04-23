@@ -2,7 +2,7 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import Component from './SimpleForm.js'
+import Component from './Simple.js'
 // import * as decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {

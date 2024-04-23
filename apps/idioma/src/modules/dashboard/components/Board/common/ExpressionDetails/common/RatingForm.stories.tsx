@@ -34,7 +34,8 @@ const relay = {
   variables    :{},
   mockResolvers:{
     ExpressionNode:() => ({
-      rating       :3,
+      id           :btoa('ExpressionNode:1'),
+      rating       :null,
       ratingComment:'WRONG_LANGUAGE',
     }),
   },

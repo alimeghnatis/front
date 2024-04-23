@@ -7,12 +7,12 @@ import {
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
 // import { useDebug } from '@aztlan/react-hooks'
-import type { TSimpleFormProps } from './types.js'
-import { SimpleFormPropTypes } from './types.js'
+import type { TSimpleFormProps } from '../../types.js'
+import { SimpleFormPropTypes } from '../../types.js'
 
-import type { FieldProps } from '../Field/types.js'
+import type { FieldProps } from '../../../Field/types.js'
 
-import { Field } from '../Field/index.js'
+import { Field } from '../../../Field/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'

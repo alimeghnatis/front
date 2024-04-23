@@ -4,10 +4,10 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import decorators from 'story-utils/decorators.js'
-import Component from './Form.js'
+import Component from './Modular.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'form/Form',
+  title     :'form/ModularForm',
   component :Component,
   decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },

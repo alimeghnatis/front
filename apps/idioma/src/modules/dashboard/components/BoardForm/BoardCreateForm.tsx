@@ -37,6 +37,7 @@ const MUTATION_UPDATE = graphql`
         isPublic
         isDefault
         explanationsLanguage
+        explanationsLength
         enabledLanguages
         memberships {
           edges {

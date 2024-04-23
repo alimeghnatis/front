@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e77d75047b7b1b95756d9d86cfb1d4d8>>
+ * @generated SignedSource<<111deef0067194503b7f4786b2405caf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type UpdateBoardMutationInput = {
   defaultForUser?: string | null | undefined;
   enabledLanguages?: any | null | undefined;
   explanationsLanguage?: string | null | undefined;
+  explanationsLength?: string | null | undefined;
   id?: string | null | undefined;
   isDefault?: boolean | null | undefined;
   isPublic?: boolean | null | undefined;
@@ -34,6 +35,7 @@ export type BoardUpdateFormUpdateMutation$data = {
     readonly instance: {
       readonly enabledLanguages: any;
       readonly explanationsLanguage: string;
+      readonly explanationsLength: string;
       readonly id: string;
       readonly isDefault: boolean;
       readonly isPublic: boolean;
@@ -116,6 +118,13 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "explanationsLength",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "enabledLanguages",
             "storageKey": null
           }
@@ -169,16 +178,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "f32589443126a7b96b1f9c61369317df",
+    "cacheID": "60bb18d82163eac8d4f3eb3a1c466da3",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardUpdateFormUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      explanationsLanguage\n      enabledLanguages\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
+    "text": "mutation BoardUpdateFormUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      explanationsLanguage\n      explanationsLength\n      enabledLanguages\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f29a2d0c57dd11d56ddf892ed7272587";
+(node as any).hash = "dcd3b48f78e1262eb0ada3db6a08a785";
 
 export default node;

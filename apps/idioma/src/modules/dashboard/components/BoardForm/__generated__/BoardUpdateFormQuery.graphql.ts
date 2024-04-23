@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8b535cd7cdf1888e7631c229c3e12e86>>
+ * @generated SignedSource<<6e0c041eb58d8533cbc079a283257150>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -102,6 +102,13 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "explanationsLength",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "enabledLanguages",
             "storageKey": null
           }
@@ -111,12 +118,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "19ed2255471d2a371eab236d63b15e56",
+    "cacheID": "82d471dc1c44fd1980e68b032d5c4d17",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormQuery",
     "operationKind": "query",
-    "text": "query BoardUpdateFormQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "query BoardUpdateFormQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  explanationsLength\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
   }
 };
 })();

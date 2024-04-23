@@ -78,6 +78,26 @@ const useBoardFormFields = (instance) => {
         ],
       },
       {
+        name       :'explanationsLength',
+        type       :'select',
+        label      :'Explanations Length',
+        description:'The length of the explanations. More detailed explanations can help learners understand better, but can also be overwhelming.',
+        options    :[
+          {
+            label:'Short',
+            value:'SHORT',
+          },
+          {
+            label:'Medium',
+            value:'MEDIUM',
+          },
+          {
+            label:'Long',
+            value:'LONG',
+          },
+        ],
+      },
+      {
         name         :'enabledLanguages',
         type         :'choices',
         multiple     :true,

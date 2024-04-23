@@ -137,6 +137,7 @@ type BoardNode implements SearchNode & Node {
   defaultForUser: UserNode
   isDefault: Boolean!
   explanationsLanguage: String!
+  explanationsLength: String!
   enabledLanguages: JSONString!
   memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int): GroupNodeConnection!
@@ -487,6 +488,7 @@ input CreateBoardMutationInput {
   isPublic: Boolean
   isDefault: Boolean
   explanationsLanguage: String
+  explanationsLength: String
   enabledLanguages: JSONString
   defaultForUser: String
   clientMutationId: String
@@ -510,6 +512,7 @@ input UpdateBoardMutationInput {
   isPublic: Boolean
   isDefault: Boolean
   explanationsLanguage: String
+  explanationsLength: String
   enabledLanguages: JSONString
   defaultForUser: String
   clientMutationId: String

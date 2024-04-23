@@ -23,6 +23,7 @@ const FRAGMENT = graphql`
     name
     isPublic
     explanationsLanguage
+    explanationsLength
     enabledLanguages
     ...DeleteBoardButtonFragment
   }
@@ -37,6 +38,7 @@ const MUTATION_UPDATE = graphql`
         isPublic
         isDefault
         explanationsLanguage
+        explanationsLength
         enabledLanguages
       }
       errors {
@@ -82,6 +84,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       name                :result.name,
       isPublic            :result.isPublic,
       explanationsLanguage:result.explanationsLanguage,
+      explanationsLength  :result.explanationsLength,
       enabledLanguages    :JSON.parse(result.enabledLanguages),
     }),
     [result],

@@ -9,7 +9,7 @@ import { InferProps } from 'prop-types'
 import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
-import { SimpleForm } from '@aztlan/ui'
+import { ModularForm } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from './useBoardFormFields.js'
 import DeleteBoardButton from './DeleteBoardButton.js'
@@ -120,29 +120,40 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
   const isDefault = result?.isDefault === true
 
   return (
-    <>
-      <SimpleForm
-        id={id}
-        className={[
-          baseClassName,
-          componentClassName,
-          userClassName,
-          'grid container',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        style={style}
-        fields={fields}
-        fieldProps={{
-          spanLabelDesktop  :1,
-          spanContentDesktop:9,
-        }}
-        defaultValues={parsedInstance}
-        isInFlight={isInFlight}
-        onSubmit={handleUpdate}
+    <ModularForm
+      id={id}
+      className={[
+        baseClassName,
+        componentClassName,
+        userClassName,
+        'container',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      style={style}
+      fieldProps={{
+        spanLabelDesktop  :2,
+        spanContentDesktop:8,
+      }}
+      defaultValues={parsedInstance}
+      onSubmit={handleUpdate}
+    >
+      <ModularForm.Section fields={fields}>
+        {!isDefault && (
+          <>
+            <h2 className="container">Danger Zone</h2>
+            <p className="span-8 md-span-2">Delete board</p>
+            <div className="span-8">
+              <DeleteBoardButton data={result} />
+            </div>
+          </>
+        )}
+      </ModularForm.Section>
+      <ModularForm.SubmitBar
+        submitText="Update"
+        disabled={isInFlight}
       />
-      {!isDefault && <DeleteBoardButton data={result} />}
-    </>
+    </ModularForm>
   )
 }
 

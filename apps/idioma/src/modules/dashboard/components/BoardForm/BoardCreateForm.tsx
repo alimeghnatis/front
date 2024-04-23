@@ -16,7 +16,7 @@ import {
   ConnectionHandler,
 } from 'react-relay'
 import {
-  useViewer, SimpleForm,
+  useViewer, ModularForm,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from './useBoardFormFields.js'
@@ -178,26 +178,30 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
   )
 
   return (
-    <SimpleForm
+    <ModularForm
       id={id}
       className={[
         baseClassName,
         componentClassName,
         userClassName,
-        'grid container',
+        'container',
       ]
         .filter(Boolean)
         .join(' ')}
       style={style}
-      fields={fields}
       fieldProps={{
         spanLabelDesktop  :1,
         spanContentDesktop:9,
       }}
       defaultValues={defaultValues}
-      isInFlight={isInFlight}
       onSubmit={handleCreate}
-    />
+    >
+      <ModularForm.Section fields={fields} />
+      <ModularForm.SubmitBar
+        submitText="Create"
+        disabled={isInFlight}
+      />
+    </ModularForm>
   )
 }
 

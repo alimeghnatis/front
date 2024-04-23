@@ -22,6 +22,7 @@ function SubmitBar({
   className,
   style,
   submitText = 'Submit',
+  disabled = false,
 }: InferProps<typeof SubmitBar.propTypes>): React.ReactElement {
   const { sharedFieldProps } = useForm()
   const { errors } = useFormState()
@@ -63,7 +64,12 @@ function SubmitBar({
         ))}
       </div>
       <div className="actions">
-        <button type="submit">{submitText}</button>
+        <button
+          type="submit"
+          disabled={disabled}
+        >
+          {submitText}
+        </button>
       </div>
     </div>
   )
@@ -81,6 +87,9 @@ SubmitBar.propTypes = {
 
   /** The text to display on the submit button */
   submitText:PropTypes.string,
+
+  /** Whether the submit button is disabled */
+  disabled:PropTypes.bool,
 }
 
 export default SubmitBar

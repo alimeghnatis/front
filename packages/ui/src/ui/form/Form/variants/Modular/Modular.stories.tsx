@@ -21,7 +21,6 @@ export const Base: StoryObj<typeof Component> = {
   args:{
     className:'grid',
 
-    loadInitialUrl:true,
     onSubmit      :(data) => alert(JSON.stringify(
       data, null, 2,
     )),

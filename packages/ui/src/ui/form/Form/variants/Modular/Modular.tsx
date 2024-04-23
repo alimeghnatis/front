@@ -10,8 +10,8 @@ import {
 import styleNames from '@aztlan/bem'
 // import { useDebug } from '@aztlan/react-hooks'
 // @ts-ignore
-import type { TFormProps } from '../../types.js'
-import { FormPropTypes } from '../../types.js'
+import type { ModularFormProps } from './types.js'
+import { ModularFormPropTypes } from './types.js'
 import { Section } from './common/index.js'
 
 import Context from './Context.js'
@@ -28,13 +28,10 @@ function ModularForm({
   className: userClassName,
   style,
   children,
-  items,
   fieldProps: sharedFieldProps,
-  loadInitialUrl,
-  type: formType = 'default',
   onSubmit,
   ...otherProps
-}: TFormProps): React.ReactElement {
+}: ModularFormProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -51,14 +48,8 @@ function ModularForm({
   // const isDebug = useDebug()
 
   const contextValue = useMemo(
-    () => ({
-      sharedFieldProps,
-      type:formType,
-    }),
-    [
-      sharedFieldProps,
-      formType,
-    ],
+    () => ({ sharedFieldProps }),
+    [sharedFieldProps],
   )
 
   return (
@@ -92,7 +83,7 @@ function ModularForm({
   )
 }
 
-ModularForm.propTypes = FormPropTypes
+ModularForm.propTypes = ModularFormPropTypes
 
 ModularForm.Section = Section
 

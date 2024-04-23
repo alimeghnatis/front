@@ -7,8 +7,8 @@ import {
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
 // import { useDebug } from '@aztlan/react-hooks'
-import type { TSimpleFormProps } from '../../types.js'
-import { SimpleFormPropTypes } from '../../types.js'
+import type { SimpleFormProps } from './types.js'
+import { SimpleFormPropTypes } from './types.js'
 
 import type { FieldProps } from '../../../Field/types.js'
 
@@ -32,7 +32,7 @@ function SimpleForm({
   SubmitComponent,
   isInFlight,
   ...otherProps
-}: TSimpleFormProps): React.ReactElement {
+}: SimpleFormProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore

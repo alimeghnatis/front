@@ -7,7 +7,9 @@ import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
 
 import { Field } from '../../Field/index.js'
-import { basePropTypes } from '../types.js'
+import {
+  basePropTypes, fieldPropTypes,
+} from '../types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -43,15 +45,15 @@ function Section({
       style={style}
       // {...otherProps}
     >
-      <div className="container">
-        <h2>
-          {index + 1}
-          .
-          {label}
-          {' '}
-        </h2>
-        {description && <p>{description}</p>}
-      </div>
+      {label && (
+        <div className="container">
+          <h2>
+            {index ? '{index + 1}.' : ''}
+            {label}
+          </h2>
+          {description && <p>{description}</p>}
+        </div>
+      )}
       {fields.map((fieldProps) => (
         <Field
           key={fieldProps.name}
@@ -87,7 +89,8 @@ Section.propTypes = {
   description:PropTypes.string,
 
   /** The fields to be rendered */
-  fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
+  // fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
+  fields:PropTypes.arrayOf(fieldPropTypes).isRequired,
 
   /** The shared field props */
   sharedFieldProps:basePropTypes.fieldProps,

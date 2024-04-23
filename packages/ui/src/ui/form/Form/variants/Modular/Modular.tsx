@@ -12,6 +12,7 @@ import styleNames from '@aztlan/bem'
 // @ts-ignore
 import type { TFormProps } from '../../types.js'
 import { FormPropTypes } from '../../types.js'
+import { Section } from './common/index.js'
 
 import Context from './Context.js'
 // import Content from './common/Content.js'
@@ -93,6 +94,6 @@ function ModularForm({
 
 ModularForm.propTypes = FormPropTypes
 
-// Form.Content = Content
+ModularForm.Section = Section
 
 export default ModularForm

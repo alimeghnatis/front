@@ -11,8 +11,8 @@ import styleNames from '@aztlan/bem'
 // import { useDebug } from '@aztlan/react-hooks'
 import { useNavigableSections } from '../../hooks/index.js'
 // @ts-ignore
-import type { TFormProps } from '../../types.js'
-import { FormPropTypes } from '../../types.js'
+import type { MultipartFormProps } from './types.js'
+import { MultipartFormPropTypes } from './types.js'
 
 import Context from './Context.js'
 import Navigation from './common/Navigation.js'
@@ -35,7 +35,7 @@ function Form({
   type: formType = 'default',
   onSubmit,
   ...otherProps
-}: TFormProps): React.ReactElement {
+}: MultipartFormProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -106,7 +106,7 @@ function Form({
   )
 }
 
-Form.propTypes = FormPropTypes
+Form.propTypes = MultipartFormPropTypes
 
 Form.Navigation = Navigation
 Form.Content = Content

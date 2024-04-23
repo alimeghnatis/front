@@ -6,13 +6,14 @@ import { InferProps } from 'prop-types'
 
 import useForm from '../useForm.js'
 import { Section } from '../../../common/index.js'
+import { Field } from '../../../../Field/index.js'
 
 /**
  * A section of a form that renders a set of fields.
- * @param {InferProps<typeof MultipartFormSection.propTypes>} props -
+ * @param {InferProps<typeof ModularFormSection.propTypes>} props -
  * @return {React.ReactElement} - The rendered component
  */
-function MultipartFormSection(props: InferProps<typeof MultipartFormSection.propTypes>): React.ReactElement {
+function ModularFormSection(props: InferProps<typeof ModularFormSection.propTypes>): React.ReactElement {
   const { sharedFieldProps } = useForm()
 
   return (
@@ -23,6 +24,6 @@ function MultipartFormSection(props: InferProps<typeof MultipartFormSection.prop
   )
 }
 
-MultipartFormSection.propTypes = Section.propTypes
+ModularFormSection.propTypes = Section.propTypes
 
-export default MultipartFormSection
+export default ModularFormSection

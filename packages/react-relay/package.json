@@ -37,7 +37,7 @@
     "@aztlan/eslint-config-base": "^3.4.7",
     "@aztlan/react-scripts": "^3.4.7",
     "@aztlan/typescript-config": "^3.4.0",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "react": "^18.2.0",

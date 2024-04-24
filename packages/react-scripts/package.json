@@ -21,12 +21,12 @@
   "devDependencies": {
     "@aztlan/eslint-config-base": "^3.4.7",
     "@aztlan/typescript-config": "^3.4.0",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@aztlan/babel-plugin-replace-import-extension": "^3.4.7",
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.24.0",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.4.5",
     "resolve-glob": "^1.0.0",

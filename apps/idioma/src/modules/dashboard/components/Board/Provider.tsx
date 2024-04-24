@@ -71,13 +71,6 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       )
       const expressionMatchParam = expressionMatch?.params.expression
       const expressionActionSlugMatchParam = expressionMatch?.params.slug
-      console.log(
-        'BOARD',
-        boardMatch,
-        boardMatchParam,
-        baseBoardPath,
-        location.pathname,
-      )
       return {
         currentBoardId     :isGlobalId(boardMatchParam) ? boardMatchParam : null,
         currentExpressionId:isGlobalId(expressionMatchParam)

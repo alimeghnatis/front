@@ -45,6 +45,7 @@ function LayerProvider({
       FRAGMENT={FRAGMENT}
       basePath={paths.absolute.HOME}
       baseBoardPath={paths.absolute.BOARD_HOME2}
+      baseBoardPathAlt={paths.absolute.BOARD_HOME}
       expressionDetailsPath={paths.absolute.BOARD_EXPRESSION_DETAILS}
     >
       <Navigation {...props}>{children}</Navigation>

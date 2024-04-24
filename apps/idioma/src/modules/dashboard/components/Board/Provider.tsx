@@ -40,6 +40,7 @@ function RawProvider({
   data,
   basePath,
   baseBoardPath,
+  baseBoardPathAlt,
   expressionDetailsPath,
 }: // ...otherProps
 InferProps<typeof RawProvider.propTypes>): React.ReactElement {
@@ -53,14 +54,30 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   } = useMemo(
     () => {
       const boardMatch = matchPath(
-        location.pathname, { path: baseBoardPath },
+        location.pathname, {
+          path :baseBoardPath,
+          exact:false,
+        },
       )
-      const boardMatchParam = boardMatch?.params.board
+      const boardMatchAlt = matchPath(
+        location.pathname, {
+          path :baseBoardPathAlt,
+          exact:false,
+        },
+      )
+      const boardMatchParam = boardMatch?.params.board || boardMatchAlt?.params.board
       const expressionMatch = matchPath(
         location.pathname, { path: expressionDetailsPath },
       )
       const expressionMatchParam = expressionMatch?.params.expression
       const expressionActionSlugMatchParam = expressionMatch?.params.slug
+      console.log(
+        'BOARD',
+        boardMatch,
+        boardMatchParam,
+        baseBoardPath,
+        location.pathname,
+      )
       return {
         currentBoardId     :isGlobalId(boardMatchParam) ? boardMatchParam : null,
         currentExpressionId:isGlobalId(expressionMatchParam)
@@ -83,6 +100,9 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
 
   useEffect(
     () => {
+      console.log(
+        'currentBoardId', currentBoardId,
+      )
       if (currentBoardId && currentBoardId !== selectedBoard?.id) {
         refetchBoard({ id: currentBoardId })
       }
@@ -125,6 +145,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       currentExpressionActionSlug,
       basePath,
       baseBoardPath,
+      baseBoardPathAlt,
       baseBoardUrl,
       expressionDetailsPath,
       getExpressionDetailsUrl,
@@ -132,6 +153,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     }),
     [
       baseBoardPath,
+      baseBoardPathAlt,
       expressionDetailsPath,
       getExpressionDetailsUrl,
       basePath,
@@ -160,6 +182,9 @@ RawProvider.propTypes = {
 
   /** The base board path */
   baseBoardPath:PropTypes.string,
+
+  /** The base board path alt */
+  baseBoardPathAlt:PropTypes.string,
 
   /** The expression details path */
   expressionDetailsPath:PropTypes.string,

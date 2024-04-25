@@ -94,8 +94,9 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           displayItemsAs:'group',
           items         :[
             {
-              label:'Flags',
-              url  :paths.generatePath('FLAGS'),
+              label    :'Flags',
+              url      :paths.generatePath('FLAGS'),
+              Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
             },
           ],
         },

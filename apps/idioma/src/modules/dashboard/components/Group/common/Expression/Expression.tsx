@@ -1,11 +1,7 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useInsertionEffect,
-  useMemo,
-  useEffect,
-  useCallback,
-  useRef,
+  useInsertionEffect, useRef,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -15,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 import {
-  useRefetchableFragment, graphql,
+  useFragment, graphql,
 } from 'react-relay'
 
 import { useBoardContext } from '../../../Board/index.js'
@@ -23,7 +19,6 @@ import {
   AudioButton, DeleteButton, BookmarkButton,
 } from './common/index.js'
 import useExpressionLinks from './useExpressionLinks.js'
-import checkRecentUnprocessed from './checkRecentUnprocessed.js'
 import {
   ExpressionDetails,
   ExpressionVariant,
@@ -73,10 +68,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     }, [],
   )
 
-  const [
-    result,
-    refetch,
-  ] = useRefetchableFragment(
+  const result = useFragment(
     FRAGMENT, data,
   )
 
@@ -85,52 +77,9 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     currentExpressionActionSlug,
   } = useBoardContext()
 
-  const isRecentAndUnprocessed = useMemo(
-    () => checkRecentUnprocessed(
-      result.isProcessed, result.created,
-    ),
-    [
-      result.isProcessed,
-      result.created,
-    ],
-  )
-
   const {
     detailsLink, variantLink,
   } = useExpressionLinks(result.id)
-
-  useEffect(
-    () => {
-      let intervalId: NodeJS.Timeout | undefined // Initialize intervalId as undefined
-
-      // iso equality is a proxy for loaded but not processed
-      const loadedAndUnprocessedProxy = result.iso6392 !== '***'
-      if (isRecentAndUnprocessed && loadedAndUnprocessedProxy) {
-        intervalId = setInterval(
-          () => {
-            // console.log('Refetching data...')
-            refetch(
-              {}, { fetchPolicy: 'store-and-network' },
-            )
-          }, 200,
-        )
-      }
-
-      // Cleanup function that will clear the interval if 'result.isProcessed' is true
-      return () => {
-        clearInterval(intervalId)
-      }
-    }, [
-      isRecentAndUnprocessed,
-      refetch,
-      result.iso6392,
-      result.isProcessed,
-    ],
-  )
-
-  const isNew = useMemo(
-    () => isRecentAndUnprocessed, [],
-  )
 
   const expressionRef = useRef(null)
 
@@ -141,7 +90,6 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        isNew && styleNames.modifierLoading,
         result.isBookmarked && 'bookmarked',
         // isRecentAndUnprocessed && styleNames.modifierLoading,
         'grid',

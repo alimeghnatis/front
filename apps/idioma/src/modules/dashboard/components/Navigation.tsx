@@ -4,6 +4,7 @@ import {
   NestedNavigation, useApplicationContext,
   useAuthenticationContext,
   PrefetchLink as Link,
+  useViewer,
 } from '@aztlan/ui'
 // import { useOrganizationContext } from '@ldmnet/ui'
 import { useParams } from 'react-router-dom'
@@ -30,6 +31,8 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
     [result],
   ) */
 
+  const { data:{ isSuperuser } } = useViewer()
+
   const rootItem = useMemo(
     () => ({
       label:'Navigation',
@@ -39,6 +42,7 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           label:'Home',
           url  :paths.generatePath('HOME2'),
         },
+        // isSuperuser &&
         {
           // url  :paths.generatePath('NEW_BOARD'),
           displayItemsAs:'group',
@@ -112,7 +116,7 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
             },
           ],
         }, */
-      ],
+      ].filter(Boolean),
 
     }), [
       result,

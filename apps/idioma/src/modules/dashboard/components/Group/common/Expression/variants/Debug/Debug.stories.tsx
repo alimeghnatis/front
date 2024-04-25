@@ -46,6 +46,10 @@ const relay = {
       iso6392         :'spa',
       iso6393         :'spa',
       isBookmarked    :false,
+      rating          :3,
+      ratingComment   :'WRONG_LANGUAGE',
+      flagIsProcessed :false,
+      flagComment     :'It seems there was a problem creating this expression.',
     }),
   },
 }

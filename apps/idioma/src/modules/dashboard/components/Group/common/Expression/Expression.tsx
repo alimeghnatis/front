@@ -58,6 +58,8 @@ function Expression({
   style,
   data,
   groupID,
+  extras,
+  spanExtras,
 }: // ...otherProps
 
 InferProps<typeof Expression.propTypes>): React.ReactElement {
@@ -100,10 +102,14 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       ref={expressionRef}
       // {...otherProps}
     >
-      <div className="grid container general">
+      <div
+        className="grid container general"
+        style={{ '--span-extras': spanExtras }}
+      >
         <div className="language manual-mobile-only">
           <strong>{result.iso6391 || result.iso6392 || result.iso6393}</strong>
         </div>
+        {extras && <div className="extras manual-mobile-only">{extras}</div>}
         <div className="expression manual-mobile-only">
           <p>{result.correctedContent || result.content}</p>
         </div>
@@ -166,6 +172,12 @@ Expression.propTypes = {
 
   /** The group global ID */
   groupID:PropTypes.string,
+
+  /** Extras to display */
+  extras:PropTypes.node,
+
+  /** The span for extras */
+  spanExtras:PropTypes.number,
 }
 
 export default Expression

@@ -23,8 +23,12 @@ $subtotal-span: $span-language + $span-tools;
       grid-column-end: span $span-language;
     }
 
+    > .extras {
+      grid-column-end: span var(--span-extras, 0);
+    }
+
     > .expression {
-      grid-column-end: span calc(var(--columns) - #{$subtotal-span});
+      grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras,0));
     }
 
     > .tools {
@@ -61,6 +65,10 @@ $subtotal-span: $span-language + $span-tools;
         --columns:3;
         scroll-snap-align: start;
         //grid-column-end: span 5;
+      }
+
+      > .extras {
+        display:none;
       }
     }
   }

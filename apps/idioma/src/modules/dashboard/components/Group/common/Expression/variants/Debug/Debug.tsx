@@ -20,20 +20,25 @@ const FRAGMENT = graphql`
     iso6391
     iso6392
     iso6393
+    rating
+    ratingComment
+    rated
+    flagIsProcessed
+    flagComment
     ...ExpressionFragment
   }
 `
 
 /**
  * description
- * @param {InferProps<typeof DefaultExpression.propTypes>} props -
- * @returns {React.ReactElement} - Rendered DefaultExpression
+ * @param {InferProps<typeof DebugExpression.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered DebugExpression
  */
-function DefaultExpression({
+function DebugExpression({
   className: userClassName,
   data,
   ...otherProps
-}: InferProps<typeof DefaultExpression.propTypes>): React.ReactElement {
+}: InferProps<typeof DebugExpression.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
@@ -45,12 +50,14 @@ function DefaultExpression({
         userClassName,
       ].filter((e) => e).join(' ')}
       data={result}
+      extras={result.ratingComment}
+      spanExtras="3"
       {...otherProps}
     />
   )
 }
 
-DefaultExpression.propTypes = {
+DebugExpression.propTypes = {
   /** The HTML class names for this element */
   className:PropTypes.string,
 
@@ -58,4 +65,4 @@ DefaultExpression.propTypes = {
   data:PropTypes.any,
 }
 
-export default DefaultExpression
+export default DebugExpression

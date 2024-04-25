@@ -4,11 +4,8 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-// import { Meta, StoryFn } from '@storybook/react'
 import { graphql } from 'react-relay'
 import Component from './Expression.js'
-// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-// import decorators from "story-utils/decorators.js";
 import decorators from '../../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
@@ -55,5 +52,13 @@ const relay = {
 
 export const Base: StoryObj<typeof Component> = {
   args      :{},
+  parameters:{ relay },
+}
+
+export const Extras: StoryObj<typeof Component> = {
+  args:{
+    extras    :'Extras',
+    spanExtras:2,
+  },
   parameters:{ relay },
 }

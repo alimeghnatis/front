@@ -1,45 +1,44 @@
-/* @aztlan/generator-front 3.4.0 */
+/* @aztlan/generator-front 3.4.7 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useCallback, useMemo,
+  useInsertionEffect, useMemo, useCallback,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+
+import styleNames from '@aztlan/bem'
+
 import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
-import { ModularForm } from '@aztlan/ui'
-import styleNames from '@aztlan/bem'
-import useBoardFormFields from './useBoardFormFields.js'
-import DeleteBoardButton from './DeleteBoardButton.js'
+import {
+  ModularForm, useViewer,
+} from '@aztlan/ui'
+import useViewerFormFields from './useViewerFormFields.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'board-settings-form'
+const componentClassName = 'viewer-update-form'
 
 const FRAGMENT = graphql`
-  fragment BoardUpdateFormFragment on BoardNode {
+  fragment ViewerUpdateFormFragment on UserNode {
     id
-    name
-    isPublic
-    explanationsLanguage
-    explanationsLength
-    enabledLanguages
-    ...DeleteBoardButtonFragment
+    firstName
+    lastName
+    created
+    updated
+    email
+    profilePicture
+    isSuperuser
   }
 `
 
 const MUTATION_UPDATE = graphql`
-  mutation BoardUpdateFormUpdateMutation($input: UpdateBoardMutationInput!) {
-    updateBoard(input: $input) {
+  mutation ViewerUpdateFormUpdateMutation($input: UpdateUserMutationInput!) {
+    updateUser(input: $input) {
       instance {
         id
-        name
-        isPublic
-        isDefault
-        explanationsLanguage
-        explanationsLength
-        enabledLanguages
+        ...ViewerUpdateFormFragment
       }
       errors {
         field
@@ -51,17 +50,17 @@ const MUTATION_UPDATE = graphql`
 
 /**
  * description
- * @param {InferProps<typeof BoardUpdateForm.propTypes>} props -
- * @returns {React.ReactElement} - Rendered BoardUpdateForm
+ * @param {InferProps<typeof ViewerUpdateForm.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered ViewerUpdateForm
  */
-function BoardUpdateForm({
+function RawViewerUpdateForm({
   id,
   className: userClassName,
   style,
   data,
 }: // ...otherProps
 
-InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
+InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -80,12 +79,8 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
 
   const parsedInstance = useMemo(
     () => ({
-      id                  :result.id,
-      name                :result.name,
-      isPublic            :result.isPublic,
-      explanationsLanguage:result.explanationsLanguage,
-      explanationsLength  :result.explanationsLength,
-      enabledLanguages    :JSON.parse(result.enabledLanguages),
+      // mapping
+      ...result,
     }),
     [result],
   )
@@ -93,17 +88,19 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
   const handleUpdate = useCallback(
     (rawInput) => {
       const input = {
-        ...rawInput,
-        id              :atob(result.id).split(':')[1],
-        enabledLanguages:JSON.stringify(rawInput.enabledLanguages),
+        id            :atob(result.id).split(':')[1],
+        firstName     :rawInput.firstName,
+        lastName      :rawInput.lastName,
+        email         :rawInput.email,
+        profilePicture:rawInput.profilePicture,
+        isSuperuser   :rawInput.isSuperuser,
       }
 
       commit({
         variables         :{ input },
         optimisticResponse:{
-          updateBoard:{
+          updateUser:{
             instance:{
-              isDefault:result.isDefault,
               ...parsedInstance,
               ...input,
             },
@@ -118,9 +115,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
     ],
   )
 
-  const fields = useBoardFormFields(result)
-
-  const isDefault = result?.isDefault === true
+  const fields = useViewerFormFields(parsedInstance)
 
   return (
     <ModularForm
@@ -148,17 +143,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
           height  :'100%',
         }}
       >
-        <ModularForm.Section fields={fields}>
-          {!isDefault && (
-            <>
-              <h2 className="container">Danger Zone</h2>
-              <p className="span-8 md-span-2">Delete board</p>
-              <div className="span-8">
-                <DeleteBoardButton data={result} />
-              </div>
-            </>
-          )}
-        </ModularForm.Section>
+        <ModularForm.Section fields={fields} />
       </div>
       <ModularForm.SubmitBar
         submitText="Update"
@@ -168,7 +153,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
   )
 }
 
-BoardUpdateForm.propTypes = {
+RawViewerUpdateForm.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -178,8 +163,21 @@ BoardUpdateForm.propTypes = {
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /** The data to use */
+  /** The data for this component */
   data:PropTypes.any,
 }
 
-export default BoardUpdateForm
+export { RawViewerUpdateForm }
+
+function ViewerUpdateForm(props) {
+  const { data } = useViewer()
+
+  return (
+    <RawViewerUpdateForm
+      data={data}
+      {...props}
+    />
+  )
+}
+
+export default ViewerUpdateForm

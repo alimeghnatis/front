@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<22af76204f19aebc88b17b50957271a8>>
+ * @generated SignedSource<<7af8d274761764ae42eec26c23046b32>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type ProfileDashboardFragment$data = {
   readonly created: any;
   readonly email: string;
   readonly firstName: string;
+  readonly isSuperuser: boolean;
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
@@ -71,12 +72,19 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "profilePicture",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "isSuperuser",
+      "storageKey": null
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "d0d16db4b655dd6a90514bd50c50ec5c";
+(node as any).hash = "def106bf877fcfca3116092512587e4b";
 
 export default node;

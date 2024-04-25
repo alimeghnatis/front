@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0b98ed77303d246ddb6fc5b8a7e23ea8>>
+ * @generated SignedSource<<b39c3c064b0be17028896ef6b40d068a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -32,6 +32,7 @@ export type UpdateExpressionMutationInput = {
   rated?: any | null | undefined;
   rating?: number | null | undefined;
   ratingComment?: string | null | undefined;
+  retriesGeneration?: number | null | undefined;
   variant?: string | null | undefined;
   variantFrom?: string | null | undefined;
   variantName?: string | null | undefined;

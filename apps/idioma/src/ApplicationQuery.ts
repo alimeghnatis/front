@@ -43,7 +43,7 @@ export const FRAGMENT_VIEWER = graphql`
     #  }
     #}
     ...ProfileFragment
-    ...ProfileDashboardFragment
+    ...ViewerUpdateFormFragment
     ...ApplicationQueryAuthenticationDebugFragment
     ...useBoardMembershipsFragment
   }

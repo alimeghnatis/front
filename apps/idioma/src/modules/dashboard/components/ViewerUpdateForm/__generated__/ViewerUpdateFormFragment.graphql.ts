@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d26d9d5247148144ec445fe63757deb5>>
+ * @generated SignedSource<<59c7a3a24eacd7d34c8454f575ced0e4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,29 +10,27 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ApplicationQueryViewerFragment$data = {
+export type ViewerUpdateFormFragment$data = {
   readonly created: any;
   readonly email: string;
   readonly firstName: string;
   readonly id: string;
-  readonly isActive: boolean;
   readonly isSuperuser: boolean;
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
-  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ProfileFragment" | "ViewerUpdateFormFragment" | "useBoardMembershipsFragment">;
-  readonly " $fragmentType": "ApplicationQueryViewerFragment";
+  readonly " $fragmentType": "ViewerUpdateFormFragment";
 };
-export type ApplicationQueryViewerFragment$key = {
-  readonly " $data"?: ApplicationQueryViewerFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryViewerFragment">;
+export type ViewerUpdateFormFragment$key = {
+  readonly " $data"?: ViewerUpdateFormFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"ViewerUpdateFormFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "ApplicationQueryViewerFragment",
+  "name": "ViewerUpdateFormFragment",
   "selections": [
     {
       "alias": null,
@@ -87,41 +85,14 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "isActive",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "isSuperuser",
       "storageKey": null
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "ProfileFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "ViewerUpdateFormFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "ApplicationQueryAuthenticationDebugFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "useBoardMembershipsFragment"
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "dbb573dc815999f00f95565328c938f7";
+(node as any).hash = "c17b9df5b3fc7d79dbaa1555baae5a1f";
 
 export default node;

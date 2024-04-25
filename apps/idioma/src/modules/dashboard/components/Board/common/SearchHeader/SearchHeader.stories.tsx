@@ -6,7 +6,7 @@ import {
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import decorators from '../../../../../../decorators.js'
-import Component from './SearchHeader.js'
+import { SearchHeader as Component } from './SearchHeader.js'
 
 const meta: Meta<typeof Component> = {
   title     :'common/Board/SearchHeader',

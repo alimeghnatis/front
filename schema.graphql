@@ -94,7 +94,6 @@ type Query {
 
   """The current time"""
   time: DateTime
-  viewer: UserNode
 
   """Retrieve OAuth2 authentication URLs for various providers"""
   oAuth2Links(
@@ -104,6 +103,7 @@ type Query {
     """Additional state payload for OAuth2 authentication"""
     additionalStatePayload: String
   ): OAuth2LinksProvider
+  viewer: UserNode
   node(
     """The ID of the object"""
     id: ID!
@@ -322,6 +322,7 @@ type ExpressionNode implements SearchNode & Node {
   rated: DateTime
   flagIsProcessed: Boolean
   flagComment: String
+  retriesGeneration: Int!
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
 }
@@ -462,6 +463,7 @@ type Mutation {
   deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
   deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
   revokeToken(input: RevokeInput!): RevokePayload
+  updateUser(input: UpdateUserMutationInput!): UpdateUserMutationPayload
   upload3(input: FileInput!): Upload3Mutation
 }
 
@@ -604,6 +606,7 @@ input CreateExpressionMutationInput {
   rated: DateTime
   flagIsProcessed: Boolean
   flagComment: String
+  retriesGeneration: Int
   group: String
   variantFrom: String
   clientMutationId: String
@@ -642,6 +645,7 @@ input UpdateExpressionMutationInput {
   rated: DateTime
   flagIsProcessed: Boolean
   flagComment: String
+  retriesGeneration: Int
   group: String
   board: String
   variantFrom: String
@@ -714,6 +718,51 @@ type RevokePayload {
 
 input RevokeInput {
   refreshToken: String
+  clientMutationId: String
+}
+
+type UpdateUserMutationPayload {
+  """The created/updated instance."""
+  instance: UserNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateUserMutationInput {
+  id: String
+  password: String!
+  lastLogin: DateTime
+
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean
+
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String!
+  firstName: String
+  lastName: String
+  email: String
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean
+
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean
+  dateJoined: DateTime
+  profilePicture: String
+
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  groups: String
+
+  """Specific permissions for this user."""
+  userPermissions: String
   clientMutationId: String
 }
 

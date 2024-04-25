@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
 import { ViewerProfile } from '@aztlan/ui'
 import Template from '../layer/Main.js'
+import { ViewerUpdateForm } from '../components/index.js'
 
 const FRAGMENT = graphql`
   fragment ProfileDashboardFragment on UserNode {
@@ -14,6 +15,7 @@ const FRAGMENT = graphql`
     updated
     email
     profilePicture
+    isSuperuser
   }
 `
 
@@ -21,7 +23,7 @@ function Profile() {
   return (
     <>
       <h1>Panel profile</h1>
-      <ViewerProfile FRAGMENT={FRAGMENT} />
+      <ViewerUpdateForm />
     </>
   )
 }

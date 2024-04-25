@@ -88,7 +88,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
   )
 
   const [
-    createBoard,
+    commit,
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
 
@@ -109,7 +109,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
       )
       const tempId = btoa(`BoardNode:${Math.random()}`)
 
-      createBoard({
+      commit({
         variables:{
           input,
           connections:[connectionID],
@@ -157,7 +157,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         },
       })
     },
-    [createBoard],
+    [commit],
   )
 
   const fields = useBoardFormFields({})

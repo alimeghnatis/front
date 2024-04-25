@@ -4,16 +4,13 @@ import {
   useInsertionEffect, useCallback, useState, useEffect,
 } from 'react'
 import {
-  generatePath,
-  useLocation,
-  useHistory,
-  useParams,
+  generatePath, useHistory,
 } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  NavigationHeader, useViewer,
+  NavigationHeader, withSuperuser,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
@@ -97,9 +94,6 @@ function RawSelectHeader({
 
   useEffect(
     () => {
-      console.log(
-        'currentBoardId', currentBoardId,
-      )
       if (selectedBoardId !== currentBoardId) {
         setSelectedBoardId(currentBoardId)
       }
@@ -179,4 +173,4 @@ function SelectHeader(props) {
 
 export { RawSelectHeader }
 
-export default SelectHeader
+export default withSuperuser(SelectHeader)

@@ -138,4 +138,6 @@ function SearchHeader(props) {
   )
 }
 
-export default withDebug(SearchHeader)
+export { SearchHeader }
+
+export default SearchHeader

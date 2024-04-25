@@ -109,7 +109,9 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         <div className="language manual-mobile-only">
           <strong>{result.iso6391 || result.iso6392 || result.iso6393}</strong>
         </div>
-        {extras && <div className="extras manual-mobile-only">{extras}</div>}
+        {extras !== undefined && (
+          <div className="extras manual-mobile-only">{extras}</div>
+        )}
         <div className="expression manual-mobile-only">
           <p>{result.correctedContent || result.content}</p>
         </div>

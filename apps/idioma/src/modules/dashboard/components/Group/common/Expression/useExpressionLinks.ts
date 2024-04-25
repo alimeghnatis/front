@@ -5,12 +5,21 @@ const useExpressionLinks = (globalId) => {
   const {
     baseBoardUrl,
     getExpressionDetailsUrl,
+    currentBoardId,
     currentExpressionId,
     currentExpressionActionSlug,
   } = useBoardContext()
 
   const links = useMemo(
     () => {
+    // TODO temporary fix
+      if (!currentBoardId) {
+        return {
+          detailsLink:null,
+          variantLink:null,
+        }
+      }
+
       const isCurrent = currentExpressionId === globalId
       const detailsType = 'details'
       const variantType = 'variant'

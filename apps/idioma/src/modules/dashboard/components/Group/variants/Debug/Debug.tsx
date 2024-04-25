@@ -14,7 +14,8 @@ const componentClassName = 'exp-group-debug'
 
 const FRAGMENT = graphql`
   fragment DebugGroupFragment on Query {
-    expressions(first: 50) @connection(key: "DebugGroupFragment_expressions") {
+    expressions(first: 100, rating_Lte: 4)
+      @connection(key: "DebugGroupFragment_expressions") {
       edges {
         node {
           ...DebugExpressionFragment
@@ -51,10 +52,7 @@ InferProps<typeof DebugGroup.propTypes>): React.ReactElement {
       className={[
         componentClassName,
         userClassName,
-        'container',
-      ]
-        .filter((e) => e)
-        .join(' ')}
+      ].filter((e) => e).join(' ')}
       style={style}
       // {...otherProps}
     >

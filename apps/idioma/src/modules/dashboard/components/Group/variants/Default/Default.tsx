@@ -54,10 +54,7 @@ InferProps<typeof DefaultGroup.propTypes>): React.ReactElement {
       className={[
         componentClassName,
         userClassName,
-        'container',
-      ]
-        .filter((e) => e)
-        .join(' ')}
+      ].filter((e) => e).join(' ')}
       style={style}
       key={result.id}
       // {...otherProps}

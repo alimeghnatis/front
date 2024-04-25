@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e04f3fc10768713aa8b058effd3fd604>>
+ * @generated SignedSource<<6317dacb38f5130881065a59e2f877df>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,13 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type DebugGroupStoriesQuery$variables = Record<PropertyKey, never>;
-export type DebugGroupStoriesQuery$data = {
+export type FlagsQuery$variables = Record<PropertyKey, never>;
+export type FlagsQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"DebugGroupFragment">;
 };
-export type DebugGroupStoriesQuery = {
-  response: DebugGroupStoriesQuery$data;
-  variables: DebugGroupStoriesQuery$variables;
+export type FlagsQuery = {
+  response: FlagsQuery$data;
+  variables: FlagsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -37,7 +37,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "DebugGroupStoriesQuery",
+    "name": "FlagsQuery",
     "selections": [
       {
         "args": null,
@@ -52,7 +52,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "DebugGroupStoriesQuery",
+    "name": "FlagsQuery",
     "selections": [
       {
         "alias": null,
@@ -273,16 +273,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4322340f5706db1fae69062d84d505b4",
+    "cacheID": "33f94e64e81fad1c52037635b69a11d4",
     "id": null,
     "metadata": {},
-    "name": "DebugGroupStoriesQuery",
+    "name": "FlagsQuery",
     "operationKind": "query",
-    "text": "query DebugGroupStoriesQuery {\n  ...DebugGroupFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DebugExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  rating\n  ratingComment\n  rated\n  flagIsProcessed\n  flagComment\n  ...ExpressionFragment\n}\n\nfragment DebugGroupFragment on Query {\n  expressions(first: 100, rating_Lte: 4) {\n    edges {\n      node {\n        ...DebugExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
+    "text": "query FlagsQuery {\n  ...DebugGroupFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DebugExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  rating\n  ratingComment\n  rated\n  flagIsProcessed\n  flagComment\n  ...ExpressionFragment\n}\n\nfragment DebugGroupFragment on Query {\n  expressions(first: 100, rating_Lte: 4) {\n    edges {\n      node {\n        ...DebugExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
   }
 };
 })();
 
-(node as any).hash = "82b195c4097eef837f561984980d1224";
+(node as any).hash = "995a58e909950c2b3f32d24b95430340";
 
 export default node;

@@ -7,14 +7,17 @@ export const SLUG_PARAM = ':slug([0-9a-z_-]{0,14})'
 
 export default getPaths(
   '/d', {
-    HOME                    :'/',
-    HOME2                   :'/home',
-    PROFILE                 :'/profile',
-    NEW_BOARD               :'/new-board',
-    HELP                    :'/help',
+    HOME     :'/',
+    HOME2    :'/home',
+    PROFILE  :'/profile',
+    NEW_BOARD:'/new-board',
+    HELP     :'/help',
+
     BOARD_HOME              :`/${BOARD_PARAM}`,
     BOARD_HOME2             :`/${BOARD_PARAM}/home`,
     BOARD_EXPRESSION_DETAILS:`/${BOARD_PARAM}/${EXPRESSION_PARAM}/${SLUG_PARAM}`,
+    FLAGS                   :'/flags',
+    FLAGS_EXPRESSION_DETAILS:`/flags/${EXPRESSION_PARAM}`,
     BOARD_SETTINGS          :`/${BOARD_PARAM}/settings`,
   },
 )

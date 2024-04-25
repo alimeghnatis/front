@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f40034ef7817deb83a4ccd5fbafeb0f0>>
+ * @generated SignedSource<<25496b13fe8e30903d52bb3f1fec7bc9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,20 +12,15 @@ import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type UpdateUserMutationInput = {
   clientMutationId?: string | null | undefined;
-  dateJoined?: any | null | undefined;
   email?: string | null | undefined;
   firstName?: string | null | undefined;
-  groups?: string | null | undefined;
   id?: string | null | undefined;
   isActive?: boolean | null | undefined;
   isStaff?: boolean | null | undefined;
   isSuperuser?: boolean | null | undefined;
-  lastLogin?: any | null | undefined;
   lastName?: string | null | undefined;
-  password: string;
   profilePicture?: string | null | undefined;
-  userPermissions?: string | null | undefined;
-  username: string;
+  username?: string | null | undefined;
 };
 export type ViewerUpdateFormUpdateMutation$variables = {
   input: UpdateUserMutationInput;

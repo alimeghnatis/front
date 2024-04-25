@@ -47,6 +47,15 @@ export const internalRoutes = [
   },
   {
     path:[
+      paths.absolute.FLAGS,
+      paths.absolute.FLAGS_EXPRESSION_DETAILS,
+    ],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Flags.js')),
+    exact    :true,
+    isPrivate:true,
+  },
+  {
+    path:[
       paths.absolute.BOARD_HOME,
       paths.absolute.BOARD_HOME2,
       paths.absolute.BOARD_EXPRESSION_DETAILS,

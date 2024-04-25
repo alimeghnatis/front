@@ -89,6 +89,16 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
             }
           }) || [],
         },
+        isSuperuser && {
+          label         :'*super',
+          displayItemsAs:'group',
+          items         :[
+            {
+              label:'Flags',
+              url  :paths.generatePath('FLAGS'),
+            },
+          ],
+        },
         {
           label:'Profile',
           url  :paths.generatePath('PROFILE'),

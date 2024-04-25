@@ -18,6 +18,12 @@ type Query {
     after: String
     first: Int
     last: Int
+    name: String
+    name_Icontains: String
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
   ): BoardNodeConnection
   boardMembership(
     """The ID of the object"""
@@ -37,6 +43,12 @@ type Query {
     after: String
     first: Int
     last: Int
+    board: ID
+    user: ID
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
   ): BoardMembershipNodeConnection
   group(
     """The ID of the object"""
@@ -56,6 +68,10 @@ type Query {
     after: String
     first: Int
     last: Int
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
   ): GroupNodeConnection
   expression(
     """The ID of the object"""
@@ -75,6 +91,14 @@ type Query {
     after: String
     first: Int
     last: Int
+    board: ID
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
+    rating: Int
+    rating_Gte: Int
+    rating_Lte: Int
   ): ExpressionNodeConnection
 
   """Search for fruits by label, case-insensitive."""
@@ -139,9 +163,9 @@ type BoardNode implements SearchNode & Node {
   explanationsLanguage: String!
   explanationsLength: String!
   enabledLanguages: JSONString!
-  memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
-  groups(offset: Int, before: String, after: String, first: Int, last: Int): GroupNodeConnection!
-  expressions(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+  memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
 }
 
 interface SearchNode {
@@ -207,7 +231,7 @@ type UserNode implements Node {
   """
   The groups this user belongs to. A user will get all permissions granted to each of their groups.
   """
-  groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): UserGroupNodeConnection!
 
   """Specific permissions for this user."""
   userPermissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
@@ -236,95 +260,38 @@ type UserNode implements Node {
   """The ID of the object"""
   id: ID!
   profilePicture: String
-  boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
-  boards(offset: Int, before: String, after: String, first: Int, last: Int): BoardNodeConnection!
+  boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
+  boards(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardNodeConnection!
   defaultBoard: BoardNode
 }
 
-type GroupNodeConnection {
+type UserGroupNodeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
   """Contains the nodes in this connection."""
-  edges: [GroupNodeEdge]!
+  edges: [UserGroupNodeEdge]!
 }
 
-"""A Relay edge containing a `GroupNode` and its cursor."""
-type GroupNodeEdge {
+"""A Relay edge containing a `UserGroupNode` and its cursor."""
+type UserGroupNodeEdge {
   """The item at the end of the edge"""
-  node: GroupNode
+  node: UserGroupNode
 
   """A cursor for use in pagination"""
   cursor: String!
 }
 
-type GroupNode implements SearchNode & Node {
-  """The date and time at which the object was created."""
-  created: DateTime!
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime!
-
+type UserGroupNode implements Node {
   """The ID of the object"""
   id: ID!
-  board: BoardNode!
-  expressions(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
-}
+  name: String!
+  permissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
 
-type ExpressionNodeConnection {
-  """Pagination data for this connection."""
-  pageInfo: PageInfo!
-
-  """Contains the nodes in this connection."""
-  edges: [ExpressionNodeEdge]!
-}
-
-"""A Relay edge containing a `ExpressionNode` and its cursor."""
-type ExpressionNodeEdge {
-  """The item at the end of the edge"""
-  node: ExpressionNode
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-type ExpressionNode implements SearchNode & Node {
-  """The date and time at which the object was created."""
-  created: DateTime!
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime!
-
-  """The ID of the object"""
-  id: ID!
-  iso6391: String
-  iso6392: String
-  iso6393: String!
-  group: GroupNode!
-  board: BoardNode!
-  content: String!
-  correctedContent: String
-  changes: String
-  category: String!
-  audioUrl: String
-  audioKey: String
-  variant: String
-  generalExplanation: String
-  grammarExplanation: String
-  wordsExplanation: String
-  variantName: String
-  variantFrom: ExpressionNode
-  variantWord: String
-  isProcessed: Boolean!
-  isBookmarked: Boolean!
-  rating: Int
-  ratingComment: String
-  rated: DateTime
-  flagIsProcessed: Boolean
-  flagComment: String
-  retriesGeneration: Int!
-  Order: Int!
-  variants(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
 }
 
 type PermissionNodeConnection {
@@ -349,7 +316,7 @@ type PermissionNode implements Node {
   id: ID!
   name: String!
   codename: String!
-  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
+  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): UserGroupNodeConnection!
 
   """Specific permissions for this user."""
   userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
@@ -422,6 +389,92 @@ Use of this type is *not recommended* as you lose the benefits of having a defin
 schema (one of the key benefits of GraphQL).
 """
 scalar JSONString
+
+type GroupNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupNodeEdge]!
+}
+
+"""A Relay edge containing a `GroupNode` and its cursor."""
+type GroupNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type GroupNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  board: BoardNode!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+}
+
+type ExpressionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ExpressionNodeEdge]!
+}
+
+"""A Relay edge containing a `ExpressionNode` and its cursor."""
+type ExpressionNodeEdge {
+  """The item at the end of the edge"""
+  node: ExpressionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ExpressionNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
+  group: GroupNode!
+  board: BoardNode!
+  content: String!
+  correctedContent: String
+  changes: String
+  category: String!
+  audioUrl: String
+  audioKey: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantFrom: ExpressionNode
+  variantWord: String
+  isProcessed: Boolean!
+  isBookmarked: Boolean!
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int!
+  Order: Int!
+  variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+}
 
 """
 Graphene type representing a fruit with value, label, and optional disabled state.
@@ -732,37 +785,26 @@ type UpdateUserMutationPayload {
 
 input UpdateUserMutationInput {
   id: String
-  password: String!
-  lastLogin: DateTime
-
-  """
-  Designates that this user has all permissions without explicitly assigning them.
-  """
-  isSuperuser: Boolean
-
-  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
-  username: String!
   firstName: String
   lastName: String
   email: String
 
-  """Designates whether the user can log into this admin site."""
-  isStaff: Boolean
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String
+  profilePicture: String
 
   """
   Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
   """
   isActive: Boolean
-  dateJoined: DateTime
-  profilePicture: String
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean
 
   """
-  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  Designates that this user has all permissions without explicitly assigning them.
   """
-  groups: String
-
-  """Specific permissions for this user."""
-  userPermissions: String
+  isSuperuser: Boolean
   clientMutationId: String
 }
 

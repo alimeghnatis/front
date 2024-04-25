@@ -31,7 +31,7 @@ const MUTATION_CREATE_EXPRESSION = graphql`
             connections: $connections
             edgeTypeName: "GroupNodeEdge"
           ) {
-          ...GroupFragment
+          ...DefaultGroupFragment
         }
       }
       errors {

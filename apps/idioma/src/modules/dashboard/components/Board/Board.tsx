@@ -10,7 +10,7 @@ import {
   usePaginationFragment, graphql,
 } from 'react-relay'
 import styleNames from '@aztlan/bem'
-import { Group } from '../Group/index.js'
+import { DefaultGroup } from '../Group/index.js'
 import { AdditionForm } from '../AdditionForm/index.js'
 import { useBoardContext } from './hooks/index.js'
 
@@ -33,7 +33,7 @@ const FRAGMENT = graphql`
       @connection(key: "BoardFragment_groups") {
       edges {
         node {
-          ...GroupFragment
+          ...DefaultGroupFragment
         }
       }
     }
@@ -133,7 +133,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
       <div className="groups container">
         {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
         edges.map((edge) => (
-          <Group
+          <DefaultGroup
             key={edge.node.id}
             data={edge.node}
           />

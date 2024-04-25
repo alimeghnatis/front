@@ -51,7 +51,7 @@ function DebugExpression({
       ].filter((e) => e).join(' ')}
       data={result}
       extras={result.ratingComment}
-      spanExtras="3"
+      spanExtras={3}
       {...otherProps}
     />
   )

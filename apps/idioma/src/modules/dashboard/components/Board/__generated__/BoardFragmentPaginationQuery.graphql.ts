@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0682b104efe9f2b29fdae2c16fa58af7>>
+ * @generated SignedSource<<701b38ffdd0682f2b9abbe8dc1eb8719>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -259,9 +259,10 @@ return {
                                         "alias": null,
                                         "args": null,
                                         "kind": "ScalarField",
-                                        "name": "content",
+                                        "name": "isProcessed",
                                         "storageKey": null
                                       },
+                                      (v7/*: any*/),
                                       (v4/*: any*/),
                                       (v5/*: any*/),
                                       (v6/*: any*/),
@@ -269,15 +270,14 @@ return {
                                         "alias": null,
                                         "args": null,
                                         "kind": "ScalarField",
-                                        "name": "correctedContent",
+                                        "name": "content",
                                         "storageKey": null
                                       },
-                                      (v7/*: any*/),
                                       {
                                         "alias": null,
                                         "args": null,
                                         "kind": "ScalarField",
-                                        "name": "isProcessed",
+                                        "name": "correctedContent",
                                         "storageKey": null
                                       },
                                       {
@@ -353,7 +353,7 @@ return {
                             "args": (v9/*: any*/),
                             "filters": null,
                             "handle": "connection",
-                            "key": "GroupFragment_expressions",
+                            "key": "DefaultGroupFragment_expressions",
                             "kind": "LinkedHandle",
                             "name": "expressions"
                           },
@@ -388,16 +388,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "85ae5168feaba9f1a2b438553d53f45c",
+    "cacheID": "baccd6b767677d13b1808e500eef8304",
     "id": null,
     "metadata": {},
     "name": "BoardFragmentPaginationQuery",
     "operationKind": "query",
-    "text": "query BoardFragmentPaginationQuery(\n  $count: Int = 20\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...BoardFragment_1G22uz\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment_1G22uz on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
+    "text": "query BoardFragmentPaginationQuery(\n  $count: Int = 20\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...BoardFragment_1G22uz\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment_1G22uz on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
   }
 };
 })();
 
-(node as any).hash = "278c8f86a17bede660e2e9a2fd1dad38";
+(node as any).hash = "81e8aefa17ddf8bc9db49691eb7b6183";
 
 export default node;

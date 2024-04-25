@@ -112,7 +112,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
     (rawInput) => {
       const connectionID = ConnectionHandler.getConnectionID(
         groupID,
-        'GroupFragment_expressions',
+        'DefaultGroupFragment_expressions',
       )
       history.push(baseBoardUrl)
       const variantName = rawInput.variantName === 'other'

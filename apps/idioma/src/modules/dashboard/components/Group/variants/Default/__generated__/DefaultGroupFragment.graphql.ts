@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d2d287cffe0b8c8be8ef69b27a23e8ed>>
+ * @generated SignedSource<<ff3f279bbaaadb808ae44e689f036239>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,77 +8,41 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
+import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type BoardFragment$data = {
+export type DefaultGroupFragment$data = {
   readonly created: any;
-  readonly groups: {
+  readonly expressions: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"DefaultGroupFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"DefaultExpressionFragment">;
       } | null | undefined;
     } | null | undefined>;
   };
   readonly id: string;
-  readonly iso6391: string | null | undefined;
-  readonly iso6392: string | null | undefined;
-  readonly iso6393: string;
-  readonly " $fragmentType": "BoardFragment";
+  readonly " $fragmentType": "DefaultGroupFragment";
 };
-export type BoardFragment$key = {
-  readonly " $data"?: BoardFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"BoardFragment">;
+export type DefaultGroupFragment$key = {
+  readonly " $data"?: DefaultGroupFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"DefaultGroupFragment">;
 };
 
-import BoardFragmentPaginationQuery_graphql from './BoardFragmentPaginationQuery.graphql';
-
-const node: ReaderFragment = (function(){
-var v0 = [
-  "groups"
-];
-return {
-  "argumentDefinitions": [
-    {
-      "defaultValue": 20,
-      "kind": "LocalArgument",
-      "name": "count"
-    },
-    {
-      "defaultValue": null,
-      "kind": "LocalArgument",
-      "name": "cursor"
-    }
-  ],
+const node: ReaderFragment = {
+  "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": {
     "connection": [
       {
-        "count": "count",
-        "cursor": "cursor",
+        "count": null,
+        "cursor": null,
         "direction": "forward",
-        "path": (v0/*: any*/)
+        "path": [
+          "expressions"
+        ]
       }
-    ],
-    "refetch": {
-      "connection": {
-        "forward": {
-          "count": "count",
-          "cursor": "cursor"
-        },
-        "backward": null,
-        "path": (v0/*: any*/)
-      },
-      "fragmentPathInResult": [
-        "node"
-      ],
-      "operation": BoardFragmentPaginationQuery_graphql,
-      "identifierInfo": {
-        "identifierField": "id",
-        "identifierQueryVariableName": "id"
-      }
-    }
+    ]
   },
-  "name": "BoardFragment",
+  "name": "DefaultGroupFragment",
   "selections": [
     {
       "alias": null,
@@ -91,42 +55,21 @@ return {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "iso6391",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "iso6392",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "iso6393",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "created",
       "storageKey": null
     },
     {
-      "alias": "groups",
+      "alias": "expressions",
       "args": null,
-      "concreteType": "GroupNodeConnection",
+      "concreteType": "ExpressionNodeConnection",
       "kind": "LinkedField",
-      "name": "__BoardFragment_groups_connection",
+      "name": "__DefaultGroupFragment_expressions_connection",
       "plural": false,
       "selections": [
         {
           "alias": null,
           "args": null,
-          "concreteType": "GroupNodeEdge",
+          "concreteType": "ExpressionNodeEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -134,7 +77,7 @@ return {
             {
               "alias": null,
               "args": null,
-              "concreteType": "GroupNode",
+              "concreteType": "ExpressionNode",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
@@ -142,7 +85,7 @@ return {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "DefaultGroupFragment"
+                  "name": "DefaultExpressionFragment"
                 },
                 {
                   "alias": null,
@@ -193,11 +136,10 @@ return {
       "storageKey": null
     }
   ],
-  "type": "BoardNode",
+  "type": "GroupNode",
   "abstractKey": null
 };
-})();
 
-(node as any).hash = "81e8aefa17ddf8bc9db49691eb7b6183";
+(node as any).hash = "44355fd075f63d87525cf1b2c7dcee70";
 
 export default node;

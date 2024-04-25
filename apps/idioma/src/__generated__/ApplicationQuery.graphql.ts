@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5c4c02a5cf69a8a1ea68d6e8e4dbfdf3>>
+ * @generated SignedSource<<2f8775d44eff650717e9628f7ec01d5f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -414,9 +414,10 @@ return {
                                     "alias": null,
                                     "args": null,
                                     "kind": "ScalarField",
-                                    "name": "content",
+                                    "name": "isProcessed",
                                     "storageKey": null
                                   },
+                                  (v6/*: any*/),
                                   (v13/*: any*/),
                                   (v14/*: any*/),
                                   (v15/*: any*/),
@@ -424,15 +425,14 @@ return {
                                     "alias": null,
                                     "args": null,
                                     "kind": "ScalarField",
-                                    "name": "correctedContent",
+                                    "name": "content",
                                     "storageKey": null
                                   },
-                                  (v6/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
                                     "kind": "ScalarField",
-                                    "name": "isProcessed",
+                                    "name": "correctedContent",
                                     "storageKey": null
                                   },
                                   {
@@ -508,7 +508,7 @@ return {
                         "args": (v8/*: any*/),
                         "filters": null,
                         "handle": "connection",
-                        "key": "GroupFragment_expressions",
+                        "key": "DefaultGroupFragment_expressions",
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
@@ -586,12 +586,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d18cec79e2dc6489dce9a6a0247eec7c",
+    "cacheID": "87e2d9c0cce9d5b00e074992f63c7e30",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...MainLayerBoardProviderFragment_3dXtFF\n  ...LoginButtonFragment_2Xypug\n  time\n  ...LoginButtonViewerFragment\n  ...HomeLoginButtonFragment_2Xypug\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...ViewerUpdateFormFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  ...useBoardMembershipsFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...GroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  explanationsLength\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment GroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...ExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment HomeLoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonViewerFragment on Query {\n  viewer {\n    id\n  }\n}\n\nfragment MainLayerBoardProviderFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...ExpressionVariantBoardFragment\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n}\n\nfragment useBoardMembershipsFragment on UserNode {\n  boardMemberships(first: 50) {\n    edges {\n      node {\n        id\n        role\n        board {\n          id\n          name\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...MainLayerBoardProviderFragment_3dXtFF\n  ...LoginButtonFragment_2Xypug\n  time\n  ...LoginButtonViewerFragment\n  ...HomeLoginButtonFragment_2Xypug\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...ViewerUpdateFormFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  ...useBoardMembershipsFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  explanationsLanguage\n  explanationsLength\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment ExpressionDetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...ExpressionDetailsFragment\n  ...ExpressionVariantFragment\n}\n\nfragment ExpressionVariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment ExpressionVariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment HomeLoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonViewerFragment on Query {\n  viewer {\n    id\n  }\n}\n\nfragment MainLayerBoardProviderFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...ExpressionVariantBoardFragment\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n}\n\nfragment useBoardMembershipsFragment on UserNode {\n  boardMemberships(first: 50) {\n    edges {\n      node {\n        id\n        role\n        board {\n          id\n          name\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

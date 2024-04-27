@@ -72,6 +72,7 @@ const relay = {
             created         :'2021-09-01T00:00:00Z',
             content         :'Sample Expression',
             correctedContent:'Sample Expression',
+            isBookmarked    :false,
           },
         },
         {
@@ -81,6 +82,7 @@ const relay = {
             created         :'2021-09-02T00:00:00Z',
             content         :'Roses are red, violets are blue',
             correctedContent:'Roses are red, violets are blue',
+            isBookmarked    :true,
           },
         },
         {
@@ -90,6 +92,7 @@ const relay = {
             created         :'2021-09-03T00:00:00Z',
             content         :'I am a sample expression, you know?',
             correctedContent:'I am a sample expression, you know?',
+            isBookmarked    :false,
           },
         },
       ],

@@ -73,9 +73,6 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
-  console.log(
-    'Bresult', result,
-  )
 
   const [
     commit,

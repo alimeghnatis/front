@@ -7,6 +7,8 @@ export default {
   grammarExplanation:'Loading',
   generalExplanation:'Loading',
   wordsExplanation  :'Loading',
+  rating            :null,
+  ratingComment     :null,
   isBookmarked      :false,
   audioUrl          :'',
   changes           :'Loading',

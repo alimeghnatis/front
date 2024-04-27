@@ -53,7 +53,7 @@ function DefaultExpression({
       result.created,
     ],
   )
-
+  /*
   useEffect(
     () => {
       let intervalId: NodeJS.Timeout | undefined // Initialize intervalId as undefined
@@ -81,7 +81,7 @@ function DefaultExpression({
       result.iso6392,
       result.isProcessed,
     ],
-  )
+  ) */
 
   const isNew = useMemo(
     () => isRecentAndUnprocessed, [],

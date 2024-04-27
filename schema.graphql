@@ -457,6 +457,7 @@ type ExpressionNode implements SearchNode & Node {
   category: String!
   audioUrl: String
   audioKey: String
+  voiceId: String
   variant: String
   generalExplanation: String
   grammarExplanation: String
@@ -646,6 +647,7 @@ input CreateExpressionMutationInput {
   category: String
   audioUrl: String
   audioKey: String
+  voiceId: String
   variant: String
   generalExplanation: String
   grammarExplanation: String
@@ -685,6 +687,7 @@ input UpdateExpressionMutationInput {
   category: String
   audioUrl: String
   audioKey: String
+  voiceId: String
   variant: String
   generalExplanation: String
   grammarExplanation: String

@@ -85,12 +85,14 @@ function RatingForm({
   const result = useFragment(
     FRAGMENT, data,
   )
+  const defaultValues = {
+    rating       :String(result.rating),
+    ratingComment:result.ratingComment,
+  }
+
   const methods = useForm({
-    mode         :'onChange',
-    defaultValues:{
-      rating       :String(result.rating),
-      ratingComment:result.ratingComment,
-    },
+    mode:'onChange',
+    defaultValues,
   })
 
   const [
@@ -98,20 +100,28 @@ function RatingForm({
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
 
-  // watch inputs from rhf
-  // on input change commit
+  const fieldNames = [
+    'rating',
+    'ratingComment',
+  ]
+
+  const fieldValues = methods.watch(fieldNames)
+
+  const hasChanged = fieldNames.some((
+    fieldName, index,
+  ) => fieldValues[index] !== defaultValues[fieldName])
 
   const [
     rating,
     ratingComment,
-  ] = methods.watch([
-    'rating',
-    'ratingComment',
-  ])
+  ] = fieldValues
 
   React.useEffect(
     () => {
-      if (rating) {
+      if (hasChanged) {
+        console.log(
+          'rating will be committd', rating, fieldValues,
+        )
         const input = {
           id    :atob(result.id).split(':')[1],
           rating:Number(rating),
@@ -124,6 +134,7 @@ function RatingForm({
     }, [
       rating,
       ratingComment,
+      hasChanged,
     ],
   )
 

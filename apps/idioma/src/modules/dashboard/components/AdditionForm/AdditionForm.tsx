@@ -153,10 +153,14 @@ InferProps<typeof AdditionForm.propTypes>): React.ReactElement {
           },
         },
         optimisticUpdater:(store) => {
-          containerRef.current?.scrollTo({
-            top     :containerRef.current.scrollHeight,
-            behavior:'smooth',
-          })
+          setTimeout(
+            () => {
+              containerRef.current?.scrollTo({
+                top     :containerRef.current.scrollHeight + 30,
+                behavior:'smooth',
+              })
+            }, 0,
+          )
         },
       })
     }, [inputValue],

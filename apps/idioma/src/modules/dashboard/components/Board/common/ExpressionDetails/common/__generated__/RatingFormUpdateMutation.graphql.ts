@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6190feb8d9a2d1bad88a7d1730be0047>>
+ * @generated SignedSource<<59d9aa96dda53df25715a73f0c2a8fff>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -37,6 +37,7 @@ export type UpdateExpressionMutationInput = {
   variantFrom?: string | null | undefined;
   variantName?: string | null | undefined;
   variantWord?: string | null | undefined;
+  voiceId?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
 export type RatingFormUpdateMutation$variables = {

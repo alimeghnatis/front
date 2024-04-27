@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2c940e62160d8d34301934a32e9a76b8>>
+ * @generated SignedSource<<879b184dfacb2e3b148434f01152d58e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -38,6 +38,7 @@ export type CreateExpressionMutationInput = {
   variantFrom?: string | null | undefined;
   variantName?: string | null | undefined;
   variantWord?: string | null | undefined;
+  voiceId?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
 export type AdditionFormCreateExpressionMutation$variables = {

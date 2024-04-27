@@ -93,6 +93,7 @@ function Login() {
   )
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
+  const location = useLocation() ///
   if (!viewerData?.id) {
     return (
       <Template title="Login">
@@ -108,6 +109,7 @@ function Login() {
     <Template title="Login">
       <p>
         You are already logged in.
+        {location.state.reason}
         <Link to={defaultRedirectionAfterLogin}>Login</Link>
       </p>
     </Template>

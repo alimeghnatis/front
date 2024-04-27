@@ -78,19 +78,6 @@ function Login() {
   const {
     data, defaultRedirectionAfterLogin,
   } = useApplicationContext()
-  const result = useFragment(
-    graphql`
-      fragment LoginButtonViewerFragment on Query {
-        viewer {
-          id
-        }
-      }
-    `,
-    data,
-  )
-  console.log(
-    'result', result,
-  )
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
   if (!viewerData?.id) {

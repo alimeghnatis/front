@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b39c3c064b0be17028896ef6b40d068a>>
+ * @generated SignedSource<<5a594eb59e7d2762d1212f5b1474f730>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -37,6 +37,7 @@ export type UpdateExpressionMutationInput = {
   variantFrom?: string | null | undefined;
   variantName?: string | null | undefined;
   variantWord?: string | null | undefined;
+  voiceId?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
 export type BookmarkButtonMutation$variables = {

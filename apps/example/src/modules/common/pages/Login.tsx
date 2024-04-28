@@ -39,13 +39,13 @@ const FRAGMENT = graphql`
 `
 
 function RawLogin({
-  FRAGMENT,
   data,
   resource,
+  initialResource,
 }: {
-  FRAGMENT:any;
   data    :any;
   resource:string;
+  initialResource:string;
 }) {
   const location = useLocation()
 
@@ -61,6 +61,8 @@ function RawLogin({
       <LoginButton
         FRAGMENT={FRAGMENT}
         data={data}
+        resource={resource}
+        initialResource={initialResource}
       />
 
       <p>{formatMessage(m.login)}</p>
@@ -77,30 +79,17 @@ export { RawLogin }
 function Login() {
   const {
     data, defaultRedirectionAfterLogin,
+    queryVariables: { loginRequestedResource: initialResource },
   } = useApplicationContext()
-  const result = useFragment(
-    graphql`
-      fragment LoginButtonViewerFragment on Query {
-        viewer {
-          id
-        }
-      }
-    `,
-    data,
-  )
-  console.log(
-    'result', result,
-  )
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
-  const location = useLocation() ///
   if (!viewerData?.id) {
     return (
       <Template title="Login">
         <RawLogin
-          FRAGMENT={FRAGMENT}
           data={data}
           resource={resource}
+          initialResource={ initialResource }
         />
       </Template>
     )
@@ -109,7 +98,6 @@ function Login() {
     <Template title="Login">
       <p>
         You are already logged in.
-        {location.state.reason}
         <Link to={defaultRedirectionAfterLogin}>Login</Link>
       </p>
     </Template>

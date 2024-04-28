@@ -36,7 +36,8 @@ const m = defineMessages({
 
 const FRAGMENT = graphql`
   fragment HomeLoginButtonFragment on Query
-    @argumentDefinitions(resource: { type: "String!" }) {
+    @argumentDefinitions(resource: { type: "String!" })
+    @refetchable(queryName: "HomeLoginButtonFragmentRefetchQuery") {
     oAuth2Links(resource: $resource) {
       google
     }
@@ -44,7 +45,7 @@ const FRAGMENT = graphql`
 `
 
 function RawHome({
-  resource, data,
+  resource, data, initialResource,
 }) {
   const { formatMessage } = useIntl()
 
@@ -60,10 +61,14 @@ function RawHome({
         </p>
         )}
         <p>{formatMessage(m.welcome)}</p>
-        <LoginButton
-          FRAGMENT={FRAGMENT}
-          data={data}
-        />
+        <React.Suspense fallback="Loading link...">
+          <LoginButton
+            FRAGMENT={FRAGMENT}
+            data={data}
+            resource={resource}
+            initialResource={initialResource}
+          />
+        </React.Suspense>
       </div>
       <p>
         {formatMessage(
@@ -82,7 +87,9 @@ RawHome.propTypes = {
 function Home() {
   const { formatMessage } = useIntl()
   const {
-    data, defaultRedirectionAfterLogin,
+    data,
+    defaultRedirectionAfterLogin,
+    queryVariables: { loginRequestedResource: initialResource },
   } = useApplicationContext()
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
@@ -91,6 +98,7 @@ function Home() {
       <Template title={formatMessage(m.title)}>
         <RawHome
           resource={resource}
+          initialResource={initialResource}
           data={data}
         />
       </Template>

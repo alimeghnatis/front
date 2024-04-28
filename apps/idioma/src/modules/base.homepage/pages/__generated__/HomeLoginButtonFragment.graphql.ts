@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<aa1ef9c9ae7483846ba96ca26478311d>>
+ * @generated SignedSource<<d440c27f35fde0d4967790a543e20580>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,7 +8,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type HomeLoginButtonFragment$data = {
   readonly oAuth2Links: {
@@ -21,6 +21,8 @@ export type HomeLoginButtonFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"HomeLoginButtonFragment">;
 };
 
+import HomeLoginButtonFragmentRefetchQuery_graphql from './HomeLoginButtonFragmentRefetchQuery.graphql';
+
 const node: ReaderFragment = {
   "argumentDefinitions": [
     {
@@ -30,7 +32,13 @@ const node: ReaderFragment = {
     }
   ],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "refetch": {
+      "connection": null,
+      "fragmentPathInResult": [],
+      "operation": HomeLoginButtonFragmentRefetchQuery_graphql
+    }
+  },
   "name": "HomeLoginButtonFragment",
   "selections": [
     {
@@ -62,6 +70,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "c3c0b3f372ac544ac6d0c5843066443f";
+(node as any).hash = "ebe49853a25785ac05dda3c2d748565d";
 
 export default node;

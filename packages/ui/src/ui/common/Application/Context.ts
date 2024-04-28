@@ -16,6 +16,7 @@ ReturnType<typeof useTheme> & {
   data                        :any,
   matchRoute                  :(path: string) => any;
   matchParams                 :Record<string, string>;
+  queryVariables              :Record<string, any>;
 }
 
 export default React.createContext<Partial<ContextType>>({})

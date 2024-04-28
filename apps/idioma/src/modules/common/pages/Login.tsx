@@ -31,7 +31,8 @@ const m = defineMessages({
 
 const FRAGMENT = graphql`
   fragment LoginButtonFragment on Query
-    @argumentDefinitions(resource: { type: "String!" }) {
+    @argumentDefinitions(resource: { type: "String!" })
+    @refetchable(queryName: "LoginButtonFragmentRefetchQuery") {
     oAuth2Links(resource: $resource) {
       google
     }
@@ -39,17 +40,18 @@ const FRAGMENT = graphql`
 `
 
 function RawLogin({
-  FRAGMENT,
   data,
   resource,
+  initialResource,
 }: {
-  FRAGMENT:any;
-  data    :any;
-  resource:string;
+  data           :any;
+  resource       :string;
+  initialResource:string;
 }) {
   const location = useLocation()
 
   const { formatMessage } = useIntl()
+
   return (
     <div className="container">
       {location.state?.reason && (
@@ -58,10 +60,14 @@ function RawLogin({
         {location.state.reason}
       </p>
       )}
-      <LoginButton
-        FRAGMENT={FRAGMENT}
-        data={data}
-      />
+      <React.Suspense fallback="Loading link...">
+        <LoginButton
+          FRAGMENT={FRAGMENT}
+          data={data}
+          resource={resource}
+          initialResource={initialResource}
+        />
+      </React.Suspense>
 
       <p>{formatMessage(m.login)}</p>
       <p>
@@ -76,7 +82,9 @@ export { RawLogin }
 
 function Login() {
   const {
-    data, defaultRedirectionAfterLogin,
+    data,
+    defaultRedirectionAfterLogin,
+    queryVariables: { loginRequestedResource: initialResource },
   } = useApplicationContext()
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
@@ -84,9 +92,9 @@ function Login() {
     return (
       <Template title="Login">
         <RawLogin
-          FRAGMENT={FRAGMENT}
           data={data}
           resource={resource}
+          initialResource={initialResource}
         />
       </Template>
     )

@@ -58,8 +58,6 @@ function Provider({
     route,
   } = matchResult || {}
 
-  const [matchParams] = useState(match?.params)
-
   const resource = useResource(
     hostname, {
       redirectLocallyAfterLogin,
@@ -67,13 +65,22 @@ function Provider({
     },
   )
 
-  const data = useLazyLoadQuery(
-    QUERY_APPLICATION, {
+  const matchParams = match?.params || {}
+
+  const queryVariables = useMemo(
+    () => ({
       loginRequestedResource:resource,
       // ...params,
-      ...matchParams,
+      ...match?.params,
       ...applicationQueryVariables,
-    }, {
+    }),
+    [],
+  )
+
+  const data = useLazyLoadQuery(
+    QUERY_APPLICATION,
+    queryVariables,
+    {
       fetchPolicy:'store-and-network',
       ...fetchOptions,
     },
@@ -91,6 +98,7 @@ function Provider({
       data,
       matchRoute,
       matchParams,
+      queryVariables,
       resource,
       redirectLocallyAfterLogin,
       defaultRedirectionAfterLogin,
@@ -102,6 +110,7 @@ function Provider({
       data,
       matchRoute,
       matchParams,
+      queryVariables,
       resource,
       redirectLocallyAfterLogin,
       defaultRedirectionAfterLogin,

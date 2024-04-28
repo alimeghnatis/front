@@ -15,7 +15,8 @@ export default meta
 
 const FRAGMENT = graphql`
   fragment LoginButtonFragment on Query
-    @argumentDefinitions(resource: { type: "String!" }) {
+    @argumentDefinitions(resource: { type: "String!" })
+    @refetchable(queryName: "LoginButtonFragmentRefetchQuery") {
     oAuth2Links(resource: $resource) {
       google
     }
@@ -45,6 +46,10 @@ const relayConfig = {
 }
 
 export const Default: StoryObj<typeof Component> = {
-  args      :{ FRAGMENT },
+  args:{
+    FRAGMENT,
+    resource       :'http://localhost.com',
+    initialResource:'http://localhost.com',
+  },
   parameters:{ relay: relayConfig },
 }

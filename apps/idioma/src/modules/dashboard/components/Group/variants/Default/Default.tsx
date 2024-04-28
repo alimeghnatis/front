@@ -84,4 +84,4 @@ DefaultGroup.propTypes = {
   data:PropTypes.any,
 }
 
-export default DefaultGroup
+export default React.memo(DefaultGroup)

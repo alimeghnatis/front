@@ -77,7 +77,10 @@
     "src": "./src",
     "schema": "./schema.graphql",
     "language": "typescript",
-    "eagerEsModules": true
+    "eagerEsModules": true,
+    "schemaExtensions": [
+      "./src/relay/extensions"
+    ]
   },
   "babel": {
     "presets": [

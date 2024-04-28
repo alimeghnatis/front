@@ -13,4 +13,5 @@ export default {
   audioUrl          :'',
   changes           :'Loading',
   isProcessed       :false,
+  isNew             :true,
 }

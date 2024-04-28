@@ -23,6 +23,7 @@ const FRAGMENT = graphql`
     iso6391
     iso6392
     iso6393
+    isNew
     ...ExpressionFragment
   }
 `
@@ -49,21 +50,23 @@ function DefaultExpression({
       result.isProcessed, result.created,
     ),
     [
+      result.iso6392,
       result.isProcessed,
       result.created,
     ],
   )
-  /*
+
+  console.log(
+    'result', atob(result.id), result.isNew,
+  )
+
   useEffect(
     () => {
-      let intervalId: NodeJS.Timeout | undefined // Initialize intervalId as undefined
+      let intervalId: NodeJS.Timeout | undefined
 
-      // iso equality is a proxy for loaded but not processed
-      const loadedAndUnprocessedProxy = result.iso6392 !== '***'
-      if (isRecentAndUnprocessed && loadedAndUnprocessedProxy) {
+      if (isRecentAndUnprocessed && !result.isNew) {
         intervalId = setInterval(
           () => {
-            // console.log('Refetching data...')
             refetch(
               {}, { fetchPolicy: 'store-and-network' },
             )
@@ -71,20 +74,16 @@ function DefaultExpression({
         )
       }
 
-      // Cleanup function that will clear the interval if 'result.isProcessed' is true
       return () => {
-        clearInterval(intervalId)
+        if (intervalId) {
+          clearInterval(intervalId)
+        }
       }
     }, [
       isRecentAndUnprocessed,
       refetch,
-      result.iso6392,
-      result.isProcessed,
+      result.isNew,
     ],
-  ) */
-
-  const isNew = useMemo(
-    () => isRecentAndUnprocessed, [],
   )
 
   return (
@@ -92,11 +91,12 @@ function DefaultExpression({
       className={[
         componentClassName,
         userClassName,
-        isNew && styleNames.modifierLoading,
+        result.isNew && styleNames.modifierLoading,
       ]
         .filter((e) => e)
         .join(' ')}
       data={result}
+      // style={{ background: result.isProcessed ? 'inherit' : 'lightcoral' }}
       {...otherProps}
     />
   )
@@ -110,4 +110,4 @@ DefaultExpression.propTypes = {
   data:PropTypes.any,
 }
 
-export default DefaultExpression
+export default React.memo(DefaultExpression)

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<879b184dfacb2e3b148434f01152d58e>>
+ * @generated SignedSource<<1602f9ed8692e3a4f8b4ddcb3f2b4711>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -380,6 +380,18 @@ return {
                               (v17/*: any*/),
                               (v18/*: any*/),
                               (v19/*: any*/),
+                              {
+                                "kind": "ClientExtension",
+                                "selections": [
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "isNew",
+                                    "storageKey": null
+                                  }
+                                ]
+                              },
                               {
                                 "alias": null,
                                 "args": null,

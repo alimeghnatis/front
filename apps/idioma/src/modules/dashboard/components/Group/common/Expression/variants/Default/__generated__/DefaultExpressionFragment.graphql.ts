@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2320405c9e9790512c0d7c86402d6506>>
+ * @generated SignedSource<<12366af168d3c282d89a0535c5d29f32>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type DefaultExpressionFragment$data = {
   readonly created: any;
   readonly id: string;
+  readonly isNew: boolean | null | undefined;
   readonly isProcessed: boolean;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
@@ -91,12 +92,24 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "FragmentSpread",
       "name": "ExpressionFragment"
+    },
+    {
+      "kind": "ClientExtension",
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "isNew",
+          "storageKey": null
+        }
+      ]
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "ce85279931dce850941ba5f3f0cb3333";
+(node as any).hash = "663273a0229e5374af53f71c291240fa";
 
 export default node;

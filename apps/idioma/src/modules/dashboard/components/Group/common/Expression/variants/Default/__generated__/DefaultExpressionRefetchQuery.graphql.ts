@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<52c77cbff96106aa79ff9f27ed93e522>>
+ * @generated SignedSource<<83670636ad19019dfa7b20d0da8f54e6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -200,6 +200,18 @@ return {
                 "kind": "ScalarField",
                 "name": "ratingComment",
                 "storageKey": null
+              },
+              {
+                "kind": "ClientExtension",
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "isNew",
+                    "storageKey": null
+                  }
+                ]
               }
             ],
             "type": "ExpressionNode",
@@ -221,6 +233,6 @@ return {
 };
 })();
 
-(node as any).hash = "ce85279931dce850941ba5f3f0cb3333";
+(node as any).hash = "663273a0229e5374af53f71c291240fa";
 
 export default node;

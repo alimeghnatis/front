@@ -55,6 +55,7 @@ const MUTATION_CREATE_VARIANT = graphql`
           connections: $connections
           edgeTypeName: "ExpressionNodeEdge"
         ) {
+        isNew
         ...ExpressionDetailsFragment
         ...ExpressionFragment
         #variantName
@@ -138,6 +139,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
               id     :btoa(`ExpressionNode:${Math.random()}`),
               iso6393:rawInput.iso6393 || result.iso6393,
               created:new Date().toISOString(),
+              isNew  :true,
               // variantName:variables.tone,
               // variantWord:variables.word,
             },

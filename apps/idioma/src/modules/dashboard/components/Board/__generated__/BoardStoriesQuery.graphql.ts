@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<62e09bd99956c5f10c3464cfed4a7862>>
+ * @generated SignedSource<<0b48a7c8df5a6fd109930a3c0b3d7ae9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -294,6 +294,18 @@ return {
                                     "kind": "ScalarField",
                                     "name": "ratingComment",
                                     "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ClientExtension",
+                                    "selections": [
+                                      {
+                                        "alias": null,
+                                        "args": null,
+                                        "kind": "ScalarField",
+                                        "name": "isNew",
+                                        "storageKey": null
+                                      }
+                                    ]
                                   },
                                   (v8/*: any*/)
                                 ],

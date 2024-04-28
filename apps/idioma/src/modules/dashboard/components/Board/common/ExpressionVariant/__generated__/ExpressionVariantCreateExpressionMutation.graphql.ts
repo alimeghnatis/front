@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<eae66e70a6bf3bb948d20eec6dc5a57c>>
+ * @generated SignedSource<<1f8225df46ab44142fad2e6b3bb4f1cb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -52,6 +52,7 @@ export type ExpressionVariantCreateExpressionMutation$data = {
       readonly messages: ReadonlyArray<string>;
     } | null | undefined> | null | undefined;
     readonly instance: {
+      readonly isNew: boolean | null | undefined;
       readonly " $fragmentSpreads": FragmentRefs<"ExpressionDetailsFragment" | "ExpressionFragment">;
     } | null | undefined;
   } | null | undefined;
@@ -80,6 +81,18 @@ v2 = [
   }
 ],
 v3 = {
+  "kind": "ClientExtension",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "isNew",
+      "storageKey": null
+    }
+  ]
+},
+v4 = {
   "alias": null,
   "args": null,
   "concreteType": "ErrorType",
@@ -139,11 +152,12 @@ return {
                 "args": null,
                 "kind": "FragmentSpread",
                 "name": "ExpressionFragment"
-              }
+              },
+              (v3/*: any*/)
             ],
             "storageKey": null
           },
-          (v3/*: any*/)
+          (v4/*: any*/)
         ],
         "storageKey": null
       }
@@ -287,7 +301,8 @@ return {
                 "kind": "ScalarField",
                 "name": "isBookmarked",
                 "storageKey": null
-              }
+              },
+              (v3/*: any*/)
             ],
             "storageKey": null
           },
@@ -312,7 +327,7 @@ return {
               }
             ]
           },
-          (v3/*: any*/)
+          (v4/*: any*/)
         ],
         "storageKey": null
       }
@@ -329,6 +344,6 @@ return {
 };
 })();
 
-(node as any).hash = "bf25cf6252cae4f0e188473f14597a24";
+(node as any).hash = "3f9129d828f4fbe8b172aefeac9ed7ce";
 
 export default node;

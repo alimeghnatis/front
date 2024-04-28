@@ -43,8 +43,8 @@ function RawLogin({
   resource,
   initialResource,
 }: {
-  data    :any;
-  resource:string;
+  data           :any;
+  resource       :string;
   initialResource:string;
 }) {
   const location = useLocation()
@@ -78,7 +78,8 @@ export { RawLogin }
 
 function Login() {
   const {
-    data, defaultRedirectionAfterLogin,
+    data,
+    defaultRedirectionAfterLogin,
     queryVariables: { loginRequestedResource: initialResource },
   } = useApplicationContext()
   const { data: viewerData } = useViewer()
@@ -89,7 +90,7 @@ function Login() {
         <RawLogin
           data={data}
           resource={resource}
-          initialResource={ initialResource }
+          initialResource={initialResource}
         />
       </Template>
     )

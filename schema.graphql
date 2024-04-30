@@ -100,6 +100,10 @@ type Query {
     rating_Gte: Int
     rating_Lte: Int
   ): ExpressionNodeConnection
+  thread(
+    """The ID of the object"""
+    id: ID!
+  ): ThreadNode
 
   """Search for fruits by label, case-insensitive."""
   searchFruits(search: String!): [FruitType]
@@ -163,9 +167,13 @@ type BoardNode implements SearchNode & Node {
   explanationsLanguage: String!
   explanationsLength: String!
   enabledLanguages: JSONString!
+  openaiThreadId: String
   memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
   expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+
+  """The thread associated with this board"""
+  thread: ThreadNode
 }
 
 interface SearchNode {
@@ -477,6 +485,63 @@ type ExpressionNode implements SearchNode & Node {
   variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
 }
 
+type ThreadNode implements Node {
+  messages(before: String, after: String, first: Int, last: Int): MessageTypeConnection
+  id: ID!
+  createdAt: DateTime
+  metadata: JSONString
+  object: String
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/pagination.py
+"""
+type MessageTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MessageTypeEdge]!
+}
+
+"""A Relay edge containing a `MessageType` and its cursor."""
+type MessageTypeEdge {
+  """The item at the end of the edge"""
+  node: LanguageMessageType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type LanguageMessageType {
+  content: LanguageContentType
+  id: ID!
+  assistantId: String
+  attachments: JSONString
+  completedAt: DateTime
+  createdAt: DateTime
+  incompleteAt: DateTime
+  incompleteDetails: JSONString
+  metadata: JSONString
+  object: String
+  role: String
+  runId: String
+  status: String
+  threadId: ID
+}
+
+union LanguageContentType = AssistantMessageType | UserMessageType
+
+type AssistantMessageType {
+  content: String
+  suggestions: [String]
+  iso6393: String
+}
+
+type UserMessageType {
+  content: String
+}
+
 """
 Graphene type representing a fruit with value, label, and optional disabled state.
 """
@@ -503,6 +568,8 @@ type OAuth2LinksProvider {
 }
 
 type Mutation {
+  createMessage(input: CreateMessageInput!): CreateMessagePayload
+  createBoardMessage(input: CreateBoardMessageInput!): CreateBoardMessagePayload
   createBoard(input: CreateBoardMutationInput!): CreateBoardMutationPayload
   updateBoard(input: UpdateBoardMutationInput!): UpdateBoardMutationPayload
   deleteBoard(input: DeleteBoardMutationInput!): DeleteBoardMutationPayload
@@ -519,6 +586,66 @@ type Mutation {
   revokeToken(input: RevokeInput!): RevokePayload
   updateUser(input: UpdateUserMutationInput!): UpdateUserMutationPayload
   upload3(input: FileInput!): Upload3Mutation
+}
+
+type CreateMessagePayload {
+  errors: [String]
+  instances: [MessageType]
+  clientMutationId: String
+}
+
+type MessageType {
+  content: [TextContentBlockType]
+  id: ID!
+  assistantId: String
+  attachments: JSONString
+  completedAt: DateTime
+  createdAt: DateTime
+  incompleteAt: DateTime
+  incompleteDetails: JSONString
+  metadata: JSONString
+  object: String
+  role: String
+  runId: String
+  status: String
+  threadId: ID
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/types/beta/threads/text_content_block.py
+"""
+type TextContentBlockType {
+  """Text content of the message."""
+  text: TextType
+
+  """Type of content block, always 'text'."""
+  type: String
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/types/beta/threads/text.py
+"""
+type TextType {
+  """The text value."""
+  value: String
+}
+
+input CreateMessageInput {
+  threadId: ID!
+  content: String!
+  clientMutationId: String
+}
+
+type CreateBoardMessagePayload {
+  errors: [String]
+  instances: [MessageType]
+  clientMutationId: String
+}
+
+input CreateBoardMessageInput {
+  boardId: ID!
+  content: String!
+  clientMutationId: String
 }
 
 type CreateBoardMutationPayload {
@@ -546,6 +673,7 @@ input CreateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
+  openaiThreadId: String
   defaultForUser: String
   clientMutationId: String
 }
@@ -570,6 +698,7 @@ input UpdateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
+  openaiThreadId: String
   defaultForUser: String
   clientMutationId: String
 }

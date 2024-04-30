@@ -2,9 +2,19 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.thread{
+.#{bem.$base}.thread {
+  flex-grow: 1;
+  grid-auto-rows: min-content;
+  overflow: auto;
+  > .#{bem.$base}.thread-message {
+    &.user {
+      grid-column: 2/-1;
+    }
 
+    &.assistant {
+      grid-column: 1/-2;
+    }
+  }
 }
-
 
 

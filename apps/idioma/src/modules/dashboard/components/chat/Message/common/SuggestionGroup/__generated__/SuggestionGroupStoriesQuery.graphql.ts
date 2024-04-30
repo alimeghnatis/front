@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<76e8cf114dfefc65e0c8788643aedb09>>
+ * @generated SignedSource<<a6146e4a237cecffc8d70110c71e26d6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -62,7 +62,7 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "MessageTypeConnection",
+            "concreteType": "LanguageMessageTypeConnection",
             "kind": "LinkedField",
             "name": "messages",
             "plural": false,
@@ -70,7 +70,7 @@ return {
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "MessageTypeEdge",
+                "concreteType": "LanguageMessageTypeEdge",
                 "kind": "LinkedField",
                 "name": "edges",
                 "plural": true,
@@ -100,7 +100,7 @@ return {
                                 "name": "SuggestionGroupFragment"
                               }
                             ],
-                            "type": "AssistantMessageType",
+                            "type": "AssistantLanguageMessageType",
                             "abstractKey": null
                           }
                         ],
@@ -139,7 +139,7 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "MessageTypeConnection",
+            "concreteType": "LanguageMessageTypeConnection",
             "kind": "LinkedField",
             "name": "messages",
             "plural": false,
@@ -147,7 +147,7 @@ return {
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "MessageTypeEdge",
+                "concreteType": "LanguageMessageTypeEdge",
                 "kind": "LinkedField",
                 "name": "edges",
                 "plural": true,
@@ -207,7 +207,7 @@ return {
                                 "storageKey": null
                               }
                             ],
-                            "type": "AssistantMessageType",
+                            "type": "AssistantLanguageMessageType",
                             "abstractKey": null
                           }
                         ],
@@ -230,16 +230,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "6478c06b41ddb7e70035956a42ffba1e",
+    "cacheID": "8883ed63e1d9196b98ab245e5cc97bca",
     "id": null,
     "metadata": {},
     "name": "SuggestionGroupStoriesQuery",
     "operationKind": "query",
-    "text": "query SuggestionGroupStoriesQuery {\n  thread(id: \"1\") {\n    messages {\n      edges {\n        node {\n          content {\n            __typename\n            ... on AssistantMessageType {\n              ...SuggestionGroupFragment\n            }\n          }\n          id\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n"
+    "text": "query SuggestionGroupStoriesQuery {\n  thread(id: \"1\") {\n    messages {\n      edges {\n        node {\n          content {\n            __typename\n            ... on AssistantLanguageMessageType {\n              ...SuggestionGroupFragment\n            }\n          }\n          id\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n"
   }
 };
 })();
 
-(node as any).hash = "2e5f1fba086cea3e37c4e796f45d9dd8";
+(node as any).hash = "7d21a0ca4d997988cab3729609833660";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9407f1a35c1549896fd13f8e97639cea>>
+ * @generated SignedSource<<8c640c1ab64854a7811ab94d60afe83a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,12 +12,12 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type MessageFragment$data = {
   readonly content: {
-    readonly __typename: "AssistantMessageType";
+    readonly __typename: "AssistantLanguageMessageType";
     readonly content: string | null | undefined;
     readonly suggestions: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly " $fragmentSpreads": FragmentRefs<"SuggestionGroupFragment">;
   } | {
-    readonly __typename: "UserMessageType";
+    readonly __typename: "UserLanguageMessageType";
     readonly content: string | null | undefined;
   } | {
     // This will never be '%other', but we need some
@@ -106,7 +106,7 @@ return {
           "selections": [
             (v0/*: any*/)
           ],
-          "type": "UserMessageType",
+          "type": "UserLanguageMessageType",
           "abstractKey": null
         },
         {
@@ -126,7 +126,7 @@ return {
               "name": "SuggestionGroupFragment"
             }
           ],
-          "type": "AssistantMessageType",
+          "type": "AssistantLanguageMessageType",
           "abstractKey": null
         }
       ],
@@ -150,6 +150,6 @@ return {
 };
 })();
 
-(node as any).hash = "9a8f6ecb320bbb54d5fc04106844167b";
+(node as any).hash = "a365adcb7a70de261ad0fbd61aa41c50";
 
 export default node;

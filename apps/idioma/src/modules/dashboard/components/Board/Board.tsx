@@ -10,6 +10,7 @@ import {
   usePaginationFragment, graphql,
 } from 'react-relay'
 import styleNames from '@aztlan/bem'
+import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import { DefaultGroup } from '../Group/index.js'
 import { AdditionForm } from '../AdditionForm/index.js'
 import { useBoardContext } from './hooks/index.js'
@@ -70,6 +71,10 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
   )
 
   const loadMoreRef = useRef<HTMLDivElement>(null)
+
+  useIntersectionObserverLoader(
+    loadMoreRef, loadNext, hasNext, isLoadingNext,
+  )
 
   const { containerRef } = useBoardContext()
 

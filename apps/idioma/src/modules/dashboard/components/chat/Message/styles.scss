@@ -2,9 +2,14 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.message{
+.#{bem.$base}.thread-message {
+  &.user {
+    background: var(--soft-near);
+  }
 
+  &.assistant {
+    background: var(--near);
+  }
 }
-
 
 

@@ -34,13 +34,7 @@ const MUTATION_UPDATE = graphql`
   mutation BoardUpdateFormUpdateMutation($input: UpdateBoardMutationInput!) {
     updateBoard(input: $input) {
       instance {
-        id
-        name
-        isPublic
-        isDefault
-        explanationsLanguage
-        explanationsLength
-        enabledLanguages
+        ...BoardUpdateFormFragment
       }
       errors {
         field

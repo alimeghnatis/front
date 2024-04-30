@@ -5,14 +5,13 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
-import { graphql } from 'react-relay'
-import Component from './CreateForm.js'
+import Component from './ActionsBar.js'
 import decorators from '../../../../../../../decorators.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/chat/Chat/CreateForm',
+  title     :'modules/dashboard/chat/Chat/ActionsBar',
   component :Component,
   decorators:[decorators.components.Relay],
   /*
@@ -30,23 +29,18 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-const relay = {
-  query:graphql`
-    query CreateFormMessageStoriesQuery {
-      board(id: "1") {
-        ...CreateFormFragment
-      }
-    }
-  `,
-  getReferenceEntry:(data) => [
-    'data',
-    data.board,
-  ],
-  variables    :{},
-  mockResolvers:{ BoardNode: () => ({ openaiThreadId: '1' }) },
-}
+export const Base: StoryObj<typeof Component> = { args: { children: 'Sample ActionsBar' } }
 
-export const Base: StoryObj<typeof Component> = {
-  args      :{},
-  parameters:{ relay },
-}
+/*
+export const Base: StoryFn<typeof Component> = () => (
+  <Component>Sample ActionsBar</Component>
+)
+*/
+
+/*
+const Template: StoryFn<typeof Component> = (args) => <ActionsBar {...args} />
+
+export const Base: StoryFn<typeof Component> = Template.bind({})
+Base.args = {
+  children:'Sample Button',
+} */

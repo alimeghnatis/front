@@ -67,7 +67,7 @@ const getRelayParameters = (
         content   :'This is a test.',
       },
     }),
-    AssistantMessageType:() => ({
+    AssistantLanguageMessageType:() => ({
       content    :'Sure, here are a few suggestions for you.',
       suggestions:[
         'Preciso de comprar medicamentos na farmácia.',
@@ -80,25 +80,25 @@ const getRelayParameters = (
       iso6392:'por',
       iso6393:'por',
     }),
-    UserMessageType:() => ({ content: 'Give me vocabulary suggestions to go to the pharmacy.' }),
+    UserLanguageMessageType:() => ({ content: 'Give me vocabulary suggestions to go to the pharmacy.' }),
   },
 })
 
 export const Assistant: StoryObj<typeof Component> = {
   args      :{},
-  parameters:{ relay: getRelayParameters('AssistantMessageType') },
+  parameters:{ relay: getRelayParameters('AssistantLanguageMessageType') },
 }
 
 export const User: StoryObj<typeof Component> = {
   args      :{},
-  parameters:{ relay: getRelayParameters('UserMessageType') },
+  parameters:{ relay: getRelayParameters('UserLanguageMessageType') },
 }
 
 export const AssistantLoading: StoryObj<typeof Component> = {
   args      :{ UNSTABLE_loading: true },
   parameters:{
     relay:getRelayParameters(
-      'AssistantMessageType', true,
+      'AssistantLanguageMessageType', true,
     ),
   },
 }

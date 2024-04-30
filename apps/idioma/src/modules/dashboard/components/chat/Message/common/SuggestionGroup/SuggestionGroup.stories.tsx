@@ -35,7 +35,7 @@ const relay = {
           edges {
             node {
               content {
-                ... on AssistantMessageType {
+                ... on AssistantLanguageMessageType {
                   ...SuggestionGroupFragment
                 }
               }
@@ -51,7 +51,7 @@ const relay = {
   ],
   variables    :{},
   mockResolvers:{
-    AssistantMessageType:() => ({
+    AssistantLanguageMessageType:() => ({
       suggestions:[
         'Preciso de comprar medicamentos na farmácia.',
         'A farmácia está aberta 24 horas por dia.',

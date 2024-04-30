@@ -486,7 +486,7 @@ type ExpressionNode implements SearchNode & Node {
 }
 
 type ThreadNode implements Node {
-  messages(before: String, after: String, first: Int, last: Int): MessageTypeConnection
+  messages(before: String, after: String, first: Int, last: Int): LanguageMessageTypeConnection
   id: ID!
   createdAt: DateTime
   metadata: JSONString
@@ -496,16 +496,16 @@ type ThreadNode implements Node {
 """
 Implements : https://github.com/openai/openai-python/blob/main/src/openai/pagination.py
 """
-type MessageTypeConnection {
+type LanguageMessageTypeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
   """Contains the nodes in this connection."""
-  edges: [MessageTypeEdge]!
+  edges: [LanguageMessageTypeEdge]!
 }
 
-"""A Relay edge containing a `MessageType` and its cursor."""
-type MessageTypeEdge {
+"""A Relay edge containing a `LanguageMessageType` and its cursor."""
+type LanguageMessageTypeEdge {
   """The item at the end of the edge"""
   node: LanguageMessageType
 
@@ -530,9 +530,9 @@ type LanguageMessageType {
   threadId: ID
 }
 
-union LanguageContentType = AssistantMessageType | UserMessageType
+union LanguageContentType = AssistantLanguageMessageType | UserLanguageMessageType
 
-type AssistantMessageType {
+type AssistantLanguageMessageType {
   content: String
   suggestions: [String]
   iso6393: String
@@ -540,7 +540,7 @@ type AssistantMessageType {
   iso6391: String
 }
 
-type UserMessageType {
+type UserLanguageMessageType {
   content: String
 }
 
@@ -640,7 +640,7 @@ input CreateMessageInput {
 
 type CreateBoardMessagePayload {
   errors: [String]
-  instances: [MessageType]
+  instances: [LanguageMessageType]
   clientMutationId: String
 }
 

@@ -2,9 +2,14 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.create-form{
+.#{bem.$base}.create-form {
+  background: red;
+  //bottom: 0;
+  //position: absolute;
+  width: 100%;
 
+  button {
+    align-self: end;
+  }
 }
-
-
 

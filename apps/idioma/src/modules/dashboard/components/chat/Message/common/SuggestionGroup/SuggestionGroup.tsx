@@ -16,7 +16,7 @@ const baseClassName = styleNames.base
 const componentClassName = 'suggestion-group'
 
 const FRAGMENT = graphql`
-  fragment SuggestionGroupFragment on AssistantMessageType {
+  fragment SuggestionGroupFragment on AssistantLanguageMessageType {
     suggestions
     iso6391
     iso6392

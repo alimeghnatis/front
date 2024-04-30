@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<356e79c8d50d6948868971069c5caa9d>>
+ * @generated SignedSource<<6713413a8826d62f9e69e6e1e527306c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,21 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type MessageStoriesQuery$variables = Record<PropertyKey, never>;
-export type MessageStoriesQuery$data = {
+export type ThreadStoriesQuery$variables = Record<PropertyKey, never>;
+export type ThreadStoriesQuery$data = {
   readonly thread: {
-    readonly messages: {
-      readonly edges: ReadonlyArray<{
-        readonly node: {
-          readonly " $fragmentSpreads": FragmentRefs<"MessageFragment">;
-        } | null | undefined;
-      } | null | undefined>;
-    } | null | undefined;
+    readonly " $fragmentSpreads": FragmentRefs<"ThreadFragment">;
   } | null | undefined;
 };
-export type MessageStoriesQuery = {
-  response: MessageStoriesQuery$data;
-  variables: MessageStoriesQuery$variables;
+export type ThreadStoriesQuery = {
+  response: ThreadStoriesQuery$data;
+  variables: ThreadStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -46,6 +40,27 @@ v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
+  "name": "createdAt",
+  "storageKey": null
+},
+v3 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 10
+  }
+],
+v4 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "__typename",
+  "storageKey": null
+},
+v5 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
   "name": "content",
   "storageKey": null
 };
@@ -54,7 +69,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "MessageStoriesQuery",
+    "name": "ThreadStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -65,42 +80,9 @@ return {
         "plural": false,
         "selections": [
           {
-            "alias": null,
             "args": null,
-            "concreteType": "LanguageMessageTypeConnection",
-            "kind": "LinkedField",
-            "name": "messages",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "LanguageMessageTypeEdge",
-                "kind": "LinkedField",
-                "name": "edges",
-                "plural": true,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "LanguageMessageType",
-                    "kind": "LinkedField",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "args": null,
-                        "kind": "FragmentSpread",
-                        "name": "MessageFragment"
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
+            "kind": "FragmentSpread",
+            "name": "ThreadFragment"
           }
         ],
         "storageKey": "thread(id:\"1\")"
@@ -113,7 +95,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "MessageStoriesQuery",
+    "name": "ThreadStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -123,9 +105,11 @@ return {
         "name": "thread",
         "plural": false,
         "selections": [
+          (v1/*: any*/),
+          (v2/*: any*/),
           {
             "alias": null,
-            "args": null,
+            "args": (v3/*: any*/),
             "concreteType": "LanguageMessageTypeConnection",
             "kind": "LinkedField",
             "name": "messages",
@@ -169,13 +153,7 @@ return {
                         "name": "role",
                         "storageKey": null
                       },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "createdAt",
-                        "storageKey": null
-                      },
+                      (v2/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -184,17 +162,11 @@ return {
                         "name": "content",
                         "plural": false,
                         "selections": [
-                          {
-                            "alias": null,
-                            "args": null,
-                            "kind": "ScalarField",
-                            "name": "__typename",
-                            "storageKey": null
-                          },
+                          (v4/*: any*/),
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v2/*: any*/)
+                              (v5/*: any*/)
                             ],
                             "type": "UserLanguageMessageType",
                             "abstractKey": null
@@ -202,7 +174,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v2/*: any*/),
+                              (v5/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -249,33 +221,74 @@ return {
                             "storageKey": null
                           }
                         ]
-                      }
+                      },
+                      (v4/*: any*/)
                     ],
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "cursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "kind": "LinkedField",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "endCursor",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "hasNextPage",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "messages(first:10)"
           },
-          (v1/*: any*/)
+          {
+            "alias": null,
+            "args": (v3/*: any*/),
+            "filters": null,
+            "handle": "connection",
+            "key": "ThreadFragment_messages",
+            "kind": "LinkedHandle",
+            "name": "messages"
+          }
         ],
         "storageKey": "thread(id:\"1\")"
       }
     ]
   },
   "params": {
-    "cacheID": "5a466639a1ba0f93d70c3a0a13b4c554",
+    "cacheID": "9fc7c574979b1142b0da6c36d943f51a",
     "id": null,
     "metadata": {},
-    "name": "MessageStoriesQuery",
+    "name": "ThreadStoriesQuery",
     "operationKind": "query",
-    "text": "query MessageStoriesQuery {\n  thread(id: \"1\") {\n    messages {\n      edges {\n        node {\n          ...MessageFragment\n          id\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n"
+    "text": "query ThreadStoriesQuery {\n  thread(id: \"1\") {\n    ...ThreadFragment\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(first: 10) {\n    edges {\n      node {\n        ...MessageFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "1fb128be013832046fa915a7a8937c23";
+(node as any).hash = "aeff5cf53b5ccb5ae461b154b8b01ab7";
 
 export default node;

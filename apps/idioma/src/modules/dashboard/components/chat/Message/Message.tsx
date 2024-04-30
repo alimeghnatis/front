@@ -12,7 +12,7 @@ import styleNames from '@aztlan/bem'
 import { SuggestionGroup } from './common/index.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'message'
+const componentClassName = 'thread-message'
 
 const FRAGMENT = graphql`
   fragment MessageFragment on LanguageMessageType {
@@ -24,10 +24,10 @@ const FRAGMENT = graphql`
     isLoading
     content {
       __typename
-      ... on UserMessageType {
+      ... on UserLanguageMessageType {
         content
       }
-      ... on AssistantMessageType {
+      ... on AssistantLanguageMessageType {
         content
         suggestions
         ...SuggestionGroupFragment
@@ -71,6 +71,7 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'container grid',
+        result.role,
       ]
         .filter((e) => e)
         .join(' ')}
@@ -83,10 +84,11 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
       {!(result.isLoading || UNSTABLE_loading) ? (
         <>
           <div className="container">{result.content.content}</div>
-          {result.role === 'assistant' && result.content.suggestions?.length && (
-            <div className="container">
-              <SuggestionGroup data={result.content} />
-            </div>
+          {result.role === 'assistant'
+            && result.content.suggestions?.length > 0 && (
+              <div className="container">
+                <SuggestionGroup data={result.content} />
+              </div>
           )}
         </>
       ) : (

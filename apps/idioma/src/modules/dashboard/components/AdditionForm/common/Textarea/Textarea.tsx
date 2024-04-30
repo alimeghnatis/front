@@ -21,9 +21,9 @@ function Textarea({
   id,
   className: userClassName,
   style,
-  children,
   value,
   setValue,
+  placeholder = 'Type something...',
 }: // ...otherProps
 
 InferProps<typeof Textarea.propTypes>): React.ReactElement {
@@ -72,12 +72,13 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
       // style={style}
       rows={rows}
       value={value}
-      placeholder="Type something..."
+      placeholder={placeholder}
       onChange={handleChange}
       style={{
         overflow  :'hidden',
         resize    :'none',
         lineHeight:'24px', // Ensure this matches `textareaLineHeight`
+        ...style,
       }}
     />
   )
@@ -93,14 +94,14 @@ Textarea.propTypes = {
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /** The children JSX */
-  children:PropTypes.node,
-
   /** The value of the textarea */
   value:PropTypes.string,
 
   /** The function to set the value of the textarea */
   setValue:PropTypes.func,
+
+  /** The placeholder text */
+  placeholder:PropTypes.string,
 }
 
 export default Textarea

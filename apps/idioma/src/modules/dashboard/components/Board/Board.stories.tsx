@@ -44,20 +44,20 @@ const relay = {
   variables    :{},
   mockResolvers:{
     BoardNode:() => ({
-      id     :'1',
+      id     :btoa('BoardNode:1'),
       created:'2021-09-01T00:00:00Z',
     }),
     GroupNodeConnection:() => ({
       edges:[
         {
           node:{
-            id     :'1',
+            id     :btoa('GroupNode:1'),
             created:'2021-09-01T00:00:00Z',
           },
         },
         {
           node:{
-            id     :'2',
+            id     :btoa('GroupNode:2'),
             created:'2021-09-01T00:00:00Z',
           },
         },
@@ -67,7 +67,7 @@ const relay = {
       edges:[
         {
           node:{
-            id              :'1',
+            id              :btoa('ExpressionNode:1'),
             iso6391         :'es',
             created         :'2021-09-01T00:00:00Z',
             content         :'Sample Expression',
@@ -77,7 +77,7 @@ const relay = {
         },
         {
           node:{
-            id              :'2',
+            id              :btoa('ExpressionNode:2'),
             iso6391         :'en',
             created         :'2021-09-02T00:00:00Z',
             content         :'Roses are red, violets are blue',
@@ -87,7 +87,7 @@ const relay = {
         },
         {
           node:{
-            id              :'3',
+            id              :btoa('ExpressionNode:3'),
             iso6391         :'en',
             created         :'2021-09-03T00:00:00Z',
             content         :'I am a sample expression, you know?',

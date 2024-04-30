@@ -70,7 +70,13 @@ InferProps<typeof Chat.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <ActionsBar />
-      <Thread data={result.thread} />
+      {result.thread ? (
+        <Thread data={result.thread} />
+      ) : (
+        <div style={{ flexGrow: 1 }}>
+          <strong>The chat is not enabled for this board yet.</strong>
+        </div>
+      )}
       <CreateForm data={result} />
     </div>
   )

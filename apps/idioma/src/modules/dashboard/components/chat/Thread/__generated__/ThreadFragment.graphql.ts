@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d96cf22ebc82571a4ae30fe3c744e76c>>
+ * @generated SignedSource<<e1406f8f8ca037e99eef11772fa06d15>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type ThreadFragment$data = {
   readonly messages: {
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly id: string;
         readonly " $fragmentSpreads": FragmentRefs<"MessageFragment">;
       } | null | undefined;
     } | null | undefined>;
@@ -32,11 +33,18 @@ import ThreadFragmentPaginationQuery_graphql from './ThreadFragmentPaginationQue
 const node: ReaderFragment = (function(){
 var v0 = [
   "messages"
-];
+],
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
 return {
   "argumentDefinitions": [
     {
-      "defaultValue": 10,
+      "defaultValue": 4,
       "kind": "LocalArgument",
       "name": "count"
     },
@@ -52,17 +60,17 @@ return {
       {
         "count": "count",
         "cursor": "cursor",
-        "direction": "forward",
+        "direction": "backward",
         "path": (v0/*: any*/)
       }
     ],
     "refetch": {
       "connection": {
-        "forward": {
+        "forward": null,
+        "backward": {
           "count": "count",
           "cursor": "cursor"
         },
-        "backward": null,
         "path": (v0/*: any*/)
       },
       "fragmentPathInResult": [
@@ -77,13 +85,7 @@ return {
   },
   "name": "ThreadFragment",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
+    (v1/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -115,6 +117,7 @@ return {
               "name": "node",
               "plural": false,
               "selections": [
+                (v1/*: any*/),
                 {
                   "args": null,
                   "kind": "FragmentSpread",
@@ -152,14 +155,14 @@ return {
               "alias": null,
               "args": null,
               "kind": "ScalarField",
-              "name": "endCursor",
+              "name": "hasPreviousPage",
               "storageKey": null
             },
             {
               "alias": null,
               "args": null,
               "kind": "ScalarField",
-              "name": "hasNextPage",
+              "name": "startCursor",
               "storageKey": null
             }
           ],
@@ -174,6 +177,6 @@ return {
 };
 })();
 
-(node as any).hash = "f131a3d1b73ea9f15fe0b35aa5780c97";
+(node as any).hash = "6ff3b95fc796186d586c96bbcdb573cf";
 
 export default node;

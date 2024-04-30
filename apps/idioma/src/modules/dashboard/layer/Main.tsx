@@ -32,6 +32,7 @@ const FRAGMENT = graphql`
       ...BoardFragment
       ...BoardUpdateFormFragment
       ...ExpressionVariantBoardFragment
+      ...ChatFragment
       #@arguments(count: $boardGroupCount, cursor: $boardGroupCursor)
     }
   }

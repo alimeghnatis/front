@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 type IntersectionObserverOptions = {
   threshold? :number | number[];
   rootMargin?:string;
+  quantity?  :number;
 }
 
 /**
@@ -17,21 +18,21 @@ type IntersectionObserverOptions = {
  */
 function useIntersectionObserverLoader(
   ref: React.RefObject<Element>,
-  hasNext: boolean,
-  loadNext: (count: number) => void,
-  isLoadingNext: boolean,
+  hasMore: boolean,
+  loadMore: (count: number) => void,
+  isLoadingMore: boolean,
   options: Partial<IntersectionObserverOptions> = {},
 ): void {
   const {
-    threshold = 0, rootMargin = '0px',
+    threshold = 0, rootMargin = '0px', quantity = 15,
   } = options
 
   useEffect(
     () => {
       const observer = new IntersectionObserver(
         (entries) => {
-          if (entries[0].isIntersecting && hasNext && !isLoadingNext) {
-            loadNext(15) // Function to load next items
+          if (entries[0].isIntersecting && hasMore && !isLoadingMore) {
+            loadMore(quantity) // Function to load next items
           }
         },
         {
@@ -51,9 +52,9 @@ function useIntersectionObserverLoader(
       }
     }, [
       ref.current,
-      hasNext,
-      isLoadingNext,
-      loadNext,
+      hasMore,
+      isLoadingMore,
+      loadMore,
     ],
   )
 }

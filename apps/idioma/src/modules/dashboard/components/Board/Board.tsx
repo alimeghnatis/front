@@ -73,7 +73,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
   const loadMoreRef = useRef<HTMLDivElement>(null)
 
   useIntersectionObserverLoader(
-    loadMoreRef, loadNext, hasNext, isLoadingNext,
+    loadMoreRef, hasNext, loadNext, isLoadingNext,
   )
 
   const { containerRef } = useBoardContext()

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7f9cc626726916117e0e523487806d16>>
+ * @generated SignedSource<<1c1c9ca6a3eb5a024f0ebf0089c03e1b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,7 +28,7 @@ export type ThreadFragmentPaginationQuery = {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "defaultValue": 10,
+    "defaultValue": 4,
     "kind": "LocalArgument",
     "name": "count"
   },
@@ -74,12 +74,12 @@ v4 = {
 v5 = [
   {
     "kind": "Variable",
-    "name": "after",
+    "name": "before",
     "variableName": "cursor"
   },
   {
     "kind": "Variable",
-    "name": "first",
+    "name": "last",
     "variableName": "count"
   }
 ],
@@ -289,14 +289,14 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "endCursor",
+                        "name": "hasPreviousPage",
                         "storageKey": null
                       },
                       {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "hasNextPage",
+                        "name": "startCursor",
                         "storageKey": null
                       }
                     ],
@@ -324,16 +324,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "5394e0c4e5ffd647c8f7904058d7447b",
+    "cacheID": "080bd091dd8703557bbbb958badc4854",
     "id": null,
     "metadata": {},
     "name": "ThreadFragmentPaginationQuery",
     "operationKind": "query",
-    "text": "query ThreadFragmentPaginationQuery(\n  $count: Int = 10\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ThreadFragment_1G22uz\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment_1G22uz on ThreadNode {\n  id\n  createdAt\n  messages(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...MessageFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query ThreadFragmentPaginationQuery(\n  $count: Int = 4\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ThreadFragment_1G22uz\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment_1G22uz on ThreadNode {\n  id\n  createdAt\n  messages(last: $count, before: $cursor) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f131a3d1b73ea9f15fe0b35aa5780c97";
+(node as any).hash = "6ff3b95fc796186d586c96bbcdb573cf";
 
 export default node;

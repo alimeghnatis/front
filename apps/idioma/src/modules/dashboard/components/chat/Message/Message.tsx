@@ -53,6 +53,9 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
+  console.log(
+    'MSS', result,
+  )
 
   useInsertionEffect(
     () => {
@@ -60,8 +63,6 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
-
-  console.log(result)
 
   return (
     <div

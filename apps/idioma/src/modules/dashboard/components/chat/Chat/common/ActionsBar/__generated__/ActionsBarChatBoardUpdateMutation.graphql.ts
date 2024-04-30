@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a53e102b1191976b4f336d106c5fcf38>>
+ * @generated SignedSource<<8e2b859924f056555e6c32d44358568e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -101,8 +101,8 @@ v4 = {
 v5 = [
   {
     "kind": "Literal",
-    "name": "first",
-    "value": 10
+    "name": "last",
+    "value": 4
   }
 ],
 v6 = {
@@ -339,21 +339,21 @@ return {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
-                            "name": "endCursor",
+                            "name": "hasPreviousPage",
                             "storageKey": null
                           },
                           {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
-                            "name": "hasNextPage",
+                            "name": "startCursor",
                             "storageKey": null
                           }
                         ],
                         "storageKey": null
                       }
                     ],
-                    "storageKey": "messages(first:10)"
+                    "storageKey": "messages(last:4)"
                   },
                   {
                     "alias": null,
@@ -377,12 +377,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e68683a3023ff409fe54ddba645b39cb",
+    "cacheID": "479eea0df74b01616b31ff91fc25bc06",
     "id": null,
     "metadata": {},
     "name": "ActionsBarChatBoardUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation ActionsBarChatBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...ChatFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(first: 10) {\n    edges {\n      node {\n        ...MessageFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "mutation ActionsBarChatBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...ChatFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

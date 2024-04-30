@@ -32,6 +32,7 @@ const QUERY = graphql`
       ...BoardFragment
       ...BoardUpdateFormFragment
       ...ExpressionVariantBoardFragment
+      ...ChatFragment
     }
   }
 `

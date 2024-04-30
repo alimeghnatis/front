@@ -12,6 +12,7 @@ import {
 import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import styleNames from '@aztlan/bem'
 import { Message } from '../Message/index.js'
+import { useBoardContext } from '../../Board/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'thread'
@@ -20,15 +21,16 @@ const FRAGMENT = graphql`
   fragment ThreadFragment on ThreadNode
     @refetchable(queryName: "ThreadFragmentPaginationQuery")
     @argumentDefinitions(
-      count: { type: "Int", defaultValue: 10 }
+      count: { type: "Int", defaultValue: 4 }
       cursor: { type: "String", defaultValue: null }
     ) {
     id
     createdAt
-    messages(first: $count, after: $cursor)
+    messages(last: $count, before: $cursor)
       @connection(key: "ThreadFragment_messages") {
       edges {
         node {
+          id
           ...MessageFragment
         }
       }
@@ -51,17 +53,23 @@ function Thread({
 InferProps<typeof Thread.propTypes>): React.ReactElement {
   const {
     data: result,
-    loadNext,
-    hasNext,
-    isLoadingNext,
+    loadPrevious,
+    hasPrevious,
+    isLoadingPrevious,
   } = usePaginationFragment(
     FRAGMENT, data,
   )
 
+  const { containerRef } = useBoardContext()
+
   const loadMoreRef = useRef<HTMLDivElement>(null)
 
   useIntersectionObserverLoader(
-    loadMoreRef, loadNext, hasNext, isLoadingNext,
+    loadMoreRef,
+    hasPrevious,
+    loadPrevious,
+    isLoadingPrevious,
+    { quantity: 4 },
   )
 
   useInsertionEffect(
@@ -71,8 +79,6 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
     }, [],
   )
 
-  console.log(result)
-
   return (
     <div
       id={id}
@@ -80,19 +86,40 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'container grid',
+        'container',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
+      ref={containerRef}
       // {...otherProps}
     >
-      {result.messages.edges.map((edge) => (
-        <Message
-          key={edge.node.id}
-          data={edge.node}
+      {result.messages ? (
+        [...result.messages.edges].reverse().map((edge) => (
+          <div className="grid container">
+            <Message
+              key={edge.node.id}
+              data={edge.node}
+            />
+          </div>
+        ))
+      ) : (
+        <div className="container">
+          <strong>There are no messages in this thread.</strong>
+        </div>
+      )}
+      <div
+        // ref={loadMoreRef}
+        id="load-more"
+        className="container"
+      >
+        <div
+          ref={loadMoreRef}
+          className="ref"
         />
-      ))}
+        {isLoadingPrevious && 'Loading.'}
+        {!hasPrevious && 'No more to load'}
+      </div>
     </div>
   )
 }

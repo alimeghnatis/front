@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6713413a8826d62f9e69e6e1e527306c>>
+ * @generated SignedSource<<9d7b846d712c69909a60451e8e422fc2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -46,8 +46,8 @@ v2 = {
 v3 = [
   {
     "kind": "Literal",
-    "name": "first",
-    "value": 10
+    "name": "last",
+    "value": 4
   }
 ],
 v4 = {
@@ -248,21 +248,21 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "endCursor",
+                    "name": "hasPreviousPage",
                     "storageKey": null
                   },
                   {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "hasNextPage",
+                    "name": "startCursor",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               }
             ],
-            "storageKey": "messages(first:10)"
+            "storageKey": "messages(last:4)"
           },
           {
             "alias": null,
@@ -279,12 +279,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9fc7c574979b1142b0da6c36d943f51a",
+    "cacheID": "cbd241f2c5ade9fa1d1295591e98fb4b",
     "id": null,
     "metadata": {},
     "name": "ThreadStoriesQuery",
     "operationKind": "query",
-    "text": "query ThreadStoriesQuery {\n  thread(id: \"1\") {\n    ...ThreadFragment\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(first: 10) {\n    edges {\n      node {\n        ...MessageFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query ThreadStoriesQuery {\n  thread(id: \"1\") {\n    ...ThreadFragment\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

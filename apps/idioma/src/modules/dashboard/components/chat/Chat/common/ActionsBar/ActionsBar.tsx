@@ -58,11 +58,28 @@ InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
   ] = useMutation(MUTATION_UPDATE)
 
   const resetChat = () => {
+    const tempThreadId = btoa(`ThreadNode:${Math.random()}`)
     commit({
       variables:{
         input:{
-          id            :atob(result.id).split(':')[1],
+          id            :boardUUID,
           openaiThreadId:null,
+        },
+      },
+      optimisticResponse:{
+        updateBoard:{
+          instance:{
+            id            :boardID,
+            openaiThreadId:tempThreadId,
+            createdAt     :new Date().toISOString(),
+            messages      :{
+              edges   :[],
+              pageInfo:{
+                endCursor  :null,
+                hasNextPage:false,
+              },
+            },
+          },
         },
       },
     })

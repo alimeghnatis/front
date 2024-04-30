@@ -2,17 +2,36 @@
 
 @use "@aztlan/bem";
 
+$infinite-scroll-offset: 1000px;
+
 .#{bem.$base}.thread {
+  display: flex;
+  flex-direction: column-reverse;
   flex-grow: 1;
+  gap: var(--gap);
   grid-auto-rows: min-content;
   overflow: auto;
-  > .#{bem.$base}.thread-message {
+  .#{bem.$base}.thread-message {
     &.user {
       grid-column: 2/-1;
     }
 
     &.assistant {
       grid-column: 1/-2;
+    }
+  }
+
+  #load-more {
+    position: relative;
+
+    .ref {
+      background: red;
+      bottom: -$infinite-scroll-offset;
+      height: $infinite-scroll-offset;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
     }
   }
 }

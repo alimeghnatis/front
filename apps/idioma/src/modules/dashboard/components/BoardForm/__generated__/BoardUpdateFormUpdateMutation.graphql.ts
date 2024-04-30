@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<111deef0067194503b7f4786b2405caf>>
+ * @generated SignedSource<<a273468596001e9257f894dbe51a6eb5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,7 @@ export type UpdateBoardMutationInput = {
   iso6392?: string | null | undefined;
   iso6393?: string | null | undefined;
   name: string;
+  openaiThreadId?: string | null | undefined;
 };
 export type BoardUpdateFormUpdateMutation$variables = {
   input: UpdateBoardMutationInput;

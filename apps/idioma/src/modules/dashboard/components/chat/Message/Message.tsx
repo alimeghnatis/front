@@ -4,13 +4,37 @@ import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import {
+  useFragment, graphql,
+} from 'react-relay'
 
 import styleNames from '@aztlan/bem'
-
-
+import { SuggestionGroup } from './common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'message'
+
+const FRAGMENT = graphql`
+  fragment MessageFragment on LanguageMessageType {
+    id
+    runId
+    threadId
+    role
+    createdAt
+    isLoading
+    content {
+      __typename
+      ... on UserMessageType {
+        content
+      }
+      ... on AssistantMessageType {
+        content
+        suggestions
+        ...SuggestionGroupFragment
+      }
+    }
+  }
+`
 
 /**
  * description
@@ -19,56 +43,74 @@ const componentClassName = 'message'
  */
 function Message({
   id,
-  className:userClassName,
+  className: userClassName,
   style,
-  children,
-  //...otherProps
+  data,
+  UNSTABLE_loading = false,
+}: // ...otherProps
 
-}: InferProps<typeof Message.propTypes>): React.ReactElement {
-  
+InferProps<typeof Message.propTypes>): React.ReactElement {
+  const result = useFragment(
+    FRAGMENT, data,
+  )
 
-
-  useInsertionEffect(() => {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
-  
-  return(
+  console.log(result)
+
+  return (
     <div
       id={id}
       className={[
-        
         baseClassName,
-        
         componentClassName,
         userClassName,
+        'container grid',
       ]
         .filter((e) => e)
         .join(' ')}
-      style={ style }
-      //{...otherProps}
+      style={style}
+      // {...otherProps}
     >
-      {children}
+      <div className="container">
+        <strong>{result.role}</strong>
+      </div>
+      {!(result.isLoading || UNSTABLE_loading) ? (
+        <>
+          <div className="container">{result.content.content}</div>
+          {result.role === 'assistant' && result.content.suggestions?.length && (
+            <div className="container">
+              <SuggestionGroup data={result.content} />
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="container">Assistant is typing...</div>
+      )}
     </div>
   )
 }
 
-
 Message.propTypes = {
   /** The HTML id for this element */
-  id: PropTypes.string,
-  
+  id:PropTypes.string,
+
   /** The HTML class names for this element */
-  className: PropTypes.string,
-  
+  className:PropTypes.string,
+
   /** The React-written, css properties for this element. */
-  style: PropTypes.objectOf(PropTypes.string),
-  
-  /** The children JSX */
-  children: PropTypes.node,
+  style:PropTypes.objectOf(PropTypes.string),
+
+  /** The data for this element */
+  data:PropTypes.object.isRequired,
+
+  /** UNSTABLE, The loading state for this element. This overrides the relay response for testing, since relay mock resolvers do not allow for client side extensions */
+  UNSTABLE_loading:PropTypes.bool,
 }
 
-
 export default Message
-

@@ -7,8 +7,6 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-
-
 const baseClassName = styleNames.base
 const componentClassName = 'suggestion'
 
@@ -19,56 +17,55 @@ const componentClassName = 'suggestion'
  */
 function Suggestion({
   id,
-  className:userClassName,
+  className: userClassName,
   style,
   children,
-  //...otherProps
+  language,
+}: // ...otherProps
 
-}: InferProps<typeof Suggestion.propTypes>): React.ReactElement {
-  
-
-
-  useInsertionEffect(() => {
+InferProps<typeof Suggestion.propTypes>): React.ReactElement {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
-  
-  return(
+  return (
     <div
       id={id}
       className={[
-        
         baseClassName,
-        
         componentClassName,
         userClassName,
       ]
         .filter((e) => e)
         .join(' ')}
-      style={ style }
-      //{...otherProps}
+      style={style}
+      // {...otherProps}
     >
+      {language}
+      {' | '}
       {children}
     </div>
   )
 }
 
-
 Suggestion.propTypes = {
   /** The HTML id for this element */
-  id: PropTypes.string,
-  
+  id:PropTypes.string,
+
   /** The HTML class names for this element */
-  className: PropTypes.string,
-  
+  className:PropTypes.string,
+
   /** The React-written, css properties for this element. */
-  style: PropTypes.objectOf(PropTypes.string),
-  
+  style:PropTypes.objectOf(PropTypes.string),
+
   /** The children JSX */
-  children: PropTypes.node,
+  children:PropTypes.node.isRequired,
+
+  /** The language of the suggestion */
+  language:PropTypes.string.isRequired,
 }
 
-
 export default Suggestion
-

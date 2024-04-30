@@ -1,15 +1,18 @@
 /* @aztlan/generator-front 3.6.3 */
-//import * as React from 'react'
+// import * as React from 'react'
 
-import { Meta, StoryObj } from "@storybook/react";
-//import { Meta, StoryFn } from '@storybook/react'
-import Component from "./Message.js";
-//import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-//import decorators from "story-utils/decorators.js";
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
+// import { Meta, StoryFn } from '@storybook/react'
+
+import Component from './Message.js'
+// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
+// import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title: "modules/dashboard/chat/Message",
-  component: Component
+  title    :'modules/dashboard/chat/Message',
+  component:Component,
   /*
   decorators: [
     //decorators.app,
@@ -20,27 +23,82 @@ const meta: Meta<typeof Component> = {
   }
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
-  },*/
-};
+  }, */
+}
 
-export default meta;
+export default meta
 
-export const Base: StoryObj<typeof Component> = {
-  args: {
-    children: "Sample Message"
-  }
-};
+const mockResolversAssistant = {}
 
-/*
-export const Base: StoryFn<typeof Component> = () => (
-  <Component>Sample Message</Component>
-)
-*/
+const mockResolversUser = {}
 
-/*
-const Template: StoryFn<typeof Component> = (args) => <Message {...args} />
-                                                     
-export const Base: StoryFn<typeof Component> = Template.bind({})
-Base.args = {
-  children:'Sample Button',
-}*/
+const getRelayParameters = (
+  typename, isLoading = false,
+) => ({
+  query:graphql`
+    query MessageStoriesQuery {
+      thread(id: "1") {
+        messages {
+          edges {
+            node {
+              ...MessageFragment
+            }
+          }
+        }
+      }
+    }
+  `,
+  getReferenceEntry:(data) => [
+    'data',
+    data.thread.messages.edges[0].node,
+  ],
+  variables:{},
+
+  mockResolvers:{
+    LanguageMessageType:() => ({
+      id       :'1',
+      runId    :'1',
+      threadId :'1',
+      role     :typename === 'UserMessageType' ? 'user' : 'assistant',
+      createdAt:'2021-09-08T15:00:00.000Z',
+      isLoading,
+      content  :{
+        __typename:typename,
+        content   :'This is a test.',
+      },
+    }),
+    AssistantMessageType:() => ({
+      content    :'Sure, here are a few suggestions for you.',
+      suggestions:[
+        'Preciso de comprar medicamentos na farmácia.',
+        'A farmácia está aberta 24 horas por dia.',
+        'O farmacêutico recomendou-me este medicamento para a dor.',
+        'Os medicamentos genéricos são mais baratos na farmácia.',
+        'A farmácia está localizada perto do hospital.',
+      ],
+      iso6391:'pt',
+      iso6392:'por',
+      iso6393:'por',
+    }),
+    UserMessageType:() => ({ content: 'Give me vocabulary suggestions to go to the pharmacy.' }),
+  },
+})
+
+export const Assistant: StoryObj<typeof Component> = {
+  args      :{},
+  parameters:{ relay: getRelayParameters('AssistantMessageType') },
+}
+
+export const User: StoryObj<typeof Component> = {
+  args      :{},
+  parameters:{ relay: getRelayParameters('UserMessageType') },
+}
+
+export const AssistantLoading: StoryObj<typeof Component> = {
+  args      :{ UNSTABLE_loading: true },
+  parameters:{
+    relay:getRelayParameters(
+      'AssistantMessageType', true,
+    ),
+  },
+}

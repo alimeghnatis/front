@@ -536,6 +536,8 @@ type AssistantMessageType {
   content: String
   suggestions: [String]
   iso6393: String
+  iso6392: String
+  iso6391: String
 }
 
 type UserMessageType {

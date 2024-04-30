@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<80a92910355ed975dd1f5936417d5836>>
+ * @generated SignedSource<<47ccea08b65024aa694dcfba536211f1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,6 +24,7 @@ export type CreateBoardMutationInput = {
   iso6392?: string | null | undefined;
   iso6393?: string | null | undefined;
   name: string;
+  openaiThreadId?: string | null | undefined;
 };
 export type BoardCreateFormCreateMutation$variables = {
   connections: ReadonlyArray<string>;

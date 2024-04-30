@@ -85,6 +85,13 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
                   ),
                   Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
                 },
+                {
+                  label:'Chat',
+                  url  :paths.generatePath(
+                    'BOARD_CHAT', { board: node.board.id },
+                  ),
+                  // Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
+                },
               ],
             }
           }) || [],

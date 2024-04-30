@@ -67,6 +67,12 @@ export const internalRoutes = [
     isPrivate:true,
     QUERY    :QUERY_BOARD,
   },
+  {
+    path     :[paths.absolute.BOARD_CHAT],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Chat.js')),
+    exact    :true,
+    isPrivate:true,
+  },
 ]
 
 export default [

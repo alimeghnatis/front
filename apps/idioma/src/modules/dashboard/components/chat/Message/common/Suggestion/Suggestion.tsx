@@ -22,6 +22,8 @@ function Suggestion({
   children,
   language,
   selected = false,
+  handleClick,
+  isInFlight,
   ...otherProps
 }: // ...otherProps
 
@@ -53,7 +55,13 @@ InferProps<typeof Suggestion.propTypes>): React.ReactElement {
       </div>
       <div className="content">{children}</div>
       <div className="actions">
-        <button type="button">+</button>
+        <button
+          type="button"
+          onClick={handleClick}
+          disabled={isInFlight}
+        >
+          +
+        </button>
       </div>
     </div>
   )
@@ -77,6 +85,12 @@ Suggestion.propTypes = {
 
   /** Whether the suggestion is selected */
   selected:PropTypes.bool,
+
+  /** The function to call when the suggestion is clicked */
+  handleClick:PropTypes.func.isRequired,
+
+  /** Whether the suggestion is in flight */
+  isInFlight:PropTypes.bool,
 }
 
 export default Suggestion

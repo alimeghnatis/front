@@ -694,7 +694,7 @@ input UpdateBoardMutationInput {
   iso6391: String
   iso6392: String
   iso6393: String
-  name: String!
+  name: String
   isPublic: Boolean
   isDefault: Boolean
   explanationsLanguage: String
@@ -727,8 +727,47 @@ type CreateGroupMutationPayload {
 
 input CreateGroupMutationInput {
   id: String
+  expressions: [CreateExpressionSerializerInput]
   board: String!
   clientMutationId: String
+}
+
+input CreateExpressionSerializerInput {
+  id: String
+  board: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  content: String
+  correctedContent: String
+  changes: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  voiceId: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantWord: String
+  isProcessed: Boolean
+  isBookmarked: Boolean
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int
+  Order: Int
+  group: String
+  variantFrom: String
 }
 
 type UpdateGroupMutationPayload {

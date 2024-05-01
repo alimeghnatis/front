@@ -53,10 +53,6 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
-  console.log(
-    'MSS', result,
-  )
-
   useInsertionEffect(
     () => {
     // @ts-ignore

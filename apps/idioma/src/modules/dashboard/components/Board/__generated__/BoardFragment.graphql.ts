@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d2d287cffe0b8c8be8ef69b27a23e8ed>>
+ * @generated SignedSource<<da445f2245ac394cc2924212227838d5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,6 +23,7 @@ export type BoardFragment$data = {
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
+  readonly newExpressionsCount: number | null | undefined;
   readonly " $fragmentType": "BoardFragment";
 };
 export type BoardFragment$key = {
@@ -191,6 +192,18 @@ return {
         }
       ],
       "storageKey": null
+    },
+    {
+      "kind": "ClientExtension",
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "newExpressionsCount",
+          "storageKey": null
+        }
+      ]
     }
   ],
   "type": "BoardNode",
@@ -198,6 +211,6 @@ return {
 };
 })();
 
-(node as any).hash = "81e8aefa17ddf8bc9db49691eb7b6183";
+(node as any).hash = "b2b555a026dd307da56ee5cf103242c7";
 
 export default node;

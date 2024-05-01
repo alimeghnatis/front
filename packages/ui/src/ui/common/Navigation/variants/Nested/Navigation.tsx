@@ -50,6 +50,7 @@ function NestedNavigation({
     preparedRoot, urlIndex,
   } = useMemo(
     () => prepareNavigationData(rootItem), [rootItem],
+
   )
 
   const location = useLocation()
@@ -67,7 +68,7 @@ function NestedNavigation({
       currentTree :[...initialCurrentTree],
       currentItem :urlIndex[location.pathname] || preparedRoot,
       urlIndex,
-      hoverTree   :[],
+      // hoverTree   :[],
     }), [initialCurrentTree],
   )
 
@@ -75,10 +76,29 @@ function NestedNavigation({
     state,
     dispatch,
   ] = useReducer(
-    reducer, initialStateWithPreparedItems,
+    reducer,
+    {
+      ...initialStateWithPreparedItems,
+      hoverTree:[],
+    },
   )
 
   const history = useHistory()
+
+  const loadNewState = useCallback(
+    (payload) => {
+      dispatch({
+        type:'LOAD_NEW_STATE',
+        payload,
+      })
+    }, [],
+  )
+
+  useEffect(
+    () => {
+      loadNewState(initialStateWithPreparedItems)
+    }, [urlIndex],
+  ) // Proxy for rootItem
 
   const selectUrl = useCallback(
     (u) => {

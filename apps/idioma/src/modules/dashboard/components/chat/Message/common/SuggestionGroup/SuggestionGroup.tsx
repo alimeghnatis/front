@@ -11,12 +11,15 @@ import {
   useFragment,
   useMutation,
   ConnectionHandler,
+  commitLocalUpdate,
+  useRelayEnvironment,
 } from 'react-relay'
 
 import styleNames from '@aztlan/bem'
 
 import { Suggestion } from '../Suggestion/index.js'
 import { useBoardContext } from '../../../../Board/index.js'
+import optimisticExpression from '../../../../optimisticExpression.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'suggestion-group'
@@ -39,6 +42,10 @@ const MUTATION_CREATE_GROUP = graphql`
       instance
         @prependNode(connections: $connections, edgeTypeName: "GroupNodeEdge") {
         ...DefaultGroupFragment
+        board {
+          id
+          newExpressionsCount
+        }
       }
       errors {
         field
@@ -89,8 +96,14 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
   ] = useMutation(MUTATION_CREATE_GROUP)
 
   const {
-    id: boardID, uuid: boardUUID,
+    id: boardID, uuid: boardUUID, data: boardData,
   } = useBoardContext()
+
+  const environment = useRelayEnvironment()
+
+  console.log(
+    'RS', data.newExpressionsCount,
+  )
 
   const createGroupFromSuggestions = useCallback(
     (suggestionsIndexes) => {
@@ -103,6 +116,8 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
       const suggestionsToCommit = result.suggestions.filter((
         suggestion, index,
       ) => suggestionsIndexes.includes(index))
+      const newExpressionsCount = (boardData.newExpressionsCount || Number(0))
+        + suggestionsToCommit.length
       commit({
         variables:{
           input:{
@@ -121,21 +136,42 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
                   suggestion, index,
                 ) => ({
                   node:{
+                    ...optimisticExpression,
                     id              :btoa(`ExpressionNode:${Math.random()}`),
                     created         :tempCreated,
                     content         :suggestion,
                     correctedContent:suggestion,
+                    __typename      :'ExpressionNode',
                   },
                   cursor:index.toString(),
                 })),
+                pageInfo:{
+                  endCursor  :tempID,
+                  hasNextPage:false,
+                },
+              },
+              board:{
+                id:boardID,
+                newExpressionsCount,
               },
             },
             errors:[],
           },
         },
+        updater:(store) => {
+          const boardRecord = store.get(boardID)
+          if (boardRecord) {
+            boardRecord.setValue(
+              newExpressionsCount, 'newExpressionsCount',
+            )
+          } else {
+            console.error('Board record not found')
+          }
+        },
       })
     },
     [
+      boardData.newExpressionsCount,
       result.suggestions,
       result.iso6391,
       result.iso6392,

@@ -11,7 +11,7 @@ const itemShape = {
   url           :PropTypes.string,
   disabled      :PropTypes.bool,
   className     :PropTypes.string,
-  Component     :PropTypes.node,
+  Component     :PropTypes.elementType,
   displayItemsAs:PropTypes.oneOf([
     'nested',
     'group',

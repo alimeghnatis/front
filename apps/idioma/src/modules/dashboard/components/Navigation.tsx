@@ -64,17 +64,24 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
               url  :paths.generatePath(
                 'BOARD_HOME', { board: node.board.id },
               ),
+              key      :node.board.id,
               Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
               items    :[
                 {
                   displayItemsAs:'group',
                   items         :[
                     {
-                      label:'Board',
+                      // label:'Board',
+                      label:`${node.board.name}`,
                       url  :paths.generatePath(
                         'BOARD_HOME2', { board: node.board.id },
                       ),
-                      Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
+                      Component:({ item }) => (
+                        <Link to={item.url}>
+                          {item.label}
+                          {node.board.newExpressionsCount ? ` (${node.board.newExpressionsCount})` : ''}
+                        </Link>
+                      ),
                     },
                   ],
                 },
@@ -83,14 +90,18 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
                   url  :paths.generatePath(
                     'BOARD_SETTINGS', { board: node.board.id },
                   ),
-                  Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
+                  Component:({ item }) => (
+                    <Link to={item.url}>
+                      {item.label}
+                    </Link>
+                  ),
                 },
                 {
                   label:'Chat',
                   url  :paths.generatePath(
                     'BOARD_CHAT', { board: node.board.id },
                   ),
-                  // Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
+                  Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
                 },
               ],
             }
@@ -140,6 +151,13 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
       result,
       result?.edges,
     ],
+  )
+
+  console.log(
+    'nAV', result.edges.map((edge) => [
+      edge.node.board.name,
+      edge.node.board.newExpressionsCount,
+    ]), rootItem.items[2].items[0],
   )
 
   return (

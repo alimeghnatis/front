@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dc09b5cc85e3fb46516c5d935f372bab>>
+ * @generated SignedSource<<f4c8a40f65343ec16768b02bcdc96891>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,7 @@ export type useBoardMembershipsFragment$data = {
         readonly board: {
           readonly id: string;
           readonly name: string;
+          readonly newExpressionsCount: number | null | undefined;
         };
         readonly id: string;
         readonly role: ExpressionsBoardMembershipRoleChoices;
@@ -103,6 +104,18 @@ return {
                       "kind": "ScalarField",
                       "name": "name",
                       "storageKey": null
+                    },
+                    {
+                      "kind": "ClientExtension",
+                      "selections": [
+                        {
+                          "alias": null,
+                          "args": null,
+                          "kind": "ScalarField",
+                          "name": "newExpressionsCount",
+                          "storageKey": null
+                        }
+                      ]
                     }
                   ],
                   "storageKey": null
@@ -161,6 +174,6 @@ return {
 };
 })();
 
-(node as any).hash = "a37bf806722b045a5156788c1cea4578";
+(node as any).hash = "843521a9532d364d921e0eadb13c5468";
 
 export default node;

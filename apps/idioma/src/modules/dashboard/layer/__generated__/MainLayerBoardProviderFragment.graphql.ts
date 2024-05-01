@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<96abfe0358637effbf4c4d4c9ef18963>>
+ * @generated SignedSource<<a21112024a32145b87f8cc13c71d4ff3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,7 @@ export type MainLayerBoardProviderFragment$data = {
     readonly created: any;
     readonly id: string;
     readonly name: string;
+    readonly newExpressionsCount: number | null | undefined;
     readonly updated: any;
     readonly " $fragmentSpreads": FragmentRefs<"BoardFragment" | "BoardUpdateFormFragment" | "ChatFragment" | "ExpressionVariantBoardFragment">;
   } | null | undefined;
@@ -106,6 +107,18 @@ const node: ReaderFragment = {
           "args": null,
           "kind": "FragmentSpread",
           "name": "ChatFragment"
+        },
+        {
+          "kind": "ClientExtension",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "newExpressionsCount",
+              "storageKey": null
+            }
+          ]
         }
       ],
       "storageKey": null
@@ -115,6 +128,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "bc3128c116cb620076fbaa9cc164d172";
+(node as any).hash = "b0f1d7692f1723bbbe9ce88c9805f1f4";
 
 export default node;

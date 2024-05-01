@@ -56,10 +56,6 @@ function DefaultExpression({
     ],
   )
 
-  console.log(
-    'result', atob(result.id), result.isNew,
-  )
-
   useEffect(
     () => {
       let intervalId: NodeJS.Timeout | undefined

@@ -5,7 +5,7 @@ import { useInsertionEffect } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  graphql, useMutation,
+  graphql, useMutation, useFragment,
 } from 'react-relay'
 
 import styleNames from '@aztlan/bem'
@@ -13,6 +13,17 @@ import { useBoardContext } from '../../../../Board/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'actions-bar'
+
+const FRAGMENT = graphql`
+  fragment ActionsBarFragment on ThreadNode {
+    id
+    messages(last: 4, before: null) {
+      edges {
+        cursor
+      }
+    }
+  }
+`
 
 const MUTATION_UPDATE = graphql`
   mutation ActionsBarChatBoardUpdateMutation(
@@ -38,6 +49,7 @@ function ActionsBar({
   id,
   className: userClassName,
   style,
+  data,
 }: // ...otherProps
 
 InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
@@ -46,6 +58,10 @@ InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
     // @ts-ignore
       import('./styles.scss')
     }, [],
+  )
+
+  const result = useFragment(
+    FRAGMENT, data,
   )
 
   const {
@@ -71,15 +87,18 @@ InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
           instance:{
             id            :boardID,
             openaiThreadId:tempThreadId,
-            createdAt     :new Date().toISOString(),
-            messages      :{
-              edges   :[],
-              pageInfo:{
-                endCursor  :null,
-                hasNextPage:false,
+            thread        :{
+              createdAt:new Date().toISOString(),
+              messages :{
+                edges   :[],
+                pageInfo:{
+                  startCursor    :null,
+                  hasPreviousPage:false,
+                },
               },
             },
           },
+          errors:null,
         },
       },
     })
@@ -105,7 +124,7 @@ InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
         <button
           onClick={resetChat}
           type="button"
-          disabled={isInFlight}
+          disabled={isInFlight || !result.messages.edges.length}
         >
           Reset Chat
         </button>

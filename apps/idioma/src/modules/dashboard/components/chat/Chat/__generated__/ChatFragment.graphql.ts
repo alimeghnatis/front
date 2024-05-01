@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a956b98e8f8079b9f8b0cb178d062864>>
+ * @generated SignedSource<<dc799c3f5e0a7883b49b7a6570671e21>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,7 +14,7 @@ export type ChatFragment$data = {
   readonly id: string;
   readonly openaiThreadId: string | null | undefined;
   readonly thread: {
-    readonly " $fragmentSpreads": FragmentRefs<"ThreadFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"ActionsBarFragment" | "ThreadFragment">;
   } | null | undefined;
   readonly " $fragmentSpreads": FragmentRefs<"CreateFormFragment">;
   readonly " $fragmentType": "ChatFragment";
@@ -56,6 +56,11 @@ const node: ReaderFragment = {
           "args": null,
           "kind": "FragmentSpread",
           "name": "ThreadFragment"
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "ActionsBarFragment"
         }
       ],
       "storageKey": null
@@ -70,6 +75,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "e493414ccb11fad8542def7e2f16ca24";
+(node as any).hash = "c3ca9de1013555d1fdba3890fe453327";
 
 export default node;

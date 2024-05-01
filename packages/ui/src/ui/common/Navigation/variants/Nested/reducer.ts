@@ -69,6 +69,13 @@ function reducer(
       }
     }
 
+    case 'LOAD_NEW_STATE': {
+      return {
+        ...state,
+        ...action.payload,
+      }
+    }
+
     case 'LEAVE_MENU': {
       return {
         ...state,

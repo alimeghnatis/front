@@ -22,6 +22,7 @@ const FRAGMENT = graphql`
     openaiThreadId
     thread {
       ...ThreadFragment
+      ...ActionsBarFragment
     }
     ...CreateFormFragment
   }
@@ -51,10 +52,6 @@ InferProps<typeof Chat.propTypes>): React.ReactElement {
     FRAGMENT, data,
   )
 
-  console.log(
-    'result', result, data,
-  )
-
   return (
     <div
       id={id}
@@ -69,7 +66,7 @@ InferProps<typeof Chat.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      <ActionsBar />
+      <ActionsBar data={result.thread} />
       {result.thread ? (
         <Thread data={result.thread} />
       ) : (

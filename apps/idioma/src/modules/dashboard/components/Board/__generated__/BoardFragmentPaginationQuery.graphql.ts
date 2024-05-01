@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<016c218fb6facd4943aaaa1b32db2bad>>
+ * @generated SignedSource<<ba91d8fa1f37e461ae7de42974ae2f41>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -389,6 +389,18 @@ return {
                 "key": "BoardFragment_groups",
                 "kind": "LinkedHandle",
                 "name": "groups"
+              },
+              {
+                "kind": "ClientExtension",
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "newExpressionsCount",
+                    "storageKey": null
+                  }
+                ]
               }
             ],
             "type": "BoardNode",
@@ -410,6 +422,6 @@ return {
 };
 })();
 
-(node as any).hash = "81e8aefa17ddf8bc9db49691eb7b6183";
+(node as any).hash = "b2b555a026dd307da56ee5cf103242c7";
 
 export default node;

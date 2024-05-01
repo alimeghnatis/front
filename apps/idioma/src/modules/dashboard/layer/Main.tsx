@@ -29,6 +29,7 @@ const FRAGMENT = graphql`
       name
       created
       updated
+      newExpressionsCount
       ...BoardFragment
       ...BoardUpdateFormFragment
       ...ExpressionVariantBoardFragment
@@ -99,10 +100,12 @@ function Main({
           />
         </div>
       </NestedNavigation.Canvas>
+      {/*
       <NavigationFooter
         className="background near container"
         content={footer || 'Footer'}
-      />
+        children="d"
+      /> */}
     </InternalWrapper>
   )
 }

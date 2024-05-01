@@ -30,6 +30,7 @@ const FRAGMENT = graphql`
     iso6392
     iso6393
     created
+    newExpressionsCount
     groups(first: $count, after: $cursor)
       @connection(key: "BoardFragment_groups") {
       edges {
@@ -77,6 +78,10 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
   )
 
   const { containerRef } = useBoardContext()
+
+  console.log(
+    'Board result', result,
+  )
 
   useEffect(
     () => {

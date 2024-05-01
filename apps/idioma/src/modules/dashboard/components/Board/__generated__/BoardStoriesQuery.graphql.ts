@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0b48a7c8df5a6fd109930a3c0b3d7ae9>>
+ * @generated SignedSource<<5bf88028afba7dfbddd75c1f5705d673>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -348,6 +348,18 @@ return {
             "key": "BoardFragment_groups",
             "kind": "LinkedHandle",
             "name": "groups"
+          },
+          {
+            "kind": "ClientExtension",
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "newExpressionsCount",
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": "board(id:\"1\")"

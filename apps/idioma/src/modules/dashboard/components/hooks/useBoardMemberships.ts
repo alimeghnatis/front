@@ -14,6 +14,7 @@ const FRAGMENT = graphql`
           board {
             id
             name
+            newExpressionsCount
           }
         }
       }

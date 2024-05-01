@@ -72,6 +72,7 @@ export const internalRoutes = [
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Chat.js')),
     exact    :true,
     isPrivate:true,
+    QUERY    :QUERY_BOARD,
   },
 ]
 

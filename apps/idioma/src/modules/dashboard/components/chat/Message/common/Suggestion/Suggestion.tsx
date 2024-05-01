@@ -21,6 +21,8 @@ function Suggestion({
   style,
   children,
   language,
+  selected = false,
+  ...otherProps
 }: // ...otherProps
 
 InferProps<typeof Suggestion.propTypes>): React.ReactElement {
@@ -38,15 +40,21 @@ InferProps<typeof Suggestion.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        selected && styleNames.modifierSelected,
+        'grid container',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
-      // {...otherProps}
+      {...otherProps}
     >
-      {language}
-      {' | '}
-      {children}
+      <div className="language">
+        <strong>{language}</strong>
+      </div>
+      <div className="content">{children}</div>
+      <div className="actions">
+        <button type="button">+</button>
+      </div>
     </div>
   )
 }
@@ -66,6 +74,9 @@ Suggestion.propTypes = {
 
   /** The language of the suggestion */
   language:PropTypes.string.isRequired,
+
+  /** Whether the suggestion is selected */
+  selected:PropTypes.bool,
 }
 
 export default Suggestion

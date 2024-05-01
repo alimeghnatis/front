@@ -62,18 +62,17 @@ const relay = {
   },
 } */
 
-export const Base: StoryObj<typeof Component> = { args: { children: 'Sample Suggestion' } }
+export const Base: StoryObj<typeof Component> = {
+  args:{
+    children:'This is a test sentence to try the Suggestion component.',
+    language:'en',
+  },
+}
 
-/*
-export const Base: StoryFn<typeof Component> = () => (
-  <Component>Sample Suggestion</Component>
-)
-*/
-
-/*
-const Template: StoryFn<typeof Component> = (args) => <Suggestion {...args} />
-
-export const Base: StoryFn<typeof Component> = Template.bind({})
-Base.args = {
-  children:'Sample Button',
-} */
+export const Selected: StoryObj<typeof Component> = {
+  args:{
+    children:'This is a test sentence to try the Suggestion component.',
+    language:'en',
+    selected:true,
+  },
+}

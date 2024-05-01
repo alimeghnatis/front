@@ -1,6 +1,8 @@
 /* @aztlan/generator-front 3.6.3 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useInsertionEffect, useState, useCallback,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
@@ -48,6 +50,17 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
     FRAGMENT, data,
   )
 
+  const [
+    selected,
+    setSelected,
+  ] = useState([])
+
+  const selectSuggestions = useCallback(
+    (suggestions) => {
+      setSelected(suggestions)
+    }, [],
+  )
+
   return (
     <div
       id={id}
@@ -55,20 +68,39 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        'container grid',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
+      onMouseLeave={() => setSelected([])}
     >
-      {result.suggestions.map((suggestion) => (
+      {result.suggestions.map((
+        suggestion, index,
+      ) => (
         <Suggestion
           key={suggestion}
           language={result.iso6391 || result.iso6392 || result.iso6393}
+          onMouseOver={() => selectSuggestions([index])}
+          selected={selected.includes(index)}
         >
           {suggestion}
         </Suggestion>
       ))}
+      <div className="container actions grid">
+        <div className="content">
+          <p>Add all suggestions to the board</p>
+        </div>
+        <button
+          type="button"
+          onMouseOver={() => selectSuggestions(result.suggestions.map((
+            _, index,
+          ) => index))}
+        >
+          Add
+        </button>
+      </div>
     </div>
   )
 }

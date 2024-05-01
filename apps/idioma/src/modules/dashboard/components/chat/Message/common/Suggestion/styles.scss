@@ -2,9 +2,24 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.suggestion{
+$actions-column-span:1;
 
+.#{bem.$base}.suggestion {
+  &.#{bem.$modifier-selected} {
+    background: lightgreen;
+  }
+
+  > .language {
+    //grid-column: 1/-1;
+  }
+
+  > .content {
+    grid-column: 2/#{- $actions-column-span - 1};
+  }
+
+  > .actions {
+    grid-column: #{- $actions-column-span - 1}/-1;
+  }
 }
-
 
 

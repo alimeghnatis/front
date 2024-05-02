@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<16c375479b9b7ef7534b127360d80737>>
+ * @generated SignedSource<<2fa3575bc194a1aabc2ef4107aaaabb3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,7 @@ export type ExpressionDetailsFragment$data = {
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
+  readonly translation: string | null | undefined;
   readonly wordsExplanation: string | null | undefined;
   readonly " $fragmentSpreads": FragmentRefs<"RatingFormFragment">;
   readonly " $fragmentType": "ExpressionDetailsFragment";
@@ -70,6 +71,13 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "ScalarField",
       "name": "content",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "translation",
       "storageKey": null
     },
     {
@@ -131,6 +139,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "75fe4b62afe902460265310c176be77f";
+(node as any).hash = "1f9153baaa046e033e717c572a8d4cb4";
 
 export default node;

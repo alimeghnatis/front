@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9d7ae673283e9a030a15356c628f3b7a>>
+ * @generated SignedSource<<de2c93a14db4b7eb5901a8a11afb3f95>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type UpdateBoardMutationInput = {
   clientMutationId?: string | null | undefined;
   defaultForUser?: string | null | undefined;
+  displayTranslations?: boolean | null | undefined;
   enabledLanguages?: any | null | undefined;
   explanationsLanguage?: string | null | undefined;
   explanationsLength?: string | null | undefined;
@@ -191,6 +192,13 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
+                "name": "displayTranslations",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
                 "name": "enabledLanguages",
                 "storageKey": null
               }
@@ -204,12 +212,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "467ecf572cc525ecfb88854fe1b30e42",
+    "cacheID": "bb626da1a99368ac6ba14b026837be35",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardUpdateFormUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "mutation BoardUpdateFormUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
   }
 };
 })();

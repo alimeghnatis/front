@@ -30,6 +30,7 @@ const FRAGMENT = graphql`
       created
       updated
       newExpressionsCount
+      displayTranslations
       ...BoardFragment
       ...BoardUpdateFormFragment
       ...ExpressionVariantBoardFragment

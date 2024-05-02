@@ -78,6 +78,18 @@ const useBoardFormFields = (instance) => {
         ],
       },
       {
+        name         :'displayTranslations',
+        type         :'checkbox',
+        label        :'Display Translations',
+        description  :'Whether to display translations in the board in the explanations language selected above. This is not recommended in all learning situations.',
+        registerProps:{
+          required:{
+            value  :false,
+            message:'This field is required',
+          },
+        },
+      },
+      {
         name       :'explanationsLength',
         type       :'select',
         label      :'Explanations Length',

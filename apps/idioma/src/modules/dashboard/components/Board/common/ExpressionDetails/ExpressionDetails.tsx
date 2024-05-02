@@ -26,6 +26,7 @@ const FRAGMENT = graphql`
     iso6392
     iso6393
     content
+    translation
     correctedContent
     grammarExplanation
     generalExplanation
@@ -61,7 +62,9 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
     FRAGMENT, data,
   )
 
-  const { baseBoardUrl } = useBoardContext()
+  const {
+    data: boardData, baseBoardUrl,
+  } = useBoardContext()
 
   const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -74,6 +77,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
   )
 
   const contentMap = [
+    /*
     {
       label  :'Content',
       payload:result.correctedContent || result.content,
@@ -81,6 +85,13 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
     {
       label  :'ISO 639',
       payload:result.iso6391 || result.iso6392 || result.iso6393,
+    },
+    */
+    {
+      condition:boardData?.displayTranslations && result.translation?.length,
+      label    :'Translation',
+      payload  :result.translation,
+      // marked   :true,
     },
     {
       condition:result.generalExplanation,

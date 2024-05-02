@@ -25,6 +25,7 @@ const FRAGMENT = graphql`
     isDefault
     explanationsLanguage
     explanationsLength
+    displayTranslations
     enabledLanguages
     ...DeleteBoardButtonFragment
   }
@@ -81,6 +82,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       explanationsLanguage:result.explanationsLanguage,
       explanationsLength  :result.explanationsLength,
       enabledLanguages    :JSON.parse(result.enabledLanguages),
+      displayTranslations :result.displayTranslations,
     }),
     [result],
   )

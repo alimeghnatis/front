@@ -167,6 +167,7 @@ type BoardNode implements SearchNode & Node {
   explanationsLanguage: String!
   explanationsLength: String!
   enabledLanguages: JSONString!
+  displayTranslations: Boolean!
   openaiThreadId: String
   memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
@@ -461,6 +462,7 @@ type ExpressionNode implements SearchNode & Node {
   board: BoardNode!
   content: String!
   correctedContent: String
+  translation: String
   changes: String
   category: String!
   audioUrl: String
@@ -675,6 +677,7 @@ input CreateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
+  displayTranslations: Boolean
   openaiThreadId: String
   defaultForUser: String
   clientMutationId: String
@@ -700,6 +703,7 @@ input UpdateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
+  displayTranslations: Boolean
   openaiThreadId: String
   defaultForUser: String
   clientMutationId: String
@@ -746,6 +750,7 @@ input CreateExpressionSerializerInput {
   iso6393: String
   content: String
   correctedContent: String
+  translation: String
   changes: String
   category: String
   audioUrl: String
@@ -813,6 +818,7 @@ input CreateExpressionMutationInput {
   iso6393: String
   content: String
   correctedContent: String
+  translation: String
   changes: String
   category: String
   audioUrl: String
@@ -853,6 +859,7 @@ input UpdateExpressionMutationInput {
   iso6393: String
   content: String
   correctedContent: String
+  translation: String
   changes: String
   category: String
   audioUrl: String

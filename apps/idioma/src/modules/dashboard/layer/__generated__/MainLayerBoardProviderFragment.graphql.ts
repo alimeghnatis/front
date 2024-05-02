@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a21112024a32145b87f8cc13c71d4ff3>>
+ * @generated SignedSource<<4f7389efa7c904c533e842a31f766ef1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type MainLayerBoardProviderFragment$data = {
   readonly board: {
     readonly created: any;
+    readonly displayTranslations: boolean;
     readonly id: string;
     readonly name: string;
     readonly newExpressionsCount: number | null | undefined;
@@ -89,6 +90,13 @@ const node: ReaderFragment = {
           "storageKey": null
         },
         {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "displayTranslations",
+          "storageKey": null
+        },
+        {
           "args": null,
           "kind": "FragmentSpread",
           "name": "BoardFragment"
@@ -128,6 +136,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "b0f1d7692f1723bbbe9ce88c9805f1f4";
+(node as any).hash = "634ff71e174e8c85981eac5008abdc05";
 
 export default node;

@@ -13,7 +13,7 @@ import {
   useFragment, graphql, useMutation,
 } from 'react-relay'
 import { marked } from 'marked'
-import { useBoardContext } from '../../hooks/index.js'
+import { useBoardContext } from '../../../../../common/components/index.js'
 import { RatingForm } from './common/index.js'
 
 const baseClassName = styleNames.base

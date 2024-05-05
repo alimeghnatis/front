@@ -5,10 +5,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  useParams,
-  useLocation,
-  matchPath,
-  generatePath,
+  useLocation, matchPath, generatePath,
 } from 'react-router-dom'
 import {
   useRefetchableFragment, GraphQLTaggedNode,
@@ -93,9 +90,6 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
 
   useEffect(
     () => {
-      console.log(
-        'currentBoardId', currentBoardId,
-      )
       if (currentBoardId && currentBoardId !== selectedBoard?.id) {
         refetchBoard({ id: currentBoardId })
       }

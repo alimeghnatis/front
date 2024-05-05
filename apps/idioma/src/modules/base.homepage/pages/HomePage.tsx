@@ -35,7 +35,7 @@ const m = defineMessages({
 })
 
 const FRAGMENT = graphql`
-  fragment HomeLoginButtonFragment on Query
+  fragment HomePageLoginButtonFragment on Query
     @argumentDefinitions(resource: { type: "String!" })
     @refetchable(queryName: "HomeLoginButtonFragmentRefetchQuery") {
     oAuth2Links(resource: $resource) {

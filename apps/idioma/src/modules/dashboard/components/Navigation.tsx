@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
 import paths from '../paths.js'
-import { useBoardMemberships } from './hooks/index.js'
+import { useBoardMemberships } from '../../common/components/index.js'
 // import getRootItem from './navigationConfig.js'
 // import type { Item } from '@aztlan/ui/dist/esm/common/Navigation/'
 

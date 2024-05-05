@@ -7,7 +7,7 @@ import {
 */
 import { ViewerProfile } from '@aztlan/ui'
 import { graphql } from 'react-relay'
-import Template from '../../common/templates/Base.js'
+import Template from '../templates/Base.js'
 
 /*
 const m = defineMessages({
@@ -22,7 +22,7 @@ const m = defineMessages({
 }) */
 
 const FRAGMENT = graphql`
-  fragment ProfileFragment on UserNode {
+  fragment ProfilePageFragment on UserNode {
     firstName
     lastName
     created

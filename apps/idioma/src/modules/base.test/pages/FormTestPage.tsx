@@ -15,7 +15,7 @@ import { graphql } from 'relay-runtime'
 import Template from '../../common/templates/Base.js'
 
 const QUERY_LOAD_FRUIT_OPTIONS = graphql`
-  query FormTestFruitsQuery {
+  query FormTestPageFruitsQuery {
     fruits {
       value
       label
@@ -24,12 +24,12 @@ const QUERY_LOAD_FRUIT_OPTIONS = graphql`
   }
 `
 const QUERY_USERNAME_AVAILABILITY = graphql`
-  query FormTestValidationQuery($value: String!) {
+  query FormTestPageValidationQuery($value: String!) {
     isUsernameAvailable(value: $value)
   }
 `
 const QUERY_SEARCH_FRUITS_OPTIONS = graphql`
-  query FormTestSearchFruitsQuery($value: String!) {
+  query FormTestPageSearchFruitsQuery($value: String!) {
     searchFruits(search: $value) {
       value
       label

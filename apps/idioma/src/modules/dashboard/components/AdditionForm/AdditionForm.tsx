@@ -11,7 +11,7 @@ import {
   graphql, useMutation, ConnectionHandler,
 } from 'react-relay'
 import { Textarea } from './common/index.js'
-import { useBoardContext } from '../Board/index.js'
+import { useBoardContext } from '../../../common/components/index.js'
 import optimisticExpression from '../optimisticExpression.js'
 
 const baseClassName = styleNames.base

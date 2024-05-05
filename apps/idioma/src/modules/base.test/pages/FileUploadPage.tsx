@@ -26,7 +26,7 @@ const QUERY_LOAD_FRUIT_OPTIONS = graphql`
 ` */
 
 const MUTATION_UPLOAD_FILE = graphql`
-  mutation FileUploadMutation($input: FileInput!) {
+  mutation FileUploadPageMutation($input: FileInput!) {
     upload3(input: $input) {
       success
     }

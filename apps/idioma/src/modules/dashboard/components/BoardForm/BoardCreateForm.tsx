@@ -20,7 +20,7 @@ import {
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from './useBoardFormFields.js'
-import { useBoardContext } from '../Board/index.js'
+import { useBoardContext } from '../../../common/components/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board-settings-form'

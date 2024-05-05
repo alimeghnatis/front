@@ -12,8 +12,7 @@ import {
 import styleNames from '@aztlan/bem'
 import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import { DefaultGroup } from '../Group/index.js'
-import { AdditionForm } from '../AdditionForm/index.js'
-import { useBoardContext } from './hooks/index.js'
+import { useBoardContext } from '../../../common/components/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board'

@@ -16,8 +16,8 @@ export const QUERY_APPLICATION = graphql`
         #boardGroupCount: $boardGroupCount
         #boardGroupCursor: $boardGroupCursor
       )
-    ...LoginButtonFragment @arguments(resource: $loginRequestedResource)
-    ...HomeLoginButtonFragment @arguments(resource: $loginRequestedResource)
+    ...LoginPageButtonFragment @arguments(resource: $loginRequestedResource)
+    ...HomePageLoginButtonFragment @arguments(resource: $loginRequestedResource)
     time
   }
 `
@@ -41,7 +41,7 @@ export const FRAGMENT_VIEWER = graphql`
     #    }
     #  }
     #}
-    ...ProfileFragment
+    ...ProfilePageFragment
     ...ViewerUpdateFormFragment
     ...ApplicationQueryAuthenticationDebugFragment
     ...useBoardMembershipsFragment

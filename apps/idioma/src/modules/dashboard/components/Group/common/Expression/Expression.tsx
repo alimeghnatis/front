@@ -14,7 +14,7 @@ import {
   useFragment, graphql,
 } from 'react-relay'
 
-import { useBoardContext } from '../../../Board/index.js'
+import { useBoardContext } from '../../../../../common/components/index.js'
 import {
   AudioButton, DeleteButton, BookmarkButton,
 } from './common/index.js'

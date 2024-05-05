@@ -12,7 +12,7 @@ import {
   // rootNavigationItem,
 } from '../components/constants.js'
 import {
-  Navigation, BoardProvider, HeaderGroup,
+  Navigation, BoardProvider,
 } from '../components/index.js'
 import paths from '../paths.js'
 
@@ -85,7 +85,6 @@ function Main({
 
   return (
     <InternalWrapper {...internalWrapperProps}>
-      <HeaderGroup wireframe={wireframe} />
       <NestedNavigation.Canvas
         className="md-span-10 background near"
         desktopVerticalMenuGroupSpan={4}

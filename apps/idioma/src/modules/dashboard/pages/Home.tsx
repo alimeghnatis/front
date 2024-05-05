@@ -11,8 +11,9 @@ import {
   // BoardProvider,
   // HeaderGroup,
   Navigation,
-  useBoardMemberships,
 } from '../components/index.js'
+
+import { useBoardMemberships } from '../../common/components/index.js'
 
 function Home({
   wireframe, ...props

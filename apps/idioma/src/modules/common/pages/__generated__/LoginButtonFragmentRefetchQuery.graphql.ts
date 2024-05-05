@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6cb9f35018d986824dc53bd266af1814>>
+ * @generated SignedSource<<5e6af2aa8bf25615079b822a795c8850>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,7 +14,7 @@ export type LoginButtonFragmentRefetchQuery$variables = {
   resource: string;
 };
 export type LoginButtonFragmentRefetchQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"LoginPageButtonFragment">;
 };
 export type LoginButtonFragmentRefetchQuery = {
   response: LoginButtonFragmentRefetchQuery$data;
@@ -46,7 +46,7 @@ return {
       {
         "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "LoginButtonFragment"
+        "name": "LoginPageButtonFragment"
       }
     ],
     "type": "Query",
@@ -79,16 +79,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "dd8b56497cb9cfcf95cfd4a36b62d7d8",
+    "cacheID": "050f4f8d4844caa20d5d14936436d73d",
     "id": null,
     "metadata": {},
     "name": "LoginButtonFragmentRefetchQuery",
     "operationKind": "query",
-    "text": "query LoginButtonFragmentRefetchQuery(\n  $resource: String!\n) {\n  ...LoginButtonFragment_1AFwKl\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n"
+    "text": "query LoginButtonFragmentRefetchQuery(\n  $resource: String!\n) {\n  ...LoginPageButtonFragment_1AFwKl\n}\n\nfragment LoginPageButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ba86836c995f320bdca20d2966c3b2a4";
+(node as any).hash = "7d110401c74c34e56799931e7b09fc1f";
 
 export default node;

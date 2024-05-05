@@ -13,8 +13,6 @@ import {
   SelectBoardHeader, SearchBoardHeader,
 } from './Board/index.js'
 
-import { debugRouteMap } from './constants.js'
-
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 
 const FRAGMENT_BOARD_SELECT = graphql`
@@ -55,7 +53,7 @@ function HeaderGroup({
   after,
 }: InferProps<typeof HeaderGroup.propTypes>): React.ReactElement {
   return (
-    <div className="container">
+    <>
       {before}
       {/* wireframe ? 'Wireframe' : 'MAIN' */}
       <SearchBoardHeader
@@ -67,14 +65,10 @@ function HeaderGroup({
       ) : (
         <ViewerNavigationHeader />
       )}
-      <NavigationDebugHeader
-        items={debugRouteMap}
-        className="container"
-      />
       <SelectBoardHeader FRAGMENT={FRAGMENT_BOARD_SELECT} />
       <NestedNavigation.Header />
       {after}
-    </div>
+    </>
   )
 }
 

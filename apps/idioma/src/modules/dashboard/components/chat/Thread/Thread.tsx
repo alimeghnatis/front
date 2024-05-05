@@ -12,7 +12,7 @@ import {
 import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import styleNames from '@aztlan/bem'
 import { Message } from '../Message/index.js'
-import { useBoardContext } from '../../Board/index.js'
+import { useBoardContext } from '../../../../common/components/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'thread'

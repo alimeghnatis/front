@@ -16,8 +16,9 @@ import styleNames from '@aztlan/bem'
 import {
   graphql, useFragment,
 } from 'react-relay'
-import { useBoardContext } from '../../hooks/index.js'
-import { useBoardMemberships } from '../../../hooks/index.js'
+import {
+  useBoardContext, useBoardMemberships,
+} from '../../hooks/index.js'
 // import { NavigationHeader } from '@aztlan/ui'
 
 const baseClassName = styleNames.base

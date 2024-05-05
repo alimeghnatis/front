@@ -3,9 +3,9 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Template from '../layer/Main.js'
-import {
-  useBoardContext, BoardUpdateForm,
-} from '../components/index.js'
+import { BoardUpdateForm } from '../components/index.js'
+
+import { useBoardContext } from '../../common/components/index.js'
 
 function BoardSettings() {
   const { data } = useBoardContext()

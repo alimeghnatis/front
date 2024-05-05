@@ -7,7 +7,7 @@ import { InferProps } from 'prop-types'
 import {
   useFragment, graphql,
 } from 'react-relay'
-import { DebugExpression } from '../../common/index.js'
+import { DebugExpression } from '../../../Expression/index.js'
 import Group from '../../Group.js'
 
 const componentClassName = 'exp-group-debug'

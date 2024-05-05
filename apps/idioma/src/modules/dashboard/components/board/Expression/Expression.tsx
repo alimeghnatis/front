@@ -14,15 +14,15 @@ import {
   useFragment, graphql,
 } from 'react-relay'
 
-import { useBoardContext } from '../../../../../common/components/index.js'
+import { useBoardContext } from '../../../../common/components/index.js'
 import {
-  AudioButton, DeleteButton, BookmarkButton,
+  AudioButton,
+  DeleteButton,
+  BookmarkButton,
+  Details,
+  Variant,
 } from './common/index.js'
 import useExpressionLinks from './useExpressionLinks.js'
-import {
-  ExpressionDetails,
-  ExpressionVariant,
-} from '../../../Board/common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression'

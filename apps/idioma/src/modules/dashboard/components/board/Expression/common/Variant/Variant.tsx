@@ -19,8 +19,8 @@ import {
   useMutation,
   ConnectionHandler,
 } from 'react-relay'
-import { useBoardContext } from '../../../../../common/components/index.js'
-import optimisticExpression from '../../../optimisticExpression.js'
+import { useBoardContext } from '../../../../../../common/components/index.js'
+import optimisticExpression from '../../../../optimisticExpression.js'
 import useExpressionVariantFields from './useExpressionVariantFields.js'
 
 const baseClassName = styleNames.base

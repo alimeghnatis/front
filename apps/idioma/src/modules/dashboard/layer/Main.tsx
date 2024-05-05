@@ -11,10 +11,9 @@ import {
   debugRouteMap,
   // rootNavigationItem,
 } from '../components/constants.js'
-import {
-  Navigation, BoardProvider,
-} from '../components/index.js'
+import { Navigation } from '../components/index.js'
 import paths from '../paths.js'
+import { BoardProvider } from '../../common/components/index.js'
 
 const FRAGMENT = graphql`
   fragment MainLayerBoardProviderFragment on Query

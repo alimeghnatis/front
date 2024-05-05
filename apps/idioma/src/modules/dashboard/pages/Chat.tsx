@@ -4,9 +4,8 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
 import Template from '../layer/Main.js'
-import {
-  useBoardContext, Chat,
-} from '../components/index.js'
+import { Chat } from '../components/index.js'
+import { useBoardContext } from '../../common/components/index.js'
 
 function ChatPage() {
   const { data } = useBoardContext()

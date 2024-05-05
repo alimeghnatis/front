@@ -7,7 +7,7 @@ import { InferProps } from 'prop-types'
 import {
   useFragment, graphql,
 } from 'react-relay'
-import { DefaultExpression } from '../../common/index.js'
+import { DefaultExpression } from '../../../Expression/index.js'
 import Group from '../../Group.js'
 
 const componentClassName = 'exp-group-default'

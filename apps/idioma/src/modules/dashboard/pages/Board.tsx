@@ -10,8 +10,9 @@ import {
 } from 'react-relay'
 import Template from '../layer/Main.js'
 import {
-  useBoardContext, AdditionForm, Board,
+  AdditionForm, Board,
 } from '../components/index.js'
+import { useBoardContext } from '../../common/components/index.js'
 
 /*
 const FRAGMENT = graphql`

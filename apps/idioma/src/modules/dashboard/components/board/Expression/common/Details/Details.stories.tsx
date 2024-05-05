@@ -1,12 +1,12 @@
 /* @aztlan/generator-front 3.4.0 */
-// import * as React from 'react'
+import * as React from 'react'
 
 import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 // import { Meta, StoryFn } from '@storybook/react'
-import Component from './ExpressionDetails.js'
+import Component from './Details.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
 import decorators from '../../../../../../decorators.js'

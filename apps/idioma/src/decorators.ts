@@ -23,6 +23,8 @@ import {
   FRAGMENT_VIEWER,
 } from './ApplicationQuery.js'
 
+import routes from './modules/routes.js'
+
 function loadLocaleData(locale: string) {
   switch (locale) {
     case 'es':
@@ -40,6 +42,12 @@ function Application(
     {
       ...params,
       QUERY_APPLICATION,
+      routes,
+      defaultRedirectionAfterLogin:'/d',
+      ssrHostname                 :'localhost',
+      maintenance                 :false,
+      fetchOptions                :{ fetchPolicy: 'store-only' },
+      value                       :{ isLocale: (e) => e === 'es' },
     },
     StoryFn(),
   )

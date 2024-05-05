@@ -10,6 +10,12 @@ export default [
   ...commonRoutes,
 ]
 
+export const v2 = [
+  ...baseHomepageRoutes,
+  ...baseTestRoutes,
+  ...commonRoutes,
+]
+
 export const prefetchRoutes = [
   ...baseHomepageRoutes,
   ...baseTestRoutes,

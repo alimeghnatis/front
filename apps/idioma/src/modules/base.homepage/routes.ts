@@ -14,7 +14,7 @@ export default [
   }, */
   {
     path     :'/',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Home.js')),
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/HomePage.js')),
     exact    :true,
   },
 ]

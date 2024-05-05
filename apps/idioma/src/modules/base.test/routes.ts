@@ -1,5 +1,5 @@
 import { loadable } from '../common/utils'
-import FormTest from './pages/FormTest.js'
+import FormTest from './pages/FormTestPage.js'
 
 export default [
   /*
@@ -15,7 +15,7 @@ export default [
   }, */
   {
     path     :'/formtest',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTest.js')),
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTestPage.js')),
     exact    :true,
     // Ideally we would store the query in a separate file
     // - here it depends on the component which goes against the idea of loading it dynamically
@@ -23,10 +23,11 @@ export default [
   },
   {
     path     :'/fileupload',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FileUpload.js')),
-    exact    :true,
+    component:loadable(() => import(
+      /* webpackChunkName: `base.homepage` */ './pages/FileUploadPage.js')),
+    exact:true,
     // Ideally we would store the query in a separate file
     // - here it depends on the component which goes against the idea of loading it dynamically
-    QUERY    :FormTest.QUERY,
+    QUERY:FormTest.QUERY,
   },
 ]

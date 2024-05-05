@@ -16,7 +16,6 @@ import {
   AuthenticationProvider,
   SwitchRoutes,
 } from '@aztlan/ui'
-import Status404Page from './modules/common/pages/Status404.js'
 import {
   MUTATION_LOGOUT,
   QUERY_APPLICATION,
@@ -25,6 +24,7 @@ import {
 
 import config from './config.js'
 import routes, { prefetchRoutes } from './modules/routes.js'
+import Layout from './modules/Layout.js'
 
 function ThemeWrapper({ children }) {
   const { theme } = useApplicationContext()
@@ -80,11 +80,7 @@ function Application({
                     FRAGMENT_VIEWER={FRAGMENT_VIEWER}
                     loginPath="/"
                   >
-                    <SwitchRoutes
-                      items={routes}
-                      NotFoundPage={Status404Page}
-                      // wireframe={wireframe}
-                    />
+                    <Layout />
                   </AuthenticationProvider>
                 </ThemeWrapper>
               </ApplicationProvider>

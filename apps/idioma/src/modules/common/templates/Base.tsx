@@ -6,14 +6,9 @@ import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
 import {
-  useAuthenticationContext,
-  ThemeSwitcher,
-  LocaleSwitcher,
-  AuthenticationDebugHeader,
-  NavigationDebugHeader,
-  NavigationVerticalMenu,
-  useViewer,
+  AuthenticationDebugHeader, NavigationDebugHeader,
 } from '@aztlan/ui'
+import { Header } from '../../base.navigation/components/index.js'
 
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 
@@ -49,80 +44,19 @@ const routeMap = [
 ]
 
 function Wrapper({
-  title,
-  children,
-  sidebar,
-  appendItems: userAppendItems = [],
+  title, children,
 }) {
-  const {
-    logout, isLogoutInFlight,
-  } = useAuthenticationContext()
-
-  const { data: viewerData } = useViewer()
-
-  const appendItems = useMemo(
-    () => {
-      const items = userAppendItems
-      items.push({
-        items:[
-          { Component: LocaleSwitcher },
-          { Component: ThemeSwitcher },
-        ],
-      })
-      if (viewerData) {
-        userAppendItems.push({
-          label:'Debug',
-          items:[
-            {
-              Component:() => (
-                <button
-                  onClick={logout}
-                  disabled={isLogoutInFlight}
-                >
-                  Logout
-                </button>
-              ),
-            // onClick:logout,
-            // inFlight:isLogoutInFlight,
-            },
-          ],
-        })
-      }
-      return items
-    }, [
-      viewerData,
-      userAppendItems,
-      logout,
-      isLogoutInFlight,
-    ],
-  )
   return (
-    <main
-      className="grid"
-      style={{ padding: '0 1em' }}
-    >
+    <main className="grid">
       <div className="container">
         <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />
         <NavigationDebugHeader
           className="container"
           items={routeMap}
         />
+        <Header>{title}</Header>
       </div>
-      <NavigationVerticalMenu
-        className="background near span-8 md-span-3 fit-content"
-        // rootItem={{
-        //  label:title,
-        //  items:routeMap,
-        // }}
-        rootItem={{
-          label:title,
-          items:[],
-        }}
-        appendItems={appendItems}
-      />
-      <div className="background near span-8 md-span-9 fit-content grid canvas">
-        {children}
-      </div>
+      {children}
     </main>
   )
 }
@@ -130,7 +64,6 @@ function Wrapper({
 Wrapper.propTypes = {
   title   :PropTypes.node,
   children:PropTypes.node,
-  sidebar :PropTypes.node,
 }
 
 function Base({
@@ -154,7 +87,6 @@ Base.propTypes = {
   wireframe     :PropTypes.bool,
   wireframeTitle:PropTypes.node,
   children      :PropTypes.node,
-  appendItems   :PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Base

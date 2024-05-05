@@ -8,7 +8,7 @@ import { graphql } from 'react-relay'
 import {
   AuthenticationDebugHeader, NavigationDebugHeader,
 } from '@aztlan/ui'
-import { Header } from '../../base.navigation/components/index.js'
+import { Header } from '../components/index.js'
 
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 

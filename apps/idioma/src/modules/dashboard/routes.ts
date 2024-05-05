@@ -21,23 +21,11 @@ export const internalRoutes = [
     isPrivate:true,
   },
   {
-    path     :[paths.absolute.PROFILE],
-    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Profile.js')),
-    exact    :true,
-    isPrivate:true,
-  },
-  {
     path     :[paths.absolute.NEW_BOARD],
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/NewBoard.js')),
     exact    :true,
     isPrivate:true,
     QUERY    :QUERY_LANGUAGE_CHOICES,
-  },
-  {
-    path     :[paths.absolute.HELP],
-    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Help.js')),
-    exact    :true,
-    isPrivate:true,
   },
   {
     path     :[paths.absolute.BOARD_SETTINGS],

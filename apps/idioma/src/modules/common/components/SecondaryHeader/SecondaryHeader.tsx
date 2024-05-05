@@ -7,11 +7,14 @@ import { InferProps } from 'prop-types'
 import {
   NavigationHeader, useTriptychContext,
 } from '@aztlan/ui'
+import {
+  useLocation, Link,
+} from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 
 const baseClassName = styleNames.base
-const componentClassName = 'header'
+const componentClassName = 'secondary-header'
 
 /**
  * description
@@ -34,6 +37,8 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
   )
   const { toggleNavigation } = useTriptychContext()
 
+  const location = useLocation()
+
   return (
     <NavigationHeader
       id={id}
@@ -45,10 +50,19 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={<button onClick={toggleNavigation}>Toggle Navigation</button>}
+      left={(
+        <Link to={location.state?.from || '/'}>
+          <button
+            onClick={toggleNavigation}
+            type="button"
+          >
+            Close
+          </button>
+        </Link>
+      )}
       // {...otherProps}
     >
-      TITLE GOES HERE
+      {children}
     </NavigationHeader>
   )
 }

@@ -7,7 +7,7 @@ import {
 */
 import { ViewerProfile } from '@aztlan/ui'
 import { graphql } from 'react-relay'
-import Template from '../templates/Base.js'
+import Template from '../../common/templates/Base.js'
 
 /*
 const m = defineMessages({

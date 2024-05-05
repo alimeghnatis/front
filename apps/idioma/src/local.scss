@@ -1,7 +1,64 @@
-@use "@aztlan/base-styles";
+@use "@aztlan/grid/src/main" as grid;
+@use "@aztlan/swatch/src/main" as swatch with (
+  $extras:(
+    "light-theme":(
+      "font-size":18px,
+      "light-height":1em,
+      "margin":1em,
+    ),
+  )
+);
+@use "@aztlan/mixins/src/reset" as reset;
+@use "@aztlan/mixins/src/font" as font;
+@use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/initial.scss";
+
+$import-font-map:(
+  "sans":(
+    "400-normal":"sans_book",
+    "400-italic":"sans_book_italic",
+    "500-normal":"sans_regular",
+    "500-italic":"sans_regular_italic",
+    "700-normal":"sans_semibold",
+    "700-italic":"sans_semibold_italic",
+  ),
+  "nserif":(
+    "400-normal":"serif_book",
+    "400-italic":"serif_book_italic",
+    "500-normal":"serif_regular",
+    "500-italic":"serif_regular_italic",
+  ),
+  "icons":(
+    "default":"icons",
+  )
+);
+
+$root-font-map:(
+  "nsans":"helvetica neue, helvetica, sans-serif",
+  "nserif":"Georgia, serif",
+  "icons":"sans-serif",
+);
+
+@include font.import-from-map($import-font-map);
+@include reset.reset();
+
+:root {
+  @include font.root-definitions-from-map($root-font-map);
+}
+
 
 html {
+  font-family: "nserif";
   font-size: 14px;
+  line-height: 1.2em;
+}
+
+p {
+  font-family: "nserif";
+}
+
+strong {
+  font-weight: 500;
 }
 
 main.grid {

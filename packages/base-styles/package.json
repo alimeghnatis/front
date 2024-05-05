@@ -3,6 +3,10 @@
   "version": "3.6.3",
   "description": "",
   "main": "src/main.scss",
+  "exports": {
+    ".": "./src/main.scss",
+    "./initial.scss": "./src/initial.scss"
+  },
   "scripts": {
     "compile": "sass src/main.scss dist/main.css -I ../../node_modules -I ./node_modules -c && npm run filesize -- dist/main.css",
     "minify": "postcss dist/main.css -o dist/main.min.css && npm run filesize -- dist/main.min.css",

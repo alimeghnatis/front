@@ -15,7 +15,8 @@ const {
 } = configureSharedConfig({
   location:__dirname,
   assets:[
-    `${getAbsolutePath('@aztlan/assets')}/fonts`,
+    //`${getAbsolutePath('@aztlan/assets')}/fonts`,
+    `${getAbsolutePath('@fwrlines/assets-k')}/fonts`,
     `${getAbsolutePath('@aztlan/assets')}/favicons`,
   ]
   //alias:['react', 'react-dom', 'react-relay']

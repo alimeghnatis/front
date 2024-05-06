@@ -13,10 +13,11 @@ import {
   useFragment,
 } from 'react-relay'
 import styleNames from '@aztlan/bem'
-import { useBoardContext } from 'modules/common/components'
-import { Textarea } from '../../../../AdditionForm/common/index.js'
+import {
+  useBoardContext, TextareaForm,
+} from 'modules/common/components'
 
-const baseClassName = styleNames.base
+// const baseClassName = styleNames.base
 const componentClassName = 'create-form'
 
 const MUTATION_CREATE_MESSAGE = graphql`
@@ -49,10 +50,9 @@ const FRAGMENT = graphql`
  * @returns {React.ReactElement} - Rendered CreateForm
  */
 function CreateForm({
-  id,
   className: userClassName,
-  style,
   data,
+  ...otherProps
 }: // ...otherProps
 
 InferProps<typeof CreateForm.propTypes>): React.ReactElement {
@@ -62,13 +62,6 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
-
-  const [
-    inputValue,
-    setInputValue,
-  ] = useState('')
-
-  const chatRef = useRef(null)
 
   const result = useFragment(
     FRAGMENT, data,
@@ -83,8 +76,8 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
     isInFlight,
   ] = useMutation(MUTATION_CREATE_MESSAGE)
 
-  const createMessage = useCallback(
-    () => {
+  const handleSubmit = useCallback(
+    (inputValue) => {
       const connectionID = ConnectionHandler.getConnectionID(
         btoa(`ThreadNode:${result.openaiThreadId}`),
         'ThreadFragment_messages',
@@ -159,37 +152,19 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
           )
         },
       })
-    }, [inputValue],
+    }, [],
   )
 
   return (
-    <div
-      id={id}
+    <TextareaForm
       className={[
-        baseClassName,
         componentClassName,
         userClassName,
-        'grid container',
-      ]
-        .filter((e) => e)
-        .join(' ')}
-      style={style}
-      // {...otherProps}
-    >
-      <Textarea
-        className="span-6 md-span-9"
-        value={inputValue}
-        placeholder="Type a message..."
-        setValue={setInputValue}
-      />
-      <button
-        disabled={isInFlight}
-        onClick={createMessage}
-        type="button"
-      >
-        Add
-      </button>
-    </div>
+      ].filter(Boolean).join(' ')}
+      isInFlight={isInFlight}
+      handleSubmit={handleSubmit}
+      {...otherProps}
+    />
   )
 }
 
@@ -202,6 +177,9 @@ CreateForm.propTypes = {
 
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
+
+  /** The data for this element */
+  data:PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default CreateForm

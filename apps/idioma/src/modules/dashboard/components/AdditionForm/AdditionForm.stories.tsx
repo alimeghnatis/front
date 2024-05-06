@@ -5,10 +5,8 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
+import { decorators } from 'story-utils'
 import Component from './AdditionForm.js'
-import decorators from '../../../../decorators.js'
-// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-// import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
   title     :'modules/dashboard/AdditionForm',

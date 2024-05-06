@@ -21,9 +21,9 @@ import {
   QUERY_APPLICATION,
   MUTATION_LOGOUT,
   FRAGMENT_VIEWER,
-} from './ApplicationQuery.js'
+} from '../ApplicationQuery.js'
 
-import routes from './modules/routes.js'
+import routes from '../modules/routes.js'
 
 function loadLocaleData(locale: string) {
   switch (locale) {

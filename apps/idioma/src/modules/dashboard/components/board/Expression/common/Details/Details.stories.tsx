@@ -6,13 +6,13 @@ import {
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 // import { Meta, StoryFn } from '@storybook/react'
+import { decorators } from 'story-utils'
 import Component from './Details.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
-import decorators from '../../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/ExpressionDetails',
+  title     :'modules/dashboard/Board/Details',
   component :Component,
   decorators:[
     decorators.components.Router,
@@ -33,9 +33,9 @@ export default meta
 
 const relay = {
   query:graphql`
-    query ExpressionDetailsStoriesQuery {
+    query DetailsStoriesQuery {
       expression(id: "1") {
-        ...ExpressionDetailsFragment
+        ...DetailsFragment
       }
     }
   `,

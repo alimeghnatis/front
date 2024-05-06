@@ -4,7 +4,7 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
-import decorators from '../../../../../../decorators.js'
+import { decorators } from 'story-utils'
 import { RawSelectHeader as Component } from './SelectHeader.js'
 
 const meta: Meta<typeof Component> = {

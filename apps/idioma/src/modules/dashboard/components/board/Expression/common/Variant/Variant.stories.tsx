@@ -6,13 +6,11 @@ import {
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 // import { Meta, StoryFn } from '@storybook/react'
+import { decorators } from 'story-utils'
 import Component from './Variant.js'
-// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-// import decorators from "story-utils/decorators.js";
-import decorators from '../../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/ExpressionVariant',
+  title     :'modules/dashboard/Board/Variant',
   component :Component,
   decorators:[
     decorators.components.Router,
@@ -34,9 +32,9 @@ export default meta
 
 const relay = {
   query:graphql`
-    query ExpressionVariantStoriesQuery {
+    query VariantStoriesQuery {
       expression(id: "1") {
-        ...ExpressionVariantFragment
+        ...VariantFragment
       }
     }
   `,

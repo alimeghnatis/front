@@ -25,7 +25,7 @@ const MUTATION_CREATE_EXPRESSION = graphql`
     createExpression(input: $input) {
       instance {
         ...ExpressionFragment
-        ...ExpressionDetailsFragment
+        ...DetailsFragment
         group
           @prependNode(
             connections: $connections

@@ -36,7 +36,7 @@ const QUERY = graphql`
       newExpressionsCount
       ...BoardFragment
       ...BoardUpdateFormFragment
-      ...ExpressionVariantBoardFragment
+      ...VariantBoardFragment
       ...ChatFragment
     }
   }

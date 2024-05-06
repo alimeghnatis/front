@@ -34,6 +34,7 @@
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0",
     "webpack-node-externals": "^3.0.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "yargs": "^17.7.2"
   },
   "eslintConfig": {

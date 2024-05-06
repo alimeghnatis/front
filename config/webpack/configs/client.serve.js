@@ -18,7 +18,6 @@ export default (inputs) => {
     devServer,
 
     plugins:[
-    // plugins.ResolveTypeScript,
       plugins.Dotenv,
       plugins.HtmlWebpack,
     ],

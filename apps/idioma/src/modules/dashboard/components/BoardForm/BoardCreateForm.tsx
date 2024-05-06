@@ -57,7 +57,7 @@ const MUTATION_UPDATE = graphql`
         }
         ...BoardFragment
         ...BoardUpdateFormFragment
-        ...ExpressionVariantBoardFragment
+        ...VariantBoardFragment
       }
       errors {
         field

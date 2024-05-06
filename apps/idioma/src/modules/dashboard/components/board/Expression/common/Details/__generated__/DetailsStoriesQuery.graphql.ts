@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2a9f3814257a973e18e0514ed059076a>>
+ * @generated SignedSource<<c54710c49dfe049fe6a6300ed8237c37>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionStoriesQuery$variables = Record<PropertyKey, never>;
-export type ExpressionStoriesQuery$data = {
+export type DetailsStoriesQuery$variables = Record<PropertyKey, never>;
+export type DetailsStoriesQuery$data = {
   readonly expression: {
-    readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"DetailsFragment">;
   } | null | undefined;
 };
-export type ExpressionStoriesQuery = {
-  response: ExpressionStoriesQuery$data;
-  variables: ExpressionStoriesQuery$variables;
+export type DetailsStoriesQuery = {
+  response: DetailsStoriesQuery$data;
+  variables: DetailsStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -34,7 +34,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ExpressionStoriesQuery",
+    "name": "DetailsStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -47,7 +47,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "ExpressionFragment"
+            "name": "DetailsFragment"
           }
         ],
         "storageKey": "expression(id:\"1\")"
@@ -60,7 +60,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "ExpressionStoriesQuery",
+    "name": "DetailsStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -75,13 +75,6 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "id",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "content",
             "storageKey": null
           },
           {
@@ -109,35 +102,7 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "correctedContent",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "created",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isProcessed",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isBookmarked",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "audioUrl",
+            "name": "content",
             "storageKey": null
           },
           {
@@ -145,6 +110,13 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "translation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "correctedContent",
             "storageKey": null
           },
           {
@@ -166,6 +138,20 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "wordsExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "audioUrl",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "created",
             "storageKey": null
           },
           {
@@ -195,16 +181,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1590d504bf9059f033f7f8f879e000db",
+    "cacheID": "9abe781968eee49ad8db1abaa450e992",
     "id": null,
     "metadata": {},
-    "name": "ExpressionStoriesQuery",
+    "name": "DetailsStoriesQuery",
     "operationKind": "query",
-    "text": "query ExpressionStoriesQuery {\n  expression(id: \"1\") {\n    ...ExpressionFragment\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "query DetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...DetailsFragment\n    id\n  }\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
   }
 };
 })();
 
-(node as any).hash = "588eda946a9db099ef098c19f77f802d";
+(node as any).hash = "beabc7bcf2c0558ea3a461c1c49b5b97";
 
 export default node;

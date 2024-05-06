@@ -5,7 +5,7 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
-import decorators from '../../../../decorators.js'
+import { decorators } from 'story-utils'
 import { RawProvider as Component } from './Provider.js'
 import { useBoardContext } from './hooks/index.js'
 

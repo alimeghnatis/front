@@ -5,6 +5,7 @@
 const path = require('path')
 const { fileURLlToPath } = require('url')
 const ResolveTypeScriptPlugin = require('resolve-typescript-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 function getAbsolutePath(value) {
   return path.dirname(require.resolve(path.join(value, 'package.json')))
@@ -110,9 +111,9 @@ const template = (inputs) => ({
 
       config.resolve.plugins = [
         ...(config.resolve.plugins || []),
-        // new TsconfigPathsPlugin({
-        //  extensions:config.resolve.extensions,
-        // }),
+        new TsconfigPathsPlugin({
+          extensions:config.resolve.extensions,
+        }),
         /**
        * See https://github.com/storybookjs/storybook/issues/15962
        * and https://github.com/softwareventures/resolve-typescript-plugin

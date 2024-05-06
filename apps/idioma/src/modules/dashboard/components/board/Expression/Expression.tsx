@@ -42,8 +42,8 @@ const FRAGMENT = graphql`
     ...AudioButtonFragment
     ...DeleteButtonFragment
     ...BookmarkButtonFragment
-    ...ExpressionDetailsFragment
-    ...ExpressionVariantFragment
+    ...DetailsFragment
+    ...VariantFragment
   }
 `
 

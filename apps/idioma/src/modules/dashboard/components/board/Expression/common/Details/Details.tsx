@@ -13,14 +13,15 @@ import {
   useFragment, graphql, useMutation,
 } from 'react-relay'
 import { marked } from 'marked'
-import { useBoardContext } from '../../../../../../common/components/index.js'
+// import { useBoardContext } from '../../../../../../common/components/index.js'
+import { useBoardContext } from 'modules/common/components'
 import { RatingForm } from './common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-details'
 
 const FRAGMENT = graphql`
-  fragment ExpressionDetailsFragment on ExpressionNode {
+  fragment DetailsFragment on ExpressionNode {
     id
     iso6391
     iso6392
@@ -40,17 +41,17 @@ const FRAGMENT = graphql`
 
 /**
  * description
- * @param {InferProps<typeof ExpressionDetails.propTypes>} props -
- * @returns {React.ReactElement} - Rendered ExpressionDetails
+ * @param {InferProps<typeof Details.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Details
  */
-function ExpressionDetails({
+function Details({
   id,
   className: userClassName,
   style,
   data,
 }: // ...otherProps
 
-InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
+InferProps<typeof Details.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -204,7 +205,7 @@ InferProps<typeof ExpressionDetails.propTypes>): React.ReactElement {
   )
 }
 
-ExpressionDetails.propTypes = {
+Details.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -218,4 +219,4 @@ ExpressionDetails.propTypes = {
   data:PropTypes.any,
 }
 
-export default ExpressionDetails
+export default Details

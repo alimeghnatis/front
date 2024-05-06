@@ -5,10 +5,8 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
+import { decorators } from 'story-utils'
 import { RawVerticalMenu as Component } from './VerticalMenu.js'
-// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-// import decorators from "story-utils/decorators.js";
-import decorators from '../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
   title     :'base.navigation/VerticalMenu',

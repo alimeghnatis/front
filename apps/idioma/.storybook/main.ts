@@ -34,6 +34,7 @@ const config: StorybookConfig = {
   docs,
   core,
   typescript,
+  logLevel: 'debug',
   webpackFinal: async (config, { configType }) => {
     pushScss(config)
     pushTsconfigPathsPlugin(config)

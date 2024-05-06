@@ -9,6 +9,7 @@ import LoadablePlugin from '@loadable/webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import nodeExternals from 'webpack-node-externals'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 
 import { createRequire } from 'node:module'
 
@@ -63,6 +64,7 @@ export default (inputs) => ({
         '.graphql.js',
       ],
     },
+    plugins:[new TsconfigPathsPlugin()],
   },
   devServer:{
     static:[

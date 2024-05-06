@@ -5,8 +5,8 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './Expression.js'
-import decorators from '../../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
   title     :'modules/dashboard/Board/Group/Expression',

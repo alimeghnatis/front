@@ -6,10 +6,8 @@ import {
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './Default.js'
-// import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-// import decorators from "story-utils/decorators.js";
-import decorators from '../../../../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
   title     :'modules/dashboard/Board/Group/Expression/Default',

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7693d7824b117d38060f9f4382aa856c>>
+ * @generated SignedSource<<5bd2b352c39f78ce051482bad51f4247>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,58 +8,41 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
+import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ExpressionFragment$data = {
+export type DetailsFragment$data = {
+  readonly audioUrl: string | null | undefined;
+  readonly changes: string | null | undefined;
   readonly content: string;
   readonly correctedContent: string | null | undefined;
   readonly created: any;
+  readonly generalExplanation: string | null | undefined;
+  readonly grammarExplanation: string | null | undefined;
   readonly id: string;
-  readonly isBookmarked: boolean;
-  readonly isProcessed: boolean;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
-  readonly " $fragmentSpreads": FragmentRefs<"AudioButtonFragment" | "BookmarkButtonFragment" | "DeleteButtonFragment" | "DetailsFragment" | "VariantFragment">;
-  readonly " $fragmentType": "ExpressionFragment";
+  readonly translation: string | null | undefined;
+  readonly wordsExplanation: string | null | undefined;
+  readonly " $fragmentSpreads": FragmentRefs<"RatingFormFragment">;
+  readonly " $fragmentType": "DetailsFragment";
 };
-export type ExpressionFragment$key = {
-  readonly " $data"?: ExpressionFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"ExpressionFragment">;
+export type DetailsFragment$key = {
+  readonly " $data"?: DetailsFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"DetailsFragment">;
 };
-
-import ExpressionRefetchQuery_graphql from './ExpressionRefetchQuery.graphql';
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": {
-    "refetch": {
-      "connection": null,
-      "fragmentPathInResult": [
-        "node"
-      ],
-      "operation": ExpressionRefetchQuery_graphql,
-      "identifierInfo": {
-        "identifierField": "id",
-        "identifierQueryVariableName": "id"
-      }
-    }
-  },
-  "name": "ExpressionFragment",
+  "metadata": null,
+  "name": "DetailsFragment",
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
       "name": "id",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "content",
       "storageKey": null
     },
     {
@@ -87,7 +70,49 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "content",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "translation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "correctedContent",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "grammarExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "generalExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "wordsExplanation",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "audioUrl",
       "storageKey": null
     },
     {
@@ -101,46 +126,19 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "isProcessed",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "isBookmarked",
+      "name": "changes",
       "storageKey": null
     },
     {
       "args": null,
       "kind": "FragmentSpread",
-      "name": "AudioButtonFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "DeleteButtonFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "BookmarkButtonFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "DetailsFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "VariantFragment"
+      "name": "RatingFormFragment"
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "0fde4328f0739fce6d4dc3d61ae2386e";
+(node as any).hash = "276ef4e990d2458df18f1c95ca51cd0a";
 
 export default node;

@@ -27,7 +27,7 @@ const baseClassName = styleNames.base
 const componentClassName = 'expression-variant'
 
 const FRAGMENT_EXPRESSION = graphql`
-  fragment ExpressionVariantFragment on ExpressionNode {
+  fragment VariantFragment on ExpressionNode {
     id
     iso6391
     iso6392
@@ -38,14 +38,14 @@ const FRAGMENT_EXPRESSION = graphql`
 `
 
 const FRAGMENT_BOARD = graphql`
-  fragment ExpressionVariantBoardFragment on BoardNode {
+  fragment VariantBoardFragment on BoardNode {
     id
     enabledLanguages
   }
 `
 
 const MUTATION_CREATE_VARIANT = graphql`
-  mutation ExpressionVariantCreateExpressionMutation(
+  mutation VariantCreateExpressionMutation(
     $input: CreateExpressionMutationInput!
     $connections: [ID!]!
   ) {
@@ -56,7 +56,7 @@ const MUTATION_CREATE_VARIANT = graphql`
           edgeTypeName: "ExpressionNodeEdge"
         ) {
         isNew
-        ...ExpressionDetailsFragment
+        ...DetailsFragment
         ...ExpressionFragment
         #variantName
         #variantWord
@@ -71,10 +71,10 @@ const MUTATION_CREATE_VARIANT = graphql`
 
 /**
  * description
- * @param {InferProps<typeof ExpressionVariant.propTypes>} props -
- * @returns {React.ReactElement} - Rendered ExpressionVariant
+ * @param {InferProps<typeof Variant.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Variant
  */
-function ExpressionVariant({
+function Variant({
   id,
   className: userClassName,
   style,
@@ -82,7 +82,7 @@ function ExpressionVariant({
   groupID,
 }: // ...otherProps
 
-InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
+InferProps<typeof Variant.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -170,7 +170,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
     ],
   )
 
-  const fields = useExpressionVariantFields(
+  const fields = useVariantFields(
     result, boardResult,
   )
 
@@ -208,7 +208,7 @@ InferProps<typeof ExpressionVariant.propTypes>): React.ReactElement {
   )
 }
 
-ExpressionVariant.propTypes = {
+Variant.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -225,4 +225,4 @@ ExpressionVariant.propTypes = {
   groupID:PropTypes.string,
 }
 
-export default ExpressionVariant
+export default Variant

@@ -14,7 +14,6 @@ import {
   ApplicationProvider,
   useApplicationContext,
   AuthenticationProvider,
-  SwitchRoutes,
 } from '@aztlan/ui'
 import {
   MUTATION_LOGOUT,
@@ -24,6 +23,7 @@ import {
 
 import config from './config.js'
 import routes, { prefetchRoutes } from './modules/routes.js'
+import * as paths from './modules/paths.js'
 import Layout from './modules/Layout.js'
 
 function ThemeWrapper({ children }) {
@@ -72,7 +72,7 @@ function Application({
                 //  boardGroupCount :10,
                 //  boardGroupCursor:null,
                 // }}
-                defaultRedirectionAfterLogin="/d/help"
+                defaultRedirectionAfterLogin={paths.board.absolute.HOME}
               >
                 <ThemeWrapper>
                   <AuthenticationProvider

@@ -4,7 +4,7 @@
 @use "@aztlan/mixins/src/media" as media;
 
 $span-language: 1;
-$span-tools: 2;
+$span-tools: 3;
 $subtotal-span: $span-language + $span-tools;
 
 @keyframes loading-background {

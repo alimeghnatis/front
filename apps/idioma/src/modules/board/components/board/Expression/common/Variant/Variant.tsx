@@ -9,7 +9,7 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import {
-  MobilePopup, SimpleForm,
+  MobilePopup, ModularForm,
 } from '@aztlan/ui'
 
 import { useHistory } from 'react-router-dom'
@@ -55,9 +55,10 @@ const MUTATION_CREATE_VARIANT = graphql`
           connections: $connections
           edgeTypeName: "ExpressionNodeEdge"
         ) {
+        #__typename
         isNew
         ...DetailsFragment
-        ...ExpressionFragment
+        ...DefaultExpressionFragment
         #variantName
         #variantWord
       }
@@ -158,6 +159,22 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
             behavior:'smooth',
           }) */
         },
+        updater:(store) => {
+          const root = store.getRoot()
+          const payload = store.getRootField('createExpression')
+          const newInstance = payload.getLinkedRecord('instance')
+
+          if (newInstance) {
+            const newId = newInstance.getValue('id')
+
+            // Set the linked record at the root for 'node(id: $id)'
+            root.setLinkedRecord(
+              newInstance, 'node', { id: newId },
+            )
+          } else {
+            console.error('Mutation did not return an instance.')
+          }
+        },
 
         onCompleted:(response) => {
           // console.log(response)
@@ -192,18 +209,23 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
       fixed
       // {...otherProps}
     >
-      <SimpleForm
-        className="container"
+      <ModularForm
+        id={id}
+        className={['container'].filter(Boolean).join(' ')}
+        // style={style}
         fieldProps={{
-          spanLabel         :8,
-          spanLabelDesktop  :1,
-          spanContent       :8,
-          spanContentDesktop:9,
+          spanLabelDesktop  :null,
+          spanContentDesktop:null,
         }}
+        // defaultValues={defaultValues}
         onSubmit={onSubmit}
-        isInFlight={isInFlight}
-        fields={fields}
-      />
+      >
+        <ModularForm.Section fields={fields} />
+        <ModularForm.SubmitBar
+          submitText="Create"
+          disabled={isInFlight}
+        />
+      </ModularForm>
     </MobilePopup>
   )
 }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b896b6669b27ed8027cfa84fcedcb16e>>
+ * @generated SignedSource<<397071bda289d068e9b006e4b53678f3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -56,7 +56,7 @@ export type ExpressionCreateFormCreateExpressionMutation$data = {
       readonly group: {
         readonly " $fragmentSpreads": FragmentRefs<"DefaultGroupFragment">;
       };
-      readonly " $fragmentSpreads": FragmentRefs<"DetailsFragment" | "ExpressionFragment">;
+      readonly " $fragmentSpreads": FragmentRefs<"DefaultExpressionFragment" | "DetailsFragment">;
     } | null | undefined;
   } | null | undefined;
 };
@@ -119,49 +119,49 @@ v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "content",
+  "name": "isProcessed",
   "storageKey": null
 },
 v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "iso6391",
+  "name": "created",
   "storageKey": null
 },
 v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "iso6392",
+  "name": "iso6391",
   "storageKey": null
 },
 v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "iso6393",
+  "name": "iso6392",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "correctedContent",
+  "name": "iso6393",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "created",
+  "name": "content",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "isProcessed",
+  "name": "correctedContent",
   "storageKey": null
 },
 v12 = {
@@ -227,7 +227,19 @@ v20 = {
   "name": "ratingComment",
   "storageKey": null
 },
-v21 = [
+v21 = {
+  "kind": "ClientExtension",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "isNew",
+      "storageKey": null
+    }
+  ]
+},
+v22 = [
   {
     "kind": "Literal",
     "name": "first",
@@ -263,7 +275,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "ExpressionFragment"
+                "name": "DefaultExpressionFragment"
               },
               {
                 "args": null,
@@ -339,6 +351,7 @@ return {
               (v18/*: any*/),
               (v19/*: any*/),
               (v20/*: any*/),
+              (v21/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -348,10 +361,10 @@ return {
                 "plural": false,
                 "selections": [
                   (v4/*: any*/),
-                  (v10/*: any*/),
+                  (v6/*: any*/),
                   {
                     "alias": null,
-                    "args": (v21/*: any*/),
+                    "args": (v22/*: any*/),
                     "concreteType": "ExpressionNodeConnection",
                     "kind": "LinkedField",
                     "name": "expressions",
@@ -374,13 +387,13 @@ return {
                             "plural": false,
                             "selections": [
                               (v4/*: any*/),
-                              (v11/*: any*/),
-                              (v10/*: any*/),
+                              (v5/*: any*/),
                               (v6/*: any*/),
                               (v7/*: any*/),
                               (v8/*: any*/),
-                              (v5/*: any*/),
                               (v9/*: any*/),
+                              (v10/*: any*/),
+                              (v11/*: any*/),
                               (v12/*: any*/),
                               (v13/*: any*/),
                               (v14/*: any*/),
@@ -390,18 +403,7 @@ return {
                               (v18/*: any*/),
                               (v19/*: any*/),
                               (v20/*: any*/),
-                              {
-                                "kind": "ClientExtension",
-                                "selections": [
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "isNew",
-                                    "storageKey": null
-                                  }
-                                ]
-                              },
+                              (v21/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -452,7 +454,7 @@ return {
                   },
                   {
                     "alias": null,
-                    "args": (v21/*: any*/),
+                    "args": (v22/*: any*/),
                     "filters": null,
                     "handle": "connection",
                     "key": "DefaultGroupFragment_expressions",
@@ -493,16 +495,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9b809051e3b604d2c439d25890e78a65",
+    "cacheID": "d9c24558bb775014e93255ddcbc791a5",
     "id": null,
     "metadata": {},
     "name": "ExpressionCreateFormCreateExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation ExpressionCreateFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...ExpressionFragment\n      ...DetailsFragment\n      group {\n        ...DefaultGroupFragment\n        id\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "mutation ExpressionCreateFormCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...DefaultExpressionFragment\n      ...DetailsFragment\n      group {\n        ...DefaultGroupFragment\n        id\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3ce226a3cd422232ab8e337a877edd04";
+(node as any).hash = "3214b4c29fb53037cdba69facc7e32ab";
 
 export default node;

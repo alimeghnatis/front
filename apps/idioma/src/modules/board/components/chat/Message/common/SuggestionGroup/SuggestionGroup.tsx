@@ -163,6 +163,35 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
           } else {
             console.error('Board record not found')
           }
+          const root = store.getRoot()
+          const payload = store.getRootField('createGroup')
+          const newInstance = payload.getLinkedRecord('instance')
+
+          if (newInstance) {
+            const newId = newInstance.getValue('id')
+            // Set the linked record at the root for 'node(id: $id)'
+            root.setLinkedRecord(
+              newInstance, 'node', { id: newId },
+            )
+
+            const expressionsConnection = newInstance.getLinkedRecord('expressions')
+
+            if (expressionsConnection) {
+              const edges = expressionsConnection.getLinkedRecords('edges')
+              edges.forEach((edge) => {
+                const expressionNode = edge.getLinkedRecord('node')
+                if (expressionNode) {
+                  const exprId = expressionNode.getValue('id')
+                  // Optionally, link each expression node individually in the store if needed
+                  root.setLinkedRecord(
+                    expressionNode, 'node', { id: exprId },
+                  )
+                }
+              })
+            }
+          } else {
+            console.error('Mutation did not return an instance.')
+          }
         },
       })
     },

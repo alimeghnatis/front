@@ -127,6 +127,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'grid',
+        'no-scrollbar',
       ]
         .filter((e) => e)
         .join(' ')}

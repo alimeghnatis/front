@@ -53,6 +53,7 @@ const FRAGMENT = graphql`
       ...BoardUpdateFormFragment
       ...VariantBoardFragment
       ...ChatFragment
+      ...ModeSelectorFragment
       #@arguments(count: $boardGroupCount, cursor: $boardGroupCursor)
     }
   }
@@ -65,7 +66,8 @@ function RawProvider({
   baseBoardPath = paths.board.absolute.BOARD_HOME2,
   baseBoardPathAlt = paths.board.absolute.BOARD_HOME,
   createBoardPath = paths.board.absolute.NEW_BOARD,
-  expressionDetailsPath,
+  chatBoardPath = paths.board.absolute.BOARD_CHAT,
+  expressionDetailsPath = paths.board.absolute.BOARD_EXPRESSION_DETAILS,
 }: // ...otherProps
 InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   // const { board: currentBoardId } = useParams()
@@ -75,6 +77,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     currentBoardId,
     currentExpressionId,
     currentExpressionActionSlug,
+    isChat,
   } = useMemo(
     () => {
       const boardMatch = matchPath(
@@ -86,6 +89,12 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       const boardMatchAlt = matchPath(
         location.pathname, {
           path :baseBoardPathAlt,
+          exact:false,
+        },
+      )
+      const chatMatch = matchPath(
+        location.pathname, {
+          path :chatBoardPath,
           exact:false,
         },
       )
@@ -101,6 +110,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
           ? expressionMatchParam
           : null,
         currentExpressionActionSlug:expressionActionSlugMatchParam,
+        isChat                     :chatMatch !== null,
       }
     }, [location.pathname],
   )
@@ -144,7 +154,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
         slug,
       },
     ),
-    [selectedBoard],
+    [selectedBoard?.id],
   )
 
   const containerRef = useRef(null)
@@ -165,6 +175,8 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       expressionDetailsPath,
       getExpressionDetailsUrl,
       containerRef,
+      isChat,
+      chatBoardPath,
     }),
     [
       baseBoardPath,
@@ -172,14 +184,18 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       createBoardPath,
       expressionDetailsPath,
       getExpressionDetailsUrl,
+      chatBoardPath,
       basePath,
       baseBoardUrl,
       selectedBoard,
-      currentBoardId,
-      currentExpressionId,
-      currentExpressionActionSlug,
       data,
       containerRef,
+      // isChat,
+      // currentBoardId,
+      currentExpressionId,
+      currentExpressionActionSlug,
+      location.pathName,
+      isChat,
     ],
   )
 
@@ -207,6 +223,9 @@ RawProvider.propTypes = {
 
   /** The expression details path */
   expressionDetailsPath:PropTypes.string,
+
+  /** The chat board path */
+  chatBoardPath:PropTypes.string,
 
   /** The data to use */
   data:PropTypes.any,

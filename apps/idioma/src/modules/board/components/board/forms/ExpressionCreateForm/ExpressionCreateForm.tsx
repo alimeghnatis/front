@@ -25,7 +25,7 @@ const MUTATION_CREATE_EXPRESSION = graphql`
   ) {
     createExpression(input: $input) {
       instance {
-        ...ExpressionFragment
+        ...DefaultExpressionFragment
         ...DetailsFragment
         group
           @prependNode(
@@ -132,6 +132,22 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
               })
             }, 0,
           )
+        },
+        updater:(store) => {
+          const root = store.getRoot()
+          const payload = store.getRootField('createExpression')
+          const newInstance = payload.getLinkedRecord('instance')
+
+          if (newInstance) {
+            const newId = newInstance.getValue('id')
+
+            // Set the linked record at the root for 'node(id: $id)'
+            root.setLinkedRecord(
+              newInstance, 'node', { id: newId },
+            )
+          } else {
+            console.error('Mutation did not return an instance.')
+          }
         },
       })
     }, [],

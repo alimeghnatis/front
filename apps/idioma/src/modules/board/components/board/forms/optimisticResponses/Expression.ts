@@ -1,4 +1,5 @@
 export default {
+  // __typename        :'ExpressionNode',
   content           :'Loading',
   correctedContent  :'Loading',
   iso6391           :'**',
@@ -14,4 +15,5 @@ export default {
   changes           :'Loading',
   isProcessed       :false,
   isNew             :true,
+  translation       :null,
 }

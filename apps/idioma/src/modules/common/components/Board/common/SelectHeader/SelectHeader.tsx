@@ -66,6 +66,8 @@ function RawSelectHeader({
     baseBoardPath,
     currentBoardId,
     createBoardPath,
+    chatBoardPath,
+    isChat,
   } = useBoardContext()
 
   // const prefetcher = usePrefetcher()
@@ -96,11 +98,14 @@ function RawSelectHeader({
       } else {
         setSelectedBoardId(newSelectedBoardId)
         history.push(generatePath(
-          baseBoardPath, { board: newSelectedBoardId },
+          isChat ? chatBoardPath : baseBoardPath, { board: newSelectedBoardId },
         ))
       }
     },
-    [history],
+    [
+      history,
+      isChat,
+    ],
   )
 
   /*

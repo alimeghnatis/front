@@ -168,7 +168,6 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
               className={[
                 'label',
                 `span-${spanLabel}`,
-                `md-span-${spanLabelDesktop}`,
               ]
                 .filter(Boolean)
                 .join(' ')}
@@ -179,7 +178,6 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
               className={[
                 'field',
                 `span-${spanContent}`,
-                `md-span-${spanContentDesktop}`,
               ]
                 .filter(Boolean)
                 .join(' ')}

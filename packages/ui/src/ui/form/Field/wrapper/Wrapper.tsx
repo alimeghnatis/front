@@ -15,6 +15,9 @@ import {
 } from '../hooks/index.js'
 import * as messages from '../../messages.js'
 
+const labelClassName = 'label'
+const inputClassName = 'input'
+
 const defaultObject = {}
 /**
  * Constructs a className string based on column span parameters.
@@ -26,7 +29,8 @@ const span = (
   defaultSpan: number,
   desktopSpan: number | null = null,
 ): string[] => {
-  const className: string[] = [`span-${defaultSpan}`]
+  const className: string[] = []
+  if (defaultSpan) className.push(`span-${defaultSpan}`)
   if (desktopSpan) className.push(`md-span-${desktopSpan}`)
   return className
 }
@@ -111,6 +115,7 @@ function Wrapper({
           ...span(
             spanLabel, spanLabelDesktop,
           ),
+          labelClassName,
         ]
           .filter(Boolean)
           .join(' ')}
@@ -130,6 +135,7 @@ function Wrapper({
             spanContent, spanContentDesktop,
           ),
           nested && 'grid',
+          inputClassName,
         ]
           .filter(Boolean)
           .join(' ')}

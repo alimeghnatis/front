@@ -8,6 +8,8 @@ export interface ContextType {
   baseBoardPath?              :string;
   baseBoardUrl?               :string;
   createBoardPath?            :string;
+  chatBoardPath?              :string;
+  isChat                      :boolean;
   expressionDetailsPath       :string;
   containerRef                :React.MutableRefObject<null>;
   getExpressionDetailsUrl     :(id: string, slug: string) => string;

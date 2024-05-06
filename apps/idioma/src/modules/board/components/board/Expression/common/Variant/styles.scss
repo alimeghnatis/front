@@ -1,9 +1,19 @@
 /* @aztlan/generator-front 3.4.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.expression-variant {
   background: var(--near);
+  @media screen and (min-width: 801px) {
+    .form-section > .label {
+      grid-column: 1/span 2;
+    }
+
+    .form-section > .input {
+      grid-column: 3/span 10;
+    }
+  }
 }
 
 

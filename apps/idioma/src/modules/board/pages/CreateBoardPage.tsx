@@ -8,7 +8,7 @@ import { BoardCreateForm } from '../components/index.js'
 
 function NewBoard() {
   return (
-    <Template title="new board">
+    <Template>
       <div
         className="grid container"
         style={{ overflow: 'auto' }}

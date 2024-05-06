@@ -76,6 +76,7 @@ function DefaultExpression({
         }
       }
     }, [
+      result,
       isRecentAndUnprocessed,
       refetch,
       result.isNew,
@@ -106,4 +107,12 @@ DefaultExpression.propTypes = {
   data:PropTypes.any,
 }
 
-export default React.memo(DefaultExpression)
+function D(props) {
+  return (
+    <React.Suspense fallback="loading exp">
+      <DefaultExpression {...props} />
+    </React.Suspense>
+  )
+}
+
+export default React.memo(D)

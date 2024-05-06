@@ -14,23 +14,6 @@ import {
   ExpressionCreateForm, Board,
 } from '../components/index.js'
 
-const QUERY = graphql`
-  query BoardPageSingleQuery($board: ID!) {
-    board(id: $board) {
-      id
-      name
-      created
-      updated
-      newExpressionsCount
-      ...BoardFragment
-      ...BoardUpdateFormFragment
-      ...VariantBoardFragment
-      ...ChatFragment
-    }
-  }
-`
-export { QUERY }
-
 function BoardPage() {
   const environment = useRelayEnvironment()
   const {
@@ -71,10 +54,8 @@ function BoardPage() {
 
 export default function (props) {
   return (
-    <Template hasSettings>
-      <React.Suspense fallback="Loading board">
-        <BoardPage {...props} />
-      </React.Suspense>
-    </Template>
+    <React.Suspense fallback="Loading board">
+      <BoardPage {...props} />
+    </React.Suspense>
   )
 }

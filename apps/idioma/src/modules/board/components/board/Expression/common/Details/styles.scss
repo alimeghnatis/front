@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 3.4.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.expression-details {
   background: var(--near);
@@ -12,6 +13,15 @@
 
   .field {
     //grid-column: 4 / -1;
+  }
+  @media screen and (min-width: 801px) {
+    .grid.container > .label {
+      grid-column: 1/span 2;
+    }
+
+    .grid.container > .field {
+      grid-column: 3/span 10;
+    }
   }
 }
 

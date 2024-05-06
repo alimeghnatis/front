@@ -111,3 +111,20 @@ main.grid {
   position: relative;
 }
 
+
+.no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fixed-special {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 5em;
+  width: 100%;
+  z-index: 10;
+}

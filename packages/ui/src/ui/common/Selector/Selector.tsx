@@ -1,7 +1,11 @@
 /* @aztlan/generator-front 3.6.3 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useRef, useState, useEffect,
+  useInsertionEffect,
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -39,28 +43,46 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
     setSliderStyle,
   ] = useState({})
 
-  const itemRefs = useRef(options.reduce(
-    (
-      acc, option,
-    ) => {
-      acc[option.value] = React.createRef()
-      return acc
-    }, {},
-  ))
+  const [
+    isLoaded,
+    setIsLoaded,
+  ] = useState(false)
+
+  const containerRef = useRef<HTMLUListElement>()
 
   useEffect(
     () => {
-      const activeItem = itemRefs.current[value]?.current
-      if (activeItem) {
-        const {
-          offsetLeft, offsetWidth,
-        } = activeItem
-        setSliderStyle({
-          '--slider-left' :`calc(${offsetLeft}px - var(--gap)/2)`,
-          '--slider-width':`calc(${offsetWidth}px + var(--gap)`,
-        })
+      if (containerRef.current) {
+        const children = Array.from(containerRef.current.children)
+        const activeItem = children.find((child) => child.getAttribute('data-value') === value)
+
+        if (activeItem) {
+          const {
+            offsetLeft, offsetWidth,
+          } = activeItem as HTMLElement
+          setSliderStyle({
+            '--slider-left' :`calc(${offsetLeft}px - var(--gap)/2)`,
+            '--slider-width':`calc(${offsetWidth}px + var(--gap))`,
+          })
+        }
       }
-    }, [value],
+    }, [
+      value,
+      options,
+      isLoaded,
+    ],
+  )
+
+  useEffect(
+    () => {
+      if (!isLoaded) {
+        setTimeout(
+          () => {
+            setIsLoaded(true)
+          }, 20,
+        )
+      }
+    }, [],
   )
 
   return (
@@ -74,22 +96,25 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      ref={containerRef}
       // {...otherProps}
     >
       {options.map((option) => (
         <li
           key={option.value}
           onClick={() => setValue(option.value)}
+          data-value={option.value}
           className={value === option.value ? styleNames.modifierSelected : ''}
-          ref={itemRefs.current[option.value]}
         >
           {option.label}
         </li>
       ))}
+      {isLoaded && (
       <li
         className="slider"
         style={sliderStyle}
       />
+      )}
     </ul>
   )
 }

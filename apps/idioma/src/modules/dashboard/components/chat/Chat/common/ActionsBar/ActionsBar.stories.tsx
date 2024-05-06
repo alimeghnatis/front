@@ -8,7 +8,7 @@ import { decorators } from 'story-utils'
 import Component from './ActionsBar.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/chat/Chat/ActionsBar',
+  title     :'dashboard/chat/Chat/ActionsBar',
   component :Component,
   decorators:[decorators.components.Relay],
   /*

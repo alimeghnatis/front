@@ -20,7 +20,7 @@ import {
   ConnectionHandler,
 } from 'react-relay'
 import { useBoardContext } from 'modules/common/components'
-import optimisticExpression from '../../../../optimisticExpression.js'
+import optimisticExpression from '../../../forms/optimisticResponses/Expression.js'
 import useExpressionVariantFields from './useExpressionVariantFields.js'
 
 const baseClassName = styleNames.base
@@ -170,7 +170,7 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
     ],
   )
 
-  const fields = useVariantFields(
+  const fields = useExpressionVariantFields(
     result, boardResult,
   )
 

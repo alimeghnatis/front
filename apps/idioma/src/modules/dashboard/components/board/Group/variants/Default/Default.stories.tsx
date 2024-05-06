@@ -10,7 +10,7 @@ import { decorators } from 'story-utils'
 import Component from './Default.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/Group/Default',
+  title     :'dashboard/board/Group/Default',
   component :Component,
   decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },

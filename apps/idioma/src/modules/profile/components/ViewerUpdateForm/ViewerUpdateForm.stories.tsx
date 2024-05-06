@@ -8,7 +8,7 @@ import { graphql } from 'react-relay'
 import { RawViewerUpdateForm as Component } from './ViewerUpdateForm.js'
 
 const meta: Meta<typeof Component> = {
-  title    :'modules/dashboard/ViewerUpdateForm',
+  title    :'profile/ViewerUpdateForm',
   component:Component,
   /*
   decorators: [

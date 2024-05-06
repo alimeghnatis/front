@@ -10,7 +10,7 @@ import { decorators } from 'story-utils'
 import Component from './Variant.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/Variant',
+  title     :'dashboard/Board/Expression/Variant',
   component :Component,
   decorators:[
     decorators.components.Router,

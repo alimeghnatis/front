@@ -13,7 +13,7 @@ import {
 import {
   useBoardContext, TextareaForm,
 } from 'modules/common/components'
-import optimisticExpression from '../optimisticExpression.js'
+import optimisticExpression from '../optimisticResponses/Expression.js'
 
 // const baseClassName = styleNames.base
 const componentClassName = 'addition-form'

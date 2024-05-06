@@ -12,7 +12,7 @@ import Component from './Details.js'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/Details',
+  title     :'dashboard/board/Expression/Details',
   component :Component,
   decorators:[
     decorators.components.Router,

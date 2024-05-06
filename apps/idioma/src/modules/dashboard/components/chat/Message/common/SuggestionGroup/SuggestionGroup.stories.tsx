@@ -10,7 +10,7 @@ import Component from './SuggestionGroup.js'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'modules/dashboard/chat/Message/SuggestionGroup',
+  title    :'dashboard/chat/Message/SuggestionGroup',
   component:Component,
   /*
   decorators: [

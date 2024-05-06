@@ -9,7 +9,7 @@ import { decorators } from 'story-utils'
 import Component from './Expression.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/Group/Expression',
+  title     :'dashboard/board/Expression',
   component :Component,
   decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },

@@ -10,7 +10,7 @@ import { decorators } from 'story-utils'
 import Component from './CreateForm.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/chat/Chat/CreateForm',
+  title     :'dashboard/chat/Chat/CreateForm',
   component :Component,
   decorators:[decorators.components.Relay],
   /*

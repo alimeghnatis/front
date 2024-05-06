@@ -19,7 +19,7 @@ import styleNames from '@aztlan/bem'
 
 import { useBoardContext } from 'modules/common/components'
 import { Suggestion } from '../Suggestion/index.js'
-import optimisticExpression from '../../../../optimisticExpression.js'
+import optimisticExpression from '../../../../board/forms/optimisticResponses/Expression.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'suggestion-group'
@@ -101,10 +101,6 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
 
   const environment = useRelayEnvironment()
 
-  console.log(
-    'RS', data.newExpressionsCount,
-  )
-
   const createGroupFromSuggestions = useCallback(
     (suggestionsIndexes) => {
       const connectionID = ConnectionHandler.getConnectionID(
@@ -116,7 +112,7 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
       const suggestionsToCommit = result.suggestions.filter((
         suggestion, index,
       ) => suggestionsIndexes.includes(index))
-      const newExpressionsCount = (boardData.newExpressionsCount || Number(0))
+      const newExpressionsCount = (boardData?.newExpressionsCount || Number(0))
         + suggestionsToCommit.length
       commit({
         variables:{
@@ -171,7 +167,7 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
       })
     },
     [
-      boardData.newExpressionsCount,
+      boardData?.newExpressionsCount,
       result.suggestions,
       result.iso6391,
       result.iso6392,

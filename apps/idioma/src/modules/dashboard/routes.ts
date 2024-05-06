@@ -6,8 +6,8 @@ import paths from './paths.js'
 
 import Layer from './layer/Main.js'
 import { QUERY as QUERY_LANGUAGE_CHOICES } from './components/board/forms/useBoardFormFields.js'
-import { QUERY as QUERY_BOARD } from './pages/Board.js'
-import { QUERY as QUERY_FLAGS } from './pages/Flags.js'
+import { QUERY as QUERY_BOARD } from './pages/BoardPage.js'
+import { QUERY as QUERY_FLAGS } from './pages/FlagsPage.js'
 // import QUERY_VIEW from './pages/ViewQuery.js'
 
 export const internalRoutes = [

@@ -124,7 +124,7 @@ InferProps<typeof ActionsBar.propTypes>): React.ReactElement {
         <button
           onClick={resetChat}
           type="button"
-          disabled={isInFlight || !result.messages.edges.length}
+          disabled={isInFlight || !result?.messages.edges.length}
         >
           Reset Chat
         </button>

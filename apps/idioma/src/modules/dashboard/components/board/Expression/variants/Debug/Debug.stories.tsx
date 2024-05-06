@@ -9,7 +9,7 @@ import { decorators } from 'story-utils'
 import Component from './Debug.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/Group/Expression/Debug',
+  title     :'dashboard/board/Expression/Debug',
   component :Component,
   decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },

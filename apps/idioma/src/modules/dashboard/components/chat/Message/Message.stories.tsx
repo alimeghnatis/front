@@ -11,7 +11,7 @@ import Component from './Message.js'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'modules/dashboard/chat/Message',
+  title    :'dashboard/chat/Message',
   component:Component,
   /*
   decorators: [

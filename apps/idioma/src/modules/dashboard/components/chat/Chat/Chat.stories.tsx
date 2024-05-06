@@ -10,7 +10,7 @@ import Component from './Chat.js'
 import decorators from '../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/chat/Chat',
+  title     :'dashboard/chat/Chat',
   component :Component,
   // decorators:[decorators.components.Relay],
   parameters:{ layout: 'fullscreen' },

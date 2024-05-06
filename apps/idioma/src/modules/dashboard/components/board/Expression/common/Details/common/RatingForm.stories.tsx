@@ -6,7 +6,7 @@ import Component from './RatingForm.js'
 // import decorators from '../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'modules/dashboard/Board/ExpressionDetails/RatingForm',
+  title     :'dashboard/board/Expression/Details/RatingForm',
   component :Component,
   decorators:[
     (Story) => (

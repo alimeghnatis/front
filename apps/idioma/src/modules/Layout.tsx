@@ -10,18 +10,13 @@ import { BoardProvider } from './common/components/index.js'
 
 function Layout() {
   return (
-    <BoardProvider
-      basePath={paths.board.absolute.HOME}
-      baseBoardPath={paths.board.absolute.BOARD_HOME2}
-      baseBoardPathAlt={paths.board.absolute.BOARD_HOME}
-      expressionDetailsPath={paths.board.absolute.BOARD_EXPRESSION_DETAILS}
-    >
+    <BoardProvider>
       <Triptych
         primaryRoutes={routes}
         secondaryRoutes={secondary} // routes}
         navigation={<NavigationPage />}
         navigationSpan={8}
-        navigationSpanDesktop={14}
+        navigationSpanDesktop={10}
         secondarySpan={6}
         secondarySpanDesktop={10}
       />

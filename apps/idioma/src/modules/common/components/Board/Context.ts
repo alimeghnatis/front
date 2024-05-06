@@ -7,6 +7,7 @@ export interface ContextType {
   basePath?                   :string;
   baseBoardPath?              :string;
   baseBoardUrl?               :string;
+  createBoardPath?            :string;
   expressionDetailsPath       :string;
   containerRef                :React.MutableRefObject<null>;
   getExpressionDetailsUrl     :(id: string, slug: string) => string;

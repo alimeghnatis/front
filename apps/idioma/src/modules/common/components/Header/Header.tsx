@@ -28,6 +28,7 @@ function Header({
   className: userClassName,
   style,
   children,
+  right,
 }: // ...otherProps
 
 InferProps<typeof Header.propTypes>): React.ReactElement {
@@ -63,11 +64,18 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       left={<button onClick={toggleNavigation}>Toggle Navigation</button>}
-      right={<button onClick={openHelp}>Help</button>}
+      right={(
+        <>
+          <button onClick={openHelp}>Help</button>
+          <Link to="/profile">
+            <button>P</button>
+          </Link>
+          {right}
+        </>
+      )}
       // {...otherProps}
     >
       {children}
-      <Link to="/profile">Profile</Link>
     </NavigationHeader>
   )
 }
@@ -84,6 +92,9 @@ Header.propTypes = {
 
   /** The children JSX */
   children:PropTypes.node,
+
+  /** The right items */
+  right:PropTypes.node,
 }
 
 export default Header

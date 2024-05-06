@@ -56,6 +56,18 @@ export const barsShared = {
   /* Whether to hide this navigation element on desktop */
   desktop:PropTypes.bool,
 
+  /* The left span of this element */
+  leftSpan:PropTypes.number,
+
+  /* the left span on desktop */
+  leftSpanDesktop:PropTypes.number,
+
+  /* The right span of this element */
+  rightSpan:PropTypes.number,
+
+  /* the right span on desktop */
+  rightSpanDesktop:PropTypes.number,
+
   /* Whether to display borders */
   UNSTABLE_borders:PropTypes.bool,
 

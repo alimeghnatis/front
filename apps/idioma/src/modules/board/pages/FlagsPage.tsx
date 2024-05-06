@@ -7,6 +7,7 @@ import {
 import {
   useLazyLoadQuery, graphql,
 } from 'react-relay'
+import Template from '../templates/Primary.js'
 import {
   // BoardProvider,
   // HeaderGroup,
@@ -31,13 +32,10 @@ function Flags({
   )
 
   return (
-    <>
-      <h1>FLAGS</h1>
-      <DebugGroup
-        data={data}
-        style={{ overflow: 'auto' }}
-      />
-    </>
+    <DebugGroup
+      data={data}
+      style={{ overflow: 'auto' }}
+    />
   )
 }
 
@@ -74,8 +72,10 @@ function Wrapper({
 // export default Wrapper
 export default function (props) {
   return (
-    <React.Suspense fallback="Loading flags">
-      <Flags {...props} />
-    </React.Suspense>
+    <Template title="Flags">
+      <React.Suspense fallback="Loading flags">
+        <Flags {...props} />
+      </React.Suspense>
+    </Template>
   )
 }

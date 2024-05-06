@@ -32,6 +32,8 @@ const useItems = ({
     logout, isLogoutInFlight,
   } = useAuthenticationContext()
 
+  // viewerData.isSuperuser
+
   const rootItem = useMemo(
     () => ({
       label:'Root',
@@ -84,15 +86,6 @@ const useItems = ({
                       ),
                     },
                   ],
-                },
-                {
-                  label:'Settings',
-                  url  :paths.board.generatePath(
-                    'BOARD_SETTINGS', { board: node.board.id },
-                  ),
-                  Component:({ item }: ItemComponentProps) => React.createElement(
-                    Link, { to: item.url }, item.label,
-                  ),
                 },
                 {
                   label:'Chat',

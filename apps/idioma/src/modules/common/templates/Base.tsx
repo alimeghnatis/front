@@ -44,7 +44,7 @@ const routeMap = [
 ]
 
 function Wrapper({
-  title, children,
+  title, children, right,
 }) {
   return (
     <main className="grid">
@@ -54,8 +54,9 @@ function Wrapper({
           className="container"
           items={routeMap}
         />
-        <Header>{title}</Header>
+        <Header right={right}>{title}</Header>
       </div>
+
       {children}
     </main>
   )
@@ -64,6 +65,7 @@ function Wrapper({
 Wrapper.propTypes = {
   title   :PropTypes.node,
   children:PropTypes.node,
+  right   :PropTypes.node,
 }
 
 function Base({
@@ -71,15 +73,26 @@ function Base({
   wireframe,
   wireframeTitle,
   children,
+  ...otherProps
 }: InferProps<typeof Base.propTypes>): React.ReactElement {
   if (wireframe) {
     return (
-      <Wrapper title={wireframeTitle || title}>
+      <Wrapper
+        title={wireframeTitle || title}
+        {...otherProps}
+      >
         <div style={{ minHeight: '300px' }}>WIREFRAME MODE</div>
       </Wrapper>
     )
   }
-  return <Wrapper title={title}>{children}</Wrapper>
+  return (
+    <Wrapper
+      title={title}
+      {...otherProps}
+    >
+      {children}
+    </Wrapper>
+  )
 }
 
 Base.propTypes = {

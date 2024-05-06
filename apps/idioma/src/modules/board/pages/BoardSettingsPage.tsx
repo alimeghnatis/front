@@ -3,19 +3,23 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useBoardContext } from 'modules/common/components'
-import Template from '../layer/Main.js'
+import Template from 'modules/common/templates/Secondary'
 import { BoardUpdateForm } from '../components/index.js'
 
 function BoardSettings() {
   const { data } = useBoardContext()
   return (
-    <div
-      className="grid container"
-      style={{ overflow: 'auto' }}
-    >
-      <h1>BoardSettings </h1>
-      <BoardUpdateForm data={data} />
-    </div>
+    <Template title="BoardSettings">
+      <div
+        className="grid container"
+        style={{
+          overflow:'auto',
+          height  :'100%',
+        }}
+      >
+        <BoardUpdateForm data={data} />
+      </div>
+    </Template>
   )
 }
 

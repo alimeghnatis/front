@@ -10,7 +10,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  NavigationHeader, withSuperuser,
+  NavigationHeader, withSuperuser, usePrefetcher,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
@@ -62,20 +62,27 @@ function RawSelectHeader({
   )
 
   const {
-    basePath, baseBoardPath, currentBoardId,
+    basePath,
+    baseBoardPath,
+    currentBoardId,
+    createBoardPath,
   } = useBoardContext()
+
+  // const prefetcher = usePrefetcher()
 
   // const result = useBoardMemberships()
   const result = data
 
+  const history = useHistory()
+
+  const isCreating = history.location.pathname === createBoardPath
+
   const [
     selectedBoardId,
     setSelectedBoardId,
-  ] = useState(currentBoardId)
+  ] = useState(isCreating ? 'new' : currentBoardId)
 
   const boardMemberships = result?.edges || {}
-
-  const history = useHistory()
 
   const handleSelectionChange = useCallback(
     (event) => {
@@ -83,6 +90,9 @@ function RawSelectHeader({
       if (newSelectedBoardId === 'null') {
         setSelectedBoardId('null')
         history.push(basePath)
+      } else if (newSelectedBoardId === 'new') {
+        setSelectedBoardId('null')
+        history.push(createBoardPath)
       } else {
         setSelectedBoardId(newSelectedBoardId)
         history.push(generatePath(
@@ -93,55 +103,59 @@ function RawSelectHeader({
     [history],
   )
 
+  /*
+  const handleHover = useCallback(
+    (board) => () => {
+      console.log(
+        'hovering', board,
+      )
+      prefetcher(
+        baseBoardPath, { board },
+      )
+    },
+    [],
+  ) */
+
   useEffect(
     () => {
-      if (selectedBoardId !== currentBoardId) {
+      if (isCreating) {
+        setSelectedBoardId('new')
+      } else if (selectedBoardId !== currentBoardId) {
         setSelectedBoardId(currentBoardId)
       }
-    }, [currentBoardId],
+    }, [
+      currentBoardId,
+      isCreating,
+    ],
   )
 
   return (
-    <NavigationHeader
-      id={id}
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-      ]
-        .filter((e) => e)
-        .join(' ')}
-      style={style}
-      content="Select"
-      left={<strong>Board</strong>}
-      desktop
-      {...otherProps}
+    <select
+      id="_board"
+      name="_board"
+      onChange={handleSelectionChange}
+      value={selectedBoardId ?? 'null'}
     >
-      <select
-        id="_board"
-        name="_board"
-        onChange={handleSelectionChange}
-        value={selectedBoardId ?? 'null'}
-      >
-        <option value="null">Select a board</option>
-        {boardMemberships.map((membership) => {
-          const { node } = membership
-          return (
-            <option
-              key={node.id}
-              value={node.board.id}
-            >
-              {node.board.name}
-              {' '}
-              - (
-              {node.role}
-              )
-              {/* node.board.name */}
-            </option>
-          )
-        })}
-      </select>
-    </NavigationHeader>
+      <option value="null">Select a board</option>
+      {boardMemberships.map((membership) => {
+        const { node } = membership
+        return (
+          <option
+            key={node.id}
+            value={node.board.id}
+            // onMouseEnter={handleHover(node.board.id)}
+          >
+            {node.board.name}
+            {' '}
+            - (
+            {node.role}
+            )
+            {/* node.board.name */}
+          </option>
+        )
+      })}
+      <option value="new">New Board</option>
+    </select>
   )
 }
 

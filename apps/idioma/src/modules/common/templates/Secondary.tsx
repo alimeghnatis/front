@@ -6,7 +6,7 @@ function Secondary({
 }) {
   return (
     <>
-      <SecondaryHeader>{title}</SecondaryHeader>
+      <SecondaryHeader leftSpanDesktop={2}>{title}</SecondaryHeader>
       {children}
     </>
   )

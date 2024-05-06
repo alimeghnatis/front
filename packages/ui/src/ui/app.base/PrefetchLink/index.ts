@@ -6,3 +6,4 @@ export {
 } from './PrefetchLink.js'
 export { default as usePrefetchQuery } from './usePrefetchQuery.js'
 export { default as usePrefetchLink } from './usePrefetchLink.js'
+export { default as usePrefetcher } from './usePrefetcher.js'

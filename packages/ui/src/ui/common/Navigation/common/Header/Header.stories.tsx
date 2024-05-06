@@ -48,3 +48,13 @@ export const Padded: StoryObj<typeof Component> = {
     UNSTABLE_padded:true,
   },
 }
+
+export const CustomSpan: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    leftSpan        :3,
+    leftSpanDesktop :4,
+    rightSpan       :3,
+    rightSpanDesktop:4,
+  },
+}

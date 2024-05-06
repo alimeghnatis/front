@@ -16,7 +16,7 @@ import * as PropTypes from 'prop-types'
 import {
   Link, useLocation,
 } from 'react-router-dom'
-import Template from '../../common/templates/Base.js'
+import Template from 'modules/common/templates/Base'
 
 const m = defineMessages({
   title:{

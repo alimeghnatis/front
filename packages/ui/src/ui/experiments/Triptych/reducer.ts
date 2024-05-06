@@ -18,6 +18,12 @@ function reducer(
         focus:state.focus === 1 ? 0 : 1,
       }
     }
+    case 'SET_FOCUS': {
+      return {
+        ...state,
+        focus:action.payload,
+      }
+    }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }

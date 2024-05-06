@@ -14,6 +14,8 @@ import {
 } from '../components/index.js'
 
 import { useBoardMemberships } from '../../common/components/index.js'
+import Template from '../templates/Primary.js'
+import paths from '../paths.js'
 
 function Home({
   wireframe, ...props
@@ -23,26 +25,30 @@ function Home({
   const boardMemberships = result?.edges || {}
 
   return (
-    <div className="container">
-      <ul>
-        {boardMemberships.map((membership) => {
-          const { node } = membership
-          return (
-            <li key={node.board.url}>
-              <Link
-                to={`/d/${node.board.id}`}
-                key={node.id}
-              >
-                {node.role}
-                {' '}
-                {' - '}
-                {node.board.name}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
+    <Template title="board home">
+      <div className="container">
+        <ul>
+          {boardMemberships.map((membership) => {
+            const { node } = membership
+            return (
+              <li key={node.board.url}>
+                <Link
+                  to={paths.generatePath(
+                    'BOARD_HOME', { board: node.board.id },
+                  )}
+                  key={node.id}
+                >
+                  {node.role}
+                  {' '}
+                  {' - '}
+                  {node.board.name}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    </Template>
   )
 }
 

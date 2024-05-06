@@ -4,7 +4,28 @@
 @use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.navigation-header {
+  --ls: var(--left-span);
+  --rs: var(--right-span);
+  --cs: calc(var(--columns) - var(--ls) - var(--rs));
+
+  @include media.media($from: 801px) {
+    --cs: calc(var(--columns) - var(--left-span-desktop) - var(--right-span-desktop));
+    --ls: var(--left-span-desktop);
+    --rs: var(--right-span-desktop);
+  }
   background: var(--near);
+
+  > .left {
+    grid-column: 1 / span var(--ls);
+  }
+
+  > .center {
+    grid-column: calc(var(--ls) + 1) / span var(--cs);
+  }
+
+  > .right {
+    grid-column: calc(var(--columns) - var(--rs) + 1) / span var(--rs);
+  }
   &.#{bem.$modifier-fixed} {
     left: 0;
     position: fixed;

@@ -3,18 +3,19 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
-import Template from '../layer/Main.js'
+import Template from '../templates/Primary'
 import { BoardCreateForm } from '../components/index.js'
 
 function NewBoard() {
   return (
-    <div
-      className="grid container"
-      style={{ overflow: 'auto' }}
-    >
-      <h1>New board</h1>
-      <BoardCreateForm />
-    </div>
+    <Template title="new board">
+      <div
+        className="grid container"
+        style={{ overflow: 'auto' }}
+      >
+        <BoardCreateForm />
+      </div>
+    </Template>
   )
 }
 

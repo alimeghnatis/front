@@ -15,6 +15,7 @@ export type TriptychState = TriptychMatch & {
 export type TriptychContextType = {
   state           :TriptychState;
   setState        :(payload: TriptychMatch) => void;
+  setFocus        :(focus: number) => void;
   toggleNavigation:() => void;
 }
 

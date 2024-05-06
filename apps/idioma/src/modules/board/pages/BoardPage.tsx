@@ -9,7 +9,7 @@ import {
   commitLocalUpdate,
 } from 'react-relay'
 import { useBoardContext } from 'modules/common/components'
-import Template from '../layer/Main.js'
+import Template from '../templates/Primary.js'
 import {
   ExpressionCreateForm, Board,
 } from '../components/index.js'
@@ -60,22 +60,21 @@ function BoardPage() {
 
   return (
     <>
-      {/*
-      <h1>Board </h1>
-      <pre
-        style={{
-          whiteSpace:'pre-wrap',
-          wordWrap  :'break-word',
-        }}
-      >
-        {JSON.stringify(
-          data, null, 2,
-        )}
-      </pre> */}
-      <Board data={data} />
+      <Board
+        data={data}
+        className="container"
+      />
       <ExpressionCreateForm />
     </>
   )
 }
 
-export default BoardPage
+export default function (props) {
+  return (
+    <Template hasSettings>
+      <React.Suspense fallback="Loading board">
+        <BoardPage {...props} />
+      </React.Suspense>
+    </Template>
+  )
+}

@@ -40,9 +40,9 @@ export const primary = [
   },
   {
     path:[
-      paths.absolute.BOARD_HOME,
-      paths.absolute.BOARD_HOME2,
-      paths.absolute.BOARD_EXPRESSION_DETAILS,
+      `${paths.absolute.BOARD_HOME}*`,
+      `${paths.absolute.BOARD_HOME2}*`,
+      `${paths.absolute.BOARD_EXPRESSION_DETAILS}*`,
     ],
     component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/BoardPage.js')),
     exact    :true,

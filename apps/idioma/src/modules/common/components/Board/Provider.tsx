@@ -13,6 +13,7 @@ import {
   graphql,
 } from 'react-relay'
 import { useApplicationContext } from '@aztlan/ui'
+import * as paths from 'modules/paths'
 
 import Context from './Context.js'
 
@@ -60,9 +61,10 @@ const FRAGMENT = graphql`
 function RawProvider({
   data,
   children,
-  basePath,
-  baseBoardPath,
-  baseBoardPathAlt,
+  basePath = paths.board.absolute.HOME,
+  baseBoardPath = paths.board.absolute.BOARD_HOME2,
+  baseBoardPathAlt = paths.board.absolute.BOARD_HOME,
+  createBoardPath = paths.board.absolute.NEW_BOARD,
   expressionDetailsPath,
 }: // ...otherProps
 InferProps<typeof RawProvider.propTypes>): React.ReactElement {
@@ -159,6 +161,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       baseBoardPath,
       baseBoardPathAlt,
       baseBoardUrl,
+      createBoardPath,
       expressionDetailsPath,
       getExpressionDetailsUrl,
       containerRef,
@@ -166,6 +169,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     [
       baseBoardPath,
       baseBoardPathAlt,
+      createBoardPath,
       expressionDetailsPath,
       getExpressionDetailsUrl,
       basePath,
@@ -197,6 +201,9 @@ RawProvider.propTypes = {
 
   /** The base board path alt */
   baseBoardPathAlt:PropTypes.string,
+
+  /** The create board path */
+  createBoardPath:PropTypes.string,
 
   /** The expression details path */
   expressionDetailsPath:PropTypes.string,

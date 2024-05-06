@@ -11,7 +11,9 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
-import { useLocation } from 'react-router-dom'
+import {
+  useLocation, useHistory,
+} from 'react-router-dom'
 import Context from './Context.js'
 import { SwitchRoutes } from '../../app.base/index.js'
 import {
@@ -106,10 +108,41 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
     }, [],
   )
 
+  const setFocus = useCallback(
+    (focus) => {
+      dispatch({
+        type   :'SET_FOCUS',
+        payload:focus,
+      })
+    }, [],
+  )
+
+  const history = useHistory()
+
+  const reselectContent = useCallback(
+    (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (state.focus === 2) {
+        if (history.location.state?.from) {
+          history.push(history.location.state.from)
+        } else {
+          history.goBack()
+        }
+      }
+      setFocus(1)
+    },
+    [
+      location.pathname,
+      state.focus,
+    ],
+  )
+
   const value = useMemo(
     () => ({
       state,
       setState,
+      setFocus,
       toggleNavigation,
     }),
     [state],
@@ -150,7 +183,10 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
           {navigation}
         </div>
 
-        <div className="content manual span-8 md-span-14">
+        <div
+          className="content manual span-8 md-span-14"
+          onClick={state.focus !== 1 ? reselectContent : undefined}
+        >
           <SwitchRoutes items={primaryRoutes} />
         </div>
         <div

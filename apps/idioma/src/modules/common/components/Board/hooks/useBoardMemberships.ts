@@ -28,7 +28,7 @@ const useBoardMemberships = () => {
     FRAGMENT, data,
   )
 
-  return result.boardMemberships
+  return result?.boardMemberships
 }
 
 export default useBoardMemberships

@@ -18,17 +18,16 @@ const componentClassName = 'secondary-header'
 
 /**
  * description
- * @param {InferProps<typeof Header.propTypes>} props -
- * @returns {React.ReactElement} - Rendered Header
+ * @param {InferProps<typeof SecondaryHeader.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered SecondaryHeader
  */
-function Header({
+function SecondaryHeader({
   id,
   className: userClassName,
   style,
   children,
-}: // ...otherProps
-
-InferProps<typeof Header.propTypes>): React.ReactElement {
+  ...otherProps
+}: InferProps<typeof SecondaryHeader.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -60,14 +59,14 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
           </button>
         </Link>
       )}
-      // {...otherProps}
+      {...otherProps}
     >
       {children}
     </NavigationHeader>
   )
 }
 
-Header.propTypes = {
+SecondaryHeader.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -81,4 +80,4 @@ Header.propTypes = {
   children:PropTypes.node,
 }
 
-export default Header
+export default SecondaryHeader

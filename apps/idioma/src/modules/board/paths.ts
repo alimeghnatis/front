@@ -6,7 +6,7 @@ export const EXPRESSION_PARAM = ':expression([0-9a-z-.=]{15,100})'
 export const SLUG_PARAM = ':slug([0-9a-z_-]{0,14})'
 
 export default getPaths(
-  '/d', {
+  '/b', {
     HOME     :'/',
     HOME2    :'/home',
     NEW_BOARD:'/new-board',

@@ -10,7 +10,7 @@ import { QUERY as QUERY_BOARD } from './pages/BoardPage.js'
 import { QUERY as QUERY_FLAGS } from './pages/FlagsPage.js'
 // import QUERY_VIEW from './pages/ViewQuery.js'
 
-export const internalRoutes = [
+export const primary = [
   {
     path:[
       paths.absolute.HOME,
@@ -24,14 +24,6 @@ export const internalRoutes = [
     path     :[paths.absolute.NEW_BOARD],
     component:loadable(() => import(
       /* webpackChunkName: `app.dashboard` */ './pages/CreateBoardPage.js')),
-    exact    :true,
-    isPrivate:true,
-    QUERY    :QUERY_LANGUAGE_CHOICES,
-  },
-  {
-    path     :[paths.absolute.BOARD_SETTINGS],
-    component:loadable(() => import(
-      /* webpackChunkName: `app.dashboard` */ './pages/BoardSettingsPage.js')),
     exact    :true,
     isPrivate:true,
     QUERY    :QUERY_LANGUAGE_CHOICES,
@@ -66,22 +58,20 @@ export const internalRoutes = [
   },
 ]
 
-export default [
+export default primary
+
+export const secondary = [
   {
-    path     :[`${paths.absolute.HOME}`],
-    component:({
-      children, ...props
-    }) => React.createElement(
-      Layer,
-      {
-        routes:internalRoutes,
-        ...props,
-      },
-      children,
-    ),
-    // exact    :true,
+    path     :[paths.absolute.BOARD_SETTINGS],
+    component:loadable(() => import(
+      /* webpackChunkName: `app.dashboard` */ './pages/BoardSettingsPage.js')),
+    exact    :true,
     isPrivate:true,
+    QUERY    :QUERY_LANGUAGE_CHOICES,
   },
 ]
 
-export const prefetch = internalRoutes
+export const prefetch = [
+  ...primary,
+  ...secondary,
+]

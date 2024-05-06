@@ -25,9 +25,9 @@ const meta: Meta<typeof Component> = {
 export default meta
 
 const FRAGMENT = graphql`
-  fragment ProviderBoardFragment on Query
-    @refetchable(queryName: "ProviderBoardRefetchQuery")
-    @argumentDefinitions(id: { type: "ID!" }) {
+  fragment ProviderBoardStoriesFragment on Query
+    @refetchable(queryName: "ProviderBoardStoriesRefetchQuery")
+    @argumentDefinitions(id: { type: "ID" }) {
     board(id: $id) {
       id
       name

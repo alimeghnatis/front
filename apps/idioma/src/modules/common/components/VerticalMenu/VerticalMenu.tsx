@@ -9,6 +9,7 @@ import {
   NavigationVerticalMenu, useViewer,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
+import { useBoardMemberships } from 'modules/common/components'
 import useItems from './useItems.js'
 
 const baseClassName = styleNames.base
@@ -25,6 +26,7 @@ function RawVerticalMenu({
   style,
   viewerData,
   appendItems: userAppendItems,
+  memberships,
 }: // ...otherProps
 
 InferProps<typeof VerticalMenu.propTypes>): React.ReactElement {
@@ -40,6 +42,7 @@ InferProps<typeof VerticalMenu.propTypes>): React.ReactElement {
   } = useItems({
     viewerData,
     userAppendItems,
+    memberships,
   })
 
   return (
@@ -70,18 +73,26 @@ RawVerticalMenu.propTypes = {
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /** The children JSX */
-  children:PropTypes.node,
+  /** The viewer data */
+  viewerData:PropTypes.any,
+
+  /** The items to append */
+  appendItems:PropTypes.any,
+
+  /** The board memberships */
+  memberships:PropTypes.any,
 }
 
 export { RawVerticalMenu }
 
 function VerticalMenu(props) {
   const { data: viewerData } = useViewer()
+  const memberships = useBoardMemberships()
   return (
     <RawVerticalMenu
       {...props}
       viewerData={viewerData}
+      memberships={memberships}
     />
   )
 }

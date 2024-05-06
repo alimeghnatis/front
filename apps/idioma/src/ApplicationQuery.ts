@@ -10,7 +10,7 @@ export const QUERY_APPLICATION = graphql`
       id
       ...ApplicationQueryViewerFragment
     }
-    ...MainLayerBoardProviderFragment
+    ...ProviderBoardFragment
       @arguments(
         id: $board
         #boardGroupCount: $boardGroupCount

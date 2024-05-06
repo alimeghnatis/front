@@ -144,11 +144,11 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       {currentExpressionId === result.id && (
         <>
           {currentExpressionActionSlug === 'details' && (
-            <ExpressionDetails data={result} />
+            <Details data={result} />
           )}
 
           {currentExpressionActionSlug === 'variant' && (
-            <ExpressionVariant
+            <Variant
               data={result}
               groupID={groupID}
             />

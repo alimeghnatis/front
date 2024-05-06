@@ -8,7 +8,9 @@ import {
   useLocation, matchPath, generatePath,
 } from 'react-router-dom'
 import {
-  useRefetchableFragment, GraphQLTaggedNode,
+  useRefetchableFragment,
+  GraphQLTaggedNode,
+  graphql,
 } from 'react-relay'
 import { useApplicationContext } from '@aztlan/ui'
 
@@ -31,10 +33,33 @@ const isGlobalId = (input: string): boolean => {
   }
 }
 
+const FRAGMENT = graphql`
+  fragment ProviderBoardFragment on Query
+    @refetchable(queryName: "ProviderBoardRefetchQuery")
+    @argumentDefinitions(
+      id: { type: "ID" }
+      #boardGroupCount: { type: "Int" }
+      #boardGroupCursor: { type: "String" }
+    ) {
+    board(id: $id) {
+      id
+      name
+      created
+      updated
+      newExpressionsCount
+      displayTranslations
+      ...BoardFragment
+      ...BoardUpdateFormFragment
+      ...VariantBoardFragment
+      ...ChatFragment
+      #@arguments(count: $boardGroupCount, cursor: $boardGroupCursor)
+    }
+  }
+`
+
 function RawProvider({
-  children,
-  FRAGMENT,
   data,
+  children,
   basePath,
   baseBoardPath,
   baseBoardPathAlt,

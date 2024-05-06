@@ -11,20 +11,8 @@ import {
 import { useBoardContext } from 'modules/common/components'
 import Template from '../layer/Main.js'
 import {
-  AdditionForm, Board,
+  ExpressionCreateForm, Board,
 } from '../components/index.js'
-
-/*
-const FRAGMENT = graphql`
-  fragment BoardDashboardFragment on UserNode {
-    firstName
-    lastName
-    created
-    updated
-    email
-    profilePicture
-  }
-` */
 
 const QUERY = graphql`
   query BoardPageSingleQuery($board: ID!) {
@@ -85,7 +73,7 @@ function BoardPage() {
         )}
       </pre> */}
       <Board data={data} />
-      <AdditionForm />
+      <ExpressionCreateForm />
     </>
   )
 }

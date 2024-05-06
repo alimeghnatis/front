@@ -46,7 +46,7 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
   const openHelp = useCallback(
     () => {
       history.push(
-        '/help', { from: location.pathname },
+        `${location.pathname}/help`, { from: location.pathname },
       )
     }, [location],
   )

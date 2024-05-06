@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<038837d80874c553e365607cc0e705b1>>
+ * @generated SignedSource<<e7ff17fb46c84b561e5d282f5ef35106>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,9 +13,12 @@ import { FragmentRefs } from "relay-runtime";
 export type ProviderBoardFragment$data = {
   readonly board: {
     readonly created: any;
+    readonly displayTranslations: boolean;
     readonly id: string;
     readonly name: string;
+    readonly newExpressionsCount: number | null | undefined;
     readonly updated: any;
+    readonly " $fragmentSpreads": FragmentRefs<"BoardFragment" | "BoardUpdateFormFragment" | "ChatFragment" | "VariantBoardFragment">;
   } | null | undefined;
   readonly " $fragmentType": "ProviderBoardFragment";
 };
@@ -85,6 +88,45 @@ const node: ReaderFragment = {
           "kind": "ScalarField",
           "name": "updated",
           "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "displayTranslations",
+          "storageKey": null
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "BoardFragment"
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "BoardUpdateFormFragment"
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "VariantBoardFragment"
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "ChatFragment"
+        },
+        {
+          "kind": "ClientExtension",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "newExpressionsCount",
+              "storageKey": null
+            }
+          ]
         }
       ],
       "storageKey": null
@@ -94,6 +136,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "0e5661fd88ddee9bbb52965b884d3dbf";
+(node as any).hash = "5b6d6faa4fcb3d2b5f7d185a7146227f";
 
 export default node;

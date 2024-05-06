@@ -11,7 +11,7 @@ import {
   ConnectionHandler,
   useMutation,
 } from 'react-relay'
-import { useBoardContext } from '../../../common/components/index.js'
+import { useBoardContext } from 'modules/common/components'
 
 const FRAGMENT = graphql`
   fragment DeleteBoardButtonFragment on BoardNode {

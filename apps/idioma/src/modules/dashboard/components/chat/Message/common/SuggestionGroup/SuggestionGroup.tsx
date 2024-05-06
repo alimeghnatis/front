@@ -17,8 +17,8 @@ import {
 
 import styleNames from '@aztlan/bem'
 
+import { useBoardContext } from 'modules/common/components'
 import { Suggestion } from '../Suggestion/index.js'
-import { useBoardContext } from '../../../../../../common/components/index.js'
 import optimisticExpression from '../../../../optimisticExpression.js'
 
 const baseClassName = styleNames.base

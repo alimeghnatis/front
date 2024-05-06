@@ -10,8 +10,8 @@ import styleNames from '@aztlan/bem'
 import {
   graphql, useMutation, ConnectionHandler,
 } from 'react-relay'
+import { useBoardContext } from 'modules/common/components'
 import { Textarea } from './common/index.js'
-import { useBoardContext } from '../../../common/components/index.js'
 import optimisticExpression from '../optimisticExpression.js'
 
 const baseClassName = styleNames.base

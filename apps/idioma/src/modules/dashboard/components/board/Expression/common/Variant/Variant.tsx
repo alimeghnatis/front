@@ -19,7 +19,7 @@ import {
   useMutation,
   ConnectionHandler,
 } from 'react-relay'
-import { useBoardContext } from '../../../../../../common/components/index.js'
+import { useBoardContext } from 'modules/common/components'
 import optimisticExpression from '../../../../optimisticExpression.js'
 import useExpressionVariantFields from './useExpressionVariantFields.js'
 

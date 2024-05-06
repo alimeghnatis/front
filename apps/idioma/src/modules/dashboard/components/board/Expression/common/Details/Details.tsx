@@ -13,7 +13,6 @@ import {
   useFragment, graphql, useMutation,
 } from 'react-relay'
 import { marked } from 'marked'
-// import { useBoardContext } from '../../../../../../common/components/index.js'
 import { useBoardContext } from 'modules/common/components'
 import { RatingForm } from './common/index.js'
 

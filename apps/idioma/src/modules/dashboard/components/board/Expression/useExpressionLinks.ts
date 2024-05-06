@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useBoardContext } from '../../../../common/components/index.js'
+import { useBoardContext } from 'modules/common/components'
 
 const useExpressionLinks = (globalId) => {
   const {

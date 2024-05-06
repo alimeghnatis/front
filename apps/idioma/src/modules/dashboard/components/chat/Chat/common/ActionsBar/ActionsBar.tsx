@@ -9,7 +9,7 @@ import {
 } from 'react-relay'
 
 import styleNames from '@aztlan/bem'
-import { useBoardContext } from '../../../../../../common/components/index.js'
+import { useBoardContext } from 'modules/common/components'
 
 const baseClassName = styleNames.base
 const componentClassName = 'actions-bar'

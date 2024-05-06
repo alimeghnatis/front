@@ -8,11 +8,11 @@ import {
   useRelayEnvironment,
   commitLocalUpdate,
 } from 'react-relay'
+import { useBoardContext } from 'modules/common/components'
 import Template from '../layer/Main.js'
 import {
   AdditionForm, Board,
 } from '../components/index.js'
-import { useBoardContext } from '../../common/components/index.js'
 
 /*
 const FRAGMENT = graphql`

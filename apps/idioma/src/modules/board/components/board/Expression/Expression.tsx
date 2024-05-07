@@ -1,13 +1,15 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useRef,
+  useInsertionEffect, useRef, useCallback, useEffect,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import { Link } from 'react-router-dom'
+import {
+  Link, useHistory,
+} from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 import {
@@ -77,11 +79,31 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
   const {
     currentExpressionId,
     currentExpressionActionSlug,
+    setCurrentGroupId,
   } = useBoardContext()
 
+  const history = useHistory()
+
   const {
-    detailsLink, variantLink,
+    detailsLink, variantLink, isExpressionSelected,
   } = useExpressionLinks(result.id)
+
+  const onContentClick = useCallback(
+    () => {
+      history.push(detailsLink)
+    }, [detailsLink],
+  )
+
+  useEffect(() => {
+    if (isExpressionSelected) {
+      expressionRef.current.scrollIntoView({
+        behavior:'smooth',
+        block   :'center',
+        inline  :'center',
+      })
+      setCurrentGroupId(groupID)
+    }
+  })
 
   const expressionRef = useRef(null)
 
@@ -112,7 +134,10 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         {extras !== undefined && (
           <div className="extras manual-mobile-only">{extras}</div>
         )}
-        <div className="expression manual-mobile-only">
+        <div
+          className="expression manual-mobile-only"
+          onClick={onContentClick}
+        >
           <p>{result.correctedContent || result.content}</p>
         </div>
         <div className="tools manual-mobile-only">

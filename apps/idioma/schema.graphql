@@ -739,6 +739,7 @@ input CreateGroupMutationInput {
 input CreateExpressionSerializerInput {
   id: String
   board: String
+  appendAfter: String
 
   """The date and time at which the object was created."""
   created: DateTime
@@ -813,6 +814,7 @@ type CreateExpressionMutationPayload {
 input CreateExpressionMutationInput {
   id: String
   board: String
+  appendAfter: String
   iso6391: String
   iso6392: String
   iso6393: String

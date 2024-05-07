@@ -43,6 +43,45 @@ const MUTATION_CREATE_EXPRESSION = graphql`
   }
 `
 
+const MUTATION_APPEND_EXPRESSION = graphql`
+  mutation ExpressionCreateFormAppendExpressionMutation(
+    $input: CreateExpressionMutationInput!
+    $connections: [ID!]!
+  ) {
+    createExpression(input: $input) {
+      instance
+        @appendNode(
+          connections: $connections
+          edgeTypeName: "ExpressionNodeEdge"
+        ) {
+        ...DefaultExpressionFragment
+        ...DetailsFragment
+      }
+      errors {
+        field
+        messages
+      }
+    }
+  }
+`
+
+const updater = (store) => {
+  const root = store.getRoot()
+  const payload = store.getRootField('createExpression')
+  const newInstance = payload.getLinkedRecord('instance')
+
+  if (newInstance) {
+    const newId = newInstance.getValue('id')
+
+    // Set the linked record at the root for 'node(id: $id)'
+    root.setLinkedRecord(
+      newInstance, 'node', { id: newId },
+    )
+  } else {
+    console.error('Mutation did not return an instance.')
+  }
+}
+
 /**
  * description
  * @param {InferProps<typeof ExpressionCreateForm.propTypes>} props -
@@ -63,15 +102,39 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
   ) */
 
   const {
-    id: boardID, uuid: boardUUID, containerRef,
+    id: boardID,
+    uuid: boardUUID,
+    containerRef,
+    currentExpressionId,
+    currentGroupId,
   } = useBoardContext()
 
   const [
     commitCreateExpression,
-    isInFlight,
+    isCreateExpressionInFlight,
   ] = useMutation(MUTATION_CREATE_EXPRESSION)
 
-  const handleSubmit = useCallback(
+  const [
+    commitAppendExpression,
+    isAppendExpressionInFlight,
+  ] = useMutation(MUTATION_APPEND_EXPRESSION)
+
+  const isInFlight = isCreateExpressionInFlight || isAppendExpressionInFlight
+
+  const optimisticUpdater = useCallback(
+    (store) => {
+      setTimeout(
+        () => {
+          containerRef.current?.scrollTo({
+            top     :containerRef.current.scrollHeight + 30,
+            behavior:'smooth',
+          })
+        }, 0,
+      )
+    }, [],
+  )
+
+  const handleCreate = useCallback(
     (inputValue) => {
       const connectionID = ConnectionHandler.getConnectionID(
         boardID,
@@ -79,10 +142,11 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
       )
       const tempID = btoa(`ExpressionNode:${Math.random()}`)
       const tempCreated = new Date().toISOString()
+
       commitCreateExpression({
         variables:{
           input:{
-          // ...input,
+            // ...input,
             content:inputValue,
             board  :boardUUID,
           },
@@ -123,34 +187,64 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
             errors:null,
           },
         },
-        optimisticUpdater:(store) => {
-          setTimeout(
-            () => {
-              containerRef.current?.scrollTo({
-                top     :containerRef.current.scrollHeight + 30,
-                behavior:'smooth',
-              })
-            }, 0,
-          )
-        },
-        updater:(store) => {
-          const root = store.getRoot()
-          const payload = store.getRootField('createExpression')
-          const newInstance = payload.getLinkedRecord('instance')
-
-          if (newInstance) {
-            const newId = newInstance.getValue('id')
-
-            // Set the linked record at the root for 'node(id: $id)'
-            root.setLinkedRecord(
-              newInstance, 'node', { id: newId },
-            )
-          } else {
-            console.error('Mutation did not return an instance.')
-          }
-        },
+        optimisticUpdater,
+        updater,
       })
-    }, [],
+    },
+    [currentExpressionId],
+  )
+
+  const handleAppend = useCallback(
+    (inputValue) => {
+      const connectionID = ConnectionHandler.getConnectionID(
+        currentGroupId,
+        'DefaultGroupFragment_expressions',
+      )
+      const tempID = btoa(`ExpressionNode:${Math.random()}`)
+      const tempCreated = new Date().toISOString()
+
+      commitAppendExpression({
+        variables:{
+          input:{
+            content    :inputValue,
+            appendAfter:atob(currentExpressionId).split(':')[1],
+          },
+          connections:[connectionID],
+        },
+        optimisticResponse:{
+          createExpression:{
+            instance:{
+              ...optimisticExpression,
+              id              :tempID,
+              content         :inputValue,
+              correctedContent:inputValue,
+              created         :tempCreated,
+            },
+            errors:null,
+          },
+        },
+        // optimisticUpdater,
+        updater,
+      })
+    },
+    [
+      currentExpressionId,
+      currentGroupId,
+    ],
+  )
+
+  const handleSubmit = useCallback(
+    (inputValue) => {
+      if (currentExpressionId) {
+        handleAppend(inputValue)
+      } else {
+        handleCreate(inputValue)
+      }
+    },
+    [
+      currentExpressionId,
+      currentGroupId,
+    ],
   )
 
   return (
@@ -161,7 +255,11 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
       ].filter(Boolean).join(' ')}
       isInFlight={isInFlight}
       handleSubmit={handleSubmit}
-      placeholder="Type a sentence here to add it to your board"
+      placeholder={
+        currentExpressionId
+          ? 'Type a sentence here to add it to the selected group'
+          : 'Type a sentence here to add it to your board'
+      }
       {...otherProps}
     />
   )

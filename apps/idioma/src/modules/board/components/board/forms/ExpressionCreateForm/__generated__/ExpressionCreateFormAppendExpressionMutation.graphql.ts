@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<cf61e1bd95248725d6c5dcc616673410>>
+ * @generated SignedSource<<26e5817912b0438d11a9cdb5700fb751>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -43,25 +43,24 @@ export type CreateExpressionMutationInput = {
   voiceId?: string | null | undefined;
   wordsExplanation?: string | null | undefined;
 };
-export type VariantCreateExpressionMutation$variables = {
+export type ExpressionCreateFormAppendExpressionMutation$variables = {
   connections: ReadonlyArray<string>;
   input: CreateExpressionMutationInput;
 };
-export type VariantCreateExpressionMutation$data = {
+export type ExpressionCreateFormAppendExpressionMutation$data = {
   readonly createExpression: {
     readonly errors: ReadonlyArray<{
       readonly field: string;
       readonly messages: ReadonlyArray<string>;
     } | null | undefined> | null | undefined;
     readonly instance: {
-      readonly isNew: boolean | null | undefined;
       readonly " $fragmentSpreads": FragmentRefs<"DefaultExpressionFragment" | "DetailsFragment">;
     } | null | undefined;
   } | null | undefined;
 };
-export type VariantCreateExpressionMutation = {
-  response: VariantCreateExpressionMutation$data;
-  variables: VariantCreateExpressionMutation$variables;
+export type ExpressionCreateFormAppendExpressionMutation = {
+  response: ExpressionCreateFormAppendExpressionMutation$data;
+  variables: ExpressionCreateFormAppendExpressionMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -83,18 +82,6 @@ v2 = [
   }
 ],
 v3 = {
-  "kind": "ClientExtension",
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "isNew",
-      "storageKey": null
-    }
-  ]
-},
-v4 = {
   "alias": null,
   "args": null,
   "concreteType": "ErrorType",
@@ -127,7 +114,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "VariantCreateExpressionMutation",
+    "name": "ExpressionCreateFormAppendExpressionMutation",
     "selections": [
       {
         "alias": null,
@@ -148,18 +135,17 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "DetailsFragment"
+                "name": "DefaultExpressionFragment"
               },
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "DefaultExpressionFragment"
-              },
-              (v3/*: any*/)
+                "name": "DetailsFragment"
+              }
             ],
             "storageKey": null
           },
-          (v4/*: any*/)
+          (v3/*: any*/)
         ],
         "storageKey": null
       }
@@ -174,7 +160,7 @@ return {
       (v0/*: any*/)
     ],
     "kind": "Operation",
-    "name": "VariantCreateExpressionMutation",
+    "name": "ExpressionCreateFormAppendExpressionMutation",
     "selections": [
       {
         "alias": null,
@@ -197,6 +183,20 @@ return {
                 "args": null,
                 "kind": "ScalarField",
                 "name": "id",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "isProcessed",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "created",
                 "storageKey": null
               },
               {
@@ -231,14 +231,28 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "translation",
+                "name": "correctedContent",
                 "storageKey": null
               },
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "correctedContent",
+                "name": "isBookmarked",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "audioUrl",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "translation",
                 "storageKey": null
               },
               {
@@ -266,20 +280,6 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "audioUrl",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "created",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
                 "name": "changes",
                 "storageKey": null
               },
@@ -298,20 +298,17 @@ return {
                 "storageKey": null
               },
               {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "isProcessed",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "isBookmarked",
-                "storageKey": null
-              },
-              (v3/*: any*/)
+                "kind": "ClientExtension",
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "isNew",
+                    "storageKey": null
+                  }
+                ]
+              }
             ],
             "storageKey": null
           },
@@ -336,23 +333,23 @@ return {
               }
             ]
           },
-          (v4/*: any*/)
+          (v3/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "bea98e2ede7448becf48319881db22fa",
+    "cacheID": "d92dc8e78152ce823dfac5a0d6527912",
     "id": null,
     "metadata": {},
-    "name": "VariantCreateExpressionMutation",
+    "name": "ExpressionCreateFormAppendExpressionMutation",
     "operationKind": "mutation",
-    "text": "mutation VariantCreateExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...DetailsFragment\n      ...DefaultExpressionFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "mutation ExpressionCreateFormAppendExpressionMutation(\n  $input: CreateExpressionMutationInput!\n) {\n  createExpression(input: $input) {\n    instance {\n      ...DefaultExpressionFragment\n      ...DetailsFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "a40d970ffc9061e722ec4611525912fc";
+(node as any).hash = "03cea6f1e1aa7e65e3925aea5d1e5841";
 
 export default node;

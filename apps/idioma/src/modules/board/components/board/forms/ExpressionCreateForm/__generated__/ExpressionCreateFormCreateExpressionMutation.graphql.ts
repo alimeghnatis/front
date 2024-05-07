@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<397071bda289d068e9b006e4b53678f3>>
+ * @generated SignedSource<<a7bbbb8223b075aaa24f64798dbbd1fa>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,7 @@
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type CreateExpressionMutationInput = {
+  appendAfter?: string | null | undefined;
   audioKey?: string | null | undefined;
   audioUrl?: string | null | undefined;
   board?: string | null | undefined;

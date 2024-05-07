@@ -2,6 +2,8 @@ import * as React from 'react'
 
 export interface ContextType {
   currentBoardId?             :string;
+  currentGroupId?             :string;
+  setCurrentGroupId           :(id: string) => void;
   currentExpressionId?        :string;
   currentExpressionActionSlug?:string;
   basePath?                   :string;

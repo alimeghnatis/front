@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  useMemo, useEffect, useCallback, useRef,
+  useMemo, useEffect, useCallback, useRef, useState,
 } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
@@ -108,6 +108,12 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     }, [location.pathname],
   )
 
+  // Ugly temporary fix to avoid fetching the group id for each expression
+  const [
+    currentGroupId,
+    setCurrentGroupId,
+  ] = useState(null)
+
   const [
     result,
     refetchBoard,
@@ -160,6 +166,8 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       currentBoardId,
       currentExpressionId,
       currentExpressionActionSlug,
+      currentGroupId,
+      setCurrentGroupId,
       basePath,
       baseBoardPath,
       baseBoardUrl,
@@ -177,6 +185,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       getExpressionDetailsUrl,
       chatBoardPath,
       currentBoardId,
+      currentGroupId,
       basePath,
       baseBoardUrl,
       selectedBoard,

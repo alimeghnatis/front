@@ -15,12 +15,13 @@ const useExpressionLinks = (globalId) => {
     // TODO temporary fix
       if (!currentBoardId) {
         return {
-          detailsLink:null,
-          variantLink:null,
+          detailsLink         :null,
+          variantLink         :null,
+          isExpressionSelected:null,
         }
       }
 
-      const isCurrent = currentExpressionId === globalId
+      const isExpressionSelected = currentExpressionId === globalId
       const detailsType = 'details'
       const variantType = 'variant'
 
@@ -31,7 +32,7 @@ const useExpressionLinks = (globalId) => {
         globalId, variantType,
       )
 
-      if (isCurrent) {
+      if (isExpressionSelected) {
         if (currentExpressionActionSlug === 'details') {
           detailsLink = baseBoardUrl
           variantLink = getExpressionDetailsUrl?.(
@@ -48,6 +49,7 @@ const useExpressionLinks = (globalId) => {
       return {
         detailsLink,
         variantLink,
+        isExpressionSelected,
       }
     }, [
       currentExpressionId,

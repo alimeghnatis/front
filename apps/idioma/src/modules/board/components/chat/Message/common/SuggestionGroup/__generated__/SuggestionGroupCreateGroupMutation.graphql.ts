@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<465ddc2ddec309cf6501eda18e0577d1>>
+ * @generated SignedSource<<fe7c8a20ac69201d07ea20ab19022c4d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,7 @@ export type CreateGroupMutationInput = {
 };
 export type CreateExpressionSerializerInput = {
   Order?: number | null | undefined;
+  appendAfter?: string | null | undefined;
   audioKey?: string | null | undefined;
   audioUrl?: string | null | undefined;
   board?: string | null | undefined;

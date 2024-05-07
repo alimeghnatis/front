@@ -28,6 +28,7 @@ $subtotal-span: $span-language + $span-tools;
     }
 
     > .expression {
+      cursor:default;
       grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras,0));
     }
 
@@ -79,6 +80,11 @@ $subtotal-span: $span-language + $span-tools;
   &.bookmarked {
     background: lightpink;
   }
+
+  &:hover {
+    background: yellow;
+  }
+
 
 }
 

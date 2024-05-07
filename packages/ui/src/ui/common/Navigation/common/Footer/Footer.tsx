@@ -20,8 +20,13 @@ function Footer({
   style,
   as: Wrapper = 'nav',
   fixed,
+  left,
   children,
   right,
+  leftSpan = 2,
+  leftSpanDesktop = 3,
+  rightSpan = 2,
+  rightSpanDesktop = 3,
   UNSTABLE_padded,
   UNSTABLE_borders,
 }: ComponentProps): React.ReactElement {
@@ -47,11 +52,18 @@ function Footer({
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        '--left-span'         :leftSpan,
+        '--left-span-desktop' :leftSpanDesktop,
+        '--right-span'        :rightSpan,
+        '--right-span-desktop':rightSpanDesktop,
+        ...style,
+      } as React.CSSProperties}
       // {...otherProps}
     >
-      <span className="span-6 md-span-11">{children}</span>
-      <span className="span-2 md-span-3">{right}</span>
+      <span className="left">{left}</span>
+      <span className="center">{children}</span>
+      <span className="right">{right}</span>
     </Wrapper>
   )
 }

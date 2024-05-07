@@ -15,6 +15,7 @@ const FRAGMENT = graphql`
             id
             name
             newExpressionsCount
+            isDefault
           }
         }
       }

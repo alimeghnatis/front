@@ -7,9 +7,10 @@ export const SLUG_PARAM = ':slug([0-9a-z_-]{0,14})'
 
 export default getPaths(
   '/b', {
-    HOME     :'/',
-    HOME2    :'/home',
-    NEW_BOARD:'/new-board',
+    HOME                     :'/',
+    HOME2                    :'/home',
+    NEW_BOARD                :'/new-board',
+    REDIRECT_TO_DEFAULT_BOARD:'/redirect',
 
     BOARD_HOME              :`/${BOARD_PARAM}`,
     BOARD_HOME2             :`/${BOARD_PARAM}/home`,

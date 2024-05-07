@@ -61,6 +61,7 @@ strong {
   font-weight: 500;
 }
 
+/*
 main.grid {
   grid-template-rows: auto 1fr auto;
 
@@ -87,6 +88,27 @@ main.grid {
       overflow: auto;
     }
   }
+} */
+
+main.flex {
+  > section {
+    flex: 1;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow {
+  flex: 1;
+}
+
+.scrollbox {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
 }
 
 .main-row {
@@ -113,18 +135,18 @@ main.grid {
 
 
 .no-scrollbar {
-  scrollbar-width: none;
+  //scrollbar-width: none;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  //&::-webkit-scrollbar {
+  //  display: none;
+  //}
 }
 
-.fixed-special {
+.abs-special {
+  bottom: -3em;
   display: flex;
   justify-content: center;
-  position: fixed;
-  top: 5em;
+  position: absolute;
   width: 100%;
   z-index: 10;
 }

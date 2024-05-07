@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f4c8a40f65343ec16768b02bcdc96891>>
+ * @generated SignedSource<<2b9af3a9c3bb6a3ea386cf887919564b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,6 +17,7 @@ export type useBoardMembershipsFragment$data = {
       readonly node: {
         readonly board: {
           readonly id: string;
+          readonly isDefault: boolean;
           readonly name: string;
           readonly newExpressionsCount: number | null | undefined;
         };
@@ -106,6 +107,13 @@ return {
                       "storageKey": null
                     },
                     {
+                      "alias": null,
+                      "args": null,
+                      "kind": "ScalarField",
+                      "name": "isDefault",
+                      "storageKey": null
+                    },
+                    {
                       "kind": "ClientExtension",
                       "selections": [
                         {
@@ -174,6 +182,6 @@ return {
 };
 })();
 
-(node as any).hash = "843521a9532d364d921e0eadb13c5468";
+(node as any).hash = "ea1ec08bc99450667328760bfaebf4ce";
 
 export default node;

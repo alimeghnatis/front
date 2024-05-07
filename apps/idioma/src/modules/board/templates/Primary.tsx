@@ -10,7 +10,10 @@ import {
 import paths from '../paths.js'
 
 function PrimaryTemplate({
-  children, title, hasSettings = false,
+  children,
+  title,
+  hasSettings = false,
+  ...otherProps
 }) {
   const {
     id: boardID, data,
@@ -37,6 +40,7 @@ function PrimaryTemplate({
       right={
         hasSettings && <button onClick={navigateToSettings}>Settings</button>
       }
+      {...otherProps}
     >
       {children}
     </BaseTemplate>

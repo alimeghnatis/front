@@ -63,8 +63,7 @@ function RawProvider({
   data,
   children,
   basePath = paths.board.absolute.HOME,
-  baseBoardPath = paths.board.absolute.BOARD_HOME2,
-  baseBoardPathAlt = paths.board.absolute.BOARD_HOME,
+  baseBoardPath = paths.board.absolute.BOARD_HOME,
   createBoardPath = paths.board.absolute.NEW_BOARD,
   chatBoardPath = paths.board.absolute.BOARD_CHAT,
   expressionDetailsPath = paths.board.absolute.BOARD_EXPRESSION_DETAILS,
@@ -86,19 +85,13 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
           exact:false,
         },
       )
-      const boardMatchAlt = matchPath(
-        location.pathname, {
-          path :baseBoardPathAlt,
-          exact:false,
-        },
-      )
       const chatMatch = matchPath(
         location.pathname, {
           path :chatBoardPath,
           exact:false,
         },
       )
-      const boardMatchParam = boardMatch?.params.board || boardMatchAlt?.params.board
+      const boardMatchParam = boardMatch?.params.board
       const expressionMatch = matchPath(
         location.pathname, { path: expressionDetailsPath },
       )
@@ -169,7 +162,6 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
       currentExpressionActionSlug,
       basePath,
       baseBoardPath,
-      baseBoardPathAlt,
       baseBoardUrl,
       createBoardPath,
       expressionDetailsPath,
@@ -180,11 +172,11 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     }),
     [
       baseBoardPath,
-      baseBoardPathAlt,
       createBoardPath,
       expressionDetailsPath,
       getExpressionDetailsUrl,
       chatBoardPath,
+      currentBoardId,
       basePath,
       baseBoardUrl,
       selectedBoard,
@@ -214,9 +206,6 @@ RawProvider.propTypes = {
 
   /** The base board path */
   baseBoardPath:PropTypes.string,
-
-  /** The base board path alt */
-  baseBoardPathAlt:PropTypes.string,
 
   /** The create board path */
   createBoardPath:PropTypes.string,

@@ -1,19 +1,8 @@
 /* @aztlan/generator-front 1.4.1 */
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import {
-  NestedNavigation, NavigationFooter, useViewer,
-} from '@aztlan/ui'
-import {
-  useFragment, graphql,
-} from 'react-relay'
-import {
-  // BoardProvider,
-  // HeaderGroup,
-  Navigation,
-} from '../components/index.js'
 
-import { useBoardMemberships } from '../../common/components/index.js'
+import { useBoardMemberships } from 'modules/common/components'
 import Template from '../templates/Primary.js'
 import paths from '../paths.js'
 
@@ -52,35 +41,4 @@ function Home({
   )
 }
 
-/*
-function Wrapper({
-  wireframe, ...props
-}) {
-  const rootItem = {
-    name :'Home',
-    url  :'home',
-    items:[
-      {
-        label:'Dashboard',
-        url  :'dashboard',
-      },
-      {
-        label:'Board',
-        url  :'board',
-      },
-    ],
-  }
-  return (
-    <BoardProvider>
-      <Navigation rootItem={rootItem}>
-        <Home
-          {...props}
-          wireframe={wireframe}
-        />
-      </Navigation>
-    </BoardProvider>
-  )
-} */
-
-// export default Wrapper
 export default Home

@@ -25,6 +25,19 @@ import { useBoardContext } from '../../hooks/index.js'
 const baseClassName = styleNames.base
 const componentClassName = 'search-header'
 
+const QUERY = graphql`
+  query SearchHeaderBoardQuery($value: String!) {
+    boards(search: $value) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
 /**
  * description
  * @param {InferProps<typeof SearchHeader.propTypes>} props -
@@ -34,8 +47,6 @@ function RawSearchHeader({
   id,
   className: userClassName,
   style,
-  QUERY,
-  accessor,
 }: // ...otherProps
 
 InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
@@ -79,13 +90,13 @@ InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
           name="search"
           type="combobox"
           optional
-          spanLabel={3}
-          spanLabelDesktop={3}
+          // spanLabel={3}
+          // spanLabelDesktop={3}
           spanContent={4}
-          spanContentDesktop={4}
+          spanContentDesktop={6}
           extensions={[
             addGraphQLComboboxSearchOptions(
-              QUERY, accessor, {
+              QUERY, 'boards', {
                 minLength:2,
                 transform:(data) => data.edges.map((edge) => ({
                   label:edge.node.name,
@@ -140,4 +151,4 @@ function SearchHeader(props) {
 
 export { SearchHeader }
 
-export default SearchHeader
+export default withDebug(SearchHeader)

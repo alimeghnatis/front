@@ -9,16 +9,13 @@ import { BoardUpdateForm } from '../components/index.js'
 function BoardSettings() {
   const { data } = useBoardContext()
   return (
-    <Template title="BoardSettings">
-      <div
-        className="grid container"
-        style={{
-          overflow:'auto',
-          height  :'100%',
-        }}
+    <Template title="Board Settings">
+      <section
+        className="no-scrollbar"
+        style={{ overflow: 'auto' }}
       >
         <BoardUpdateForm data={data} />
-      </div>
+      </section>
     </Template>
   )
 }

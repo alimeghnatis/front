@@ -6,7 +6,7 @@ $span-submit-actions: 2;
 
 .#{bem.$base}.modular-form {
   align-items: start;
-  grid-template-rows: 1fr auto;
+  //grid-template-rows: 1fr auto;
   height: 100%;
   overflow: hidden;
   .#{bem.$base}.form-section {

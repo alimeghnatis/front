@@ -6,9 +6,13 @@ import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-relay'
 import {
-  AuthenticationDebugHeader, NavigationDebugHeader,
+  AuthenticationDebugHeader,
+  NavigationDebugHeader,
+  useViewer,
 } from '@aztlan/ui'
-import { Header } from '../components/index.js'
+import {
+  Header, SearchBoardHeader,
+} from '../components/index.js'
 
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 
@@ -44,17 +48,21 @@ const routeMap = [
 ]
 
 function Wrapper({
-  title, children, right,
+  title = null, children, right, beforeHeader, afterHeader,
 }) {
+  const { data } = useViewer()
   return (
-    <main className="grid">
-      <div className="container">
+    <main className="flex">
+      <div>
+        {beforeHeader}
+        {data?.isSuperuser && <SearchBoardHeader />}
         <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />
         <NavigationDebugHeader
           className="container"
           items={routeMap}
         />
         <Header right={right}>{title}</Header>
+        {afterHeader}
       </div>
 
       {children}
@@ -63,9 +71,11 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  title   :PropTypes.node,
-  children:PropTypes.node,
-  right   :PropTypes.node,
+  title       :PropTypes.node,
+  children    :PropTypes.node,
+  right       :PropTypes.node,
+  beforeHeader:PropTypes.node,
+  afterHeader :PropTypes.node,
 }
 
 function Base({

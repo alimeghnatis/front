@@ -74,20 +74,13 @@ function RawLoggedInHeader({
       left="~viewer"
       desktop
       right={(
-        <button
-          type="button"
-          onClick={log}
-        >
-          console.log
-        </button>
-      )}
-      // {...otherProps}
-    >
-      <div className="grid container">
-        <div className="span-4 md-span-5">
-          {`${email} (${firstName} ${lastName})`}
-        </div>
-        <span className="span-2 md-span-3">
+        <>
+          <button
+            type="button"
+            onClick={log}
+          >
+            console.log
+          </button>
           <button
             type="button"
             onClick={logout}
@@ -95,8 +88,11 @@ function RawLoggedInHeader({
           >
             Logout
           </button>
-        </span>
-      </div>
+        </>
+      )}
+      // {...otherProps}
+    >
+      <div className="container">{`${email} (${firstName} ${lastName})`}</div>
     </NavigationHeader>
   )
 }

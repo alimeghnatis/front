@@ -63,7 +63,6 @@ function ModularForm({
           baseClassName,
           componentClassName,
           userClassName,
-          'grid',
         ]
           .filter((e) => e)
           .join(' ')}

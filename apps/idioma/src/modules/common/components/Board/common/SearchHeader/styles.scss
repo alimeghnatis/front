@@ -10,6 +10,10 @@
 
 .#{bem.$base}.search-header {
   @include background;
+
+  div > .label {
+    display: none;
+  }
 }
 
 

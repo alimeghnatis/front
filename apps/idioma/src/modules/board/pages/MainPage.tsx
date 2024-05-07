@@ -35,21 +35,22 @@ function MainPage() {
   const environment = useRelayEnvironment()
 
   return (
-    <>
-      <div className="fixed-special">
-        <ModeSelector />
-      </div>
-      <SwitchRoutes
-        items={mainRoutes}
-        //
-      />
-    </>
+    <SwitchRoutes
+      items={mainRoutes}
+    />
   )
 }
 
 export default function (props) {
   return (
-    <Template hasSettings>
+    <Template
+      hasSettings
+      afterHeader={(
+        <div className="abs-special">
+          <ModeSelector />
+        </div>
+      )}
+    >
       <React.Suspense fallback="Loading board">
         <MainPage {...props} />
       </React.Suspense>

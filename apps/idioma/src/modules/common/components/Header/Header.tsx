@@ -63,7 +63,8 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={<button onClick={toggleNavigation}>Toggle Navigation</button>}
+      left={<button onClick={toggleNavigation}>Menu</button>}
+      leftSpanDesktop={2}
       right={(
         <>
           <button onClick={openHelp}>Help</button>

@@ -16,15 +16,18 @@
   background: var(--near);
 
   > .left {
+    --columns: var(--ls);
     grid-column: 1 / span var(--ls);
   }
 
   > .center {
+    --columns: var(--cs);
     grid-column: calc(var(--ls) + 1) / span var(--cs);
   }
 
   > .right {
-    grid-column: calc(var(--columns) - var(--rs) + 1) / span var(--rs);
+    --columns: var(--rs);
+    grid-column: calc(var(--ls) + var(--cs) + 1) / span var(--rs);
   }
   &.#{bem.$modifier-fixed} {
     left: 0;

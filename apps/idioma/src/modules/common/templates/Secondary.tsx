@@ -5,10 +5,12 @@ function Secondary({
   title, children,
 }) {
   return (
-    <>
-      <SecondaryHeader leftSpanDesktop={2}>{title}</SecondaryHeader>
+    <main className="flex">
+      <div>
+        <SecondaryHeader leftSpanDesktop={2}>{title}</SecondaryHeader>
+      </div>
       {children}
-    </>
+    </main>
   )
 }
 

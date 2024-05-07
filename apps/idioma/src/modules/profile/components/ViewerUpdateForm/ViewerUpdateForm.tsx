@@ -124,7 +124,7 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'container',
+        'flex',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -136,18 +136,13 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
       defaultValues={parsedInstance}
       onSubmit={handleUpdate}
     >
-      <div
-        className="container"
-        style={{
-          overflow:'auto',
-          height  :'100%',
-        }}
-      >
+      <div className="scrollbox">
         <ModularForm.Section fields={fields} />
       </div>
       <ModularForm.SubmitBar
         submitText="Update"
         disabled={isInFlight}
+        style={{ width: '100%' }}
       />
     </ModularForm>
   )

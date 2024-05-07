@@ -12,6 +12,13 @@ import { QUERY as QUERY_FLAGS } from './pages/FlagsPage.js'
 
 export const primary = [
   {
+    path     :paths.absolute.REDIRECT_TO_DEFAULT_BOARD,
+    component:loadable(() => import(
+      /* webpackChunkName: `app.dashboard` */ './pages/RedirectToDefaultBoard.js')),
+    exact    :true,
+    isPrivate:true,
+  },
+  {
     path:[
       paths.absolute.HOME,
       paths.absolute.HOME2,
@@ -58,7 +65,7 @@ export const secondary = [
   {
     path     :[paths.absolute.BOARD_SETTINGS],
     component:loadable(() => import(
-      /* webpackChunkName: `app.dashboard` */ './pages/BoardSettingsPage.js')),
+      /* webpackChunkName: `app.dashboard` */ './pages/UpdateBoardPage.js')),
     exact    :true,
     isPrivate:true,
     QUERY    :QUERY_LANGUAGE_CHOICES,

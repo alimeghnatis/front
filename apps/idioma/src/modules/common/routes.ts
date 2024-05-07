@@ -16,10 +16,4 @@ export default [
     component:loadable(() => import(/* webpackChunkName: `common` */ './pages/LoginPage.js')),
     exact    :true,
   },
-  {
-    path     :'/profile',
-    component:loadable(() => import(/* webpackChunkName: `common` */ './pages/ProfilePage.js')),
-    exact    :true,
-    isPrivate:true,
-  },
 ]

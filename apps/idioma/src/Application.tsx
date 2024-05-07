@@ -72,7 +72,9 @@ function Application({
                 //  boardGroupCount :10,
                 //  boardGroupCursor:null,
                 // }}
-                defaultRedirectionAfterLogin={paths.board.absolute.HOME}
+                defaultRedirectionAfterLogin={
+                  paths.board.absolute.REDIRECT_TO_DEFAULT_BOARD
+                }
               >
                 <ThemeWrapper>
                   <AuthenticationProvider

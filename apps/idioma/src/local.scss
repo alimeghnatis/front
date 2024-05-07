@@ -14,7 +14,7 @@
 @use "@aztlan/base-styles/initial.scss";
 
 $import-font-map:(
-  "sans":(
+  "nsans":(
     "400-normal":"sans_book",
     "400-italic":"sans_book_italic",
     "500-normal":"sans_regular",
@@ -48,13 +48,14 @@ $root-font-map:(
 
 
 html {
-  font-family: "nserif";
-  font-size: 14px;
-  line-height: 1.2em;
+  --gap: 1.5em;
+  font-family: "nsans";
+  font-size: 18px;
+  line-height: 1.5em;
 }
 
 p {
-  font-family: "nserif";
+  font-family: "nsans";
 }
 
 strong {

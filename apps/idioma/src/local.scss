@@ -1,4 +1,6 @@
-@use "@aztlan/grid/src/main" as grid;
+@use "@aztlan/grid/src/main" as grid with (
+  $default-gap:1.5rem,
+);
 @use "@aztlan/swatch/src/main" as swatch with (
   $extras:(
     "light-theme":(

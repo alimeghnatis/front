@@ -101,7 +101,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       <button
         disabled={isInFlight}
         type="submit"
-        className="span-2 md-span-3"
+        className="span-2 md-span-2"
       >
         Add
       </button>

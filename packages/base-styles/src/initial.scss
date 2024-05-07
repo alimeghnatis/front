@@ -75,7 +75,7 @@ p {
     --columns: 14;
 
     /* REPLACE columns -1 by +1 in case of sid pd */
-    --column-width: calc((100vw - (var(--columns) - 1) * 1rem) / 14);
+    --column-width: calc((100vw - (var(--columns) - 1) * var(--gap)) / 14);
   }
 }
 

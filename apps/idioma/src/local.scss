@@ -49,6 +49,13 @@ $root-font-map:(
 
 html {
   --gap: 1.5em;
+
+  @include media.media($from: 801px) {
+    font-size: 1.7vw;
+  }
+  @include media.media($from: 1500px) {
+    font-size: 1.5vw;
+  }
   font-family: "nsans";
   font-size: 18px;
   line-height: 1.5em;
@@ -93,6 +100,14 @@ main.grid {
 
 main.flex {
   > section {
+    flex: 1;
+  }
+}
+
+#nav-wrapper {
+  height: 100%;
+
+  > .vertical-menu {
     flex: 1;
   }
 }

@@ -159,8 +159,9 @@ const useItems = ({
       })
       if (viewerData) {
         userAppendItems.push({
-          label:'Debug',
-          items:[
+          label         :'Debug',
+          displayItemsAs:'group',
+          items         :[
             {
               Component:() => React.createElement(
                 'button',
@@ -176,8 +177,9 @@ const useItems = ({
         })
       } else {
         userAppendItems.push({
-          label:'Debug',
-          items:[
+          label         :'Debug',
+          displayItemsAs:'group',
+          items         :[
             {
               Component:() => React.createElement(
                 'div', {}, 'Not logged in',

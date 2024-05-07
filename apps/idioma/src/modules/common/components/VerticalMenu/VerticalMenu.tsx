@@ -52,6 +52,7 @@ InferProps<typeof VerticalMenu.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        'no-scrollbar',
       ]
         .filter((e) => e)
         .join(' ')}

@@ -10,13 +10,16 @@ function NavigationPage({ staticContext }: {
 }) {
   const { toggleNavigation } = useTriptychContext()
   return (
-    <>
+    <div
+      id="nav-wrapper"
+      className="flex"
+    >
       <NavigationHeader
         right={<button onClick={toggleNavigation}>Toggle</button>}
       />
 
       <VerticalMenu />
-    </>
+    </div>
   )
 }
 

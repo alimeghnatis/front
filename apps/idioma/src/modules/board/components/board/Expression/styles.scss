@@ -28,34 +28,38 @@ $subtotal-span: $span-language + $span-tools;
     }
 
     > .expression {
-      cursor:default;
-      grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras,0));
+      cursor: default;
+      grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras, 0));
     }
 
     > .tools {
       grid-column-end: span $span-tools;
     }
   }
+  border-top: 1px solid white;
 
-  /* stylelint-disable-next-line */
+  /* stylelint-disable order/order -- Required */
   @include media.media($to: 801px) {
     .general {
-    overflow-x:auto;
-    scroll-snap-type: x mandatory;
-    white-space: nowrap;
-    scrollbar-width: none;
+      /*
     &::-webkit-scrollbar {
       display: none;
-    }
-    display:flex;
+    } */
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      white-space: nowrap;
+
       > .language {
-        --columns:1;
+        --columns: 1;
         scroll-snap-align: start;
         //grid-column-end: span 1;
       }
 
       > .expression {
-        --columns:7;
+        --columns: 7;
+
         p {
           white-space: normal;
         }
@@ -63,16 +67,17 @@ $subtotal-span: $span-language + $span-tools;
       }
 
       > .tools {
-        --columns:3;
+        --columns: 3;
         scroll-snap-align: start;
         //grid-column-end: span 5;
       }
 
       > .extras {
-        display:none;
+        display: none;
       }
     }
   }
+
   &.#{bem.$modifier-loading} {
     animation: loading-background 1s linear forwards;
   }
@@ -84,8 +89,6 @@ $subtotal-span: $span-language + $span-tools;
   &:hover {
     background: yellow;
   }
-
-
 }
 
 

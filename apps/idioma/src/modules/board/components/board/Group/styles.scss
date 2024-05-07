@@ -3,9 +3,10 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.exp-group {
+  border-bottom: 1px solid white;
   //scroll-snap-align: end;
   & + & {
-    margin-top: 1rem;
+    margin-top: var(--gap);
   }
 
   &:hover {

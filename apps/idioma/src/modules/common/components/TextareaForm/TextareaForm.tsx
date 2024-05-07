@@ -83,7 +83,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <Textarea
-        className="span-7 md-span-13"
+        className="span-6 md-span-11"
         placeholder={placeholder}
         value={inputValue}
         setValue={setInputValue}
@@ -101,6 +101,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       <button
         disabled={isInFlight}
         type="submit"
+        className="span-2 md-span-3"
       >
         Add
       </button>

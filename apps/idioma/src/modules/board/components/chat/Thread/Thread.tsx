@@ -86,7 +86,6 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'container',
         'no-scrollbar',
       ]
         .filter((e) => e)

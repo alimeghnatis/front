@@ -140,7 +140,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       defaultValues={parsedInstance}
       onSubmit={handleUpdate}
     >
-      <div className="scrollbox">
+      <div className="scrollbox no-scrollbar">
         <ModularForm.Section fields={fields}>
           {!isDefault && (
             <>

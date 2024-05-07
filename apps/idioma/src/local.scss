@@ -101,6 +101,10 @@ main.flex {
   flex-direction: column;
 }
 
+.relative {
+  position: relative;
+}
+
 .grow {
   flex: 1;
 }
@@ -135,7 +139,7 @@ main.flex {
 
 
 .no-scrollbar {
-  //scrollbar-width: none;
+  scrollbar-width: none;
 
   //&::-webkit-scrollbar {
   //  display: none;

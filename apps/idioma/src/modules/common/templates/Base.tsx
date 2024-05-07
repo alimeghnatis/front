@@ -53,7 +53,7 @@ function Wrapper({
   const { data } = useViewer()
   return (
     <main className="flex">
-      <div>
+      <div className="relative">
         {beforeHeader}
         {data?.isSuperuser && <SearchBoardHeader />}
         <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />

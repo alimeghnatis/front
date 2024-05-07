@@ -5,7 +5,6 @@
 .#{bem.$base}.chat {
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
   height: 100%;
   overflow: hidden;
 }

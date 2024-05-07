@@ -59,14 +59,15 @@ InferProps<typeof Chat.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'container',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
+      {/*
       <ActionsBar data={result.thread} />
+    */}
       {result.thread ? (
         <Thread data={result.thread} />
       ) : (

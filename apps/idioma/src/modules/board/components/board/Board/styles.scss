@@ -12,11 +12,6 @@ $infinite-scroll-offset: 1000px;
   overflow: auto;
   position: relative;
   //scroll-snap-type: y;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
   .groups {
     display: flex;

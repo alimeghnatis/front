@@ -194,7 +194,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
       defaultValues={defaultValues}
       onSubmit={handleCreate}
     >
-      <div className="scrollbox">
+      <div className="scrollbox no-scrollbar">
         <ModularForm.Section fields={fields} />
       </div>
       <ModularForm.SubmitBar

@@ -63,12 +63,13 @@ export default primary
 
 export const secondary = [
   {
-    path     :[paths.absolute.BOARD_SETTINGS],
+    id       :'board-settings',
+    // path     :[paths.absolute.BOARD_SETTINGS],
     component:loadable(() => import(
       /* webpackChunkName: `app.dashboard` */ './pages/UpdateBoardPage.js')),
-    exact    :true,
-    isPrivate:true,
-    QUERY    :QUERY_LANGUAGE_CHOICES,
+    // exact    :true,
+    // isPrivate:true,
+    // QUERY    :QUERY_LANGUAGE_CHOICES,
   },
 ]
 

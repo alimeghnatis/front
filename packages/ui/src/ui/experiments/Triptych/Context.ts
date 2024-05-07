@@ -1,6 +1,8 @@
 import * as React from 'react'
 // import { InferProps } from 'prop-types'
-import { RoutesConfig } from '../../common/index.js'
+import {
+  RoutesConfig, RouteConfig,
+} from '../../common/index.js'
 
 export type TriptychMatch = {
   focus:number;
@@ -8,8 +10,9 @@ export type TriptychMatch = {
 }
 
 export type TriptychState = TriptychMatch & {
-  primaryRoutes  :RoutesConfig;
-  secondaryRoutes:RoutesConfig;
+  primaryRoutes    :RoutesConfig;
+  secondaryRoutes  :RoutesConfig;
+  selectedSecondary:RouteConfig;
 }
 
 export type TriptychContextType = {
@@ -17,6 +20,7 @@ export type TriptychContextType = {
   setState        :(payload: TriptychMatch) => void;
   setFocus        :(focus: number) => void;
   toggleNavigation:() => void;
+  selectSecondary :(id: string) => void;
 }
 
 export default React.createContext<TriptychContextType>({} as TriptychContextType)

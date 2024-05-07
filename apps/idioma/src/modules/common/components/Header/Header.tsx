@@ -38,19 +38,13 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
-  const { toggleNavigation } = useTriptychContext()
+  const {
+    toggleNavigation, selectSecondary,
+  } = useTriptychContext()
 
   const history = useHistory()
 
   const { location } = history
-
-  const openHelp = useCallback(
-    () => {
-      history.push(
-        `${location.pathname}/help`, { from: location.pathname },
-      )
-    }, [location],
-  )
 
   return (
     <NavigationHeader
@@ -67,7 +61,12 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
       leftSpanDesktop={2}
       right={(
         <>
-          <button onClick={openHelp}>Help</button>
+          <button
+            onClick={() => selectSecondary('help')}
+            type="button"
+          >
+            Help
+          </button>
           <Link to="/profile">
             <button>P</button>
           </Link>

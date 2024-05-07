@@ -24,6 +24,20 @@ function reducer(
         focus:action.payload,
       }
     }
+    case 'SELECT_SECONDARY': {
+      const selectedSecondary = state.secondaryRoutes.find((route) => route.id === action.payload)
+      if (!selectedSecondary) {
+        console.warn(
+          'No secondary route found for id:', action.payload,
+        )
+        return state
+      }
+      return {
+        ...state,
+        focus:2,
+        selectedSecondary,
+      }
+    }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }

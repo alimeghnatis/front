@@ -54,7 +54,9 @@ function MiniMenu() {
 function Page({
   title, secondary = undefined, primary = undefined,
 }) {
-  const { toggleNavigation } = useTriptychContext()
+  const {
+    toggleNavigation, selectSecondary, setFocus,
+  } = useTriptychContext()
 
   return (
     <div
@@ -71,12 +73,17 @@ function Page({
           Open Menu
         </button>
       )}
-      {primary && <Link to={primary}>Primary</Link>}
+      {primary && <button onClick={() => setFocus(1)}>Primary</button>}
       <h1>
         Page
         {title}
       </h1>
-      {secondary && <Link to={secondary}>Help</Link>}
+      {secondary && (
+        <>
+          <button onClick={() => selectSecondary('help')}>Help</button>
+          <button onClick={() => selectSecondary('settings')}>Settings</button>
+        </>
+      )}
     </div>
   )
 }
@@ -93,8 +100,8 @@ export const Base: StoryObj<typeof Component> = {
     primaryRoutes:[
       {
         path:[
-          '/main-route-1*',
-          '/main-route-2*',
+          '/main-route-1',
+          '/main-route-2',
         ],
         component:() => (
           <Page
@@ -105,8 +112,8 @@ export const Base: StoryObj<typeof Component> = {
       },
       {
         path:[
-          '/main-route-4*',
-          '/main-route-5*',
+          '/main-route-4',
+          '/main-route-5',
         ],
         component:() => (
           <Page
@@ -116,7 +123,7 @@ export const Base: StoryObj<typeof Component> = {
         ),
       },
       {
-        path     :'/*',
+        path     :'/',
         component:() => (
           <Page
             title="A"
@@ -127,7 +134,8 @@ export const Base: StoryObj<typeof Component> = {
     ],
     secondaryRoutes:[
       {
-        path     :'/help',
+        // path     :'/help',
+        id       :'help',
         component:() => (
           <Page
             title="help"
@@ -136,26 +144,11 @@ export const Base: StoryObj<typeof Component> = {
         ),
       },
       {
-        path:[
-          '/main-route-1/help',
-          '/main-route-2/settings',
-        ],
+        id       :'settings',
         component:() => (
           <Page
             title="settings"
             primary="/main-route-1"
-          />
-        ),
-      },
-      {
-        path:[
-          '/main-route-4/help',
-          '/main-route-5/settings',
-        ],
-        component:() => (
-          <Page
-            title="settings"
-            primary="/main-route-4"
           />
         ),
       },

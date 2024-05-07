@@ -11,9 +11,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
-import {
-  useLocation, useHistory,
-} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import Context from './Context.js'
 import { SwitchRoutes } from '../../app.base/index.js'
 import {
@@ -53,12 +51,13 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
 
   const matchPrimaryRoutes = useRouteMatch(primaryRoutes as RoutesConfig)
 
-  const matchSecondaryRoutes = useRouteMatch(secondaryRoutes as RoutesConfig)
+  // const matchSecondaryRoutes = useRouteMatch(secondaryRoutes as RoutesConfig)
 
   const location = useLocation()
 
   const baseState = useMemo(
     () => {
+    /*
       const secondaryMatch = matchSecondaryRoutes(location.pathname)
 
       if (secondaryMatch) {
@@ -66,7 +65,8 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
           focus:2,
           match:secondaryMatch,
         }
-      }
+      } */
+
       const primaryMatch = matchPrimaryRoutes(location.pathname)
 
       return {
@@ -83,6 +83,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
     reducer, {
       primaryRoutes,
       secondaryRoutes,
+      selectedSecondary:null,
       ...baseState,
     },
   )
@@ -117,25 +118,21 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
     }, [],
   )
 
-  const history = useHistory()
+  const selectSecondary = useCallback(
+    (routeId) => {
+      dispatch({
+        type   :'SELECT_SECONDARY',
+        payload:routeId,
+      })
+    }, [],
+  )
 
   const reselectContent = useCallback(
     (e) => {
       e.preventDefault()
       e.stopPropagation()
-      if (state.focus === 2) {
-        if (history.location.state?.from) {
-          history.push(history.location.state.from)
-        } else {
-          history.goBack()
-        }
-      }
       setFocus(1)
-    },
-    [
-      location.pathname,
-      state.focus,
-    ],
+    }, [],
   )
 
   const value = useMemo(
@@ -143,6 +140,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
       state,
       setState,
       setFocus,
+      selectSecondary,
       toggleNavigation,
     }),
     [state],
@@ -197,7 +195,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
             `md-span-${secondarySpanDesktop}`,
           ].join(' ')}
         >
-          <SwitchRoutes items={secondaryRoutes} />
+          {state.selectedSecondary && <state.selectedSecondary.component />}
         </div>
       </div>
     </Context.Provider>

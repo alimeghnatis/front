@@ -34,7 +34,7 @@ function SecondaryHeader({
       import('./styles.scss')
     }, [],
   )
-  const { toggleNavigation } = useTriptychContext()
+  const { setFocus } = useTriptychContext()
 
   const location = useLocation()
 
@@ -50,14 +50,12 @@ function SecondaryHeader({
         .join(' ')}
       style={style}
       left={(
-        <Link to={location.state?.from || '/'}>
-          <button
-            onClick={toggleNavigation}
-            type="button"
-          >
-            Close
-          </button>
-        </Link>
+        <button
+          onClick={() => setFocus(1)}
+          type="button"
+        >
+          Close
+        </button>
       )}
       {...otherProps}
     >

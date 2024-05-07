@@ -88,6 +88,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
         value={inputValue}
         setValue={setInputValue}
         onKeyDown={handleKeyDown}
+        key={inputValue.length ? 'filled' : 'empty'}
       />
       {/*
       <button

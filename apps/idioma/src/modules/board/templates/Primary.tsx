@@ -7,6 +7,7 @@ import {
 import {
   useBoardContext, SelectBoardHeader,
 } from 'modules/common/components'
+import { useTriptychContext } from '@aztlan/ui'
 import paths from '../paths.js'
 
 function PrimaryTemplate({
@@ -21,24 +22,17 @@ function PrimaryTemplate({
 
   const history = useHistory()
 
-  const navigateToSettings = useCallback(
-    () => {
-      history.push(
-        paths.generatePath(
-          'BOARD_SETTINGS', { board: boardID },
-        ), { from: history.location.pathname },
-      )
-    }, [
-      boardID,
-      history,
-    ],
-  )
+  const { selectSecondary } = useTriptychContext()
 
   return (
     <BaseTemplate
       title={title || <SelectBoardHeader />}
       right={
-        hasSettings && <button onClick={navigateToSettings}>Settings</button>
+        hasSettings && (
+          <button onClick={() => selectSecondary('board-settings')}>
+            Settings
+          </button>
+        )
       }
       {...otherProps}
     >

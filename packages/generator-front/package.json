@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/generator-front",
-  "version": "3.6.3",
+  "version": "3.8.0",
   "files": [
     "generators"
   ],

@@ -84,6 +84,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
       primaryRoutes,
       secondaryRoutes,
       selectedSecondary:null,
+      focus            :1,
       ...baseState,
     },
   )
@@ -185,6 +186,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
           className="content manual span-8 md-span-14"
           onClick={state.focus !== 1 ? reselectContent : undefined}
         >
+          {state.focus !== 1 && <div className="stop-propagator" />}
           <SwitchRoutes items={primaryRoutes} />
         </div>
         <div

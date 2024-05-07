@@ -161,6 +161,7 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
       ].filter(Boolean).join(' ')}
       isInFlight={isInFlight}
       handleSubmit={handleSubmit}
+      placeholder="Type a sentence here to add it to your board"
       {...otherProps}
     />
   )

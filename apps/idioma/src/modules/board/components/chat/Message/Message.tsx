@@ -83,7 +83,7 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
           <div className="container">{result.content.content}</div>
           {result.role === 'assistant'
             && result.content.suggestions?.length > 0 && (
-              <div className="container">
+              <div className="container suggestions">
                 <SuggestionGroup data={result.content} />
               </div>
           )}

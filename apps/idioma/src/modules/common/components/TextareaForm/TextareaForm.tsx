@@ -23,6 +23,7 @@ function TextareaForm({
   style,
   isInFlight,
   handleSubmit,
+  placeholder,
 }: // ...otherProps
 
 InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
@@ -37,6 +38,22 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
     inputValue,
     setInputValue,
   ] = useState('')
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        if (inputValue.length > 5) {
+          event.preventDefault()
+          handleSubmit(inputValue)
+          setInputValue('')
+        }
+      }
+    },
+    [
+      handleSubmit,
+      inputValue,
+    ],
+  )
 
   const onSubmit = useCallback(
     (event) => {
@@ -66,9 +83,11 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <Textarea
-        className="span-6 md-span-9"
+        className="span-7 md-span-13"
+        placeholder={placeholder}
         value={inputValue}
         setValue={setInputValue}
+        onKeyDown={handleKeyDown}
       />
       {/*
       <button
@@ -103,6 +122,9 @@ TextareaForm.propTypes = {
 
   /** The function to call when the form is submitted */
   handleSubmit:PropTypes.func,
+
+  /** The placeholder text */
+  placeholder:PropTypes.string,
 }
 
 export default TextareaForm

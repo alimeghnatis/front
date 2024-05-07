@@ -130,8 +130,8 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       fieldProps={{
-        spanLabelDesktop  :2,
-        spanContentDesktop:8,
+        spanLabelDesktop  :3,
+        spanContentDesktop:9,
       }}
       defaultValues={parsedInstance}
       onSubmit={handleUpdate}

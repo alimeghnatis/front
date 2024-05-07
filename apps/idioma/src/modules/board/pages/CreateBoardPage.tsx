@@ -10,10 +10,12 @@ function NewBoard() {
   return (
     <Template>
       <div
-        className="grid container"
+        className="grid container no-scrollbar"
         style={{ overflow: 'auto' }}
       >
-        <BoardCreateForm />
+        <div className="span-8 md-span-12">
+          <BoardCreateForm />
+        </div>
       </div>
     </Template>
   )

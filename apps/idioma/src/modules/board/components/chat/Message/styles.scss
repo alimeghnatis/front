@@ -10,6 +10,10 @@
   &.assistant {
     background: var(--near);
   }
+
+  > .suggestions {
+    grid-column: 2/ -1;
+  }
 }
 
 

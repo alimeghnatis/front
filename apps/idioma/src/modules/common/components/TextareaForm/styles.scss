@@ -2,9 +2,10 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.textarea-form{
-
+.#{bem.$base}.textarea-form {
+  button {
+    align-self: end;
+  }
 }
-
 
 

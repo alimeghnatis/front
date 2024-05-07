@@ -163,6 +163,7 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
       ].filter(Boolean).join(' ')}
       isInFlight={isInFlight}
       handleSubmit={handleSubmit}
+      placeholder="Expressions about going to the supermarket in Mexican Spanish."
       {...otherProps}
     />
   )

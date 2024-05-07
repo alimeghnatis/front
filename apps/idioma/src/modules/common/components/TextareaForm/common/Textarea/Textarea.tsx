@@ -24,6 +24,7 @@ function Textarea({
   value,
   setValue,
   placeholder = 'Type something...',
+  ...otherProps
 }: // ...otherProps
 
 InferProps<typeof Textarea.propTypes>): React.ReactElement {
@@ -80,6 +81,7 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
         lineHeight:'24px', // Ensure this matches `textareaLineHeight`
         ...style,
       }}
+      {...otherProps}
     />
   )
 }

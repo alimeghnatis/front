@@ -19,6 +19,15 @@ $infinite-scroll-offset: 1000px;
     &.assistant {
       grid-column: 1/-3;
     }
+    @media screen and (min-width: 801px) {
+      &.user {
+        grid-column: 5/-1;
+      }
+
+      &.assistant {
+        grid-column: 1/-5;
+      }
+    }
   }
 
   #load-more {

@@ -47,7 +47,7 @@ function BoardPage() {
         data={data}
         className="container"
       />
-      <ExpressionCreateForm />
+      <ExpressionCreateForm className="container" />
     </>
   )
 }

@@ -188,7 +188,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       fieldProps={{
-        spanLabelDesktop  :1,
+        spanLabelDesktop  :3,
         spanContentDesktop:9,
       }}
       defaultValues={defaultValues}

@@ -174,10 +174,19 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
               newInstance, 'node', { id: newId },
             )
 
-            const expressionsConnection = newInstance.getLinkedRecord('expressions')
+            const expressionsConnection = newInstance.getLinkedRecord(
+              'expressions',
+              { first: 50 },
+            ) // A bit verbose, otherwise undefined
 
             if (expressionsConnection) {
               const edges = expressionsConnection.getLinkedRecords('edges')
+              console.log(
+                'expressionsConnection',
+                expressionsConnection,
+                newInstance,
+                edges,
+              )
               edges.forEach((edge) => {
                 const expressionNode = edge.getLinkedRecord('node')
                 if (expressionNode) {

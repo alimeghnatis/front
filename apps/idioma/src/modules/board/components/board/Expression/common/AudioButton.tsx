@@ -20,22 +20,24 @@ const FRAGMENT = graphql`
   }
 `
 
-function AudioButton({
-  data,
-  ...props
-}: InferProps<typeof AudioButton.propTypes>): React.ReactElement {
+function AudioButton(
+  {
+    data,
+    playbackRate = 1,
+    content = '<',
+    ...props
+  }: InferProps<typeof AudioButton.propTypes>,
+  ref,
+): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
 
   const audioRef = useRef<HTMLAudioElement>(null)
-  const audioSlowRef = useRef<HTMLAudioElement>(null)
 
   const playAudio = useCallback(
-    (
-      playbackRate, ref,
-    ) => {
-      const audio = ref.current
+    () => {
+      const audio = audioRef.current
 
       document.querySelectorAll('audio').forEach((a) => {
         if (a !== audio) {
@@ -53,29 +55,7 @@ function AudioButton({
           audio.play()
         }
       }
-    }, [],
-  )
-
-  const playAudioNormal = useCallback(
-    (): void => {
-      playAudio(
-        1, audioRef,
-      )
-    }, [
-      playAudio,
-      audioRef,
-    ],
-  )
-
-  const playAudioSlow = useCallback(
-    (): void => {
-      playAudio(
-        0.65, audioSlowRef,
-      )
-    }, [
-      playAudio,
-      audioSlowRef,
-    ],
+    }, [playbackRate],
   )
 
   const language = result.iso6391 || result.iso6392 || result.iso6393
@@ -91,41 +71,25 @@ function AudioButton({
           />
         </audio>
       )}
-      {result.audioUrl && (
-        <audio ref={audioSlowRef}>
-          <source
-            src={result.audioUrl}
-            type="audio/mpeg"
-          />
-        </audio>
-      )}
-
       <button
-        onClick={playAudioNormal}
+        onClick={playAudio}
         disabled={!result.audioUrl}
+        ref={ref}
         title={
           result.audioUrl ? 'Play audio' : `Language ${language} has no audio`
         }
         {...props}
       >
-        &lt;
-      </button>
-      <button
-        onClick={playAudioSlow}
-        disabled={!result.audioUrl}
-        title={
-          result.audioUrl
-            ? 'Play audio at 65% speed'
-            : `Language ${language} has no audio`
-        }
-        {...props}
-      >
-        65
+        {content}
       </button>
     </>
   )
 }
 
-AudioButton.propTypes = { data: PropTypes.object.isRequired }
+AudioButton.propTypes = {
+  data        :PropTypes.object.isRequired,
+  playbackRate:PropTypes.number,
+  content     :PropTypes.string,
+}
 
-export default AudioButton
+export default React.forwardRef(AudioButton as React.ForwardRefRenderFunction<HTMLButtonElement>)

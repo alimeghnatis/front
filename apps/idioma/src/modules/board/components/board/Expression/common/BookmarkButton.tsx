@@ -34,11 +34,12 @@ const MUTATION_UPDATE = graphql`
   }
 `
 
-function BookmarkButton({
-  data,
-  groupID,
-  ...props
-}: InferProps<typeof BookmarkButton.propTypes>): React.ReactElement {
+function BookmarkButton(
+  {
+    data, groupID, ...props
+  }: InferProps<typeof BookmarkButton.propTypes>,
+  ref,
+): React.ReactElement {
   const result = useFragment(
     FRAGMENT, data,
   )
@@ -86,6 +87,7 @@ function BookmarkButton({
         result.isBookmarked ? 'Unbookmark expression' : 'Bookmark expression'
       }
       {...props}
+      ref={ref}
     >
       !
     </button>
@@ -94,4 +96,4 @@ function BookmarkButton({
 
 BookmarkButton.propTypes = { data: PropTypes.object.isRequired }
 
-export default BookmarkButton
+export default React.forwardRef(BookmarkButton as React.ForwardRefRenderFunction<HTMLButtonElement>)

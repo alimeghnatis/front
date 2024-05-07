@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8c72a5884ddb68ad33502db22e0f5889>>
+ * @generated SignedSource<<1f015b8220d1be5a94ce0bd76a8667b5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type ApplicationQueryViewerFragment$data = {
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
-  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ViewerUpdateFormFragment" | "useBoardMembershipsFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ViewerUpdateFormFragment" | "useBoardMembershipsFragment" | "useViewerPreferencesFragment">;
   readonly " $fragmentType": "ApplicationQueryViewerFragment";
 };
 export type ApplicationQueryViewerFragment$key = {
@@ -110,6 +110,11 @@ const node: ReaderFragment = {
     {
       "args": null,
       "kind": "FragmentSpread",
+      "name": "useViewerPreferencesFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
       "name": "useBoardMembershipsFragment"
     }
   ],
@@ -117,6 +122,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "efba39d18906049e305b9842aadcd401";
+(node as any).hash = "6468f45b84c405829e3fe703dd88c281";
 
 export default node;

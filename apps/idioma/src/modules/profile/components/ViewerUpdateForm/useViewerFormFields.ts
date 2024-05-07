@@ -1,7 +1,9 @@
 import { useMemo } from 'react'
 
+import { PREFERENCES } from 'modules/common/constants'
+
 const useViewerFormFields = (instance) => {
-  const fields = useMemo(
+  const baseFields = useMemo(
     () => [
       {
         name    :'id',
@@ -84,7 +86,41 @@ const useViewerFormFields = (instance) => {
     [],
   )
 
-  return fields
+  const preferencesFields = useMemo(
+    () => [
+      {
+        name       :'preferences.actionOnExpressionClick',
+        type       :'select',
+        label      :'Action on Expression Click',
+        description:'The action to take when an expression is clicked.',
+        options    :[
+          {
+            label:'Display details',
+            value:PREFERENCES.ACTION_ON_EXPRESSION_CLICK.DISPLAY_DETAILS,
+          },
+          {
+            label:'Play audio',
+            value:PREFERENCES.ACTION_ON_EXPRESSION_CLICK.PLAY_AUDIO,
+          },
+          {
+            label:'Play audio (65% speed)',
+            value:PREFERENCES.ACTION_ON_EXPRESSION_CLICK.PLAY_AUDIO_SLOW,
+          },
+          {
+            label:'Bookmark',
+            value:PREFERENCES.ACTION_ON_EXPRESSION_CLICK.BOOKMARK,
+          },
+        ],
+        registerProps:{ required: { value: false } },
+      },
+    ],
+    [],
+  )
+
+  return {
+    baseFields,
+    preferencesFields,
+  }
 }
 
 export default useViewerFormFields

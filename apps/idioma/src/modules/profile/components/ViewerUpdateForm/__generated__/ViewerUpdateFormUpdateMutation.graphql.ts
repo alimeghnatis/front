@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<25496b13fe8e30903d52bb3f1fec7bc9>>
+ * @generated SignedSource<<a5525af0d2d7bddbc6ce5fb6ad2873f7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,8 +19,14 @@ export type UpdateUserMutationInput = {
   isStaff?: boolean | null | undefined;
   isSuperuser?: boolean | null | undefined;
   lastName?: string | null | undefined;
+  preferences?: UserPreferencesSerializerInput | null | undefined;
   profilePicture?: string | null | undefined;
   username?: string | null | undefined;
+};
+export type UserPreferencesSerializerInput = {
+  actionOnExpressionClick?: string | null | undefined;
+  id?: string | null | undefined;
+  user?: string | null | undefined;
 };
 export type ViewerUpdateFormUpdateMutation$variables = {
   input: UpdateUserMutationInput;
@@ -200,6 +206,25 @@ return {
                 "kind": "ScalarField",
                 "name": "isSuperuser",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "UserPreferencesNode",
+                "kind": "LinkedField",
+                "name": "preferences",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "actionOnExpressionClick",
+                    "storageKey": null
+                  },
+                  (v2/*: any*/)
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -211,12 +236,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "56de1ef42d2c3b10036afdbe38048024",
+    "cacheID": "bcb5bfb799bf07351f29cdd092415e01",
     "id": null,
     "metadata": {},
     "name": "ViewerUpdateFormUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation ViewerUpdateFormUpdateMutation(\n  $input: UpdateUserMutationInput!\n) {\n  updateUser(input: $input) {\n    instance {\n      id\n      ...ViewerUpdateFormFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n}\n"
+    "text": "mutation ViewerUpdateFormUpdateMutation(\n  $input: UpdateUserMutationInput!\n) {\n  updateUser(input: $input) {\n    instance {\n      id\n      ...ViewerUpdateFormFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
   }
 };
 })();

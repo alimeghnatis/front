@@ -30,6 +30,9 @@ const FRAGMENT = graphql`
     email
     profilePicture
     isSuperuser
+    preferences {
+      actionOnExpressionClick
+    }
   }
 `
 
@@ -94,6 +97,7 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
         email         :rawInput.email,
         profilePicture:rawInput.profilePicture,
         isSuperuser   :rawInput.isSuperuser,
+        preferences   :{ actionOnExpressionClick: rawInput.preferences.actionOnExpressionClick },
       }
 
       commit({
@@ -115,7 +119,9 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
     ],
   )
 
-  const fields = useViewerFormFields(parsedInstance)
+  const {
+    baseFields, preferencesFields,
+  } = useViewerFormFields(parsedInstance)
 
   return (
     <ModularForm
@@ -137,7 +143,8 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
       onSubmit={handleUpdate}
     >
       <div className="scrollbox no-scrollbar">
-        <ModularForm.Section fields={fields} />
+        <ModularForm.Section fields={baseFields} />
+        <ModularForm.Section fields={preferencesFields} />
       </div>
       <ModularForm.SubmitBar
         submitText="Update"

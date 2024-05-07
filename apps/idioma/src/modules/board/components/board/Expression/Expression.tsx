@@ -16,7 +16,12 @@ import {
   useFragment, graphql,
 } from 'react-relay'
 
-import { useBoardContext } from 'modules/common/components'
+import {
+  useBoardContext,
+  useViewerPreferences,
+} from 'modules/common/components'
+import { PREFERENCES } from 'modules/common/constants'
+import { useAuthenticationContext } from '@aztlan/ui'
 import {
   AudioButton,
   DeleteButton,
@@ -62,6 +67,7 @@ function Expression({
   groupID,
   extras,
   spanExtras,
+  preferences = {},
 }: // ...otherProps
 
 InferProps<typeof Expression.propTypes>): React.ReactElement {
@@ -88,10 +94,36 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     detailsLink, variantLink, isExpressionSelected,
   } = useExpressionLinks(result.id)
 
+  const expressionRef = useRef(null)
+
+  const bookmarkButtonRef = useRef(null)
+  const audioPlayerRef = useRef(null)
+  const audioPlayerSlowRef = useRef(null)
+
+  const { actionOnExpressionClick } = preferences
+
   const onContentClick = useCallback(
     () => {
-      history.push(detailsLink)
-    }, [detailsLink],
+      switch (actionOnExpressionClick) {
+        case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.DISPLAY_DETAILS:
+          history.push(detailsLink)
+          break
+        case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.PLAY_AUDIO:
+          audioPlayerRef.current?.click()
+          break
+        case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.PLAY_AUDIO_SLOW:
+          audioPlayerSlowRef.current?.click()
+          break
+        case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.BOOKMARK:
+          bookmarkButtonRef.current?.click()
+          break
+        default:
+          break
+      }
+    }, [
+      detailsLink,
+      actionOnExpressionClick,
+    ],
   )
 
   useEffect(() => {
@@ -104,8 +136,6 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       setCurrentGroupId(groupID)
     }
   })
-
-  const expressionRef = useRef(null)
 
   return (
     <div
@@ -141,8 +171,20 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           <p>{result.correctedContent || result.content}</p>
         </div>
         <div className="tools manual-mobile-only">
-          <AudioButton data={result} />
-          <BookmarkButton data={result} />
+          <AudioButton
+            data={result}
+            ref={audioPlayerRef}
+          />
+          <AudioButton
+            data={result}
+            playbackRate={0.65}
+            ref={audioPlayerSlowRef}
+            content="65"
+          />
+          <BookmarkButton
+            data={result}
+            ref={bookmarkButtonRef}
+          />
           <Link to={detailsLink}>
             <button
               type="button"
@@ -207,4 +249,20 @@ Expression.propTypes = {
   spanExtras:PropTypes.number,
 }
 
-export default Expression
+function LoggedInExpression(props) {
+  const preferences = useViewerPreferences()
+  return (
+    <Expression
+      preferences={preferences}
+      {...props}
+    />
+  )
+}
+
+export default function (props) {
+  const { data } = useAuthenticationContext()
+  if (!data) {
+    return <Expression {...props} />
+  }
+  return <LoggedInExpression {...props} />
+}

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<59c7a3a24eacd7d34c8454f575ced0e4>>
+ * @generated SignedSource<<b7c391aaf130415a8974f71d08110d9a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,6 +17,9 @@ export type ViewerUpdateFormFragment$data = {
   readonly id: string;
   readonly isSuperuser: boolean;
   readonly lastName: string;
+  readonly preferences: {
+    readonly actionOnExpressionClick: string;
+  } | null | undefined;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
   readonly " $fragmentType": "ViewerUpdateFormFragment";
@@ -87,12 +90,30 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "isSuperuser",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "UserPreferencesNode",
+      "kind": "LinkedField",
+      "name": "preferences",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "actionOnExpressionClick",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "c17b9df5b3fc7d79dbaa1555baae5a1f";
+(node as any).hash = "053f7aa62820805a498b96935cd0f402";
 
 export default node;

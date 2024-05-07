@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bad1bb366664d98739c6a02c3a0dc26c>>
+ * @generated SignedSource<<163a162570dcfb48a828daa96695a784>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,7 +21,15 @@ export type ViewerUpdateFormQuery = {
   variables: ViewerUpdateFormQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -62,13 +70,7 @@ const node: ConcreteRequest = {
         "name": "viewer",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          },
+          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -117,6 +119,25 @@ const node: ConcreteRequest = {
             "kind": "ScalarField",
             "name": "isSuperuser",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "UserPreferencesNode",
+            "kind": "LinkedField",
+            "name": "preferences",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "actionOnExpressionClick",
+                "storageKey": null
+              },
+              (v0/*: any*/)
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -124,14 +145,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "7f0a916bccb7bfbacc2f205178dd807d",
+    "cacheID": "de275cae32f7dce2a70dfaa8b47f3aae",
     "id": null,
     "metadata": {},
     "name": "ViewerUpdateFormQuery",
     "operationKind": "query",
-    "text": "query ViewerUpdateFormQuery {\n  viewer {\n    ...ViewerUpdateFormFragment\n    id\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n}\n"
+    "text": "query ViewerUpdateFormQuery {\n  viewer {\n    ...ViewerUpdateFormFragment\n    id\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
   }
 };
+})();
 
 (node as any).hash = "a217619944913fa01a61fab1862707c7";
 

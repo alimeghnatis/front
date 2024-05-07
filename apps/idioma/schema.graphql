@@ -269,6 +269,7 @@ type UserNode implements Node {
   """The ID of the object"""
   id: ID!
   profilePicture: String
+  preferences: UserPreferencesNode
   boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
   boards(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardNodeConnection!
   defaultBoard: BoardNode
@@ -329,6 +330,13 @@ type PermissionNode implements Node {
 
   """Specific permissions for this user."""
   userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+}
+
+type UserPreferencesNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  user: UserNode!
+  actionOnExpressionClick: String!
 }
 
 type BoardMembershipNodeConnection {
@@ -987,7 +995,14 @@ input UpdateUserMutationInput {
   Designates that this user has all permissions without explicitly assigning them.
   """
   isSuperuser: Boolean
+  preferences: UserPreferencesSerializerInput
   clientMutationId: String
+}
+
+input UserPreferencesSerializerInput {
+  id: String
+  actionOnExpressionClick: String
+  user: String
 }
 
 type Upload3Mutation {

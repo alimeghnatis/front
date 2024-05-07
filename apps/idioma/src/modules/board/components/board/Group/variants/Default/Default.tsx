@@ -56,7 +56,7 @@ InferProps<typeof DefaultGroup.propTypes>): React.ReactElement {
         userClassName,
       ].filter((e) => e).join(' ')}
       style={style}
-      key={result.id}
+      // key={result.id}
       // {...otherProps}
     >
       {result.expressions.edges.map((edge) => (

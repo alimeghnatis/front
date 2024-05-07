@@ -126,16 +126,19 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     ],
   )
 
-  useEffect(() => {
-    if (isExpressionSelected) {
-      expressionRef.current.scrollIntoView({
-        behavior:'smooth',
-        block   :'center',
-        inline  :'center',
-      })
-      setCurrentGroupId(groupID)
-    }
-  })
+  useEffect(
+    () => {
+      if (isExpressionSelected) {
+        expressionRef.current.scrollIntoView({
+          behavior:'smooth',
+          top     :'10em',
+        // block   :'center',
+        // inline  :'center',
+        })
+        setCurrentGroupId(groupID)
+      }
+    }, [isExpressionSelected],
+  )
 
   return (
     <div

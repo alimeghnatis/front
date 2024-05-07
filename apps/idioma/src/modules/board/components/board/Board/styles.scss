@@ -35,6 +35,10 @@ $infinite-scroll-offset: 1000px;
       z-index: -1;
     }
   }
+
+  * {
+    overflow-anchor: none;
+  }
 }
 
 

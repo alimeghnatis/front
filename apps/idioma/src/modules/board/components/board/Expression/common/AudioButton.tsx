@@ -92,4 +92,9 @@ AudioButton.propTypes = {
   content     :PropTypes.string,
 }
 
-export default React.forwardRef(AudioButton as React.ForwardRefRenderFunction<HTMLButtonElement>)
+export default React.memo(
+  React.forwardRef(AudioButton as React.ForwardRefRenderFunction<HTMLButtonElement>),
+  (
+    prevProps, nextProps,
+  ) => prevProps.data.id === nextProps.data.id,
+)

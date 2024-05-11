@@ -111,6 +111,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
       payload  :result.wordsExplanation,
       marked   :true,
     },
+    /*
     {
       condition:result.audioUrl,
       label    :'Audio',
@@ -125,7 +126,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           <button onClick={playAudio}>Play</button>
         </>
       ),
-    },
+    }, */
     {
       label  :'Changes',
       payload:result.changes,

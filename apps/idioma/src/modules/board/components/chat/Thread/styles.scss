@@ -13,11 +13,11 @@ $infinite-scroll-offset: 1000px;
   overflow: auto;
   .#{bem.$base}.thread-message {
     &.user {
-      grid-column: 3/-1;
+      grid-column: 2/-1;
     }
 
     &.assistant {
-      grid-column: 1/-3;
+      grid-column: 1/-2;
     }
     @media screen and (min-width: 801px) {
       &.user {

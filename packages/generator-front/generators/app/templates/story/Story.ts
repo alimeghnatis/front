@@ -25,10 +25,42 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
+<% if (optionRelay) { %>
+const relay = {
+  query:graphql`
+    query <%= name %>StoriesQuery {
+      CHANGEME(id: "1") {
+        ...<%= name %>Fragment
+      }
+    }
+  `,
+  getReferenceEntry:(data) => [
+    'data',
+    data.CHANGEME,
+  ],
+  variables    :{},
+  mockResolvers:{
+    /*
+    ExpressionNode:() => ({
+      id              :'1',
+      content         :'Sample Expression',
+      correctedContent:'This is an expression that is used as a sample for the storybook.',
+      iso6391         :'es',
+      iso6392         :'spa',
+      iso6393         :'spa',
+      isBookmarked    :false,
+    }),*/
+  },
+}
+<% } %>
+
 export const Base: StoryObj<typeof Component> = {
   args: {
     children: "Sample <%= name %>"
   }
+  <% if (optionRelay) { %>
+  ,parameters: { relay }
+  <% } %>
 };
 
 /*

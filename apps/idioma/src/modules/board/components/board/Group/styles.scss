@@ -4,6 +4,7 @@
 
 .#{bem.$base}.exp-group {
   border-bottom: 1px solid white;
+  box-sizing: border-box;
   //scroll-snap-align: end;
   & + & {
     margin-top: var(--gap);

@@ -167,10 +167,14 @@ main.flex {
 }
 
 .abs-special {
-  bottom: -3em;
+  bottom: calc(var(--gap) * -2);
   display: flex;
   justify-content: center;
   position: absolute;
   width: 100%;
   z-index: 10;
+
+  ul {
+    margin: 0;
+  }
 }

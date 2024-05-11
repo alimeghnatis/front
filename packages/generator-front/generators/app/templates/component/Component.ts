@@ -4,6 +4,9 @@ import { useInsertionEffect } from 'react'
 <% } %>
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+<% if (optionRelay) { %>
+import { graphql, useFragment } from 'react-relay'
+<% } %>
 <% if (!optionNoStyles) { %>
 import styleNames from '@<%= npmOrg %>/bem'
 <% } %>
@@ -11,6 +14,16 @@ import styleNames from '@<%= npmOrg %>/bem'
 <% if (!optionDiet || !optionNoStyles) { %>
 const baseClassName = styleNames.base<% } %>
 const componentClassName = '<%= lower %>'
+
+<% if (optionRelay) { %>
+const FRAGMENT = graphql`
+  fragment <%= name %>Fragment on <%= name %>Node
+    #@refetchable(queryName: "<%= name %>RefetchQuery") 
+    {
+      id
+  }
+`
+<% } %>
 
 /**
  * description
@@ -34,6 +47,12 @@ function <%= name %>({
     import('./styles.scss')
   }, [])
 <% } %>
+
+  <% if (optionRelay) { %>
+  const result = useFragment(
+    FRAGMENT, data,
+  )
+  <% } %>
   
   return(
     <div

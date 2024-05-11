@@ -1,4 +1,85 @@
 type Query {
+  plan(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): PlanNode
+  plans(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    name: String
+    name_Icontains: String
+  ): PlanNodeConnection
+  planOverride(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): PlanOverrideNode
+  planOverrides(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    plan: ID
+  ): PlanOverrideNodeConnection
+  usageRecord(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): UsageRecordNode
+  usageRecords(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    user: ID
+  ): UsageRecordNodeConnection
+  usageState(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): UsageStateNode
+  usageStates(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    user: ID
+  ): UsageStateNodeConnection
   iso639pt2: [LanguageType]
   board(
     """The ID of the object"""
@@ -138,16 +219,7 @@ type Query {
   ): Node
 }
 
-type LanguageType {
-  name: String!
-  pt1: String
-  pt2b: String!
-  pt2t: String!
-  pt3: String!
-  audio: Boolean!
-}
-
-type BoardNode implements SearchNode & Node {
+type PlanNode implements SearchNode & Node {
   """The date and time at which the object was created."""
   created: DateTime!
 
@@ -156,25 +228,56 @@ type BoardNode implements SearchNode & Node {
 
   """The ID of the object"""
   id: ID!
-  iso6391: String
-  iso6392: String
-  iso6393: String!
-  name: String!
-  isPublic: Boolean!
-  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
-  defaultForUser: UserNode
-  isDefault: Boolean!
-  explanationsLanguage: String!
-  explanationsLength: String!
-  enabledLanguages: JSONString!
-  displayTranslations: Boolean!
-  openaiThreadId: String
-  memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
-  groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
-  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
 
-  """The thread associated with this board"""
-  thread: ThreadNode
+  """
+  The name of the plan, for instance "Basic Plan"
+  """
+  name: String!
+
+  """The maximum number of expressions allowed to be created in the plan."""
+  maxExpressions: Int
+
+  """
+  The maximum number of characters allowed in the plan. This is used to apply limits to voice synthesis.
+  """
+  maxCharacters: Int
+
+  """
+  The maximum number of tokens allowed in the plan. This is used to apply limits to text generation and explanation.
+  """
+  maxTokens: Int
+
+  """The maximum number of boards allowed in the plan."""
+  maxBoards: Int
+
+  """The interval at which the usage limits are reset."""
+  resetInterval: BillingPlanResetIntervalChoices!
+
+  """
+  The version of the plan. It is critical to create a new version of the plan when changing the limits instead of updating the plan directly.
+  """
+  version: Int!
+
+  """
+  The current override for the plan. This is used to apply temporary changes to the plan limits, for instance a Christmas promotion.
+  """
+  currentOverride: PlanOverrideNode
+
+  """
+  The reason for the termination of the plan. This is used to track the reason a plan was terminated, for instance "User requested cancellation".
+  """
+  terminationReason: String
+
+  """The plan the user is subscribed to."""
+  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+
+  """The plan to override the limits of."""
+  overrides(offset: Int, before: String, after: String, first: Int, last: Int, plan: ID): PlanOverrideNodeConnection!
+
+  """
+  The plan the current usage is for. This should never be set manually, but through signals on User.plan changes.
+  """
+  usagesStates(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageStateNodeConnection!
 }
 
 interface SearchNode {
@@ -194,6 +297,60 @@ value as specified by
 [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
 """
 scalar DateTime
+
+"""An enumeration."""
+enum BillingPlanResetIntervalChoices {
+  """Monthly"""
+  MONTHLY
+}
+
+type PlanOverrideNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The plan to override the limits of."""
+  plan: PlanNode!
+
+  """The start date of the override."""
+  startDate: Date!
+
+  """The end date of the override. Not compulsary but strongly recommended."""
+  endDate: Date
+
+  """
+  The maximum number of expressions allowed to be created in the plan, overrides the plan limit.
+  """
+  maxExpressions: Int
+
+  """
+  The maximum number of characters allowed in the plan, overrides the plan limit.
+  """
+  maxCharacters: Int
+
+  """
+  The maximum number of tokens allowed in the plan, overrides the plan limit.
+  """
+  maxTokens: Int
+
+  """
+  The maximum number of boards allowed in the plan, overrides the plan limit.
+  """
+  maxBoards: Int
+  currentPlan: PlanNode
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
 
 type UserNodeConnection {
   """Pagination data for this connection."""
@@ -268,11 +425,24 @@ type UserNode implements Node {
 
   """The ID of the object"""
   id: ID!
+
+  """The plan the user is subscribed to."""
+  plan: PlanNode
+
+  """The current usage of the user."""
+  currentUsageState: UsageStateNode
   profilePicture: String
   preferences: UserPreferencesNode
   boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
   boards(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardNodeConnection!
   defaultBoard: BoardNode
+  expressionCreated(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+
+  """The user the current usage is for."""
+  allUsages(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageStateNodeConnection!
+
+  """The user the usage record is for."""
+  usageRecords(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageRecordNodeConnection!
 }
 
 type UserGroupNodeConnection {
@@ -332,6 +502,70 @@ type PermissionNode implements Node {
   userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
 }
 
+type UsageStateNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The user the current usage is for."""
+  user: UserNode!
+
+  """
+  The plan the current usage is for. This should never be set manually, but through signals on User.plan changes.
+  """
+  plan: PlanNode!
+
+  """
+  The previous usage state. This is used to track the history of the user usage.
+  """
+  previousState: UsageStateNode
+
+  """
+  The start date of the current period. This is used to reset the usage limits at the end of the period.
+  """
+  periodStart: Date!
+
+  """
+  The end date of the period. It represents the first day this State will be invalid. This is used to reset the usage limits at the end of the period.
+  """
+  periodEnd: Date!
+
+  """The number of tokens used in the current period."""
+  tokensUsed: Int!
+
+  """The number of characters used in the current period."""
+  charactersUsed: Int!
+
+  """The number of expressions used in the current period."""
+  expressionsUsed: Int!
+
+  """The number of tokens remaining in the current period."""
+  remainingTokens: Int
+
+  """The number of characters remaining in the current period."""
+  remainingCharacters: Int
+
+  """The number of expressions remaining in the current period."""
+  remainingExpressions: Int
+
+  """The number of tokens left over from the previous period."""
+  leftoverTokens: Int
+
+  """The number of characters left over from the previous period."""
+  leftoverCharacters: Int
+
+  """The number of expressions left over from the previous period."""
+  leftoverExpressions: Int
+  activeUser: UserNode
+  nextState: UsageStateNode
+  boardCount: Int
+}
+
 type UserPreferencesNode implements Node {
   """The ID of the object"""
   id: ID!
@@ -370,33 +604,34 @@ type BoardMembershipNode implements SearchNode & Node {
   role: ExpressionsBoardMembershipRoleChoices!
 }
 
-"""An enumeration."""
-enum ExpressionsBoardMembershipRoleChoices {
-  """Owner"""
-  OWNER
+type BoardNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
 
-  """Admin"""
-  ADMIN
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
 
-  """Member"""
-  MEMBER
-}
+  """The ID of the object"""
+  id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
+  name: String!
+  isPublic: Boolean!
+  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+  defaultForUser: UserNode
+  isDefault: Boolean!
+  explanationsLanguage: String!
+  explanationsLength: String!
+  enabledLanguages: JSONString!
+  displayTranslations: Boolean!
+  openaiThreadId: String
+  memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
 
-type BoardNodeConnection {
-  """Pagination data for this connection."""
-  pageInfo: PageInfo!
-
-  """Contains the nodes in this connection."""
-  edges: [BoardNodeEdge]!
-}
-
-"""A Relay edge containing a `BoardNode` and its cursor."""
-type BoardNodeEdge {
-  """The item at the end of the edge"""
-  node: BoardNode
-
-  """A cursor for use in pagination"""
-  cursor: String!
+  """The thread associated with this board"""
+  thread: ThreadNode
 }
 
 """
@@ -491,8 +726,35 @@ type ExpressionNode implements SearchNode & Node {
   flagIsProcessed: Boolean
   flagComment: String
   retriesGeneration: Int!
+  tokensUsedPrompt: Int!
+  tokensUsedCompletion: Int!
+  tokensUsedTotal: Int!
+  charactersUsed: Int!
+  createdBy: UserNode
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+  usageRecord: UsageRecordNode
+}
+
+type UsageRecordNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The user the usage record is for."""
+  user: UserNode
+
+  """The expression the usage record tracks."""
+  expression: ExpressionNode
+  metadata: JSONString!
+
+  """The number of OpenAI tokens used."""
+  tokensUsed: Int!
+
+  """The number of characters used in the Eleven Labs API."""
+  charactersUsed: Int
 }
 
 type ThreadNode implements Node {
@@ -552,6 +814,112 @@ type AssistantLanguageMessageType {
 
 type UserLanguageMessageType {
   content: String
+}
+
+"""An enumeration."""
+enum ExpressionsBoardMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Member"""
+  MEMBER
+}
+
+type BoardNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BoardNodeEdge]!
+}
+
+"""A Relay edge containing a `BoardNode` and its cursor."""
+type BoardNodeEdge {
+  """The item at the end of the edge"""
+  node: BoardNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UsageStateNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UsageStateNodeEdge]!
+}
+
+"""A Relay edge containing a `UsageStateNode` and its cursor."""
+type UsageStateNodeEdge {
+  """The item at the end of the edge"""
+  node: UsageStateNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UsageRecordNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UsageRecordNodeEdge]!
+}
+
+"""A Relay edge containing a `UsageRecordNode` and its cursor."""
+type UsageRecordNodeEdge {
+  """The item at the end of the edge"""
+  node: UsageRecordNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PlanOverrideNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PlanOverrideNodeEdge]!
+}
+
+"""A Relay edge containing a `PlanOverrideNode` and its cursor."""
+type PlanOverrideNodeEdge {
+  """The item at the end of the edge"""
+  node: PlanOverrideNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PlanNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PlanNodeEdge]!
+}
+
+"""A Relay edge containing a `PlanNode` and its cursor."""
+type PlanNodeEdge {
+  """The item at the end of the edge"""
+  node: PlanNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type LanguageType {
+  name: String!
+  pt1: String
+  pt2b: String!
+  pt2t: String!
+  pt3: String!
+  audio: Boolean!
 }
 
 """
@@ -779,9 +1147,14 @@ input CreateExpressionSerializerInput {
   flagIsProcessed: Boolean
   flagComment: String
   retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
   Order: Int
   group: String
   variantFrom: String
+  createdBy: String
 }
 
 type UpdateGroupMutationPayload {
@@ -848,8 +1221,13 @@ input CreateExpressionMutationInput {
   flagIsProcessed: Boolean
   flagComment: String
   retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
   group: String
   variantFrom: String
+  createdBy: String
   clientMutationId: String
 }
 
@@ -889,9 +1267,14 @@ input UpdateExpressionMutationInput {
   flagIsProcessed: Boolean
   flagComment: String
   retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
   group: String
   board: String
   variantFrom: String
+  createdBy: String
   clientMutationId: String
 }
 

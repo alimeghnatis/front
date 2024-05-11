@@ -20,6 +20,8 @@ $subtotal-span: $span-language + $span-tools;
 .#{bem.$base}.expression {
   .general {
     > .language {
+      //font-family: "nserif";
+      //font-style: italic;
       grid-column-end: span $span-language;
     }
 
@@ -37,6 +39,7 @@ $subtotal-span: $span-language + $span-tools;
     }
   }
   border-top: 1px solid white;
+  box-sizing: border-box;
 
   /* stylelint-disable order/order -- Required */
   @include media.media($to: 801px) {

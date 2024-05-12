@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a5525af0d2d7bddbc6ce5fb6ad2873f7>>
+ * @generated SignedSource<<b1039e1f0f46437e2d13b8b2eeb4909f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -215,14 +215,14 @@ return {
                 "name": "preferences",
                 "plural": false,
                 "selections": [
+                  (v2/*: any*/),
                   {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
                     "name": "actionOnExpressionClick",
                     "storageKey": null
-                  },
-                  (v2/*: any*/)
+                  }
                 ],
                 "storageKey": null
               }
@@ -236,12 +236,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "bcb5bfb799bf07351f29cdd092415e01",
+    "cacheID": "4f3bb9d60a58d14cdfc152f6b19e93ff",
     "id": null,
     "metadata": {},
     "name": "ViewerUpdateFormUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation ViewerUpdateFormUpdateMutation(\n  $input: UpdateUserMutationInput!\n) {\n  updateUser(input: $input) {\n    instance {\n      id\n      ...ViewerUpdateFormFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
+    "text": "mutation ViewerUpdateFormUpdateMutation(\n  $input: UpdateUserMutationInput!\n) {\n  updateUser(input: $input) {\n    instance {\n      id\n      ...ViewerUpdateFormFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    id\n    actionOnExpressionClick\n  }\n}\n"
   }
 };
 })();

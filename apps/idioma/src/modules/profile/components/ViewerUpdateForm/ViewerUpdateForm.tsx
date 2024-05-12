@@ -14,7 +14,7 @@ import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
 import {
-  ModularForm, useViewer,
+  ModularForm, useViewer, useNotificationContext,
 } from '@aztlan/ui'
 import useViewerFormFields from './useViewerFormFields.js'
 
@@ -32,6 +32,7 @@ const FRAGMENT = graphql`
     profilePicture
     isSuperuser
     preferences {
+      id
       actionOnExpressionClick
     }
   }
@@ -89,6 +90,8 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
     [result],
   )
 
+  const { notify } = useNotificationContext()
+
   const handleUpdate = useCallback(
     (rawInput) => {
       const input = {
@@ -108,9 +111,23 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
             instance:{
               ...parsedInstance,
               ...input,
+              preferences:{
+                ...parsedInstance.preferences,
+                ...input.preferences,
+              },
             },
             errors:null,
           },
+        },
+        onCompleted:(response) => {
+          console.log(
+            'response', response,
+          )
+          notify.success('Your profile was successfully updated.')
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     },

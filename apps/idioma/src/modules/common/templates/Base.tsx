@@ -9,6 +9,8 @@ import {
   AuthenticationDebugHeader,
   NavigationDebugHeader,
   useViewer,
+  NotificationGroup,
+  useTriptychContext,
 } from '@aztlan/ui'
 import {
   Header, SearchBoardHeader,
@@ -48,9 +50,14 @@ const routeMap = [
 ]
 
 function Wrapper({
-  title = null, children, right, beforeHeader, afterHeader,
+  title = null,
+  children,
+  right,
+  beforeHeader,
+  absoluteHeaderElements,
 }) {
   const { data } = useViewer()
+  const { focus } = useTriptychContext()
   return (
     <main className="flex">
       <div className="relative">
@@ -62,7 +69,10 @@ function Wrapper({
           items={routeMap}
         />
         <Header right={right}>{title}</Header>
-        {afterHeader}
+        <div className="abs-special span-6 md-span-4 manual ">
+          {absoluteHeaderElements}
+          {focus === 1 && <NotificationGroup />}
+        </div>
       </div>
 
       {children}
@@ -71,11 +81,11 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  title       :PropTypes.node,
-  children    :PropTypes.node,
-  right       :PropTypes.node,
-  beforeHeader:PropTypes.node,
-  afterHeader :PropTypes.node,
+  title                 :PropTypes.node,
+  children              :PropTypes.node,
+  right                 :PropTypes.node,
+  beforeHeader          :PropTypes.node,
+  absoluteHeaderElements:PropTypes.node,
 }
 
 function Base({

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<163a162570dcfb48a828daa96695a784>>
+ * @generated SignedSource<<3e5e0a9023df772e27228f0e5e2a6373>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -128,14 +128,14 @@ return {
             "name": "preferences",
             "plural": false,
             "selections": [
+              (v0/*: any*/),
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
                 "name": "actionOnExpressionClick",
                 "storageKey": null
-              },
-              (v0/*: any*/)
+              }
             ],
             "storageKey": null
           }
@@ -145,12 +145,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "de275cae32f7dce2a70dfaa8b47f3aae",
+    "cacheID": "22277b50da26505112e817ab14f67f83",
     "id": null,
     "metadata": {},
     "name": "ViewerUpdateFormQuery",
     "operationKind": "query",
-    "text": "query ViewerUpdateFormQuery {\n  viewer {\n    ...ViewerUpdateFormFragment\n    id\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
+    "text": "query ViewerUpdateFormQuery {\n  viewer {\n    ...ViewerUpdateFormFragment\n    id\n  }\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    id\n    actionOnExpressionClick\n  }\n}\n"
   }
 };
 })();

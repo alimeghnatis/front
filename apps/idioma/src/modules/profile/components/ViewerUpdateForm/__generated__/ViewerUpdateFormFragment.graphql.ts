@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b7c391aaf130415a8974f71d08110d9a>>
+ * @generated SignedSource<<843029972ae10b401ca48fae938638e0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type ViewerUpdateFormFragment$data = {
   readonly lastName: string;
   readonly preferences: {
     readonly actionOnExpressionClick: string;
+    readonly id: string;
   } | null | undefined;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
@@ -29,19 +30,21 @@ export type ViewerUpdateFormFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"ViewerUpdateFormFragment">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "ViewerUpdateFormFragment",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -99,6 +102,7 @@ const node: ReaderFragment = {
       "name": "preferences",
       "plural": false,
       "selections": [
+        (v0/*: any*/),
         {
           "alias": null,
           "args": null,
@@ -113,7 +117,8 @@ const node: ReaderFragment = {
   "type": "UserNode",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "053f7aa62820805a498b96935cd0f402";
+(node as any).hash = "c854372d5a13a3d20001d2b7d59fb24e";
 
 export default node;

@@ -14,7 +14,9 @@ import {
   ApplicationProvider,
   useApplicationContext,
   AuthenticationProvider,
+  NotificationProvider,
 } from '@aztlan/ui'
+import errorCodeMap from './errorCodeMap.js'
 import {
   MUTATION_LOGOUT,
   QUERY_APPLICATION,
@@ -56,37 +58,39 @@ function Application({
           messages={messages}
         >
           <HelmetProvider context={ssrHelmetContext}>
-            <React.Suspense fallback="fallback">
-              <ApplicationProvider
-                value={{
-                  locale,
-                  ...localeProps,
-                }}
-                routes={prefetchRoutes}
-                // routes={routes}
-                maintenance={config.maintenance}
-                ssrHostname={ssrHostname}
-                QUERY_APPLICATION={QUERY_APPLICATION}
-                // applicationQueryVariables={{
-                //  organization: 'atest.com',
-                //  boardGroupCount :10,
-                //  boardGroupCursor:null,
-                // }}
-                defaultRedirectionAfterLogin={
-                  paths.board.absolute.REDIRECT_TO_DEFAULT_BOARD
-                }
-              >
-                <ThemeWrapper>
-                  <AuthenticationProvider
-                    MUTATION_LOGOUT={MUTATION_LOGOUT}
-                    FRAGMENT_VIEWER={FRAGMENT_VIEWER}
-                    loginPath="/"
-                  >
-                    <Layout />
-                  </AuthenticationProvider>
-                </ThemeWrapper>
-              </ApplicationProvider>
-            </React.Suspense>
+            <NotificationProvider errorCodeMap={errorCodeMap}>
+              <React.Suspense fallback="fallback">
+                <ApplicationProvider
+                  value={{
+                    locale,
+                    ...localeProps,
+                  }}
+                  routes={prefetchRoutes}
+                  // routes={routes}
+                  maintenance={config.maintenance}
+                  ssrHostname={ssrHostname}
+                  QUERY_APPLICATION={QUERY_APPLICATION}
+                  // applicationQueryVariables={{
+                  //  organization: 'atest.com',
+                  //  boardGroupCount :10,
+                  //  boardGroupCursor:null,
+                  // }}
+                  defaultRedirectionAfterLogin={
+                    paths.board.absolute.REDIRECT_TO_DEFAULT_BOARD
+                  }
+                >
+                  <ThemeWrapper>
+                    <AuthenticationProvider
+                      MUTATION_LOGOUT={MUTATION_LOGOUT}
+                      FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+                      loginPath="/"
+                    >
+                      <Layout />
+                    </AuthenticationProvider>
+                  </ThemeWrapper>
+                </ApplicationProvider>
+              </React.Suspense>
+            </NotificationProvider>
           </HelmetProvider>
         </IntlProvider>
       </Router>

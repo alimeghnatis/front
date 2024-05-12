@@ -9,7 +9,9 @@ import { InferProps } from 'prop-types'
 import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
-import { ModularForm } from '@aztlan/ui'
+import {
+  ModularForm, useNotificationContext,
+} from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from '../useBoardFormFields.js'
 import DeleteBoardButton from './DeleteBoardButton.js'
@@ -76,6 +78,8 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
 
+  const { notify } = useNotificationContext()
+
   const parsedInstance = useMemo(
     () => ({
       id                  :result.id,
@@ -108,6 +112,18 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
             },
             errors:null,
           },
+        },
+        onCompleted:(response) => {
+          console.log(
+            'response', response,
+          )
+          notify.success(
+            'Board successfully updated.', 0,
+          )
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     },

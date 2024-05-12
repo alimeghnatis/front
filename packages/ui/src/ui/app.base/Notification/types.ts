@@ -32,9 +32,11 @@ export type NotificationAction =
 export interface NotificationContextType {
   notifications     :NotificationObject[];
   removeNotification:(id: string) => void;
+  errorCodeMap      :Record<string, React.ReactNode>;
   notify: {
-    error  :(content: React.ReactNode, ttl?: number) => void;
-    warning:(content: React.ReactNode, ttl?: number) => void;
-    success:(content: React.ReactNode, ttl?: number) => void;
+    error    :(content: React.ReactNode, ttl?: number) => void;
+    errorCode:(code: string, ttl?: number) => void;
+    warning  :(content: React.ReactNode, ttl?: number) => void;
+    success  :(content: React.ReactNode, ttl?: number) => void;
   };
 }

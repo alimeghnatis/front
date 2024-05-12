@@ -10,9 +10,11 @@ import styleNames from '@aztlan/bem'
 import {
   graphql, useMutation, ConnectionHandler,
 } from 'react-relay'
+import { useNotificationContext } from '@aztlan/ui'
 import {
   useBoardContext, TextareaForm,
 } from 'modules/common/components'
+import getNodeUpdater from 'relay/utils/getNodeUpdater'
 import optimisticExpression from '../optimisticResponses/Expression.js'
 
 // const baseClassName = styleNames.base
@@ -65,22 +67,7 @@ const MUTATION_APPEND_EXPRESSION = graphql`
   }
 `
 
-const updater = (store) => {
-  const root = store.getRoot()
-  const payload = store.getRootField('createExpression')
-  const newInstance = payload.getLinkedRecord('instance')
-
-  if (newInstance) {
-    const newId = newInstance.getValue('id')
-
-    // Set the linked record at the root for 'node(id: $id)'
-    root.setLinkedRecord(
-      newInstance, 'node', { id: newId },
-    )
-  } else {
-    console.error('Mutation did not return an instance.')
-  }
-}
+const updater = getNodeUpdater('createExpression')
 
 /**
  * description
@@ -133,6 +120,8 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
       )
     }, [],
   )
+
+  const { notify } = useNotificationContext()
 
   const handleCreate = useCallback(
     (inputValue) => {
@@ -189,6 +178,13 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
         },
         optimisticUpdater,
         updater,
+        onCompleted:(response) => {
+          notify.success('Expression created')
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
+        },
       })
     },
     [currentExpressionId],

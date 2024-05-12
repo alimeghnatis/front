@@ -12,6 +12,7 @@ import {
   ConnectionHandler,
   useFragment,
 } from 'react-relay'
+import { useNotificationContext } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
   useBoardContext, TextareaForm,
@@ -75,6 +76,8 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
     commit,
     isInFlight,
   ] = useMutation(MUTATION_CREATE_MESSAGE)
+
+  const { notify } = useNotificationContext()
 
   const handleSubmit = useCallback(
     (inputValue) => {
@@ -144,12 +147,19 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
         onCompleted:() => {
           setTimeout(
             () => {
+              notify.success(
+                'Chat message received', 2,
+              )
               containerRef.current?.scrollTo({
                 top     :containerRef.current.scrollHeight + 30,
                 behavior:'smooth',
               })
             }, 0,
           )
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     }, [],

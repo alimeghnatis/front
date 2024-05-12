@@ -13,9 +13,10 @@ import {
   graphql, useMutation, ConnectionHandler,
 } from 'react-relay'
 import {
-  useViewer, ModularForm,
+  useViewer, ModularForm, useNotificationContext,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
+import getNodeUpdater from 'relay/utils/getNodeUpdater'
 import { useBoardContext } from 'modules/common/components'
 import useBoardFormFields from '../useBoardFormFields.js'
 
@@ -33,6 +34,10 @@ const MUTATION_UPDATE = graphql`
         name
         isPublic
         isDefault
+        created
+        updated
+        newExpressionsCount
+        displayTranslations
         explanationsLanguage
         explanationsLength
         enabledLanguages
@@ -55,6 +60,8 @@ const MUTATION_UPDATE = graphql`
         ...BoardFragment
         ...BoardUpdateFormFragment
         ...VariantBoardFragment
+        ...ChatFragment
+        ...ModeSelectorFragment
       }
       errors {
         field
@@ -63,6 +70,9 @@ const MUTATION_UPDATE = graphql`
     }
   }
 `
+const updater = getNodeUpdater(
+  'createBoard', { newLinkedRecordName: 'board' },
+)
 
 /**
  * description
@@ -92,6 +102,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
   const { baseBoardPath } = useBoardContext()
 
   const history = useHistory()
+  const { notify } = useNotificationContext()
 
   const handleCreate = useCallback(
     (rawInput) => {
@@ -146,11 +157,19 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
             errors:null,
           },
         },
+        updater,
         onCompleted:(res) => {
+          notify.success(
+            'Board successfully created.', 0,
+          )
           const newPath = generatePath(
             baseBoardPath, { board: res.createBoard.instance.id },
           )
           history.push(newPath)
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     },

@@ -1,14 +1,8 @@
 /* @aztlan/generator-front 1.4.1 */
 import * as React from 'react'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import {
-  graphql,
-  useMutation,
-  useRelayEnvironment,
-  commitLocalUpdate,
+  graphql, useRelayEnvironment,
 } from 'react-relay'
-import { useBoardContext } from 'modules/common/components'
 import { SwitchRoutes } from '@aztlan/ui'
 import Template from '../templates/Primary.js'
 import { ModeSelector } from '../components/index.js'
@@ -32,21 +26,20 @@ const QUERY = graphql`
 export { QUERY }
 
 function MainPage() {
-  const environment = useRelayEnvironment()
-
-  return (
-    <SwitchRoutes
-      items={mainRoutes}
-    />
-  )
+  return <SwitchRoutes items={mainRoutes} />
 }
 
 export default function (props) {
   return (
     <Template
       hasSettings
-      afterHeader={(
-        <div className="abs-special">
+      absoluteHeaderElements={(
+        <div
+          style={{
+            display       :'flex',
+            justifyContent:'center',
+          }}
+        >
           <ModeSelector />
         </div>
       )}

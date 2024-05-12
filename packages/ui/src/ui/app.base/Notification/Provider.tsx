@@ -15,9 +15,9 @@ import { NotificationLevel } from './types.js'
 import reducer from './reducer.js'
 
 const DEFAULT_TTLS: { [key in NotificationLevel]: number } = {
-  [NotificationLevel.SUCCESS]:5000,
-  [NotificationLevel.WARNING]:10000,
-  [NotificationLevel.ERROR]  :30000,
+  [NotificationLevel.SUCCESS]:5,
+  [NotificationLevel.WARNING]:10,
+  [NotificationLevel.ERROR]  :15,
 }
 
 /**
@@ -28,7 +28,8 @@ const DEFAULT_TTLS: { [key in NotificationLevel]: number } = {
 function Provider({
   children,
   initialNotifications = [],
-
+  errorCodeMap = { DEFAULT_ERROR: 'An error occurred. Please try again later.' },
+  defaultTttls = DEFAULT_TTLS,
   // ...otherProps
 
 }: InferProps<typeof Provider.propTypes>): React.ReactElement {
@@ -59,7 +60,7 @@ function Provider({
         level,
         content,
         created:new Date(),
-        ttl    :typeof ttl === 'undefined' ? DEFAULT_TTLS[level] : Number(ttl),
+        ttl    :typeof ttl === 'undefined' ? defaultTttls[level] * 1000 : Number(ttl) * 1000,
       }
 
       // Dispatch the ADD_NOTIFICATION action
@@ -117,6 +118,18 @@ function Provider({
       ),
 
       /**
+     * Adds an error notification.
+     *
+     * @param code The code of the notification.
+     * @param ttl Optional time-to-live duration for the notification in milliseconds.
+     */
+      errorCode:(
+        code: string, ttl?: number,
+      ) => addNotification(
+        NotificationLevel.ERROR, errorCodeMap[code] || errorCodeMap.DEFAULT_ERROR, ttl,
+      ),
+
+      /**
      * Adds a warning notification.
      *
      * @param content The content of the notification.
@@ -147,10 +160,12 @@ function Provider({
       notifications,
       removeNotification,
       notify,
+      errorCodeMap,
     }), [
       notifications,
       removeNotification,
       notify,
+      errorCodeMap,
     ],
   )
 
@@ -170,6 +185,12 @@ Provider.propTypes = {
     created:PropTypes.instanceOf(Date),
     ttl    :PropTypes.number,
   })),
+
+  /** A map of error codes to error messages */
+  errorCodeMap:PropTypes.objectOf(PropTypes.string),
+
+  /** The default time-to-live durations for each notification level */
+  defaultTttls:PropTypes.objectOf(PropTypes.number),
 
 }
 

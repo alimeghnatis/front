@@ -14,6 +14,7 @@ import {
   commitLocalUpdate,
   useRelayEnvironment,
 } from 'react-relay'
+import { useNotificationContext } from '@aztlan/ui'
 
 import styleNames from '@aztlan/bem'
 
@@ -94,6 +95,8 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
     commit,
     isInFlight,
   ] = useMutation(MUTATION_CREATE_GROUP)
+
+  const { notify } = useNotificationContext()
 
   const {
     id: boardID, uuid: boardUUID, data: boardData,
@@ -201,6 +204,13 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
           } else {
             console.error('Mutation did not return an instance.')
           }
+        },
+        onCompleted:(response) => {
+          notify.success(`Successfully added ${suggestionsToCommit.length} expression(s) to the board`)
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     },

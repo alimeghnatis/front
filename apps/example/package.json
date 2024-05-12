@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/example",
-  "version": "3.8.2",
+  "version": "3.8.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -51,13 +51,13 @@
     "@aztlan/assets": "^3.4.6",
     "@aztlan/base-styles": "^3.8.2",
     "@aztlan/bem": "^0.9.15",
-    "@aztlan/react-hooks": "^3.6.3",
+    "@aztlan/react-hooks": "^3.8.3",
     "@aztlan/react-relay": "^3.7.1",
     "@aztlan/react-scripts": "^3.6.3",
     "@aztlan/react-ssr": "^3.6.3",
     "@aztlan/storybook-config": "^3.8.0",
     "@aztlan/storybook-helpers": "^3.6.3",
-    "@aztlan/ui": "^3.8.2",
+    "@aztlan/ui": "^3.8.3",
     "@loadable/component": "^5.16.4",
     "@loadable/server": "^5.16.5",
     "date-fns": "^3.6.0",

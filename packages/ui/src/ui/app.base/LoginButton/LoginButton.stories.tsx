@@ -7,7 +7,7 @@ import { QUERY_APPLICATION } from 'story-utils/queries.js'
 import Component from './LoginButton.js'
 
 const meta: Meta<typeof Component> = {
-  title    :'base.authentication/LoginButton',
+  title    :'app.base/LoginButton',
   component:Component,
 }
 

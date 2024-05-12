@@ -35,6 +35,9 @@ function <%= name %>({
   className:userClassName,
   style,
   children,
+  <% if (optionRelay) { %>
+  data,
+  <% } %>
   //...otherProps
 <% if (!optionDiet) { %>
 }: InferProps<typeof <%= name %>.propTypes>): React.ReactElement {<% } %>
@@ -87,6 +90,11 @@ function <%= name %>({
   
   /** The children JSX */
   children: PropTypes.node,
+
+  <% if (optionRelay) { %>
+  /** The relay data to use for the component fragment */
+  data: PropTypes.any,
+  <% } %>
 }
 <% } %>
 

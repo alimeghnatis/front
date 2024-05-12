@@ -536,13 +536,13 @@ type UsageStateNode implements SearchNode & Node {
   periodEnd: Date!
 
   """The number of tokens used in the current period."""
-  tokensUsed: Int!
+  usedTokens: Int!
 
   """The number of characters used in the current period."""
-  charactersUsed: Int!
+  usedCharacters: Int!
 
   """The number of expressions used in the current period."""
-  expressionsUsed: Int!
+  usedExpressions: Int!
 
   """The number of tokens remaining in the current period."""
   remainingTokens: Int
@@ -751,10 +751,10 @@ type UsageRecordNode implements SearchNode & Node {
   metadata: JSONString!
 
   """The number of OpenAI tokens used."""
-  tokensUsed: Int!
+  usedTokens: Int!
 
   """The number of characters used in the Eleven Labs API."""
-  charactersUsed: Int
+  usedCharacters: Int
 }
 
 type ThreadNode implements Node {

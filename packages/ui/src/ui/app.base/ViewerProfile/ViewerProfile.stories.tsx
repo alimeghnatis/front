@@ -10,7 +10,7 @@ import { graphql } from 'react-relay'
 import { RawViewerProfile as Component } from './ViewerProfile.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'base.profile/ViewerProfile',
+  title     :'app.base/ViewerProfile',
   component :Component,
   decorators:[
     // Needed for storyshots, not for storybook itself

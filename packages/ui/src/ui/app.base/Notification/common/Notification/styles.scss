@@ -1,0 +1,18 @@
+/* @aztlan/generator-front 3.8.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.notification {
+  cursor: default;
+  &.#{bem.$modifier-error} {
+    background: red;
+  }
+  &.#{bem.$modifier-warning} {
+    background: yellow;
+  }
+  &.#{bem.$modifier-success} {
+    background: green;
+  }
+}
+
+

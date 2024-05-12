@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<653936810ce59b583a22012393ba2762>>
+ * @generated SignedSource<<c31a037739c10a613d02607ff7f7fd1d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,9 +15,11 @@ export type UpdateExpressionMutationInput = {
   board?: string | null | undefined;
   category?: string | null | undefined;
   changes?: string | null | undefined;
+  charactersUsed?: number | null | undefined;
   clientMutationId?: string | null | undefined;
   content?: string | null | undefined;
   correctedContent?: string | null | undefined;
+  createdBy?: string | null | undefined;
   flagComment?: string | null | undefined;
   flagIsProcessed?: boolean | null | undefined;
   generalExplanation?: string | null | undefined;
@@ -33,6 +35,9 @@ export type UpdateExpressionMutationInput = {
   rating?: number | null | undefined;
   ratingComment?: string | null | undefined;
   retriesGeneration?: number | null | undefined;
+  tokensUsedCompletion?: number | null | undefined;
+  tokensUsedPrompt?: number | null | undefined;
+  tokensUsedTotal?: number | null | undefined;
   translation?: string | null | undefined;
   variant?: string | null | undefined;
   variantFrom?: string | null | undefined;

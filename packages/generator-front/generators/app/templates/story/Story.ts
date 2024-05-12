@@ -4,6 +4,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 //import { Meta, StoryFn } from '@storybook/react'
 import Component from "./<%= name %>.js";
+<% if (optionRelay) { %>
+import { graphql } from 'react-relay'
+<% } %>
 // import { decorators } from 'story-utils'
 //import decorators from "story-utils/decorators.js";
 

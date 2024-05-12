@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fe7c8a20ac69201d07ea20ab19022c4d>>
+ * @generated SignedSource<<e8b70a4e7666129e15a357c2291ca2bf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,9 +24,11 @@ export type CreateExpressionSerializerInput = {
   board?: string | null | undefined;
   category?: string | null | undefined;
   changes?: string | null | undefined;
+  charactersUsed?: number | null | undefined;
   content?: string | null | undefined;
   correctedContent?: string | null | undefined;
   created?: any | null | undefined;
+  createdBy?: string | null | undefined;
   flagComment?: string | null | undefined;
   flagIsProcessed?: boolean | null | undefined;
   generalExplanation?: string | null | undefined;
@@ -42,6 +44,9 @@ export type CreateExpressionSerializerInput = {
   rating?: number | null | undefined;
   ratingComment?: string | null | undefined;
   retriesGeneration?: number | null | undefined;
+  tokensUsedCompletion?: number | null | undefined;
+  tokensUsedPrompt?: number | null | undefined;
+  tokensUsedTotal?: number | null | undefined;
   translation?: string | null | undefined;
   updated?: any | null | undefined;
   variant?: string | null | undefined;

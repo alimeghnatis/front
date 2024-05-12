@@ -55,6 +55,18 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
     ],
   )
 
+  const handlePaste = useCallback(
+    (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
+      event.preventDefault() // Prevent the default paste behavior
+      const text = event.clipboardData
+        .getData('text/plain')
+      // remove line breaks
+        .replace(/(\r\n|\n|\r)/gm, ' ')
+      setInputValue(text) // Set the modified text
+    },
+    [setInputValue],
+  )
+
   const onSubmit = useCallback(
     (event) => {
       event.preventDefault()
@@ -81,6 +93,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       style={style}
       onSubmit={onSubmit}
       // {...otherProps}
+      //
     >
       <Textarea
         className="span-6 md-span-11"
@@ -88,7 +101,8 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
         value={inputValue}
         setValue={setInputValue}
         onKeyDown={handleKeyDown}
-        key={inputValue.length ? 'filled' : 'empty'}
+        onPaste={handlePaste}
+        // key={inputValue.length ? 'filled' : 'empty'}
       />
       {/*
       <button

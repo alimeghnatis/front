@@ -8,6 +8,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
+import { UsageStateLoader } from 'modules/billing/components'
 
 import {
   graphql, useFragment, useMutation,
@@ -145,6 +146,10 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
       <div className="scrollbox no-scrollbar">
         <ModularForm.Section fields={baseFields} />
         <ModularForm.Section fields={preferencesFields} />
+        <h2>Stats</h2>
+        <React.Suspense fallback={<div>Loading stats</div>}>
+          <UsageStateLoader />
+        </React.Suspense>
       </div>
       <ModularForm.SubmitBar
         submitText="Update"

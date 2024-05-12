@@ -68,7 +68,7 @@ InferProps<typeof Notification.propTypes>): React.ReactElement {
         <div>
           <p>
             Will disappear in
-            {Math.floor(secondsLeft / 1000)}
+            {Math.ceil(secondsLeft / 1000)}
           </p>
         </div>
         )

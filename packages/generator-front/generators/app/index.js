@@ -56,10 +56,18 @@ module.exports = class extends Generator {
     )
 
     this.option(
-      'relay', {
+      'fragment', {
         type :Boolean,
-        alias:'r',
+        alias:'f',
         desc :'[type=comp|component] Whether this component is a relay component with a fragment',
+      },
+    )
+
+    this.option(
+      'mutation', {
+        type :Boolean,
+        alias:'m',
+        desc :'[type=comp|component] Whether this component is a relay component with a mutation',
       },
     )
 
@@ -96,7 +104,8 @@ module.exports = class extends Generator {
       `nostyles:${this.options.nostyles}`,
       `npmOrg:${this.options.npmOrg}`,
       `stories:${this.options.stories}`,
-      `relay:${this.options.relay}`,
+      `fragment:${this.options.fragment}`,
+      `mutation:${this.options.mutation}`,
     )
   }
 
@@ -107,7 +116,8 @@ module.exports = class extends Generator {
       diet: optionDiet,
       nostyles: optionNoStyles,
       npmOrg,
-      relay: optionRelay,
+      fragment: optionFragment,
+      mutation: optionMutation,
     } = this.options
 
     const splitName = fullname.split(/[|/]+/)
@@ -122,7 +132,8 @@ module.exports = class extends Generator {
       lower,
       optionDiet,
       optionNoStyles,
-      optionRelay,
+      optionFragment,
+      optionMutation,
       npmOrg,
     }
 

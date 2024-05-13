@@ -4,8 +4,13 @@ import { useInsertionEffect } from 'react'
 <% } %>
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-<% if (optionRelay) { %>
+<% if (optionFragment) { %>
 import { graphql, useFragment } from 'react-relay'
+<% } %>
+<% if (optionMutation) { %>
+ import { useCallback } from 'react'
+import { useMutation } from 'react-relay'
+import { useNotificationContext } from '@<%= npmOrg %>/ui'
 <% } %>
 <% if (!optionNoStyles) { %>
 import styleNames from '@<%= npmOrg %>/bem'
@@ -15,12 +20,28 @@ import styleNames from '@<%= npmOrg %>/bem'
 const baseClassName = styleNames.base<% } %>
 const componentClassName = '<%= lower %>'
 
-<% if (optionRelay) { %>
+<% if (optionFragment) { %>
 const FRAGMENT = graphql`
   fragment <%= name %>Fragment on <%= name %>Node
     #@refetchable(queryName: "<%= name %>RefetchQuery") 
     {
       id
+  }
+`
+<% } %>
+
+<% if (optionMutation) { %>
+const MUTATION = graphql`
+  mutation <%= name %>Mutation($input: <%= name %>Input!) {
+    <%= lower %>(input: $input) {
+      instance {
+        id
+      } 
+      errors {
+        field
+        messages
+      }   
+    }
   }
 `
 <% } %>
@@ -35,7 +56,7 @@ function <%= name %>({
   className:userClassName,
   style,
   children,
-  <% if (optionRelay) { %>
+  <% if (optionFragment) { %>
   data,
   <% } %>
   //...otherProps
@@ -51,11 +72,48 @@ function <%= name %>({
   }, [])
 <% } %>
 
-  <% if (optionRelay) { %>
+  <% if (optionFragment) { %>
   const result = useFragment(
     FRAGMENT, data,
   )
   <% } %>
+
+  <% if (optionMutation) { %>
+  const [
+    commit,
+    isInFlight,
+  ] = useMutation(MUTATION)
+
+  const { notify } = useNotificationContext()
+
+  const handleCommit = useCallback(
+    ():void => {
+      commit({
+        variables: {
+          input:{},
+        },
+        optimisticResponse: {
+          <%= lower %>: {
+            instance: {
+              id: '0',
+            },
+            errors: null,
+          },
+        },
+        onCompleted:(response) => {
+          notify.success('Expression created')
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
+        },
+      })
+    }
+
+
+  <% } %>
+
+
   
   return(
     <div
@@ -91,7 +149,7 @@ function <%= name %>({
   /** The children JSX */
   children: PropTypes.node,
 
-  <% if (optionRelay) { %>
+  <% if (optionFragment) { %>
   /** The relay data to use for the component fragment */
   data: PropTypes.any,
   <% } %>

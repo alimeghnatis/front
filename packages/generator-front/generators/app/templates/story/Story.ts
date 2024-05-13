@@ -4,7 +4,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 //import { Meta, StoryFn } from '@storybook/react'
 import Component from "./<%= name %>.js";
-<% if (optionRelay) { %>
+<% if (optionFragment) { %>
 import { graphql } from 'react-relay'
 <% } %>
 // import { decorators } from 'story-utils'
@@ -28,7 +28,7 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-<% if (optionRelay) { %>
+<% if (optionFragment) { %>
 const relay = {
   query:graphql`
     query <%= name %>StoriesQuery {
@@ -61,7 +61,7 @@ export const Base: StoryObj<typeof Component> = {
   args: {
     children: "Sample <%= name %>"
   }
-  <% if (optionRelay) { %>
+  <% if (optionFragment) { %>
   ,parameters: { relay }
   <% } %>
 };

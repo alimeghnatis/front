@@ -11,6 +11,10 @@
     --current-suffix-span: var(--suffix-span-desktop);
   }
 
+  > * > input {
+    font-family: inherit;
+  }
+
   > .grid {
     // If there is a suffix
     input:first-child:not(:only-child) {

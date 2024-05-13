@@ -7,7 +7,9 @@ import {
 import {
   useBoardContext, SelectBoardHeader,
 } from 'modules/common/components'
-import { useTriptychContext } from '@aztlan/ui'
+import {
+  Button, useTriptychContext,
+} from '@aztlan/ui'
 import paths from '../paths.js'
 
 function PrimaryTemplate({
@@ -29,9 +31,12 @@ function PrimaryTemplate({
       title={title || <SelectBoardHeader />}
       right={
         hasSettings && (
-          <button onClick={() => selectSecondary('board-settings')}>
+          <Button
+            onClick={() => selectSecondary('board-settings')}
+            variant="simple"
+          >
             Settings
-          </button>
+          </Button>
         )
       }
       {...otherProps}

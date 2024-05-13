@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 import {
-  NavigationHeader, useTriptychContext,
+  NavigationHeader, useTriptychContext, Button,
 } from '@aztlan/ui'
 import { VerticalMenu } from '../components/index.js'
 
@@ -15,7 +15,14 @@ function NavigationPage({ staticContext }: {
       className="flex"
     >
       <NavigationHeader
-        right={<button onClick={toggleNavigation}>Toggle</button>}
+        right={(
+          <Button
+            onClick={toggleNavigation}
+            variant="simple"
+          >
+            Toggle
+          </Button>
+        )}
       />
 
       <VerticalMenu />

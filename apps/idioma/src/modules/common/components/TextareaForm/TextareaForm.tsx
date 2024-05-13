@@ -7,6 +7,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
+import { Button } from '@aztlan/ui'
 import { Textarea } from './common/index.js'
 
 const baseClassName = styleNames.base
@@ -60,8 +61,10 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       event.preventDefault() // Prevent the default paste behavior
       const text = event.clipboardData
         .getData('text/plain')
-      // remove line breaks
-        .replace(/(\r\n|\n|\r)/gm, ' ')
+        // remove line breaks
+        .replace(
+          /(\r\n|\n|\r)/gm, ' ',
+        )
       setInputValue(text) // Set the modified text
     },
     [setInputValue],
@@ -112,13 +115,13 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
         G+
       </button>
           */}
-      <button
+      <Button
         disabled={isInFlight}
         type="submit"
         className="span-2 md-span-2"
       >
         Add
-      </button>
+      </Button>
     </form>
   )
 }

@@ -7,6 +7,7 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { useFormState } from 'react-hook-form'
+import { Button } from '../../../../../common/index.js'
 import useForm from '../useForm.js'
 
 const baseClassName = styleNames.base
@@ -64,12 +65,12 @@ function SubmitBar({
         ))}
       </div>
       <div className="actions">
-        <button
+        <Button
           type="submit"
           disabled={disabled}
         >
           {submitText}
-        </button>
+        </Button>
       </div>
     </div>
   )

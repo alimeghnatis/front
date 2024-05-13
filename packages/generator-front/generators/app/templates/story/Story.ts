@@ -73,7 +73,7 @@ export const Base: StoryFn<typeof Component> = () => (
 */
 
 /*
-const Template: StoryFn<typeof Component> = (args) => <<%= name %> {...args} />
+const Template: StoryFn<typeof Component> = (args) => <Component {...args} />
                                                      
 export const Base: StoryFn<typeof Component> = Template.bind({})
 Base.args = {

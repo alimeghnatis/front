@@ -5,6 +5,7 @@ import {
   ThemeSwitcher,
   useAuthenticationContext,
   PrefetchLink as Link,
+  Button,
 } from '@aztlan/ui'
 
 import * as paths from 'modules/paths'
@@ -164,11 +165,11 @@ const useItems = ({
           items         :[
             {
               Component:() => React.createElement(
-                'button',
+                Button,
                 {
                   onClick :() => logout(),
                   disabled:isLogoutInFlight,
-                  type    :'button',
+                  variant :'simple',
                 },
                 'Logout',
               ),

@@ -7,7 +7,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  NavigationHeader, useTriptychContext,
+  NavigationHeader, useTriptychContext, Button,
 } from '@aztlan/ui'
 import {
   useHistory, Link,
@@ -57,20 +57,32 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={<button onClick={toggleNavigation}>=</button>}
+      left={(
+        <Button
+          onClick={toggleNavigation}
+          variant="simple"
+        >
+          Menu
+        </Button>
+      )}
       leftSpanDesktop={1}
       rightSpanDesktop={3}
       right={(
         <>
-          <button
+          <Button
             onClick={() => selectSecondary('help')}
             type="button"
+            variant="simple"
           >
             Help
-          </button>
-          <Link to="/profile">
-            <button>P</button>
-          </Link>
+          </Button>
+          <Button
+            as={Link}
+            to="/profile"
+            variant="simple"
+          >
+            P
+          </Button>
           {right}
         </>
       )}

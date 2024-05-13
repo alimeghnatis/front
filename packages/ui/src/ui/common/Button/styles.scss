@@ -1,0 +1,72 @@
+/* @aztlan/generator-front 3.8.3 */
+
+@use "@aztlan/bem";
+
+$default-border-radius: 0.25em;
+$default-border-color: #000000;
+$default-border-width: 1px;
+$default-border-style: solid;
+
+$default-line-height: 1.5em;
+
+$default-background: #ffffff;
+$hover-background: #a0a0a0;
+$focus-background: #df1f00;
+
+$default-color: #000000;
+$hover-color: #df1f00;
+$focus-color: #ffffff;
+
+
+.#{bem.$base}.button {
+  background: $default-background;
+  border: $default-border-width $default-border-style $default-border-color;
+  border-radius: $default-border-radius;
+  color: $default-color;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: $default-line-height;
+  padding: 0;
+
+  &:hover {
+    background: $hover-background;
+    color: $hover-color;
+  }
+
+  &:focus {
+    background: $focus-background;
+    color: $focus-color;
+  }
+
+  &.#{bem.$modifier-simple} {
+    background-color: transparent;
+    //color: ;
+    border: 0;
+  }
+
+  .#{bem.$base}.button-group & {
+    height: 100%;
+
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-left: 0;
+      border-top-left-radius: 0;
+    }
+  }
+}
+
+a.#{bem.$base}.button {
+  text-decoration: none;
+}
+
+.#{bem.$base}.button-group {
+  display: inline-flex;
+  position: relative;
+}
+
+

@@ -1,70 +1,66 @@
-/* @aztlan/generator-front 3.6.3 */
+/* @aztlan/generator-front 3.8.3 */
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import {
-  Button, NavigationHeader, useTriptychContext,
-} from '@aztlan/ui'
-import {
-  useLocation, Link,
-} from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 
+import Group from './Group.js'
+
 const baseClassName = styleNames.base
-const componentClassName = 'secondary-header'
+const componentClassName = 'button'
 
 /**
  * description
- * @param {InferProps<typeof SecondaryHeader.propTypes>} props -
- * @returns {React.ReactElement} - Rendered SecondaryHeader
+ * @param {InferProps<typeof Button.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Button
  */
-function SecondaryHeader({
+function Button({
   id,
   className: userClassName,
   style,
   children,
+  as: Wrapper = 'button',
+  type = 'button',
+  variant,
   ...otherProps
-}: InferProps<typeof SecondaryHeader.propTypes>): React.ReactElement {
+}: InferProps<typeof Button.propTypes> & {
+  [key: string]:any;
+}): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
       import('./styles.scss')
     }, [],
   )
-  const { setFocus } = useTriptychContext()
 
-  const location = useLocation()
+  const capitalizedVariant = variant && variant.charAt(0).toUpperCase() + variant.slice(1)
+
+  const isHTMLButton = Wrapper === 'button'
 
   return (
-    <NavigationHeader
+    <Wrapper
       id={id}
       className={[
         baseClassName,
         componentClassName,
         userClassName,
+        variant && styleNames[`modifier${capitalizedVariant}`],
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={(
-        <Button
-          onClick={() => setFocus(1)}
-          variant="simple"
-        >
-          Close
-        </Button>
-      )}
+      type={isHTMLButton ? type : undefined}
       {...otherProps}
     >
       {children}
-    </NavigationHeader>
+    </Wrapper>
   )
 }
 
-SecondaryHeader.propTypes = {
+Button.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -76,6 +72,14 @@ SecondaryHeader.propTypes = {
 
   /** The children JSX */
   children:PropTypes.node,
+
+  /** The wrapper element */
+  as:PropTypes.elementType,
+
+  /** The button variant */
+  variant:PropTypes.oneOf(['simple']),
 }
 
-export default SecondaryHeader
+Button.Group = Group
+
+export default Button

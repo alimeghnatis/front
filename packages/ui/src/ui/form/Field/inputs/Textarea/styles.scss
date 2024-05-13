@@ -4,6 +4,7 @@
 
 .#{bem.$base}.textarea {
   textarea {
+    font-family: inherit;
     resize: vertical;
     width: 100%;
 

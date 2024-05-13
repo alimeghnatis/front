@@ -1,45 +1,37 @@
-/* @aztlan/generator-front 3.6.3 */
+/* @aztlan/generator-front 3.8.3 */
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import {
-  Button, NavigationHeader, useTriptychContext,
-} from '@aztlan/ui'
-import {
-  useLocation, Link,
-} from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 
 const baseClassName = styleNames.base
-const componentClassName = 'secondary-header'
+const componentClassName = 'button-group'
 
 /**
  * description
- * @param {InferProps<typeof SecondaryHeader.propTypes>} props -
- * @returns {React.ReactElement} - Rendered SecondaryHeader
+ * @param {InferProps<typeof Group.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Group
  */
-function SecondaryHeader({
+function Group({
   id,
   className: userClassName,
   style,
   children,
-  ...otherProps
-}: InferProps<typeof SecondaryHeader.propTypes>): React.ReactElement {
+}: // ...otherProps
+
+InferProps<typeof Group.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
       import('./styles.scss')
     }, [],
   )
-  const { setFocus } = useTriptychContext()
-
-  const location = useLocation()
 
   return (
-    <NavigationHeader
+    <div
       id={id}
       className={[
         baseClassName,
@@ -49,22 +41,14 @@ function SecondaryHeader({
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={(
-        <Button
-          onClick={() => setFocus(1)}
-          variant="simple"
-        >
-          Close
-        </Button>
-      )}
-      {...otherProps}
+      // {...otherProps}
     >
       {children}
-    </NavigationHeader>
+    </div>
   )
 }
 
-SecondaryHeader.propTypes = {
+Group.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -78,4 +62,4 @@ SecondaryHeader.propTypes = {
   children:PropTypes.node,
 }
 
-export default SecondaryHeader
+export default Group

@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import styleNames from '@aztlan/bem'
 
 import {
   graphql,
@@ -15,6 +16,8 @@ import {
 const FRAGMENT = graphql`
   fragment DeleteButtonFragment on ExpressionNode {
     id
+    isNew
+    isProcessed
   }
 `
 
@@ -68,11 +71,19 @@ function DeleteButton({
     ],
   )
 
+  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+
   //
   //
   return (
     <button
-      disabled={isDeleteInFlight}
+      disabled={isDeleteInFlight || result.isNew}
+      className={[
+        result.isNew && styleNames.modifierNew,
+        !result.isProcessed && styleNames.modifierLoading,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       onClick={handleDelete}
       key={result.id}
       title="Delete expression"

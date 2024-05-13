@@ -86,9 +86,6 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
     () => {
       const observer = new IntersectionObserver(
         (entries) => {
-          console.log(
-            'entries', entries[0],
-          )
           if (entries[0].isIntersecting && hasNext && !isLoadingNext) {
             loadNext(15)
           }

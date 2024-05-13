@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e8b70a4e7666129e15a357c2291ca2bf>>
+ * @generated SignedSource<<378fb81544accd13112122b95bbbf36c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -70,6 +70,7 @@ export type SuggestionGroupCreateGroupMutation$data = {
       readonly board: {
         readonly id: string;
         readonly newExpressionsCount: number | null | undefined;
+        readonly updated: any;
       };
       readonly " $fragmentSpreads": FragmentRefs<"DefaultGroupFragment">;
     } | null | undefined;
@@ -114,6 +115,13 @@ v4 = {
   "plural": false,
   "selections": [
     (v3/*: any*/),
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "updated",
+      "storageKey": null
+    },
     {
       "kind": "ClientExtension",
       "selections": [
@@ -321,6 +329,18 @@ return {
                             "storageKey": null
                           },
                           {
+                            "kind": "ClientExtension",
+                            "selections": [
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "isNew",
+                                "storageKey": null
+                              }
+                            ]
+                          },
+                          {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
@@ -368,18 +388,6 @@ return {
                             "kind": "ScalarField",
                             "name": "ratingComment",
                             "storageKey": null
-                          },
-                          {
-                            "kind": "ClientExtension",
-                            "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "isNew",
-                                "storageKey": null
-                              }
-                            ]
                           },
                           {
                             "alias": null,
@@ -470,16 +478,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cb71362f9f1f7a83b26a29fcaa543651",
+    "cacheID": "1c74403e60e6215c8716e00a98385d38",
     "id": null,
     "metadata": {},
     "name": "SuggestionGroupCreateGroupMutation",
     "operationKind": "mutation",
-    "text": "mutation SuggestionGroupCreateGroupMutation(\n  $input: CreateGroupMutationInput!\n) {\n  createGroup(input: $input) {\n    instance {\n      ...DefaultGroupFragment\n      board {\n        id\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "mutation SuggestionGroupCreateGroupMutation(\n  $input: CreateGroupMutationInput!\n) {\n  createGroup(input: $input) {\n    instance {\n      ...DefaultGroupFragment\n      board {\n        id\n        updated\n      }\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d7101adf49f4e9bc4852ddd5c551081f";
+(node as any).hash = "e8c828439e1091062e8bd9337c112fb5";
 
 export default node;

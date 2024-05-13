@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import styleNames from '@aztlan/bem'
 
 import {
   graphql,
@@ -16,6 +17,8 @@ const FRAGMENT = graphql`
   fragment BookmarkButtonFragment on ExpressionNode {
     id
     isBookmarked
+    isNew
+    isProcessed
   }
 `
 
@@ -75,13 +78,21 @@ function BookmarkButton(
     ],
   )
 
+  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+
   //
   //
   return (
     <button
-      disabled={isBookmarkInFlight}
+      disabled={isBookmarkInFlight || result.isNew}
       onClick={handleBookmark}
       key={result.id}
+      className={[
+        result.isNew && styleNames.modifierNew,
+        !result.isProcessed && styleNames.modifierLoading,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       style={{ background: result.isBookmarked ? 'red' : 'white' }}
       title={
         result.isBookmarked ? 'Unbookmark expression' : 'Bookmark expression'

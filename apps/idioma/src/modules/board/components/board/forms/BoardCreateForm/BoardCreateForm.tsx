@@ -126,19 +126,23 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
           createBoard:{
             instance:{
               ...input,
-              id       :tempId,
-              isDefault:false,
-              iso6391  :null,
-              iso6392  :null,
-              iso6393  :input.explanationsLanguage,
-              created  :new Date().toISOString(),
-              groups   :{
+              id                 :tempId,
+              isDefault          :false,
+              iso6391            :null,
+              iso6392            :null,
+              iso6393            :input.explanationsLanguage,
+              created            :new Date().toISOString(),
+              updated            :new Date().toISOString(),
+              newExpressionsCount:0,
+              openaiThreadId     :null,
+              groups             :{
                 pageInfo:{
                   hasNextPage:false,
                   endCursor  :null,
                 },
                 edges:[],
               },
+              thread     :null,
               memberships:{
                 edges:[
                   {

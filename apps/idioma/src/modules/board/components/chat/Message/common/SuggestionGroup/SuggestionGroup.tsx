@@ -46,6 +46,7 @@ const MUTATION_CREATE_GROUP = graphql`
         board {
           id
           newExpressionsCount
+          updated
         }
       }
       errors {
@@ -150,8 +151,9 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
                 },
               },
               board:{
-                id:boardID,
+                id     :boardID,
                 newExpressionsCount,
+                updated:tempCreated,
               },
             },
             errors:[],

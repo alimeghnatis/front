@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7693d7824b117d38060f9f4382aa856c>>
+ * @generated SignedSource<<cbe212ef3d2c9d31cf5f5ddf5b5bf9f4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,11 +16,12 @@ export type ExpressionFragment$data = {
   readonly created: any;
   readonly id: string;
   readonly isBookmarked: boolean;
+  readonly isNew: boolean | null | undefined;
   readonly isProcessed: boolean;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
-  readonly " $fragmentSpreads": FragmentRefs<"AudioButtonFragment" | "BookmarkButtonFragment" | "DeleteButtonFragment" | "DetailsFragment" | "VariantFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"AudioButtonFragment" | "BookmarkButtonFragment" | "DeleteButtonFragment" | "DetailsButtonFragment" | "DetailsFragment" | "VariantButtonFragment" | "VariantFragment">;
   readonly " $fragmentType": "ExpressionFragment";
 };
 export type ExpressionFragment$key = {
@@ -129,18 +130,40 @@ const node: ReaderFragment = {
     {
       "args": null,
       "kind": "FragmentSpread",
+      "name": "DetailsButtonFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "VariantButtonFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
       "name": "DetailsFragment"
     },
     {
       "args": null,
       "kind": "FragmentSpread",
       "name": "VariantFragment"
+    },
+    {
+      "kind": "ClientExtension",
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "isNew",
+          "storageKey": null
+        }
+      ]
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "0fde4328f0739fce6d4dc3d61ae2386e";
+(node as any).hash = "b1b311475b7c011314150c85d47c3ac2";
 
 export default node;

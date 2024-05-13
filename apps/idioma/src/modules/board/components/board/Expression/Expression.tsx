@@ -26,6 +26,8 @@ import {
   AudioButton,
   DeleteButton,
   BookmarkButton,
+  DetailsButton,
+  VariantButton,
   Details,
   Variant,
 } from './common/index.js'
@@ -46,9 +48,12 @@ const FRAGMENT = graphql`
     created
     isProcessed
     isBookmarked
+    isNew
     ...AudioButtonFragment
     ...DeleteButtonFragment
     ...BookmarkButtonFragment
+    ...DetailsButtonFragment
+    ...VariantButtonFragment
     ...DetailsFragment
     ...VariantFragment
   }
@@ -140,6 +145,8 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     }, [isExpressionSelected],
   )
 
+  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+
   return (
     <div
       id={id || result.id}
@@ -188,22 +195,8 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
             data={result}
             ref={bookmarkButtonRef}
           />
-          <Link to={detailsLink}>
-            <button
-              type="button"
-              title="Display expression details and explanations"
-            >
-              ?
-            </button>
-          </Link>
-          <Link to={variantLink}>
-            <button
-              type="button"
-              title="Create a new variant of this expression"
-            >
-              *
-            </button>
-          </Link>
+          <DetailsButton data={result} />
+          <VariantButton data={result} />
           <DeleteButton
             data={result}
             groupID={groupID}
@@ -250,6 +243,9 @@ Expression.propTypes = {
 
   /** The span for extras */
   spanExtras:PropTypes.number,
+
+  /** The viewer preferences */
+  preferences:PropTypes.any,
 }
 
 function LoggedInExpression(props) {

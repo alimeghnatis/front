@@ -5,6 +5,7 @@ import {
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import styleNames from '@aztlan/bem'
 
 import {
   graphql, useFragment,
@@ -14,6 +15,8 @@ const FRAGMENT = graphql`
   fragment AudioButtonFragment on ExpressionNode {
     id
     audioUrl
+    isNew
+    isProcessed
     iso6391
     iso6392
     iso6393
@@ -59,8 +62,9 @@ function AudioButton(
   )
 
   const language = result.iso6391 || result.iso6392 || result.iso6393
-  //
-  //
+
+  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+
   return (
     <>
       {result.audioUrl && (
@@ -73,7 +77,13 @@ function AudioButton(
       )}
       <button
         onClick={playAudio}
-        disabled={!result.audioUrl}
+        disabled={!result.audioUrl || result.isNew}
+        className={[
+          result.isNew && styleNames.modifierNew,
+          !result.isProcessed && styleNames.modifierLoading,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         ref={ref}
         title={
           result.audioUrl ? 'Play audio' : `Language ${language} has no audio`

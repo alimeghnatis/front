@@ -38,7 +38,11 @@ function BoardPage() {
           },
         )
       }
-    }, [boardID],
+    }, [
+      boardID,
+      data?.newExpressionsCount,
+      data?.updated,
+    ],
   )
 
   return (

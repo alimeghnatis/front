@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a9b5ad2cc1f3b13a17f9d7144e70c12e>>
+ * @generated SignedSource<<d47a3be749d57d4b69434d0e98c4d968>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,8 @@ import { FragmentRefs } from "relay-runtime";
 export type BookmarkButtonFragment$data = {
   readonly id: string;
   readonly isBookmarked: boolean;
+  readonly isNew: boolean | null | undefined;
+  readonly isProcessed: boolean;
   readonly " $fragmentType": "BookmarkButtonFragment";
 };
 export type BookmarkButtonFragment$key = {
@@ -39,12 +41,31 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "isBookmarked",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "isProcessed",
+      "storageKey": null
+    },
+    {
+      "kind": "ClientExtension",
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "isNew",
+          "storageKey": null
+        }
+      ]
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "fbd368284058d8773d8d0d5d4712c929";
+(node as any).hash = "7c7c1765159a0baaaa8d8b67d3c8bcd0";
 
 export default node;

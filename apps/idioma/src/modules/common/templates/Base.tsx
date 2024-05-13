@@ -57,7 +57,7 @@ function Wrapper({
   absoluteHeaderElements,
 }) {
   const { data } = useViewer()
-  const { focus } = useTriptychContext()
+  const { state: { focus } } = useTriptychContext()
   return (
     <main className="flex">
       <div className="relative">
@@ -71,7 +71,7 @@ function Wrapper({
         <Header right={right}>{title}</Header>
         <div className="abs-special span-6 md-span-4 manual ">
           {absoluteHeaderElements}
-          {focus === 1 && <NotificationGroup />}
+          {focus < 2 && <NotificationGroup />}
         </div>
       </div>
 

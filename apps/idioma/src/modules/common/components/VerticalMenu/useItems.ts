@@ -166,7 +166,7 @@ const useItems = ({
               Component:() => React.createElement(
                 'button',
                 {
-                  onClick :() => logout,
+                  onClick :() => logout(),
                   disabled:isLogoutInFlight,
                   type    :'button',
                 },

@@ -4,6 +4,7 @@
     "baseUrl":"src",
     "declarationDir": "dist/types",
     "outDir": "dist",
+    "resolveJsonModule": true
   },
   "include":["src"],
   "exclude": [

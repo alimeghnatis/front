@@ -1,0 +1,2522 @@
+[
+    {
+        "name": "Abkhazian",
+        "pt1": "ab",
+        "pt2t": "abk",
+        "audio": false
+    },
+    {
+        "name": "Achinese",
+        "pt1": "",
+        "pt2t": "ace",
+        "audio": false
+    },
+    {
+        "name": "Acoli",
+        "pt1": "",
+        "pt2t": "ach",
+        "audio": false
+    },
+    {
+        "name": "Adangme",
+        "pt1": "",
+        "pt2t": "ada",
+        "audio": false
+    },
+    {
+        "name": "Adyghe",
+        "pt1": "",
+        "pt2t": "ady",
+        "audio": false
+    },
+    {
+        "name": "Afar",
+        "pt1": "aa",
+        "pt2t": "aar",
+        "audio": false
+    },
+    {
+        "name": "Afrihili",
+        "pt1": "",
+        "pt2t": "afh",
+        "audio": false
+    },
+    {
+        "name": "Afrikaans",
+        "pt1": "af",
+        "pt2t": "afr",
+        "audio": false
+    },
+    {
+        "name": "Ainu (Japan)",
+        "pt1": "",
+        "pt2t": "ain",
+        "audio": false
+    },
+    {
+        "name": "Akan",
+        "pt1": "ak",
+        "pt2t": "aka",
+        "audio": false
+    },
+    {
+        "name": "Akkadian",
+        "pt1": "",
+        "pt2t": "akk",
+        "audio": false
+    },
+    {
+        "name": "Albanian",
+        "pt1": "sq",
+        "pt2t": "sqi",
+        "audio": false
+    },
+    {
+        "name": "Aleut",
+        "pt1": "",
+        "pt2t": "ale",
+        "audio": false
+    },
+    {
+        "name": "Amharic",
+        "pt1": "am",
+        "pt2t": "amh",
+        "audio": false
+    },
+    {
+        "name": "Ancient Greek (to 1453)",
+        "pt1": "",
+        "pt2t": "grc",
+        "audio": false
+    },
+    {
+        "name": "Angika",
+        "pt1": "",
+        "pt2t": "anp",
+        "audio": false
+    },
+    {
+        "name": "Arabic",
+        "pt1": "ar",
+        "pt2t": "ara",
+        "audio": true
+    },
+    {
+        "name": "Aragonese",
+        "pt1": "an",
+        "pt2t": "arg",
+        "audio": false
+    },
+    {
+        "name": "Arapaho",
+        "pt1": "",
+        "pt2t": "arp",
+        "audio": false
+    },
+    {
+        "name": "Arawak",
+        "pt1": "",
+        "pt2t": "arw",
+        "audio": false
+    },
+    {
+        "name": "Armenian",
+        "pt1": "hy",
+        "pt2t": "hye",
+        "audio": false
+    },
+    {
+        "name": "Assamese",
+        "pt1": "as",
+        "pt2t": "asm",
+        "audio": false
+    },
+    {
+        "name": "Asturian",
+        "pt1": "",
+        "pt2t": "ast",
+        "audio": false
+    },
+    {
+        "name": "Avaric",
+        "pt1": "av",
+        "pt2t": "ava",
+        "audio": false
+    },
+    {
+        "name": "Avestan",
+        "pt1": "ae",
+        "pt2t": "ave",
+        "audio": false
+    },
+    {
+        "name": "Awadhi",
+        "pt1": "",
+        "pt2t": "awa",
+        "audio": false
+    },
+    {
+        "name": "Aymara",
+        "pt1": "ay",
+        "pt2t": "aym",
+        "audio": false
+    },
+    {
+        "name": "Azerbaijani",
+        "pt1": "az",
+        "pt2t": "aze",
+        "audio": false
+    },
+    {
+        "name": "Balinese",
+        "pt1": "",
+        "pt2t": "ban",
+        "audio": false
+    },
+    {
+        "name": "Baluchi",
+        "pt1": "",
+        "pt2t": "bal",
+        "audio": false
+    },
+    {
+        "name": "Bambara",
+        "pt1": "bm",
+        "pt2t": "bam",
+        "audio": false
+    },
+    {
+        "name": "Basa (Cameroon)",
+        "pt1": "",
+        "pt2t": "bas",
+        "audio": false
+    },
+    {
+        "name": "Bashkir",
+        "pt1": "ba",
+        "pt2t": "bak",
+        "audio": false
+    },
+    {
+        "name": "Basque",
+        "pt1": "eu",
+        "pt2t": "eus",
+        "audio": false
+    },
+    {
+        "name": "Beja",
+        "pt1": "",
+        "pt2t": "bej",
+        "audio": false
+    },
+    {
+        "name": "Belarusian",
+        "pt1": "be",
+        "pt2t": "bel",
+        "audio": false
+    },
+    {
+        "name": "Bemba (Zambia)",
+        "pt1": "",
+        "pt2t": "bem",
+        "audio": false
+    },
+    {
+        "name": "Bengali",
+        "pt1": "bn",
+        "pt2t": "ben",
+        "audio": false
+    },
+    {
+        "name": "Bhojpuri",
+        "pt1": "",
+        "pt2t": "bho",
+        "audio": false
+    },
+    {
+        "name": "Bikol",
+        "pt1": "",
+        "pt2t": "bik",
+        "audio": false
+    },
+    {
+        "name": "Bilin",
+        "pt1": "",
+        "pt2t": "byn",
+        "audio": false
+    },
+    {
+        "name": "Bini",
+        "pt1": "",
+        "pt2t": "bin",
+        "audio": false
+    },
+    {
+        "name": "Bislama",
+        "pt1": "bi",
+        "pt2t": "bis",
+        "audio": false
+    },
+    {
+        "name": "Blissymbols",
+        "pt1": "",
+        "pt2t": "zbl",
+        "audio": false
+    },
+    {
+        "name": "Bosnian",
+        "pt1": "bs",
+        "pt2t": "bos",
+        "audio": false
+    },
+    {
+        "name": "Braj",
+        "pt1": "",
+        "pt2t": "bra",
+        "audio": false
+    },
+    {
+        "name": "Breton",
+        "pt1": "br",
+        "pt2t": "bre",
+        "audio": false
+    },
+    {
+        "name": "Buginese",
+        "pt1": "",
+        "pt2t": "bug",
+        "audio": false
+    },
+    {
+        "name": "Bulgarian",
+        "pt1": "bg",
+        "pt2t": "bul",
+        "audio": true
+    },
+    {
+        "name": "Buriat",
+        "pt1": "",
+        "pt2t": "bua",
+        "audio": false
+    },
+    {
+        "name": "Burmese",
+        "pt1": "my",
+        "pt2t": "mya",
+        "audio": false
+    },
+    {
+        "name": "Caddo",
+        "pt1": "",
+        "pt2t": "cad",
+        "audio": false
+    },
+    {
+        "name": "Catalan",
+        "pt1": "ca",
+        "pt2t": "cat",
+        "audio": false
+    },
+    {
+        "name": "Cebuano",
+        "pt1": "",
+        "pt2t": "ceb",
+        "audio": false
+    },
+    {
+        "name": "Chagatai",
+        "pt1": "",
+        "pt2t": "chg",
+        "audio": false
+    },
+    {
+        "name": "Chamorro",
+        "pt1": "ch",
+        "pt2t": "cha",
+        "audio": false
+    },
+    {
+        "name": "Chechen",
+        "pt1": "ce",
+        "pt2t": "che",
+        "audio": false
+    },
+    {
+        "name": "Cherokee",
+        "pt1": "",
+        "pt2t": "chr",
+        "audio": false
+    },
+    {
+        "name": "Cheyenne",
+        "pt1": "",
+        "pt2t": "chy",
+        "audio": false
+    },
+    {
+        "name": "Chibcha",
+        "pt1": "",
+        "pt2t": "chb",
+        "audio": false
+    },
+    {
+        "name": "Chinese",
+        "pt1": "zh",
+        "pt2t": "zho",
+        "audio": true
+    },
+    {
+        "name": "Chinook jargon",
+        "pt1": "",
+        "pt2t": "chn",
+        "audio": false
+    },
+    {
+        "name": "Chipewyan",
+        "pt1": "",
+        "pt2t": "chp",
+        "audio": false
+    },
+    {
+        "name": "Choctaw",
+        "pt1": "",
+        "pt2t": "cho",
+        "audio": false
+    },
+    {
+        "name": "Church Slavic",
+        "pt1": "cu",
+        "pt2t": "chu",
+        "audio": false
+    },
+    {
+        "name": "Chuukese",
+        "pt1": "",
+        "pt2t": "chk",
+        "audio": false
+    },
+    {
+        "name": "Chuvash",
+        "pt1": "cv",
+        "pt2t": "chv",
+        "audio": false
+    },
+    {
+        "name": "Classical Newari",
+        "pt1": "",
+        "pt2t": "nwc",
+        "audio": false
+    },
+    {
+        "name": "Classical Syriac",
+        "pt1": "",
+        "pt2t": "syc",
+        "audio": false
+    },
+    {
+        "name": "Coptic",
+        "pt1": "",
+        "pt2t": "cop",
+        "audio": false
+    },
+    {
+        "name": "Cornish",
+        "pt1": "kw",
+        "pt2t": "cor",
+        "audio": false
+    },
+    {
+        "name": "Corsican",
+        "pt1": "co",
+        "pt2t": "cos",
+        "audio": false
+    },
+    {
+        "name": "Cree",
+        "pt1": "cr",
+        "pt2t": "cre",
+        "audio": false
+    },
+    {
+        "name": "Creek",
+        "pt1": "",
+        "pt2t": "mus",
+        "audio": false
+    },
+    {
+        "name": "Crimean Tatar",
+        "pt1": "",
+        "pt2t": "crh",
+        "audio": false
+    },
+    {
+        "name": "Croatian",
+        "pt1": "hr",
+        "pt2t": "hrv",
+        "audio": true
+    },
+    {
+        "name": "Czech",
+        "pt1": "cs",
+        "pt2t": "ces",
+        "audio": true
+    },
+    {
+        "name": "Dakota",
+        "pt1": "",
+        "pt2t": "dak",
+        "audio": false
+    },
+    {
+        "name": "Danish",
+        "pt1": "da",
+        "pt2t": "dan",
+        "audio": true
+    },
+    {
+        "name": "Dargwa",
+        "pt1": "",
+        "pt2t": "dar",
+        "audio": false
+    },
+    {
+        "name": "Delaware",
+        "pt1": "",
+        "pt2t": "del",
+        "audio": false
+    },
+    {
+        "name": "Dhivehi",
+        "pt1": "dv",
+        "pt2t": "div",
+        "audio": false
+    },
+    {
+        "name": "Dinka",
+        "pt1": "",
+        "pt2t": "din",
+        "audio": false
+    },
+    {
+        "name": "Dogri (macrolanguage)",
+        "pt1": "",
+        "pt2t": "doi",
+        "audio": false
+    },
+    {
+        "name": "Dogrib",
+        "pt1": "",
+        "pt2t": "dgr",
+        "audio": false
+    },
+    {
+        "name": "Duala",
+        "pt1": "",
+        "pt2t": "dua",
+        "audio": false
+    },
+    {
+        "name": "Dutch",
+        "pt1": "nl",
+        "pt2t": "nld",
+        "audio": true
+    },
+    {
+        "name": "Dyula",
+        "pt1": "",
+        "pt2t": "dyu",
+        "audio": false
+    },
+    {
+        "name": "Dzongkha",
+        "pt1": "dz",
+        "pt2t": "dzo",
+        "audio": false
+    },
+    {
+        "name": "Eastern Frisian",
+        "pt1": "",
+        "pt2t": "frs",
+        "audio": false
+    },
+    {
+        "name": "Efik",
+        "pt1": "",
+        "pt2t": "efi",
+        "audio": false
+    },
+    {
+        "name": "Egyptian (Ancient)",
+        "pt1": "",
+        "pt2t": "egy",
+        "audio": false
+    },
+    {
+        "name": "Ekajuk",
+        "pt1": "",
+        "pt2t": "eka",
+        "audio": false
+    },
+    {
+        "name": "Elamite",
+        "pt1": "",
+        "pt2t": "elx",
+        "audio": false
+    },
+    {
+        "name": "English",
+        "pt1": "en",
+        "pt2t": "eng",
+        "audio": true
+    },
+    {
+        "name": "Erzya",
+        "pt1": "",
+        "pt2t": "myv",
+        "audio": false
+    },
+    {
+        "name": "Esperanto",
+        "pt1": "eo",
+        "pt2t": "epo",
+        "audio": false
+    },
+    {
+        "name": "Estonian",
+        "pt1": "et",
+        "pt2t": "est",
+        "audio": false
+    },
+    {
+        "name": "Ewe",
+        "pt1": "ee",
+        "pt2t": "ewe",
+        "audio": false
+    },
+    {
+        "name": "Ewondo",
+        "pt1": "",
+        "pt2t": "ewo",
+        "audio": false
+    },
+    {
+        "name": "Fang (Equatorial Guinea)",
+        "pt1": "",
+        "pt2t": "fan",
+        "audio": false
+    },
+    {
+        "name": "Fanti",
+        "pt1": "",
+        "pt2t": "fat",
+        "audio": false
+    },
+    {
+        "name": "Faroese",
+        "pt1": "fo",
+        "pt2t": "fao",
+        "audio": false
+    },
+    {
+        "name": "Fijian",
+        "pt1": "fj",
+        "pt2t": "fij",
+        "audio": false
+    },
+    {
+        "name": "Filipino",
+        "pt1": "",
+        "pt2t": "fil",
+        "audio": true
+    },
+    {
+        "name": "Finnish",
+        "pt1": "fi",
+        "pt2t": "fin",
+        "audio": true
+    },
+    {
+        "name": "Fon",
+        "pt1": "",
+        "pt2t": "fon",
+        "audio": false
+    },
+    {
+        "name": "French",
+        "pt1": "fr",
+        "pt2t": "fra",
+        "audio": true
+    },
+    {
+        "name": "Friulian",
+        "pt1": "",
+        "pt2t": "fur",
+        "audio": false
+    },
+    {
+        "name": "Fulah",
+        "pt1": "ff",
+        "pt2t": "ful",
+        "audio": false
+    },
+    {
+        "name": "Ga",
+        "pt1": "",
+        "pt2t": "gaa",
+        "audio": false
+    },
+    {
+        "name": "Galibi Carib",
+        "pt1": "",
+        "pt2t": "car",
+        "audio": false
+    },
+    {
+        "name": "Galician",
+        "pt1": "gl",
+        "pt2t": "glg",
+        "audio": false
+    },
+    {
+        "name": "Ganda",
+        "pt1": "lg",
+        "pt2t": "lug",
+        "audio": false
+    },
+    {
+        "name": "Gayo",
+        "pt1": "",
+        "pt2t": "gay",
+        "audio": false
+    },
+    {
+        "name": "Gbaya (Central African Republic)",
+        "pt1": "",
+        "pt2t": "gba",
+        "audio": false
+    },
+    {
+        "name": "Geez",
+        "pt1": "",
+        "pt2t": "gez",
+        "audio": false
+    },
+    {
+        "name": "Georgian",
+        "pt1": "ka",
+        "pt2t": "kat",
+        "audio": false
+    },
+    {
+        "name": "German",
+        "pt1": "de",
+        "pt2t": "deu",
+        "audio": true
+    },
+    {
+        "name": "Gilbertese",
+        "pt1": "",
+        "pt2t": "gil",
+        "audio": false
+    },
+    {
+        "name": "Gondi",
+        "pt1": "",
+        "pt2t": "gon",
+        "audio": false
+    },
+    {
+        "name": "Gorontalo",
+        "pt1": "",
+        "pt2t": "gor",
+        "audio": false
+    },
+    {
+        "name": "Gothic",
+        "pt1": "",
+        "pt2t": "got",
+        "audio": false
+    },
+    {
+        "name": "Grebo",
+        "pt1": "",
+        "pt2t": "grb",
+        "audio": false
+    },
+    {
+        "name": "Guarani",
+        "pt1": "gn",
+        "pt2t": "grn",
+        "audio": false
+    },
+    {
+        "name": "Gujarati",
+        "pt1": "gu",
+        "pt2t": "guj",
+        "audio": false
+    },
+    {
+        "name": "Gwichʼin",
+        "pt1": "",
+        "pt2t": "gwi",
+        "audio": false
+    },
+    {
+        "name": "Haida",
+        "pt1": "",
+        "pt2t": "hai",
+        "audio": false
+    },
+    {
+        "name": "Haitian",
+        "pt1": "ht",
+        "pt2t": "hat",
+        "audio": false
+    },
+    {
+        "name": "Hausa",
+        "pt1": "ha",
+        "pt2t": "hau",
+        "audio": false
+    },
+    {
+        "name": "Hawaiian",
+        "pt1": "",
+        "pt2t": "haw",
+        "audio": false
+    },
+    {
+        "name": "Hebrew",
+        "pt1": "he",
+        "pt2t": "heb",
+        "audio": false
+    },
+    {
+        "name": "Herero",
+        "pt1": "hz",
+        "pt2t": "her",
+        "audio": false
+    },
+    {
+        "name": "Hiligaynon",
+        "pt1": "",
+        "pt2t": "hil",
+        "audio": false
+    },
+    {
+        "name": "Hindi",
+        "pt1": "hi",
+        "pt2t": "hin",
+        "audio": true
+    },
+    {
+        "name": "Hiri Motu",
+        "pt1": "ho",
+        "pt2t": "hmo",
+        "audio": false
+    },
+    {
+        "name": "Hittite",
+        "pt1": "",
+        "pt2t": "hit",
+        "audio": false
+    },
+    {
+        "name": "Hmong",
+        "pt1": "",
+        "pt2t": "hmn",
+        "audio": false
+    },
+    {
+        "name": "Hungarian",
+        "pt1": "hu",
+        "pt2t": "hun",
+        "audio": false
+    },
+    {
+        "name": "Hupa",
+        "pt1": "",
+        "pt2t": "hup",
+        "audio": false
+    },
+    {
+        "name": "Iban",
+        "pt1": "",
+        "pt2t": "iba",
+        "audio": false
+    },
+    {
+        "name": "Icelandic",
+        "pt1": "is",
+        "pt2t": "isl",
+        "audio": false
+    },
+    {
+        "name": "Ido",
+        "pt1": "io",
+        "pt2t": "ido",
+        "audio": false
+    },
+    {
+        "name": "Igbo",
+        "pt1": "ig",
+        "pt2t": "ibo",
+        "audio": false
+    },
+    {
+        "name": "Iloko",
+        "pt1": "",
+        "pt2t": "ilo",
+        "audio": false
+    },
+    {
+        "name": "Inari Sami",
+        "pt1": "",
+        "pt2t": "smn",
+        "audio": false
+    },
+    {
+        "name": "Indonesian",
+        "pt1": "id",
+        "pt2t": "ind",
+        "audio": true
+    },
+    {
+        "name": "Ingush",
+        "pt1": "",
+        "pt2t": "inh",
+        "audio": false
+    },
+    {
+        "name": "Interlingua (International Auxiliary Language Association)",
+        "pt1": "ia",
+        "pt2t": "ina",
+        "audio": false
+    },
+    {
+        "name": "Interlingue",
+        "pt1": "ie",
+        "pt2t": "ile",
+        "audio": false
+    },
+    {
+        "name": "Inuktitut",
+        "pt1": "iu",
+        "pt2t": "iku",
+        "audio": false
+    },
+    {
+        "name": "Inupiaq",
+        "pt1": "ik",
+        "pt2t": "ipk",
+        "audio": false
+    },
+    {
+        "name": "Irish",
+        "pt1": "ga",
+        "pt2t": "gle",
+        "audio": false
+    },
+    {
+        "name": "Italian",
+        "pt1": "it",
+        "pt2t": "ita",
+        "audio": true
+    },
+    {
+        "name": "Japanese",
+        "pt1": "ja",
+        "pt2t": "jpn",
+        "audio": true
+    },
+    {
+        "name": "Javanese",
+        "pt1": "jv",
+        "pt2t": "jav",
+        "audio": false
+    },
+    {
+        "name": "Judeo-Arabic",
+        "pt1": "",
+        "pt2t": "jrb",
+        "audio": false
+    },
+    {
+        "name": "Judeo-Persian",
+        "pt1": "",
+        "pt2t": "jpr",
+        "audio": false
+    },
+    {
+        "name": "Kabardian",
+        "pt1": "",
+        "pt2t": "kbd",
+        "audio": false
+    },
+    {
+        "name": "Kabyle",
+        "pt1": "",
+        "pt2t": "kab",
+        "audio": false
+    },
+    {
+        "name": "Kachin",
+        "pt1": "",
+        "pt2t": "kac",
+        "audio": false
+    },
+    {
+        "name": "Kalaallisut",
+        "pt1": "kl",
+        "pt2t": "kal",
+        "audio": false
+    },
+    {
+        "name": "Kalmyk",
+        "pt1": "",
+        "pt2t": "xal",
+        "audio": false
+    },
+    {
+        "name": "Kamba (Kenya)",
+        "pt1": "",
+        "pt2t": "kam",
+        "audio": false
+    },
+    {
+        "name": "Kannada",
+        "pt1": "kn",
+        "pt2t": "kan",
+        "audio": false
+    },
+    {
+        "name": "Kanuri",
+        "pt1": "kr",
+        "pt2t": "kau",
+        "audio": false
+    },
+    {
+        "name": "Kara-Kalpak",
+        "pt1": "",
+        "pt2t": "kaa",
+        "audio": false
+    },
+    {
+        "name": "Karachay-Balkar",
+        "pt1": "",
+        "pt2t": "krc",
+        "audio": false
+    },
+    {
+        "name": "Karelian",
+        "pt1": "",
+        "pt2t": "krl",
+        "audio": false
+    },
+    {
+        "name": "Kashmiri",
+        "pt1": "ks",
+        "pt2t": "kas",
+        "audio": false
+    },
+    {
+        "name": "Kashubian",
+        "pt1": "",
+        "pt2t": "csb",
+        "audio": false
+    },
+    {
+        "name": "Kawi",
+        "pt1": "",
+        "pt2t": "kaw",
+        "audio": false
+    },
+    {
+        "name": "Kazakh",
+        "pt1": "kk",
+        "pt2t": "kaz",
+        "audio": false
+    },
+    {
+        "name": "Khasi",
+        "pt1": "",
+        "pt2t": "kha",
+        "audio": false
+    },
+    {
+        "name": "Khmer",
+        "pt1": "km",
+        "pt2t": "khm",
+        "audio": false
+    },
+    {
+        "name": "Khotanese",
+        "pt1": "",
+        "pt2t": "kho",
+        "audio": false
+    },
+    {
+        "name": "Kikuyu",
+        "pt1": "ki",
+        "pt2t": "kik",
+        "audio": false
+    },
+    {
+        "name": "Kimbundu",
+        "pt1": "",
+        "pt2t": "kmb",
+        "audio": false
+    },
+    {
+        "name": "Kinyarwanda",
+        "pt1": "rw",
+        "pt2t": "kin",
+        "audio": false
+    },
+    {
+        "name": "Kirghiz",
+        "pt1": "ky",
+        "pt2t": "kir",
+        "audio": false
+    },
+    {
+        "name": "Klingon",
+        "pt1": "",
+        "pt2t": "tlh",
+        "audio": false
+    },
+    {
+        "name": "Komi",
+        "pt1": "kv",
+        "pt2t": "kom",
+        "audio": false
+    },
+    {
+        "name": "Kongo",
+        "pt1": "kg",
+        "pt2t": "kon",
+        "audio": false
+    },
+    {
+        "name": "Konkani (macrolanguage)",
+        "pt1": "",
+        "pt2t": "kok",
+        "audio": false
+    },
+    {
+        "name": "Korean",
+        "pt1": "ko",
+        "pt2t": "kor",
+        "audio": true
+    },
+    {
+        "name": "Kosraean",
+        "pt1": "",
+        "pt2t": "kos",
+        "audio": false
+    },
+    {
+        "name": "Kpelle",
+        "pt1": "",
+        "pt2t": "kpe",
+        "audio": false
+    },
+    {
+        "name": "Kuanyama",
+        "pt1": "kj",
+        "pt2t": "kua",
+        "audio": false
+    },
+    {
+        "name": "Kumyk",
+        "pt1": "",
+        "pt2t": "kum",
+        "audio": false
+    },
+    {
+        "name": "Kurdish",
+        "pt1": "ku",
+        "pt2t": "kur",
+        "audio": false
+    },
+    {
+        "name": "Kurukh",
+        "pt1": "",
+        "pt2t": "kru",
+        "audio": false
+    },
+    {
+        "name": "Kutenai",
+        "pt1": "",
+        "pt2t": "kut",
+        "audio": false
+    },
+    {
+        "name": "Ladino",
+        "pt1": "",
+        "pt2t": "lad",
+        "audio": false
+    },
+    {
+        "name": "Lahnda",
+        "pt1": "",
+        "pt2t": "lah",
+        "audio": false
+    },
+    {
+        "name": "Lamba",
+        "pt1": "",
+        "pt2t": "lam",
+        "audio": false
+    },
+    {
+        "name": "Lao",
+        "pt1": "lo",
+        "pt2t": "lao",
+        "audio": false
+    },
+    {
+        "name": "Latin",
+        "pt1": "la",
+        "pt2t": "lat",
+        "audio": false
+    },
+    {
+        "name": "Latvian",
+        "pt1": "lv",
+        "pt2t": "lav",
+        "audio": false
+    },
+    {
+        "name": "Lezghian",
+        "pt1": "",
+        "pt2t": "lez",
+        "audio": false
+    },
+    {
+        "name": "Limburgan",
+        "pt1": "li",
+        "pt2t": "lim",
+        "audio": false
+    },
+    {
+        "name": "Lingala",
+        "pt1": "ln",
+        "pt2t": "lin",
+        "audio": false
+    },
+    {
+        "name": "Lithuanian",
+        "pt1": "lt",
+        "pt2t": "lit",
+        "audio": false
+    },
+    {
+        "name": "Lojban",
+        "pt1": "",
+        "pt2t": "jbo",
+        "audio": false
+    },
+    {
+        "name": "Low German",
+        "pt1": "",
+        "pt2t": "nds",
+        "audio": false
+    },
+    {
+        "name": "Lower Sorbian",
+        "pt1": "",
+        "pt2t": "dsb",
+        "audio": false
+    },
+    {
+        "name": "Lozi",
+        "pt1": "",
+        "pt2t": "loz",
+        "audio": false
+    },
+    {
+        "name": "Luba-Katanga",
+        "pt1": "lu",
+        "pt2t": "lub",
+        "audio": false
+    },
+    {
+        "name": "Luba-Lulua",
+        "pt1": "",
+        "pt2t": "lua",
+        "audio": false
+    },
+    {
+        "name": "Luiseno",
+        "pt1": "",
+        "pt2t": "lui",
+        "audio": false
+    },
+    {
+        "name": "Lule Sami",
+        "pt1": "",
+        "pt2t": "smj",
+        "audio": false
+    },
+    {
+        "name": "Lunda",
+        "pt1": "",
+        "pt2t": "lun",
+        "audio": false
+    },
+    {
+        "name": "Luo (Kenya and Tanzania)",
+        "pt1": "",
+        "pt2t": "luo",
+        "audio": false
+    },
+    {
+        "name": "Lushai",
+        "pt1": "",
+        "pt2t": "lus",
+        "audio": false
+    },
+    {
+        "name": "Luxembourgish",
+        "pt1": "lb",
+        "pt2t": "ltz",
+        "audio": false
+    },
+    {
+        "name": "Macedo-Romanian",
+        "pt1": "",
+        "pt2t": "rup",
+        "audio": false
+    },
+    {
+        "name": "Macedonian",
+        "pt1": "mk",
+        "pt2t": "mkd",
+        "audio": false
+    },
+    {
+        "name": "Madurese",
+        "pt1": "",
+        "pt2t": "mad",
+        "audio": false
+    },
+    {
+        "name": "Magahi",
+        "pt1": "",
+        "pt2t": "mag",
+        "audio": false
+    },
+    {
+        "name": "Maithili",
+        "pt1": "",
+        "pt2t": "mai",
+        "audio": false
+    },
+    {
+        "name": "Makasar",
+        "pt1": "",
+        "pt2t": "mak",
+        "audio": false
+    },
+    {
+        "name": "Malagasy",
+        "pt1": "mg",
+        "pt2t": "mlg",
+        "audio": false
+    },
+    {
+        "name": "Malay (macrolanguage)",
+        "pt1": "ms",
+        "pt2t": "msa",
+        "audio": true
+    },
+    {
+        "name": "Malayalam",
+        "pt1": "ml",
+        "pt2t": "mal",
+        "audio": false
+    },
+    {
+        "name": "Maltese",
+        "pt1": "mt",
+        "pt2t": "mlt",
+        "audio": false
+    },
+    {
+        "name": "Manchu",
+        "pt1": "",
+        "pt2t": "mnc",
+        "audio": false
+    },
+    {
+        "name": "Mandar",
+        "pt1": "",
+        "pt2t": "mdr",
+        "audio": false
+    },
+    {
+        "name": "Mandingo",
+        "pt1": "",
+        "pt2t": "man",
+        "audio": false
+    },
+    {
+        "name": "Manipuri",
+        "pt1": "",
+        "pt2t": "mni",
+        "audio": false
+    },
+    {
+        "name": "Manx",
+        "pt1": "gv",
+        "pt2t": "glv",
+        "audio": false
+    },
+    {
+        "name": "Maori",
+        "pt1": "mi",
+        "pt2t": "mri",
+        "audio": false
+    },
+    {
+        "name": "Mapudungun",
+        "pt1": "",
+        "pt2t": "arn",
+        "audio": false
+    },
+    {
+        "name": "Marathi",
+        "pt1": "mr",
+        "pt2t": "mar",
+        "audio": false
+    },
+    {
+        "name": "Mari (Russia)",
+        "pt1": "",
+        "pt2t": "chm",
+        "audio": false
+    },
+    {
+        "name": "Marshallese",
+        "pt1": "mh",
+        "pt2t": "mah",
+        "audio": false
+    },
+    {
+        "name": "Marwari",
+        "pt1": "",
+        "pt2t": "mwr",
+        "audio": false
+    },
+    {
+        "name": "Masai",
+        "pt1": "",
+        "pt2t": "mas",
+        "audio": false
+    },
+    {
+        "name": "Mende (Sierra Leone)",
+        "pt1": "",
+        "pt2t": "men",
+        "audio": false
+    },
+    {
+        "name": "Mi'kmaq",
+        "pt1": "",
+        "pt2t": "mic",
+        "audio": false
+    },
+    {
+        "name": "Middle Dutch (ca. 1050-1350)",
+        "pt1": "",
+        "pt2t": "dum",
+        "audio": false
+    },
+    {
+        "name": "Middle English (1100-1500)",
+        "pt1": "",
+        "pt2t": "enm",
+        "audio": false
+    },
+    {
+        "name": "Middle French (ca. 1400-1600)",
+        "pt1": "",
+        "pt2t": "frm",
+        "audio": false
+    },
+    {
+        "name": "Middle High German (ca. 1050-1500)",
+        "pt1": "",
+        "pt2t": "gmh",
+        "audio": false
+    },
+    {
+        "name": "Middle Irish (900-1200)",
+        "pt1": "",
+        "pt2t": "mga",
+        "audio": false
+    },
+    {
+        "name": "Minangkabau",
+        "pt1": "",
+        "pt2t": "min",
+        "audio": false
+    },
+    {
+        "name": "Mirandese",
+        "pt1": "",
+        "pt2t": "mwl",
+        "audio": false
+    },
+    {
+        "name": "Modern Greek (1453-)",
+        "pt1": "el",
+        "pt2t": "ell",
+        "audio": true
+    },
+    {
+        "name": "Mohawk",
+        "pt1": "",
+        "pt2t": "moh",
+        "audio": false
+    },
+    {
+        "name": "Moksha",
+        "pt1": "",
+        "pt2t": "mdf",
+        "audio": false
+    },
+    {
+        "name": "Mongo",
+        "pt1": "",
+        "pt2t": "lol",
+        "audio": false
+    },
+    {
+        "name": "Mongolian",
+        "pt1": "mn",
+        "pt2t": "mon",
+        "audio": false
+    },
+    {
+        "name": "Montenegrin",
+        "pt1": "",
+        "pt2t": "cnr",
+        "audio": false
+    },
+    {
+        "name": "Mossi",
+        "pt1": "",
+        "pt2t": "mos",
+        "audio": false
+    },
+    {
+        "name": "Multiple languages",
+        "pt1": "",
+        "pt2t": "mul",
+        "audio": false
+    },
+    {
+        "name": "N'Ko",
+        "pt1": "",
+        "pt2t": "nqo",
+        "audio": false
+    },
+    {
+        "name": "Nauru",
+        "pt1": "na",
+        "pt2t": "nau",
+        "audio": false
+    },
+    {
+        "name": "Navajo",
+        "pt1": "nv",
+        "pt2t": "nav",
+        "audio": false
+    },
+    {
+        "name": "Ndonga",
+        "pt1": "ng",
+        "pt2t": "ndo",
+        "audio": false
+    },
+    {
+        "name": "Neapolitan",
+        "pt1": "",
+        "pt2t": "nap",
+        "audio": false
+    },
+    {
+        "name": "Nepali (macrolanguage)",
+        "pt1": "ne",
+        "pt2t": "nep",
+        "audio": false
+    },
+    {
+        "name": "Newari",
+        "pt1": "",
+        "pt2t": "new",
+        "audio": false
+    },
+    {
+        "name": "Nias",
+        "pt1": "",
+        "pt2t": "nia",
+        "audio": false
+    },
+    {
+        "name": "Niuean",
+        "pt1": "",
+        "pt2t": "niu",
+        "audio": false
+    },
+    {
+        "name": "No linguistic content",
+        "pt1": "",
+        "pt2t": "zxx",
+        "audio": false
+    },
+    {
+        "name": "Nogai",
+        "pt1": "",
+        "pt2t": "nog",
+        "audio": false
+    },
+    {
+        "name": "North Ndebele",
+        "pt1": "nd",
+        "pt2t": "nde",
+        "audio": false
+    },
+    {
+        "name": "Northern Frisian",
+        "pt1": "",
+        "pt2t": "frr",
+        "audio": false
+    },
+    {
+        "name": "Northern Sami",
+        "pt1": "se",
+        "pt2t": "sme",
+        "audio": false
+    },
+    {
+        "name": "Norwegian",
+        "pt1": "no",
+        "pt2t": "nor",
+        "audio": true
+    },
+    {
+        "name": "Norwegian Bokmål",
+        "pt1": "nb",
+        "pt2t": "nob",
+        "audio": false
+    },
+    {
+        "name": "Norwegian Nynorsk",
+        "pt1": "nn",
+        "pt2t": "nno",
+        "audio": false
+    },
+    {
+        "name": "Nyamwezi",
+        "pt1": "",
+        "pt2t": "nym",
+        "audio": false
+    },
+    {
+        "name": "Nyanja",
+        "pt1": "ny",
+        "pt2t": "nya",
+        "audio": false
+    },
+    {
+        "name": "Nyankole",
+        "pt1": "",
+        "pt2t": "nyn",
+        "audio": false
+    },
+    {
+        "name": "Nyoro",
+        "pt1": "",
+        "pt2t": "nyo",
+        "audio": false
+    },
+    {
+        "name": "Nzima",
+        "pt1": "",
+        "pt2t": "nzi",
+        "audio": false
+    },
+    {
+        "name": "Occitan (post 1500)",
+        "pt1": "oc",
+        "pt2t": "oci",
+        "audio": false
+    },
+    {
+        "name": "Official Aramaic (700-300 BCE)",
+        "pt1": "",
+        "pt2t": "arc",
+        "audio": false
+    },
+    {
+        "name": "Ojibwa",
+        "pt1": "oj",
+        "pt2t": "oji",
+        "audio": false
+    },
+    {
+        "name": "Old English (ca. 450-1100)",
+        "pt1": "",
+        "pt2t": "ang",
+        "audio": false
+    },
+    {
+        "name": "Old French (842-ca. 1400)",
+        "pt1": "",
+        "pt2t": "fro",
+        "audio": false
+    },
+    {
+        "name": "Old High German (ca. 750-1050)",
+        "pt1": "",
+        "pt2t": "goh",
+        "audio": false
+    },
+    {
+        "name": "Old Irish (to 900)",
+        "pt1": "",
+        "pt2t": "sga",
+        "audio": false
+    },
+    {
+        "name": "Old Norse",
+        "pt1": "",
+        "pt2t": "non",
+        "audio": false
+    },
+    {
+        "name": "Old Persian (ca. 600-400 B.C.)",
+        "pt1": "",
+        "pt2t": "peo",
+        "audio": false
+    },
+    {
+        "name": "Old Provençal (to 1500)",
+        "pt1": "",
+        "pt2t": "pro",
+        "audio": false
+    },
+    {
+        "name": "Oriya (macrolanguage)",
+        "pt1": "or",
+        "pt2t": "ori",
+        "audio": false
+    },
+    {
+        "name": "Oromo",
+        "pt1": "om",
+        "pt2t": "orm",
+        "audio": false
+    },
+    {
+        "name": "Osage",
+        "pt1": "",
+        "pt2t": "osa",
+        "audio": false
+    },
+    {
+        "name": "Ossetian",
+        "pt1": "os",
+        "pt2t": "oss",
+        "audio": false
+    },
+    {
+        "name": "Ottoman Turkish (1500-1928)",
+        "pt1": "",
+        "pt2t": "ota",
+        "audio": false
+    },
+    {
+        "name": "Pahlavi",
+        "pt1": "",
+        "pt2t": "pal",
+        "audio": false
+    },
+    {
+        "name": "Palauan",
+        "pt1": "",
+        "pt2t": "pau",
+        "audio": false
+    },
+    {
+        "name": "Pali",
+        "pt1": "pi",
+        "pt2t": "pli",
+        "audio": false
+    },
+    {
+        "name": "Pampanga",
+        "pt1": "",
+        "pt2t": "pam",
+        "audio": false
+    },
+    {
+        "name": "Pangasinan",
+        "pt1": "",
+        "pt2t": "pag",
+        "audio": false
+    },
+    {
+        "name": "Panjabi",
+        "pt1": "pa",
+        "pt2t": "pan",
+        "audio": false
+    },
+    {
+        "name": "Papiamento",
+        "pt1": "",
+        "pt2t": "pap",
+        "audio": false
+    },
+    {
+        "name": "Pedi",
+        "pt1": "",
+        "pt2t": "nso",
+        "audio": false
+    },
+    {
+        "name": "Persian",
+        "pt1": "fa",
+        "pt2t": "fas",
+        "audio": false
+    },
+    {
+        "name": "Phoenician",
+        "pt1": "",
+        "pt2t": "phn",
+        "audio": false
+    },
+    {
+        "name": "Pohnpeian",
+        "pt1": "",
+        "pt2t": "pon",
+        "audio": false
+    },
+    {
+        "name": "Polish",
+        "pt1": "pl",
+        "pt2t": "pol",
+        "audio": true
+    },
+    {
+        "name": "Portuguese",
+        "pt1": "pt",
+        "pt2t": "por",
+        "audio": true
+    },
+    {
+        "name": "Pushto",
+        "pt1": "ps",
+        "pt2t": "pus",
+        "audio": false
+    },
+    {
+        "name": "Quechua",
+        "pt1": "qu",
+        "pt2t": "que",
+        "audio": false
+    },
+    {
+        "name": "Rajasthani",
+        "pt1": "",
+        "pt2t": "raj",
+        "audio": false
+    },
+    {
+        "name": "Rapanui",
+        "pt1": "",
+        "pt2t": "rap",
+        "audio": false
+    },
+    {
+        "name": "Rarotongan",
+        "pt1": "",
+        "pt2t": "rar",
+        "audio": false
+    },
+    {
+        "name": "Romanian",
+        "pt1": "ro",
+        "pt2t": "ron",
+        "audio": true
+    },
+    {
+        "name": "Romansh",
+        "pt1": "rm",
+        "pt2t": "roh",
+        "audio": false
+    },
+    {
+        "name": "Romany",
+        "pt1": "",
+        "pt2t": "rom",
+        "audio": false
+    },
+    {
+        "name": "Rundi",
+        "pt1": "rn",
+        "pt2t": "run",
+        "audio": false
+    },
+    {
+        "name": "Russian",
+        "pt1": "ru",
+        "pt2t": "rus",
+        "audio": true
+    },
+    {
+        "name": "Samaritan Aramaic",
+        "pt1": "",
+        "pt2t": "sam",
+        "audio": false
+    },
+    {
+        "name": "Samoan",
+        "pt1": "sm",
+        "pt2t": "smo",
+        "audio": false
+    },
+    {
+        "name": "Sandawe",
+        "pt1": "",
+        "pt2t": "sad",
+        "audio": false
+    },
+    {
+        "name": "Sango",
+        "pt1": "sg",
+        "pt2t": "sag",
+        "audio": false
+    },
+    {
+        "name": "Sanskrit",
+        "pt1": "sa",
+        "pt2t": "san",
+        "audio": false
+    },
+    {
+        "name": "Santali",
+        "pt1": "",
+        "pt2t": "sat",
+        "audio": false
+    },
+    {
+        "name": "Sardinian",
+        "pt1": "sc",
+        "pt2t": "srd",
+        "audio": false
+    },
+    {
+        "name": "Sasak",
+        "pt1": "",
+        "pt2t": "sas",
+        "audio": false
+    },
+    {
+        "name": "Scots",
+        "pt1": "",
+        "pt2t": "sco",
+        "audio": false
+    },
+    {
+        "name": "Scottish Gaelic",
+        "pt1": "gd",
+        "pt2t": "gla",
+        "audio": false
+    },
+    {
+        "name": "Selkup",
+        "pt1": "",
+        "pt2t": "sel",
+        "audio": false
+    },
+    {
+        "name": "Serbian",
+        "pt1": "sr",
+        "pt2t": "srp",
+        "audio": false
+    },
+    {
+        "name": "Serer",
+        "pt1": "",
+        "pt2t": "srr",
+        "audio": false
+    },
+    {
+        "name": "Shan",
+        "pt1": "",
+        "pt2t": "shn",
+        "audio": false
+    },
+    {
+        "name": "Shona",
+        "pt1": "sn",
+        "pt2t": "sna",
+        "audio": false
+    },
+    {
+        "name": "Sichuan Yi",
+        "pt1": "ii",
+        "pt2t": "iii",
+        "audio": false
+    },
+    {
+        "name": "Sicilian",
+        "pt1": "",
+        "pt2t": "scn",
+        "audio": false
+    },
+    {
+        "name": "Sidamo",
+        "pt1": "",
+        "pt2t": "sid",
+        "audio": false
+    },
+    {
+        "name": "Siksika",
+        "pt1": "",
+        "pt2t": "bla",
+        "audio": false
+    },
+    {
+        "name": "Sindhi",
+        "pt1": "sd",
+        "pt2t": "snd",
+        "audio": false
+    },
+    {
+        "name": "Sinhala",
+        "pt1": "si",
+        "pt2t": "sin",
+        "audio": false
+    },
+    {
+        "name": "Skolt Sami",
+        "pt1": "",
+        "pt2t": "sms",
+        "audio": false
+    },
+    {
+        "name": "Slave (Athapascan)",
+        "pt1": "",
+        "pt2t": "den",
+        "audio": false
+    },
+    {
+        "name": "Slovak",
+        "pt1": "sk",
+        "pt2t": "slk",
+        "audio": true
+    },
+    {
+        "name": "Slovenian",
+        "pt1": "sl",
+        "pt2t": "slv",
+        "audio": false
+    },
+    {
+        "name": "Sogdian",
+        "pt1": "",
+        "pt2t": "sog",
+        "audio": false
+    },
+    {
+        "name": "Somali",
+        "pt1": "so",
+        "pt2t": "som",
+        "audio": false
+    },
+    {
+        "name": "Soninke",
+        "pt1": "",
+        "pt2t": "snk",
+        "audio": false
+    },
+    {
+        "name": "South Ndebele",
+        "pt1": "nr",
+        "pt2t": "nbl",
+        "audio": false
+    },
+    {
+        "name": "Southern Altai",
+        "pt1": "",
+        "pt2t": "alt",
+        "audio": false
+    },
+    {
+        "name": "Southern Sami",
+        "pt1": "",
+        "pt2t": "sma",
+        "audio": false
+    },
+    {
+        "name": "Southern Sotho",
+        "pt1": "st",
+        "pt2t": "sot",
+        "audio": false
+    },
+    {
+        "name": "Spanish",
+        "pt1": "es",
+        "pt2t": "spa",
+        "audio": true
+    },
+    {
+        "name": "Sranan Tongo",
+        "pt1": "",
+        "pt2t": "srn",
+        "audio": false
+    },
+    {
+        "name": "Standard Moroccan Tamazight",
+        "pt1": "",
+        "pt2t": "zgh",
+        "audio": false
+    },
+    {
+        "name": "Sukuma",
+        "pt1": "",
+        "pt2t": "suk",
+        "audio": false
+    },
+    {
+        "name": "Sumerian",
+        "pt1": "",
+        "pt2t": "sux",
+        "audio": false
+    },
+    {
+        "name": "Sundanese",
+        "pt1": "su",
+        "pt2t": "sun",
+        "audio": false
+    },
+    {
+        "name": "Susu",
+        "pt1": "",
+        "pt2t": "sus",
+        "audio": false
+    },
+    {
+        "name": "Swahili (macrolanguage)",
+        "pt1": "sw",
+        "pt2t": "swa",
+        "audio": false
+    },
+    {
+        "name": "Swati",
+        "pt1": "ss",
+        "pt2t": "ssw",
+        "audio": false
+    },
+    {
+        "name": "Swedish",
+        "pt1": "sv",
+        "pt2t": "swe",
+        "audio": true
+    },
+    {
+        "name": "Swiss German",
+        "pt1": "",
+        "pt2t": "gsw",
+        "audio": false
+    },
+    {
+        "name": "Syriac",
+        "pt1": "",
+        "pt2t": "syr",
+        "audio": false
+    },
+    {
+        "name": "Tagalog",
+        "pt1": "tl",
+        "pt2t": "tgl",
+        "audio": false
+    },
+    {
+        "name": "Tahitian",
+        "pt1": "ty",
+        "pt2t": "tah",
+        "audio": false
+    },
+    {
+        "name": "Tajik",
+        "pt1": "tg",
+        "pt2t": "tgk",
+        "audio": false
+    },
+    {
+        "name": "Tamashek",
+        "pt1": "",
+        "pt2t": "tmh",
+        "audio": false
+    },
+    {
+        "name": "Tamil",
+        "pt1": "ta",
+        "pt2t": "tam",
+        "audio": true
+    },
+    {
+        "name": "Tatar",
+        "pt1": "tt",
+        "pt2t": "tat",
+        "audio": false
+    },
+    {
+        "name": "Telugu",
+        "pt1": "te",
+        "pt2t": "tel",
+        "audio": false
+    },
+    {
+        "name": "Tereno",
+        "pt1": "",
+        "pt2t": "ter",
+        "audio": false
+    },
+    {
+        "name": "Tetum",
+        "pt1": "",
+        "pt2t": "tet",
+        "audio": false
+    },
+    {
+        "name": "Thai",
+        "pt1": "th",
+        "pt2t": "tha",
+        "audio": false
+    },
+    {
+        "name": "Tibetan",
+        "pt1": "bo",
+        "pt2t": "bod",
+        "audio": false
+    },
+    {
+        "name": "Tigre",
+        "pt1": "",
+        "pt2t": "tig",
+        "audio": false
+    },
+    {
+        "name": "Tigrinya",
+        "pt1": "ti",
+        "pt2t": "tir",
+        "audio": false
+    },
+    {
+        "name": "Timne",
+        "pt1": "",
+        "pt2t": "tem",
+        "audio": false
+    },
+    {
+        "name": "Tiv",
+        "pt1": "",
+        "pt2t": "tiv",
+        "audio": false
+    },
+    {
+        "name": "Tlingit",
+        "pt1": "",
+        "pt2t": "tli",
+        "audio": false
+    },
+    {
+        "name": "Tok Pisin",
+        "pt1": "",
+        "pt2t": "tpi",
+        "audio": false
+    },
+    {
+        "name": "Tokelau",
+        "pt1": "",
+        "pt2t": "tkl",
+        "audio": false
+    },
+    {
+        "name": "Tonga (Nyasa)",
+        "pt1": "",
+        "pt2t": "tog",
+        "audio": false
+    },
+    {
+        "name": "Tonga (Tonga Islands)",
+        "pt1": "to",
+        "pt2t": "ton",
+        "audio": false
+    },
+    {
+        "name": "Tsimshian",
+        "pt1": "",
+        "pt2t": "tsi",
+        "audio": false
+    },
+    {
+        "name": "Tsonga",
+        "pt1": "ts",
+        "pt2t": "tso",
+        "audio": false
+    },
+    {
+        "name": "Tswana",
+        "pt1": "tn",
+        "pt2t": "tsn",
+        "audio": false
+    },
+    {
+        "name": "Tumbuka",
+        "pt1": "",
+        "pt2t": "tum",
+        "audio": false
+    },
+    {
+        "name": "Turkish",
+        "pt1": "tr",
+        "pt2t": "tur",
+        "audio": true
+    },
+    {
+        "name": "Turkmen",
+        "pt1": "tk",
+        "pt2t": "tuk",
+        "audio": false
+    },
+    {
+        "name": "Tuvalu",
+        "pt1": "",
+        "pt2t": "tvl",
+        "audio": false
+    },
+    {
+        "name": "Tuvinian",
+        "pt1": "",
+        "pt2t": "tyv",
+        "audio": false
+    },
+    {
+        "name": "Twi",
+        "pt1": "tw",
+        "pt2t": "twi",
+        "audio": false
+    },
+    {
+        "name": "Udmurt",
+        "pt1": "",
+        "pt2t": "udm",
+        "audio": false
+    },
+    {
+        "name": "Ugaritic",
+        "pt1": "",
+        "pt2t": "uga",
+        "audio": false
+    },
+    {
+        "name": "Uighur",
+        "pt1": "ug",
+        "pt2t": "uig",
+        "audio": false
+    },
+    {
+        "name": "Ukrainian",
+        "pt1": "uk",
+        "pt2t": "ukr",
+        "audio": true
+    },
+    {
+        "name": "Umbundu",
+        "pt1": "",
+        "pt2t": "umb",
+        "audio": false
+    },
+    {
+        "name": "Uncoded languages",
+        "pt1": "",
+        "pt2t": "mis",
+        "audio": false
+    },
+    {
+        "name": "Undetermined",
+        "pt1": "",
+        "pt2t": "und",
+        "audio": false
+    },
+    {
+        "name": "Upper Sorbian",
+        "pt1": "",
+        "pt2t": "hsb",
+        "audio": false
+    },
+    {
+        "name": "Urdu",
+        "pt1": "ur",
+        "pt2t": "urd",
+        "audio": false
+    },
+    {
+        "name": "Uzbek",
+        "pt1": "uz",
+        "pt2t": "uzb",
+        "audio": false
+    },
+    {
+        "name": "Vai",
+        "pt1": "",
+        "pt2t": "vai",
+        "audio": false
+    },
+    {
+        "name": "Venda",
+        "pt1": "ve",
+        "pt2t": "ven",
+        "audio": false
+    },
+    {
+        "name": "Vietnamese",
+        "pt1": "vi",
+        "pt2t": "vie",
+        "audio": false
+    },
+    {
+        "name": "Volapük",
+        "pt1": "vo",
+        "pt2t": "vol",
+        "audio": false
+    },
+    {
+        "name": "Votic",
+        "pt1": "",
+        "pt2t": "vot",
+        "audio": false
+    },
+    {
+        "name": "Walloon",
+        "pt1": "wa",
+        "pt2t": "wln",
+        "audio": false
+    },
+    {
+        "name": "Waray (Philippines)",
+        "pt1": "",
+        "pt2t": "war",
+        "audio": false
+    },
+    {
+        "name": "Washo",
+        "pt1": "",
+        "pt2t": "was",
+        "audio": false
+    },
+    {
+        "name": "Welsh",
+        "pt1": "cy",
+        "pt2t": "cym",
+        "audio": false
+    },
+    {
+        "name": "Western Frisian",
+        "pt1": "fy",
+        "pt2t": "fry",
+        "audio": false
+    },
+    {
+        "name": "Wolaytta",
+        "pt1": "",
+        "pt2t": "wal",
+        "audio": false
+    },
+    {
+        "name": "Wolof",
+        "pt1": "wo",
+        "pt2t": "wol",
+        "audio": false
+    },
+    {
+        "name": "Xhosa",
+        "pt1": "xh",
+        "pt2t": "xho",
+        "audio": false
+    },
+    {
+        "name": "Yakut",
+        "pt1": "",
+        "pt2t": "sah",
+        "audio": false
+    },
+    {
+        "name": "Yao",
+        "pt1": "",
+        "pt2t": "yao",
+        "audio": false
+    },
+    {
+        "name": "Yapese",
+        "pt1": "",
+        "pt2t": "yap",
+        "audio": false
+    },
+    {
+        "name": "Yiddish",
+        "pt1": "yi",
+        "pt2t": "yid",
+        "audio": false
+    },
+    {
+        "name": "Yoruba",
+        "pt1": "yo",
+        "pt2t": "yor",
+        "audio": false
+    },
+    {
+        "name": "Zapotec",
+        "pt1": "",
+        "pt2t": "zap",
+        "audio": false
+    },
+    {
+        "name": "Zaza",
+        "pt1": "",
+        "pt2t": "zza",
+        "audio": false
+    },
+    {
+        "name": "Zenaga",
+        "pt1": "",
+        "pt2t": "zen",
+        "audio": false
+    },
+    {
+        "name": "Zhuang",
+        "pt1": "za",
+        "pt2t": "zha",
+        "audio": false
+    },
+    {
+        "name": "Zulu",
+        "pt1": "zu",
+        "pt2t": "zul",
+        "audio": false
+    },
+    {
+        "name": "Zuni",
+        "pt1": "",
+        "pt2t": "zun",
+        "audio": false
+    }
+]

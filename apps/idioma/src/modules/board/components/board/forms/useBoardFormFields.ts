@@ -3,11 +3,13 @@ import { graphql } from 'react-relay'
 import {
   withErrorHandling, addGraphQLOptions,
 } from '@aztlan/ui'
+import { LanguageChoices } from 'modules/common/components'
 
 const QUERY = graphql`
   query useBoardFormFieldsLanguagesOptionsQuery {
     iso639pt2 {
       name
+      pt1
       pt2t
       audio
     }
@@ -68,7 +70,7 @@ const useBoardFormFields = (instance) => {
             'iso639pt2',
             {
               transformData:(d) => d.map(({
-                pt2t, name,
+                pt2t, name, audio,
               }) => ({
                 value:pt2t,
                 label:`${name} (${pt2t})`,
@@ -111,7 +113,8 @@ const useBoardFormFields = (instance) => {
       },
       {
         name         :'enabledLanguages',
-        type         :'choices',
+        type         :'custom',
+        Component    :LanguageChoices,
         multiple     :true,
         label        :'Enabled Languages',
         description  :'The languages activated for this board. Unused languages will be hidden from menus.',
@@ -125,11 +128,10 @@ const useBoardFormFields = (instance) => {
           withErrorHandling,
           addGraphQLOptions(
             QUERY, 'iso639pt2', {
-              transformData:(d) => d.map(({
-                pt2t, name, audio,
-              }) => ({
-                value:pt2t,
-                label:`${name} (${pt2t}) ${audio ? '+Audio' : ''}`,
+              transformData:(d) => d.map((language) => ({
+                ...language,
+                value:language.pt2t,
+                label:`${language.name}`,
               })),
             },
           ),

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d1a8a8dc60eea4e314d7a85b4d742eb1>>
+ * @generated SignedSource<<265e67fe09cf1963034912871c81d274>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type useBoardFormFieldsLanguagesOptionsQuery$data = {
   readonly iso639pt2: ReadonlyArray<{
     readonly audio: boolean;
     readonly name: string;
+    readonly pt1: string | null | undefined;
     readonly pt2t: string;
   } | null | undefined> | null | undefined;
 };
@@ -37,6 +38,13 @@ var v0 = [
         "args": null,
         "kind": "ScalarField",
         "name": "name",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "pt1",
         "storageKey": null
       },
       {
@@ -75,16 +83,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "5eba004e540267e5017c1655bbaacee2",
+    "cacheID": "b3266b5bcae9dea137b3df512a2070c1",
     "id": null,
     "metadata": {},
     "name": "useBoardFormFieldsLanguagesOptionsQuery",
     "operationKind": "query",
-    "text": "query useBoardFormFieldsLanguagesOptionsQuery {\n  iso639pt2 {\n    name\n    pt2t\n    audio\n  }\n}\n"
+    "text": "query useBoardFormFieldsLanguagesOptionsQuery {\n  iso639pt2 {\n    name\n    pt1\n    pt2t\n    audio\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9ed9fd3c2a910085d1b7f719307d83dc";
+(node as any).hash = "6f5a559261d3d25378bc570b446dc0f2";
 
 export default node;

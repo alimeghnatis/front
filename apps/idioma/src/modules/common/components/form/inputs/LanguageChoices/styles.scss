@@ -1,0 +1,96 @@
+/* @aztlan/generator-front 0.7.2 */
+
+@use "@aztlan/bem";
+
+$default-option-color: blue;
+$selected-option-color: red;
+$audio-option-color: purple;
+$common-language-option-color: green;
+
+$disabled-color: darkgray;
+
+.#{bem.$base}.lang-choices {
+  //gap: var(--gap);
+  border: 0;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+
+  .filters {
+    //background: red;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      display: none;
+
+      &:checked + label {
+        &.common-language {
+          color: $common-language-option-color;
+        }
+
+        &.has-audio {
+          color: $audio-option-color;
+        }
+
+        &.selected-only {
+          color: $selected-option-color;
+        }
+
+        &.less-common {
+          color: $default-option-color;
+        }
+      }
+
+      &:disabled + label {
+        color: $disabled-color;
+      }
+    }
+  }
+
+  .options {
+    column-count: calc(var(--columns) / 3);
+
+    .option {
+      &.hidden {
+        display: none;
+      }
+
+      &.common-language {
+        color: $common-language-option-color;
+      }
+
+      &.has-audio,
+      &.common-language.has-audio {
+        color: $audio-option-color;
+      }
+
+      &.less-common {
+        color: $default-option-color;
+      }
+
+      input {
+        //opacity: 0;
+        //position: absolute;
+        //visibility: none;
+        display: none;
+        //z-index: -1;
+      }
+
+      input + label {
+        //cursor: pointer;
+      }
+
+      input:disabled + label {
+        color: $disabled-color;
+      }
+
+      input:checked + label {
+        color: $selected-option-color;
+      }
+    }
+  }
+}
+
+

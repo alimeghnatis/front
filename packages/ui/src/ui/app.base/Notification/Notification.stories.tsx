@@ -45,7 +45,7 @@ interface AddNotificationButtonProps {
  * @param {AddNotificationButtonProps} props The props for the button component.
  * @returns The button component.
  */
-export const AddNotificationButton: React.FC<AddNotificationButtonProps> = ({
+const AddNotificationButton: React.FC<AddNotificationButtonProps> = ({
   level,
   content,
   ttl,

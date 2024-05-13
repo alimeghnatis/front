@@ -24,16 +24,19 @@ const meta: Meta<typeof Component> = {
             id     :'2',
             content:'Sample Notification 2',
             level  :NotificationLevel.SUCCESS,
+            created:new Date(),
           },
           {
             id     :'3',
             content:'Sample Notification 3',
             level  :NotificationLevel.WARNING,
+            created:new Date(),
           },
           {
             id     :'4',
             content:'Sample Notification 4',
             level  :NotificationLevel.ERROR,
+            created:new Date(),
           },
         ]}
       >

@@ -6,6 +6,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
+import { Button } from '@aztlan/ui'
 
 import {
   graphql, useFragment,
@@ -67,17 +68,10 @@ function AudioButton(
 
   return (
     <>
-      {result.audioUrl && (
-        <audio ref={audioRef}>
-          <source
-            src={result.audioUrl}
-            type="audio/mpeg"
-          />
-        </audio>
-      )}
-      <button
+      <Button
         onClick={playAudio}
         disabled={!result.audioUrl || result.isNew}
+        // variant="borderless"
         className={[
           result.isNew && styleNames.modifierNew,
           !result.isProcessed && styleNames.modifierLoading,
@@ -86,12 +80,24 @@ function AudioButton(
           .join(' ')}
         ref={ref}
         title={
-          result.audioUrl ? 'Play audio' : `Language ${language} has no audio`
+          result.audioUrl
+            ? playbackRate < 1
+              ? `Play audio at ${playbackRate}x speed`
+              : 'Play audio'
+            : `Language ${language} has no audio`
         }
         {...props}
       >
         {content}
-      </button>
+      </Button>
+      {result.audioUrl && (
+        <audio ref={audioRef}>
+          <source
+            src={result.audioUrl}
+            type="audio/mpeg"
+          />
+        </audio>
+      )}
     </>
   )
 }

@@ -52,7 +52,9 @@ function SecondaryHeader({
       left={(
         <Button
           onClick={() => setFocus(1)}
-          variant="simple"
+          variant="borderless"
+          color="important"
+          style={{ width: '100%' }}
         >
           Close
         </Button>

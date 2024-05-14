@@ -1,0 +1,60 @@
+import { Meta, ColorItem, ColorPalette } from '@storybook/addon-docs/blocks';
+
+import { 
+    themeMap
+} from './helpers';
+
+<Meta title="Colors" />
+
+## Colorschemes
+
+Color are collections of colors that put together, make a UI theme.
+
+### Light
+
+<div className='light-theme'>
+ <ColorPalette>
+   { themeMap.map((e,i) =>
+     <ColorItem
+       key={i}
+       { ...e }
+     />
+   ) }
+ </ColorPalette>
+</div>
+
+### Dark
+<div className='dark-theme'>
+ <ColorPalette>
+   { themeMap.map((e,i) =>
+     <ColorItem
+       key={i}
+       { ...e }
+     />
+   ) }
+ </ColorPalette>
+</div>
+
+### Blue
+<div className='blue-theme'>
+ <ColorPalette>
+   { themeMap.map((e,i) =>
+     <ColorItem
+       key={i}
+       { ...e }
+     />
+   ) }
+ </ColorPalette>
+</div>
+
+### Blue
+<div className='green-theme'>
+ <ColorPalette>
+   { themeMap.map((e,i) =>
+     <ColorItem
+       key={i}
+       { ...e }
+     />
+   ) }
+ </ColorPalette>
+</div>

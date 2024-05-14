@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
 import { Link } from 'react-router-dom'
+import { Button } from '@aztlan/ui'
 import {
   graphql,
   useFragment,
@@ -34,22 +35,22 @@ function VariantButton(
   const { variantLink } = useExpressionLinks(result.id)
 
   return (
-    <Link to={variantLink}>
-      <button
-        disabled={result.isNew}
-        className={[
-          result.isNew && styleNames.modifierNew,
-          !result.isProcessed && styleNames.modifierLoading,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        title="Create a new variant of this expression"
-        {...props}
-        ref={ref}
-      >
-        *
-      </button>
-    </Link>
+    <Button
+      disabled={result.isNew}
+      className={[
+        result.isNew && styleNames.modifierNew,
+        !result.isProcessed && styleNames.modifierLoading,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      title="Create a new variant of this expression"
+      {...props}
+      ref={ref}
+      as={Link}
+      to={variantLink}
+    >
+      *
+    </Button>
   )
 }
 

@@ -96,7 +96,7 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
     >
       {result.messages ? (
         [...result.messages.edges].reverse().map((edge) => (
-          <div className="grid container">
+          <div className="grid container message-wrapper">
             <Message
               key={edge.node.id}
               data={edge.node}
@@ -117,8 +117,8 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
           ref={loadMoreRef}
           className="ref"
         />
-        {isLoadingPrevious && 'Loading.'}
-        {!hasPrevious && 'No more to load'}
+        {isLoadingPrevious && <p>Loading previous chat messages.</p>}
+        {!hasPrevious && <p>This is the beginning of the conversation.</p>}
       </div>
     </div>
   )

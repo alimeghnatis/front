@@ -3,8 +3,10 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.textarea-form {
+  background: var(--color);
+
   button {
-    align-self: end;
+    //align-self: end;
   }
 }
 

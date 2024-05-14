@@ -1,0 +1,46 @@
+// Ref : https://coolors.co/e3b505-bd210f-610345-f4f4f6-112682
+// Last one
+$mono-0: #ffffff;
+$mono-1: #f4f4f6;
+$mono-2: #e9e9ed;
+$mono-3: #dddde3;
+$mono-4: #c7c7d1;
+$mono-5: #b0b0bf;
+$mono-6: #8f8fa3;
+$mono-7: #6e6e87;
+$mono-8: #494951;
+$mono-9: #25252d;
+$mono-10: #121216;
+
+$blue-0: #ffffff;
+$blue-1: #dbe1f1;
+$blue-2: #a5b3f3;
+$blue-3: #6f86ec;
+$blue-4: #3858e5;
+$blue-5: #1c3fd9;
+$blue-6: #1734b5;
+$blue-7: #112682; // Origin
+$blue-8: #0c1a5a;
+$blue-9: #071036;
+$blue-10: #020512;
+
+$theme:(
+  "heading":[$blue-6 $blue-7 $blue-5 $mono-0],
+  "paragraph":[$blue-6 $blue-7 $blue-5 $mono-0],
+  "label":[$blue-6 $blue-7 $blue-5 $mono-0],
+  "metadata":[$mono-6 $mono-7 $mono-5 $mono-0],
+  "anchor":[$mono-3 $mono-2 $mono-4 $mono-10],
+  //"disabled":[$mono-3 $mono-4 $mono-2 $mono-1],
+
+  "far":[$mono-2 $mono-3 $mono-1 $blue-6],
+  "near":[$mono-1 $mono-2 $mono-0 $blue-6],
+
+  "error":[#bd210F #971a0c #e22712 $mono-0],
+  "success":[$blue-6 $blue-7 $blue-5 $mono-0],
+  "warning": [#facb0f #f0c105 #fbd437 $mono-10],
+  "loading": [#0B7189 #095e71 #11add0 $mono-10],
+  "new": [#ffbb00 #ffcc00 #ffdd00 $mono-10],
+
+  "selected": [$blue-5 $blue-5 $blue-4 $mono-0],
+  "important": [$blue-6 $blue-7 $blue-5 $mono-0],
+);

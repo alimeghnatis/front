@@ -24,7 +24,9 @@ function Button({
   children,
   as: Wrapper = 'button',
   type = 'button',
+  color,
   variant,
+  disabled = false,
   ...otherProps
 }: InferProps<typeof Button.propTypes> & {
   [key: string]:any;
@@ -47,12 +49,15 @@ function Button({
         baseClassName,
         componentClassName,
         userClassName,
+        color,
         variant && styleNames[`modifier${capitalizedVariant}`],
+        !isHTMLButton && disabled && styleNames.modifierDisabled,
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       type={isHTMLButton ? type : undefined}
+      disabled={isHTMLButton ? disabled : undefined}
       {...otherProps}
     >
       {children}
@@ -77,7 +82,24 @@ Button.propTypes = {
   as:PropTypes.elementType,
 
   /** The button variant */
-  variant:PropTypes.oneOf(['simple']),
+  variant:PropTypes.oneOf([
+    'simple',
+    'borderless',
+    'divided',
+  ]),
+
+  /** The button color */
+  color:PropTypes.string,
+
+  /** The button type */
+  type:PropTypes.oneOf([
+    'button',
+    'submit',
+    'reset',
+  ]),
+
+  /** Whether the button is disabled */
+  disabled:PropTypes.bool,
 }
 
 Button.Group = Group

@@ -18,7 +18,7 @@ function Layout() {
         navigationSpan={8}
         navigationSpanDesktop={10}
         secondarySpan={6}
-        secondarySpanDesktop={10}
+        secondarySpanDesktop={12}
       />
     </BoardProvider>
   )

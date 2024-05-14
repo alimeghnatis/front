@@ -9,6 +9,7 @@ import {
   useFragment,
   // RecordSourceSelectorProxy,
 } from 'react-relay'
+import { Button } from '@aztlan/ui'
 import useExpressionLinks from '../useExpressionLinks.js'
 
 const FRAGMENT = graphql`
@@ -34,22 +35,22 @@ function DetailsButton(
   const { detailsLink } = useExpressionLinks(result.id)
 
   return (
-    <Link to={detailsLink}>
-      <button
-        disabled={result.isNew}
-        className={[
-          result.isNew && styleNames.modifierNew,
-          !result.isProcessed && styleNames.modifierLoading,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        title="Display expression details and explanations"
-        {...props}
-        ref={ref}
-      >
-        ?
-      </button>
-    </Link>
+    <Button
+      disabled={result.isNew}
+      className={[
+        result.isNew && styleNames.modifierNew,
+        !result.isProcessed && styleNames.modifierLoading,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      title="Display expression details and explanations"
+      {...props}
+      ref={ref}
+      as={Link}
+      to={detailsLink}
+    >
+      ?
+    </Button>
   )
 }
 

@@ -6,6 +6,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
+import { Button } from '@aztlan/ui'
 
 const baseClassName = styleNames.base
 const componentClassName = 'suggestion'
@@ -51,17 +52,22 @@ InferProps<typeof Suggestion.propTypes>): React.ReactElement {
       {...otherProps}
     >
       <div className="language">
-        <strong>{language}</strong>
+        <p>
+          <strong>{language}</strong>
+        </p>
       </div>
-      <div className="content">{children}</div>
+      <div className="content">
+        <p>{children}</p>
+      </div>
       <div className="actions">
-        <button
-          type="button"
+        <Button
           onClick={handleClick}
           disabled={isInFlight}
+          variant="borderless"
+          color="selected"
         >
           +
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -23,6 +23,10 @@ $span-submit-actions: 2;
 
     > .actions {
       grid-column-end: span $span-submit-actions;
+
+      > .#{bem.$base}.button {
+        width: 100%;
+      }
     }
   }
 }

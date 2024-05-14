@@ -20,18 +20,38 @@ $infinite-scroll-offset: 1000px;
       grid-column: 1/-2;
     }
     @media screen and (min-width: 801px) {
+      --columns: 9;
+
       &.user {
-        grid-column: 5/-1;
+        grid-column: 5/-2;
       }
 
       &.assistant {
-        grid-column: 1/-5;
+        grid-column: 2/-5;
       }
+    }
+
+    > .suggestions {
+      //--tmp: var(--columns);
+      //--columns: calc(var(--tmp) - 1);
+      grid-column: 2/ -1;
+    }
+  }
+
+  > .message-wrapper {
+    &:first-of-type {
+      margin-bottom: var(--gap);
     }
   }
 
   #load-more {
     position: relative;
+
+    p {
+      color: var(--metadata);
+      margin-top: calc(var(--gap) * 3);
+      text-align: center;
+    }
 
     .ref {
       background: red;

@@ -3,15 +3,21 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.exp-group {
-  border-bottom: 1px solid white;
-  box-sizing: border-box;
+  //border-bottom: 1px solid var(--on-color);
+
+  //box-shadow: 0 1px 0 0 var(--on-color);
+  //box-sizing: border-box;
+  //margin-bottom: -1px;
   //scroll-snap-align: end;
   & + & {
     margin-top: var(--gap);
   }
 
   &:hover {
-    background-color: #f5f5f5;
+    //background-color: #f5f5f5;
+    .#{bem.$base}.expression {
+      background: var(--soft-color);
+    }
   }
 }
 

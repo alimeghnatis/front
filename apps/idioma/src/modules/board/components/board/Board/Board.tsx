@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useEffect, useInsertionEffect, useRef,
+  useEffect, useInsertionEffect, useRef, useCallback,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -9,6 +9,7 @@ import { InferProps } from 'prop-types'
 import {
   usePaginationFragment, graphql,
 } from 'react-relay'
+import { useHistory } from 'react-router-dom'
 import styleNames from '@aztlan/bem'
 import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import { useBoardContext } from 'modules/common/components'
@@ -71,16 +72,15 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
   )
 
   const loadMoreRef = useRef<HTMLDivElement>(null)
+  const groupsContainerRef = useRef<HTMLDivElement>(null)
 
   useIntersectionObserverLoader(
     loadMoreRef, hasNext, loadNext, isLoadingNext,
   )
 
-  const { containerRef } = useBoardContext()
-
-  console.log(
-    'Board result', result,
-  )
+  const {
+    containerRef, baseBoardUrl, currentExpressionId,
+  } = useBoardContext()
 
   useEffect(
     () => {
@@ -116,6 +116,28 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
 
   const edges = [...(result?.groups?.edges || [])].reverse()
 
+  const history = useHistory()
+
+  const handleClickOnBoard = useCallback(
+    (e) => {
+      const { target } = e
+      const containerElement = containerRef.current
+      const groupsContainerElement = groupsContainerRef.current
+      if (
+        (target === containerElement || target == groupsContainerElement)
+        && currentExpressionId
+      ) {
+        history.push(baseBoardUrl)
+      } else {
+        // console.log('a child was clicked')
+      }
+    },
+    [
+      containerRef,
+      groupsContainerRef,
+    ],
+  )
+
   return (
     <div
       id={id}
@@ -130,6 +152,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       ref={containerRef}
+      onClick={handleClickOnBoard}
       // {...otherProps}
     >
       {!result?.groups?.edges.length && (
@@ -137,7 +160,10 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
           Start by adding an expression using the form at the bottom.
         </div>
       )}
-      <div className="groups container">
+      <div
+        className="groups container"
+        ref={groupsContainerRef}
+      >
         {// results? because of the expreession refetch. Non deterministic error saying canoot read property 'groups' of null
         edges.map((edge) => (
           <DefaultGroup
@@ -156,8 +182,10 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
           ref={loadMoreRef}
           className="ref"
         />
-        {isLoadingNext && 'Loading.'}
-        {!hasNext && 'No more to load'}
+        {isLoadingNext && <p>Loading previous expressions.</p>}
+        {!hasNext && (
+          <p>There are no more expressions to load in this board.</p>
+        )}
       </div>
     </div>
   )

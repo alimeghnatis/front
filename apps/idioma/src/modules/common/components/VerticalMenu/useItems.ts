@@ -128,7 +128,7 @@ const useItems = ({
             },
             {
               label:'Profile',
-              url  :'/d/profile',
+              url  :paths.profile.generatePath('PROFILE'),
             },
             {
               label:'Form Test',
@@ -155,7 +155,18 @@ const useItems = ({
       items.push({
         items:[
           { Component: LocaleSwitcher },
-          { Component: ThemeSwitcher },
+          {
+            Component:() => React.createElement(
+              ThemeSwitcher, {
+                themes:{
+                  'dark-theme' :'Dark',
+                  'light-theme':'Light',
+                  'blue-theme' :'Blue',
+                  'green-theme':'Green',
+                },
+              },
+            ),
+          },
         ],
       })
       if (viewerData) {
@@ -170,6 +181,7 @@ const useItems = ({
                   onClick :() => logout(),
                   disabled:isLogoutInFlight,
                   variant :'simple',
+                  color   :'paragraph',
                 },
                 'Logout',
               ),

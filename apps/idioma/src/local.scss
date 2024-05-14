@@ -1,8 +1,14 @@
 @use "@aztlan/bem" as bem;
+@use "@aztlan/base-styles/themes" as themes;
 @use "@aztlan/grid/src/main" as grid with (
   $default-gap:1.5rem,
 );
 @use "@aztlan/swatch/src/main" as swatch with (
+  $themes:(
+    "light-theme":themes.$light-theme,
+    "dark-theme":themes.$dark-theme,
+    "blue-theme":themes.$blue-theme,
+  ),
   $extras:(
     "light-theme":(
       "font-size":18px,
@@ -48,6 +54,17 @@ $root-font-map:(
 :root {
   //--gap: 1.5em;
   @include font.root-definitions-from-map($root-font-map);
+}
+
+@include media.media($to: 800px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+@include media.media($from: 801px) {
+  .hide-desktop {
+    display: none;
+  }
 }
 
 
@@ -185,12 +202,20 @@ main.flex {
 
 button {
   &.#{bem.$modifier-loading} {
-    background: blue;
+    //background: blue;
   }
   &.#{bem.$modifier-new} {
-    background: green;
+    //background: green;
   }
   &.#{bem.$modifier-loading}.#{bem.$modifier-new} {
-    background: yellow;
+    //background: yellow;
+  }
+}
+
+.light-theme,
+.blue-theme,
+.green-theme {
+  .night {
+    // 
   }
 }

@@ -193,4 +193,4 @@ function SelectHeader(props) {
 
 export { RawSelectHeader }
 
-export default withSuperuser(SelectHeader)
+export default SelectHeader

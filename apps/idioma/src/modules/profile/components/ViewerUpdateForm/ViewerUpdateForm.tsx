@@ -169,7 +169,9 @@ InferProps<typeof RawViewerUpdateForm.propTypes>): React.ReactElement {
         </React.Suspense>
       </div>
       <ModularForm.SubmitBar
-        submitText="Update"
+        className="background near"
+        buttonProps={{ color: isInFlight ? 'loading' : 'success' }}
+        submitText={isInFlight ? 'Loading' : 'Save'}
         disabled={isInFlight}
         style={{ width: '100%' }}
       />

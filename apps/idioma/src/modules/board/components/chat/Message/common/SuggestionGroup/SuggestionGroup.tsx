@@ -7,6 +7,9 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
+  Button, useNotificationContext,
+} from '@aztlan/ui'
+import {
   graphql,
   useFragment,
   useMutation,
@@ -14,7 +17,6 @@ import {
   commitLocalUpdate,
   useRelayEnvironment,
 } from 'react-relay'
-import { useNotificationContext } from '@aztlan/ui'
 
 import styleNames from '@aztlan/bem'
 
@@ -208,7 +210,10 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
           }
         },
         onCompleted:(response) => {
-          notify.success(`Successfully added ${suggestionsToCommit.length} expression(s) to the board`)
+          notify.success(
+            `Successfully added ${suggestionsToCommit.length} expression(s) to the board`,
+            0,
+          )
         },
         onError:(error) => {
           const { errors } = error?.res
@@ -258,16 +263,16 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
         <div className="content">
           <p>Add all suggestions to the board</p>
         </div>
-        <button
-          type="button"
+        <Button
           onMouseOver={() => selectSuggestions(result.suggestions.map((
             _, index,
           ) => index))}
           onClick={() => createGroupFromSuggestions(selected)}
           disabled={isInFlight}
+          variant="borderless"
         >
           Add
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ $actions-column-span:1;
 
 .#{bem.$base}.suggestion {
   &.#{bem.$modifier-selected} {
-    background: lightgreen;
+    background: var(--selected);
   }
 
   > .language {
@@ -18,7 +18,12 @@ $actions-column-span:1;
   }
 
   > .actions {
+    display: flex;
     grid-column: #{- $actions-column-span - 1}/-1;
+
+    > * {
+      flex-grow: 1;
+    }
   }
 }
 

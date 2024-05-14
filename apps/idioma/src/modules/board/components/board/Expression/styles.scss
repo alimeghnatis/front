@@ -7,19 +7,31 @@ $span-language: 1;
 $span-tools: 3;
 $subtotal-span: $span-language + $span-tools;
 
+$default-border-width: 1px;
+
+
 @keyframes loading-background {
   0% {
-    background: lightblue;
+    background: var(--new);
+    color: var(--on-new);
   }
 
   100% {
-    background: transparent;
+    background: var(--far);
+    color: var(--on-far);
   }
 }
 
 .#{bem.$base}.expression {
+  background: var(--color);
+  //box-shadow: 0 -1px 0 0 var(--on-color);
+  //border-top: $default-border-width solid var(--on-color);
+  //box-sizing: border-box;
+  margin-top: -1px;
+
   .general {
     > .language {
+      color: var(--on-color);
       //font-family: "nserif";
       //font-style: italic;
       grid-column-end: span $span-language;
@@ -29,17 +41,39 @@ $subtotal-span: $span-language + $span-tools;
       grid-column-end: span var(--span-extras, 0);
     }
 
-    > .expression {
+    > .content {
+      color: var(--on-color);
       cursor: default;
       grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras, 0));
+
+      p {
+        color: var(--on-color);
+      }
     }
 
     > .tools {
       grid-column-end: span $span-tools;
+
+      .#{bem.$base}.button-group {
+        display: flex;
+        //height: calc(100% - #{$default-border-width});
+
+        > .#{bem.$base}.button {
+          border-color: var(--far) !important;
+          flex-grow: 1;
+          font-weight: 400;
+
+          &:first-child {
+            border-left: 0;
+          }
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+      }
     }
   }
-  border-top: 1px solid white;
-  box-sizing: border-box;
 
   /* stylelint-disable order/order -- Required */
   @include media.media($to: 801px) {
@@ -60,7 +94,7 @@ $subtotal-span: $span-language + $span-tools;
         //grid-column-end: span 1;
       }
 
-      > .expression {
+      > .content {
         --columns: 7;
 
         p {
@@ -86,11 +120,20 @@ $subtotal-span: $span-language + $span-tools;
   }
 
   &.bookmarked {
-    background: lightpink;
+    //background: var(--important);
   }
 
   &:hover {
-    background: yellow;
+    background: var(--hard-color) !important;
+  }
+  @media (hover: hover) {
+    &:not(:hover):not(.#{bem.$modifier-selected}) {
+      .general {
+        > .tools {
+          display: none;
+        }
+      }
+    }
   }
 }
 

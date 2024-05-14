@@ -3,19 +3,23 @@
 @use "@aztlan/bem";
 
 $default-border-radius: 0.25em;
-$default-border-color: #000000;
+$default-border-color: var(--on-color);
 $default-border-width: 1px;
 $default-border-style: solid;
 
 $default-line-height: 1.5em;
 
-$default-background: #ffffff;
-$hover-background: #a0a0a0;
-$focus-background: #df1f00;
+$fallback-color-name: error;
 
-$default-color: #000000;
-$hover-color: #df1f00;
-$focus-color: #ffffff;
+$default-background: var(--color, var(--#{$fallback-color-name}));
+$hover-background: var(--hard-color, var(--hard-#{$fallback-color-name}));
+$focus-background: var(--soft-color, var(--soft-#{$fallback-color-name}));
+$disabled-background: var(--soft-color, var(--soft-#{$fallback-color-name}));
+
+$default-color: var(--on-color, var(--on-#{$fallback-color-name}));
+$hover-color: var(--on-color, var(--on-#{$fallback-color-name}));
+$focus-color: var(--on-color, var(--on-#{$fallback-color-name}));
+$disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
 
 
 .#{bem.$base}.button {
@@ -25,23 +29,57 @@ $focus-color: #ffffff;
   color: $default-color;
   font-family: inherit;
   font-size: inherit;
+  font-weight: 700;
   line-height: $default-line-height;
   padding: 0;
+  text-align: center;
+  transition: all 0.2s;
 
-  &:hover {
+
+  &:disabled {
+    background: $disabled-background;
+    color: $disabled-color;
+    //cursor: not-allowed;
+  }
+
+
+  &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {
     background: $hover-background;
     color: $hover-color;
   }
 
-  &:focus {
+  &:not(.#{bem.$modifier-disabled}):not(:disabled):focus {
     background: $focus-background;
     color: $focus-color;
   }
 
+  .#{bem.$base}.#{bem.$modifier-simple} &,
   &.#{bem.$modifier-simple} {
     background-color: transparent;
     //color: ;
     border: 0;
+    color: var(--color);
+
+    &:disabled {
+      background: transparent;
+      color: var(--soft-color);
+    }
+
+    &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {
+      background: transparent;
+      color: var(--hard-color);
+    }
+
+    &:not(.#{bem.$modifier-disabled}):not(:disabled):focus {
+      background: transparent;
+      color: var(--soft-color);
+    }
+  }
+
+  .#{bem.$base}.#{bem.$modifier-borderless} &,
+  &.#{bem.$modifier-borderless} {
+    border: 0;
+    border-radius: 0;
   }
 
   .#{bem.$base}.button-group & {
@@ -57,6 +95,13 @@ $focus-color: #ffffff;
       border-left: 0;
       border-top-left-radius: 0;
     }
+  }
+
+  .#{bem.$base}.#{bem.$modifier-divided} &,
+  &.#{bem.$modifier-divided} {
+    border-bottom: 0;
+    border-radius: 0;
+    border-top: 0;
   }
 }
 

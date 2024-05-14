@@ -1,0 +1,51 @@
+// Reference
+// https://coolors.co/bac7be-c8e4c8-7dcd85-80ab82-778472
+// Red, orange, mono come from
+// https://coolors.co/bb0a21-c8e4c8-252627-80ab82-de9151
+$mono-0: #ffffff;
+$mono-1: #f4f4f5;
+$mono-2: #eaeaec;
+$mono-3: #dfdfe2;
+$mono-4: #c9c9cf;
+$mono-5: #a9a9b1;
+$mono-6: #7e7e8b;
+$mono-7: #4e4e56;
+$mono-8: #303036;
+$mono-9: #1d1d20;
+$mono-10: #0a0a0b;
+
+// @tea-green
+$green-0: #ffffff; // Lightest green-, almost white
+$green-1: #f1f8f1; // Very pale (mostly white) green-
+$green-2: #d6ebd6; // Soft pale green-
+$green-3: #c2e1c2; // Pastel green-
+$green-4: #add7ad; // Light green-
+$green-5: #92c992; // Lime green-
+
+// @cambridge blue
+$green-6: #80ab82;
+$green-7: #629364;
+$green-8: #412642;
+$green-9: #293d2a;
+$green-10: #101811;
+
+$theme:(
+  "heading":[$mono-9 $mono-10 $mono-8 $mono-0],
+  "paragraph":[$mono-9 $mono-10 $mono-8 $mono-0],
+  "label":[$mono-9 $mono-10 $mono-8 $mono-0],
+  "metadata":[$mono-5 $mono-6 $mono-4 $mono-0],
+  "anchor":[$mono-3 $mono-2 $mono-4 $mono-10],
+  //"disabled":[$mono-3 $mono-4 $mono-2 $mono-1],
+
+  "far":[$green-2 $green-3 $green-4 $mono-10],
+  "near":[$green-1 $green-2 $green-0 $mono-10],
+
+  "error":[#BB0A21 #9b081C #e90c2a $mono-0],
+  "success":[#6cc675 #4fba5a #89d191 $mono-0],
+  "warning": [#db8743 #ce7727 #e29d65 $mono-10],
+  "loading": [#11add0 #0f9dbd #12bce2 $mono-0],
+  "new": [#db8743 #ce7727 #e29d65 $mono-10],
+
+  "important": [$green-6 $green-7 $green-5 $mono-0],
+  "selected": [$green-4 $green-5 $green-3 $mono-10],
+);

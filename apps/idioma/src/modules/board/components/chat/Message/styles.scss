@@ -2,7 +2,12 @@
 
 @use "@aztlan/bem";
 
+
 .#{bem.$base}.thread-message {
+  .role {
+    color: var(--label);
+  }
+
   &.user {
     background: var(--soft-near);
   }
@@ -12,7 +17,13 @@
   }
 
   > .suggestions {
+    --tmp: calc(var(--columns) - 1);
     grid-column: 2/ -1;
+
+    > * {
+      --columns: var(--tmp);
+    }
+    //--columns: calc(var(--tmp) - 1);
   }
 }
 

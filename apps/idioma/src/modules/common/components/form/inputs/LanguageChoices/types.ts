@@ -13,6 +13,12 @@ export const propTypes = {
 
   /** Whether the input is disabled */
   disabled:PropTypes.bool,
+
+  /** Number of options columns */
+  optionsColumns:PropTypes.number,
+
+  /** Number of options columns on desktop */
+  optionsColumnsDesktop:PropTypes.number,
 }
 
 export type TProps = InferProps<typeof propTypes>

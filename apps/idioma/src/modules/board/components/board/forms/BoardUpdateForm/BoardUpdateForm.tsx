@@ -151,7 +151,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       style={style}
       fieldProps={{
         spanLabelDesktop  :2,
-        spanContentDesktop:8,
+        spanContentDesktop:9,
       }}
       defaultValues={parsedInstance}
       onSubmit={handleUpdate}
@@ -162,7 +162,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
             <>
               <h2 className="container">Danger Zone</h2>
               <p className="span-8 md-span-2">Delete board</p>
-              <div className="span-8">
+              <div className="span-8 md-span-9">
                 <DeleteBoardButton data={result} />
               </div>
             </>
@@ -170,7 +170,9 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
         </ModularForm.Section>
       </div>
       <ModularForm.SubmitBar
-        submitText="Update"
+        className="background near"
+        buttonProps={{ color: isInFlight ? 'loading' : 'success' }}
+        submitText={isInFlight ? 'Loading' : 'Save'}
         disabled={isInFlight}
         style={{ width: '100%' }}
       />

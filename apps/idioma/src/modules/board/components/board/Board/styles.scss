@@ -25,6 +25,12 @@ $infinite-scroll-offset: 1000px;
   #load-more {
     position: relative;
 
+    p {
+      color: var(--metadata);
+      margin-top: calc(var(--gap) * 3);
+      text-align: center;
+    }
+
     .ref {
       //background: red;
       bottom: -$infinite-scroll-offset;

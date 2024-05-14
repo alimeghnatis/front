@@ -61,8 +61,9 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
         <Button
           onClick={toggleNavigation}
           variant="simple"
+          color="error"
         >
-          Menu
+          =
         </Button>
       )}
       leftSpanDesktop={1}
@@ -73,6 +74,7 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
             onClick={() => selectSecondary('help')}
             type="button"
             variant="simple"
+            color="error"
           >
             Help
           </Button>
@@ -80,6 +82,7 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
             as={Link}
             to="/profile"
             variant="simple"
+            color="error"
           >
             P
           </Button>

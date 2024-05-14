@@ -93,9 +93,6 @@ Option.propTypes = {
 function Filters({
   filters, selectedFilter, setSelectedFilter,
 }) {
-  console.log(
-    'Filters, selectedFilter', selectedFilter, filters,
-  )
   return (
     <div className="filters">
       {Object.keys(filters).map((key) => (
@@ -150,6 +147,8 @@ function LanguageChoices({
   registerProps,
   initialFilter = 'selected',
   initialFilterIfEmpty = 'audio',
+  optionsColumns = 2,
+  optionsColumnsDesktop = 3,
 }: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -223,7 +222,11 @@ function LanguageChoices({
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        '--options-columns'        :optionsColumns,
+        '--options-columns-desktop':optionsColumnsDesktop,
+        ...style,
+      }}
     >
       <Filters
         filters={filters}

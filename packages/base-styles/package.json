@@ -5,7 +5,8 @@
   "main": "src/main.scss",
   "exports": {
     ".": "./src/main.scss",
-    "./initial.scss": "./src/initial.scss"
+    "./initial.scss": "./src/initial.scss",
+    "./themes": "./src/themes/index.scss"
   },
   "scripts": {
     "compile": "sass src/main.scss dist/main.css -I ../../node_modules -I ./node_modules -c && npm run filesize -- dist/main.css",

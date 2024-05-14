@@ -174,6 +174,7 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
       isInFlight={isInFlight}
       handleSubmit={handleSubmit}
       placeholder="Expressions about going to the supermarket in Mexican Spanish."
+      buttonLabel="Send"
       {...otherProps}
     />
   )

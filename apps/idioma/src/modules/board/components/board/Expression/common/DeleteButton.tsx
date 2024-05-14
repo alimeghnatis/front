@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
+import { Button } from '@aztlan/ui'
 
 import {
   graphql,
@@ -76,7 +77,7 @@ function DeleteButton({
   //
   //
   return (
-    <button
+    <Button
       disabled={isDeleteInFlight || result.isNew}
       className={[
         result.isNew && styleNames.modifierNew,
@@ -90,7 +91,7 @@ function DeleteButton({
       {...props}
     >
       x
-    </button>
+    </Button>
   )
 }
 

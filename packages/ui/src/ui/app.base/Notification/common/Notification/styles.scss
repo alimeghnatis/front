@@ -5,13 +5,16 @@
 .#{bem.$base}.notification {
   cursor: default;
   &.#{bem.$modifier-error} {
-    background: red;
+    background: var(--error);
+    color: var(--on-error);
   }
   &.#{bem.$modifier-warning} {
-    background: yellow;
+    background: var(--warning);
+    color: var(--on-warning);
   }
   &.#{bem.$modifier-success} {
-    background: green;
+    background: var(--success);
+    color: var(--on-success);
   }
 }
 

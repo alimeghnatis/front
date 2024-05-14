@@ -75,12 +75,16 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      <div className="container">
-        <strong>{result.role}</strong>
+      <div className="container role">
+        <span>
+          <strong>{result.role}</strong>
+        </span>
       </div>
       {!(result.isLoading || UNSTABLE_loading) ? (
         <>
-          <div className="container">{result.content.content}</div>
+          <div className="container">
+            <p>{result.content.content}</p>
+          </div>
           {result.role === 'assistant'
             && result.content.suggestions?.length > 0 && (
               <div className="container suggestions">

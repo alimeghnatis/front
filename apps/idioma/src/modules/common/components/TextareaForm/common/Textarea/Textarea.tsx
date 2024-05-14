@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useState, ChangeEvent,
+  useInsertionEffect, useState, ChangeEvent, useRef,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -32,9 +32,22 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
     rows,
     setRows,
   ] = useState(1)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const textareaLineHeight = 24 // Adjust based on your CSS
+    const textarea = textareaRef.current
+    if (!textarea) return
+
+    let textareaLineHeight = 24 // Default line height in case we can't get it from CSS
+
+    if (typeof window !== 'undefined') {
+      const computedStyle = window.getComputedStyle(textarea)
+      textareaLineHeight = parseFloat(computedStyle.lineHeight)
+      console.log(
+        'textareaLineHeight', textareaLineHeight,
+      )
+    }
+
     const previousRows = event.target.rows
     event.target.rows = 1 // Reset number of rows in textarea
 
@@ -75,10 +88,11 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
       value={value}
       placeholder={placeholder}
       onChange={handleChange}
+      ref={textareaRef}
       style={{
-        overflow  :'hidden',
-        resize    :'none',
-        lineHeight:'24px', // Ensure this matches `textareaLineHeight`
+        overflow:'hidden',
+        resize  :'none',
+        // lineHeight:'24px', // Ensure this matches `textareaLineHeight`
         ...style,
       }}
       {...otherProps}

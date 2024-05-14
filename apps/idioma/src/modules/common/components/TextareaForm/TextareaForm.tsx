@@ -25,6 +25,7 @@ function TextareaForm({
   isInFlight,
   handleSubmit,
   placeholder,
+  buttonLabel = 'Submit',
 }: // ...otherProps
 
 InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
@@ -89,6 +90,7 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         'grid',
+        'near',
         userClassName,
       ]
         .filter((e) => e)
@@ -118,9 +120,11 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
       <Button
         disabled={isInFlight}
         type="submit"
-        className="span-2 md-span-2"
+        className="span-2 md-span-3"
+        color={isInFlight ? 'loading' : 'success'}
+        variant="borderless"
       >
-        Add
+        {isInFlight ? 'loading' : buttonLabel}
       </Button>
     </form>
   )
@@ -144,6 +148,9 @@ TextareaForm.propTypes = {
 
   /** The placeholder text */
   placeholder:PropTypes.string,
+
+  /** The text to display on the submit button */
+  buttonLabel:PropTypes.string,
 }
 
 export default TextareaForm

@@ -221,7 +221,9 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         <ModularForm.Section fields={fields} />
       </div>
       <ModularForm.SubmitBar
-        submitText="Create"
+        className="background near"
+        buttonProps={{ color: isInFlight ? 'loading' : 'success' }}
+        submitText={isInFlight ? 'Loading' : 'Create'}
         disabled={isInFlight}
         style={{ width: '100%' }}
       />

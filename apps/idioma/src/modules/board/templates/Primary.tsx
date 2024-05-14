@@ -34,6 +34,7 @@ function PrimaryTemplate({
           <Button
             onClick={() => selectSecondary('board-settings')}
             variant="simple"
+            color="error"
           >
             Settings
           </Button>

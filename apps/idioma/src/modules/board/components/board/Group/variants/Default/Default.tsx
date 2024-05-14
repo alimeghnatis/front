@@ -1,12 +1,16 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useRef, useCallback, useInsertionEffect,
+} from 'react'
+import { useHistory } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
   useFragment, graphql,
 } from 'react-relay'
+import { useBoardContext } from 'modules/common/components'
 import { DefaultExpression } from '../../../Expression/index.js'
 import Group from '../../Group.js'
 
@@ -44,6 +48,8 @@ InferProps<typeof DefaultGroup.propTypes>): React.ReactElement {
     FRAGMENT, data,
   )
 
+  const groupRef = useRef<HTMLDivElement>(null)
+
   if (!result.expressions.edges.length) {
     return null
   }
@@ -56,6 +62,7 @@ InferProps<typeof DefaultGroup.propTypes>): React.ReactElement {
         userClassName,
       ].filter((e) => e).join(' ')}
       style={style}
+      ref={groupRef}
       // key={result.id}
       // {...otherProps}
     >

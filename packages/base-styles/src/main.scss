@@ -1,5 +1,12 @@
+@use "./themes" as themes;
 @use "@aztlan/grid/src/main" as grid;
 @use "@aztlan/swatch/src/main" as swatch with (
+  $themes:(
+    "light-theme":themes.$light-theme,
+    "dark-theme":themes.$dark-theme,
+    "blue-theme":themes.$blue-theme,
+    "green-theme":themes.$green-theme,
+  ),
   $extras:(
     "light-theme":(
       "font-size":18px,

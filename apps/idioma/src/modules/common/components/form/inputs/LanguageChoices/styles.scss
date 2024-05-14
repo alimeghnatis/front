@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 0.7.2 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
 
 $default-option-color: blue;
 $selected-option-color: red;
@@ -50,7 +51,14 @@ $disabled-color: darkgray;
   }
 
   .options {
-    column-count: calc(var(--columns) / 3);
+    --lc: var(--options-columns);
+
+
+    @include media.media($from: 801px) {
+      --lc: var(--options-columns-desktop);
+    }
+    column-count: var(--lc);
+    gap: var(--gap);
 
     .option {
       &.hidden {

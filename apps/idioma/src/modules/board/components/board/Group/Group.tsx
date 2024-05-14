@@ -14,11 +14,14 @@ const componentClassName = 'exp-group'
  * @param {InferProps<typeof Group.propTypes>} props -
  * @returns {React.ReactElement} - Rendered Group
  */
-function Group({
-  className: userClassName,
-  children,
-  ...otherProps
-}: InferProps<typeof Group.propTypes>): React.ReactElement {
+function Group(
+  {
+    className: userClassName,
+    children,
+    ...otherProps
+  }: InferProps<typeof Group.propTypes>,
+  ref,
+): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -37,6 +40,8 @@ function Group({
         .filter((e) => e)
         .join(' ')}
       {...otherProps}
+      ref={ref}
+      {...otherProps}
     >
       {children}
     </div>
@@ -51,4 +56,4 @@ Group.propTypes = {
   children:PropTypes.any,
 }
 
-export default Group
+export default React.forwardRef(Group as React.ForwardRefRenderFunction<HTMLDivElement>)

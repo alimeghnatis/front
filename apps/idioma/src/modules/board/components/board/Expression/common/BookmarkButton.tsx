@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
+import { Button } from '@aztlan/ui'
 
 import {
   graphql,
@@ -83,17 +84,17 @@ function BookmarkButton(
   //
   //
   return (
-    <button
+    <Button
       disabled={isBookmarkInFlight || result.isNew}
       onClick={handleBookmark}
       key={result.id}
+      color={result.isBookmarked ? 'important' : undefined}
       className={[
         result.isNew && styleNames.modifierNew,
         !result.isProcessed && styleNames.modifierLoading,
       ]
         .filter(Boolean)
         .join(' ')}
-      style={{ background: result.isBookmarked ? 'red' : 'white' }}
       title={
         result.isBookmarked ? 'Unbookmark expression' : 'Bookmark expression'
       }
@@ -101,7 +102,7 @@ function BookmarkButton(
       ref={ref}
     >
       !
-    </button>
+    </Button>
   )
 }
 

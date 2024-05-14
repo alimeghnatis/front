@@ -251,6 +251,14 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
       ].filter(Boolean).join(' ')}
       isInFlight={isInFlight}
       handleSubmit={handleSubmit}
+      buttonLabel={(
+        <>
+          <span className="hide-desktop">Add</span>
+          <span className="hide-mobile">
+            {currentExpressionId ? 'Add to group' : 'Add to board'}
+          </span>
+        </>
+      )}
       placeholder={
         currentExpressionId
           ? 'Type a sentence here to add it to the selected group'

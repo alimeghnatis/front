@@ -24,6 +24,7 @@ function SubmitBar({
   style,
   submitText = 'Submit',
   disabled = false,
+  buttonProps = {},
 }: InferProps<typeof SubmitBar.propTypes>): React.ReactElement {
   const { sharedFieldProps } = useForm()
   const { errors } = useFormState()
@@ -35,10 +36,6 @@ function SubmitBar({
       acc[key] = errors[key]?.message?.toString()
       return acc
     }, {},
-  )
-
-  console.log(
-    'SB', errors, transformedErrors,
   )
 
   return (
@@ -68,6 +65,8 @@ function SubmitBar({
         <Button
           type="submit"
           disabled={disabled}
+          variant="borderless"
+          {...buttonProps}
         >
           {submitText}
         </Button>
@@ -91,6 +90,9 @@ SubmitBar.propTypes = {
 
   /** Whether the submit button is disabled */
   disabled:PropTypes.bool,
+
+  /** The props to pass to the submit button */
+  buttonProps:PropTypes.objectOf(PropTypes.any),
 }
 
 export default SubmitBar

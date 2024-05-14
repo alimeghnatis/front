@@ -126,11 +126,11 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           <button onClick={playAudio}>Play</button>
         </>
       ),
-    }, */
+    },
     {
       label  :'Changes',
       payload:result.changes,
-    },
+    }, */
     {
       label  :'Created',
       payload:result.created,

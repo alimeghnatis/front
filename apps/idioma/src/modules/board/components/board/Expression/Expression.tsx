@@ -15,13 +15,15 @@ import styleNames from '@aztlan/bem'
 import {
   useFragment, graphql,
 } from 'react-relay'
+import {
+  Button, useAuthenticationContext,
+} from '@aztlan/ui'
 
 import {
   useBoardContext,
   useViewerPreferences,
 } from 'modules/common/components'
 import { PREFERENCES } from 'modules/common/constants'
-import { useAuthenticationContext } from '@aztlan/ui'
 import {
   AudioButton,
   DeleteButton,
@@ -154,9 +156,11 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        result.isBookmarked && 'bookmarked',
+        'far',
+        result.isBookmarked && 'important',
+        result.id === currentExpressionId && styleNames.modifierSelected,
         // isRecentAndUnprocessed && styleNames.modifierLoading,
-        'grid',
+        // 'grid',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -169,38 +173,47 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         style={{ '--span-extras': spanExtras }}
       >
         <div className="language manual-mobile-only">
-          <strong>{result.iso6391 || result.iso6392 || result.iso6393}</strong>
+          <span className="">
+            <strong>
+              {result.iso6391 || result.iso6392 || result.iso6393}
+            </strong>
+          </span>
         </div>
         {extras !== undefined && (
           <div className="extras manual-mobile-only">{extras}</div>
         )}
         <div
-          className="expression manual-mobile-only"
+          className="content manual-mobile-only"
           onClick={onContentClick}
         >
           <p>{result.correctedContent || result.content}</p>
         </div>
         <div className="tools manual-mobile-only">
-          <AudioButton
-            data={result}
-            ref={audioPlayerRef}
-          />
-          <AudioButton
-            data={result}
-            playbackRate={0.65}
-            ref={audioPlayerSlowRef}
-            content="65"
-          />
-          <BookmarkButton
-            data={result}
-            ref={bookmarkButtonRef}
-          />
-          <DetailsButton data={result} />
-          <VariantButton data={result} />
-          <DeleteButton
-            data={result}
-            groupID={groupID}
-          />
+          <Button.Group
+            variant="divided"
+            color="near"
+          >
+            <AudioButton
+              data={result}
+              ref={audioPlayerRef}
+            />
+            <AudioButton
+              data={result}
+              playbackRate={0.65}
+              ref={audioPlayerSlowRef}
+              content="65"
+            />
+            <BookmarkButton
+              data={result}
+              ref={bookmarkButtonRef}
+            />
+            <DetailsButton data={result} />
+            <VariantButton data={result} />
+            <DeleteButton
+              data={result}
+              groupID={groupID}
+            />
+          </Button.Group>
         </div>
       </div>
 

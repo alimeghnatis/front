@@ -18,9 +18,11 @@ function NavigationPage({ staticContext }: {
         right={(
           <Button
             onClick={toggleNavigation}
-            variant="simple"
+            variant="borderless"
+            color="error"
+            style={{ width: '100%' }}
           >
-            Toggle
+            Close
           </Button>
         )}
       />

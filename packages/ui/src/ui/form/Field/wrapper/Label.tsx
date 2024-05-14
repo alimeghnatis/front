@@ -24,7 +24,8 @@ function Label({
       htmlFor={Element === 'label' ? `form-${name}` : undefined}
       className={[
         styleNames.base,
-        'label',
+        'field-label',
+        'color label',
         userClassName,
       ]
         .filter(Boolean)

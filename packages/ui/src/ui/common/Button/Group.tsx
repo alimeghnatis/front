@@ -20,6 +20,8 @@ function Group({
   className: userClassName,
   style,
   children,
+  variant,
+  color,
 }: // ...otherProps
 
 InferProps<typeof Group.propTypes>): React.ReactElement {
@@ -30,6 +32,8 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
     }, [],
   )
 
+  const capitalizedVariant = variant && variant.charAt(0).toUpperCase() + variant.slice(1)
+
   return (
     <div
       id={id}
@@ -37,6 +41,8 @@ InferProps<typeof Group.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        variant && styleNames[`modifier${capitalizedVariant}`],
+        color,
       ]
         .filter((e) => e)
         .join(' ')}
@@ -60,6 +66,16 @@ Group.propTypes = {
 
   /** The children JSX */
   children:PropTypes.node,
+
+  /** The variant of the button */
+  variant:PropTypes.oneOf([
+    'borderless',
+    'simple',
+    'divided',
+  ]),
+
+  /** The default color of the buttons in the group. Can be ovrriden by the buttons individually */
+  color:PropTypes.string,
 }
 
 export default Group

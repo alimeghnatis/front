@@ -15,7 +15,7 @@
 
   &:hover {
     //background-color: #f5f5f5;
-    .#{bem.$base}.expression {
+    .#{bem.$base}.expression:not(.important) {
       background: var(--soft-color);
     }
   }

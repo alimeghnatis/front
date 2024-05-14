@@ -10,6 +10,7 @@ $subtotal-span: $span-language + $span-tools;
 $default-border-width: 1px;
 
 
+/*
 @keyframes loading-background {
   0% {
     background: var(--new);
@@ -20,14 +21,18 @@ $default-border-width: 1px;
     background: var(--far);
     color: var(--on-far);
   }
-}
+} */
 
 .#{bem.$base}.expression {
   background: var(--color);
   //box-shadow: 0 -1px 0 0 var(--on-color);
   //border-top: $default-border-width solid var(--on-color);
   //box-sizing: border-box;
-  margin-top: -1px;
+  //margin-top: -1px;
+  &,
+  * {
+    transition: background 0.1s;
+  }
 
   .general {
     > .language {
@@ -64,7 +69,7 @@ $default-border-width: 1px;
           font-weight: 400;
 
           &:first-child {
-            border-left: 0;
+            //border-left: 0;
           }
 
           &:last-child {
@@ -116,7 +121,7 @@ $default-border-width: 1px;
   }
 
   &.#{bem.$modifier-loading} {
-    animation: loading-background 1s linear forwards;
+    //animation: loading-background 1s linear forwards;
   }
 
   &.bookmarked {
@@ -124,6 +129,12 @@ $default-border-width: 1px;
   }
 
   &:hover {
+    &:not(.important) {
+      --color: var(--selected);
+      --hard-color: var(--hard-selected);
+      --soft-color: var(--soft-selected);
+      --on-color: var(--on-selected);
+    }
     background: var(--hard-color) !important;
   }
   @media (hover: hover) {

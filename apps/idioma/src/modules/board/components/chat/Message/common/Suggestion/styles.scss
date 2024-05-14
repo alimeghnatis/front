@@ -7,6 +7,10 @@ $actions-column-span:1;
 .#{bem.$base}.suggestion {
   &.#{bem.$modifier-selected} {
     background: var(--selected);
+
+    p {
+      color: var(--on-selected);
+    }
   }
 
   > .language {

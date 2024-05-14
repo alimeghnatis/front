@@ -11,6 +11,10 @@
   resize: none;
   width: 100%;
 
+  &::placeholder {
+    color: var(--metadata);
+  }
+
   &,
   &:hover,
   &:focus {

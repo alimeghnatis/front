@@ -1,7 +1,11 @@
 import * as React from 'react'
+import { useCallback } from 'react'
+import debounce from 'lodash.debounce'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import { Field } from '@aztlan/ui'
+import {
+  Field, useNotificationContext,
+} from '@aztlan/ui'
 import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
@@ -100,6 +104,8 @@ function RatingForm({
     isInFlight,
   ] = useMutation(MUTATION_UPDATE)
 
+  const { notify } = useNotificationContext()
+
   const fieldNames = [
     'rating',
     'ratingComment',
@@ -116,6 +122,31 @@ function RatingForm({
     ratingComment,
   ] = fieldValues
 
+  const debouncedNotifySuccess = useCallback(
+    debounce(
+      () => {
+        notify.success('Feedback sent.')
+      }, 50,
+    ),
+    [],
+  )
+
+  const handleChange = useCallback(
+    (input) => {
+      commitRating({
+        variables  :{ input },
+        onCompleted:(response) => {
+          debouncedNotifySuccess()
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
+        },
+      })
+    },
+    [commitRating],
+  )
+
   React.useEffect(
     () => {
       if (hasChanged) {
@@ -129,7 +160,7 @@ function RatingForm({
         if (ratingComment) {
           input.ratingComment = ratingComment
         }
-        commitRating({ variables: { input } })
+        handleChange(input)
       }
     }, [
       rating,

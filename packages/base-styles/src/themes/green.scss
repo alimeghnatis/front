@@ -17,6 +17,7 @@ $mono-10: #0a0a0b;
 // @tea-green
 $green-0: #ffffff; // Lightest green-, almost white
 $green-1: #f1f8f1; // Very pale (mostly white) green-
+$green-15: #e1f6e1; // Very pale green-
 $green-2: #d6ebd6; // Soft pale green-
 $green-3: #c2e1c2; // Pastel green-
 $green-4: #add7ad; // Light green-
@@ -37,7 +38,7 @@ $theme:(
   "anchor":[$mono-3 $mono-2 $mono-4 $mono-10],
   //"disabled":[$mono-3 $mono-4 $mono-2 $mono-1],
 
-  "far":[$green-2 $green-3 $green-4 $mono-10],
+  "far":[$green-2 $green-3 $green-15 $mono-10],
   "near":[$green-1 $green-2 $green-0 $mono-10],
 
   "error":[#BB0A21 #9b081C #e90c2a $mono-0],

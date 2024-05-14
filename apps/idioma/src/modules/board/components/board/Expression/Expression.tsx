@@ -156,7 +156,8 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        'far',
+        result.isNew ? styleNames.modifierLoading : 'far',
+        //! result.isProcessed && styleNames.modifierLoading,
         result.isBookmarked && 'important',
         result.id === currentExpressionId && styleNames.modifierSelected,
         // isRecentAndUnprocessed && styleNames.modifierLoading,
@@ -191,7 +192,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         <div className="tools manual-mobile-only">
           <Button.Group
             variant="divided"
-            color="near"
+            // color="near"
           >
             <AudioButton
               data={result}

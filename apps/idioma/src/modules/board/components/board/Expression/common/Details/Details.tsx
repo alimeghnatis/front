@@ -38,6 +38,72 @@ const FRAGMENT = graphql`
   }
 `
 
+// PropTypes for ContentMap component
+
+/**
+ * ContentMap component to render content maps.
+ * @param {InferProps<typeof ContentMapPropTypes>} props - Props for ContentMap component.
+ * @returns {React.ReactElement} - Rendered content map.
+ */
+const ContentMap: React.FC<InferProps<typeof ContentMapPropTypes>> = ({
+  contentMap,
+  spanLabel,
+  spanLabelDesktop,
+  spanContent,
+  spanContentDesktop,
+}) => (
+  <div
+    className={[
+      'span-8',
+      'md-span-7',
+      'grid',
+      'content-map',
+    ]
+      .filter(Boolean)
+      .join(' ')}
+  >
+    {contentMap.map(({
+      condition, label, payload, marked: isMarked,
+    }) => (condition || condition === undefined ? (
+      <>
+        <div
+          className={[
+            'label',
+            `span-${spanLabel}`,
+            `md-span-${spanLabelDesktop}`,
+          ].join(' ')}
+        >
+          {label}
+        </div>
+        <div
+          className={[
+            'field',
+            `span-${spanContent}`,
+            `md-span-${spanContentDesktop}`,
+          ].join(' ')}
+          dangerouslySetInnerHTML={
+              isMarked ? { __html: marked.parse(payload) } : undefined
+            }
+          children={!isMarked ? payload : undefined}
+        />
+      </>
+    ) : null))}
+  </div>
+)
+
+ContentMap.PropTypes = {
+  contentMap:PropTypes.arrayOf(PropTypes.shape({
+    condition:PropTypes.bool,
+    label    :PropTypes.string.isRequired,
+    payload  :PropTypes.string.isRequired,
+    marked   :PropTypes.bool,
+  })).isRequired,
+  spanLabel         :PropTypes.number.isRequired,
+  spanLabelDesktop  :PropTypes.number.isRequired,
+  spanContent       :PropTypes.number.isRequired,
+  spanContentDesktop:PropTypes.number.isRequired,
+}
+
 /**
  * description
  * @param {InferProps<typeof Details.propTypes>} props -
@@ -76,17 +142,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     }, [audioRef],
   )
 
-  const contentMap = [
-    /*
-    {
-      label  :'Content',
-      payload:result.correctedContent || result.content,
-    },
-    {
-      label  :'ISO 639',
-      payload:result.iso6391 || result.iso6392 || result.iso6393,
-    },
-    */
+  const contentMap1 = [
     {
       condition:boardData?.displayTranslations && result.translation?.length,
       label    :'Translation',
@@ -105,32 +161,15 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
       payload  :result.grammarExplanation,
       marked   :true,
     },
+  ]
+
+  const contentMap2 = [
     {
       condition:result.wordsExplanation,
       label    :'Word by word',
       payload  :result.wordsExplanation,
       marked   :true,
     },
-    /*
-    {
-      condition:result.audioUrl,
-      label    :'Audio',
-      payload  :(
-        <>
-          <audio ref={audioRef}>
-            <source
-              src={result.audioUrl}
-              type="audio/mpeg"
-            />
-          </audio>
-          <button onClick={playAudio}>Play</button>
-        </>
-      ),
-    },
-    {
-      label  :'Changes',
-      payload:result.changes,
-    }, */
     {
       label  :'Created',
       payload:result.created,
@@ -161,42 +200,26 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <div className="grid container">
-        {contentMap.map(({
-          condition, ...field
-        }) => (condition || condition === undefined ? (
-          <>
-            <div
-              className={[
-                'label',
-                `span-${spanLabel}`,
-              ]
-                .filter(Boolean)
-                .join(' ')}
-            >
-              {field.label}
-            </div>
-            <div
-              className={[
-                'field',
-                `span-${spanContent}`,
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              dangerouslySetInnerHTML={
-                  field.marked
-                    ? { __html: marked.parse(field.payload) }
-                    : undefined
-                }
-              children={!field.marked ? field.payload : undefined}
-            />
-          </>
-        ) : null))}
+        <ContentMap
+          contentMap={contentMap1}
+          spanLabel={spanLabel}
+          spanLabelDesktop={6}
+          spanContent={spanContent}
+          spanContentDesktop={6}
+        />
+        <ContentMap
+          contentMap={contentMap2}
+          spanLabel={spanLabel}
+          spanLabelDesktop={7}
+          spanContent={spanContent}
+          spanContentDesktop={7}
+        />
         <RatingForm
           data={result}
           spanLabel={spanLabel}
-          spanLabelDesktop={spanLabelDesktop}
+          spanLabelDesktop={1}
           spanContent={spanContent}
-          spanContentDesktop={spanContentDesktop}
+          spanContentDesktop={10}
         />
       </div>
     </MobilePopup>

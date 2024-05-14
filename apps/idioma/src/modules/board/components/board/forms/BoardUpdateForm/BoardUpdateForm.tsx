@@ -117,9 +117,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
           console.log(
             'response', response,
           )
-          notify.success(
-            'Board successfully updated.', 0,
-          )
+          notify.success('Board successfully updated.')
         },
         onError:(error) => {
           const { errors } = error?.res

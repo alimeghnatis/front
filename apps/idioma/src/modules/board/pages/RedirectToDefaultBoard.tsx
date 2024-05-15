@@ -20,10 +20,6 @@ function RedirectToDefaultBoard({
     return node.role === 'OWNER' && node.board.isDefault
   })
 
-  console.log(
-    boardMemberships, defaultBoard,
-  )
-
   useLayoutEffect(
     () => {
       if (defaultBoard) {

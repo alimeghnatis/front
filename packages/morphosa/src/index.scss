@@ -89,10 +89,10 @@ $case-nominative-border-style: none!default;
 $case-accusative-border-style: solid!default;
 $case-dative-border-style: dotted!default;
 $case-genitive-border-style: dashed!default;
-//$case-locative-border-style: double!default;
-//$case-instrumental-border-style: groove!default;
-//$case-prepositional-border-style: ridge!default;
-//$case-vocative-border-style: inset!default;
+$case-locative-border-style: double!default;
+$case-instrumental-border-style: groove!default;
+$case-prepositional-border-style: ridge!default;
+$case-vocative-border-style: inset!default;
 
 
 %case {
@@ -102,6 +102,7 @@ $case-genitive-border-style: dashed!default;
 
 @mixin cases() {
   .#{$case-class} {
+    box-sizing:border-box;
     &.#{$case-nominative-class} { 
       @extend %case;
       border-style: $case-nominative-border-style;
@@ -118,10 +119,23 @@ $case-genitive-border-style: dashed!default;
       @extend %case;
       border-style: $case-genitive-border-style;
     }
-    //&.#{$case-locative-class} { }
-    //&.#{$case-instrumental-class} { }
-    //&.#{$case-prepositional-class} { }
-    //&.#{$case-vocative-class} { }
+    &.#{$case-locative-class} {
+      @extend %case;
+      border-style: $case-locative-border-style;
+    }
+    &.#{$case-instrumental-class} {
+      @extend %case;
+      border-style: $case-instrumental-border-style;
+    }
+    &.#{$case-prepositional-class} {
+      @extend %case;
+      border-style: $case-prepositional-border-style;
+    }
+    &.#{$case-vocative-class} {
+      @extend %case;
+      border-style: $case-vocative-border-style;
+    
+    }
   }
 }
 
@@ -199,6 +213,47 @@ $adverb-background: #add8e6; // light blue
 }
 
 /**
+ * Conjunctions
+ */
+$conjunction-class: "conjunction"!default;
+
+$conjunction-background: #C6b8cc; // lavender
+
+@mixin conjunction() {
+  .#{$conjunction-class} {
+    background: $conjunction-background;
+  }
+}
+
+
+/**
+ * Prepositions
+ */
+
+$preposition-class: "preposition"!default;
+
+$preposition-background: #f7a1b1; // light blue
+
+@mixin preposition() {
+  .#{$preposition-class} {
+    background: $preposition-background;
+  }
+}
+
+/**
+ * Particles
+ */
+$particle-class: "particle"!default;
+
+$particle-background: #DEDEDE; // light grey
+
+@mixin particle() {
+  .#{$particle-class} {
+    background: $particle-background;
+  }
+}
+
+/**
  * Verbs
  */
 $verb-class: "verb"!default;
@@ -254,14 +309,19 @@ $verb-tense-future-background:#00ff00;
  * Applying the mixins to the default container class.
  * This setup allows easy extension and modification within the container.
  */
-.#{$default-container-class} {
+.#{$default-class} {
+  @include cases;
   @include genders;
   @include numbers;
-  @include cases;
 
-  @include noun;
   @include adjective;
-  @include verb;
   @include adverb;
+  @include conjunction;
+  @include determiner;
+  @include noun;
+  @include particle;
+  @include preposition;
+  @include pronoun;
+  @include verb;
 }
 

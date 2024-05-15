@@ -1,56 +1,137 @@
 {
-  "expression": "Les étudiants intelligents étudient sérieusement.",
-  "language": "French",
+  "expression": "The doctor, whose clinic is located in the city center, attended to a patient with a rare disease while discussing the latest medical advances with his colleagues.",
+  "language": "English",
   "words": [
     {
-      "word": "Les",
-      "lemma": ["le"],
+      "word": "The",
+      "lemma": ["the"],
       "pos": "DETERMINER",
-      "morphology": {
-        "gender": "MASCULINE",
-        "number": "PLURAL"
-      },
+      "morphology": {},
       "syntax": {
         "function": "DETERMINATIVE",
         "head": 1
       }
     },
     {
-      "word": "étudiants",
-      "lemma": ["étudiant"],
+      "word": "doctor",
+      "lemma": ["doctor"],
       "pos": "NOUN",
       "morphology": {
-        "gender": "MASCULINE",
-        "number": "PLURAL"
+        "number": "SINGULAR"
       },
       "syntax": {
         "function": "SUBJECT",
-        "head": 2
+        "head": 7
       }
     },
     {
-      "word": "intelligents",
-      "lemma": ["intelligent"],
-      "pos": "ADJECTIVE",
-      "morphology": {
-        "gender": "MASCULINE",
-        "number": "PLURAL"
-      },
+      "word": "whose",
+      "lemma": ["whose"],
+      "pos": "PRONOUN",
+      "morphology": {},
       "syntax": {
-        "function": "ADJECTIVAL_MODIFIER",
+        "function": "RELATIVE_CLAUSE",
         "head": 1
       }
     },
     {
-      "word": "étudient",
-      "lemma": ["étudier"],
+      "word": "clinic",
+      "lemma": ["clinic"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 5
+      }
+    },
+    {
+      "word": "is",
+      "lemma": ["be"],
       "pos": "VERB",
       "morphology": {
         "tense": "PRESENT",
         "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
         "voice": "ACTIVE",
         "person": 3,
-        "number": "PLURAL"
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 1
+      }
+    },
+    {
+      "word": "located",
+      "lemma": ["locate"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "PARTICIPLE",
+        "voice": "PASSIVE"
+      },
+      "syntax": {
+        "function": "PREDICATE",
+        "head": 4
+      }
+    },
+    {
+      "word": "in",
+      "lemma": ["in"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "the",
+      "lemma": ["the"],
+      "pos": "DETERMINER",
+      "morphology": {},
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 9
+      }
+    },
+    {
+      "word": "city",
+      "lemma": ["city"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 6
+      }
+    },
+    {
+      "word": "center",
+      "lemma": ["center"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 7
+      }
+    },
+    {
+      "word": "attended",
+      "lemma": ["attend"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "PERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
       },
       "syntax": {
         "function": "MAIN_VERB",
@@ -58,13 +139,175 @@
       }
     },
     {
-      "word": "sérieusement",
-      "lemma": ["sérieusement"],
-      "pos": "ADVERB",
+      "word": "to",
+      "lemma": ["to"],
+      "pos": "PREPOSITION",
       "morphology": {},
       "syntax": {
-        "function": "ADVERBIAL",
-        "head": 3
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 10
+      }
+    },
+    {
+      "word": "a",
+      "lemma": ["a"],
+      "pos": "DETERMINER",
+      "morphology": {},
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 13
+      }
+    },
+    {
+      "word": "patient",
+      "lemma": ["patient"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 12
+      }
+    },
+    {
+      "word": "with",
+      "lemma": ["with"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 13
+      }
+    },
+    {
+      "word": "a",
+      "lemma": ["a"],
+      "pos": "DETERMINER",
+      "morphology": {},
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 16
+      }
+    },
+    {
+      "word": "rare",
+      "lemma": ["rare"],
+      "pos": "ADJECTIVE",
+      "morphology": {},
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 17
+      }
+    },
+    {
+      "word": "disease",
+      "lemma": ["disease"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 15
+      }
+    },
+    {
+      "word": "while",
+      "lemma": ["while"],
+      "pos": "CONJUNCTION",
+      "morphology": {},
+      "syntax": {
+        "function": "SUBORDINATING_CONJUNCTION",
+        "head": 19
+      }
+    },
+    {
+      "word": "discussing",
+      "lemma": ["discuss"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "PARTICIPLE",
+        "voice": "ACTIVE"
+      },
+      "syntax": {
+        "function": "ADVERBIAL_CLAUSE",
+        "head": 10
+      }
+    },
+    {
+      "word": "the",
+      "lemma": ["the"],
+      "pos": "DETERMINER",
+      "morphology": {},
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 21
+      }
+    },
+    {
+      "word": "latest",
+      "lemma": ["latest"],
+      "pos": "ADJECTIVE",
+      "morphology": {},
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 22
+      }
+    },
+    {
+      "word": "medical",
+      "lemma": ["medical"],
+      "pos": "ADJECTIVE",
+      "morphology": {},
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 22
+      }
+    },
+    {
+      "word": "advances",
+      "lemma": ["advance"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 19
+      }
+    },
+    {
+      "word": "with",
+      "lemma": ["with"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 22
+      }
+    },
+    {
+      "word": "his",
+      "lemma": ["his"],
+      "pos": "DETERMINER",
+      "morphology": {},
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 27
+      }
+    },
+    {
+      "word": "colleagues",
+      "lemma": ["colleague"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 26
       }
     }
   ]

@@ -12,6 +12,7 @@ export enum PartOfSpeech {
   CONJUNCTION = 'CONJUNCTION',
   DETERMINER = 'DETERMINER',
   INTERJECTION = 'INTERJECTION',
+  PARTICLE = 'PARTICLE',
   CLITIC = 'CLITIC', // Added CLITIC as a part of speech
 }
 

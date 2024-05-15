@@ -1,10 +1,182 @@
 {
-  "expression": "Кіт біжить швидко до села.",
+  "expression": "Під час того як молода інженерка пояснювала робітникам на будівельному майданчику складні плани, керівник проекту ретельно перевіряв доставлені матеріали, які були необхідні для наступного етапу проекту.",
   "language": "Ukrainian",
   "words": [
     {
-      "word": "Кіт",
-      "lemma": ["кіт"],
+      "word": "Під",
+      "lemma": ["під"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 1
+      }
+    },
+    {
+      "word": "час",
+      "lemma": ["час"],
+      "pos": "NOUN",
+      "morphology": {
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 0
+      }
+    },
+    {
+      "word": "того",
+      "lemma": ["той"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBLIQUE_MODIFIER",
+        "head": 1
+      }
+    },
+    {
+      "word": "як",
+      "lemma": ["як"],
+      "pos": "CONJUNCTION",
+      "morphology": {},
+      "syntax": {
+        "function": "SUBORDINATING_CONJUNCTION",
+        "head": 4
+      }
+    },
+    {
+      "word": "молода",
+      "lemma": ["молодий"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "інженерка",
+      "lemma": ["інженерка"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 6
+      }
+    },
+    {
+      "word": "пояснювала",
+      "lemma": ["пояснювати"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "number": "SINGULAR",
+        "person": 3,
+        "gender": "FEMININE",
+        "aspect": "IMPERFECTIVE"
+      },
+      "syntax": {
+        "function": "ROOT",
+        "head": 4
+      }
+    },
+    {
+      "word": "робітникам",
+      "lemma": ["робітник"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "INDIRECT_OBJECT",
+        "head": 6
+      }
+    },
+    {
+      "word": "на",
+      "lemma": ["на"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 9
+      }
+    },
+    {
+      "word": "будівельному",
+      "lemma": ["будівельний"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "LOCATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 10
+      }
+    },
+    {
+      "word": "майданчику",
+      "lemma": ["майданчик"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "LOCATIVE"
+      },
+      "syntax": {
+        "function": "LOCATION",
+        "head": 8
+      }
+    },
+    {
+      "word": "складні",
+      "lemma": ["складний"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "PLURAL",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 12
+      }
+    },
+    {
+      "word": "плани",
+      "lemma": ["план"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 6
+      }
+    },
+    {
+      "word": "керівник",
+      "lemma": ["керівник"],
       "pos": "NOUN",
       "morphology": {
         "gender": "MASCULINE",
@@ -13,58 +185,174 @@
       },
       "syntax": {
         "function": "SUBJECT",
-        "head": 1
+        "head": 18
       }
     },
     {
-      "word": "біжить",
-      "lemma": ["бігти"],
-      "pos": "VERB",
-      "morphology": {
-        "tense": "PRESENT",
-        "mood": "INDICATIVE",
-        "aspect": "IMPERFECTIVE",
-        "voice": "ACTIVE",
-        "person": 3,
-        "number": "SINGULAR"
-      },
-      "syntax": {
-        "function": "MAIN_VERB",
-        "head": 0
-      }
-    },
-    {
-      "word": "швидко",
-      "lemma": ["швидко"],
-      "pos": "ADVERB",
-      "morphology": {},
-      "syntax": {
-        "function": "ADVERBIAL",
-        "head": 1
-      }
-    },
-    {
-      "word": "до",
-      "lemma": ["до"],
-      "pos": "PREPOSITION",
-      "morphology": {},
-      "syntax": {
-        "function": "PREPOSITIONAL_MODIFIER",
-        "head": 4
-      }
-    },
-    {
-      "word": "села",
-      "lemma": ["село"],
+      "word": "проекту",
+      "lemma": ["проект"],
       "pos": "NOUN",
       "morphology": {
-        "gender": "NEUTER",
+        "gender": "MASCULINE",
         "number": "SINGULAR",
         "case": "GENITIVE"
       },
       "syntax": {
         "function": "OBJECT",
-        "head": 1
+        "head": 14
+      }
+    },
+    {
+      "word": "ретельно",
+      "lemma": ["ретельно"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 18
+      }
+    },
+    {
+      "word": "перевіряв",
+      "lemma": ["перевіряти"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "number": "SINGULAR",
+        "person": 3,
+        "gender": "MASCULINE",
+        "aspect": "IMPERFECTIVE"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 5
+      }
+    },
+    {
+      "word": "доставлені",
+      "lemma": ["доставлений"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "PLURAL",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 17
+      }
+    },
+    {
+      "word": "матеріали",
+      "lemma": ["матеріал"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 18
+      }
+    },
+    {
+      "word": "які",
+      "lemma": ["який"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "gender": "PLURAL",
+        "number": "PLURAL",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 19
+      }
+    },
+    {
+      "word": "були",
+      "lemma": ["бути"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "number": "PLURAL",
+        "person": 3,
+        "aspect": "IMPERFECTIVE"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 21
+      }
+    },
+    {
+      "word": "необхідні",
+      "lemma": ["необхідний"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "PLURAL",
+        "number": "PLURAL",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "PREDICATE",
+        "head": 21
+      }
+    },
+    {
+      "word": "для",
+      "lemma": ["для"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 22
+      }
+    },
+    {
+      "word": "наступного",
+      "lemma": ["наступний"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 25
+      }
+    },
+    {
+      "word": "етапу",
+      "lemma": ["етап"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 22
+      }
+    },
+    {
+      "word": "проекту",
+      "lemma": ["проект"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 25
       }
     }
   ]

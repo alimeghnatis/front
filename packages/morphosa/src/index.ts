@@ -1,1 +1,4 @@
-export { default as morphoSyntacticParser } from './mapper.js'
+import morphosaMapper from './mapper.js'
+
+export * from './mapper.js'
+export default morphosaMapper

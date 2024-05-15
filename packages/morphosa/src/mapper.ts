@@ -9,6 +9,7 @@ export const CSS_CLASSES = {
     ADVERB      :'adverb',
     PRONOUN     :'pronoun',
     PREPOSITION :'preposition',
+    PARTICLE    :'particle',
     CONJUNCTION :'conjunction',
     DETERMINER  :'determiner',
     INTERJECTION:'interjection',
@@ -86,7 +87,9 @@ export function getNestedProperty(
 }
 
 // Mapper function to transform Word array to StyleAnnotatedWord array
-function mapper(AnalyzedText: Word[]): StyleAnnotatedWord[] {
+function mapper(
+  AnalyzedText: Word[], exclude:string[] = [],
+): StyleAnnotatedWord[] {
   return AnalyzedText.map((word) => {
     const classes: string[] = []
 
@@ -100,9 +103,10 @@ function mapper(AnalyzedText: Word[]): StyleAnnotatedWord[] {
           mainKey,
           subKey,
         ] = attr.split('.')
-        if (subKey) {
+        if (subKey && !exclude.includes(subKey) && !exclude.includes(value)) {
+          classes.push(subKey)
           classes.push(CSS_CLASSES[mainKey][subKey][value])
-        } else {
+        } else if (!exclude.includes(value)) {
           classes.push(CSS_CLASSES[mainKey][value])
         }
       }

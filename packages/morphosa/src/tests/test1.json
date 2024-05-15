@@ -1,0 +1,130 @@
+{
+  "expression": "Der schnelle braune Fuchs springt über den faulen Hund.",
+  "language": "German",
+  "words": [
+    {
+      "word": "Der",
+      "lemma": ["der"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 3
+      }
+    },
+    {
+      "word": "schnelle",
+      "lemma": ["schnell"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 3
+      }
+    },
+    {
+      "word": "braune",
+      "lemma": ["braun"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 3
+      }
+    },
+    {
+      "word": "Fuchs",
+      "lemma": ["Fuchs"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 4
+      }
+    },
+    {
+      "word": "springt",
+      "lemma": ["springen"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "über",
+      "lemma": ["über"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 7
+      }
+    },
+    {
+      "word": "den",
+      "lemma": ["der"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 7
+      }
+    },
+    {
+      "word": "faulen",
+      "lemma": ["faul"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 8
+      }
+    },
+    {
+      "word": "Hund",
+      "lemma": ["Hund"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 4
+      }
+    }
+  ]
+}

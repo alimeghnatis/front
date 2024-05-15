@@ -1,0 +1,64 @@
+{
+  "expression": "Я люблю красивую музыку.",
+  "language": "Russian",
+  "words": [
+    {
+      "word": "Я",
+      "lemma": ["я"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "person": 1,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 1
+      }
+    },
+    {
+      "word": "люблю",
+      "lemma": ["любить"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 1,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "красивую",
+      "lemma": ["красивый"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 3
+      }
+    },
+    {
+      "word": "музыку",
+      "lemma": ["музыка"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 1
+      }
+    }
+  ]
+}

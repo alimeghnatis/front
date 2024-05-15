@@ -1,0 +1,71 @@
+{
+  "expression": "Les étudiants intelligents étudient sérieusement.",
+  "language": "French",
+  "words": [
+    {
+      "word": "Les",
+      "lemma": ["le"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 1
+      }
+    },
+    {
+      "word": "étudiants",
+      "lemma": ["étudiant"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 2
+      }
+    },
+    {
+      "word": "intelligents",
+      "lemma": ["intelligent"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 1
+      }
+    },
+    {
+      "word": "étudient",
+      "lemma": ["étudier"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "sérieusement",
+      "lemma": ["sérieusement"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 3
+      }
+    }
+  ]
+}

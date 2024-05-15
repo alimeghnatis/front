@@ -1,0 +1,71 @@
+{
+  "expression": "Кіт біжить швидко до села.",
+  "language": "Ukrainian",
+  "words": [
+    {
+      "word": "Кіт",
+      "lemma": ["кіт"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 1
+      }
+    },
+    {
+      "word": "біжить",
+      "lemma": ["бігти"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "швидко",
+      "lemma": ["швидко"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 1
+      }
+    },
+    {
+      "word": "до",
+      "lemma": ["до"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 4
+      }
+    },
+    {
+      "word": "села",
+      "lemma": ["село"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 1
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@
 
 .#{bem.$base}.expression-details {
   background: var(--near);
+  scroll-anchor: auto;
 
   .label {
     font-weight: 700;
@@ -24,14 +25,18 @@
   }
   @media screen and (min-width: 801px) {
     .content-map {
-      gap: 0;
+      gap: 0 var(--gap);
       grid-auto-rows: min-content;
 
-      .label {
+      .label:not(:first-child) {
         margin-top: var(--gap);
       }
 
-      &:first-child {
+      &.analysis {
+        grid-column-start: 2;
+      }
+
+      &.explanations {
         grid-column: 2/span 6;
       }
     }

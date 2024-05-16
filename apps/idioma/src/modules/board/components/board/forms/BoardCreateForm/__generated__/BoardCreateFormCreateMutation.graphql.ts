@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<af4a0a3f26f5e88a76ff347eca0aef37>>
+ * @generated SignedSource<<6a79bba0cb417c63a7ec7cf375c5d2e6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -646,6 +646,164 @@ return {
                                         "name": "ratingComment",
                                         "storageKey": null
                                       },
+                                      {
+                                        "alias": null,
+                                        "args": null,
+                                        "concreteType": "ExpressionAnalysisNode",
+                                        "kind": "LinkedField",
+                                        "name": "analysis",
+                                        "plural": false,
+                                        "selections": [
+                                          {
+                                            "alias": null,
+                                            "args": null,
+                                            "concreteType": "Word",
+                                            "kind": "LinkedField",
+                                            "name": "payloadV1",
+                                            "plural": true,
+                                            "selections": [
+                                              {
+                                                "alias": null,
+                                                "args": null,
+                                                "kind": "ScalarField",
+                                                "name": "word",
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "alias": null,
+                                                "args": null,
+                                                "kind": "ScalarField",
+                                                "name": "lemma",
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "alias": null,
+                                                "args": null,
+                                                "kind": "ScalarField",
+                                                "name": "pos",
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "alias": null,
+                                                "args": null,
+                                                "concreteType": "Morphology",
+                                                "kind": "LinkedField",
+                                                "name": "morphology",
+                                                "plural": false,
+                                                "selections": [
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "tense",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "mood",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "voice",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "aspect",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "person",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "number",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "gender",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "case",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "politeness",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "clusivity",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "register",
+                                                    "storageKey": null
+                                                  }
+                                                ],
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "alias": null,
+                                                "args": null,
+                                                "concreteType": "Syntax",
+                                                "kind": "LinkedField",
+                                                "name": "syntax",
+                                                "plural": false,
+                                                "selections": [
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "function",
+                                                    "storageKey": null
+                                                  },
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "kind": "ScalarField",
+                                                    "name": "head",
+                                                    "storageKey": null
+                                                  }
+                                                ],
+                                                "storageKey": null
+                                              }
+                                            ],
+                                            "storageKey": null
+                                          },
+                                          (v7/*: any*/),
+                                          (v3/*: any*/)
+                                        ],
+                                        "storageKey": null
+                                      },
                                       (v23/*: any*/)
                                     ],
                                     "storageKey": null
@@ -855,12 +1013,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "97422ec0209642f2cd063244f6349445",
+    "cacheID": "141be5a0dbfc0d51f27c4f072298a573",
     "id": null,
     "metadata": {},
     "name": "BoardCreateFormCreateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardCreateFormCreateMutation(\n  $input: CreateBoardMutationInput!\n) {\n  createBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      created\n      updated\n      displayTranslations\n      explanationsLanguage\n      explanationsLength\n      enabledLanguages\n      memberships {\n        edges {\n          node {\n            id\n            role\n            board {\n              id\n              name\n            }\n          }\n        }\n      }\n      ...BoardFragment\n      ...BoardUpdateFormFragment\n      ...VariantBoardFragment\n      ...ChatFragment\n      ...ModeSelectorFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment ModeSelectorFragment on BoardNode {\n  id\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment VariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n"
+    "text": "mutation BoardCreateFormCreateMutation(\n  $input: CreateBoardMutationInput!\n) {\n  createBoard(input: $input) {\n    instance {\n      id\n      name\n      isPublic\n      isDefault\n      created\n      updated\n      displayTranslations\n      explanationsLanguage\n      explanationsLength\n      enabledLanguages\n      memberships {\n        edges {\n          node {\n            id\n            role\n            board {\n              id\n              name\n            }\n          }\n        }\n      }\n      ...BoardFragment\n      ...BoardUpdateFormFragment\n      ...VariantBoardFragment\n      ...ChatFragment\n      ...ModeSelectorFragment\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment ModeSelectorFragment on BoardNode {\n  id\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment VariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
   }
 };
 })();

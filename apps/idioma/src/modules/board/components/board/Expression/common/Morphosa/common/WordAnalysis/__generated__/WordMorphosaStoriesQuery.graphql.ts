@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<498bb0ee0227531d0cbf9cbef14bc063>>
+ * @generated SignedSource<<5fa85f31e9f1ffa4b2f4a755a03b9547>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,19 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type DefaultExpressionStoriesQuery$variables = Record<PropertyKey, never>;
-export type DefaultExpressionStoriesQuery$data = {
+export type WordMorphosaStoriesQuery$variables = Record<PropertyKey, never>;
+export type WordMorphosaStoriesQuery$data = {
   readonly expression: {
-    readonly " $fragmentSpreads": FragmentRefs<"DefaultExpressionFragment">;
+    readonly analysis: {
+      readonly payloadV1: ReadonlyArray<{
+        readonly " $fragmentSpreads": FragmentRefs<"WordMorphosaFragment">;
+      } | null | undefined> | null | undefined;
+    } | null | undefined;
   } | null | undefined;
 };
-export type DefaultExpressionStoriesQuery = {
-  response: DefaultExpressionStoriesQuery$data;
-  variables: DefaultExpressionStoriesQuery$variables;
+export type WordMorphosaStoriesQuery = {
+  response: WordMorphosaStoriesQuery$data;
+  variables: WordMorphosaStoriesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -35,20 +39,13 @@ v1 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-},
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "created",
-  "storageKey": null
 };
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "DefaultExpressionStoriesQuery",
+    "name": "WordMorphosaStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -59,9 +56,31 @@ return {
         "plural": false,
         "selections": [
           {
+            "alias": null,
             "args": null,
-            "kind": "FragmentSpread",
-            "name": "DefaultExpressionFragment"
+            "concreteType": "ExpressionAnalysisNode",
+            "kind": "LinkedField",
+            "name": "analysis",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Word",
+                "kind": "LinkedField",
+                "name": "payloadV1",
+                "plural": true,
+                "selections": [
+                  {
+                    "args": null,
+                    "kind": "FragmentSpread",
+                    "name": "WordMorphosaFragment"
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": "expression(id:\"1\")"
@@ -74,7 +93,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "DefaultExpressionStoriesQuery",
+    "name": "WordMorphosaStoriesQuery",
     "selections": [
       {
         "alias": null,
@@ -84,125 +103,6 @@ return {
         "name": "expression",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isProcessed",
-            "storageKey": null
-          },
-          (v2/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "iso6391",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "iso6392",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "iso6393",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "content",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "correctedContent",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isBookmarked",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "audioUrl",
-            "storageKey": null
-          },
-          {
-            "kind": "ClientExtension",
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "isNew",
-                "storageKey": null
-              }
-            ]
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "translation",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "grammarExplanation",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "generalExplanation",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "wordsExplanation",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "changes",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "rating",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "ratingComment",
-            "storageKey": null
-          },
           {
             "alias": null,
             "args": null,
@@ -356,27 +256,27 @@ return {
                 ],
                 "storageKey": null
               },
-              (v2/*: any*/),
               (v1/*: any*/)
             ],
             "storageKey": null
-          }
+          },
+          (v1/*: any*/)
         ],
         "storageKey": "expression(id:\"1\")"
       }
     ]
   },
   "params": {
-    "cacheID": "0a09c37b9de8050741b50d9e00bf65b1",
+    "cacheID": "0b8fcabe36e49f29b06571379096855d",
     "id": null,
     "metadata": {},
-    "name": "DefaultExpressionStoriesQuery",
+    "name": "WordMorphosaStoriesQuery",
     "operationKind": "query",
-    "text": "query DefaultExpressionStoriesQuery {\n  expression(id: \"1\") {\n    ...DefaultExpressionFragment\n    id\n  }\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
+    "text": "query WordMorphosaStoriesQuery {\n  expression(id: \"1\") {\n    analysis {\n      payloadV1 {\n        ...WordMorphosaFragment\n      }\n      id\n    }\n    id\n  }\n}\n\nfragment WordMorphosaFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "30e998845780b3c8322be7b93198d08f";
+(node as any).hash = "eb7197d620406bd62a04e0e1cb1e0947";
 
 export default node;

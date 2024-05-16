@@ -1,0 +1,248 @@
+{
+  "expression": "Dziewczyna, której książka leży na stole, pisze list do swojej przyjaciółki, z którą nie rozmawiała od wielu miesięcy.",
+  "language": "Polish",
+  "words": [
+    {
+      "word": "Dziewczyna",
+      "lemma": ["dziewczyna"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 4
+      }
+    },
+    {
+      "word": "której",
+      "lemma": ["który"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 1
+      }
+    },
+    {
+      "word": "książka",
+      "lemma": ["książka"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 3
+      }
+    },
+    {
+      "word": "leży",
+      "lemma": ["leżeć"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 1
+      }
+    },
+    {
+      "word": "na",
+      "lemma": ["na"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "stole",
+      "lemma": ["stół"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "LOCATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 3
+      }
+    },
+    {
+      "word": "pisze",
+      "lemma": ["pisać"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "list",
+      "lemma": ["list"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 6
+      }
+    },
+    {
+      "word": "do",
+      "lemma": ["do"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 9
+      }
+    },
+    {
+      "word": "swojej",
+      "lemma": ["swój"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 10
+      }
+    },
+    {
+      "word": "przyjaciółki",
+      "lemma": ["przyjaciółka"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 9
+      }
+    },
+    {
+      "word": "z",
+      "lemma": ["z"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 13
+      }
+    },
+    {
+      "word": "którą",
+      "lemma": ["który"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "INSTRUMENTAL"
+      },
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 13
+      }
+    },
+    {
+      "word": "nie",
+      "lemma": ["nie"],
+      "pos": "PARTICLE",
+      "morphology": {},
+      "syntax": {
+        "function": "NEGATION_MODIFIER",
+        "head": 14
+      }
+    },
+    {
+      "word": "rozmawiała",
+      "lemma": ["rozmawiać"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR",
+        "gender": "FEMININE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 12
+      }
+    },
+    {
+      "word": "od",
+      "lemma": ["od"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 18
+      }
+    },
+    {
+      "word": "wielu",
+      "lemma": ["wiele"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 18
+      }
+    },
+    {
+      "word": "miesięcy",
+      "lemma": ["miesiąc"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 17
+      }
+    }
+  ]
+}

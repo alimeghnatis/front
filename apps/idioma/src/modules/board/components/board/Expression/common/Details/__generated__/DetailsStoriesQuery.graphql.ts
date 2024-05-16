@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c54710c49dfe049fe6a6300ed8237c37>>
+ * @generated SignedSource<<df9ac03da538dac682537d65ee1744b3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,7 +28,21 @@ var v0 = [
     "name": "id",
     "value": "1"
   }
-];
+],
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "created",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -70,13 +84,7 @@ return {
         "name": "expression",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          },
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -147,13 +155,7 @@ return {
             "name": "audioUrl",
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "created",
-            "storageKey": null
-          },
+          (v2/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -174,6 +176,164 @@ return {
             "kind": "ScalarField",
             "name": "ratingComment",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "ExpressionAnalysisNode",
+            "kind": "LinkedField",
+            "name": "analysis",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Word",
+                "kind": "LinkedField",
+                "name": "payloadV1",
+                "plural": true,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "word",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "lemma",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "pos",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Morphology",
+                    "kind": "LinkedField",
+                    "name": "morphology",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "tense",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "mood",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "voice",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "aspect",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "person",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "number",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "gender",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "case",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "politeness",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "clusivity",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "register",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Syntax",
+                    "kind": "LinkedField",
+                    "name": "syntax",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "function",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "head",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              (v2/*: any*/),
+              (v1/*: any*/)
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": "expression(id:\"1\")"
@@ -181,12 +341,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9abe781968eee49ad8db1abaa450e992",
+    "cacheID": "80d0a8ced2b4de85bc9194194836cee2",
     "id": null,
     "metadata": {},
     "name": "DetailsStoriesQuery",
     "operationKind": "query",
-    "text": "query DetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...DetailsFragment\n    id\n  }\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n"
+    "text": "query DetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...DetailsFragment\n    id\n  }\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
   }
 };
 })();

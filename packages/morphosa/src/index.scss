@@ -18,14 +18,17 @@
 $default-class: "morphosa"!default;
 
 @mixin color($default, $hard, $soft) {
-  --color: $default;
-  --hard-color: $hard;
-  --soft-color: $soft;
+  --color: #{$default};
+  --hard-color: black;//#{$hard};
+  --soft-color: #{$soft};
 }
 
 @mixin pseudo-content-before($content) {
   &::before {
     content: $content;
+    align-self:center;
+    //color:var(--hard-color, #000000);
+    opacity:1;
   }
 }
 
@@ -145,8 +148,8 @@ $case-vocative-border-style: inset!default;
 $noun-class: "noun"!default;
 
 $noun-background: #ffff00; // yellow
-$noun-background-hard: #ffff00; // yellow
-$noun-background-soft: #ffff00; // yellow
+$noun-background-hard: #ffaa60; // yellow
+$noun-background-soft: #ffaa50; // yellow
 
 @mixin noun() {
   .#{$noun-class} {
@@ -162,8 +165,8 @@ $noun-background-soft: #ffff00; // yellow
 $determiner-class: "determiner"!default;
 
 $determiner-background: #ffff99; // light yellow
-$determiner-background-hard: #ffff99; // light yellow
-$determiner-background-soft: #ffff99; // light yellow
+$determiner-background-hard: #ffaa22; // light yellow
+$determiner-background-soft: #ffaa11; // light yellow
 
 @mixin determiner() {
   .#{$determiner-class}{

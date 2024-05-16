@@ -86,39 +86,44 @@ export function getNestedProperty(
   )
 }
 
+export function processWord(
+  word: Word, exclude: string[] = [],
+): StyleAnnotatedWord {
+  const classes: string[] = []
+
+  // Iterate over the attributes to map and add classes dynamically
+  attributesToMap.forEach((attr) => {
+    const value = getNestedProperty(
+      word, attr,
+    )
+    if (value) {
+      const [
+        mainKey,
+        subKey,
+      ] = attr.split('.')
+      if (subKey && !exclude.includes(subKey) && !exclude.includes(value)) {
+        classes.push(subKey)
+        classes.push(CSS_CLASSES[mainKey][subKey][value])
+      } else if (!exclude.includes(mainKey) && !exclude.includes(value)) {
+        classes.push(CSS_CLASSES[mainKey][value])
+      }
+    }
+  })
+  return {
+    string:word.word,
+    classes,
+    head  :word.syntax.head,
+    word,
+  }
+}
+
 // Mapper function to transform Word array to StyleAnnotatedWord array
 function mapper(
   AnalyzedText: Word[], exclude:string[] = [],
 ): StyleAnnotatedWord[] {
-  return AnalyzedText.map((word) => {
-    const classes: string[] = []
-
-    // Iterate over the attributes to map and add classes dynamically
-    attributesToMap.forEach((attr) => {
-      const value = getNestedProperty(
-        word, attr,
-      )
-      if (value) {
-        const [
-          mainKey,
-          subKey,
-        ] = attr.split('.')
-        if (subKey && !exclude.includes(subKey) && !exclude.includes(value)) {
-          classes.push(subKey)
-          classes.push(CSS_CLASSES[mainKey][subKey][value])
-        } else if (!exclude.includes(value)) {
-          classes.push(CSS_CLASSES[mainKey][value])
-        }
-      }
-    })
-
-    return {
-      string:word.word,
-      classes,
-      head  :word.syntax.head,
-      word,
-    }
-  })
+  return AnalyzedText.map((word) => processWord(
+    word, exclude,
+  ))
 }
 
 export default mapper

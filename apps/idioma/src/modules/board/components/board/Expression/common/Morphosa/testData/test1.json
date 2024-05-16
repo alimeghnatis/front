@@ -1,0 +1,387 @@
+{
+  "expression": "Der alte Mann, der in dem großen Haus am Rande der Stadt wohnt, schrieb gestern einen langen Brief an seinen Freund, dessen Tochter gerade das Abitur bestanden hat.",
+  "language": "German",
+  "words": [
+    {
+      "word": "Der",
+      "lemma": ["der"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 2
+      }
+    },
+    {
+      "word": "alte",
+      "lemma": ["alt"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 2
+      }
+    },
+    {
+      "word": "Mann",
+      "lemma": ["Mann"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 9
+      }
+    },
+    {
+      "word": "der",
+      "lemma": ["der"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 2
+      }
+    },
+    {
+      "word": "in",
+      "lemma": ["in"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 8
+      }
+    },
+    {
+      "word": "dem",
+      "lemma": ["der"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 8
+      }
+    },
+    {
+      "word": "großen",
+      "lemma": ["groß"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 8
+      }
+    },
+    {
+      "word": "Haus",
+      "lemma": ["Haus"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 3
+      }
+    },
+    {
+      "word": "am",
+      "lemma": ["an", "dem"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 8
+      }
+    },
+    {
+      "word": "Rande",
+      "lemma": ["Rand"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 8
+      }
+    },
+    {
+      "word": "der",
+      "lemma": ["der"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 11
+      }
+    },
+    {
+      "word": "Stadt",
+      "lemma": ["Stadt"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "NOMINAL_CLAUSE",
+        "head": 8
+      }
+    },
+    {
+      "word": "wohnt",
+      "lemma": ["wohnen"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 2
+      }
+    },
+    {
+      "word": "schrieb",
+      "lemma": ["schreiben"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "gestern",
+      "lemma": ["gestern"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 13
+      }
+    },
+    {
+      "word": "einen",
+      "lemma": ["ein"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 16
+      }
+    },
+    {
+      "word": "langen",
+      "lemma": ["lang"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 16
+      }
+    },
+    {
+      "word": "Brief",
+      "lemma": ["Brief"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 13
+      }
+    },
+    {
+      "word": "an",
+      "lemma": ["an"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 19
+      }
+    },
+    {
+      "word": "seinen",
+      "lemma": ["sein"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 20
+      }
+    },
+    {
+      "word": "Freund",
+      "lemma": ["Freund"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 19
+      }
+    },
+    {
+      "word": "dessen",
+      "lemma": ["dessen"],
+      "pos": "PRONOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 20
+      }
+    },
+    {
+      "word": "Tochter",
+      "lemma": ["Tochter"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 24
+      }
+    },
+    {
+      "word": "gerade",
+      "lemma": ["gerade"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 24
+      }
+    },
+    {
+      "word": "das",
+      "lemma": ["das"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 25
+      }
+    },
+    {
+      "word": "Abitur",
+      "lemma": ["Abitur"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 24
+      }
+    },
+    {
+      "word": "bestanden",
+      "lemma": ["bestehen"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "PARTICIPLE",
+        "voice": "ACTIVE",
+        "aspect": "PERFECTIVE"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 23
+      }
+    },
+    {
+      "word": "hat",
+      "lemma": ["haben"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 24
+      }
+    }
+  ]
+}

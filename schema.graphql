@@ -720,6 +720,9 @@ type ExpressionNode implements SearchNode & Node {
   variantWord: String
   isProcessed: Boolean!
   isBookmarked: Boolean!
+  hash: String!
+  explanationsLanguage: String!
+  analysis: ExpressionAnalysisNode
   rating: Int
   ratingComment: String
   rated: DateTime
@@ -734,6 +737,204 @@ type ExpressionNode implements SearchNode & Node {
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
   usageRecord: UsageRecordNode
+}
+
+type ExpressionAnalysisNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  hash: String!
+  content: String!
+  payloadV1: [Word]
+  expressionSet(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+}
+
+type Word {
+  word: String
+  lemma: [String]
+  pos: PartOfSpeech
+  morphology: Morphology
+  syntax: Syntax
+  clitics: [Clitic]
+  composed: ComposedWord
+  prefix: Prefix
+}
+
+enum PartOfSpeech {
+  NOUN
+  VERB
+  ADJECTIVE
+  ADVERB
+  PRONOUN
+  PREPOSITION
+  CONJUNCTION
+  DETERMINER
+  PARTICLE
+  INTERJECTION
+  CLITIC
+}
+
+type Morphology {
+  tense: Tense
+  mood: Mood
+  voice: Voice
+  aspect: Aspect
+  person: Int
+  number: Number
+  gender: Gender
+  case: Case
+  evidentiality: Evidentiality
+  politeness: Politeness
+  clusivity: Clusivity
+  register: Register
+  valency: Valency
+  variantForm: String
+}
+
+enum Tense {
+  PRESENT
+  PAST
+  FUTURE
+  PERFECT
+  PLUPERFECT
+  FUTURE_PERFECT
+  IMPERFECT
+}
+
+enum Mood {
+  INDICATIVE
+  IMPERATIVE
+  SUBJUNCTIVE
+  CONDITIONAL
+  OPTATIVE
+  INFINITIVE
+  PARTICIPLE
+  GERUND
+}
+
+enum Voice {
+  ACTIVE
+  PASSIVE
+  MIDDLE
+}
+
+enum Aspect {
+  IMPERFECTIVE
+  PERFECTIVE
+  PROGRESSIVE
+}
+
+enum Number {
+  SINGULAR
+  PLURAL
+}
+
+enum Gender {
+  MASCULINE
+  FEMININE
+  NEUTER
+}
+
+enum Case {
+  NOMINATIVE
+  ACCUSATIVE
+  DATIVE
+  GENITIVE
+  LOCATIVE
+  INSTRUMENTAL
+  PREPOSITIONAL
+  VOCATIVE
+}
+
+enum Evidentiality {
+  WITNESSED
+  REPORTED
+  INFERRED
+  ASSUMED
+}
+
+enum Politeness {
+  INFORMAL
+  FORMAL
+  HONORIFIC
+}
+
+enum Clusivity {
+  INCLUSIVE
+  EXCLUSIVE
+}
+
+enum Register {
+  SLANG
+  COLLOQUIAL
+  STANDARD
+  FORMAL
+  TECHNICAL
+}
+
+enum Valency {
+  INTRANSITIVE
+  TRANSITIVE
+  DITRANSITIVE
+}
+
+type Syntax {
+  function: SyntaxFunction
+  head: Int
+}
+
+enum SyntaxFunction {
+  SUBJECT
+  OBJECT
+  INDIRECT_OBJECT
+  PREDICATE
+  ADVERBIAL
+  DETERMINATIVE
+  COMPLEMENT
+  MODIFIER
+  MAIN_VERB
+  AUXILIARY_VERB
+  MODAL_VERB
+  RELATIVE_CLAUSE
+  NOMINAL_CLAUSE
+  ADVERBIAL_CLAUSE
+  COORDINATING_CONJUNCTION
+}
+
+type Clitic {
+  clitic: String
+  pos: PartOfSpeech
+  morphology: Morphology
+  syntax: Syntax
+}
+
+type ComposedWord {
+  word: String
+  components: [Word]
+}
+
+type Prefix {
+  prefix: String
+  type: PrefixType
+  sense: PrefixLexicalSense
+}
+
+enum PrefixType {
+  SEPARABLE
+  INSEPARABLE
+}
+
+enum PrefixLexicalSense {
+  DIRECTIONAL
+  COMPLETION
+  INTENSIFICATION
+  REVERSAL
+  BEGINNING
 }
 
 type UsageRecordNode implements SearchNode & Node {
@@ -1141,6 +1342,7 @@ input CreateExpressionSerializerInput {
   variantWord: String
   isProcessed: Boolean
   isBookmarked: Boolean
+  explanationsLanguage: String
   rating: Int
   ratingComment: String
   rated: DateTime
@@ -1154,6 +1356,7 @@ input CreateExpressionSerializerInput {
   Order: Int
   group: String
   variantFrom: String
+  analysis: String
   createdBy: String
 }
 
@@ -1215,6 +1418,7 @@ input CreateExpressionMutationInput {
   variantWord: String
   isProcessed: Boolean
   isBookmarked: Boolean
+  explanationsLanguage: String
   rating: Int
   ratingComment: String
   rated: DateTime
@@ -1227,6 +1431,7 @@ input CreateExpressionMutationInput {
   charactersUsed: Int
   group: String
   variantFrom: String
+  analysis: String
   createdBy: String
   clientMutationId: String
 }
@@ -1261,6 +1466,7 @@ input UpdateExpressionMutationInput {
   variantWord: String
   isProcessed: Boolean
   isBookmarked: Boolean
+  explanationsLanguage: String
   rating: Int
   ratingComment: String
   rated: DateTime
@@ -1274,6 +1480,7 @@ input UpdateExpressionMutationInput {
   group: String
   board: String
   variantFrom: String
+  analysis: String
   createdBy: String
   clientMutationId: String
 }

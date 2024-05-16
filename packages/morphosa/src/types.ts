@@ -14,6 +14,7 @@ export enum PartOfSpeech {
   INTERJECTION = 'INTERJECTION',
   PARTICLE = 'PARTICLE',
   CLITIC = 'CLITIC', // Added CLITIC as a part of speech
+  NUMERAL = 'NUMERAL',
 }
 
 export enum Tense {
@@ -57,12 +58,14 @@ export enum Case {
   INSTRUMENTAL = 'INSTRUMENTAL',
   PREPOSITIONAL = 'PREPOSITIONAL',
   VOCATIVE = 'VOCATIVE',
+  ABLATIVE = 'ABLATIVE',
 }
 
 export enum Voice {
   ACTIVE = 'ACTIVE',
   PASSIVE = 'PASSIVE',
   MIDDLE = 'MIDDLE',
+  REFLEXIVE = 'REFLEXIVE',
 }
 
 export enum Aspect {
@@ -135,12 +138,17 @@ export enum SyntaxFunction {
   RELATIVE_CLAUSE = 'RELATIVE_CLAUSE',
   NOMINAL_CLAUSE = 'NOMINAL_CLAUSE',
   ADVERBIAL_CLAUSE = 'ADVERBIAL_CLAUSE',
+  ADJECTIVAL_MODIFIER = 'ADJECTIVAL_MODIFIER',
+  COORDINATING_CONJUNCTION = 'COORDINATING_CONJUNCTION',
+  SUBORDINATING_CONJUNCTION = 'SUBORDINATING_CONJUNCTION',
+  PREPOSITIONAL_MODIFIER = 'PREPOSITIONAL_MODIFIER',
+  PUNCTUATION = 'PUNCTUATION',
 }
 
 // Types defining the structure of linguistic features within the schema.
 
 export type Morphology = {
-  tense?        :Tense; // The tense of the verb (if applicable)
+  tense?        :Tense; // The tense of the verb (if applicable), infinite verbs should have no tense
   mood?         :Mood; // The mood of the verb (if applicable)
   voice?        :Voice; // The voice of the verb (active, passive, middle)
   aspect?       :Aspect; // The aspect of the verb (imperfective, perfective, etc.)

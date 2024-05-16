@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5bd2b352c39f78ce051482bad51f4247>>
+ * @generated SignedSource<<b1cf90eba15ddc07add932448fba7ce0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,7 +24,7 @@ export type DetailsFragment$data = {
   readonly iso6393: string;
   readonly translation: string | null | undefined;
   readonly wordsExplanation: string | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"RatingFormFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"MorphosaFragment" | "RatingFormFragment">;
   readonly " $fragmentType": "DetailsFragment";
 };
 export type DetailsFragment$key = {
@@ -133,12 +133,17 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "FragmentSpread",
       "name": "RatingFormFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "MorphosaFragment"
     }
   ],
   "type": "ExpressionNode",
   "abstractKey": null
 };
 
-(node as any).hash = "276ef4e990d2458df18f1c95ca51cd0a";
+(node as any).hash = "0c1e8fb9defb2c2afb478442cb0dbbea";
 
 export default node;

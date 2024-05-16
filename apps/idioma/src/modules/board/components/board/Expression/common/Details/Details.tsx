@@ -15,6 +15,7 @@ import {
 import { marked } from 'marked'
 import { useBoardContext } from 'modules/common/components'
 import { RatingForm } from './common/index.js'
+import { Morphosa } from '../Morphosa/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'expression-details'
@@ -35,6 +36,7 @@ const FRAGMENT = graphql`
     created
     changes
     ...RatingFormFragment
+    ...MorphosaFragment
   }
 `
 
@@ -51,16 +53,13 @@ const ContentMap: React.FC<InferProps<typeof ContentMapPropTypes>> = ({
   spanLabelDesktop,
   spanContent,
   spanContentDesktop,
+  className,
 }) => (
-  <div
-    className={[
-      'span-8',
-      'md-span-7',
-      'grid',
-      'content-map',
-    ]
-      .filter(Boolean)
-      .join(' ')}
+  <div className={[
+    'grid',
+    'content-map',
+    className,
+  ].filter(Boolean).join(' ')}
   >
     {contentMap.map(({
       condition, label, payload, marked: isMarked,
@@ -142,13 +141,27 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     }, [audioRef],
   )
 
-  const contentMap1 = [
+  const contentMap0 = [
+    {
+      label  :'Morpho-syntactic analysis',
+      payload:(
+        <Morphosa
+          data={result}
+          displayHeadOnHover
+          displayWordAnalysisOnHover
+          // exclude={['function']}
+        />
+      ),
+    },
     {
       condition:boardData?.displayTranslations && result.translation?.length,
       label    :'Translation',
       payload  :result.translation,
       // marked   :true,
     },
+  ]
+
+  const contentMap1 = [
     {
       condition:result.generalExplanation,
       label    :'General',
@@ -201,11 +214,20 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     >
       <div className="grid container">
         <ContentMap
+          contentMap={contentMap0}
+          spanLabel={spanLabel}
+          spanLabelDesktop={12}
+          spanContent={spanContent}
+          spanContentDesktop={12}
+          className="analysis span-8 md-span-12"
+        />
+        <ContentMap
           contentMap={contentMap1}
           spanLabel={spanLabel}
           spanLabelDesktop={6}
           spanContent={spanContent}
           spanContentDesktop={6}
+          className="explanations span-8 md-span-6"
         />
         <ContentMap
           contentMap={contentMap2}
@@ -213,6 +235,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           spanLabelDesktop={7}
           spanContent={spanContent}
           spanContentDesktop={7}
+          className="details span-8 md-span-7"
         />
         <RatingForm
           data={result}

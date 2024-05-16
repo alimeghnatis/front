@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0899a343b675aa6f7ab8a24af1b532d8>>
+ * @generated SignedSource<<a77eef7fce6e5b734eb64c102379bb37>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,6 +10,7 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type UpdateExpressionMutationInput = {
+  analysis?: string | null | undefined;
   audioKey?: string | null | undefined;
   audioUrl?: string | null | undefined;
   board?: string | null | undefined;
@@ -20,6 +21,7 @@ export type UpdateExpressionMutationInput = {
   content?: string | null | undefined;
   correctedContent?: string | null | undefined;
   createdBy?: string | null | undefined;
+  explanationsLanguage?: string | null | undefined;
   flagComment?: string | null | undefined;
   flagIsProcessed?: boolean | null | undefined;
   generalExplanation?: string | null | undefined;

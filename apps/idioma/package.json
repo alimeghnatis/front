@@ -51,6 +51,7 @@
     "@aztlan/assets": "^3.4.6",
     "@aztlan/base-styles": "^3.10.1",
     "@aztlan/bem": "^0.9.18",
+    "@aztlan/morphosa": "^3.10.1",
     "@aztlan/react-hooks": "^3.8.3",
     "@aztlan/react-relay": "^3.7.1",
     "@aztlan/react-scripts": "^3.6.3",

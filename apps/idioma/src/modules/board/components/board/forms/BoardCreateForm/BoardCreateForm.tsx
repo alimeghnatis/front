@@ -163,9 +163,7 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         },
         updater,
         onCompleted:(res) => {
-          notify.success(
-            'Board successfully created.', 0,
-          )
+          notify.success('Board successfully created.')
           const newPath = generatePath(
             baseBoardPath, { board: res.createBoard.instance.id },
           )

@@ -210,10 +210,7 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
           }
         },
         onCompleted:(response) => {
-          notify.success(
-            `Successfully added ${suggestionsToCommit.length} expression(s) to the board`,
-            0,
-          )
+          notify.success(`Successfully added ${suggestionsToCommit.length} expression(s) to the board`)
         },
         onError:(error) => {
           const { errors } = error?.res

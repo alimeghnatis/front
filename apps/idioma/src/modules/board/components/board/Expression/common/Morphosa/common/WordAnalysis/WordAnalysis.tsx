@@ -95,6 +95,11 @@ InferProps<typeof Word.propTypes>): React.ReactElement {
       payload:result.morphology.person,
     },
     {
+      label    :'Gender',
+      payload  :result.morphology.gender?.toLowerCase(),
+      className:`gender ${result.morphology.gender?.toLowerCase()}`,
+    },
+    {
       label  :'Number',
       payload:result.morphology.number?.toLowerCase(),
     },
@@ -124,15 +129,20 @@ InferProps<typeof Word.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      {fields.map((field) => ((field.condition || typeof field.condition === 'undefined')
+      {fields.map((
+        field, i,
+      ) => ((field.condition || typeof field.condition === 'undefined')
         && field.payload ? (
-          <span
-            key={field.payload}
-            className={field.className?.toLowerCase()}
-            title={field.label}
-          >
-            {field.payload}
-          </span>
+          <>
+            <span
+              key={field.payload}
+              className={field.className?.toLowerCase()}
+              title={field.label}
+            >
+              {field.payload}
+            </span>
+            {i < fields.length - 1 && ' '}
+          </>
         ) : null))}
     </div>
   )

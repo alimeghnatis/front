@@ -8,6 +8,7 @@
   scroll-anchor: auto;
 
   .label {
+    color: var(--paragraph);
     font-weight: 700;
     //grid-column-end: span 3;
   }
@@ -22,6 +23,10 @@
 
   .field ol {
     margin-top: 0;
+  }
+
+  .analysis {
+    margin-top: var(--gap);
   }
   @media screen and (min-width: 801px) {
     .content-map {

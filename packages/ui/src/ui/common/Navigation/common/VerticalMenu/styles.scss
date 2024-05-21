@@ -20,6 +20,16 @@
     }
   }
 
+  li.#{bem.$element-item} {
+    &.highlighted {
+      background: red;
+
+      .highlighted {
+        background: yellow;
+      }
+    }
+  }
+
   li.#{bem.$element-group} {
     display: flex;
     flex-direction: column;

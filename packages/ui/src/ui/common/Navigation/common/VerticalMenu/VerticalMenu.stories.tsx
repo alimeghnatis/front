@@ -90,6 +90,23 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
         {
           label         :'Disabled Menu',
           displayItemsAs:'group',
+          // disabled      :true,
+          items         :[
+            {
+              label   :'Users',
+              url     :'/users4',
+              disabled:true,
+            },
+            {
+              label   :'Roles',
+              url     :'/roles',
+              disabled:true,
+            },
+          ],
+        },
+        {
+          label         :'Disabled Header',
+          displayItemsAs:'group',
           disabled      :true,
           items         :[
             {

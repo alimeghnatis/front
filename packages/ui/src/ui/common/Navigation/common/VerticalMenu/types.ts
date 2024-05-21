@@ -48,3 +48,23 @@ export const ComponentPropTypes = {
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>
+
+export const ComponentItemPropTypes = {
+  ...htmlShared,
+  item                   :PropTypes.shape(itemShape).isRequired,
+  onItemMouseEnterHandler:PropTypes.func,
+  onItemMouseLeaveHandler:PropTypes.func,
+}
+
+export type ComponentItemProps = InferProps<typeof ComponentItemPropTypes>
+
+export const ComponentListPropTypes = {
+  ...ComponentPropTypes,
+  // items                  :itemsValidator,
+  items                  :PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired,
+  initialIsOpen          :PropTypes.bool,
+  onItemMouseEnterHandler:PropTypes.func,
+  onItemMouseLeaveHandler:PropTypes.func,
+}
+
+export type ComponentListProps = InferProps<typeof ComponentListPropTypes>

@@ -8,7 +8,7 @@ import {
   useBoardContext, SelectBoardHeader,
 } from 'modules/common/components'
 import {
-  Button, useTriptychContext,
+  Button, useTriptychContext, SelectMenu, Breadcrumb,
 } from '@aztlan/ui'
 import paths from '../paths.js'
 
@@ -28,7 +28,14 @@ function PrimaryTemplate({
 
   return (
     <BaseTemplate
-      title={title || <SelectBoardHeader />}
+      title={(
+        <Breadcrumb>
+          <Breadcrumb.Item to="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item to="/">My Boards</Breadcrumb.Item>
+        </Breadcrumb>
+      )
+        // title || <SelectBoardHeader />
+      }
       right={
         hasSettings && (
           <Button

@@ -95,7 +95,7 @@ Item.propTypes = {
   childrenAs:PropTypes.elementType,
 
   /** The wrapper props */
-  wrapperProps:PropTypes.objectOf(PropTypes.string),
+  wrapperProps:PropTypes.objectOf(PropTypes.any),
 
   /** The span of the item */
   span:PropTypes.number,

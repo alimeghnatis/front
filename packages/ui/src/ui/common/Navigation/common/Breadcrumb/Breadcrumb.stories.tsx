@@ -7,6 +7,7 @@ import {
 // import { Meta, StoryFn } from '@storybook/react'
 import decorators from 'story-utils/decorators.js'
 import Component from './Breadcrumb.js'
+import { SelectMenu } from '../SelectMenu/index.js'
 
 // import { decorators } from 'story-utils'
 
@@ -42,6 +43,37 @@ export const Separator: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     separator:'>',
+  },
+}
+
+export const WithCustomItem: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    children:[
+      <Component.Item to="/">Home</Component.Item>,
+      <Component.Item
+        to="/blog/"
+        childrenAs={SelectMenu}
+        wrapperProps={{
+          rootItem:{
+            label:'Menu',
+            items:[
+              {
+                label:'Blog',
+                url  :'/blog',
+              },
+              {
+                label:'Profile',
+                url  :'/profile',
+              },
+            ],
+          },
+        }}
+      >
+        Blog
+      </Component.Item>,
+      <Component.Item to="/article-title">Article Title</Component.Item>,
+    ],
   },
 }
 

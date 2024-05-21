@@ -13,8 +13,19 @@ $default-separator: var(--separator, "/");
   padding: 0;
 
   > .#{bem.$element-item} {
+    align-items: center;
+    display: flex;
     //background: $default-background;
     position: relative;
+
+    > a { //UNCLEAN
+      align-items: center;
+      display: flex;
+    }
+
+    > * {
+      flex-grow: 1;
+    }
 
     &.#{bem.$modifier-selected} {
       background: $selected-background;

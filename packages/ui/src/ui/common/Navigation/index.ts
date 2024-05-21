@@ -6,5 +6,7 @@ export {
   Footer as NavigationFooter,
   VerticalMenu as NavigationVerticalMenu,
   Paginator as NavigationPaginator,
+  Breadcrumb as NavigationBreadcrumb,
+  SelectMenu as NavigationSelectMenu,
 } from './common/index.js'
 export { Header as NavigationDebugHeader } from './Debug/index.js'

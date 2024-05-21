@@ -1,6 +1,22 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+export const itemShape = {
+  key           :PropTypes.string,
+  label         :PropTypes.string,
+  url           :PropTypes.string,
+  disabled      :PropTypes.bool,
+  className     :PropTypes.string,
+  Component     :PropTypes.elementType,
+  displayItemsAs:PropTypes.oneOf([
+    'nested',
+    'group',
+  ]),
+  items:PropTypes.array,
+}
+
+export const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape).isRequired(...args))
+
 export const htmlShared = {
   /** The HTML id for this element */
   id:PropTypes.string,

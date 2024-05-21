@@ -2,24 +2,12 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import {
-  htmlShared, desktopOnlyShared, asShared,
+  htmlShared,
+  desktopOnlyShared,
+  asShared,
+  itemShape,
+  itemsValidator,
 } from '../../types.js'
-
-const itemShape = {
-  key           :PropTypes.string,
-  label         :PropTypes.string,
-  url           :PropTypes.string,
-  disabled      :PropTypes.bool,
-  className     :PropTypes.string,
-  Component     :PropTypes.elementType,
-  displayItemsAs:PropTypes.oneOf([
-    'nested',
-    'group',
-  ]),
-  items:PropTypes.array,
-}
-
-const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape).isRequired(...args))
 
 itemShape.items = itemsValidator
 
@@ -62,7 +50,7 @@ export const ComponentListPropTypes = {
   ...ComponentPropTypes,
   // items                  :itemsValidator,
   items                  :PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired,
-  initialIsOpen          :PropTypes.bool,
+  // initialIsOpen          :PropTypes.bool,
   onItemMouseEnterHandler:PropTypes.func,
   onItemMouseLeaveHandler:PropTypes.func,
 }

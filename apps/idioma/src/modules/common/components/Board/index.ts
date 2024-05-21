@@ -4,4 +4,5 @@ export * from './hooks/index.js'
 export {
   SelectHeader as SelectBoardHeader,
   SearchHeader as SearchBoardHeader,
+  SelectMenu as SelectBoardMenu,
 } from './common/index.js'

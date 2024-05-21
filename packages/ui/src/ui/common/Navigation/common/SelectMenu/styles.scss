@@ -7,6 +7,11 @@ $default-background: var(--near);
 .#{bem.$base}.select-menu {
   position: relative;
 
+  .#{bem.$base}.button {
+    text-align: left;
+    width: 100%;
+  }
+
   ul.options {
     background: $default-background;
     list-style: none;
@@ -14,6 +19,7 @@ $default-background: var(--near);
     max-height: var(--max-height);
     padding: 0;
     position: absolute;
+    z-index: 100;
 
     &.natural {
       width: 100%;
@@ -23,17 +29,30 @@ $default-background: var(--near);
       right: 0;
     }
 
+
+
     li {
+      background-color: var(--color);
+      color: var(--on-color);
+      transition: all 0.1s;
+
+      a {
+        color: inherit;
+        // UNSTABLE todo harmonize
+        text-decoration: none;
+        transition: all 0.1s;
+      }
+
       &.group {
         font-weight: 700;
         margin-top: var(--gap);
       }
       &.#{bem.$modifier-disabled} {
-        color: gray;
+        background: var(--disabled);
+        color: var(--on-disabled);
       }
       &.#{bem.$modifier-selected} {
-        background-color: red;
-        color: white;
+        //color: white;
       }
     }
   }

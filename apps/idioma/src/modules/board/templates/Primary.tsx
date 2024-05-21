@@ -5,10 +5,15 @@ import {
   Link, useHistory,
 } from 'react-router-dom'
 import {
-  useBoardContext, SelectBoardHeader,
+  useBoardContext,
+  SelectBoardHeader,
+  SelectBoardMenu,
 } from 'modules/common/components'
 import {
-  Button, useTriptychContext, SelectMenu, Breadcrumb,
+  Button,
+  useTriptychContext,
+  NavigationSelectMenu,
+  NavigationBreadcrumb,
 } from '@aztlan/ui'
 import paths from '../paths.js'
 
@@ -29,10 +34,18 @@ function PrimaryTemplate({
   return (
     <BaseTemplate
       title={(
-        <Breadcrumb>
-          <Breadcrumb.Item to="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item to="/">My Boards</Breadcrumb.Item>
-        </Breadcrumb>
+        <NavigationBreadcrumb>
+          <NavigationBreadcrumb.Item to="/">Home</NavigationBreadcrumb.Item>
+          <NavigationBreadcrumb.Item to="/">
+            My Boards
+          </NavigationBreadcrumb.Item>
+          <NavigationBreadcrumb.Item
+            childrenAs={SelectBoardMenu}
+            spanDesktop={6}
+          >
+            My Boards
+          </NavigationBreadcrumb.Item>
+        </NavigationBreadcrumb>
       )
         // title || <SelectBoardHeader />
       }

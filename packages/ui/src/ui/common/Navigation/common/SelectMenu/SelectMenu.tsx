@@ -2,12 +2,15 @@
 import * as React from 'react'
 import {
   useInsertionEffect, useCallback,
+  useEffect,
 } from 'react'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { useSelect } from 'downshift'
-import { Link } from 'react-router-dom'
+import {
+  Link, useHistory,
+} from 'react-router-dom'
 import { itemShape } from '../../types.js'
 import { ComponentPropTypes } from './types.js'
 import type { ComponentProps } from './types.js'
@@ -18,7 +21,7 @@ const componentClassName = 'select-menu'
 
 function flattenTree(rootItem:InferProps<typeof itemShape>):InferProps<typeof itemShape>[] {
   const items = rootItem.items || []
-  const initialAcc = [rootItem]
+  const initialAcc = (rootItem.label || rootItem.Component) ? [rootItem] : []
 
   return items.reduce(
     (
@@ -48,13 +51,14 @@ function SelectMenu({
   rootItem,
   initialIsOpen = false,
   shouldRemainOpen = false,
-  buttonColor = 'paragraph',
+  buttonColor = 'near',
   maxHeight = 'auto',
   openOnHover = false,
   defaultText = 'Select',
   optionsSpan = undefined,
   optionsSpanDesktop = undefined,
   displaySelectedItem = true,
+  initialSelectedItem,
   align = 'left',
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -109,6 +113,7 @@ function SelectMenu({
     itemToString:(item) => (item.label || item.key),
     // onSelectedItemChange,
     initialIsOpen, // parentIsOpen,
+    initialSelectedItem,
     isItemDisabled,
     stateReducer,
     // initialSelectedItem: parentSelectedItem,
@@ -136,6 +141,16 @@ function SelectMenu({
     ],
   )
 
+  const history = useHistory()
+
+  useEffect(
+    () => {
+      if (selectedItem?.url) {
+        history.push(selectedItem.url)
+      }
+    }, [selectedItem],
+  )
+
   return (
     <div
       id={id}
@@ -156,7 +171,7 @@ function SelectMenu({
       <Button
         type="button"
         {...getToggleButtonProps()}
-        variant="simple"
+        variant="borderless"
         color={buttonColor}
         onMouseEnter={openOnHover ? onMouseEnterHandler : undefined}
         // style={{ display: 'none' }}

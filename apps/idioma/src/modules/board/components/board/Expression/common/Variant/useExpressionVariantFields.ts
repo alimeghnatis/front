@@ -6,11 +6,10 @@ const useExpressionVariantFields = (
   const fields = useMemo(
     () => [
       {
-        name    :'variantWord',
-        label   :'word',
-        type    :'choices',
-        optional:true,
-        options :[
+        name   :'variantWord',
+        label  :'word',
+        type   :'choices',
+        options:[
           {
             value:null,
             label:'All words',
@@ -22,11 +21,10 @@ const useExpressionVariantFields = (
         ],
       },
       {
-        name    :'variantName',
-        label   :'tone',
-        type    :'choices',
-        optional:true,
-        options :[
+        name   :'variantName',
+        label  :'tone',
+        type   :'choices',
+        options:[
           {
             value:'language level A2',
             label:'level A2',
@@ -84,7 +82,6 @@ const useExpressionVariantFields = (
       {
         name       :'variantNameOther',
         label      :'tone',
-        optional   :true,
         type       :'text',
         placeholder:'more royal, more childish, more berlin slang of 1980',
         condition  :[
@@ -93,11 +90,10 @@ const useExpressionVariantFields = (
         ],
       },
       {
-        name    :'iso6393',
-        label   :'lang',
-        type    :'choices',
-        optional:true,
-        options :[
+        name   :'iso6393',
+        label  :'lang',
+        type   :'choices',
+        options:[
           {
             value:null,
             label:'original',

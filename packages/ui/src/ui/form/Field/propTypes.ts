@@ -112,6 +112,12 @@ export const Wrapper = {
    */
   mockLabel:PropTypes.bool,
 
+  /** The position of the description */
+  descriptionPosition:PropTypes.oneOf([
+    'top',
+    'bottom',
+  ]),
+
   /** Whether the input requires a nested grid */
   nested:PropTypes.bool,
 

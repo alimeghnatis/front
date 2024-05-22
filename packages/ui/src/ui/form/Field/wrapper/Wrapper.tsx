@@ -63,6 +63,7 @@ function Wrapper({
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
+  descriptionPosition = 'bottom',
   nested = false,
   registerProps: userRegisterProps = defaultObject,
   nestedRegisterProps = defaultObject,
@@ -140,13 +141,16 @@ function Wrapper({
           .filter(Boolean)
           .join(' ')}
       >
+        {description && descriptionPosition === 'top' && (
+          <Description {...ariaProps.description}>{description}</Description>
+        )}
         <Component
           name={name}
           registerProps={registerProps}
           {...ariaProps.input}
           {...otherProps}
         />
-        {description && (
+        {description && descriptionPosition === 'bottom' && (
           <Description {...ariaProps.description}>{description}</Description>
         )}
         {isError && (

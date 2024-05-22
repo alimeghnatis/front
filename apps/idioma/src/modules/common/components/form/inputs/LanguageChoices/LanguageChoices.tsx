@@ -284,5 +284,8 @@ function LanguageChoices({
 LanguageChoices.propTypes = propTypes
 
 export default withWrapper(
-  LanguageChoices, { mockLabel: true },
+  LanguageChoices, {
+    mockLabel          :true,
+    descriptionPosition:'top',
+  },
 )

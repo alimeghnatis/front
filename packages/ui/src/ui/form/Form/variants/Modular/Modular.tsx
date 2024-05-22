@@ -32,6 +32,8 @@ function ModularForm({
   children,
   fieldProps: sharedFieldProps,
   onSubmit,
+  submitSpan = 2,
+  submitSpanDesktop = 3,
   ...otherProps
 }: ModularFormProps): React.ReactElement {
   useInsertionEffect(
@@ -66,7 +68,11 @@ function ModularForm({
         ]
           .filter((e) => e)
           .join(' ')}
-        style={style}
+        style={{
+          ...style,
+          '--submit-span'        :submitSpan,
+          '--submit-span-desktop':submitSpanDesktop,
+        } as React.CSSProperties}
       >
         <Context.Provider value={contextValue}>
           {children}

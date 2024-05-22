@@ -195,10 +195,14 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     },
     {
       label  :'Created',
-      payload:<DateTime
-        iso={result.created}
-        format="datetime"
-      />,
+      payload:(
+        <p>
+          <DateTime
+            iso={result.created}
+            format="datetime"
+          />
+        </p>
+      ),
     },
   ]
 

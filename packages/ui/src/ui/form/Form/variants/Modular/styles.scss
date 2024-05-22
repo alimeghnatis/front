@@ -2,13 +2,17 @@
 
 @use "@aztlan/bem";
 
-$span-submit-actions: 2;
+$span-submit-actions: var(--sus);
 
 .#{bem.$base}.modular-form {
+  --sus: var(--submit-span);
   align-items: start;
   //grid-template-rows: 1fr auto;
   height: 100%;
   overflow: hidden;
+  @media screen and (min-width: 801px) {
+    --sus: var(--submit-span-desktop);
+  }
   .#{bem.$base}.form-section {
     //grid-auto-rows: max-content;
     //height: 100%;
@@ -18,7 +22,7 @@ $span-submit-actions: 2;
     align-items: end;
 
     > .content {
-      grid-column: 1/#{-1-$span-submit-actions};
+      grid-column: 1/calc(-1 - var(--sus));
     }
 
     > .actions {

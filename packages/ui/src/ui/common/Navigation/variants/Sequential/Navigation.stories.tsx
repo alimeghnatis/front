@@ -51,22 +51,10 @@ export const AlwaysDisplay: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     children:[
-      <Component.Header
-        hideOnDesktop={false}
-        key="header"
-      />,
-      <Component.VerticalMenu
-        desktopOnly={false}
-        key="vm"
-      />,
-      <Component.Paginator
-        desktopOnly={false}
-        key="pagi"
-      />,
-      <Component.Footer
-        hideOnDesktop={false}
-        key="footer"
-      />,
+      <Component.Header key="header" />,
+      <Component.VerticalMenu key="vm" />,
+      <Component.Paginator key="pagi" />,
+      <Component.Footer key="footer" />,
     ],
   },
 }

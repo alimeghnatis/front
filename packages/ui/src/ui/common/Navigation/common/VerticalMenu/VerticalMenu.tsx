@@ -23,9 +23,6 @@ const componentClassName = 'vertical-menu'
 const componentItemClassName = styleNames.elementItem
 const componentListClassName = styleNames.elementList
 
-// const isItemAGroupHeader = (item) => item.items && !item.url
-// const areSubItemsDisabled = (item) => item.items && item.items.filter((subItem) => !isItemAGroupHeader(subItem)).every((subItem) => subItem.disabled)
-
 function Item({
   id,
   className: userClassName,
@@ -83,62 +80,8 @@ function List({
   items,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
-  // initialIsOpen = true,
   ...otherProps
 }:ComponentListProps) {
-  /*
-  const isItemDisabled = (item) => (item.disabled && !item.items) || areSubItemsDisabled(item)
-
-  const stateReducer = (
-    state, actionAndChanges,
-  ) => {
-    const {
-      changes, type,
-    } = actionAndChanges
-    switch (type) {
-      case useSelect.stateChangeTypes.ItemClick:
-      case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter:
-        return {
-          ...changes,
-          isOpen          :state.isOpen, // Keep the menu open
-          highlightedIndex:state.highlightedIndex, // Keep the highlighted index
-        }
-      case useSelect.stateChangeTypes.ToggleButtonKeyDownPageUp:
-      case useSelect.stateChangeTypes.ToggleButtonKeyDownPageDown:
-      case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
-      case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
-        // Ensure navigation is scoped to the current level
-        console.log(
-          'KEYDOWN', state, changes,
-        )
-        return {
-          ...changes,
-          highlightedIndex:changes.highlightedIndex < items.length
-            ? changes.highlightedIndex
-            : state.highlightedIndex,
-        }
-      default:
-        return changes
-    }
-  }
-
-  const {
-    isOpen,
-    getMenuProps,
-    getItemProps,
-    getToggleButtonProps,
-    selectedItem,
-    highlightedIndex,
-  } = useSelect({
-    items,
-    itemToString:(item) => (item.label || item.key),
-    // onSelectedItemChange,
-    initialIsOpen, // parentIsOpen,
-    isItemDisabled,
-    stateReducer,
-    // initialSelectedItem: parentSelectedItem,
-  }) */
-
   return (
     <ul
       id={id}
@@ -151,24 +94,14 @@ function List({
       // {...getMenuProps()}
       {...otherProps}
     >
-      {/*
-      <button
-        type="button"
-        {...getToggleButtonProps()}
-        // style={{ display: 'none' }}
-      >
-        {selectedItem ? selectedItem.label : 'Select an item'}
-      </button> */}
       {items.map((
         item, index,
       ) => (
         <Item
           key={item.key || item.label}
           item={item}
-          // className={[highlightedIndex === index && 'highlighted'].filter(Boolean).join(' ')}
           onItemMouseEnterHandler={onItemMouseEnterHandler}
           onItemMouseLeaveHandler={onItemMouseLeaveHandler}
-          // {...getItemProps({ item, index, })}
         />
       ))}
     </ul>

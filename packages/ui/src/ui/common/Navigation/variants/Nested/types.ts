@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import * as basePropTypes from '../../types.js'
 import {
-  ComponentPropTypes as VerticalMenuPropTypes,
+  BaseComponentPropTypes as VerticalMenuPropTypes,
   rootItemPropType,
 } from '../../common/VerticalMenu/types.js'
 import { ComponentPropTypes as HeaderPropTypes } from '../../common/Header/types.js'

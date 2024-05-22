@@ -53,14 +53,14 @@ function RawViewerProfile({
     >
       {result
         && Object.keys(result).map((k) => (
-          <>
+          <React.Fragment key={k}>
             <div className="span-3">
               <h2>{k}</h2>
             </div>
             <div className="span-5">
               <p>{result[k]}</p>
             </div>
-          </>
+          </React.Fragment>
         ))}
     </div>
   )

@@ -51,10 +51,10 @@ const GroupTemplate: StoryFn<typeof Component.Group> = (args) => (
 
 export const Group: StoryFn<typeof Component> = GroupTemplate.bind({})
 Group.args = {
-  children:[
+  children:(
     <>
       <Component>Button 1</Component>
       <Component>Button 2</Component>
-    </>,
-  ],
+    </>
+  ),
 }

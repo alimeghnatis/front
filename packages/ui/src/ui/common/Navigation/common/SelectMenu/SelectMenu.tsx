@@ -196,14 +196,13 @@ function SelectMenu({
       >
         { buttonContent }
       </Button>
-      {isOpen
-      && (
       <ul
         className={[
           'options',
           displayNaturalOptions ? 'natural' : 'manual',
           optionsSpan && `span-${optionsSpan}`,
           optionsSpanDesktop && `md-span-${optionsSpanDesktop}`,
+          isOpen && styleNames.modifierOpen,
           align,
         ].filter(Boolean).join(' ')}
         {...getMenuProps()}
@@ -231,10 +230,8 @@ function SelectMenu({
               </Link>
             ) : item.label}
           </li>
-
         ))}
       </ul>
-      )}
     </div>
   )
 }

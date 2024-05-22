@@ -7,6 +7,12 @@ $default-background: var(--near);
 .#{bem.$base}.select-menu {
   position: relative;
 
+  ul.options {
+    &:not(.#{bem.$modifier-open}) {
+      display: none;
+    }
+  }
+
   .#{bem.$base}.button {
     text-align: left;
     width: 100%;

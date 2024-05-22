@@ -87,7 +87,7 @@ const Template: StoryFn<typeof Component> = (args) => <Component {...args} />
 
 export const Base: StoryFn<typeof Component> = Template.bind({})
 Base.args = {
-  children:[
+  children:(
     <>
       <div key="actions">
         <AddNotificationButton
@@ -113,6 +113,6 @@ Base.args = {
         />
       </div>
       <NotificationGroup displayRemainingTime />
-    </>,
-  ],
+    </>
+  ),
 }

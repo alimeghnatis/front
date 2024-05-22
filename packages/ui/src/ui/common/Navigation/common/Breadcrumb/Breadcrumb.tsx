@@ -62,7 +62,7 @@ InferProps<ItemProps>): React.ReactElement {
     >
       <Wrapper
         to={to}
-        itemprop="item"
+        itemProp="item"
         {...wrapperProps}
       >
         <span itemProp="name">{children}</span>
@@ -89,7 +89,7 @@ Item.propTypes = {
   children:PropTypes.node,
 
   /** The position of the item in the breadcrumb */
-  position:PropTypes.number.isRequired,
+  position:PropTypes.number, // Required but dynamically passed
 
   /** The children as a wrapper */
   childrenAs:PropTypes.elementType,

@@ -13,12 +13,10 @@ itemShape.items = itemsValidator
 
 export const rootItemPropType = PropTypes.shape(itemShape).isRequired
 
-export const ComponentPropTypes = {
+export const BaseComponentPropTypes = {
   ...htmlShared,
   ...asShared,
   ...desktopOnlyShared,
-  /* the root item */
-  rootItem:rootItemPropType,
 
   /** A function that takes the current item is executed on mouse enter */
   onItemMouseEnterHandler:PropTypes.func,
@@ -35,6 +33,13 @@ export const ComponentPropTypes = {
   hideRootItem:PropTypes.bool,
 }
 
+export const ComponentPropTypes = {
+  ...BaseComponentPropTypes,
+
+  /* the root item */
+  rootItem:rootItemPropType,
+}
+
 export type ComponentProps = InferProps<typeof ComponentPropTypes>
 
 export const ComponentItemPropTypes = {
@@ -47,7 +52,10 @@ export const ComponentItemPropTypes = {
 export type ComponentItemProps = InferProps<typeof ComponentItemPropTypes>
 
 export const ComponentListPropTypes = {
-  ...ComponentPropTypes,
+  ...htmlShared,
+  ...desktopOnlyShared,
+  ...asShared,
+
   // items                  :itemsValidator,
   items                  :PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired,
   // initialIsOpen          :PropTypes.bool,

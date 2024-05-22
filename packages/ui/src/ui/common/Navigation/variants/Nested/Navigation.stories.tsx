@@ -19,7 +19,10 @@ export const Base: StoryObj<typeof Component> = {
   args:{
     children:[
       <React.Fragment key="fragment">
-        <Component.Header className="container" />
+        <Component.Header className="container">
+          Title of the page
+        </Component.Header>
+
         <Component.Canvas>
           <div className="container">Test content</div>
         </Component.Canvas>

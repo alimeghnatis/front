@@ -102,7 +102,7 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
             },
             {
               label   :'Roles',
-              url     :'/roles',
+              url     :'/roles4',
               disabled:true,
             },
           ],
@@ -154,7 +154,7 @@ export const InTemplateCustomWidth: StoryFn<typeof Component> = (args) => (
     <Component
       className="span-1"
       defaultText="ST"
-      style={{ 'grid-column-start': '14' }}
+      style={{ gridColumnStart: '14' }}
       optionsSpan={4}
       align="right"
       alwaysDisplayDefault

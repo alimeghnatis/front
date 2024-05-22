@@ -132,7 +132,7 @@ export const Spaced: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     spaced:true,
-    style :{ 'min-height': '500px' },
+    style :{ minHeight: '500px' },
   },
 }
 

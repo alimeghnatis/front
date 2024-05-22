@@ -67,7 +67,7 @@ export const barsShared = {
   ...leftShared,
 
   /* A React element to represent the current navigation location */
-  children:PropTypes.node.isRequired,
+  children:PropTypes.node,
 
   /* Whether to hide this navigation element on desktop */
   desktop:PropTypes.bool,

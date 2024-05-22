@@ -28,9 +28,10 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    title   :'Details about something',
-    children:'Sample MobilePopup',
-    fixed   :true,
+    title    :'Details about something',
+    children :'Sample MobilePopup',
+    closeLink:'/close',
+    fixed    :true,
   },
 }
 
@@ -39,15 +40,17 @@ export const CloseContent: StoryObj<typeof Component> = {
     title       :'Details about something',
     children    :'Sample MobilePopup',
     closeContent:'X',
+    closeLink   :'/close',
     fixed       :true,
   },
 }
 
 export const Overflow: StoryObj<typeof Component> = {
   args:{
-    title   :'Details about something',
-    fixed   :true,
-    children:(
+    title    :'Details about something',
+    fixed    :true,
+    closeLink:'/close',
+    children :(
       <>
         <p className="container">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget

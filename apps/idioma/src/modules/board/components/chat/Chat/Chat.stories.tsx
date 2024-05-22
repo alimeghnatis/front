@@ -12,10 +12,7 @@ import Component from './Chat.js'
 const meta: Meta<typeof Component> = {
   title     :'board/chat/Chat',
   component :Component,
-  decorators:[
-    decorators.components.Relay,
-    decorators.components.Notification,
-  ],
+  decorators:[decorators.components.Notification],
   parameters:{ layout: 'fullscreen' },
   /*
   argTypes: {

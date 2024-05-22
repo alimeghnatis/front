@@ -6,7 +6,7 @@ import {
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 
-import decorators from 'story-utils/decorators'
+import decorators from 'story-utils/decorators.js'
 import Component from './Message.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";

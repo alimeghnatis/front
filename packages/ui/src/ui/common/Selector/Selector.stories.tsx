@@ -55,6 +55,7 @@ Base.args = {
     {
       value:'board',
       label:'Board Main Page',
+      color:'important',
     },
     {
       value:'settings',

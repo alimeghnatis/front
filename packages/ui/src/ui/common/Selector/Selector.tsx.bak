@@ -10,8 +10,8 @@ import {
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+
 import styleNames from '@aztlan/bem'
-import { Button } from '../Button/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'selector'
@@ -28,8 +28,6 @@ function Selector({
   options,
   value,
   setValue,
-  defaultColor = 'metadata',
-  selectedColor = 'success',
 }: // ...otherProps
 
 InferProps<typeof Selector.propTypes>): React.ReactElement {
@@ -40,8 +38,55 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
     }, [],
   )
 
+  const [
+    sliderStyle,
+    setSliderStyle,
+  ] = useState({})
+
+  const [
+    isLoaded,
+    setIsLoaded,
+  ] = useState(false)
+
+  const containerRef = useRef<HTMLUListElement>()
+
+  useEffect(
+    () => {
+      if (containerRef.current) {
+        const children = Array.from(containerRef.current.children)
+        const activeItem = children.find((child) => child.getAttribute('data-value') === value)
+
+        if (activeItem) {
+          const {
+            offsetLeft, offsetWidth,
+          } = activeItem as HTMLElement
+          setSliderStyle({
+            '--slider-left' :`calc(${offsetLeft}px - var(--gap)/2)`,
+            '--slider-width':`calc(${offsetWidth}px + var(--gap))`,
+          })
+        }
+      }
+    }, [
+      value,
+      options,
+      isLoaded,
+    ],
+  )
+
+  useEffect(
+    () => {
+      if (!isLoaded) {
+        setTimeout(
+          () => {
+            setIsLoaded(true)
+          }, 20,
+        )
+      }
+    }, [],
+  )
+
   return (
-    <Button.Group
+    <ul
       id={id}
       className={[
         baseClassName,
@@ -51,24 +96,26 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      variant="borderless"
+      ref={containerRef}
       // {...otherProps}
     >
       {options.map((option) => (
-        <Button
+        <li
           key={option.value}
           onClick={() => setValue(option.value)}
           data-value={option.value}
-          color={
-            value === option.value
-              ? option.color || selectedColor
-              : defaultColor
-          }
+          className={value === option.value ? styleNames.modifierSelected : ''}
         >
           {option.label}
-        </Button>
+        </li>
       ))}
-    </Button.Group>
+      {isLoaded && (
+      <li
+        className="slider"
+        style={sliderStyle}
+      />
+      )}
+    </ul>
   )
 }
 

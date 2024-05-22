@@ -52,6 +52,10 @@ InferProps<typeof Chat.propTypes>): React.ReactElement {
     FRAGMENT, data,
   )
 
+  console.log(
+    'result', result, data,
+  )
+
   return (
     <div
       id={id}

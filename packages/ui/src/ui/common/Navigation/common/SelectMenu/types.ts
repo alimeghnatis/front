@@ -59,8 +59,11 @@ export const ComponentPropTypes = {
     'right',
   ]),
 
-  /** Display the selected item */
-  displaySelectedItem:PropTypes.bool,
+  /** The initial selected item */
+  initialSelectedItem:PropTypes.shape(itemShape),
+
+  /** Always display the selected item */
+  alwaysDisplayDefault:PropTypes.bool,
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>

@@ -33,6 +33,7 @@ $default-separator: var(--separator, "/");
 
     & + .#{bem.$element-item}::before {
       background: $default-background;
+      color: var(--paragraph);
       content: #{$default-separator};
       display: inline-block;
       left: calc(var(--gap) * -1);

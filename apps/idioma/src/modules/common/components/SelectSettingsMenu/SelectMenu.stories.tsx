@@ -1,23 +1,30 @@
-/* @aztlan/generator-front 2.4.2 */
+/* @aztlan/generator-front 3.9.0 */
+// import * as React from 'react'
 
 import {
   Meta, StoryObj,
 } from '@storybook/react'
+// import { Meta, StoryFn } from '@storybook/react'
+import { Triptych } from '@aztlan/ui'
+
 import { graphql } from 'react-relay'
+
 import { decorators } from 'story-utils'
-import { RawSelectHeader as Component } from './SelectHeader.js'
+import { RawSelectMenu as Component } from './SelectMenu.js'
+// import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title     :'common/Board/SelectHeader',
+  title     :'common/SelectSettingsMenu',
   component :Component,
   decorators:[decorators.components.Router],
 }
 
 export default meta
 
+/*
 const relay = {
   query:graphql`
-    query SelectHeaderBoardStoriesQuery {
+    query SelectMenuBoardStoriesQuery {
       viewer {
         boardMemberships(first: 50)
           @connection(key: "useBoardMembershipsFragment_boardMemberships") {
@@ -66,9 +73,10 @@ const relay = {
       ],
     }),
   },
-}
+} */
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{},
-  parameters:{ relay },
+  args:{ children: 'Sample BreadcrumbSelectMenu' },
+
+  // parameters:{ relay },
 }

@@ -15,6 +15,7 @@ const meta: Meta<typeof Component> = {
   decorators:[
     decorators.components.Relay,
     decorators.components.Router,
+    decorators.components.Notification,
   ],
   /*
   argTypes: {

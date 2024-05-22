@@ -1,7 +1,9 @@
+import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './RatingForm.js'
 // import decorators from '../../../../decorators.js'
 
@@ -14,6 +16,7 @@ const meta: Meta<typeof Component> = {
         <Story />
       </div>
     ),
+    decorators.components.Notification,
   ],
 }
 

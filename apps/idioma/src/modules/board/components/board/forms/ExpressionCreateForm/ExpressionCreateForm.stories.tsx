@@ -11,7 +11,10 @@ import Component from './ExpressionCreateForm.js'
 const meta: Meta<typeof Component> = {
   title     :'board/board/forms/ExpressionCreateForm',
   component :Component,
-  decorators:[decorators.components.Relay],
+  decorators:[
+    decorators.components.Relay,
+    decorators.components.Notification,
+  ],
   /*
   decorators: [
     //decorators.app,

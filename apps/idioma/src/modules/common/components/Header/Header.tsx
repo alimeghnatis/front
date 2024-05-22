@@ -68,6 +68,11 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
       )}
       leftSpanDesktop={1}
       rightSpanDesktop={3}
+      right={right}
+
+      // {...otherProps}
+    >
+      {/*
       right={(
         <>
           <Button
@@ -88,9 +93,7 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
           </Button>
           {right}
         </>
-      )}
-      // {...otherProps}
-    >
+      )} */}
       {children}
     </NavigationHeader>
   )

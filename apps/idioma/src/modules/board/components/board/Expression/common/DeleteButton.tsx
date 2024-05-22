@@ -54,7 +54,7 @@ function DeleteButton({
         const groupRecord = store.get(groupID)
         const connectionRecord = ConnectionHandler.getConnection(
           groupRecord,
-          'GroupFragment_expressions',
+          'DefaultGroupFragment_expressions',
         )
         ConnectionHandler.deleteNode(
           connectionRecord, result.id,

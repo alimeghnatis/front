@@ -3,6 +3,7 @@ import * as React from 'react'
 import {
   useInsertionEffect, useCallback,
   useEffect,
+  useMemo,
 } from 'react'
 import { InferProps } from 'prop-types'
 
@@ -57,8 +58,8 @@ function SelectMenu({
   defaultText = 'Select',
   optionsSpan = undefined,
   optionsSpanDesktop = undefined,
-  displaySelectedItem = true,
   initialSelectedItem,
+  alwaysDisplayDefault = false,
   align = 'left',
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -89,11 +90,12 @@ function SelectMenu({
           isOpen          :shouldRemainOpen, // ? state.isOpen, // Keep the menu open
           highlightedIndex:state.highlightedIndex, // Keep the highlighted index
         }
+      /*
       case useSelect.stateChangeTypes.FunctionOpenMenu:
         return {
           ...changes,
           highlightedIndex:state.highlightedIndex >= 0 ? state.highlightedIndex : findFirstNonDisabledIndex(items),
-        }
+        } */
       default:
         return changes
     }
@@ -151,6 +153,22 @@ function SelectMenu({
     }, [selectedItem],
   )
 
+  const buttonContent = useMemo(
+    () => {
+      if (alwaysDisplayDefault) {
+        return defaultText
+      }
+      if (selectedItem) {
+        return selectedItem.label
+      }
+      return defaultText
+    }, [
+      selectedItem,
+      defaultText,
+      alwaysDisplayDefault,
+    ],
+  )
+
   return (
     <div
       id={id}
@@ -176,7 +194,7 @@ function SelectMenu({
         onMouseEnter={openOnHover ? onMouseEnterHandler : undefined}
         // style={{ display: 'none' }}
       >
-        {displaySelectedItem ? selectedItem ? selectedItem.label : defaultText : defaultText}
+        { buttonContent }
       </Button>
       {isOpen
       && (

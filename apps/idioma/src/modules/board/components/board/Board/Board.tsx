@@ -73,6 +73,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
 
   const loadMoreRef = useRef<HTMLDivElement>(null)
   const groupsContainerRef = useRef<HTMLDivElement>(null)
+  const loadMoreWrapperRef = useRef<HTMLDivElement>(null)
 
   useIntersectionObserverLoader(
     loadMoreRef, hasNext, loadNext, isLoadingNext,
@@ -123,8 +124,11 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
       const { target } = e
       const containerElement = containerRef.current
       const groupsContainerElement = groupsContainerRef.current
+      const loadMoreWrapperElement = loadMoreWrapperRef.current
       if (
-        (target === containerElement || target == groupsContainerElement)
+        (target === containerElement
+          || target == groupsContainerElement
+          || target == loadMoreWrapperElement)
         && currentExpressionId
       ) {
         history.push(baseBoardUrl)
@@ -135,6 +139,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
     [
       containerRef,
       groupsContainerRef,
+      currentExpressionId,
     ],
   )
 
@@ -177,6 +182,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         // ref={loadMoreRef}
         id="load-more"
         className="container"
+        ref={loadMoreWrapperRef} // Only used to deselect
       >
         <div
           ref={loadMoreRef}

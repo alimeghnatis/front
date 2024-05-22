@@ -11,7 +11,10 @@ import Component from './BoardUpdateForm.js'
 const meta: Meta<typeof Component> = {
   title     :'board/board/forms/BoardUpdateForm',
   component :Component,
-  decorators:[decorators.components.Router],
+  decorators:[
+    decorators.components.Router,
+    decorators.components.Notification,
+  ],
   /*
   argTypes: {
     backgroundColor: { control: "color" }

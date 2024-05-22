@@ -7,6 +7,7 @@ import {
 import { graphql } from 'react-relay'
 // import { Meta, StoryFn } from '@storybook/react'
 import { decorators } from 'story-utils'
+import { NotificationProvider } from '@aztlan/ui'
 import Component from './Details.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
@@ -21,6 +22,7 @@ const meta: Meta<typeof Component> = {
         <div className="grid span-8 md-span-10">{StoryFn()}</div>
       </div>
     ),
+    (StoryFn) => <NotificationProvider>{StoryFn()}</NotificationProvider>,
   ],
   parameters:{ layout: 'fullscreen' },
   /*

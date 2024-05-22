@@ -17,20 +17,23 @@ const componentClassName = 'button'
  * @param {InferProps<typeof Button.propTypes>} props -
  * @returns {React.ReactElement} - Rendered Button
  */
-function Button({
-  id,
-  className: userClassName,
-  style,
-  children,
-  as: Wrapper = 'button',
-  type = 'button',
-  color,
-  variant,
-  disabled = false,
-  ...otherProps
-}: InferProps<typeof Button.propTypes> & {
-  [key: string]:any;
-}): React.ReactElement {
+function Button(
+  {
+    id,
+    className: userClassName,
+    style,
+    children,
+    as: Wrapper = 'button',
+    type = 'button',
+    color,
+    variant,
+    disabled = false,
+    ...otherProps
+  }: InferProps<typeof Button.propTypes> & {
+    [key: string]:any;
+  },
+  ref,
+): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -58,6 +61,7 @@ function Button({
       style={style}
       type={isHTMLButton ? type : undefined}
       disabled={isHTMLButton ? disabled : undefined}
+      ref={ref}
       {...otherProps}
     >
       {children}
@@ -102,6 +106,7 @@ Button.propTypes = {
   disabled:PropTypes.bool,
 }
 
-Button.Group = Group
+const ForwardRefButton = React.forwardRef(Button as React.ForwardRefRenderFunction<HTMLButtonElement>)
+ForwardRefButton.Group = Group
 
-export default Button
+export default ForwardRefButton

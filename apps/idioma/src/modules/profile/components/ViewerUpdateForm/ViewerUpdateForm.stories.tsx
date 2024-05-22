@@ -5,22 +5,13 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import { RawViewerUpdateForm as Component } from './ViewerUpdateForm.js'
 
 const meta: Meta<typeof Component> = {
-  title    :'profile/ViewerUpdateForm',
-  component:Component,
-  /*
-  decorators: [
-    //decorators.app,
-    //storyfn => <div className="">{ storyfn() }</div>,
-  ]
-  argTypes: {
-    backgroundColor: { control: "color" }
-  }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+  title     :'profile/ViewerUpdateForm',
+  component :Component,
+  decorators:[decorators.components.Notification],
 }
 
 export default meta

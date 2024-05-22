@@ -5,23 +5,14 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
+import { decorators } from 'story-utils'
 import Component from './SecondaryHeader.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 
 const meta: Meta<typeof Component> = {
-  title    :'base.navigation/SecondaryHeader',
-  component:Component,
-  /*
-  decorators: [
-    //decorators.app,
-    //storyfn => <div className="">{ storyfn() }</div>,
-  ]
-  argTypes: {
-    backgroundColor: { control: "color" }
-  }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+  title     :'base.navigation/SecondaryHeader',
+  component :Component,
+  decorators:[decorators.components.Router],
 }
 
 export default meta

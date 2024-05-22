@@ -30,7 +30,7 @@ const relay = {
   `,
   getReferenceEntry:(data) => [
     'data',
-    data.group,
+    data,
   ],
   variables    :{},
   mockResolvers:{

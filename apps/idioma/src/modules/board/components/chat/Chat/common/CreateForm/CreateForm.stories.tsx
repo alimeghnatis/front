@@ -12,7 +12,10 @@ import Component from './CreateForm.js'
 const meta: Meta<typeof Component> = {
   title     :'board/chat/Chat/CreateForm',
   component :Component,
-  decorators:[decorators.components.Relay],
+  decorators:[
+    decorators.components.Relay,
+    decorators.components.Notification,
+  ],
   /*
   decorators: [
     //decorators.app,

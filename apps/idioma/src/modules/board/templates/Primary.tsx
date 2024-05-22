@@ -7,6 +7,7 @@ import {
 import {
   useBoardContext,
   SelectBoardHeader,
+  SelectSettingsMenu,
   SelectBoardMenu,
 } from 'modules/common/components'
 import {
@@ -49,17 +50,7 @@ function PrimaryTemplate({
       )
         // title || <SelectBoardHeader />
       }
-      right={
-        hasSettings && (
-          <Button
-            onClick={() => selectSecondary('board-settings')}
-            variant="simple"
-            color="error"
-          >
-            Settings
-          </Button>
-        )
-      }
+      right={<SelectSettingsMenu />}
       {...otherProps}
     >
       {children}

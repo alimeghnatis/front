@@ -15,7 +15,9 @@ import {
 } from 'react-router-dom'
 
 import {
-  ApplicationProvider, AuthenticationProvider,
+  ApplicationProvider,
+  AuthenticationProvider,
+  NotificationProvider,
 } from '@aztlan/ui'
 import {
   QUERY_APPLICATION,
@@ -237,6 +239,18 @@ const staticRouter = (params) => (StoryFn) => StaticRouter(
   StoryFn, params,
 )
 
+function Notification(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    NotificationProvider, params, StoryFn(),
+  )
+}
+
+const notification = (params) => (StoryFn) => Notification(
+  StoryFn, params,
+)
+
 const all = {
   components:{
     Application,
@@ -245,6 +259,7 @@ const all = {
     Grid,
     Intl,
     IntlApp,
+    Notification,
     Relay,
     Router,
     StaticRouter,
@@ -258,6 +273,7 @@ const all = {
     grid,
     intl,
     intlApp,
+    notification,
     relay,
     router,
     staticRouter,

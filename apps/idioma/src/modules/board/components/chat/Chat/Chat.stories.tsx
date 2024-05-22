@@ -6,13 +6,16 @@ import {
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './Chat.js'
-import decorators from '../../../../../decorators.js'
 
 const meta: Meta<typeof Component> = {
   title     :'board/chat/Chat',
   component :Component,
-  // decorators:[decorators.components.Relay],
+  decorators:[
+    decorators.components.Relay,
+    decorators.components.Notification,
+  ],
   parameters:{ layout: 'fullscreen' },
   /*
   argTypes: {

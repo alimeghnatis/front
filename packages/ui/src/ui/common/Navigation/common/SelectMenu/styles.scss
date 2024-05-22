@@ -38,6 +38,7 @@ $default-background: var(--near);
 
       a {
         color: inherit;
+        display: block;
         // UNSTABLE todo harmonize
         text-decoration: none;
         transition: all 0.1s;

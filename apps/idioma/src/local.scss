@@ -83,6 +83,10 @@ html {
   line-height: 1.5em;
 }
 
+* {
+  transition: color 0.1s, background 0.1s;
+}
+
 p {
   font-family: "nsans";
 }

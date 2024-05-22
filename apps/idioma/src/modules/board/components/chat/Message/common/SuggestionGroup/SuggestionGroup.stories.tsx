@@ -5,13 +5,15 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './SuggestionGroup.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'board/chat/Message/SuggestionGroup',
-  component:Component,
+  title     :'board/chat/Message/SuggestionGroup',
+  component :Component,
+  decorators:[decorators.components.Notification],
   /*
   decorators: [
     //decorators.app,

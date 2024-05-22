@@ -54,11 +54,6 @@ function compareDays(
 ): boolean {
   const date1 = parseISO(isoString1)
   const date2 = parseISO(isoString2)
-  console.log(
-    'date1', date1, date2, isSameDay(
-      date1, date2,
-    ),
-  )
 
   return isSameDay(
     date1, date2,

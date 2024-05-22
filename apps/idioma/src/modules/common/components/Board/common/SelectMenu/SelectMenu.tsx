@@ -47,9 +47,9 @@ InferProps<typeof RawSelectMenu.propTypes>): React.ReactElement {
 
   const result = data
 
-  const applicationContext = useApplicationContext()
+  const { matchRoute } = useApplicationContext()
 
-  const LinkType = applicationContext ? PrefetchLink : Link
+  const LinkType = matchRoute ? PrefetchLink : Link
 
   const {
     basePath,

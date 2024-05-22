@@ -68,7 +68,20 @@ function Tester() {
   return (
     <pre style={{ whiteSpace: 'pre-wrap' }}>
       {JSON.stringify(
-        board, null, 2,
+        Object.entries(board).reduce(
+          (
+            accumulator, [
+              key,
+              value,
+            ],
+          ) => {
+            if (typeof value === 'object') return accumulator
+            accumulator[key] = value
+            return accumulator
+          }, {},
+        ),
+        null,
+        2,
       )}
     </pre>
   )

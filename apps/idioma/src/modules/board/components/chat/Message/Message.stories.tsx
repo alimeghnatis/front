@@ -13,6 +13,7 @@ import Component from './Message.js'
 const meta: Meta<typeof Component> = {
   title    :'board/chat/Message',
   component:Component,
+  decorators:[decorators.components.Notification],
   /*
   decorators: [
     //decorators.app,

@@ -47,7 +47,7 @@ export const Disabled: StoryObj<typeof Component> = {
     type        :'text',
     name        :'object-id',
     label       :'Object id',
-    placeholder :'5f9d7a9a0f0b7a0f0b7a0f0b',
+    placeholder :btoa('ObjectNode:ABCDE'),
     disabled    :true,
     autoComplete:'off',
   },

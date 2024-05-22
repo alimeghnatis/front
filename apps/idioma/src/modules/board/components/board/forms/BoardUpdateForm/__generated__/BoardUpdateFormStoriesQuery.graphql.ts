@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a608d9b5a6748c460f1c218e484ed334>>
+ * @generated SignedSource<<214f53e1c367a577ee4839bb1794a6e8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -123,6 +123,27 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "displayGeneral",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "displayGrammar",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "displayWords",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "enabledLanguages",
             "storageKey": null
           }
@@ -132,12 +153,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "668bb7a73cd08268c67e6d185b65b837",
+    "cacheID": "633e649766be754c8d66588a990551b6",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
   }
 };
 })();

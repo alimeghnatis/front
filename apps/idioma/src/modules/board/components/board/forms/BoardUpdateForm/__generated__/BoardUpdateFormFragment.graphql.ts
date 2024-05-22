@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4ff02b0ec5f272b88bbed89945a91c63>>
+ * @generated SignedSource<<3ce4aa85f173505076844783875127b4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,10 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type BoardUpdateFormFragment$data = {
+  readonly displayGeneral: boolean;
+  readonly displayGrammar: boolean;
   readonly displayTranslations: boolean;
+  readonly displayWords: boolean;
   readonly enabledLanguages: any;
   readonly explanationsLanguage: string;
   readonly explanationsLength: string;
@@ -86,6 +89,27 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "displayGeneral",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "displayGrammar",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "displayWords",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "enabledLanguages",
       "storageKey": null
     },
@@ -99,6 +123,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "975602e1c227458504042bbd17974f9c";
+(node as any).hash = "4558d50af14b004ef61255a8af82e62a";
 
 export default node;

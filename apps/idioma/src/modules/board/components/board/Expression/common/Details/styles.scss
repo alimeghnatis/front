@@ -41,9 +41,21 @@
         grid-column-start: 2;
       }
 
+      &.details {
+        grid-column-start: 2;
+      }
+
       &.explanations {
         grid-column: 2/span 6;
+
+        & + .details {
+          grid-column-start: 9;
+        }
       }
+    }
+
+    .rating-form {
+      grid-column-start: 2;
     }
 
     .grid.container > .label {

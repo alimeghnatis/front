@@ -84,12 +84,28 @@ const useBoardFormFields = (instance) => {
         type         :'checkbox',
         label        :'Display Translations',
         description  :'Whether to display translations in the board in the explanations language selected above. This is not recommended in all learning situations.',
-        registerProps:{
-          required:{
-            value  :false,
-            message:'This field is required',
-          },
-        },
+        registerProps:{ required: { value: false } },
+      }, // Add displayGeneral, displayGrammar, displayWords
+      {
+        name         :'displayGeneral',
+        type         :'checkbox',
+        label        :'Display General',
+        description  :'Whether to display general explanations in the board in the explanations language selected above.',
+        registerProps:{ required: { value: false } },
+      },
+      {
+        name         :'displayGrammar',
+        type         :'checkbox',
+        label        :'Display Grammar',
+        description  :'Whether to display grammar explanations in the board in the explanations language selected above.',
+        registerProps:{ required: { value: false } },
+      },
+      {
+        name         :'displayWords',
+        type         :'checkbox',
+        label        :'Display Words',
+        description  :'Whether to display word by word explanations in the board in the explanations language selected above.',
+        registerProps:{ required: { value: false } },
       },
       {
         name       :'explanationsLength',

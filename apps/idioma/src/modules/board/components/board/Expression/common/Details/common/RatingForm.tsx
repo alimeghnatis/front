@@ -13,6 +13,8 @@ import {
   FormProvider, useForm,
 } from 'react-hook-form'
 
+const componentClassName = 'rating-form'
+
 const FRAGMENT = graphql`
   fragment RatingFormFragment on ExpressionNode {
     id
@@ -83,6 +85,9 @@ const fields = [
 ]
 
 function RatingForm({
+  id,
+  className: userClassName,
+  style,
   data,
   ...otherProps
 }: InferProps<typeof RatingForm.propTypes>): React.ReactElement {
@@ -170,16 +175,28 @@ function RatingForm({
   )
 
   return (
-    <FormProvider {...methods}>
-      {fields.map((field) => (
-        <Field
-          spanLabel
-          key={field.name}
-          {...field}
-          {...otherProps}
-        />
-      ))}
-    </FormProvider>
+    <div
+      id={id}
+      className={[
+        componentClassName,
+        userClassName,
+        'grid',
+      ]
+        .filter((e) => e)
+        .join(' ')}
+      style={style}
+    >
+      <FormProvider {...methods}>
+        {fields.map((field) => (
+          <Field
+            spanLabel
+            key={field.name}
+            {...field}
+            {...otherProps}
+          />
+        ))}
+      </FormProvider>
+    </div>
   )
 }
 

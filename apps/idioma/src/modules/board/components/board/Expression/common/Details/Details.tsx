@@ -47,48 +47,56 @@ const FRAGMENT = graphql`
  * @param {InferProps<typeof ContentMapPropTypes>} props - Props for ContentMap component.
  * @returns {React.ReactElement} - Rendered content map.
  */
-const ContentMap: React.FC<InferProps<typeof ContentMapPropTypes>> = ({
+const ContentMap: React.FC<InferProps<typeof ContentMap.PropTypes>> = ({
   contentMap,
   spanLabel,
   spanLabelDesktop,
   spanContent,
   spanContentDesktop,
   className,
-}) => (
-  <div className={[
-    'grid',
-    'content-map',
-    className,
-  ].filter(Boolean).join(' ')}
-  >
-    {contentMap.map(({
-      condition, label, payload, marked: isMarked,
-    }) => (condition || condition === undefined ? (
-      <>
-        <div
-          className={[
-            'label',
-            `span-${spanLabel}`,
-            `md-span-${spanLabelDesktop}`,
-          ].join(' ')}
-        >
-          {label}
-        </div>
-        <div
-          className={[
-            'field',
-            `span-${spanContent}`,
-            `md-span-${spanContentDesktop}`,
-          ].join(' ')}
-          dangerouslySetInnerHTML={
+}) => {
+  const validItems = contentMap.filter(({ condition }) => condition || condition === undefined)
+
+  if (!validItems.length) {
+    return null
+  }
+  return (
+    <div
+      className={[
+        'grid',
+        'content-map',
+        className,
+      ].filter(Boolean).join(' ')}
+    >
+      {validItems.map(({
+        label, payload, marked: isMarked,
+      }) => (
+        <>
+          <div
+            className={[
+              'label',
+              `span-${spanLabel}`,
+              `md-span-${spanLabelDesktop}`,
+            ].join(' ')}
+          >
+            {label}
+          </div>
+          <div
+            className={[
+              'field',
+              `span-${spanContent}`,
+              `md-span-${spanContentDesktop}`,
+            ].join(' ')}
+            dangerouslySetInnerHTML={
               isMarked ? { __html: marked.parse(payload) } : undefined
             }
-          children={!isMarked ? payload : undefined}
-        />
-      </>
-    ) : null))}
-  </div>
-)
+            children={!isMarked ? payload : undefined}
+          />
+        </>
+      ))}
+    </div>
+  )
+}
 
 ContentMap.PropTypes = {
   contentMap:PropTypes.arrayOf(PropTypes.shape({
@@ -163,13 +171,13 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
 
   const contentMap1 = [
     {
-      condition:result.generalExplanation,
+      condition:boardData.displayGeneral && result.generalExplanation,
       label    :'General',
       payload  :result.generalExplanation,
       marked   :true,
     },
     {
-      condition:result.grammarExplanation,
+      condition:boardData.displayGrammar && result.grammarExplanation,
       label    :'Grammar',
       payload  :result.grammarExplanation,
       marked   :true,
@@ -178,7 +186,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
 
   const contentMap2 = [
     {
-      condition:result.wordsExplanation,
+      condition:boardData.displayWords && result.wordsExplanation,
       label    :'Word by word',
       payload  :result.wordsExplanation,
       marked   :true,
@@ -239,6 +247,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
         />
         <RatingForm
           data={result}
+          className="span-8 md-span-6"
           spanLabel={spanLabel}
           spanLabelDesktop={1}
           spanContent={spanContent}

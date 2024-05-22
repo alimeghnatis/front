@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1587b693e96b2424845d47e007f6b2e6>>
+ * @generated SignedSource<<643eb20675d0de88b72a2eb2c85aa4d2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,10 @@ import { FragmentRefs } from "relay-runtime";
 export type UpdateBoardMutationInput = {
   clientMutationId?: string | null | undefined;
   defaultForUser?: string | null | undefined;
+  displayGeneral?: boolean | null | undefined;
+  displayGrammar?: boolean | null | undefined;
   displayTranslations?: boolean | null | undefined;
+  displayWords?: boolean | null | undefined;
   enabledLanguages?: any | null | undefined;
   explanationsLanguage?: string | null | undefined;
   explanationsLength?: string | null | undefined;
@@ -199,6 +202,27 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
+                "name": "displayGeneral",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "displayGrammar",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "displayWords",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
                 "name": "enabledLanguages",
                 "storageKey": null
               }
@@ -212,12 +236,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1573512320e1c320701c8950d2f6cc76",
+    "cacheID": "97f3b57dfc310a0921ffea15828894bb",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormBoardUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
   }
 };
 })();

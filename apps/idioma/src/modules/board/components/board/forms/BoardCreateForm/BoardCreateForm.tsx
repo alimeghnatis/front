@@ -38,6 +38,10 @@ const MUTATION_UPDATE = graphql`
         updated
         newExpressionsCount
         displayTranslations
+        displayTranslations
+        displayGeneral
+        displayGrammar
+        displayWords
         explanationsLanguage
         explanationsLength
         enabledLanguages

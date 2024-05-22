@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e9c566dc81b2aef37c0456e20bb6440d>>
+ * @generated SignedSource<<6a5a08c594312c3b913177f1f06d7529>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,17 +10,12 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 export type Aspect = "IMPERFECTIVE" | "PERFECTIVE" | "PROGRESSIVE" | "%future added value";
-export type Case = "ACCUSATIVE" | "DATIVE" | "GENITIVE" | "INSTRUMENTAL" | "LOCATIVE" | "NOMINATIVE" | "PREPOSITIONAL" | "VOCATIVE" | "%future added value";
 export type Clusivity = "EXCLUSIVE" | "INCLUSIVE" | "%future added value";
-export type Gender = "FEMININE" | "MASCULINE" | "NEUTER" | "%future added value";
 export type Mood = "CONDITIONAL" | "GERUND" | "IMPERATIVE" | "INDICATIVE" | "INFINITIVE" | "OPTATIVE" | "PARTICIPLE" | "SUBJUNCTIVE" | "%future added value";
 export type Number = "PLURAL" | "SINGULAR" | "%future added value";
-export type PartOfSpeech = "ADJECTIVE" | "ADVERB" | "CLITIC" | "CONJUNCTION" | "DETERMINER" | "INTERJECTION" | "NOUN" | "PARTICLE" | "PREPOSITION" | "PRONOUN" | "VERB" | "%future added value";
 export type Politeness = "FORMAL" | "HONORIFIC" | "INFORMAL" | "%future added value";
 export type Register = "COLLOQUIAL" | "FORMAL" | "SLANG" | "STANDARD" | "TECHNICAL" | "%future added value";
-export type SyntaxFunction = "ADVERBIAL" | "ADVERBIAL_CLAUSE" | "AUXILIARY_VERB" | "COMPLEMENT" | "COORDINATING_CONJUNCTION" | "DETERMINATIVE" | "INDIRECT_OBJECT" | "MAIN_VERB" | "MODAL_VERB" | "MODIFIER" | "NOMINAL_CLAUSE" | "OBJECT" | "PREDICATE" | "RELATIVE_CLAUSE" | "SUBJECT" | "%future added value";
-export type Tense = "FUTURE" | "FUTURE_PERFECT" | "IMPERFECT" | "PAST" | "PERFECT" | "PLUPERFECT" | "PRESENT" | "%future added value";
-export type Voice = "ACTIVE" | "MIDDLE" | "PASSIVE" | "%future added value";
+export type Voice = "ACTIVE" | "MIDDLE" | "PASSIVE" | "REFLEXIVE" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type MorphosaFragment$data = {
   readonly analysis: {
@@ -29,20 +24,20 @@ export type MorphosaFragment$data = {
       readonly lemma: ReadonlyArray<string | null | undefined> | null | undefined;
       readonly morphology: {
         readonly aspect: Aspect | null | undefined;
-        readonly case: Case | null | undefined;
+        readonly case: string | null | undefined;
         readonly clusivity: Clusivity | null | undefined;
-        readonly gender: Gender | null | undefined;
+        readonly gender: string | null | undefined;
         readonly mood: Mood | null | undefined;
         readonly number: Number | null | undefined;
         readonly person: number | null | undefined;
         readonly politeness: Politeness | null | undefined;
         readonly register: Register | null | undefined;
-        readonly tense: Tense | null | undefined;
+        readonly tense: string | null | undefined;
         readonly voice: Voice | null | undefined;
       } | null | undefined;
-      readonly pos: PartOfSpeech | null | undefined;
+      readonly pos: string | null | undefined;
       readonly syntax: {
-        readonly function: SyntaxFunction | null | undefined;
+        readonly function: string | null | undefined;
         readonly head: number | null | undefined;
       } | null | undefined;
       readonly word: string | null | undefined;

@@ -16,6 +16,7 @@ import {
   Hidden,
   Text,
   Textarea,
+  Toggle,
   Select,
   SimpleChoices,
   Choices,
@@ -63,6 +64,8 @@ function Field({
       return <Select {...fieldProps} />
     case 'checkbox':
       return <Checkbox {...fieldProps} />
+    case 'toggle':
+      return <Toggle {...fieldProps} />
     case 'simple-choices':
       return <SimpleChoices {...fieldProps} />
     case 'choices':

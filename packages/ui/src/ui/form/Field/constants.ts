@@ -21,6 +21,7 @@ export const AVAILABLE_TYPES = [
   'textarea',
   'checkbox',
   'combobox',
+  'toggle',
 
   // For custom components
   'custom',

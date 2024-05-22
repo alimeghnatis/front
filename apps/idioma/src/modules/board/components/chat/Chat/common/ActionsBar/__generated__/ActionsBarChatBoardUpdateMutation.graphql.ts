@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<72db49a745ef29a6a1cdacb504b55a3b>>
+ * @generated SignedSource<<18776177608c31ec1925954b31aaafc1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,10 @@ import { FragmentRefs } from "relay-runtime";
 export type UpdateBoardMutationInput = {
   clientMutationId?: string | null | undefined;
   defaultForUser?: string | null | undefined;
+  displayGeneral?: boolean | null | undefined;
+  displayGrammar?: boolean | null | undefined;
   displayTranslations?: boolean | null | undefined;
+  displayWords?: boolean | null | undefined;
   enabledLanguages?: any | null | undefined;
   explanationsLanguage?: string | null | undefined;
   explanationsLength?: string | null | undefined;

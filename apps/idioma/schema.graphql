@@ -624,8 +624,11 @@ type BoardNode implements SearchNode & Node {
   explanationsLanguage: String!
   explanationsLength: String!
   enabledLanguages: JSONString!
-  displayTranslations: Boolean!
   openaiThreadId: String
+  displayTranslations: Boolean!
+  displayGeneral: Boolean!
+  displayGrammar: Boolean!
+  displayWords: Boolean!
   memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
   groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
   expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
@@ -757,7 +760,7 @@ type ExpressionAnalysisNode implements SearchNode & Node {
 type Word {
   word: String
   lemma: [String]
-  pos: PartOfSpeech
+  pos: String
   morphology: Morphology
   syntax: Syntax
   clitics: [Clitic]
@@ -765,45 +768,21 @@ type Word {
   prefix: Prefix
 }
 
-enum PartOfSpeech {
-  NOUN
-  VERB
-  ADJECTIVE
-  ADVERB
-  PRONOUN
-  PREPOSITION
-  CONJUNCTION
-  DETERMINER
-  PARTICLE
-  INTERJECTION
-  CLITIC
-}
-
 type Morphology {
-  tense: Tense
+  tense: String
   mood: Mood
   voice: Voice
   aspect: Aspect
   person: Int
   number: Number
-  gender: Gender
-  case: Case
+  gender: String
+  case: String
   evidentiality: Evidentiality
   politeness: Politeness
   clusivity: Clusivity
   register: Register
   valency: Valency
   variantForm: String
-}
-
-enum Tense {
-  PRESENT
-  PAST
-  FUTURE
-  PERFECT
-  PLUPERFECT
-  FUTURE_PERFECT
-  IMPERFECT
 }
 
 enum Mood {
@@ -821,6 +800,7 @@ enum Voice {
   ACTIVE
   PASSIVE
   MIDDLE
+  REFLEXIVE
 }
 
 enum Aspect {
@@ -832,23 +812,6 @@ enum Aspect {
 enum Number {
   SINGULAR
   PLURAL
-}
-
-enum Gender {
-  MASCULINE
-  FEMININE
-  NEUTER
-}
-
-enum Case {
-  NOMINATIVE
-  ACCUSATIVE
-  DATIVE
-  GENITIVE
-  LOCATIVE
-  INSTRUMENTAL
-  PREPOSITIONAL
-  VOCATIVE
 }
 
 enum Evidentiality {
@@ -884,31 +847,13 @@ enum Valency {
 }
 
 type Syntax {
-  function: SyntaxFunction
+  function: String
   head: Int
-}
-
-enum SyntaxFunction {
-  SUBJECT
-  OBJECT
-  INDIRECT_OBJECT
-  PREDICATE
-  ADVERBIAL
-  DETERMINATIVE
-  COMPLEMENT
-  MODIFIER
-  MAIN_VERB
-  AUXILIARY_VERB
-  MODAL_VERB
-  RELATIVE_CLAUSE
-  NOMINAL_CLAUSE
-  ADVERBIAL_CLAUSE
-  COORDINATING_CONJUNCTION
 }
 
 type Clitic {
   clitic: String
-  pos: PartOfSpeech
+  pos: String
   morphology: Morphology
   syntax: Syntax
 }
@@ -1254,8 +1199,11 @@ input CreateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
-  displayTranslations: Boolean
   openaiThreadId: String
+  displayTranslations: Boolean
+  displayGeneral: Boolean
+  displayGrammar: Boolean
+  displayWords: Boolean
   defaultForUser: String
   clientMutationId: String
 }
@@ -1280,8 +1228,11 @@ input UpdateBoardMutationInput {
   explanationsLanguage: String
   explanationsLength: String
   enabledLanguages: JSONString
-  displayTranslations: Boolean
   openaiThreadId: String
+  displayTranslations: Boolean
+  displayGeneral: Boolean
+  displayGrammar: Boolean
+  displayWords: Boolean
   defaultForUser: String
   clientMutationId: String
 }

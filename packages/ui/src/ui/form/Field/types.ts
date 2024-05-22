@@ -11,6 +11,7 @@ import type { TProps as SelectProps } from './inputs/Select/types.js'
 import type { TProps as SimpleChoicesProps } from './inputs/SimpleChoices/types.js'
 import type { TProps as TextProps } from './inputs/Text/types.js'
 import type { TProps as TextareaProps } from './inputs/Textarea/types.js'
+import type { TProps as ToggleProps } from './inputs/Toggle/types.js'
 
 export type UnionInputProps =
   | CheckboxProps
@@ -20,6 +21,7 @@ export type UnionInputProps =
   | HiddenProps
   | TextProps
   | TextareaProps
+  | ToggleProps
   | SelectProps
   | SimpleChoicesProps
 

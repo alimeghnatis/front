@@ -161,6 +161,12 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
       onSubmit={handleUpdate}
     >
       <div className="scrollbox no-scrollbar">
+        <div className="grid margin-vertical">
+          <p className="md-start-3 span-8 md-span-9">
+            This is the section where you can edit the settings of the current
+            board.
+          </p>
+        </div>
         <ModularForm.Section fields={fields}>
           {!isDefault && (
             <>

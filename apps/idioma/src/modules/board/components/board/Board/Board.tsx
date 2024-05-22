@@ -161,8 +161,15 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       {!result?.groups?.edges.length && (
-        <div className="container">
-          Start by adding an expression using the form at the bottom.
+        <div className="container empty grid">
+          <div className="span-8 md-start-3 md-span-10">
+            <p className="info">Welcome to your board.</p>
+            <p className="info">
+              Start by adding an expression using the form at the bottom. This
+              works in any language. You can also use the chat mode to generate
+              expressions.
+            </p>
+          </div>
         </div>
       )}
       <div
@@ -188,9 +195,11 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
           ref={loadMoreRef}
           className="ref"
         />
-        {isLoadingNext && <p>Loading previous expressions.</p>}
-        {!hasNext && (
-          <p>There are no more expressions to load in this board.</p>
+        {isLoadingNext && <p className="info">Loading previous expressions.</p>}
+        {!hasNext && result?.groups?.edges.length > 0 && (
+          <p className="info">
+            There are no more expressions to load in this board.
+          </p>
         )}
       </div>
     </div>

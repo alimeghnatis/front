@@ -61,9 +61,10 @@ function Header({
       } as React.CSSProperties}
       // {...otherProps}
     >
-      <span className="left">{left}</span>
+      {left && <span className="left">{left}</span>}
       <span className="center">{children}</span>
-      <span className="right">{right}</span>
+      {right && <span className="right">{right}</span>}
+
     </Wrapper>
   )
 }

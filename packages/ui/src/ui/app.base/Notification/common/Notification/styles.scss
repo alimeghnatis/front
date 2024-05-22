@@ -3,18 +3,16 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.notification {
+  background: var(--color);
+  color: var(--on-color);
   cursor: default;
-  &.#{bem.$modifier-error} {
-    background: var(--error);
-    color: var(--on-error);
+
+  &:hover {
+    background: var(--hard-color);
   }
-  &.#{bem.$modifier-warning} {
-    background: var(--warning);
-    color: var(--on-warning);
-  }
-  &.#{bem.$modifier-success} {
-    background: var(--success);
-    color: var(--on-success);
+
+  &:focus {
+    background: var(--soft-color);
   }
 }
 

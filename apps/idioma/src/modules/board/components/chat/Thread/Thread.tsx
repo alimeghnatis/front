@@ -94,7 +94,7 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
       ref={containerRef}
       // {...otherProps}
     >
-      {result.messages ? (
+      {result.messages.edges.length > 0 ? (
         [...result.messages.edges].reverse().map((edge) => (
           <div className="grid container message-wrapper">
             <Message
@@ -104,8 +104,15 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
           </div>
         ))
       ) : (
-        <div className="container">
-          <strong>There are no messages in this thread.</strong>
+        <div className="container empty grid">
+          <div className="span-8 md-start-3 md-span-10">
+            <p className="info">Welcome to your board.</p>
+            <p className="info">
+              Start by asking a question related to a language and a topic you
+              would like to learn. For instance "What are the most common
+              greetings in Spanish?" or "How do I say 'I love you' in French?".
+            </p>
+          </div>
         </div>
       )}
       <div
@@ -117,8 +124,12 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
           ref={loadMoreRef}
           className="ref"
         />
-        {isLoadingPrevious && <p>Loading previous chat messages.</p>}
-        {!hasPrevious && <p>This is the beginning of the conversation.</p>}
+        {isLoadingPrevious && (
+          <p className="info">Loading previous chat messages.</p>
+        )}
+        {!hasPrevious && result.messages.edges.length > 0 && (
+          <p className="info">This is the beginning of the conversation.</p>
+        )}
       </div>
     </div>
   )

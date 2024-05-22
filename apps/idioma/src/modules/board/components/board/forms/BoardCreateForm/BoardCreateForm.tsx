@@ -220,6 +220,11 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
       onSubmit={handleCreate}
     >
       <div className="scrollbox no-scrollbar">
+        <div className="grid margin-vertical">
+          <p className="md-start-4 span-8 md-span-9">
+            This is the section where you can create a new board.
+          </p>
+        </div>
         <ModularForm.Section fields={fields} />
       </div>
       <ModularForm.SubmitBar

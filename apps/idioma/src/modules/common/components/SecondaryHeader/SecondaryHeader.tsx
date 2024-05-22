@@ -49,6 +49,7 @@ function SecondaryHeader({
         .filter((e) => e)
         .join(' ')}
       style={style}
+      rightSpan={0}
       left={(
         <Button
           onClick={() => setFocus(1)}
@@ -61,7 +62,7 @@ function SecondaryHeader({
       )}
       {...otherProps}
     >
-      {children}
+      <span className="h2">{children}</span>
     </NavigationHeader>
   )
 }

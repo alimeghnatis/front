@@ -50,7 +50,7 @@ InferProps<typeof ModeSelector.propTypes>): React.ReactElement {
   )
 
   const {
-    id: boardId, data,
+    id: boardId, data, isChat,
   } = useBoardContext()
 
   const result = useFragment(
@@ -74,17 +74,21 @@ InferProps<typeof ModeSelector.propTypes>): React.ReactElement {
         label:'Chat',
       },
       {
-        value:board
-          ? paths.generatePath(
-            'BOARD_HOME', { board: boardId || userBoardId },
-          )
-          : 'board',
+        value:!isChat
+          ? location.pathname
+          : board
+            ? paths.generatePath(
+              'BOARD_HOME', { board: boardId || userBoardId },
+            )
+            : 'board',
         label:`Board ${
           result?.newExpressionsCount ? `(${result.newExpressionsCount})` : ''
         }`,
       },
     ],
     [
+      isChat,
+      location.pathname,
       boardId,
       result?.newExpressionsCount,
     ],

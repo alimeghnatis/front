@@ -5,6 +5,7 @@
 
 .#{bem.$base}.mobile-popup {
   @include media.media($to: 801px) {
+    gap: 0;
     grid-template-rows: auto 1fr;
     height: 100%;
     overflow: hidden;

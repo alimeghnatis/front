@@ -35,7 +35,7 @@ function PrimaryTemplate({
   return (
     <BaseTemplate
       title={(
-        <NavigationBreadcrumb>
+        <NavigationBreadcrumb className="hide-mobile">
           <NavigationBreadcrumb.Item to="/">Home</NavigationBreadcrumb.Item>
           <NavigationBreadcrumb.Item to="/">
             My Boards

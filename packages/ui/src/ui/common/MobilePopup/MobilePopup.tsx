@@ -52,10 +52,10 @@ InferProps<typeof MobilePopup.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <div className="span-8 md-span-0 grid header">
-        <p className="span-6">{title}</p>
         <p className="span-2">
           <Link to={closeLink}>{closeContent}</Link>
         </p>
+        <p className="span-6">{title}</p>
       </div>
       <div className="container grid content">{children}</div>
     </div>

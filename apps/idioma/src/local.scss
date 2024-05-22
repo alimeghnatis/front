@@ -79,7 +79,7 @@ html {
     //font-size: 1.5vw;
   }
   font-family: "nsans";
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -149,6 +149,11 @@ main.flex {
 
 .grow {
   flex: 1;
+}
+
+.margin-vertical {
+  margin-block-end: var(--gap);
+  margin-block-start: var(--gap);
 }
 
 .scrollbox {
@@ -223,4 +228,5 @@ button {
     // 
   }
 }
+
 

@@ -16,6 +16,7 @@ import {
   withWrapper,
   fieldPropTypes,
   useOptionAriaProps,
+  Selector,
 } from '@aztlan/ui'
 import { propTypes } from './types.js'
 import type { TProps } from './types.js'
@@ -95,7 +96,7 @@ function Filters({
 }) {
   return (
     <div className="filters">
-      {Object.keys(filters).map((key) => (
+      {/* Object.keys(filters).map((key) => (
         <>
           <input
             type="radio"
@@ -115,7 +116,21 @@ function Filters({
           </label>
         </>
 
-      ))}
+    )) */}
+      <span>
+        Show :
+        &nbsp;
+      </span>
+      <Selector
+        options={Object.keys(filters).map((key) => ({
+          value   :filters[key],
+          label   :filters[key].label,
+          disabled:filters[key].disabled,
+        }))}
+        value={selectedFilter}
+        setValue={setSelectedFilter}
+      />
+
     </div>
 
   )
@@ -131,7 +146,7 @@ const MemoFilters = React.memo(
   Filters,
   (
     prevProps, nextProps,
-  ) => prevProps.selectedFilter.name === nextProps.selectedFilter.name,
+  ) => prevProps.selectedFilter.label === nextProps.selectedFilter.label,
 )
 
 /**
@@ -166,24 +181,28 @@ function LanguageChoices({
   const filters = useMemo(
     () => ({
       selected:{
+        name     :'selected',
         className:'selected-only',
-        name     :'Display only selected languages',
+        label    :'Selected Only',
         filter   :(option) => currentValues.includes(option.value),
         disabled :!(currentValues.length > 0),
       },
       audio:{
+        name     :'audio',
         className:'has-audio',
-        name     :'Display only languages with audio',
+        label    :'+audio',
         filter   :(option) => option.audio,
       },
       common:{
+        name     :'common',
         className:'common-language',
-        name     :'Display common languages',
+        label    :'+common',
         filter   :(option) => option.pt1?.length,
       },
       rare:{
+        name     :'rare',
         className:'less-common',
-        name     :'Display less common languages',
+        label    :'+all',
         filter   :(option) => true,
       //
       },

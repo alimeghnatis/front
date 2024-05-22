@@ -1,11 +1,7 @@
 /* @aztlan/generator-front 3.6.3 */
 import * as React from 'react'
 import {
-  useInsertionEffect,
-  useRef,
-  useState,
-  useEffect,
-  useLayoutEffect,
+  useInsertionEffect, useCallback,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -40,6 +36,23 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
     }, [],
   )
 
+  const getColor = useCallback(
+    (option) => {
+      if (option.disabled) {
+        return 'disabled'
+      }
+      if (value === option.value) {
+        return option.color || selectedColor
+      }
+      return defaultColor
+    },
+    [
+      value,
+      defaultColor,
+      selectedColor,
+    ],
+  )
+
   return (
     <Button.Group
       id={id}
@@ -56,14 +69,10 @@ InferProps<typeof Selector.propTypes>): React.ReactElement {
     >
       {options.map((option) => (
         <Button
-          key={option.value}
-          onClick={() => setValue(option.value)}
-          data-value={option.value}
-          color={
-            value === option.value
-              ? option.color || selectedColor
-              : defaultColor
-          }
+          key={option.key || option.value}
+          onClick={!option.disabled ? () => setValue(option.value) : undefined}
+          disabled={option.disabled}
+          color={getColor(option)}
         >
           {option.label}
         </Button>
@@ -84,8 +93,11 @@ Selector.propTypes = {
 
   /** The options to display */
   options:PropTypes.arrayOf(PropTypes.shape({
-    value:PropTypes.string,
-    label:PropTypes.string,
+    key     :PropTypes.string,
+    value   :PropTypes.string.isRequired,
+    label   :PropTypes.string.isRequired,
+    disabled:PropTypes.bool,
+    color   :PropTypes.string,
   })),
 
   /** The value selected */
@@ -93,6 +105,12 @@ Selector.propTypes = {
 
   /** The function to set the value */
   setValue:PropTypes.func,
+
+  /** The default color */
+  defaultColor:PropTypes.string,
+
+  /** The selected color */
+  selectedColor:PropTypes.string,
 }
 
 export default Selector

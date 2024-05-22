@@ -39,6 +39,12 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   &:disabled {
     background: $disabled-background;
     color: $disabled-color;
+
+    &:hover,
+    &:focus {
+      background: $disabled-background;
+      color: $disabled-color;
+    }
     //cursor: not-allowed;
   }
 

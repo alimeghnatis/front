@@ -7,6 +7,7 @@ import { InferProps } from 'prop-types'
 import {
   useFragment, graphql,
 } from 'react-relay'
+import { DateTime } from '@aztlan/ui'
 
 import styleNames from '@aztlan/bem'
 import { SuggestionGroup } from './common/index.js'
@@ -75,10 +76,15 @@ InferProps<typeof Message.propTypes>): React.ReactElement {
       style={style}
       // {...otherProps}
     >
-      <div className="container role">
-        <span>
+      <div className="container message-head grid">
+        <span className="role">
           <strong>{result.role}</strong>
         </span>
+        <DateTime
+          iso={result.createdAt}
+          format="time"
+          className="color metadata"
+        />
       </div>
       {!(result.isLoading || UNSTABLE_loading) ? (
         <>

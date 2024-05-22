@@ -78,11 +78,15 @@ const getRelayParameters = (
         'Os medicamentos genéricos são mais baratos na farmácia.',
         'A farmácia está localizada perto do hospital.',
       ],
-      iso6391:'pt',
-      iso6392:'por',
-      iso6393:'por',
+      iso6391  :'pt',
+      iso6392  :'por',
+      iso6393  :'por',
+      createdAt:'2024-05-16T15:02:06.276943+00:00',
     }),
-    UserLanguageMessageType:() => ({ content: 'Give me vocabulary suggestions to go to the pharmacy.' }),
+    UserLanguageMessageType:() => ({
+      content  :'Give me vocabulary suggestions to go to the pharmacy.',
+      createdAt:'2024-05-16T15:02:06.276943+00:00',
+    }),
   },
 })
 

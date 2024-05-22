@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9d7b846d712c69909a60451e8e422fc2>>
+ * @generated SignedSource<<d9fbb35202bcba93763230098e0be548>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -132,6 +132,7 @@ return {
                     "plural": false,
                     "selections": [
                       (v1/*: any*/),
+                      (v2/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -153,7 +154,6 @@ return {
                         "name": "role",
                         "storageKey": null
                       },
-                      (v2/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -279,12 +279,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cbd241f2c5ade9fa1d1295591e98fb4b",
+    "cacheID": "ce15ea57c057d4014b472323d9cfb3f7",
     "id": null,
     "metadata": {},
     "name": "ThreadStoriesQuery",
     "operationKind": "query",
-    "text": "query ThreadStoriesQuery {\n  thread(id: \"1\") {\n    ...ThreadFragment\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query ThreadStoriesQuery {\n  thread(id: \"1\") {\n    ...ThreadFragment\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        createdAt\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1c1c9ca6a3eb5a024f0ebf0089c03e1b>>
+ * @generated SignedSource<<ea556c38d4cd6ebf57c6133b0f52cacf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -173,6 +173,7 @@ return {
                         "plural": false,
                         "selections": [
                           (v3/*: any*/),
+                          (v4/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -194,7 +195,6 @@ return {
                             "name": "role",
                             "storageKey": null
                           },
-                          (v4/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -324,16 +324,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "080bd091dd8703557bbbb958badc4854",
+    "cacheID": "c2d75b8cc86b3a996d85f9f51d525bc6",
     "id": null,
     "metadata": {},
     "name": "ThreadFragmentPaginationQuery",
     "operationKind": "query",
-    "text": "query ThreadFragmentPaginationQuery(\n  $count: Int = 4\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ThreadFragment_1G22uz\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment_1G22uz on ThreadNode {\n  id\n  createdAt\n  messages(last: $count, before: $cursor) {\n    edges {\n      node {\n        id\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query ThreadFragmentPaginationQuery(\n  $count: Int = 4\n  $cursor: String = null\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ThreadFragment_1G22uz\n    id\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment_1G22uz on ThreadNode {\n  id\n  createdAt\n  messages(last: $count, before: $cursor) {\n    edges {\n      node {\n        id\n        createdAt\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6ff3b95fc796186d586c96bbcdb573cf";
+(node as any).hash = "05268b39f28710855831418830771764";
 
 export default node;

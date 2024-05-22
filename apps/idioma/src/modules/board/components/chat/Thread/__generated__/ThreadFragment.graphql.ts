@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e1406f8f8ca037e99eef11772fa06d15>>
+ * @generated SignedSource<<54b3345d322b63c02b92d361e28978ea>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type ThreadFragment$data = {
   readonly messages: {
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly createdAt: any | null | undefined;
         readonly id: string;
         readonly " $fragmentSpreads": FragmentRefs<"MessageFragment">;
       } | null | undefined;
@@ -39,6 +40,13 @@ v1 = {
   "args": null,
   "kind": "ScalarField",
   "name": "id",
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "createdAt",
   "storageKey": null
 };
 return {
@@ -86,13 +94,7 @@ return {
   "name": "ThreadFragment",
   "selections": [
     (v1/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "createdAt",
-      "storageKey": null
-    },
+    (v2/*: any*/),
     {
       "alias": "messages",
       "args": null,
@@ -118,6 +120,7 @@ return {
               "plural": false,
               "selections": [
                 (v1/*: any*/),
+                (v2/*: any*/),
                 {
                   "args": null,
                   "kind": "FragmentSpread",
@@ -177,6 +180,6 @@ return {
 };
 })();
 
-(node as any).hash = "6ff3b95fc796186d586c96bbcdb573cf";
+(node as any).hash = "05268b39f28710855831418830771764";
 
 export default node;

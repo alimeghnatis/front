@@ -12,6 +12,10 @@ import {
 import { useIntersectionObserverLoader } from '@aztlan/react-relay'
 import styleNames from '@aztlan/bem'
 import { useBoardContext } from 'modules/common/components'
+import {
+  parseISO, isSameDay,
+} from 'date-fns'
+import { DateTime } from '@aztlan/ui'
 import { Message } from '../Message/index.js'
 
 const baseClassName = styleNames.base
@@ -31,12 +35,35 @@ const FRAGMENT = graphql`
       edges {
         node {
           id
+          createdAt
           ...MessageFragment
         }
       }
     }
   }
 `
+
+/**
+ * Compares the day of two ISO date strings using date-fns.
+ * @param {string} isoString1 - The first ISO date string.
+ * @param {string} isoString2 - The second ISO date string.
+ * @returns {boolean} - Returns true if both dates are on the same day, false otherwise.
+ */
+function compareDays(
+  isoString1: string, isoString2: string,
+): boolean {
+  const date1 = parseISO(isoString1)
+  const date2 = parseISO(isoString2)
+  console.log(
+    'date1', date1, date2, isSameDay(
+      date1, date2,
+    ),
+  )
+
+  return isSameDay(
+    date1, date2,
+  )
+}
 
 /**
  * description
@@ -79,6 +106,8 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
     }, [],
   )
 
+  const messageEdges = [...result.messages.edges].reverse()
+
   return (
     <div
       id={id}
@@ -94,9 +123,25 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
       ref={containerRef}
       // {...otherProps}
     >
-      {result.messages.edges.length > 0 ? (
-        [...result.messages.edges].reverse().map((edge) => (
+      {messageEdges.length > 0 ? (
+        messageEdges.map((
+          edge, index,
+        ) => (
           <div className="grid container message-wrapper">
+            {index < messageEdges.length - 1
+            && compareDays(
+              edge.node.createdAt,
+              messageEdges[index + 1].node.createdAt,
+            ) ? null : (
+              <div className="container date">
+                <p className="info">
+                  <DateTime
+                    iso={edge.node.createdAt}
+                    format="date"
+                  />
+                </p>
+              </div>
+              )}
             <Message
               key={edge.node.id}
               data={edge.node}

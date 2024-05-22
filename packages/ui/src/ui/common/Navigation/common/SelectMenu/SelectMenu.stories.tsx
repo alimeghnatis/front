@@ -157,7 +157,7 @@ export const InTemplateCustomWidth: StoryFn<typeof Component> = (args) => (
       style={{ 'grid-column-start': '14' }}
       optionsSpan={4}
       align="right"
-      displaySelectedItem={false}
+      alwaysDisplayDefault
       {...args}
       {...WithNestedGroups.args}
     />

@@ -1,12 +1,11 @@
 /* @aztlan/generator-front 3.8.3 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
-
+import {
+  useInsertionEffect, ForwardedRef,
+} from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-
 import styleNames from '@aztlan/bem'
-
 import Group from './Group.js'
 
 const baseClassName = styleNames.base
@@ -15,9 +14,13 @@ const componentClassName = 'button'
 /**
  * description
  * @param {InferProps<typeof Button.propTypes>} props -
+ * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element
  * @returns {React.ReactElement} - Rendered Button
  */
-function Button(
+const Button = React.forwardRef<
+HTMLButtonElement,
+InferProps<typeof Button.propTypes> & { [key: string]: any }
+>((
   {
     id,
     className: userClassName,
@@ -29,20 +32,17 @@ function Button(
     variant,
     disabled = false,
     ...otherProps
-  }: InferProps<typeof Button.propTypes> & {
-    [key: string]:any;
   },
   ref,
-): React.ReactElement {
+): React.ReactElement => {
   useInsertionEffect(
     () => {
-    // @ts-ignore
+      // @ts-ignore
       import('./styles.scss')
     }, [],
   )
 
   const capitalizedVariant = variant && variant.charAt(0).toUpperCase() + variant.slice(1)
-
   const isHTMLButton = Wrapper === 'button'
 
   return (
@@ -67,7 +67,9 @@ function Button(
       {children}
     </Wrapper>
   )
-}
+})
+
+Button.Group = Group
 
 Button.propTypes = {
   /** The HTML id for this element */
@@ -106,7 +108,4 @@ Button.propTypes = {
   disabled:PropTypes.bool,
 }
 
-const ForwardRefButton = React.forwardRef(Button as React.ForwardRefRenderFunction<HTMLButtonElement>)
-ForwardRefButton.Group = Group
-
-export default ForwardRefButton
+export default Button

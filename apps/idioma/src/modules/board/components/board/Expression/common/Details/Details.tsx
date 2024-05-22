@@ -173,13 +173,13 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
 
   const contentMap1 = [
     {
-      condition:boardData.displayGeneral && result.generalExplanation,
+      condition:boardData?.displayGeneral && result.generalExplanation,
       label    :'General',
       payload  :result.generalExplanation,
       marked   :true,
     },
     {
-      condition:boardData.displayGrammar && result.grammarExplanation,
+      condition:boardData?.displayGrammar && result.grammarExplanation,
       label    :'Grammar',
       payload  :result.grammarExplanation,
       marked   :true,
@@ -188,7 +188,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
 
   const contentMap2 = [
     {
-      condition:boardData.displayWords && result.wordsExplanation,
+      condition:boardData?.displayWords && result.wordsExplanation,
       label    :'Word by word',
       payload  :result.wordsExplanation,
       marked   :true,

@@ -46,11 +46,12 @@ const relay = {
       edges:[
         {
           node:{
-            id      :'msg_1J7wh32910oaskx',
-            runId   :'1',
-            threadId:'1',
-            role    :'user',
-            content :{
+            id       :'msg_1J7wh32910oaskx',
+            runId    :'1',
+            threadId :'1',
+            role     :'user',
+            createdAt:'2021-09-01T00:00:00Z',
+            content  :{
               __typename:'UserLanguageMessageType',
               content   :'I want to learn some vocabulary in portuguese',
             },
@@ -58,11 +59,12 @@ const relay = {
         },
         {
           node:{
-            id      :'msg_dad231ed0122idx',
-            runId   :'1',
-            threadId:'1',
-            role    :'assistant',
-            content :{
+            id       :'msg_dad231ed0122idx',
+            runId    :'1',
+            threadId :'1',
+            role     :'assistant',
+            createdAt:'2021-09-01T00:00:00Z',
+            content  :{
               __typename :'AssistantLanguageMessageType',
               content    :'What kind of vocabulary are you interested in learning in portuguese?',
               suggestions:[],
@@ -71,11 +73,12 @@ const relay = {
         },
         {
           node:{
-            id      :'msg_1J7whaddasasaddsa',
-            runId   :'1',
-            threadId:'1',
-            role    :'user',
-            content :{
+            id       :'msg_1J7whaddasasaddsa',
+            runId    :'1',
+            threadId :'1',
+            role     :'user',
+            createdAt:'2021-09-01T00:00:00Z',
+            content  :{
               __typename:'UserLanguageMessageType',
               content   :'Vocabulary related to food and drinks',
             },
@@ -83,11 +86,12 @@ const relay = {
         },
         {
           node:{
-            id      :'msg_1J7whaddaaddsa',
-            runId   :'1',
-            threadId:'1',
-            role    :'assistant',
-            content :{
+            id       :'msg_1J7whaddaaddsa',
+            runId    :'1',
+            threadId :'1',
+            role     :'assistant',
+            createdAt:'2021-09-01T00:00:00Z',
+            content  :{
               __typename :'AssistantLanguageMessageType',
               content    :'Sure, here are a few suggestions for you related to food and drinks in Portuguese.',
               suggestions:[

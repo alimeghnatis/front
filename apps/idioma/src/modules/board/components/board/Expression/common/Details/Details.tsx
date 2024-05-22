@@ -7,7 +7,9 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import { MobilePopup } from '@aztlan/ui'
+import {
+  MobilePopup, DateTime,
+} from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
   useFragment, graphql, useMutation,
@@ -193,7 +195,10 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     },
     {
       label  :'Created',
-      payload:result.created,
+      payload:<DateTime
+        iso={result.created}
+        format="datetime"
+      />,
     },
   ]
 

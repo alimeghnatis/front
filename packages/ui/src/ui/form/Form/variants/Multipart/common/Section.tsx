@@ -23,6 +23,10 @@ function MultipartFormSection(props: InferProps<typeof MultipartFormSection.prop
   )
 }
 
-MultipartFormSection.propTypes = Section.propTypes
+MultipartFormSection.propTypes = {
+  ...Section.propTypes,
+
+  index:PropTypes.number.isRequired,
+}
 
 export default MultipartFormSection

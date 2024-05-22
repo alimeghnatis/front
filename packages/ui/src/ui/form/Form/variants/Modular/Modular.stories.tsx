@@ -27,6 +27,7 @@ export const Base: StoryObj<typeof Component> = {
     children:[
       <div
         className="container"
+        key="container"
         style={{
           height  :'100%',
           overflow:'auto',
@@ -60,10 +61,11 @@ export const Base: StoryObj<typeof Component> = {
               },
             },
             {
-              type    :'text',
-              label   :'Username',
-              name    :'username',
-              optional:true,
+              type        :'text',
+              label       :'Username',
+              name        :'username',
+              autoComplete:'username',
+              optional    :true,
             },
             {
               type        :'password',
@@ -94,7 +96,7 @@ export const Base: StoryObj<typeof Component> = {
           ]}
         />
       </div>,
-      <Form.SubmitBar />,
+      <Form.SubmitBar key="submit" />,
     ],
     fieldProps:{
       spanLabel         :8,

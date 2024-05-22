@@ -7,22 +7,40 @@ export const globalType = {
   type:PropTypes.oneOf(AVAILABLE_TYPES),
 }
 
+/**
+ * Custom PropType validator for condition prop.
+ * @param {Object} props - The props object.
+ * @param {string} propName - The name of the prop to validate.
+ * @param {string} componentName - The name of the component.
+ * @returns {Error|null} - Returns an Error if validation fails, otherwise null.
+ */
 function conditionPropType(
-  props, propName, componentName,
-) {
+  props: { [key: string]: any },
+  propName: string,
+  componentName: string,
+): Error | null {
   const condition = props[propName]
+
+  if (condition == null) {
+    // Prop is not provided, no validation needed
+    return null
+  }
+
   if (!Array.isArray(condition) || condition.length !== 2) {
     return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`)
   }
+
   if (
     !Array.isArray(condition[0])
     || !condition[0].every((item) => typeof item === 'string')
   ) {
     return new Error(`First element of prop \`${propName}\` supplied to \`${componentName}\` must be an array of strings.`)
   }
+
   if (typeof condition[1] !== 'function') {
     return new Error(`Second element of prop \`${propName}\` supplied to \`${componentName}\` must be a function.`)
   }
+
   return null
 }
 

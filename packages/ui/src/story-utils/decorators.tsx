@@ -84,12 +84,17 @@ function BaseForm(
         // className:'grid',
       },
       [
-        StoryFn(),
-        React.createElement('br'),
+        React.createElement(
+          StoryFn, { key: 'story' },
+        ),
+        React.createElement(
+          'br', { key: 'br' },
+        ),
         React.createElement(
           'input', {
             type :'submit',
             value:'Print in console',
+            key  :'submit',
           },
         ),
       ],
@@ -114,7 +119,7 @@ function Grid(
     'div',
     {
       className:'grid container',
-      ...params,
+      // ...params,
     },
     StoryFn(),
   )

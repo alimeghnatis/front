@@ -21,6 +21,9 @@ export const AVAILABLE_TYPES = [
   'textarea',
   'checkbox',
   'combobox',
+
+  // For custom components
+  'custom',
   // 'query-combobox',
   // 'query-select',
 ]

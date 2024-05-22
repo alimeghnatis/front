@@ -80,10 +80,10 @@ Section.propTypes = {
   as:PropTypes.elementType,
 
   /** The index of the form section */
-  index:PropTypes.number.isRequired,
+  index:PropTypes.number,
 
   /** The label of the form section */
-  label:PropTypes.string.isRequired,
+  label:PropTypes.string,
 
   /** The description of the form section */
   description:PropTypes.string,

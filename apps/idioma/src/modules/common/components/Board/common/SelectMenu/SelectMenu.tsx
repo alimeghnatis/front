@@ -9,10 +9,12 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import {
-  PrefetchLink as Link, NavigationSelectMenu,
+  PrefetchLink,
+  NavigationSelectMenu,
+  useApplicationContext,
 } from '@aztlan/ui'
 import {
-  useHistory, generatePath,
+  Link, useHistory, generatePath,
 } from 'react-router-dom'
 import {
   useBoardContext, useBoardMemberships,
@@ -45,6 +47,10 @@ InferProps<typeof RawSelectMenu.propTypes>): React.ReactElement {
 
   const result = data
 
+  const applicationContext = useApplicationContext()
+
+  const LinkType = applicationContext ? PrefetchLink : Link
+
   const {
     basePath,
     baseBoardPath,
@@ -66,8 +72,10 @@ InferProps<typeof RawSelectMenu.propTypes>): React.ReactElement {
         key      :'new',
         label    :'Create New Board',
         url      :createBoardPath,
-        Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
-        active   :isCreating,
+        Component:({ item }) => (
+          <LinkType to={item.url}>{item.label}</LinkType>
+        ),
+        active:isCreating,
       },
       ...result.edges.map((
         edge, i,
@@ -81,8 +89,10 @@ InferProps<typeof RawSelectMenu.propTypes>): React.ReactElement {
           label    :node.board.name,
           className:i === 0 ? 'first' : '',
           url,
-          Component:({ item }) => <Link to={item.url}>{item.label}</Link>,
-          active   :node.board.id === currentBoardId,
+          Component:({ item }) => (
+            <LinkType to={item.url}>{item.label}</LinkType>
+          ),
+          active:node.board.id === currentBoardId,
         }
       }),
     ],

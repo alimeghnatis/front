@@ -19,6 +19,7 @@ const useExpressionVariantFields = (
             label:word,
           })),
         ],
+        registerProps:{ required: { value: false } },
       },
       {
         name   :'variantName',
@@ -78,6 +79,7 @@ const useExpressionVariantFields = (
             label:'other',
           },
         ],
+        registerProps:{ required: { value: false } },
       },
       {
         name       :'variantNameOther',
@@ -88,6 +90,12 @@ const useExpressionVariantFields = (
           ['variantName'],
           ([variantName]) => variantName === 'other',
         ],
+        registerProps:{
+          required:{
+            value  :true,
+            message:'Please enter a valid value',
+          },
+        },
       },
       {
         name   :'iso6393',
@@ -103,6 +111,7 @@ const useExpressionVariantFields = (
             label:lang,
           })),
         ],
+        registerProps:{ required: { value: false } },
       },
       /*
           {

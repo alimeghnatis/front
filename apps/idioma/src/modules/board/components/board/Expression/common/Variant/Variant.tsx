@@ -213,20 +213,24 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
         id={id}
         className={['container flex'].filter(Boolean).join(' ')}
         // style={style}
-        fieldProps={{
-          spanLabelDesktop  :null,
-          spanContentDesktop:null,
-        }}
         // defaultValues={defaultValues}
         onSubmit={onSubmit}
       >
         <div className="scrollbox no-scrollbar">
           <div className="grid margin-vertical">
-            <p className="md-start-4 span-8 md-span-9">
+            <p className="md-start-2 span-8 md-span-9">
               Create a new variant for this expression.
             </p>
           </div>
-          <ModularForm.Section fields={fields} />
+          <ModularForm.Section
+            fields={fields}
+            sharedFieldProps={
+              {
+                //  spanLabelDesktop  :1,
+                // spanContentDesktop:13,
+              }
+            }
+          />
         </div>
         <ModularForm.SubmitBar
           className="background near"

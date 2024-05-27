@@ -7,11 +7,11 @@
   background: var(--near);
   @media screen and (min-width: 801px) {
     .form-section > .label {
-      grid-column: 1/span 2;
+      grid-column: 1/span 1;
     }
 
     .form-section > .input {
-      grid-column: 3/span 12;
+      grid-column: 2/span 12;
     }
   }
 }

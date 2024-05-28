@@ -27,6 +27,7 @@ function UL({
         <li
           key={item.label}
           className={[
+            item.disabled && styleNames.modifierDisabled,
             //
           ].filter(Boolean).join(' ')}
           {...getItemProps({ item })}
@@ -75,6 +76,7 @@ function MegaMenu({
 
   const {
     isOpen,
+    keysSoFar,
     selectedItems,
     highlightedItems,
     preparedRoot,
@@ -102,6 +104,10 @@ function MegaMenu({
       {...getMenuProps()}
       // {...otherProps}
     >
+      <p>
+        K :
+        {keysSoFar}
+      </p>
       <p>
         S:
         { selectedItems.map((item) => <span key={item.label}>{ item.label }</span>)}

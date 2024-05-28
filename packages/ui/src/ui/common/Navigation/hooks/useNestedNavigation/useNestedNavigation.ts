@@ -5,6 +5,7 @@ import {
   useReducer,
   useRef,
 } from 'react'
+import debounce from 'lodash.debounce'
 import { prepareNavigationData } from '../../utils.js'
 import type {
   PreparedItem, Item,
@@ -32,6 +33,7 @@ export default function useNestedNavigation(
   const {
     stateReducer, environment = typeof window !== 'undefined' ? window : undefined,
     initialIsOpen = false,
+    keySearchResetMilliseconds = 700,
   } = options
 
   const menuRef = useRef<HTMLElement | null>(null)
@@ -134,6 +136,17 @@ export default function useNestedNavigation(
     }, [],
   )
 
+  const clearKeysSoFar = useCallback(
+    debounce(
+      () => {
+        dispatch({
+          type     :StateChangeTypes.FunctionClearKeysSoFar,
+          keysSoFar:'',
+        })
+      }, keySearchResetMilliseconds,
+    ), [],
+  )
+
   // Prop Getters
   const getToggleButtonProps = useCallback(
     (props: Partial<ToggleButtonProps> = {}): ToggleButtonProps => ({
@@ -162,6 +175,7 @@ export default function useNestedNavigation(
         ...props,
         onClick:(e) => {
           e.stopPropagation()
+          if (item.disabled) return
           dispatch({
             type:StateChangeTypes.ItemClick,
             item,
@@ -252,9 +266,11 @@ export default function useNestedNavigation(
           default:
             if (event.key.length === 1) {
               dispatch({
-                type      :StateChangeTypes.ToggleButtonKeyDownCharacter,
+                type      :StateChangeTypes.FunctionAddKeySoFar,
                 inputValue:event.key,
               })
+
+              clearKeysSoFar(dispatch) // Call debounce function to clear keysSoFar
             }
             break
         }

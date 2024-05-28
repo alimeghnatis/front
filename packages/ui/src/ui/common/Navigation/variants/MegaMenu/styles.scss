@@ -18,13 +18,19 @@
   }
 
   li {
-    span {
-      &.hover {
-        background: red !important;
-      }
+    &.#{bem.$modifier-disabled} {
+      color: var(--metadata);
+    }
 
-      &.selected {
-        background: yellow;
+    &:not(.#{bem.$modifier-disabled}) {
+      > span {
+        &.hover {
+          background: red !important;
+        }
+
+        &.selected {
+          background: yellow;
+        }
       }
     }
   }

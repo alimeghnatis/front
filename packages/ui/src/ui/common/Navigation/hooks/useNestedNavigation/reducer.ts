@@ -2,7 +2,11 @@
 import {
   State, Action, StateChangeTypes,
 } from './types.js'
-import { findItemTree } from '../../utils.js'
+import {
+  findItemTree,
+  isItemDisabled,
+  getFirstEnabledChild,
+} from '../../utils.js'
 
 export default function nestedNavigationReducer(
   state: State,
@@ -32,25 +36,28 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonClick:
     case StateChangeTypes.FunctionToggleMenu: {
+      const highlightedItems = state.isOpen
+        ? []
+        : findItemTree(
+          state.urlIndex,
+          getFirstEnabledChild(state.rootItem)?.url,
+        )
       changes = {
-        isOpen          :!state.isOpen,
-        highlightedItems:state.isOpen
-          ? []
-          : findItemTree(
-            state.urlIndex, state.rootItem.items[0].url,
-          ),
+        isOpen      :!state.isOpen,
+        highlightedItems,
         currentDepth:state.isOpen ? 0 : 1,
       }
       break
     }
 
     case StateChangeTypes.FunctionOpenMenu: {
+      const highlightedItems = findItemTree(
+        state.urlIndex,
+        getFirstEnabledChild(state.rootItem)?.url,
+      )
       changes = {
-        isOpen          :true,
-        highlightedItems:findItemTree(
-          state.urlIndex,
-          state.rootItem.items[0].url,
-        ),
+        isOpen:true,
+        highlightedItems,
       }
       break
     }
@@ -114,8 +121,13 @@ export default function nestedNavigationReducer(
       if (currentItem) {
         const parentItem = urlIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
-        const nextIndex = (currentIndex + 1) % parentItem.items.length // Loop to the beginning
-        const nextItem = parentItem.items[nextIndex]
+        let nextIndex = (currentIndex + 1) % parentItem.items.length
+        let nextItem = parentItem.items[nextIndex]
+
+        while (isItemDisabled(nextItem)) {
+          nextIndex = (nextIndex + 1) % parentItem.items.length
+          nextItem = parentItem.items[nextIndex]
+        }
         const newHighlightedItems = findItemTree(
           state.urlIndex, nextItem.url,
         )
@@ -133,9 +145,14 @@ export default function nestedNavigationReducer(
       if (currentItem) {
         const parentItem = urlIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
-        const prevIndex = (currentIndex - 1 + parentItem.items.length)
-          % parentItem.items.length // Loop to the end
-        const prevItem = parentItem.items[prevIndex]
+        let prevIndex = (currentIndex - 1 + parentItem.items.length)
+          % parentItem.items.length
+        let prevItem = parentItem.items[prevIndex]
+
+        while (isItemDisabled(prevItem)) {
+          prevIndex = (prevIndex - 1 + parentItem.items.length) % parentItem.items.length
+          prevItem = parentItem.items[prevIndex]
+        }
         const newHighlightedItems = findItemTree(
           state.urlIndex, prevItem.url,
         )
@@ -166,14 +183,16 @@ export default function nestedNavigationReducer(
       const currentItem = highlightedItems[currentDepth]
       if (currentItem && currentItem.items && currentItem.items.length > 0) {
         const nextDepth = currentDepth + 1
-        const firstChild = currentItem.items[0] // Append the first child item
-        const newHighlightedItems = findItemTree(
-          state.urlIndex,
-          firstChild.url,
-        )
-        changes = {
-          currentDepth    :nextDepth,
-          highlightedItems:newHighlightedItems,
+        const firstChild = getFirstEnabledChild(currentItem)
+        if (firstChild) {
+          const newHighlightedItems = findItemTree(
+            state.urlIndex,
+            firstChild.url,
+          )
+          changes = {
+            currentDepth    :nextDepth,
+            highlightedItems:newHighlightedItems,
+          }
         }
       }
       break
@@ -273,6 +292,32 @@ export default function nestedNavigationReducer(
 
         changes = { highlightedItems: newHighlightedItems }
       }
+      break
+    }
+
+    case StateChangeTypes.FunctionAddKeySoFar: {
+      const newKeysSoFar = state.keysSoFar + action.inputValue!
+      const currentItem = state.highlightedItems[state.currentDepth]
+      const parentItem = state.urlIndex[currentItem.parentUrl!]
+      const matchItem = parentItem.items.find((item) => item.label?.toLowerCase().startsWith(newKeysSoFar.toLowerCase())
+          && !isItemDisabled(item))
+
+      if (matchItem) {
+        const newHighlightedItems = findItemTree(
+          state.urlIndex, matchItem.url,
+        )
+        changes = {
+          keysSoFar       :newKeysSoFar,
+          highlightedItems:newHighlightedItems,
+        }
+      } else {
+        changes = { keysSoFar: newKeysSoFar }
+      }
+      break
+    }
+
+    case StateChangeTypes.FunctionClearKeysSoFar: {
+      changes = { keysSoFar: '' }
       break
     }
 

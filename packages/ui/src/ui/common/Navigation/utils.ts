@@ -100,3 +100,7 @@ export function findItemTree(
 
   return path
 }
+
+export const isItemDisabled = (item: PreparedItem) => item.disabled === true
+
+export const getFirstEnabledChild = (item: PreparedItem) => item.items?.find((i) => !isItemDisabled(i))

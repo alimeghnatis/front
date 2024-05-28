@@ -10,6 +10,7 @@ export interface State {
   inputValue      :string;
   urlIndex        :UrlIndex;
   rootItem        :PreparedItem;
+  keysSoFar       :string;
 }
 
 export enum StateChangeTypes {
@@ -20,6 +21,8 @@ export enum StateChangeTypes {
   FunctionSetHighlightedItems = 'FunctionSetHighlightedItems',
   FunctionSetInputValue = 'FunctionSetInputValue',
   FunctionToggleMenu = 'FunctionToggleMenu',
+  FunctionAddKeySoFar = 'FunctionAddKeySoFar',
+  FunctionClearKeysSoFar = 'FunctionClearKeysSoFar',
   ItemClick = 'ItemClick',
   ItemMouseMove = 'ItemMouseMove',
   MenuMouseLeave = 'MenuMouseLeave',
@@ -47,13 +50,14 @@ export interface Action {
   inputValue?      :string;
   index?           :number;
   item?            :PreparedItem;
+  keysSoFar?       :string;
 }
 
 export interface UseNestedNavigationOptions {
-  stateReducer :(state:State, action:Action) => State
-  environment  :Window | undefined;
-  initialIsOpen:boolean;
-
+  stateReducer              :(state:State, action:Action) => State
+  environment               :Window | undefined;
+  initialIsOpen             :boolean;
+  keySearchResetMilliseconds:number;
 }
 
 export interface ToggleButtonProps {

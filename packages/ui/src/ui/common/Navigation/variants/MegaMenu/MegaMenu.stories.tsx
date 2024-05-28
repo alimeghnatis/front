@@ -39,6 +39,11 @@ export const Base: StoryObj<typeof Component> = {
           url  :'/home',
         },
         {
+          label   :'Disabled for now',
+          url     :'/dis',
+          disabled:true,
+        },
+        {
           label:'Organization Details',
           url  :'/org',
         },
@@ -62,8 +67,17 @@ export const Base: StoryObj<typeof Component> = {
           url  :'/location',
           items:[
             {
-              label:'Address',
-              url  :'/address',
+              label   :'Address',
+              url     :'/address',
+              disabled:true,
+            },
+            {
+              label:'Feedback',
+              url  :'/feedback',
+            },
+            {
+              label:'Jobs',
+              url  :'/jobs',
             },
             {
               label:'Contact',
@@ -84,8 +98,9 @@ export const Base: StoryObj<typeof Component> = {
                   url  :'/profile',
                 },
                 {
-                  label:'Notifications',
-                  url  :'/notificationsa',
+                  label   :'Notifications',
+                  url     :'/notificationsa',
+                  disabled:true,
                 },
                 {
                   label:'Security',

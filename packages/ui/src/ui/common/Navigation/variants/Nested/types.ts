@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import * as basePropTypes from '../../types.js'
+import type { PreparedItem } from '../../types.js'
 import {
   BaseComponentPropTypes as VerticalMenuPropTypes,
   rootItemPropType,
@@ -22,21 +23,6 @@ export const propTypes = {
 }
 
 export type Props = InferProps<typeof propTypes>
-
-export interface Item {
-  label?         :string;
-  url?           :string;
-  disabled?      :boolean;
-  className?     :string;
-  items?         :Item[];
-  footerContent? :React.ReactElement;
-  displayItemsAs?:string; // Do not match propTypes : 'nested' | 'group';
-}
-
-export interface PreparedItem extends Item {
-  parentUrl:string | null;
-  depth    :number;
-}
 
 /*
   const {
@@ -69,10 +55,6 @@ export type ContextValue = {
   focusCanvas            :() => void;
   onItemMouseEnterHandler:(event: React.MouseEvent) => void;
   onMenuMouseLeave       :(event: React.MouseEvent) => void;
-}
-
-export type UrlIndex = {
-  [url: string]:PreparedItem;
 }
 
 export const NestedNavigationVerticalMenuPropTypes = {

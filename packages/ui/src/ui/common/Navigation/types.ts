@@ -1,6 +1,26 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+export interface Item {
+  label?         :string;
+  url?           :string;
+  disabled?      :boolean;
+  className?     :string;
+  items?         :Item[];
+  footerContent? :React.ReactElement;
+  displayItemsAs?:string; // Do not match propTypes : 'nested' | 'group';
+}
+
+export interface PreparedItem extends Item {
+  parentUrl:string | null;
+  depth    :number;
+  items?   :PreparedItem[];
+}
+
+export type UrlIndex = {
+  [url: string]:PreparedItem;
+}
+
 export const itemShape = {
   key           :PropTypes.string,
   label         :PropTypes.string,

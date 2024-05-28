@@ -1,4 +1,4 @@
-import { findCurrentTree } from './utils.js'
+import { findCurrentTree } from '../../utils.js'
 
 function reducer(
   state, action,

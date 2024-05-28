@@ -12,12 +12,10 @@ import {
 import styleNames from '@aztlan/bem'
 import Context from './Context.js'
 import { propTypes } from './types.js'
-import type {
-  Item, Props,
-} from './types.js'
+import type { Props } from './types.js'
 import {
   findCurrentTree, prepareNavigationData,
-} from './utils.js'
+} from '../../utils.js'
 import reducer from './reducer.js'
 import Canvas from './Canvas.js'
 import Header from './Header.js'

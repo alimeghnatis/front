@@ -1,0 +1,33 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.mega-menu {
+  .nav {
+    //position: relative;
+  }
+
+  ul {
+    //width: 25%;
+  }
+
+  ul ul {
+    //position: absolute;
+    //right: 0;
+    //top: 0;
+  }
+
+  li {
+    span {
+      &.hover {
+        background: red !important;
+      }
+
+      &.selected {
+        background: yellow;
+      }
+    }
+  }
+}
+
+

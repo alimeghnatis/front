@@ -1,0 +1,140 @@
+/* @aztlan/generator-front 3.9.0 */
+// import * as React from 'react'
+
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
+// import { Meta, StoryFn } from '@storybook/react'
+import Component from './MegaMenu.js'
+
+// import { decorators } from 'story-utils'
+// import decorators from "story-utils/decorators.js";
+
+const meta: Meta<typeof Component> = {
+  title    :'common/Navigation/MegaMenu',
+  component:Component,
+  /*
+  decorators: [
+    //decorators.app,
+    //storyfn => <div className="">{ storyfn() }</div>,
+  ]
+  argTypes: {
+    backgroundColor: { control: "color" }
+  }
+  parameters: {
+    layout: 'centered|fullscreen|padded(default)',
+  }, */
+}
+
+export default meta
+
+export const Base: StoryObj<typeof Component> = {
+  args:{
+    rootItem:{
+      label:'Navigation',
+      url  :'/',
+      items:[
+        {
+          label:'Home',
+          url  :'/home',
+        },
+        {
+          label:'Organization Details',
+          url  :'/org',
+        },
+        /*
+        {
+          label         :'Collections UNSTABLE',
+          displayItemsAs:'group',
+          items         :[
+            {
+              label:'All images',
+              url  :'/address2',
+            },
+            {
+              label:"User's images",
+              url  :'/contact2',
+            },
+          ],
+        }, */
+        {
+          label:'Location',
+          url  :'/location',
+          items:[
+            {
+              label:'Address',
+              url  :'/address',
+            },
+            {
+              label:'Contact',
+              url  :'/contact',
+            },
+          ],
+        },
+        {
+          label:'Settings',
+          url  :'/settingsa',
+          items:[
+            {
+              label:'Account',
+              url  :'/accounta',
+              items:[
+                {
+                  label:'Profile',
+                  url  :'/profile',
+                },
+                {
+                  label:'Notifications',
+                  url  :'/notificationsa',
+                },
+                {
+                  label:'Security',
+                  url  :'/securitya',
+                },
+                {
+                  label:'Billing',
+                  url  :'/billinga',
+                },
+                {
+                  label:'Logout',
+                  url  :'/logouta',
+                },
+              ],
+            },
+
+            {
+              label:'Notifications',
+              url  :'/notifications',
+            },
+            {
+              label:'Security',
+              url  :'/security',
+            },
+            {
+              label:'Billing',
+              url  :'/billing',
+            },
+            {
+              label:'Logout',
+              url  :'/logout',
+            },
+          ],
+        },
+      ],
+    },
+  },
+}
+
+/*
+export const Base: StoryFn<typeof Component> = () => (
+  <Component>Sample MegaMenu</Component>
+)
+*/
+
+/*
+const Template: StoryFn<typeof Component> = (args) => <Component {...args} />
+
+export const Base: StoryFn<typeof Component> = Template.bind({})
+Base.args = {
+  children:'Sample Button',
+} */

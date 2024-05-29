@@ -18,6 +18,7 @@ export const propTypes = {
 
   span:PropTypes.number,
 
+  /* ({item?, isOpen, index?}) => {props} to apply to the toggle comp */
   getDynamicProps:PropTypes.func,
 }
 

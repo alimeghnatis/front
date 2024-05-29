@@ -51,5 +51,8 @@ export const toggleButtonPropTypes = {
 
   /* The open state of the menu */
   isOpen:PropTypes.bool,
+
+  /* ({item?, isOpen, index?}) => {props} to apply to the toggle comp */
+  getDynamicProps:PropTypes.func,
 }
 export type ToggleButtonProps = InferProps<typeof toggleButtonPropTypes>

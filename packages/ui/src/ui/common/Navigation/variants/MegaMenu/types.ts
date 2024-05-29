@@ -22,6 +22,9 @@ export const propTypes = {
 
   /* The background color to be consumed in the menu */
   background:PropTypes.string,
+
+  /* The component to be used as a toggle */
+  ToggleComponent:PropTypes.elementType,
 }
 
 export type Props = InferProps<typeof propTypes>

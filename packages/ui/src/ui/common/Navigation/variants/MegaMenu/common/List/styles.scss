@@ -26,7 +26,7 @@ $hover-color:important;
     }
 
     &:not(.#{bem.$modifier-disabled}) {
-      &.selected {
+      &.#{bem.$modifier-selected} {
         --color: var(--#{$selected-color});
         --hard-color: var(--hard-#{$selected-color});
         --soft-color: var(--soft-#{$selected-color});

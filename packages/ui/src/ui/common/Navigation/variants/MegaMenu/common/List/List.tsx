@@ -59,7 +59,7 @@ function List({
           key={item.label}
           className={[
             item.disabled && styleNames.modifierDisabled,
-            selectedItems.includes(item) && 'selected',
+            selectedItems.includes(item) && styleNames.modifierSelected,
             highlightedItems.includes(item) && 'hover',
             //
           ]

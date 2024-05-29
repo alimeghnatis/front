@@ -25,4 +25,51 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-export const Base: StoryObj<typeof Component> = { args: {} }
+const items = [
+  {
+    label:'Spanish',
+    url  :'/es',
+  },
+  {
+    label   :'French',
+    url     :'/fr',
+    disabled:true,
+  },
+  {
+    label:'English',
+    url  :'/en',
+  },
+  {
+    label:'German',
+    url  :'/de',
+  },
+  {
+    label:'Ukrainian',
+    url  :'/uk',
+  },
+  {
+    label:'Portuguese',
+    url  :'/pt',
+  },
+  {
+    label:'Polish',
+    url  :'/pl',
+  },
+]
+
+export const Base: StoryObj<typeof Component> = {
+  args:{
+    getItemProps    :() => ({}),
+    background      :'near',
+    items,
+    selectedItems   :[items[5]],
+    highlightedItems:[items[6]],
+  },
+}
+
+export const Columns: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    columns:2,
+  },
+}

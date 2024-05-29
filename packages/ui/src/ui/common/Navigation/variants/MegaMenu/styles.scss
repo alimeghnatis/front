@@ -2,9 +2,18 @@
 
 @use "@aztlan/bem";
 
+
 .#{bem.$base}.mega-menu {
-  .nav {
-    //position: relative;
+  background: var(--color);
+  position: relative;
+
+  nav {
+    background: var(--color);
+    position: absolute;
+
+    &:not(.#{bem.$modifier-open}) {
+      display: none;
+    }
   }
 
   ul {
@@ -15,24 +24,6 @@
     //position: absolute;
     //right: 0;
     //top: 0;
-  }
-
-  li {
-    &.#{bem.$modifier-disabled} {
-      color: var(--metadata);
-    }
-
-    &:not(.#{bem.$modifier-disabled}) {
-      > span {
-        &.hover {
-          background: red !important;
-        }
-
-        &.selected {
-          background: yellow;
-        }
-      }
-    }
   }
 }
 

@@ -6,6 +6,7 @@ import styleNames from '@aztlan/bem'
 import type { Props } from './types.js'
 import { Button } from '../../../../common/index.js'
 import { propTypes } from './types.js'
+import type { Item } from '../../types.js'
 import { useNestedNavigation } from '../../hooks/index.js'
 
 const baseClassName = styleNames.base
@@ -86,7 +87,7 @@ function MegaMenuBase({
     getMenuProps,
     getToggleButtonProps,
   } = useNestedNavigation(
-    rootItem,
+    rootItem as Item,
     {
       initialUrl,
       initialIsOpen,

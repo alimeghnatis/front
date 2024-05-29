@@ -1,14 +1,30 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+export enum DisplayItemsAs {
+  nested = 'nested',
+  group = 'group',
+  list = 'list',
+  columns = 'columns',
+  custom = 'custom',
+}
+
+export interface ItemsComponentProps {
+  [key: string]:any;
+}
+
 export interface Item {
-  label?         :string;
-  url?           :string;
-  disabled?      :boolean;
-  className?     :string;
-  items?         :Item[];
-  footerContent? :React.ReactElement;
-  displayItemsAs?:string; // Do not match propTypes : 'nested' | 'group';
+  key?                :string; // Either a key or a url should be provided
+  label?              :string;
+  url?                :string;
+  disabled?           :boolean;
+  className?          :string;
+  items?              :Item[];
+  footerContent?      :React.ReactElement;
+  displayItemsAs?     :string | DisplayItemsAs;
+  ItemsComponent?     :React.FunctionComponent;
+  Component?          :React.FunctionComponent; // TODO
+  itemsComponentProps?:ItemsComponentProps;
 }
 
 export interface PreparedItem extends Item {
@@ -17,7 +33,7 @@ export interface PreparedItem extends Item {
   items?   :PreparedItem[];
 }
 
-export type UrlIndex = {
+export type NavigationIndex = {
   [url: string]:PreparedItem;
 }
 
@@ -31,8 +47,13 @@ export const itemShape = {
   displayItemsAs:PropTypes.oneOf([
     'nested',
     'group',
+    'list',
+    'columns',
+    'custom',
   ]),
-  items:PropTypes.array,
+  ItemsComponent     :PropTypes.func,
+  items              :PropTypes.array,
+  itemsComponentProps:PropTypes.any,
 }
 
 export const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape).isRequired(...args))

@@ -13,6 +13,7 @@ import styleNames from '@aztlan/bem'
 import Context from './Context.js'
 import { propTypes } from './types.js'
 import type { Props } from './types.js'
+import type { Item } from '../../types.js'
 import {
   findCurrentTree, prepareNavigationData,
 } from '../../utils.js'
@@ -45,27 +46,27 @@ function NestedNavigation({
   )
 
   const {
-    preparedRoot, urlIndex,
+    preparedRoot, navigationIndex,
   } = useMemo(
-    () => prepareNavigationData(rootItem), [rootItem],
+    () => prepareNavigationData(rootItem as Item), [rootItem],
 
   )
 
   const location = useLocation()
 
   const initialCurrentTree = useMemo(
-    () => (urlIndex[location.pathname] ? findCurrentTree(
-      urlIndex, location.pathname,
-    ) : [preparedRoot]), [urlIndex],
+    () => (navigationIndex[location.pathname] ? findCurrentTree(
+      navigationIndex, location.pathname,
+    ) : [preparedRoot]), [navigationIndex],
   )
 
   const initialStateWithPreparedItems = useMemo(
     () => ({
-      currentDepth:urlIndex[location.pathname]?.items ? urlIndex[location.pathname].depth : -1,
+      currentDepth:navigationIndex[location.pathname]?.items ? navigationIndex[location.pathname].depth : -1,
       // items       :preparedRoot.items,
       currentTree :[...initialCurrentTree],
-      currentItem :urlIndex[location.pathname] || preparedRoot,
-      urlIndex,
+      currentItem :navigationIndex[location.pathname] || preparedRoot,
+      navigationIndex,
       // hoverTree   :[],
     }), [initialCurrentTree],
   )
@@ -95,7 +96,7 @@ function NestedNavigation({
   useEffect(
     () => {
       loadNewState(initialStateWithPreparedItems)
-    }, [urlIndex],
+    }, [navigationIndex],
   ) // Proxy for rootItem
 
   const selectUrl = useCallback(

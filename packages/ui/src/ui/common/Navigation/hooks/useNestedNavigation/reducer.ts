@@ -13,10 +13,13 @@ export default function nestedNavigationReducer(
   action: Action,
 ): State {
   let changes: Partial<State> = {}
+  console.log(
+    action.type, action,
+  )
 
   switch (action.type) {
     case StateChangeTypes.FunctionSelectItem: {
-      const selectedItem = state.urlIndex[action.item!.url!]
+      const selectedItem = state.navigationIndex[action.item!.url!]
       const selectedItems = [...state.selectedItems]
       selectedItems[action.level!] = selectedItem!
       selectedItems.splice(action.level! + 1) // Clear out selections for deeper levels
@@ -36,11 +39,12 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonClick:
     case StateChangeTypes.FunctionToggleMenu: {
+      const firstEnabledChild = getFirstEnabledChild(state.rootItem)
       const highlightedItems = state.isOpen
         ? []
         : findItemTree(
-          state.urlIndex,
-          getFirstEnabledChild(state.rootItem)?.url,
+          state.navigationIndex,
+          firstEnabledChild.url || firstEnabledChild.key,
         )
       changes = {
         isOpen      :!state.isOpen,
@@ -51,9 +55,10 @@ export default function nestedNavigationReducer(
     }
 
     case StateChangeTypes.FunctionOpenMenu: {
+      const firstEnabledChild = getFirstEnabledChild(state.rootItem)
       const highlightedItems = findItemTree(
-        state.urlIndex,
-        getFirstEnabledChild(state.rootItem)?.url,
+        state.navigationIndex,
+        firstEnabledChild.url || firstEnabledChild.key,
       )
       changes = {
         isOpen:true,
@@ -83,10 +88,10 @@ export default function nestedNavigationReducer(
     }
 
     case StateChangeTypes.ItemClick: {
-      const selectedItem = state.urlIndex[action.item!.url!]
+      const selectedItem = state.navigationIndex[action.item!.url!]
       const updatedSelectedItems = findItemTree(
-        state.urlIndex,
-        selectedItem.url!,
+        state.navigationIndex,
+        selectedItem.url || selectedItem.key,
       )
       changes = {
         selectedItems   :updatedSelectedItems,
@@ -97,9 +102,10 @@ export default function nestedNavigationReducer(
     }
 
     case StateChangeTypes.ItemMouseMove: {
-      const hoverItem = state.urlIndex[action.item!.url!]
+      const hoverItem = state.navigationIndex[action.item!.url!]
       const newHighlightedItems = findItemTree(
-        state.urlIndex, hoverItem.url!,
+        state.navigationIndex,
+        hoverItem.url || hoverItem.key,
       )
       changes = { highlightedItems: newHighlightedItems }
       break
@@ -112,14 +118,11 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownArrowDown: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
-      console.log(
-        currentItem, urlIndex, highlightedItems,
-      )
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
         let nextIndex = (currentIndex + 1) % parentItem.items.length
         let nextItem = parentItem.items[nextIndex]
@@ -129,7 +132,8 @@ export default function nestedNavigationReducer(
           nextItem = parentItem.items[nextIndex]
         }
         const newHighlightedItems = findItemTree(
-          state.urlIndex, nextItem.url,
+          state.navigationIndex,
+          nextItem.url || nextItem.key,
         )
 
         changes = { highlightedItems: newHighlightedItems }
@@ -139,11 +143,11 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownArrowUp: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
         let prevIndex = (currentIndex - 1 + parentItem.items.length)
           % parentItem.items.length
@@ -154,7 +158,8 @@ export default function nestedNavigationReducer(
           prevItem = parentItem.items[prevIndex]
         }
         const newHighlightedItems = findItemTree(
-          state.urlIndex, prevItem.url,
+          state.navigationIndex,
+          prevItem.url || prevItem.key,
         )
         changes = { highlightedItems: newHighlightedItems }
       }
@@ -186,8 +191,8 @@ export default function nestedNavigationReducer(
         const firstChild = getFirstEnabledChild(currentItem)
         if (firstChild) {
           const newHighlightedItems = findItemTree(
-            state.urlIndex,
-            firstChild.url,
+            state.navigationIndex,
+            firstChild.url || firstChild.key,
           )
           changes = {
             currentDepth    :nextDepth,
@@ -217,11 +222,11 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownPageUp: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
         const pageSize = 10
         const prevIndex = Math.max(
@@ -229,7 +234,8 @@ export default function nestedNavigationReducer(
         )
         const prevItem = parentItem.items[prevIndex]
         const newHighlightedItems = findItemTree(
-          state.urlIndex, prevItem.url,
+          state.navigationIndex,
+          prevItem.url || prevItem.key,
         )
 
         changes = { highlightedItems: newHighlightedItems }
@@ -239,11 +245,11 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownPageDown: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const currentIndex = parentItem.items.indexOf(currentItem)
         const pageSize = 10
         const nextIndex = Math.min(
@@ -252,7 +258,8 @@ export default function nestedNavigationReducer(
         )
         const nextItem = parentItem.items[nextIndex]
         const newHighlightedItems = findItemTree(
-          state.urlIndex, nextItem.url,
+          state.navigationIndex,
+          nextItem.url || nextItem.key,
         )
 
         changes = { highlightedItems: newHighlightedItems }
@@ -262,14 +269,15 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownHome: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const firstItem = parentItem.items[0]
         const newHighlightedItems = findItemTree(
-          state.urlIndex, firstItem.url,
+          state.navigationIndex,
+          firstItem.url || firstItem.key,
         )
 
         changes = { highlightedItems: newHighlightedItems }
@@ -279,15 +287,16 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonKeyDownEnd: {
       const {
-        currentDepth, highlightedItems, urlIndex,
+        currentDepth, highlightedItems, navigationIndex,
       } = state
       const currentItem = highlightedItems[currentDepth]
       if (currentItem) {
-        const parentItem = urlIndex[currentItem.parentUrl!]
+        const parentItem = navigationIndex[currentItem.parentUrl!]
         const lastIndex = parentItem.items.length - 1
         const lastItem = parentItem.items[lastIndex]
         const newHighlightedItems = findItemTree(
-          state.urlIndex, lastItem.url,
+          state.navigationIndex,
+          lastItem.url || lastItem.key,
         )
 
         changes = { highlightedItems: newHighlightedItems }
@@ -298,13 +307,14 @@ export default function nestedNavigationReducer(
     case StateChangeTypes.FunctionAddKeySoFar: {
       const newKeysSoFar = state.keysSoFar + action.inputValue!
       const currentItem = state.highlightedItems[state.currentDepth]
-      const parentItem = state.urlIndex[currentItem.parentUrl!]
+      const parentItem = state.navigationIndex[currentItem.parentUrl!]
       const matchItem = parentItem.items.find((item) => item.label?.toLowerCase().startsWith(newKeysSoFar.toLowerCase())
           && !isItemDisabled(item))
 
       if (matchItem) {
         const newHighlightedItems = findItemTree(
-          state.urlIndex, matchItem.url,
+          state.navigationIndex,
+          matchItem.url || matchItem.key,
         )
         changes = {
           keysSoFar       :newKeysSoFar,

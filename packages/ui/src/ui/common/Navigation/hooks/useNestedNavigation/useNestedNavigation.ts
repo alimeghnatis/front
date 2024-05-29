@@ -44,7 +44,7 @@ export default function useNestedNavigation(
   const itemRefs = useRef<Map<string, HTMLElement>>(new Map())
 
   const {
-    preparedRoot, nearestNavigableAncestor, urlIndex,
+    preparedRoot, nearestNavigableAncestor, navigationIndex,
   } = useMemo(
     () => prepareNavigationData(rootItem),
     [rootItem],
@@ -54,7 +54,7 @@ export default function useNestedNavigation(
     isOpen       :initialIsOpen,
     selectedItems:initialUrl
       ? findItemTree(
-        urlIndex,
+        navigationIndex,
         initialUrl,
       ) : [],
     highlightedItems:initialIsOpen ? [
@@ -65,7 +65,7 @@ export default function useNestedNavigation(
     currentDepth:initialIsOpen ? 1 : 0,
     inputValue  :'',
     keysSoFar   :'',
-    urlIndex,
+    navigationIndex,
   }
 
   const composedReducer = useCallback(
@@ -239,6 +239,7 @@ export default function useNestedNavigation(
   // Local Event Handlers
   const handleKeyDown = useCallback(
     (event) => {
+      event.preventDefault()
       if (state.currentDepth !== -1) {
         switch (event.key) {
           case 'ArrowDown':

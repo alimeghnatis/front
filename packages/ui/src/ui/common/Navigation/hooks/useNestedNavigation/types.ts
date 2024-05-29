@@ -1,6 +1,5 @@
 import type {
-  UrlIndex, PreparedItem,
-  Item,
+  NavigationIndex, PreparedItem,
 } from '../../types.js'
 
 export interface State {
@@ -9,7 +8,7 @@ export interface State {
   highlightedItems:PreparedItem[];
   currentDepth    :number;
   inputValue      :string;
-  urlIndex        :UrlIndex;
+  navigationIndex :NavigationIndex;
   rootItem        :PreparedItem;
   keysSoFar       :string;
 }

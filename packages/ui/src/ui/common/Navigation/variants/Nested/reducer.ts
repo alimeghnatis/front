@@ -6,13 +6,13 @@ function reducer(
   switch (action.type) {
     case 'SELECT_URL': {
       const url = action.payload
-      const item = state.urlIndex[url]
+      const item = state.navigationIndex[url]
       if (!item) return state // URL not found
-      if (!state.urlIndex[url]) return state // URL not found
+      if (!state.navigationIndex[url]) return state // URL not found
 
       const updatedCurrentTree = [
         ...findCurrentTree(
-          state.urlIndex, url,
+          state.navigationIndex, url,
         ),
       ]
 
@@ -41,7 +41,7 @@ function reducer(
         return state
       }
 
-      const parentItem = state.urlIndex[state.currentItem.parentUrl]
+      const parentItem = state.navigationIndex[state.currentItem.parentUrl]
 
       return {
         ...state,
@@ -53,13 +53,13 @@ function reducer(
     // REF 8.1
     case 'HOVER_ITEM': {
       const url = action.payload
-      const item = state.urlIndex[url]
+      const item = state.navigationIndex[url]
       if (!item) return state // Item not found
 
       // Recalculate the hover path for the item
       const newHoverTree = [
         ...findCurrentTree(
-          state.urlIndex, url,
+          state.navigationIndex, url,
         ),
       ]
 

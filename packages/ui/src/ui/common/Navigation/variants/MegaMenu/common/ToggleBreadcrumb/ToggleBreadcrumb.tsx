@@ -23,7 +23,8 @@ function ToggleBreadcrumb({
   getToggleButtonProps,
   span = 2,
   spanDesktop = 3,
-  // isOpen,
+  getDynamicProps,
+  isOpen,
 }: Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -51,6 +52,11 @@ function ToggleBreadcrumb({
         const {
           ref, ...otherProps
         } = getToggleButtonProps({ depth: index + 1 })
+        const dynamicProps = getDynamicProps?.({
+          item,
+          isOpen,
+          index,
+        }) || {}
         return (
           <Breadcrumb.Item
             to={item.url}
@@ -58,6 +64,7 @@ function ToggleBreadcrumb({
             span={span}
             key={item.url}
             {...otherProps}
+            {...dynamicProps}
           >
             {item.label}
           </Breadcrumb.Item>

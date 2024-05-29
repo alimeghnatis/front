@@ -18,7 +18,7 @@ export const propTypes = {
   initialUrl:PropTypes.string,
 
   /* UNSTABLE how to display the list elements */
-  defaultDisplayItemsAs:PropTypes.string,
+  defaultDisplayItemsType:PropTypes.string,
 
   /* The background color to be consumed in the menu */
   background:PropTypes.string,
@@ -33,6 +33,8 @@ export const propTypes = {
   ]),
 
   toggleComponentType:PropTypes.string,
+
+  toggleComponentProps:PropTypes.object,
 }
 
 export enum ToggleComponentType {

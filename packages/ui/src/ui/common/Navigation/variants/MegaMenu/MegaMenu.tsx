@@ -5,6 +5,7 @@ import {
 } from 'react'
 
 import styleNames from '@aztlan/bem'
+import { useLocation } from 'react-router-dom'
 import type {
   Props, ToggleButtonProps,
 } from './types.js'
@@ -16,7 +17,7 @@ import {
 import type {
   PreparedItem, Item,
 } from '../../types.js'
-import { DisplayItemsAs } from '../../types.js'
+import { DisplayItemsType } from '../../types.js'
 import { useNestedNavigation } from '../../hooks/index.js'
 import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
 import {
@@ -29,12 +30,14 @@ const componentClassName = 'mega-menu'
 
 function ToggleButton({
   getToggleButtonProps, isOpen,
+  getDynamicProps,
 }:ToggleButtonProps) {
   return (
     <Button
       {...getToggleButtonProps()}
       variant="borderless"
       color={isOpen ? 'important' : 'near'}
+      {...getDynamicProps?.({ isOpen })}
     >
       { isOpen ? 'close' : 'open' }
     </Button>
@@ -54,12 +57,13 @@ function MegaMenu({
   className:userClassName,
   style,
   rootItem,
-  initialUrl,
+  initialUrl:userInitialUrl,
   initialIsOpen = false,
-  defaultDisplayItemsAs = DisplayItemsAs.list,
+  defaultDisplayItemsType = DisplayItemsType.list,
   toggleComponentType = ToggleComponentType.button,
   background = 'near',
   openOn = OpenOnOptions.click,
+  toggleComponentProps,
 }: Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -67,6 +71,9 @@ function MegaMenu({
       import('./styles.scss')
     }, [],
   )
+
+  const location = useLocation()
+  const initialUrl = userInitialUrl || location.pathname
 
   const {
     isOpen,
@@ -94,13 +101,19 @@ function MegaMenu({
       }
       switch (toggleComponentType) {
         case ToggleComponentType.button: {
-          return <ToggleButton {...baseProps} />
+          return (
+            <ToggleButton
+              {...baseProps}
+              {...toggleComponentProps}
+            />
+          )
         }
         case ToggleComponentType.breadcrumb: {
           return (
             <ToggleBreadcrumb
               {...baseProps}
               selectedItems={selectedItems}
+              {...toggleComponentProps}
             />
           )
         }
@@ -125,7 +138,7 @@ function MegaMenu({
     ({
       root, ...props
     }:{ root?: PreparedItem; [key:string]: any; }):React.ReactElement | null => {
-      const displayItemsAs = root.displayItemsAs || defaultDisplayItemsAs
+      const displayItemsType = root.displayItemsType || defaultDisplayItemsType
       const componentProps = {
         ...props,
         ...root.itemsComponentProps,
@@ -135,26 +148,23 @@ function MegaMenu({
         background,
         items:root.items,
       }
-      switch (displayItemsAs) {
-        case DisplayItemsAs.list: {
+      switch (displayItemsType) {
+        case DisplayItemsType.list: {
           return <List {...componentProps} />
         }
-        case DisplayItemsAs.columns: {
-          return <Columns {...componentProps} />
-        }
-        case DisplayItemsAs.custom: {
+        case DisplayItemsType.custom: {
           // @ts-ignore
           return <root.ItemsComponent {...componentProps} />
         }
         default: {
           console.warn(
-            'Unhandled displayItemsAs', displayItemsAs,
+            'Unhandled displayItemsType', displayItemsType,
           )
           return null
         }
       }
     }, [
-      defaultDisplayItemsAs,
+      defaultDisplayItemsType,
       selectedItems,
       highlightedItems,
     ],

@@ -17,6 +17,8 @@ export const propTypes = {
   spanDesktop:PropTypes.number,
 
   span:PropTypes.number,
+
+  getDynamicProps:PropTypes.func,
 }
 
 export type Props = InferProps<typeof propTypes>

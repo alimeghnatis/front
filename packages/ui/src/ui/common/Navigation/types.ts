@@ -1,11 +1,8 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-export enum DisplayItemsAs {
-  nested = 'nested',
-  group = 'group',
+export enum DisplayItemsType {
   list = 'list',
-  columns = 'columns',
   custom = 'custom',
 }
 
@@ -15,13 +12,14 @@ export interface ItemsComponentProps {
 
 export interface Item {
   key?                :string; // Either a key or a url should be provided
+  url?                :string; // Use URL for navigable items, key otherwise
   label?              :string;
-  url?                :string;
   disabled?           :boolean;
   className?          :string;
   items?              :Item[];
   footerContent?      :React.ReactElement;
-  displayItemsAs?     :string | DisplayItemsAs;
+  displayItemsAs?     :string; // TODO To Deprecate
+  displayItemsType    :DisplayItemsType;
   ItemsComponent?     :React.FunctionComponent;
   Component?          :React.FunctionComponent; // TODO
   itemsComponentProps?:ItemsComponentProps;

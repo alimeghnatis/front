@@ -60,8 +60,14 @@ function TestItemsComponent({
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    initialIsOpen:true,
-    rootItem     :{
+    initialIsOpen       :true,
+    toggleComponentProps:{
+      getDynamicProps:({ isOpen }) => ({
+        color:isOpen ? 'success' : 'warning',
+        //
+      }),
+    },
+    rootItem:{
       label:'Navigation',
       url  :'/',
       items:[
@@ -142,10 +148,6 @@ export const Base: StoryObj<typeof Component> = {
                   label:'Billing',
                   url  :'/billinga',
                 },
-                {
-                  label:'Logout',
-                  url  :'/logouta',
-                },
               ],
             },
             {
@@ -217,8 +219,10 @@ export const Base: StoryObj<typeof Component> = {
               ],
             },
             {
-              label:'Logout',
-              url  :'/logout',
+              label    :'Logout',
+              key      :'logout',
+              Component:({ item }) => <strong>{item.label}</strong>,
+              // url  :'/logout',
             },
           ],
         },
@@ -245,9 +249,21 @@ export const OpenOnHover: StoryObj<typeof Component> = {
 export const BreadcrumbToggle: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
-    className          :'span-8 md-span-12',
-    toggleComponentType:ToggleComponentType.breadcrumb,
-    initialIsOpen      :false,
-    openOn             :OpenOnOptions.hover,
+    className           :'span-8 md-span-14',
+    toggleComponentType :ToggleComponentType.breadcrumb,
+    initialIsOpen       :false,
+    openOn              :OpenOnOptions.hover,
+    toggleComponentProps:{
+      getDynamicProps:({ index }) => ({
+        spanDesktop:index === 3 ? 5 : 3,
+        style      :{
+          background:index === 2
+            ? 'var(--warning)'
+            : index === 3
+              ? 'var(--success)'
+              : undefined,
+        },
+      }),
+    },
   },
 }

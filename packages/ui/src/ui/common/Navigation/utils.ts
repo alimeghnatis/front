@@ -40,7 +40,9 @@ export function prepareNavigationData(
       ...preparedRoot,
       depth:nearestNavigableAncestor ? nearestNavigableAncestor.depth + 1 : 0,
     }
-    navigationIndex[root.url || root.key] = preparedRoot
+    navigationIndex[root.url] = preparedRoot
+  } else if (root.key) {
+    navigationIndex[root.key] = preparedRoot
   }
 
   // The nearest navigable ancestor for sub-items is either

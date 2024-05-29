@@ -56,6 +56,7 @@ function ToggleBreadcrumb({
           item,
           isOpen,
           index,
+          isLast:index === selectedItems.length - 1,
         }) || {}
         return (
           <Breadcrumb.Item

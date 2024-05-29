@@ -31,6 +31,14 @@ export const propTypes = {
     'click',
     'hover',
   ]),
+
+  toggleComponentType:PropTypes.string,
+}
+
+export enum ToggleComponentType {
+  breadcrumb = 'breadcrumb',
+  button = 'button',
+  custom = 'custom',
 }
 
 export type Props = InferProps<typeof propTypes>

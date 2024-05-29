@@ -37,12 +37,13 @@ export default function nestedNavigationReducer(
     case StateChangeTypes.ToggleButtonClick:
     case StateChangeTypes.FunctionToggleMenu: {
       const firstEnabledChild = getFirstEnabledChild(state.rootItem)
-      const highlightedItems = state.isOpen
-        ? []
+      const openHighlightedItems = state.selectedItems.length > 1
+        ? state.selectedItems
         : findItemTree(
           state.navigationIndex,
           firstEnabledChild.url || firstEnabledChild.key,
         )
+      const highlightedItems = state.isOpen ? [] : openHighlightedItems
       changes = {
         isOpen      :!state.isOpen,
         highlightedItems,
@@ -58,8 +59,10 @@ export default function nestedNavigationReducer(
         firstEnabledChild.url || firstEnabledChild.key,
       )
       changes = {
-        isOpen:true,
-        highlightedItems,
+        isOpen          :true,
+        highlightedItems:state.selectedItems.length > 1
+          ? state.selectedItems
+          : highlightedItems,
       }
       break
     }
@@ -76,7 +79,7 @@ export default function nestedNavigationReducer(
     case StateChangeTypes.FunctionReset: {
       changes = {
         isOpen          :false,
-        selectedItems   :[],
+        selectedItems   :[state.rootItem],
         highlightedItems:[],
         currentDepth    :0,
         inputValue      :'',

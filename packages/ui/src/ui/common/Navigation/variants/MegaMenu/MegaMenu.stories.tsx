@@ -8,6 +8,7 @@ import {
 import decorators from 'story-utils/decorators.js'
 import Component from './MegaMenu.js'
 import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
+import { ToggleComponentType } from './types.js'
 
 // import { decorators } from 'story-utils'
 
@@ -16,6 +17,7 @@ const meta: Meta<typeof Component> = {
   component :Component,
   decorators:[
     decorators.components.Router,
+    decorators.components.Grid,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   parameters:{ layout: 'fullscreen' },
@@ -237,5 +239,15 @@ export const OpenOnHover: StoryObj<typeof Component> = {
     ...Base.args,
     initialIsOpen:false,
     openOn       :OpenOnOptions.hover,
+  },
+}
+
+export const BreadcrumbToggle: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    className          :'md-span-12',
+    toggleComponentType:ToggleComponentType.breadcrumb,
+    // initialIsOpen      :false,
+    // openOn             :OpenOnOptions.hover,
   },
 }

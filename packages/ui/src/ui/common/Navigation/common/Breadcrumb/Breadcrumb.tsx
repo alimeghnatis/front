@@ -120,9 +120,8 @@ function Breadcrumb({
   style,
   children,
   separator = '/',
-}: // ...otherProps
-
-InferProps<typeof Breadcrumb.propTypes>): React.ReactElement {
+  ...otherProps
+}: InferProps<typeof Breadcrumb.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -165,7 +164,7 @@ InferProps<typeof Breadcrumb.propTypes>): React.ReactElement {
           '--separator':`"${separator}"`,
         } as React.CSSProperties
       }
-      // {...otherProps}
+      {...otherProps}
     >
       {enhancedChildren}
     </ol>

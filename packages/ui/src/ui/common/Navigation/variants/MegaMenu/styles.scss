@@ -5,11 +5,14 @@
 
 .#{bem.$base}.mega-menu {
   background: var(--color);
+  //height: 3em;
   position: relative;
 
   nav {
     background: var(--color);
     position: absolute;
+    top: 100%;
+    width: 100%;
 
     &:not(.#{bem.$modifier-open}) {
       display: none;

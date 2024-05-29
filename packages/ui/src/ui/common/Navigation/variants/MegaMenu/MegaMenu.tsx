@@ -11,6 +11,7 @@ import type {
 import { Button } from '../../../../common/index.js'
 import {
   propTypes, toggleButtonPropTypes,
+  ToggleComponentType,
 } from './types.js'
 import type {
   PreparedItem, Item,
@@ -20,6 +21,7 @@ import { useNestedNavigation } from '../../hooks/index.js'
 import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
 import {
   List, Columns,
+  ToggleBreadcrumb,
 } from './common/index.js'
 
 const baseClassName = styleNames.base
@@ -55,6 +57,7 @@ function MegaMenu({
   initialUrl,
   initialIsOpen = false,
   defaultDisplayItemsAs = DisplayItemsAs.list,
+  toggleComponentType = ToggleComponentType.button,
   background = 'near',
   openOn = OpenOnOptions.click,
 }: Props): React.ReactElement {
@@ -81,6 +84,41 @@ function MegaMenu({
       initialIsOpen,
       openOn:openOn as OpenOnOptions,
     },
+  )
+
+  const ToggleComponent = useCallback(
+    (props):React.ReactElement | null => {
+      const baseProps = {
+        getToggleButtonProps,
+        isOpen,
+      }
+      switch (toggleComponentType) {
+        case ToggleComponentType.button: {
+          return <ToggleButton {...baseProps} />
+        }
+        case ToggleComponentType.breadcrumb: {
+          return (
+            <ToggleBreadcrumb
+              {...baseProps}
+              selectedItems={selectedItems}
+            />
+          )
+        }
+        case ToggleComponentType.custom: {
+          return null
+        }
+        default: {
+          console.warn(
+            'Unhandled toggleComponentType', toggleComponentType,
+          )
+          return null
+        }
+      }
+    }, [
+      getToggleButtonProps,
+      isOpen,
+      selectedItems,
+    ],
   )
 
   const ItemsComponent = useCallback(
@@ -126,8 +164,6 @@ function MegaMenu({
     ? highlightedItems
     : selectedItems).slice(1).filter((item) => !!item.items)
 
-  const ToggleComponent = ToggleButton
-
   return (
     // @ts-ignore
     <div
@@ -139,6 +175,7 @@ function MegaMenu({
         componentClassName,
         userClassName,
         background,
+        'grid',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -159,13 +196,10 @@ function MegaMenu({
         H:
         { highlightedItems.map((item) => <span key={item.label}>{ item.label }</span>)}
       </p> */}
-      <ToggleComponent
-        getToggleButtonProps={getToggleButtonProps}
-        isOpen={isOpen}
-      />
+      <ToggleComponent />
       <nav className={
         [
-          'grid',
+          'grid container manual',
           isOpen && styleNames.modifierOpen,
         ].filter(Boolean).join(' ')
         }

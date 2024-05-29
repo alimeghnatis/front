@@ -59,7 +59,7 @@ export default function useNestedNavigation(
       ? findItemTree(
         navigationIndex,
         initialUrl,
-      ) : [],
+      ) : [preparedRoot],
     highlightedItems:initialIsOpen ? [
       preparedRoot,
       preparedRoot.items[0],

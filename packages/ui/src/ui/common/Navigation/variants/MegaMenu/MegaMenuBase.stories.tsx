@@ -5,13 +5,13 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
-import Component from './MegaMenu.js'
+import Component from './MegaMenuBase.js'
 
 // import { decorators } from 'story-utils'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'common/Navigation/MegaMenu',
+  title    :'common/Navigation/MegaMenuBase',
   component:Component,
   /*
   decorators: [

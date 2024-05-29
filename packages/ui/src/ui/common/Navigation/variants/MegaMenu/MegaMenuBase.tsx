@@ -58,10 +58,10 @@ function UL({
 
 /**
  * description
- * @param {InferProps<typeof MegaMenu.propTypes>} props -
- * @returns {React.ReactElement} - Rendered MegaMenu
+ * @param {InferProps<typeof MegaMenuBase.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered MegaMenuBase
  */
-function MegaMenu({
+function MegaMenuBase({
   id,
   className:userClassName,
   style,
@@ -139,6 +139,6 @@ function MegaMenu({
   )
 }
 
-MegaMenu.propTypes = propTypes
+MegaMenuBase.propTypes = propTypes
 
-export default MegaMenu
+export default MegaMenuBase

@@ -10,6 +10,12 @@ export const propTypes = {
 
   /* The array of navigation elements to be passed to the navigation context */
   rootItem:rootItemPropType,
+
+  /** Whether it's open by default */
+  initialIsOpen:PropTypes.bool,
+
+  /** The initial URL */
+  initialUrl:PropTypes.string,
 }
 
 export type Props = InferProps<typeof propTypes>

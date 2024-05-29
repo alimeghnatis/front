@@ -6,7 +6,9 @@ import {
   useRef,
 } from 'react'
 import debounce from 'lodash.debounce'
-import { prepareNavigationData } from '../../utils.js'
+import {
+  prepareNavigationData, findItemTree,
+} from '../../utils.js'
 import type {
   PreparedItem, Item,
 } from '../../types.js'
@@ -34,6 +36,7 @@ export default function useNestedNavigation(
     stateReducer, environment = typeof window !== 'undefined' ? window : undefined,
     initialIsOpen = false,
     keySearchResetMilliseconds = 700,
+    initialUrl,
   } = options
 
   const menuRef = useRef<HTMLElement | null>(null)
@@ -48,8 +51,12 @@ export default function useNestedNavigation(
   )
 
   const initialState: State = {
-    isOpen          :initialIsOpen,
-    selectedItems   :[],
+    isOpen       :initialIsOpen,
+    selectedItems:initialUrl
+      ? findItemTree(
+        urlIndex,
+        initialUrl,
+      ) : [],
     highlightedItems:initialIsOpen ? [
       preparedRoot,
       preparedRoot.items[0],
@@ -57,6 +64,7 @@ export default function useNestedNavigation(
     rootItem    :preparedRoot,
     currentDepth:initialIsOpen ? 1 : 0,
     inputValue  :'',
+    keysSoFar   :'',
     urlIndex,
   }
 

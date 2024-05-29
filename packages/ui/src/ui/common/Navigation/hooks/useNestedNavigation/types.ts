@@ -1,5 +1,6 @@
 import type {
   UrlIndex, PreparedItem,
+  Item,
 } from '../../types.js'
 
 export interface State {
@@ -58,6 +59,7 @@ export interface UseNestedNavigationOptions {
   environment               :Window | undefined;
   initialIsOpen             :boolean;
   keySearchResetMilliseconds:number;
+  initialUrl                :string;
 }
 
 export interface ToggleButtonProps {

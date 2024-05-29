@@ -17,6 +17,7 @@ import type {
 } from '../../types.js'
 import { DisplayItemsAs } from '../../types.js'
 import { useNestedNavigation } from '../../hooks/index.js'
+import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
 import {
   List, Columns,
 } from './common/index.js'
@@ -55,6 +56,7 @@ function MegaMenu({
   initialIsOpen = false,
   defaultDisplayItemsAs = DisplayItemsAs.list,
   background = 'near',
+  openOn = OpenOnOptions.click,
 }: Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -77,6 +79,7 @@ function MegaMenu({
     {
       initialUrl,
       initialIsOpen,
+      openOn:openOn as OpenOnOptions,
     },
   )
 

@@ -21,7 +21,9 @@ import type {
   ItemProps,
   LabelProps,
 } from './types.js'
-import { StateChangeTypes } from './types.js'
+import {
+  StateChangeTypes, OpenOnOptions,
+} from './types.js'
 import reducer from './reducer.js'
 
 const generateKey = (
@@ -35,6 +37,7 @@ export default function useNestedNavigation(
   const {
     stateReducer, environment = typeof window !== 'undefined' ? window : undefined,
     initialIsOpen = false,
+    openOn = OpenOnOptions.click,
     keySearchResetMilliseconds = 700,
     initialUrl,
   } = options
@@ -157,18 +160,31 @@ export default function useNestedNavigation(
 
   // Prop Getters
   const getToggleButtonProps = useCallback(
-    (props: Partial<ToggleButtonProps> = {}): ToggleButtonProps => ({
-      ...props,
-      onClick:(e) => {
-        dispatch({ type: StateChangeTypes.ToggleButtonClick })
-        if (props.onClick) {
-          props.onClick(e)
+    (initialProps: Partial<ToggleButtonProps> = {}): ToggleButtonProps => {
+      const props = {
+        ...initialProps,
+        'aria-expanded':state.isOpen,
+        'aria-haspopup':'listbox',
+        ref            :toggleButtonRef,
+      }
+
+      if (openOn === OpenOnOptions.click) {
+        props.onClick = (e) => {
+          dispatch({ type: StateChangeTypes.ToggleButtonClick })
+          if (props.onClick) {
+            props.onClick(e)
+          }
         }
-      },
-      'aria-expanded':state.isOpen,
-      'aria-haspopup':'listbox',
-      ref            :toggleButtonRef,
-    }),
+      } else if (openOn === OpenOnOptions.hover) {
+        props.onMouseEnter = (e) => {
+          dispatch({ type: StateChangeTypes.FunctionOpenMenu })
+          if (props.onMouseEnter) {
+            props.onMouseEnter(e)
+          }
+        }
+      }
+      return props
+    },
     [state.isOpen],
   )
 
@@ -224,7 +240,11 @@ export default function useNestedNavigation(
       ...props,
       onMouseLeave:(e) => {
         e.stopPropagation()
-        dispatch({ type: StateChangeTypes.MenuMouseLeave })
+        if (openOn === OpenOnOptions.click) {
+          dispatch({ type: StateChangeTypes.MenuMouseLeave })
+        } else if (openOn === OpenOnOptions.hover) {
+          dispatch({ type: StateChangeTypes.FunctionCloseMenu })
+        }
         if (props.onMouseLeave) {
           props.onMouseLeave(e)
         }

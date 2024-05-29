@@ -13,9 +13,6 @@ export default function nestedNavigationReducer(
   action: Action,
 ): State {
   let changes: Partial<State> = {}
-  console.log(
-    action.type, action,
-  )
 
   switch (action.type) {
     case StateChangeTypes.FunctionSelectItem: {

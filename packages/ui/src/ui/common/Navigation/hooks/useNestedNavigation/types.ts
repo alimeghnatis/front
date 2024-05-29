@@ -42,6 +42,11 @@ export enum StateChangeTypes {
   ToggleButtonKeyDownSpaceButton = 'ToggleButtonKeyDownSpaceButton',
 }
 
+export enum OpenOnOptions {
+  hover = 'hover',
+  click = 'click',
+}
+
 export interface Action {
   type             :StateChangeTypes;
   level?           :number;
@@ -59,10 +64,12 @@ export interface UseNestedNavigationOptions {
   initialIsOpen             :boolean;
   keySearchResetMilliseconds:number;
   initialUrl                :string;
+  openOn                    :OpenOnOptions;
 }
 
 export interface ToggleButtonProps {
-  onClick        :(e:React.SyntheticEvent) => void;
+  onClick?       :(e:React.SyntheticEvent) => void;
+  onMouseEnter?  :(e:React.SyntheticEvent) => void;
   'aria-expanded':boolean;
   'aria-haspopup':string;
   ref            :React.Ref<HTMLElement>;

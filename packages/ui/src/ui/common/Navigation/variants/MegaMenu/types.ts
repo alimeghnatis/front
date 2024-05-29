@@ -25,6 +25,12 @@ export const propTypes = {
 
   /* The component to be used as a toggle */
   ToggleComponent:PropTypes.elementType,
+
+  /* How should the menu open */
+  openOn:PropTypes.oneOf([
+    'click',
+    'hover',
+  ]),
 }
 
 export type Props = InferProps<typeof propTypes>

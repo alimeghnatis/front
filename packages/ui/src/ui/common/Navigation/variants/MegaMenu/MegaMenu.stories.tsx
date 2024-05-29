@@ -7,6 +7,7 @@ import {
 // import { Meta, StoryFn } from '@storybook/react'
 import decorators from 'story-utils/decorators.js'
 import Component from './MegaMenu.js'
+import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
 
 // import { decorators } from 'story-utils'
 
@@ -228,5 +229,13 @@ export const InitialUrl: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     initialUrl:'/billing',
+  },
+}
+
+export const OpenOnHover: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    initialIsOpen:false,
+    openOn       :OpenOnOptions.hover,
   },
 }

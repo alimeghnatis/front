@@ -21,7 +21,9 @@ function ToggleBreadcrumb({
   style,
   selectedItems,
   getToggleButtonProps,
-  isOpen,
+  span = 2,
+  spanDesktop = 3,
+  // isOpen,
 }: Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -45,15 +47,22 @@ function ToggleBreadcrumb({
     >
       {selectedItems.map((
         item, index,
-      ) => (
-        <Breadcrumb.Item
-          to={item.url}
-          spanDesktop={3}
-          {...getToggleButtonProps({ depth: index + 1 })}
-        >
-          {item.label}
-        </Breadcrumb.Item>
-      ))}
+      ) => {
+        const {
+          ref, ...otherProps
+        } = getToggleButtonProps({ depth: index + 1 })
+        return (
+          <Breadcrumb.Item
+            to={item.url}
+            spanDesktop={spanDesktop}
+            span={span}
+            key={item.url}
+            {...otherProps}
+          >
+            {item.label}
+          </Breadcrumb.Item>
+        )
+      })}
     </Breadcrumb>
   )
 }

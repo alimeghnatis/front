@@ -176,8 +176,8 @@ export default function useNestedNavigation(
             type:StateChangeTypes.ToggleButtonClick,
             depth,
           })
-          if (props.onClick) {
-            props.onClick(e)
+          if (initialProps.onClick) {
+            initialProps.onClick(e)
           }
         }
       } else if (openOn === OpenOnOptions.hover) {
@@ -186,8 +186,8 @@ export default function useNestedNavigation(
             type:StateChangeTypes.FunctionOpenMenu,
             depth,
           })
-          if (props.onMouseEnter) {
-            props.onMouseEnter(e)
+          if (initialProps.onMouseEnter) {
+            initialProps.onMouseEnter(e)
           }
         }
       }

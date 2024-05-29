@@ -108,6 +108,7 @@ export default function nestedNavigationReducer(
         selectedItems   :updatedSelectedItems,
         currentDepth    :selectedItem.depth,
         highlightedItems:[],
+        isOpen          :false,
       }
       break
     }

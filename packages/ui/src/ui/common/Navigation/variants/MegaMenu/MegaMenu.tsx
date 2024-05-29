@@ -209,6 +209,7 @@ function MegaMenu({
         />
         { currentVisibleTree.map((item) => (
           <ItemsComponent
+            key={item.url || item.key}
             root={item}
           />
         )) }

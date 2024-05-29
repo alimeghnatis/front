@@ -13,6 +13,10 @@ export const propTypes = {
   isOpen:PropTypes.bool,
 
   selectedItems:PropTypes.arrayOf(PropTypes.shape(basePropTypes.itemShape)),
+
+  spanDesktop:PropTypes.number,
+
+  span:PropTypes.number,
 }
 
 export type Props = InferProps<typeof propTypes>

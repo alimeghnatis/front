@@ -41,13 +41,15 @@ function ToggleBreadcrumb({
         .filter((e) => e)
         .join(' ')}
       style={style}
-      {...getToggleButtonProps()}
       // {...otherProps}
     >
-      {selectedItems.map((item) => (
+      {selectedItems.map((
+        item, index,
+      ) => (
         <Breadcrumb.Item
           to={item.url}
           spanDesktop={3}
+          {...getToggleButtonProps({ depth: index + 1 })}
         >
           {item.label}
         </Breadcrumb.Item>

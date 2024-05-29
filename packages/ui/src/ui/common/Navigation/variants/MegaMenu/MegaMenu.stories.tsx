@@ -247,7 +247,7 @@ export const BreadcrumbToggle: StoryObj<typeof Component> = {
     ...Base.args,
     className          :'md-span-12',
     toggleComponentType:ToggleComponentType.breadcrumb,
-    // initialIsOpen      :false,
-    // openOn             :OpenOnOptions.hover,
+    initialIsOpen      :false,
+    openOn             :OpenOnOptions.hover,
   },
 }

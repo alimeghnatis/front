@@ -36,33 +36,44 @@ export default function nestedNavigationReducer(
 
     case StateChangeTypes.ToggleButtonClick:
     case StateChangeTypes.FunctionToggleMenu: {
-      const firstEnabledChild = getFirstEnabledChild(state.rootItem)
-      const openHighlightedItems = state.selectedItems.length > 1
-        ? state.selectedItems
-        : findItemTree(
+      changes = {
+        isOpen      :!state.isOpen,
+        currentDepth:state.isOpen ? 0 : 1,
+      }
+      if (state.isOpen) {
+        changes.highlightedItems = []
+      } else if (state.selectedItems.length > 1) {
+        changes.highlightedItems = action.depth
+          ? state.selectedItems.slice(
+            0, action.depth,
+          )
+          : state.selectedItems
+      } else {
+        const firstEnabledChild = getFirstEnabledChild(state.rootItem)
+        const highlightedItems = findItemTree(
           state.navigationIndex,
           firstEnabledChild.url || firstEnabledChild.key,
         )
-      const highlightedItems = state.isOpen ? [] : openHighlightedItems
-      changes = {
-        isOpen      :!state.isOpen,
-        highlightedItems,
-        currentDepth:state.isOpen ? 0 : 1,
+        changes.highlightedItems = highlightedItems
       }
       break
     }
 
     case StateChangeTypes.FunctionOpenMenu: {
-      const firstEnabledChild = getFirstEnabledChild(state.rootItem)
-      const highlightedItems = findItemTree(
-        state.navigationIndex,
-        firstEnabledChild.url || firstEnabledChild.key,
-      )
-      changes = {
-        isOpen          :true,
-        highlightedItems:state.selectedItems.length > 1
-          ? state.selectedItems
-          : highlightedItems,
+      changes = { isOpen: true }
+      if (state.selectedItems.length > 1) {
+        changes.highlightedItems = action.depth
+          ? state.selectedItems.slice(
+            0, action.depth,
+          )
+          : state.selectedItems
+      } else {
+        const firstEnabledChild = getFirstEnabledChild(state.rootItem)
+        const highlightedItems = findItemTree(
+          state.navigationIndex,
+          firstEnabledChild.url || firstEnabledChild.key,
+        )
+        changes.highlightedItems = highlightedItems
       }
       break
     }

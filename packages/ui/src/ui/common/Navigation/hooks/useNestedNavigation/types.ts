@@ -49,7 +49,8 @@ export enum OpenOnOptions {
 
 export interface Action {
   type             :StateChangeTypes;
-  level?           :number;
+  level?           :number; // TODO deprecate
+  depth?           :number;
   selectedItems?   :PreparedItem[];
   highlightedItems?:PreparedItem[];
   inputValue?      :string;

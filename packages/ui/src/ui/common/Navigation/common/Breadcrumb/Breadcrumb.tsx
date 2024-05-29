@@ -27,9 +27,8 @@ function Item({
   span = 3,
   spanDesktop = 2,
   to,
-}: // ...otherProps
-
-InferProps<ItemProps>): React.ReactElement {
+  ...otherProps
+}: InferProps<ItemProps>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -58,7 +57,7 @@ InferProps<ItemProps>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      // {...otherProps}
+      {...otherProps}
     >
       <Wrapper
         to={to}

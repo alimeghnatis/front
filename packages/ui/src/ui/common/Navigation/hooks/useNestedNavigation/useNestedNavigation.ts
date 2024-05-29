@@ -160,7 +160,9 @@ export default function useNestedNavigation(
 
   // Prop Getters
   const getToggleButtonProps = useCallback(
-    (initialProps: Partial<ToggleButtonProps> = {}): ToggleButtonProps => {
+    ({
+      depth, ...initialProps
+    }: Partial<ToggleButtonProps> & { depth?: number } = {}): ToggleButtonProps => {
       const props = {
         ...initialProps,
         'aria-expanded':state.isOpen,
@@ -170,14 +172,20 @@ export default function useNestedNavigation(
 
       if (openOn === OpenOnOptions.click) {
         props.onClick = (e) => {
-          dispatch({ type: StateChangeTypes.ToggleButtonClick })
+          dispatch({
+            type:StateChangeTypes.ToggleButtonClick,
+            depth,
+          })
           if (props.onClick) {
             props.onClick(e)
           }
         }
       } else if (openOn === OpenOnOptions.hover) {
         props.onMouseEnter = (e) => {
-          dispatch({ type: StateChangeTypes.FunctionOpenMenu })
+          dispatch({
+            type:StateChangeTypes.FunctionOpenMenu,
+            depth,
+          })
           if (props.onMouseEnter) {
             props.onMouseEnter(e)
           }

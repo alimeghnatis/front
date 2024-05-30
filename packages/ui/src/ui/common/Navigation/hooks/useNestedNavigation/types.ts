@@ -93,7 +93,7 @@ export interface ItemProps {
   'aria-selected':boolean;
   'aria-disabled':boolean;
   ref            :React.Ref<HTMLElement>;
-  tabIndex       :number;
+  //tabIndex       :number;
 }
 
 export interface LabelProps {

@@ -5,8 +5,13 @@ import {
   generatePath, useHistory, Link,
 } from 'react-router-dom'
 import {
-  useApplicationContext, PrefetchLink,
+  Button,
+  useApplicationContext,
+  PrefetchLink,
+  useAuthenticationContext,
 } from '@aztlan/ui'
+import * as paths from 'modules/paths'
+import themes from 'modules/common/themes'
 import { useBoardContext } from '../../Board/hooks/index.js'
 
 /**
@@ -14,7 +19,12 @@ import { useBoardContext } from '../../Board/hooks/index.js'
  * @returns {Object} rootItem - Root item object for MegaMenuNavigation.
  */
 export default function useRootItem({ memberships }) {
-  const { matchRoute } = useApplicationContext()
+  const {
+    logout, isLogoutInFlight,
+  } = useAuthenticationContext()
+  const {
+    matchRoute, isTheme, setTheme,
+  } = useApplicationContext()
   const LinkType = matchRoute ? PrefetchLink : Link
   const {
     baseBoardPath,
@@ -43,14 +53,15 @@ export default function useRootItem({ memberships }) {
             ),
             active:isCreating,
           },
-        /*
           ...memberships.edges.map((
             edge: any, i: number,
           ) => {
             const { node } = edge
-            const url = generatePath(
-              isChat ? chatBoardPath : baseBoardPath, { board: node.board.id },
-            )
+            const url = baseBoardPath
+              ? generatePath(
+                isChat ? chatBoardPath : baseBoardPath, { board: node.board.id },
+              )
+              : node.board.id // For testing, should always be generatePath on app
             return {
               key      :node.board.id,
               label    :node.board.name,
@@ -62,7 +73,6 @@ export default function useRootItem({ memberships }) {
               active:node.board.id === currentBoardId,
             }
           }),
-          */
         ],
       }
 
@@ -79,24 +89,78 @@ export default function useRootItem({ memberships }) {
     ],
   )
 
+  const accountItem = useMemo(
+    () => ({
+      label:'Account',
+      url  :'/account',
+      items:[
+        {
+          label:'Profile',
+          url  :paths.profile.generatePath('PROFILE'),
+        },
+        {
+          key      :'logout',
+          Component:() => React.createElement(
+            Button,
+            {
+              onClick :logout,
+              disabled:isLogoutInFlight,
+              variant :'borderless',
+              color   :'near',
+            },
+            'Logout',
+          ),
+        },
+      ],
+    }),
+    [isLogoutInFlight],
+  )
+
+  const settingsItem = useMemo(
+    () => {
+      const isTheme = (key: string) => key === 'light'
+      const [
+        theme,
+        setTheme,
+      ] = React.useState('light')
+
+      return {
+        label:'Settings',
+        key  :'settings',
+        items:[
+          {
+            label:'Theme',
+            key  :'theme',
+            items:Object.entries(themes).map(([
+              key,
+              value,
+            ]) => ({
+              key,
+              url      :key,
+              Component:() => React.createElement(
+                Button,
+                {
+                  onClick:() => setTheme(key),
+                  variant:'borderless',
+                  color  :isTheme?.(key) ? 'important' : 'near',
+                },
+                value,
+              ),
+            })),
+          },
+        ],
+      }
+    }, [],
+  )
+
   const rootItem = useMemo(
     () => ({
       label:'Navigation',
       url  :'/',
       items:[
         itemMyBoards,
-        {
-          label:'Ukrainian',
-          url  :'/uk',
-        },
-        {
-          label:'Portuguese',
-          url  :'/pt',
-        },
-        {
-          label:'Polish',
-          url  :'/pl',
-        },
+        accountItem,
+        settingsItem,
       ],
     }),
     [],

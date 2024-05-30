@@ -7,6 +7,7 @@ import {
   useApplicationContext,
 } from '@aztlan/ui'
 
+import themes from 'modules/common/themes'
 import { useBoardContext } from '../../Board/hooks/index.js'
 
 type ItemType = {
@@ -17,13 +18,6 @@ type ItemType = {
   items?         :ItemType[];
   displayItemsAs?:'group';
   disabled?      :boolean;
-}
-
-const defaultThemes = {
-  'dark-theme' :'Dark',
-  'light-theme':'Light',
-  'green-theme':'Green',
-  'blue-theme' :'Blue',
 }
 
 type UseItemsProps = {
@@ -77,7 +71,7 @@ const useItems = ({ viewerData }: UseItemsProps) => {
         {
           label         :'Theme',
           displayItemsAs:'group',
-          items         :Object.entries(defaultThemes).map(([
+          items         :Object.entries(themes).map(([
             key,
             value,
           ]) => ({

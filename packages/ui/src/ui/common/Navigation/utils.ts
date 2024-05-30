@@ -31,23 +31,21 @@ export function prepareNavigationData(
   let preparedRoot: PreparedItem = {
     ...root as PreparedItem, // type quick fix
     depth    :nearestNavigableAncestor ? nearestNavigableAncestor.depth + 1 : 0,
-    parentUrl:nearestNavigableAncestor ? nearestNavigableAncestor.url : null,
+    parentUrl:nearestNavigableAncestor ? (nearestNavigableAncestor.url || nearestNavigableAncestor.key) : null,
   }
 
   // If the root item has a URL, it becomes its own nearest navigable ancestor.
-  if (root.url) {
+  if (root.url || root.key) {
     preparedRoot = {
       ...preparedRoot,
       depth:nearestNavigableAncestor ? nearestNavigableAncestor.depth + 1 : 0,
     }
-    navigationIndex[root.url] = preparedRoot
-  } else if (root.key) {
-    navigationIndex[root.key] = preparedRoot
+    navigationIndex[root.url || root.key] = preparedRoot
   }
 
   // The nearest navigable ancestor for sub-items is either
   // the current root (if navigable) or the passed ancestor.
-  const updatedNearestNavigableAncestor = root.url ? preparedRoot : nearestNavigableAncestor
+  const updatedNearestNavigableAncestor = (root.url || root.key) ? preparedRoot : nearestNavigableAncestor
 
   // Recursively prepare each sub-item.
   preparedRoot.items = root.items?.map((item) => prepareNavigationData(

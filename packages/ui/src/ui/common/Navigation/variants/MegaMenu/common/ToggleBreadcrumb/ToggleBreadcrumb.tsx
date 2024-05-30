@@ -24,6 +24,7 @@ function ToggleBreadcrumb({
   span = 2,
   spanDesktop = 3,
   getDynamicProps,
+  slice = 1,
   isOpen,
 }: Props): React.ReactElement {
   useInsertionEffect(
@@ -32,6 +33,8 @@ function ToggleBreadcrumb({
       import('./styles.scss')
     }, [],
   )
+
+  const breadcrumbItems = selectedItems.slice(slice)
 
   return (
     <Breadcrumb
@@ -46,7 +49,7 @@ function ToggleBreadcrumb({
       style={style}
       // {...otherProps}
     >
-      {selectedItems.map((
+      {breadcrumbItems.map((
         item, index,
       ) => {
         const {
@@ -56,7 +59,7 @@ function ToggleBreadcrumb({
           item,
           isOpen,
           index,
-          isLast:index === selectedItems.length - 1,
+          isLast:index === breadcrumbItems.length - 1,
         }) || {}
         return (
           <Breadcrumb.Item

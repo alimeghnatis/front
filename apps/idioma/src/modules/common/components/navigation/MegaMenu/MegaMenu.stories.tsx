@@ -8,6 +8,7 @@ import {
 import { graphql } from 'react-relay'
 
 import { decorators } from 'story-utils'
+import * as paths from 'modules/paths'
 import { RawMegaMenu as Component } from './MegaMenu.js'
 
 const meta: Meta<typeof Component> = {
@@ -73,6 +74,6 @@ const relay = {
 }
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{ children: 'Sample MegaMenu' },
+  args      :{ initialUrl: paths.profile.generatePath('PROFILE') },
   parameters:{ relay },
 }

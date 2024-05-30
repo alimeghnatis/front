@@ -18,9 +18,14 @@ $default-separator: var(--separator, "/");
     //background: $default-background;
     position: relative;
 
+    &:last-of-type {
+      font-weight: 600;
+    }
+
     > a { //UNCLEAN
       align-items: center;
       display: flex;
+      text-decoration: none;
     }
 
     > * {
@@ -36,6 +41,7 @@ $default-separator: var(--separator, "/");
       color: var(--paragraph);
       content: #{$default-separator};
       display: inline-block;
+      font-weight: 400;
       left: calc(var(--gap) * -1);
       position: absolute;
       width: var(--gap);

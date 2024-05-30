@@ -1,9 +1,12 @@
 /* @aztlan/generator-front 3.9.0 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useMemo, useInsertionEffect,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import * as paths from 'modules/paths'
 
 import { MegaMenuNavigation } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
@@ -36,6 +39,42 @@ InferProps<typeof RawMegaMenu.propTypes>): React.ReactElement {
 
   const rootItem = useRootItem({ memberships: data })
 
+  const toggleComponentProps = useMemo(
+    () => ({
+      getDynamicProps:({
+        item, index, isLast,
+      }) => ({
+        spanDesktop:item.parentUrl === paths.board.generatePath('HOME') ? 5 : 2,
+        style      :{
+          background:index === 2
+            ? 'var(--warning)'
+            : index === 3
+              ? 'var(--success)'
+              : undefined,
+        },
+      }),
+    }),
+    [],
+  )
+
+  const navItemsProps = useMemo(
+    () => ({
+      getDynamicProps:({
+        item, index, isLast,
+      }) => {
+        let spanDesktop = 2
+        if (item.key === 'my-boards') {
+          spanDesktop = 5
+        }
+        if (item.key === 'theme') {
+          spanDesktop = 3
+        }
+        return { spanDesktop }
+      },
+    }),
+    [],
+  )
+
   return (
     <MegaMenuNavigation
       id={id}
@@ -50,6 +89,8 @@ InferProps<typeof RawMegaMenu.propTypes>): React.ReactElement {
       rootItem={rootItem}
       toggleComponentType="breadcrumb"
       openOn="hover"
+      toggleComponentProps={toggleComponentProps}
+      navItemsProps={navItemsProps}
       // {...otherProps}
     >
       {children}

@@ -32,7 +32,7 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   font-weight: 700;
   line-height: $default-line-height;
   padding: 0;
-  text-align: center;
+  //text-align: center;
   transition: all 0.1s;
 
 

@@ -59,9 +59,13 @@ const items = [
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    getItemProps    :() => ({}),
-    background      :'near',
-    items,
+    getItemProps:() => ({}),
+    background  :'near',
+    rootItem    :{
+      label:'Languages',
+      key  :'languages',
+      items,
+    },
     selectedItems   :[items[5]],
     highlightedItems:[items[6]],
   },

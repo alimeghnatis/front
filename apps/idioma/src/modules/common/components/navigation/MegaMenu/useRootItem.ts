@@ -42,7 +42,7 @@ export default function useRootItem({ memberships }) {
       const rootItem = {
         label:'My boards',
         key  :'my-boards',
-        url  :'/boards',
+        url  :paths.board.generatePath('HOME'),
         items:[
           {
             key      :'new',
@@ -117,40 +117,32 @@ export default function useRootItem({ memberships }) {
   )
 
   const settingsItem = useMemo(
-    () => {
-      const isTheme = (key: string) => key === 'light'
-      const [
-        theme,
-        setTheme,
-      ] = React.useState('light')
-
-      return {
-        label:'Settings',
-        key  :'settings',
-        items:[
-          {
-            label:'Theme',
-            key  :'theme',
-            items:Object.entries(themes).map(([
-              key,
+    () => ({
+      label:'Settings',
+      key  :'settings',
+      items:[
+        {
+          label:'Theme',
+          key  :'theme',
+          items:Object.entries(themes).map(([
+            key,
+            value,
+          ]) => ({
+            key,
+            Component:() => React.createElement(
+              Button,
+              {
+                onClick:() => setTheme(key),
+                variant:'borderless',
+                color  :isTheme?.(key) ? 'important' : 'near',
+              },
               value,
-            ]) => ({
-              key,
-              url      :key,
-              Component:() => React.createElement(
-                Button,
-                {
-                  onClick:() => setTheme(key),
-                  variant:'borderless',
-                  color  :isTheme?.(key) ? 'important' : 'near',
-                },
-                value,
-              ),
-            })),
-          },
-        ],
-      }
-    }, [],
+            ),
+          })),
+        },
+      ],
+    }),
+    [isTheme],
   )
 
   const rootItem = useMemo(

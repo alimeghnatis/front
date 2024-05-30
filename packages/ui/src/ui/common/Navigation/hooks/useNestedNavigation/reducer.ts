@@ -116,12 +116,19 @@ export default function nestedNavigationReducer(
     }
 
     case StateChangeTypes.ItemMouseMove: {
-      const hoverItem = state.navigationIndex[action.item!.url || action.item!.key]
-      const newHighlightedItems = findItemTree(
-        state.navigationIndex,
-        hoverItem.url || hoverItem.key,
-      )
-      changes = { highlightedItems: newHighlightedItems }
+      if (
+        !(
+          action.item
+          === state.highlightedItems[state.highlightedItems.length - 1]
+        )
+      ) {
+        const hoverItem = state.navigationIndex[action.item!.url || action.item!.key]
+        const newHighlightedItems = findItemTree(
+          state.navigationIndex,
+          hoverItem.url || hoverItem.key,
+        )
+        changes = { highlightedItems: newHighlightedItems }
+      }
       break
     }
 

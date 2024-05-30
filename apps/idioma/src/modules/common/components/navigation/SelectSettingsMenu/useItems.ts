@@ -7,7 +7,6 @@ import {
   useApplicationContext,
 } from '@aztlan/ui'
 
-import themes from 'modules/common/themes'
 import { useBoardContext } from '../../Board/hooks/index.js'
 
 type ItemType = {
@@ -31,9 +30,6 @@ const useItems = ({ viewerData }: UseItemsProps) => {
   } = useAuthenticationContext()
   const { currentBoardId } = useBoardContext()
   const { selectSecondary } = useTriptychContext()
-  const {
-    isTheme, setTheme,
-  } = useApplicationContext()
 
   const hasBoardSettings = !!currentBoardId
 
@@ -67,24 +63,6 @@ const useItems = ({ viewerData }: UseItemsProps) => {
               ),
             },
           ],
-        },
-        {
-          label         :'Theme',
-          displayItemsAs:'group',
-          items         :Object.entries(themes).map(([
-            key,
-            value,
-          ]) => ({
-            Component:() => React.createElement(
-              Button,
-              {
-                onClick:() => setTheme(key),
-                variant:'borderless',
-                color  :isTheme?.(key) ? 'important' : 'near',
-              },
-              value,
-            ),
-          })),
         },
         viewerData
           ? {
@@ -125,8 +103,6 @@ const useItems = ({ viewerData }: UseItemsProps) => {
       logout,
       isLogoutInFlight,
       selectSecondary,
-      setTheme,
-      isTheme,
     ],
   )
 

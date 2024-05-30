@@ -19,7 +19,7 @@ function List({
   id,
   className: userClassName,
   style,
-  items,
+  rootItem,
   getItemProps,
   selectedItems,
   highlightedItems,
@@ -27,6 +27,9 @@ function List({
   span = 4,
   spanDesktop = 3,
   columns = 1,
+  index,
+  isLast,
+  getDynamicProps,
 }:Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -34,6 +37,19 @@ function List({
       import('./styles.scss')
     }, [],
   )
+  const {
+    style:dynamicStyle,
+    className,
+    span:dynamicSpan,
+    spanDesktop:dynamicSpanDesktop,
+    ...dynamicProps
+  } = getDynamicProps?.({
+    item:rootItem,
+    index,
+    isLast,
+  }) || {}
+
+  const { items } = rootItem
 
   return (
     <ul
@@ -43,16 +59,18 @@ function List({
         componentClassName,
         userClassName,
         background,
-        `span-${span}`,
-        `md-span-${spanDesktop}`,
+        `span-${dynamicSpan || span}`,
+        `md-span-${dynamicSpanDesktop || spanDesktop}`,
+        className,
       ]
         .filter((e) => e)
         .join(' ')}
       style={{
         ...style,
+        ...dynamicStyle,
         '--content-columns':columns,
       } as React.CSSProperties}
-      // {...otherProps}
+      {...dynamicProps}
     >
       {items.map((item) => (
         <li

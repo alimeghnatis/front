@@ -21,7 +21,7 @@ import { DisplayItemsType } from '../../types.js'
 import { useNestedNavigation } from '../../hooks/index.js'
 import { OpenOnOptions } from '../../hooks/useNestedNavigation/types.js'
 import {
-  List, Columns,
+  List,
   ToggleBreadcrumb,
 } from './common/index.js'
 
@@ -60,10 +60,11 @@ function MegaMenu({
   initialUrl:userInitialUrl,
   initialIsOpen = false,
   defaultDisplayItemsType = DisplayItemsType.list,
+  navItemsProps,
   toggleComponentType = ToggleComponentType.button,
+  toggleComponentProps,
   background = 'near',
   openOn = OpenOnOptions.click,
-  toggleComponentProps,
 }: Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -136,17 +137,19 @@ function MegaMenu({
 
   const ItemsComponent = useCallback(
     ({
-      root, ...props
-    }:{ root?: PreparedItem; [key:string]: any; }):React.ReactElement | null => {
-      const displayItemsType = root.displayItemsType || defaultDisplayItemsType
+      rootItem,
+      ...props
+    }:{ rootItem?: PreparedItem; [key:string]: any; }):React.ReactElement | null => {
+      const displayItemsType = rootItem.displayItemsType || defaultDisplayItemsType
       const componentProps = {
         ...props,
-        ...root.itemsComponentProps,
+        ...rootItem.itemsComponentProps,
+        ...navItemsProps,
         getItemProps,
         selectedItems,
         highlightedItems,
         background,
-        items:root.items,
+        rootItem,
       }
       switch (displayItemsType) {
         case DisplayItemsType.list: {
@@ -154,7 +157,7 @@ function MegaMenu({
         }
         case DisplayItemsType.custom: {
           // @ts-ignore
-          return <root.ItemsComponent {...componentProps} />
+          return <rootItem.ItemsComponent {...componentProps} />
         }
         default: {
           console.warn(
@@ -173,6 +176,11 @@ function MegaMenu({
   const currentVisibleTree = (highlightedItems.length
     ? highlightedItems
     : selectedItems).slice(1).filter((item) => !!item.items)
+
+  const tree = [
+    preparedRoot,
+    ...currentVisibleTree,
+  ]
 
   return (
     // @ts-ignore
@@ -214,13 +222,14 @@ function MegaMenu({
         ].filter(Boolean).join(' ')
         }
       >
-        <ItemsComponent
-          root={preparedRoot}
-        />
-        { currentVisibleTree.map((item) => (
+        { tree.map((
+          item, index,
+        ) => (
           <ItemsComponent
             key={item.url || item.key}
-            root={item}
+            rootItem={item}
+            index={index}
+            isLast={index === tree.length - 1}
           />
         )) }
       </nav>

@@ -29,8 +29,9 @@ function TestItemsComponent({
   getItemProps,
   selectedItems,
   highlightedItems,
-  items,
+  root,
 }: any) {
+  const { items } = root
   return (
     <ul className={[
       'span-5',
@@ -254,6 +255,7 @@ export const BreadcrumbToggle: StoryObj<typeof Component> = {
     initialIsOpen       :false,
     openOn              :OpenOnOptions.hover,
     toggleComponentProps:{
+      slice          :0,
       getDynamicProps:({ index }) => ({
         spanDesktop:index === 3 ? 5 : 3,
         style      :{

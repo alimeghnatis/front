@@ -20,6 +20,9 @@ export const propTypes = {
 
   /* ({item?, isOpen, index?}) => {props} to apply to the toggle comp */
   getDynamicProps:PropTypes.func,
+
+  /* How many items to slice, used to remove/keep the root element */
+  slice:PropTypes.number,
 }
 
 export type Props = InferProps<typeof propTypes>

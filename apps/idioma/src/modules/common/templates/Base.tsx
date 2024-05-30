@@ -13,7 +13,7 @@ import {
   useTriptychContext,
 } from '@aztlan/ui'
 import {
-  Header, SearchBoardHeader,
+  Header, SearchBoardHeader, MegaMenu,
 } from '../components/index.js'
 
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
@@ -68,7 +68,7 @@ function Wrapper({
           className="container"
           items={routeMap}
         />
-        <Header right={right}>{title}</Header>
+        <Header right={right}>{title || <MegaMenu />}</Header>
         <div className="abs-special span-6 md-span-4 manual ">
           {absoluteHeaderElements}
           {focus < 2 && <NotificationGroup />}

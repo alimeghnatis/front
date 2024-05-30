@@ -1,6 +1,7 @@
 import {
   useCallback, useMemo,
   useEffect,
+  useState,
   useLayoutEffect,
   useReducer,
   useRef,
@@ -53,23 +54,35 @@ export default function useNestedNavigation(
     [rootItem],
   )
 
-  const initialState: State = {
-    isOpen       :initialIsOpen,
-    selectedItems:initialUrl
-      ? findItemTree(
-        navigationIndex,
-        initialUrl,
-      ) : [preparedRoot],
-    highlightedItems:initialIsOpen ? [
-      preparedRoot,
-      preparedRoot.items[0],
-    ] : [],
-    rootItem    :preparedRoot,
-    currentDepth:initialIsOpen ? 1 : 0,
-    inputValue  :'',
-    keysSoFar   :'',
+  const getInitialState = useCallback(
+    (args: any): State => ({
+      isOpen       :args.initialIsOpen,
+      selectedItems:args.initialUrl ? findItemTree(
+        args.navigationIndex, args.initialUrl,
+      ) : [args.preparedRoot],
+      highlightedItems:args.initialIsOpen ? [
+        args.preparedRoot,
+        args.preparedRoot.items[0],
+      ] : [],
+      rootItem       :args.preparedRoot,
+      currentDepth   :args.initialIsOpen ? 1 : 0,
+      inputValue     :'',
+      keysSoFar      :'',
+      navigationIndex:args.navigationIndex,
+    }), [],
+  )
+
+  const initialState = getInitialState({
+    initialIsOpen,
+    initialUrl,
     navigationIndex,
-  }
+    preparedRoot,
+  })
+
+  const [
+    isInitialized,
+    setIsInitialized,
+  ] = useState(false)
 
   const composedReducer = useCallback(
     (
@@ -90,6 +103,24 @@ export default function useNestedNavigation(
     dispatch,
   ] = useReducer(
     composedReducer, initialState,
+  )
+
+  useEffect(
+    () => {
+      if (!isInitialized) {
+        setIsInitialized(true)
+      } else {
+        dispatch({
+          // TODO imperfect. Ideally we should check whether the selectedItems and highlightedItems are still valid.
+          // For that we would need a more surgical reducer action, eg LoadItems
+          type :StateChangeTypes.SetState,
+          state:{
+            rootItem:preparedRoot,
+            navigationIndex,
+          },
+        })
+      }
+    }, [preparedRoot],
   )
 
   // Global Event Handlers

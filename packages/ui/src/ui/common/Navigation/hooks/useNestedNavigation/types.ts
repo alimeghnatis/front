@@ -40,6 +40,7 @@ export enum StateChangeTypes {
   ToggleButtonKeyDownPageDown = 'ToggleButtonKeyDownPageDown',
   ToggleButtonKeyDownPageUp = 'ToggleButtonKeyDownPageUp',
   ToggleButtonKeyDownSpaceButton = 'ToggleButtonKeyDownSpaceButton',
+  SetState = 'SetState',
 }
 
 export enum OpenOnOptions {
@@ -57,6 +58,7 @@ export interface Action {
   index?           :number;
   item?            :PreparedItem;
   keysSoFar?       :string;
+  state?           :Partial<State>;
 }
 
 export interface UseNestedNavigationOptions {

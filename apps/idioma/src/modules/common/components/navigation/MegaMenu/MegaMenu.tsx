@@ -27,9 +27,8 @@ function RawMegaMenu({
   children,
 
   data,
-}: // ...otherProps
-
-InferProps<typeof RawMegaMenu.propTypes>): React.ReactElement {
+  ...otherProps
+}: InferProps<typeof RawMegaMenu.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -91,7 +90,7 @@ InferProps<typeof RawMegaMenu.propTypes>): React.ReactElement {
       openOn="hover"
       toggleComponentProps={toggleComponentProps}
       navItemsProps={navItemsProps}
-      // {...otherProps}
+      {...otherProps}
     >
       {children}
     </MegaMenuNavigation>

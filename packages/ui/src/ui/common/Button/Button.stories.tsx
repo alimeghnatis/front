@@ -13,6 +13,7 @@ const meta: Meta<typeof Component> = {
   title     :'common/Button',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'centered' },
   /*
   decorators: [
     //decorators.app,
@@ -20,10 +21,7 @@ const meta: Meta<typeof Component> = {
   ]
   argTypes: {
     backgroundColor: { control: "color" }
-  }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+  } */
 }
 
 export default meta
@@ -36,6 +34,23 @@ export const VariantSimple: StoryObj<typeof Component> = {
     variant :'simple',
   },
 }
+
+export const VariantNatural: StoryFn<typeof Component> = (args) => (
+  <span>
+    This is a span of text
+    {' '}
+    <strong>
+      with a
+      {' '}
+      <Component
+        variant="natural"
+        {...args}
+      >
+        button
+      </Component>
+    </strong>
+  </span>
+)
 
 export const AsAnchor: StoryObj<typeof Component> = {
   args:{

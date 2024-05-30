@@ -32,8 +32,18 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   font-weight: 700;
   line-height: $default-line-height;
   padding: 0;
-  //text-align: center;
+  text-align: center;
   transition: all 0.1s;
+
+  &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {
+    background: $hover-background;
+    color: $hover-color;
+  }
+
+  &:not(.#{bem.$modifier-disabled}):not(:disabled):focus {
+    background: $focus-background;
+    color: $focus-color;
+  }
 
 
   &:disabled {
@@ -49,15 +59,22 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   }
 
 
-  &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {
-    background: $hover-background;
-    color: $hover-color;
+  &.#{bem.$modifier-natural} {
+    background: inherit;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    cursor: pointer;
+    font-weight: inherit;
+    text-align: inherit;
+
+    &:hover,
+    &:focus {
+      background: inherit !important;
+      color: inherit !important;
+    }
   }
 
-  &:not(.#{bem.$modifier-disabled}):not(:disabled):focus {
-    background: $focus-background;
-    color: $focus-color;
-  }
 
   .#{bem.$base}.#{bem.$modifier-simple} &,
   &.#{bem.$modifier-simple} {

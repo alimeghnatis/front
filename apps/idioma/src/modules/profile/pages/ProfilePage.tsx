@@ -5,7 +5,7 @@ import Template from '../../common/templates/Base.js'
 
 function ProfilePage() {
   return (
-    <Template title="Profile">
+    <Template>
       <section
         className="no-scrollbar"
         style={{ overflow: 'auto' }}

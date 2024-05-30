@@ -92,6 +92,7 @@ Button.propTypes = {
     'simple',
     'borderless',
     'divided',
+    'natural',
   ]),
 
   /** The button color */

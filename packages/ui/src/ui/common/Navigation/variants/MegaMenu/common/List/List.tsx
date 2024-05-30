@@ -10,6 +10,14 @@ import { propTypes } from './types.js'
 const baseClassName = styleNames.base
 const componentClassName = 'mega-menu-list'
 
+const arrayIncludes = (
+  array, item,
+) => {
+  const sameUrl = item.url && array.find((e) => e.url === item.url)
+  const sameKey = item.key && array.find((e) => e.key === item.key)
+  return sameUrl || sameKey
+}
+
 /**
  * description
  * @param {InferProps<typeof List.propTypes>} props -
@@ -77,8 +85,12 @@ function List({
           key={item.label}
           className={[
             item.disabled && styleNames.modifierDisabled,
-            selectedItems.includes(item) && styleNames.modifierSelected,
-            highlightedItems.includes(item) && 'hover',
+            arrayIncludes(
+              selectedItems, item,
+            ) && styleNames.modifierSelected,
+            arrayIncludes(
+              highlightedItems, item,
+            ) && 'hover',
             //
           ]
             .filter(Boolean)

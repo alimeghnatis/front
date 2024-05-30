@@ -105,8 +105,8 @@ export default function useRootItem({ memberships }) {
             {
               onClick :logout,
               disabled:isLogoutInFlight,
-              variant :'borderless',
-              color   :'near',
+              variant :'natural',
+              // color   :'near',
             },
             'Logout',
           ),
@@ -133,8 +133,11 @@ export default function useRootItem({ memberships }) {
               Button,
               {
                 onClick:() => setTheme(key),
-                variant:'borderless',
-                color  :isTheme?.(key) ? 'important' : 'near',
+                variant:'natural',
+                style  :{
+                  background:isTheme?.(key) ? 'var(--selected)' : 'inherit',
+                  color     :isTheme?.(key) ? 'var(--on-selected)' : 'inherit',
+                },
               },
               value,
             ),
@@ -155,7 +158,11 @@ export default function useRootItem({ memberships }) {
         settingsItem,
       ],
     }),
-    [],
+    [
+      itemMyBoards,
+      accountItem,
+      settingsItem,
+    ],
   )
 
   return rootItem

@@ -75,6 +75,9 @@ export default function nestedNavigationReducer(
         )
         changes.highlightedItems = highlightedItems
       }
+      console.log(
+        'open menu', changes, state.selectedItems, action,
+      )
       break
     }
 
@@ -352,7 +355,14 @@ export default function nestedNavigationReducer(
       break
     }
 
-    /*
+    case StateChangeTypes.SetState:
+      changes = {
+        ...state,
+        ...action.state,
+      }
+      break
+
+      /*
 
     case StateChangeTypes.ToggleButtonBlur: {
       changes = {

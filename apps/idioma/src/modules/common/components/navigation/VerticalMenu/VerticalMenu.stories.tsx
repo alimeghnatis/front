@@ -4,12 +4,11 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-// import { Meta, StoryFn } from '@storybook/react'
 import { decorators } from 'story-utils'
 import { RawVerticalMenu as Component } from './VerticalMenu.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'base.navigation/VerticalMenu',
+  title     :'common/navigation/VerticalMenu',
   component :Component,
   decorators:[
     decorators.components.Application,
@@ -17,10 +16,6 @@ const meta: Meta<typeof Component> = {
     decorators.components.Relay,
   ],
   /*
-  decorators: [
-    //decorators.app,
-    //storyfn => <div className="">{ storyfn() }</div>,
-  ]
   argTypes: {
     backgroundColor: { control: "color" }
   }
@@ -32,17 +27,3 @@ const meta: Meta<typeof Component> = {
 export default meta
 
 export const Base: StoryObj<typeof Component> = { args: { children: 'Sample VerticalMenu' } }
-
-/*
-export const Base: StoryFn<typeof Component> = () => (
-  <Component>Sample VerticalMenu</Component>
-)
-*/
-
-/*
-const Template: StoryFn<typeof Component> = (args) => <VerticalMenu {...args} />
-
-export const Base: StoryFn<typeof Component> = Template.bind({})
-Base.args = {
-  children:'Sample Button',
-} */

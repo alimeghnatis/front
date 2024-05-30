@@ -10,9 +10,10 @@ import Component from './SecondaryHeader.js'
 // import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 
 const meta: Meta<typeof Component> = {
-  title     :'base.navigation/SecondaryHeader',
+  title     :'common/navigation/SecondaryHeader',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta

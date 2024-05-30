@@ -9,9 +9,10 @@ import { decorators } from 'story-utils'
 import Component from './Header.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'base.navigation/Header',
+  title     :'common/navigation/Header',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta

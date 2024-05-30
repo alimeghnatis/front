@@ -4,27 +4,24 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-// import { Meta, StoryFn } from '@storybook/react'
-import { Triptych } from '@aztlan/ui'
 
 import { graphql } from 'react-relay'
 
 import { decorators } from 'story-utils'
-import { RawSelectMenu as Component } from './SelectMenu.js'
-// import decorators from "story-utils/decorators.js";
+import { RawMegaMenu as Component } from './MegaMenu.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'common/SelectSettingsMenu',
+  title     :'common/navigation/MegaMenu',
   component :Component,
   decorators:[decorators.components.Router],
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta
 
-/*
 const relay = {
   query:graphql`
-    query SelectMenuBoardStoriesQuery {
+    query MegaMenuStoriesQuery {
       viewer {
         boardMemberships(first: 50)
           @connection(key: "useBoardMembershipsFragment_boardMemberships") {
@@ -73,10 +70,9 @@ const relay = {
       ],
     }),
   },
-} */
+}
 
 export const Base: StoryObj<typeof Component> = {
-  args:{ children: 'Sample BreadcrumbSelectMenu' },
-
-  // parameters:{ relay },
+  args      :{ children: 'Sample MegaMenu' },
+  parameters:{ relay },
 }

@@ -7,7 +7,7 @@ import {
   useApplicationContext,
 } from '@aztlan/ui'
 
-import { useBoardContext } from '../Board/hooks/index.js'
+import { useBoardContext } from '../../Board/hooks/index.js'
 
 type ItemType = {
   label          :string;

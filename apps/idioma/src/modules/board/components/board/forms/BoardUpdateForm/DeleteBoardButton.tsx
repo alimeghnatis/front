@@ -11,6 +11,9 @@ import {
   ConnectionHandler,
   useMutation,
 } from 'react-relay'
+import {
+  Button, useNotificationContext,
+} from '@aztlan/ui'
 import { useBoardContext } from 'modules/common/components'
 
 const FRAGMENT = graphql`
@@ -43,6 +46,8 @@ function DeleteButton({
     isDeleteInFlight,
   ] = useMutation(MUTATION_DELETE)
 
+  const { notify } = useNotificationContext()
+
   const handleDelete = useCallback(
     (): void => {
       const isConfirmed = confirm('Are you sure you want to delete this board?')
@@ -68,6 +73,11 @@ function DeleteButton({
         // optimisticUpdater:updater,
         onCompleted:() => {
           history.push(basePath)
+          notify.success('Board deleted.')
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
         },
       })
     }, [
@@ -79,14 +89,16 @@ function DeleteButton({
   //
   //
   return (
-    <button
+    <Button
       disabled={isDeleteInFlight}
       onClick={handleDelete}
       key={result.id}
+      variant="borderless"
+      color="error"
       {...props}
     >
       Delete Board
-    </button>
+    </Button>
   )
 }
 

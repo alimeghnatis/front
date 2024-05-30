@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<643eb20675d0de88b72a2eb2c85aa4d2>>
+ * @generated SignedSource<<acf877f0d005c225d66b146bc6099af0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -87,6 +87,13 @@ v2 = {
     }
   ],
   "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
 };
 return {
   "fragment": {
@@ -149,13 +156,7 @@ return {
             "name": "instance",
             "plural": false,
             "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "id",
-                "storageKey": null
-              },
+              (v3/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -225,6 +226,53 @@ return {
                 "kind": "ScalarField",
                 "name": "enabledLanguages",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "ThreadNode",
+                "kind": "LinkedField",
+                "name": "thread",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  {
+                    "alias": null,
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "last",
+                        "value": 4
+                      }
+                    ],
+                    "concreteType": "LanguageMessageTypeConnection",
+                    "kind": "LinkedField",
+                    "name": "messages",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "LanguageMessageTypeEdge",
+                        "kind": "LinkedField",
+                        "name": "edges",
+                        "plural": true,
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "cursor",
+                            "storageKey": null
+                          }
+                        ],
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": "messages(last:4)"
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -236,12 +284,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "97f3b57dfc310a0921ffea15828894bb",
+    "cacheID": "f590cf2c629acda5f96ce681607b0311",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormBoardUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();

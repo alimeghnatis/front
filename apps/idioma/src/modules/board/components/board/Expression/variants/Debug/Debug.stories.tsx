@@ -11,7 +11,10 @@ import Component from './Debug.js'
 const meta: Meta<typeof Component> = {
   title     :'board/board/Expression/Debug',
   component :Component,
-  decorators:[decorators.components.Router],
+  decorators:[
+    decorators.components.Router,
+    decorators.components.Notification,
+  ],
   parameters:{ layout: 'fullscreen' },
   /*
   argTypes: {

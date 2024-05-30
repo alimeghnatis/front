@@ -68,9 +68,7 @@ export default function useRootItem({ memberships }) {
               className:i === 0 ? 'first' : '',
               url,
               Component:({ item }: { item: { url: string; label: string } }) => React.createElement(
-                LinkType,
-                { to: item.url },
-                item.label,
+                LinkType, { to: item.url }, item.label,
               ),
               active:node.board.id === currentBoardId,
             }

@@ -11,7 +11,10 @@ import Component from './Expression.js'
 const meta: Meta<typeof Component> = {
   title     :'board/board/Expression',
   component :Component,
-  decorators:[decorators.components.Router],
+  decorators:[
+    decorators.components.Router,
+    decorators.components.Notification,
+  ],
   parameters:{ layout: 'fullscreen' },
   /*
   argTypes: {

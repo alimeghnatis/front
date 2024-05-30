@@ -15,6 +15,7 @@ import {
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from '../useBoardFormFields.js'
 import DeleteBoardButton from './DeleteBoardButton.js'
+import { ResetChatButton } from '../../../chat/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'board-settings-form'
@@ -33,6 +34,9 @@ const FRAGMENT = graphql`
     displayWords
     enabledLanguages
     ...DeleteBoardButtonFragment
+    thread {
+      ...ResetChatButtonFragment
+    }
   }
 `
 
@@ -171,6 +175,10 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
           {!isDefault && (
             <>
               <h2 className="container">Danger Zone</h2>
+              <p className="span-8 md-span-2">Reset chat</p>
+              <div className="span-8 md-span-9">
+                <ResetChatButton data={result.thread} />
+              </div>
               <p className="span-8 md-span-2">Delete board</p>
               <div className="span-8 md-span-9">
                 <DeleteBoardButton data={result} />

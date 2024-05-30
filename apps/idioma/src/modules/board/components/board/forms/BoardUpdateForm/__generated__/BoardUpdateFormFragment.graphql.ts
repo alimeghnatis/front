@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3ce4aa85f173505076844783875127b4>>
+ * @generated SignedSource<<f0e561a8e85197ecb8eab9ae0cc36e0f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,9 @@ export type BoardUpdateFormFragment$data = {
   readonly isDefault: boolean;
   readonly isPublic: boolean;
   readonly name: string;
+  readonly thread: {
+    readonly " $fragmentSpreads": FragmentRefs<"ResetChatButtonFragment">;
+  } | null | undefined;
   readonly " $fragmentSpreads": FragmentRefs<"DeleteBoardButtonFragment">;
   readonly " $fragmentType": "BoardUpdateFormFragment";
 };
@@ -117,12 +120,28 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "FragmentSpread",
       "name": "DeleteBoardButtonFragment"
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "ThreadNode",
+      "kind": "LinkedField",
+      "name": "thread",
+      "plural": false,
+      "selections": [
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "ResetChatButtonFragment"
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "BoardNode",
   "abstractKey": null
 };
 
-(node as any).hash = "4558d50af14b004ef61255a8af82e62a";
+(node as any).hash = "e71a2ed2037cbd609d0cec4a3f89a66f";
 
 export default node;

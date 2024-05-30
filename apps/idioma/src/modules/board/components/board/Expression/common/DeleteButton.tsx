@@ -4,7 +4,9 @@ import { useCallback } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
-import { Button } from '@aztlan/ui'
+import {
+  Button, useNotificationContext,
+} from '@aztlan/ui'
 
 import {
   graphql,
@@ -44,6 +46,8 @@ function DeleteButton({
     isDeleteInFlight,
   ] = useMutation(MUTATION_DELETE)
 
+  const { notify } = useNotificationContext()
+
   const handleDelete = useCallback(
     (): void => {
       const isConfirmed = confirm('Are you sure you want to delete this expression?')
@@ -65,6 +69,13 @@ function DeleteButton({
         variables        :{ input: { id: atob(result.id).split(':')[1] } },
         updater,
         optimisticUpdater:updater,
+        onCompleted      :(response) => {
+          notify.success('Expression deleted.')
+        },
+        onError:(error) => {
+          const { errors } = error?.res
+          notify.errorCode(errors?.[0]?.message)
+        },
       })
     }, [
       result.id,

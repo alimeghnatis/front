@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<214f53e1c367a577ee4839bb1794a6e8>>
+ * @generated SignedSource<<dc843ac7bad6cf87b8050c309bb281b2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,7 +28,14 @@ var v0 = [
     "name": "id",
     "value": "1"
   }
-];
+],
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -70,13 +77,7 @@ return {
         "name": "board",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          },
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -146,6 +147,53 @@ return {
             "kind": "ScalarField",
             "name": "enabledLanguages",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "ThreadNode",
+            "kind": "LinkedField",
+            "name": "thread",
+            "plural": false,
+            "selections": [
+              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "last",
+                    "value": 4
+                  }
+                ],
+                "concreteType": "LanguageMessageTypeConnection",
+                "kind": "LinkedField",
+                "name": "messages",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "LanguageMessageTypeEdge",
+                    "kind": "LinkedField",
+                    "name": "edges",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "cursor",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": "messages(last:4)"
+              }
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": "board(id:\"1\")"
@@ -153,12 +201,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "633e649766be754c8d66588a990551b6",
+    "cacheID": "fbda7a396717fab49299602cfdf21ac9",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n"
+    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();

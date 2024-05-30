@@ -9,6 +9,7 @@
   position: relative;
 
   &:focus {
+    background: var(--soft-color);
     outline: none;
   }
 

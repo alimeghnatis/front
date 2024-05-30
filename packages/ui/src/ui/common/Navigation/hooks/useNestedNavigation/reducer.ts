@@ -359,7 +359,8 @@ export default function nestedNavigationReducer(
       const lastHighlightedItem = highlightedItems[highlightedItems.length - 1]
       const lastSelectedItem = selectedItems[selectedItems.length - 1]
       if (
-        action.state.navigationIndex?.[
+        lastHighlightedItem
+        && action.state.navigationIndex?.[
           lastHighlightedItem.url || lastHighlightedItem.key
         ]
       ) {
@@ -370,7 +371,8 @@ export default function nestedNavigationReducer(
       }
 
       if (
-        action.state.navigationIndex?.[
+        lastSelectedItem
+        && action.state.navigationIndex?.[
           lastSelectedItem.url || lastSelectedItem.key
         ]
       ) {

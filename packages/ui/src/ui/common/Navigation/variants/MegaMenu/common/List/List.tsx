@@ -70,6 +70,7 @@ function List({
         componentClassName,
         userClassName,
         background,
+        'manual',
         `span-${dynamicSpan || span}`,
         `md-span-${dynamicSpanDesktop || spanDesktop}`,
         className,

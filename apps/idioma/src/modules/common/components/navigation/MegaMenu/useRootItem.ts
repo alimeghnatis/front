@@ -135,7 +135,7 @@ export default function useRootItem({ memberships }) {
                 onClick:() => setTheme(key),
                 variant:'natural',
                 style  :{
-                  background:isTheme?.(key) ? 'var(--warning)' : 'inherit',
+                  background:isTheme?.(key) ? 'var(--selected)' : 'inherit',
                   color     :isTheme?.(key) ? 'var(--on-selected)' : 'inherit',
                 },
               },

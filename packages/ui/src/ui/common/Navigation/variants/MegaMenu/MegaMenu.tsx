@@ -168,7 +168,6 @@ function MegaMenu({
         }
       }
     }, [
-      navigationIndex,
       defaultDisplayItemsType,
       selectedItems,
       highlightedItems,
@@ -219,7 +218,7 @@ function MegaMenu({
       <ToggleComponent />
       <nav className={
         [
-          'grid container manual',
+        // 'grid',
           isOpen && styleNames.modifierOpen,
         ].filter(Boolean).join(' ')
         }

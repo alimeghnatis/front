@@ -80,7 +80,10 @@ type Query {
     last: Int
     user: ID
   ): UsageStateNodeConnection
-  iso639pt2: [LanguageType]
+  iso639pt2(
+    """Optional list of ISO 639-2T codes to filter the results."""
+    codes_In: [String]
+  ): [LanguageType]
   board(
     """The ID of the object"""
     id: ID

@@ -1,4 +1,18 @@
 import { useMemo } from 'react'
+import { graphql } from 'react-relay'
+import {
+  withErrorHandling, addGraphQLTransformedOptions,
+} from '@aztlan/ui'
+
+const QUERY = graphql`
+  query useExpressionVariantFieldsLanguagesOptionsQuery($payload: [String!]) {
+    iso639pt2(codes_In: $payload) {
+      pt2t
+      name
+      audio
+    }
+  }
+`
 
 const useExpressionVariantFields = (
   instance, boardInstance,
@@ -112,6 +126,19 @@ const useExpressionVariantFields = (
           })),
         ],
         registerProps:{ required: { value: false } },
+        extensions   :[
+          withErrorHandling,
+          addGraphQLTransformedOptions(
+            QUERY, 'iso639pt2', {
+              transformData:(item) => item.map(({
+                pt2t, name, audio,
+              }) => ({
+                value:pt2t,
+                label:`${name} (${pt2t})`,
+              })),
+            },
+          ),
+        ],
       },
       /*
           {

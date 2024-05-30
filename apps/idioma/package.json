@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/idioma",
-  "version": "3.11.4",
+  "version": "3.12.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -58,7 +58,7 @@
     "@aztlan/react-ssr": "^3.6.3",
     "@aztlan/storybook-config": "^3.8.0",
     "@aztlan/storybook-helpers": "^3.6.3",
-    "@aztlan/ui": "^3.11.4",
+    "@aztlan/ui": "^3.12.0",
     "@fwrlines/assets-k": "^1.0.0",
     "@loadable/component": "^5.16.4",
     "@loadable/server": "^5.16.5",

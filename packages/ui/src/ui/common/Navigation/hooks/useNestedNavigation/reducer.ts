@@ -67,6 +67,7 @@ export default function nestedNavigationReducer(
             0, action.depth,
           )
           : state.selectedItems
+        changes.currentDepth = action.depth
       } else {
         const firstEnabledChild = getFirstEnabledChild(state.rootItem)
         const highlightedItems = findItemTree(
@@ -74,6 +75,7 @@ export default function nestedNavigationReducer(
           firstEnabledChild.url || firstEnabledChild.key,
         )
         changes.highlightedItems = highlightedItems
+        changes.currentDepth = 1
       }
       break
     }

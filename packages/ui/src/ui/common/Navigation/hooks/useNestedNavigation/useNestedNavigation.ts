@@ -110,9 +110,6 @@ export default function useNestedNavigation(
       if (!isInitialized) {
         setIsInitialized(true)
       } else {
-        console.log(
-          'State Change', state, navigationIndex,
-        )
         dispatch({
           // TODO imperfect. Ideally we should check whether the selectedItems and highlightedItems are still valid.
           // For that we would need a more surgical reducer action, eg LoadItems
@@ -294,6 +291,7 @@ export default function useNestedNavigation(
       role             :'listbox',
       'aria-labelledby':props['aria-labelledby'],
       ref              :menuRef,
+      tabIndex         :-1,
     }),
     [],
   )
@@ -356,7 +354,8 @@ export default function useNestedNavigation(
   useLayoutEffect(
     () => {
       const target = menuRef.current
-      if (target) {
+      if (target && state.isOpen) {
+        target.focus()
         target.addEventListener(
           'keydown', handleKeyDown,
         )
@@ -366,7 +365,13 @@ export default function useNestedNavigation(
           )
         }
       }
-    }, [handleKeyDown],
+      if (!state.isOpen) {
+        target.blur()
+      }
+    }, [
+      handleKeyDown,
+      state.isOpen,
+    ],
   )
   /*
 

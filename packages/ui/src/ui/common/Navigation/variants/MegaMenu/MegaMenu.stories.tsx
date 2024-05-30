@@ -61,6 +61,7 @@ function TestItemsComponent({
 
 export const Base: StoryObj<typeof Component> = {
   args:{
+    className           :'span-8 md-span-2',
     initialIsOpen       :true,
     toggleComponentProps:{
       getDynamicProps:({ isOpen }) => ({

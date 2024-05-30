@@ -83,6 +83,7 @@ export interface MenuProps {
   role             :string;
   'aria-labelledby':string;
   ref              :React.Ref<HTMLElement>;
+  tabIndex         :number;
 }
 
 export interface ItemProps {
@@ -92,6 +93,7 @@ export interface ItemProps {
   'aria-selected':boolean;
   'aria-disabled':boolean;
   ref            :React.Ref<HTMLElement>;
+  tabIndex       :number;
 }
 
 export interface LabelProps {

@@ -58,6 +58,9 @@ function List({
   }) || {}
 
   const { items } = rootItem
+  console.log(
+    'items', items,
+  )
 
   return (
     <ul

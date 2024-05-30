@@ -110,6 +110,9 @@ export default function useNestedNavigation(
       if (!isInitialized) {
         setIsInitialized(true)
       } else {
+        console.log(
+          'State Change', state, navigationIndex,
+        )
         dispatch({
           // TODO imperfect. Ideally we should check whether the selectedItems and highlightedItems are still valid.
           // For that we would need a more surgical reducer action, eg LoadItems

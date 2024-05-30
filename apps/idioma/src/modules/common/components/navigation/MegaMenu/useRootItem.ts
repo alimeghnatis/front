@@ -23,7 +23,7 @@ export default function useRootItem({ memberships }) {
     logout, isLogoutInFlight,
   } = useAuthenticationContext()
   const {
-    matchRoute, isTheme, setTheme,
+    matchRoute, isTheme, setTheme, theme,
   } = useApplicationContext()
   const LinkType = matchRoute ? PrefetchLink : Link
   const {
@@ -135,7 +135,7 @@ export default function useRootItem({ memberships }) {
                 onClick:() => setTheme(key),
                 variant:'natural',
                 style  :{
-                  background:isTheme?.(key) ? 'var(--selected)' : 'inherit',
+                  background:isTheme?.(key) ? 'var(--warning)' : 'inherit',
                   color     :isTheme?.(key) ? 'var(--on-selected)' : 'inherit',
                 },
               },
@@ -145,7 +145,10 @@ export default function useRootItem({ memberships }) {
         },
       ],
     }),
-    [isTheme],
+    [
+      isTheme,
+      theme,
+    ],
   )
 
   const rootItem = useMemo(

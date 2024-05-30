@@ -75,9 +75,6 @@ export default function nestedNavigationReducer(
         )
         changes.highlightedItems = highlightedItems
       }
-      console.log(
-        'open menu', changes, state.selectedItems, action,
-      )
       break
     }
 
@@ -356,8 +353,36 @@ export default function nestedNavigationReducer(
     }
 
     case StateChangeTypes.SetState:
+      let {
+        highlightedItems, selectedItems,
+      } = state
+      const lastHighlightedItem = highlightedItems[highlightedItems.length - 1]
+      const lastSelectedItem = selectedItems[selectedItems.length - 1]
+      if (
+        action.state.navigationIndex?.[
+          lastHighlightedItem.url || lastHighlightedItem.key
+        ]
+      ) {
+        highlightedItems = findItemTree(
+          action.state.navigationIndex,
+          lastHighlightedItem.url || lastHighlightedItem.key,
+        )
+      }
+
+      if (
+        action.state.navigationIndex?.[
+          lastSelectedItem.url || lastSelectedItem.key
+        ]
+      ) {
+        selectedItems = findItemTree(
+          action.state.navigationIndex,
+          lastSelectedItem.url || lastSelectedItem.key,
+        )
+      }
+
       changes = {
         ...state,
+        highlightedItems,
         ...action.state,
       }
       break

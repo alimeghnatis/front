@@ -78,6 +78,7 @@ function MegaMenu({
 
   const {
     isOpen,
+    navigationIndex,
     // keysSoFar,
     selectedItems,
     highlightedItems,
@@ -167,6 +168,7 @@ function MegaMenu({
         }
       }
     }, [
+      navigationIndex,
       defaultDisplayItemsType,
       selectedItems,
       highlightedItems,

@@ -121,7 +121,14 @@ export const Base: StoryObj<typeof Component> = {
             {
               label    :'Contact',
               url      :'/contact',
-              Component:({ item }) => <strong>{item.label}</strong>,
+              Component:({ item }) => (
+                <button
+                  onMouseOver={() => console.log('mouse entered')}
+                  type="button"
+                >
+                  {item.label}
+                </button>
+              ),
             },
           ],
         },

@@ -150,7 +150,10 @@ TextareaForm.propTypes = {
   placeholder:PropTypes.string,
 
   /** The text to display on the submit button */
-  buttonLabel:PropTypes.string,
+  buttonLabel:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 }
 
 export default TextareaForm

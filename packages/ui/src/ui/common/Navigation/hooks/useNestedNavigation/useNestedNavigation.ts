@@ -231,9 +231,7 @@ export default function useNestedNavigation(
     ({
       item, index, level, ...props
     }: Partial<ItemProps> & { item: PreparedItem; index: number; level: number }): ItemProps => {
-      const key = generateKey(
-        level, index,
-      )
+      const key = item.url || item.key
       return {
         ...props,
         onClick:(e) => {
@@ -296,17 +294,49 @@ export default function useNestedNavigation(
     [],
   )
 
+  const handleEnterKeyPress = useCallback(
+    () => {
+      dispatch({ type: StateChangeTypes.ToggleButtonKeyDownEnter })
+      const currentItem = state.highlightedItems[state.currentDepth]
+      if (currentItem) {
+        const key = currentItem.url || currentItem.key
+        const itemNode = itemRefs.current.get(key)
+        if (itemNode) {
+          const innerLink = itemNode.querySelector('a, button, [role="link"], [role="button"]')
+          if (innerLink) {
+            (innerLink as HTMLElement).click()
+          } else {
+            itemNode.click()
+          }
+        }
+      }
+    }, [
+      dispatch,
+      state.currentDepth,
+      state.highlightedItems,
+    ],
+  )
+
+  const handleHover = useCallback(
+    (item: PreparedItem) => {
+      const key = item.url || item.key
+      const itemNode = itemRefs.current.get(key)
+      if (itemNode) {
+        const innerNode = itemNode.querySelector('a, button, [role="link"], [role="button"]') || itemNode
+        innerNode.dispatchEvent(new MouseEvent(
+          'mouseover', { bubbles: true },
+        ))
+      }
+    }, [],
+  )
+
   // Local Event Handlers
   const handleKeyDown = useCallback(
     (event) => {
       event.preventDefault()
-      console.log(
-        event, event.key,
-      )
       if (state.currentDepth !== -1) {
         switch (event.key) {
           case 'ArrowDown':
-            console.log('should dispatch')
             dispatch({ type: StateChangeTypes.ToggleButtonKeyDownArrowDown })
             break
           case 'ArrowUp':
@@ -331,7 +361,7 @@ export default function useNestedNavigation(
             dispatch({ type: StateChangeTypes.ToggleButtonKeyDownPageDown })
             break
           case 'Enter':
-            dispatch({ type: StateChangeTypes.ToggleButtonKeyDownEnter })
+            handleEnterKeyPress()
             break
           case 'Escape':
             dispatch({ type: StateChangeTypes.ToggleButtonKeyDownEscape })
@@ -352,6 +382,20 @@ export default function useNestedNavigation(
     [
       dispatch,
       state.currentDepth,
+      state.highlightedItems,
+    ],
+  )
+
+  useEffect(
+    () => {
+      const currentItem = state.highlightedItems[state.highlightedItems.length - 1]
+      if (currentItem) {
+        // TODO This is duplicated on mouse interaction, it comes from somwhere else
+        handleHover(currentItem)
+      }
+    }, [
+      state.highlightedItems,
+      handleHover,
     ],
   )
 

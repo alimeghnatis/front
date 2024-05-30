@@ -160,6 +160,23 @@ export default function nestedNavigationReducer(
         )
 
         changes = { highlightedItems: newHighlightedItems }
+      } else if (currentDepth > 0) {
+        const parentItem = highlightedItems[currentDepth - 1]
+        if (parentItem && parentItem.items.length > 0) {
+          let nextIndex = 0
+          let nextItem = parentItem.items[nextIndex]
+
+          while (isItemDisabled(nextItem)) {
+            nextIndex = (nextIndex + 1) % parentItem.items.length
+            nextItem = parentItem.items[nextIndex]
+          }
+
+          const newHighlightedItems = findItemTree(
+            state.navigationIndex,
+            nextItem.url || nextItem.key,
+          )
+          changes = { highlightedItems: newHighlightedItems }
+        }
       }
       break
     }
@@ -185,6 +202,24 @@ export default function nestedNavigationReducer(
           prevItem.url || prevItem.key,
         )
         changes = { highlightedItems: newHighlightedItems }
+      } else if (currentDepth > 0) {
+        const parentItem = highlightedItems[currentDepth - 1]
+        if (parentItem && parentItem.items.length > 0) {
+          let prevIndex = parentItem.items.length - 1
+          let prevItem = parentItem.items[prevIndex]
+
+          while (isItemDisabled(prevItem)) {
+            prevIndex = (prevIndex - 1 + parentItem.items.length)
+              % parentItem.items.length
+            prevItem = parentItem.items[prevIndex]
+          }
+
+          const newHighlightedItems = findItemTree(
+            state.navigationIndex,
+            prevItem.url || prevItem.key,
+          )
+          changes = { highlightedItems: newHighlightedItems }
+        }
       }
       break
     }

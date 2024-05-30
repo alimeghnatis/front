@@ -300,9 +300,13 @@ export default function useNestedNavigation(
   const handleKeyDown = useCallback(
     (event) => {
       event.preventDefault()
+      console.log(
+        event, event.key,
+      )
       if (state.currentDepth !== -1) {
         switch (event.key) {
           case 'ArrowDown':
+            console.log('should dispatch')
             dispatch({ type: StateChangeTypes.ToggleButtonKeyDownArrowDown })
             break
           case 'ArrowUp':

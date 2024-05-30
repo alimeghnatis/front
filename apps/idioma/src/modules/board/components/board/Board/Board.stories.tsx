@@ -16,7 +16,7 @@ const meta: Meta<typeof Component> = {
   component :Component,
   decorators:[
     decorators.components.Router,
-    decorators.components.Notification
+    decorators.components.Notification,
   ],
   parameters:{ layout: 'fullscreen' },
   /*

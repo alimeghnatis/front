@@ -23,6 +23,7 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
 
 
 .#{bem.$base}.button {
+  align-content: center;
   background: $default-background;
   border: $default-border-width $default-border-style $default-border-color;
   border-radius: $default-border-radius;

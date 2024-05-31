@@ -10,7 +10,9 @@ import {
   graphql, useFragment, useMutation,
 } from 'react-relay'
 import {
-  ModularForm, useNotificationContext,
+  ModularForm,
+  useNotificationContext,
+  withMockWrapper,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import useBoardFormFields from '../useBoardFormFields.js'
@@ -56,6 +58,9 @@ const MUTATION_UPDATE = graphql`
     }
   }
 `
+
+const WrappedDeleteBoardButton = withMockWrapper(DeleteBoardButton)
+const WrappedResetChatButton = withMockWrapper(ResetChatButton)
 
 /**
  * description
@@ -178,14 +183,22 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
           {!isDefault && (
             <>
               <h2 className="container">Danger Zone</h2>
-              <p className="span-8 md-span-2">Reset chat</p>
-              <div className="span-8 md-span-9">
-                <ResetChatButton data={result.thread} />
-              </div>
-              <p className="span-8 md-span-2">Delete board</p>
-              <div className="span-8 md-span-9">
-                <DeleteBoardButton data={result} />
-              </div>
+              <WrappedResetChatButton
+                data={result.thread}
+                label="Reset chat"
+                spanLabel={8}
+                spanLabelDesktop={2}
+                spanContent={8}
+                spanContentDesktop={9}
+              />
+              <WrappedDeleteBoardButton
+                data={result}
+                label="Delete board"
+                spanLabel={8}
+                spanLabelDesktop={2}
+                spanContent={8}
+                spanContentDesktop={9}
+              />
             </>
           )}
         </ModularForm.Section>

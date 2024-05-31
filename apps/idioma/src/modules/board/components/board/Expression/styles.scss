@@ -109,9 +109,12 @@ $default-border-width: 1px;
       }
 
       > .tools {
-        --columns: 3;
+        --columns: 4;
         scroll-snap-align: start;
         //grid-column-end: span 5;
+        > .button-group {
+          height: 100%;
+        }
       }
 
       > .extras {

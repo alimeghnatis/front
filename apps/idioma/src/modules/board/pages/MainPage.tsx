@@ -33,6 +33,7 @@ export default function (props) {
   return (
     <Template
       hasSettings
+      mobileTitle="Board"
       absoluteHeaderElements={(
         <div
           style={{

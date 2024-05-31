@@ -21,7 +21,7 @@ function PrimaryTemplate({
 
   return (
     <BaseTemplate
-      right={<SettingsButton className="span-2" />}
+      right={<SettingsButton className="span-1 md-span-2" />}
       {...otherProps}
     >
       {children}

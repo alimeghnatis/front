@@ -49,7 +49,8 @@ InferProps<typeof SettingsButton.propTypes>): React.ReactElement {
       color="near"
       // {...otherProps}
     >
-      Settings
+      <span className="hide-mobile">Settings</span>
+      <span className="hide-desktop">S</span>
     </Button>
   )
 }

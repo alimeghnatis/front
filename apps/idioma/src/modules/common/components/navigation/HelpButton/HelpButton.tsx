@@ -49,7 +49,8 @@ InferProps<typeof HelpButton.propTypes>): React.ReactElement {
       color="near"
       // {...otherProps}
     >
-      Help
+      <span className="hide-mobile">Help</span>
+      <span className="hide-desktop">H</span>
     </Button>
   )
 }

@@ -54,6 +54,7 @@ const routeMap = [
 
 function Wrapper({
   title = null,
+  mobileTitle = null,
   children,
   right,
   beforeHeader,
@@ -79,7 +80,12 @@ function Wrapper({
             </div>
           )}
         >
-          {title || <MegaMenu className="hide-mobile" />}
+          {title || (
+            <>
+              <MegaMenu className="hide-mobile" />
+              {mobileTitle && <p className="h2 hide-desktop">{mobileTitle}</p>}
+            </>
+          )}
         </Header>
         <div className="abs-special span-6 md-span-4 manual ">
           {absoluteHeaderElements}

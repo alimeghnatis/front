@@ -167,7 +167,10 @@ Provider.propTypes = {
 
   /** The routes of the application - this will only be used for prefetch link */
   routes:PropTypes.arrayOf(PropTypes.shape({
-    path                 :PropTypes.string.isRequired,
+    path:PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string.isRequired),
+    ]),
     exact                :PropTypes.bool,
     component            :PropTypes.elementType,
     QUERY                :PropTypes.object,

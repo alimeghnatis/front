@@ -93,8 +93,11 @@ Selector.propTypes = {
 
   /** The options to display */
   options:PropTypes.arrayOf(PropTypes.shape({
-    key     :PropTypes.string,
-    value   :PropTypes.string.isRequired,
+    key  :PropTypes.string,
+    value:PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+    ]),
     label   :PropTypes.string.isRequired,
     disabled:PropTypes.bool,
     color   :PropTypes.string,

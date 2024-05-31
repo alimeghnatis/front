@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<acf877f0d005c225d66b146bc6099af0>>
+ * @generated SignedSource<<53456267fffbbda23890924a3edc5223>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -94,7 +94,14 @@ v3 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-};
+},
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "last",
+    "value": 4
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -238,13 +245,7 @@ return {
                   (v3/*: any*/),
                   {
                     "alias": null,
-                    "args": [
-                      {
-                        "kind": "Literal",
-                        "name": "last",
-                        "value": 4
-                      }
-                    ],
+                    "args": (v4/*: any*/),
                     "concreteType": "LanguageMessageTypeConnection",
                     "kind": "LinkedField",
                     "name": "messages",
@@ -264,12 +265,77 @@ return {
                             "kind": "ScalarField",
                             "name": "cursor",
                             "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "concreteType": "LanguageMessageType",
+                            "kind": "LinkedField",
+                            "name": "node",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "__typename",
+                                "storageKey": null
+                              },
+                              (v3/*: any*/)
+                            ],
+                            "storageKey": null
                           }
                         ],
                         "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "PageInfo",
+                        "kind": "LinkedField",
+                        "name": "pageInfo",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "hasPreviousPage",
+                            "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "startCursor",
+                            "storageKey": null
+                          }
+                        ],
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ClientExtension",
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "__id",
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ],
                     "storageKey": "messages(last:4)"
+                  },
+                  {
+                    "alias": null,
+                    "args": (v4/*: any*/),
+                    "filters": null,
+                    "handle": "connection",
+                    "key": "ResetChatButtonFragment_messages",
+                    "kind": "LinkedHandle",
+                    "name": "messages"
                   }
                 ],
                 "storageKey": null
@@ -284,12 +350,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f590cf2c629acda5f96ce681607b0311",
+    "cacheID": "579f90e69f8beac20e3e5c8aea26be4a",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormBoardUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n"
+    "text": "mutation BoardUpdateFormBoardUpdateMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...BoardUpdateFormFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

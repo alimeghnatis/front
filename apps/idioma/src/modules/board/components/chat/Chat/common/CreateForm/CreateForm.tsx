@@ -81,9 +81,13 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
 
   const handleSubmit = useCallback(
     (inputValue) => {
-      const connectionID = ConnectionHandler.getConnectionID(
+      const threadConnectionID = ConnectionHandler.getConnectionID(
         btoa(`ThreadNode:${result.openaiThreadId}`),
         'ThreadFragment_messages',
+      )
+      const resetChatButtonConnectionID = ConnectionHandler.getConnectionID(
+        btoa(`ThreadNode:${result.openaiThreadId}`),
+        'ResetChatButtonFragment_messages',
       )
       const tempID1 = btoa(`ExpressionNode:${Math.random()}`)
       const tempID2 = btoa(`ExpressionNode:${Math.random()}`)
@@ -101,7 +105,10 @@ InferProps<typeof CreateForm.propTypes>): React.ReactElement {
             content:inputValue,
             boardId:boardUUID,
           },
-          connections:[connectionID],
+          connections:[
+            threadConnectionID,
+            resetChatButtonConnectionID,
+          ],
         },
         optimisticResponse:{
           createBoardMessage:{

@@ -20,7 +20,9 @@ const componentClassName = 'reset-chat-button'
 const FRAGMENT = graphql`
   fragment ResetChatButtonFragment on ThreadNode {
     id
-    messages(last: 4, before: null) {
+    messages(last: 4, before: null)
+      @connection(key: "ResetChatButtonFragment_messages") {
+      __id
       edges {
         cursor
       }
@@ -61,6 +63,9 @@ function ResetChatButton({
   const result = useFragment(
     FRAGMENT, data,
   )
+  console.log(
+    'RCB', result,
+  )
   const {
     id: boardID, uuid: boardUUID,
   } = useBoardContext()
@@ -96,6 +101,7 @@ function ResetChatButton({
               openaiThreadId:tempThreadId,
               thread        :{
                 createdAt:new Date().toISOString(),
+                id       :result.id,
                 messages :{
                   edges   :[],
                   pageInfo:{
@@ -125,14 +131,21 @@ function ResetChatButton({
     ],
   )
 
+  const disabled = isInFlight || !result?.messages?.edges.length
+
   return (
     <Button
-      disabled={isInFlight || !result?.messages.edges.length}
+      disabled={disabled}
       onClick={handleReset}
       // className={`${baseClassName} ${componentClassName}`}
       {...props}
       variant="borderless"
       color="warning"
+      title={
+        disabled
+          ? 'Chat is empty, no need to reset'
+          : 'Click to clear the existing chat messages'
+      }
     >
       Reset Chat
     </Button>

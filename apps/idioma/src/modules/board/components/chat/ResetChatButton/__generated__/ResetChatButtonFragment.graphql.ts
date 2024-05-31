@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<46a34de764d3f2b2ed24888d898405b5>>
+ * @generated SignedSource<<85a7fc665bf2652c3e10d96134adbd19>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type ResetChatButtonFragment$data = {
   readonly id: string;
   readonly messages: {
+    readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly cursor: string;
     } | null | undefined>;
@@ -27,7 +28,18 @@ export type ResetChatButtonFragment$key = {
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": null,
+        "cursor": null,
+        "direction": "backward",
+        "path": [
+          "messages"
+        ]
+      }
+    ]
+  },
   "name": "ResetChatButtonFragment",
   "selections": [
     {
@@ -38,17 +50,11 @@ const node: ReaderFragment = {
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "last",
-          "value": 4
-        }
-      ],
+      "alias": "messages",
+      "args": null,
       "concreteType": "LanguageMessageTypeConnection",
       "kind": "LinkedField",
-      "name": "messages",
+      "name": "__ResetChatButtonFragment_messages_connection",
       "plural": false,
       "selections": [
         {
@@ -65,18 +71,73 @@ const node: ReaderFragment = {
               "kind": "ScalarField",
               "name": "cursor",
               "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "concreteType": "LanguageMessageType",
+              "kind": "LinkedField",
+              "name": "node",
+              "plural": false,
+              "selections": [
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "__typename",
+                  "storageKey": null
+                }
+              ],
+              "storageKey": null
             }
           ],
           "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "kind": "LinkedField",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "hasPreviousPage",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "startCursor",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
+        {
+          "kind": "ClientExtension",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "__id",
+              "storageKey": null
+            }
+          ]
         }
       ],
-      "storageKey": "messages(last:4)"
+      "storageKey": null
     }
   ],
   "type": "ThreadNode",
   "abstractKey": null
 };
 
-(node as any).hash = "3af4914b909741f4a454d18a41244fd6";
+(node as any).hash = "9649860083ca3c360992a11d285307ab";
 
 export default node;

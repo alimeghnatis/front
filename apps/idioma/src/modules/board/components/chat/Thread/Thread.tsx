@@ -122,7 +122,10 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
         messageEdges.map((
           edge, index,
         ) => (
-          <div className="grid container message-wrapper">
+          <div
+            className="grid container message-wrapper"
+            key={edge.node.createdAt}
+          >
             {index < messageEdges.length - 1
             && compareDays(
               edge.node.createdAt,

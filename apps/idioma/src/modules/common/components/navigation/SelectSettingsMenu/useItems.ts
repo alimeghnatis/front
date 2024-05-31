@@ -37,6 +37,7 @@ const useItems = ({ viewerData }: UseItemsProps) => {
     () => ({
       items:[
         hasBoardSettings && {
+          key      :'board-settings',
           Component:() => React.createElement(
             Button,
             {
@@ -52,6 +53,7 @@ const useItems = ({ viewerData }: UseItemsProps) => {
           displayItemsAs:'group',
           items         :[
             {
+              key      :'help',
               Component:() => React.createElement(
                 Button,
                 {
@@ -64,6 +66,7 @@ const useItems = ({ viewerData }: UseItemsProps) => {
             },
           ],
         },
+        /*
         viewerData
           ? {
             label         :'Debug',
@@ -94,7 +97,7 @@ const useItems = ({ viewerData }: UseItemsProps) => {
                 disabled:true,
               },
             ],
-          },
+          }, */
       ].filter(Boolean),
     }),
     [

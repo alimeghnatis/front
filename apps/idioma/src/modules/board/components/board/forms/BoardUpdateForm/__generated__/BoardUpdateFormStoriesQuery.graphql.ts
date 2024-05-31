@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dc843ac7bad6cf87b8050c309bb281b2>>
+ * @generated SignedSource<<f0f367cb77e572509b57c7a84dcb1970>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -35,7 +35,14 @@ v1 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-};
+},
+v2 = [
+  {
+    "kind": "Literal",
+    "name": "last",
+    "value": 4
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -159,13 +166,7 @@ return {
               (v1/*: any*/),
               {
                 "alias": null,
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "last",
-                    "value": 4
-                  }
-                ],
+                "args": (v2/*: any*/),
                 "concreteType": "LanguageMessageTypeConnection",
                 "kind": "LinkedField",
                 "name": "messages",
@@ -185,12 +186,77 @@ return {
                         "kind": "ScalarField",
                         "name": "cursor",
                         "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "LanguageMessageType",
+                        "kind": "LinkedField",
+                        "name": "node",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "__typename",
+                            "storageKey": null
+                          },
+                          (v1/*: any*/)
+                        ],
+                        "storageKey": null
                       }
                     ],
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "PageInfo",
+                    "kind": "LinkedField",
+                    "name": "pageInfo",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "hasPreviousPage",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "startCursor",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ClientExtension",
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__id",
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ],
                 "storageKey": "messages(last:4)"
+              },
+              {
+                "alias": null,
+                "args": (v2/*: any*/),
+                "filters": null,
+                "handle": "connection",
+                "key": "ResetChatButtonFragment_messages",
+                "kind": "LinkedHandle",
+                "name": "messages"
               }
             ],
             "storageKey": null
@@ -201,12 +267,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "fbda7a396717fab49299602cfdf21ac9",
+    "cacheID": "6206ba7a740acfd8c6331805905f9d9a",
     "id": null,
     "metadata": {},
     "name": "BoardUpdateFormStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n"
+    "text": "query BoardUpdateFormStoriesQuery {\n  board(id: \"1\") {\n    ...BoardUpdateFormFragment\n    id\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

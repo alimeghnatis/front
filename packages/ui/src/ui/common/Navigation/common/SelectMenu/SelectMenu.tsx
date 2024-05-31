@@ -169,6 +169,10 @@ function SelectMenu({
     ],
   )
 
+  console.log(
+    'SM', rootItem,
+  )
+
   return (
     <div
       id={id}

@@ -86,15 +86,18 @@ function DeleteButton({
     ],
   )
 
+  const disabled = isDeleteInFlight
+
   //
   //
   return (
     <Button
-      disabled={isDeleteInFlight}
+      disabled={disabled}
       onClick={handleDelete}
       key={result.id}
       variant="borderless"
       color="error"
+      title={disabled ? 'Deletion in progress' : 'Click to delete the board'}
       {...props}
     >
       Delete Board
@@ -102,9 +105,6 @@ function DeleteButton({
   )
 }
 
-DeleteButton.propTypes = {
-  data   :PropTypes.object.isRequired,
-  groupID:PropTypes.string.isRequired,
-}
+DeleteButton.propTypes = { data: PropTypes.object.isRequired }
 
 export default DeleteButton

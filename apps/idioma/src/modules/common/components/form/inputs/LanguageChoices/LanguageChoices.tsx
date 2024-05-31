@@ -126,6 +126,7 @@ function Filters({
           value   :filters[key],
           label   :filters[key].label,
           disabled:filters[key].disabled,
+          key     :filters[key].label,
         }))}
         value={selectedFilter}
         setValue={setSelectedFilter}

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4789888008a14bc4dadf87b88418b76f>>
+ * @generated SignedSource<<a1019246fad14cbe482e95834480e8d9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -37,7 +37,14 @@ v1 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-};
+},
+v2 = [
+  {
+    "kind": "Literal",
+    "name": "last",
+    "value": 4
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -101,13 +108,7 @@ return {
               (v1/*: any*/),
               {
                 "alias": null,
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "last",
-                    "value": 4
-                  }
-                ],
+                "args": (v2/*: any*/),
                 "concreteType": "LanguageMessageTypeConnection",
                 "kind": "LinkedField",
                 "name": "messages",
@@ -127,12 +128,77 @@ return {
                         "kind": "ScalarField",
                         "name": "cursor",
                         "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "LanguageMessageType",
+                        "kind": "LinkedField",
+                        "name": "node",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "__typename",
+                            "storageKey": null
+                          },
+                          (v1/*: any*/)
+                        ],
+                        "storageKey": null
                       }
                     ],
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "PageInfo",
+                    "kind": "LinkedField",
+                    "name": "pageInfo",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "hasPreviousPage",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "startCursor",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ClientExtension",
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__id",
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ],
                 "storageKey": "messages(last:4)"
+              },
+              {
+                "alias": null,
+                "args": (v2/*: any*/),
+                "filters": null,
+                "handle": "connection",
+                "key": "ResetChatButtonFragment_messages",
+                "kind": "LinkedHandle",
+                "name": "messages"
               }
             ],
             "storageKey": null
@@ -144,12 +210,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8f9e10ac99bb92d1a8ee722bcb17a50b",
+    "cacheID": "b9b250ba76ed9aec01c081713922e99c",
     "id": null,
     "metadata": {},
     "name": "ResetChatButtonStoriesQuery",
     "operationKind": "query",
-    "text": "query ResetChatButtonStoriesQuery {\n  board(id: \"1\") {\n    thread {\n      ...ResetChatButtonFragment\n      id\n    }\n    id\n  }\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n"
+    "text": "query ResetChatButtonStoriesQuery {\n  board(id: \"1\") {\n    thread {\n      ...ResetChatButtonFragment\n      id\n    }\n    id\n  }\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

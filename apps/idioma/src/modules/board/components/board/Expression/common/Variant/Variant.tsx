@@ -218,7 +218,7 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
       >
         <div className="scrollbox no-scrollbar">
           <div className="grid margin-vertical">
-            <p className="md-start-2 span-8 md-span-9">
+            <p className="h3 md-start-2 span-8 md-span-9">
               Create a new variant for this expression.
             </p>
           </div>

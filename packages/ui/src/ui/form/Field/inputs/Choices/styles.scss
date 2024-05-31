@@ -1,13 +1,28 @@
 /* @aztlan/generator-front 0.7.2 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.choices {
+  --lc: var(--options-columns);
+  @include media.media($from: 801px) {
+    --lc: var(--options-columns-desktop);
+  }
   border: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 var(--gap);
   padding: 0;
+
+  > .options {
+    gap: 0 var(--gap);
+  }
+
+  &.flex-wrap > .options {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &.grid > .options {
+    column-count: var(--lc);
+  }
 
   input {
     //opacity: 0;

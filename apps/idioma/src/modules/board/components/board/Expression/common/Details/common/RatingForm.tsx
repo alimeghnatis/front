@@ -42,20 +42,21 @@ const MUTATION_UPDATE = graphql`
 const fields = [
   {
     name   :'rating',
-    label  :'Rating',
+    label  :'Are you satisfied with these explanations?',
     type   :'choices',
     options:[
       {
         value:'1',
-        label:':-(',
+        label:'No',
       },
+      /*
       {
         value:'3',
         label:':-|',
-      },
+      }, */
       {
         value:'5',
-        label:':-)',
+        label:'Yes',
       },
     ],
   },
@@ -74,11 +75,15 @@ const fields = [
       },
       {
         value:'EXPLANATIONS_QUALITY',
-        label:'Explanations quality is lacking',
+        label:'Explanations quality',
       },
       {
         value:'AUDIO_MISMATCH',
-        label:'Audio doesnt sound good',
+        label:'Audio issues',
+      },
+      {
+        value:'ANALYSIS_QUALITY',
+        label:'Morpho-syntactic analysis',
       },
     ],
   },

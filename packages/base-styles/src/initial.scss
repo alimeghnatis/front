@@ -104,12 +104,12 @@ ul {
   }
 }
 
-a,
 p {
   color: var(--paragraph);
 }
 
 a {
+  color: inherit;
   cursor: pointer;
 }
 

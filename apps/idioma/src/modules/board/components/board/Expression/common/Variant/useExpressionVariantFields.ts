@@ -1,7 +1,10 @@
+import * as React from 'react'
 import { useMemo } from 'react'
 import { graphql } from 'react-relay'
 import {
-  withErrorHandling, addGraphQLTransformedOptions,
+  withErrorHandling,
+  addGraphQLTransformedOptions,
+  useTriptychContext,
 } from '@aztlan/ui'
 
 const QUERY = graphql`
@@ -17,13 +20,15 @@ const QUERY = graphql`
 const useExpressionVariantFields = (
   instance, boardInstance,
 ) => {
+  const { selectSecondary } = useTriptychContext()
   const fields = useMemo(
     () => [
       {
-        name   :'variantWord',
-        label  :'word',
-        type   :'choices',
-        options:[
+        name       :'variantWord',
+        label      :'word',
+        type       :'choices',
+        description:'Choose a word from the original  expression you would like to use to generate a new expression.',
+        options    :[
           {
             value:null,
             label:'All words',
@@ -36,10 +41,13 @@ const useExpressionVariantFields = (
         registerProps:{ required: { value: false } },
       },
       {
-        name   :'variantName',
-        label  :'tone',
-        type   :'choices',
-        options:[
+        name          :'variantName',
+        label         :'tone',
+        type          :'choices',
+        columns       :2,
+        columnsDesktop:3,
+        description   :'The tone you choose will be used to create a new expression. This is useful to explore registers of language and idiomatic expressions. If you want to add a new tone, please select "other" and write the tone in the field below.',
+        options       :[
           {
             value:'language level A2',
             label:'level A2',
@@ -100,6 +108,7 @@ const useExpressionVariantFields = (
         label      :'tone',
         type       :'text',
         placeholder:'more royal, more childish, more berlin slang of 1980',
+        description:'(Experimental) : Enter the tone you would like to use.',
         condition  :[
           ['variantName'],
           ([variantName]) => variantName === 'other',
@@ -112,9 +121,24 @@ const useExpressionVariantFields = (
         },
       },
       {
-        name   :'iso6393',
-        label  :'lang',
-        type   :'choices',
+        name          :'iso6393',
+        label         :'lang',
+        type          :'choices',
+        columns       :2,
+        columnsDesktop:3,
+        description   :React.createElement(
+          React.Fragment, null, [
+            'Choose a language to translate the word into. To enable more translation languages, go to the ',
+            React.createElement(
+              'a',
+              {
+                href   :'#',
+                onClick:() => selectSecondary('board-settings'),
+              },
+              'board settings.',
+            ),
+          ],
+        ),
         options:[
           {
             value:null,

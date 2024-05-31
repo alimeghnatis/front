@@ -13,6 +13,12 @@ export const propTypes = {
 
   /** Whether the input is disabled */
   disabled:PropTypes.bool,
+
+  /** The number of columns to display the choices in. If undefined, defaults to a line flexbox with wrap */
+  columns:PropTypes.number,
+
+  /** The number of columns for desktop */
+  columnsDesktop:PropTypes.number,
 }
 
 export type TProps = InferProps<typeof propTypes>

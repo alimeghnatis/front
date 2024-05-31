@@ -90,6 +90,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
   )
 
   const {
+    baseBoardUrl,
     currentExpressionId,
     currentExpressionActionSlug,
     setCurrentGroupId,
@@ -113,7 +114,11 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     () => {
       switch (actionOnExpressionClick) {
         case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.DISPLAY_DETAILS:
-          history.push(detailsLink)
+          if (currentExpressionActionSlug) {
+            history.push(baseBoardUrl)
+          } else {
+            history.push(detailsLink)
+          }
           break
         case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.PLAY_AUDIO:
           audioPlayerRef.current?.click()
@@ -128,6 +133,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           break
       }
     }, [
+      currentExpressionActionSlug,
       detailsLink,
       actionOnExpressionClick,
     ],

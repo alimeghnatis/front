@@ -32,7 +32,7 @@ function Option({
     name, value,
   )
   return (
-    <>
+    <div className="option">
       <input
         value={value}
         disabled={disabled || false}
@@ -43,7 +43,7 @@ function Option({
         {...ariaProps.input}
       />
       <label {...ariaProps.label}>{label}</label>
-    </>
+    </div>
   )
 }
 
@@ -72,6 +72,8 @@ function Choices({
   disabled,
   options,
   registerProps,
+  columns,
+  columnsDesktop,
 }: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -90,23 +92,30 @@ function Choices({
         baseClassName,
         componentClassName,
         userClassName,
+        (columns && columnsDesktop) ? 'grid' : 'flex-wrap',
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        '--options-columns'        :columns,
+        '--options-columns-desktop':columnsDesktop,
+        ...style,
+      } as React.CSSProperties}
     >
-      {options.map((option) => (
-        <Option
-          key={option.value}
-          name={name}
-          type={type}
-          register={register}
-          registerProps={registerProps}
-          value={option.value}
-          label={option.label}
-          disabled={disabled || option.disabled}
-        />
-      ))}
+      <div className="options container">
+        {options.map((option) => (
+          <Option
+            key={option.value}
+            name={name}
+            type={type}
+            register={register}
+            registerProps={registerProps}
+            value={option.value}
+            label={option.label}
+            disabled={disabled || option.disabled}
+          />
+        ))}
+      </div>
     </fieldset>
   )
 }

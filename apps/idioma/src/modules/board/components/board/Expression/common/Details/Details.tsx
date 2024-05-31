@@ -236,7 +236,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           spanLabelDesktop={12}
           spanContent={spanContent}
           spanContentDesktop={12}
-          className="analysis span-8 md-span-12"
+          className="analysis md-start-2 span-8 md-span-12"
         />
         <ContentMap
           contentMap={contentMap1}
@@ -244,7 +244,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           spanLabelDesktop={6}
           spanContent={spanContent}
           spanContentDesktop={6}
-          className="explanations span-8 md-span-6"
+          className="explanations md-start-2 span-8 md-span-6"
         />
         <ContentMap
           contentMap={contentMap2}
@@ -256,9 +256,9 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
         />
         <RatingForm
           data={result}
-          className="span-8 md-span-6"
+          className="md-start-2 span-8 md-span-12"
           spanLabel={spanLabel}
-          spanLabelDesktop={1}
+          spanLabelDesktop={10}
           spanContent={spanContent}
           spanContentDesktop={10}
         />

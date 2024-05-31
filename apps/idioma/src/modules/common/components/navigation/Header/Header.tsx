@@ -68,6 +68,7 @@ InferProps<typeof Header.propTypes>): React.ReactElement {
       )}
       leftSpanDesktop={1}
       rightSpanDesktop={3}
+      leftSpan={1}
       right={right}
 
       // {...otherProps}

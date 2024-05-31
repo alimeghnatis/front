@@ -83,7 +83,7 @@ function Wrapper({
           {title || (
             <>
               <MegaMenu className="hide-mobile" />
-              {mobileTitle && <p className="h2 hide-desktop">{mobileTitle}</p>}
+              {mobileTitle}
             </>
           )}
         </Header>

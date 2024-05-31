@@ -69,18 +69,20 @@ $root-font-map:(
 
 
 html {
-  //--gap: 1.5em;
+  --gap: 1.3em;
 
   @include media.media($from: 801px) {
+    --gap: 1.5rem;
     //font-size: 1.7vw;
     font-size: 19px;
+    line-height: 1.5em;
   }
   @include media.media($from: 1500px) {
     //font-size: 1.5vw;
   }
   font-family: "nsans";
   font-size: 19px;
-  line-height: 1.5em;
+  line-height: 1.37em;
 }
 
 * {

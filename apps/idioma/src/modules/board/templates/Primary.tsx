@@ -6,6 +6,7 @@ import {
   useBoardContext, SelectSettingsMenu,
 } from 'modules/common/components'
 import { useTriptychContext } from '@aztlan/ui'
+import { SettingsButton } from '../components/index.js'
 import paths from '../paths.js'
 
 function PrimaryTemplate({
@@ -18,11 +19,9 @@ function PrimaryTemplate({
     id: boardID, data,
   } = useBoardContext()
 
-  // const { selectSecondary } = useTriptychContext()
-
   return (
     <BaseTemplate
-      right={<SelectSettingsMenu />}
+      right={<SettingsButton className="span-2" />}
       {...otherProps}
     >
       {children}

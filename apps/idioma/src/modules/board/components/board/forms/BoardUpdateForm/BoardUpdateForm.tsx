@@ -24,6 +24,7 @@ const FRAGMENT = graphql`
   fragment BoardUpdateFormFragment on BoardNode {
     id
     name
+    description
     isPublic
     isDefault
     explanationsLanguage
@@ -91,6 +92,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
     () => ({
       id                  :result.id,
       name                :result.name,
+      description         :result.description,
       isPublic            :result.isPublic,
       explanationsLanguage:result.explanationsLanguage,
       explanationsLength  :result.explanationsLength,
@@ -117,6 +119,7 @@ InferProps<typeof BoardUpdateForm.propTypes>): React.ReactElement {
           updateBoard:{
             instance:{
               isDefault:result.isDefault,
+              // thread   :result.thread,
               ...parsedInstance,
               ...input,
             },

@@ -50,7 +50,7 @@ function DeleteButton({
 
   const handleDelete = useCallback(
     (): void => {
-      const isConfirmed = confirm('Are you sure you want to delete this board?')
+      const isConfirmed = confirm('Are you sure you want to delete this board? This cannot be undone.')
       if (!isConfirmed) {
         return
       }

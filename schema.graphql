@@ -577,6 +577,9 @@ type UserPreferencesNode implements Node {
 }
 
 type BoardMembershipNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -620,6 +623,7 @@ type BoardNode implements SearchNode & Node {
   iso6392: String
   iso6393: String!
   name: String!
+  description: String
   isPublic: Boolean!
   users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
   defaultForUser: UserNode
@@ -649,6 +653,9 @@ schema (one of the key benefits of GraphQL).
 scalar JSONString
 
 type GroupNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -679,6 +686,9 @@ type GroupNode implements SearchNode & Node {
 }
 
 type ExpressionNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -978,6 +988,9 @@ enum ExpressionsBoardMembershipRoleChoices {
 }
 
 type BoardNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -1197,6 +1210,7 @@ input CreateBoardMutationInput {
   iso6392: String
   iso6393: String
   name: String!
+  description: String
   isPublic: Boolean
   isDefault: Boolean
   explanationsLanguage: String
@@ -1226,6 +1240,7 @@ input UpdateBoardMutationInput {
   iso6392: String
   iso6393: String
   name: String
+  description: String
   isPublic: Boolean
   isDefault: Boolean
   explanationsLanguage: String

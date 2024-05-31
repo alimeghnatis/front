@@ -105,8 +105,8 @@ Selector.propTypes = {
 
   /** The value selected */
   value:PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
+    PropTypes.string,
+    PropTypes.object,
   ]),
 
   /** The function to set the value */

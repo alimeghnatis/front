@@ -31,6 +31,7 @@ export default function useRootItem({ memberships }) {
     currentBoardId,
     createBoardPath,
     chatBoardPath,
+    currentExpressionId,
     isChat,
   } = useBoardContext()
 
@@ -57,11 +58,16 @@ export default function useRootItem({ memberships }) {
             edge: any, i: number,
           ) => {
             const { node } = edge
-            const url = baseBoardPath
-              ? generatePath(
-                isChat ? chatBoardPath : baseBoardPath, { board: node.board.id },
-              )
-              : node.board.id // For testing, should always be generatePath on app
+            let url = ''
+            if (node.board.id === currentBoardId && currentExpressionId) {
+              url = history.location.pathname
+            } else {
+              url = baseBoardPath
+                ? generatePath(
+                  isChat ? chatBoardPath : baseBoardPath, { board: node.board.id },
+                )
+                : node.board.id // For testing, should always be generatePath on app
+            }
             return {
               key      :node.board.id,
               label    :node.board.name,
@@ -86,6 +92,7 @@ export default function useRootItem({ memberships }) {
       createBoardPath,
       currentBoardId,
       isCreating,
+      history.location.pathname,
     ],
   )
 

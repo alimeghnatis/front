@@ -32,6 +32,7 @@ const MUTATION_UPDATE = graphql`
       instance {
         id
         name
+        description
         isPublic
         isDefault
         created

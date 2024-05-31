@@ -46,6 +46,24 @@ const useBoardFormFields = (instance) => {
         },
       },
       {
+        name         :'description',
+        type         :'textarea',
+        label        :'Description',
+        autoComplete :'off',
+        description  :'A short description of your board. This will be provide additional information in menus.',
+        registerProps:{
+          required :{ value: false },
+          minLength:{
+            value  :20,
+            message:'Board name must be at least 20 characters',
+          },
+          maxLength:{
+            value  :500,
+            message:'Board name must be at most 500 characters',
+          },
+        },
+      },
+      {
         name         :'isPublic',
         type         :'toggle',
         label        :'Public',

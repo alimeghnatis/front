@@ -77,7 +77,7 @@ function ResetChatButton({
 
   const handleReset = useCallback(
     (): void => {
-      const isConfirmed = confirm('Are you sure you want to reset the chat?')
+      const isConfirmed = confirm('Are you sure you want to reset the chat? This cannot be undone.')
       if (!isConfirmed) {
         return
       }

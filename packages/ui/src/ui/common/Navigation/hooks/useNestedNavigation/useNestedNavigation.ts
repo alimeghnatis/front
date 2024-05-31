@@ -78,9 +78,6 @@ export default function useNestedNavigation(
     navigationIndex,
     preparedRoot,
   })
-  console.log(
-    'H', initialState,
-  )
 
   const [
     isInitialized,

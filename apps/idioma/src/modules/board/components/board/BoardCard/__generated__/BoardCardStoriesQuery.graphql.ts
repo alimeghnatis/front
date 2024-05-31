@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a63bf690d074ff88dbdf2b140bce164a>>
+ * @generated SignedSource<<b2602a80ccebbb32df979904791b9e7e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -97,6 +97,13 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "description",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "created",
             "storageKey": null
           },
@@ -126,12 +133,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a536d1176d6871e7b72e92032fce381e",
+    "cacheID": "31f967cf1def7c1da2670eb423f4167e",
     "id": null,
     "metadata": {},
     "name": "BoardCardStoriesQuery",
     "operationKind": "query",
-    "text": "query BoardCardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardCardFragment\n    id\n  }\n}\n\nfragment BoardCardFragment on BoardNode {\n  id\n  name\n  created\n  groups {\n    count\n  }\n  expressions {\n    count\n  }\n}\n"
+    "text": "query BoardCardStoriesQuery {\n  board(id: \"1\") {\n    ...BoardCardFragment\n    id\n  }\n}\n\nfragment BoardCardFragment on BoardNode {\n  id\n  name\n  description\n  created\n  groups {\n    count\n  }\n  expressions {\n    count\n  }\n}\n"
   }
 };
 })();

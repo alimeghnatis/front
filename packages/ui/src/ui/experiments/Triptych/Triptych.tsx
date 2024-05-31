@@ -85,6 +85,7 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
       secondaryRoutes,
       selectedSecondary:null,
       focus            :1,
+      timestamp        :Date.now(),
       ...baseState,
     },
   )
@@ -197,7 +198,9 @@ InferProps<typeof Triptych.propTypes>): React.ReactElement {
             `md-span-${secondarySpanDesktop}`,
           ].join(' ')}
         >
-          {state.selectedSecondary && <state.selectedSecondary.component />}
+          {state.selectedSecondary && (
+            <state.selectedSecondary.component key={state.timestamp} />
+          )}
         </div>
       </div>
     </Context.Provider>

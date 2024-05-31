@@ -34,8 +34,9 @@ function reducer(
       }
       return {
         ...state,
-        focus:2,
+        focus    :2,
         selectedSecondary,
+        timestamp:Date.now(),
       }
     }
     default:

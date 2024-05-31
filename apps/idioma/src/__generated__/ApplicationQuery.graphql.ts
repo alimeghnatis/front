@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e034f5a170aa9c89416b1f8100c99b33>>
+ * @generated SignedSource<<21c8d5bec4fb8abcf331875a8ef9cbcd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -91,24 +91,41 @@ v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "role",
+  "name": "count",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "role",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "isDefault",
+  "name": "name",
   "storageKey": null
 },
 v12 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "description",
+  "storageKey": null
+},
+v13 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "isDefault",
+  "storageKey": null
+},
+v14 = [
+  (v9/*: any*/)
+],
+v15 = {
   "kind": "ClientExtension",
   "selections": [
     {
@@ -120,21 +137,21 @@ v12 = {
     }
   ]
 },
-v13 = {
+v16 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v14 = {
+v17 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v15 = {
+v18 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -159,49 +176,49 @@ v15 = {
   ],
   "storageKey": null
 },
-v16 = {
+v19 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6391",
   "storageKey": null
 },
-v17 = {
+v20 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6392",
   "storageKey": null
 },
-v18 = {
+v21 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "iso6393",
   "storageKey": null
 },
-v19 = [
+v22 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 20
   }
 ],
-v20 = {
+v23 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "content",
   "storageKey": null
 },
-v21 = [
+v24 = [
   {
     "kind": "Literal",
     "name": "last",
     "value": 4
   }
 ],
-v22 = {
+v25 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -344,6 +361,7 @@ return {
             "name": "boardMemberships",
             "plural": false,
             "selections": [
+              (v9/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -361,7 +379,7 @@ return {
                     "plural": false,
                     "selections": [
                       (v2/*: any*/),
-                      (v9/*: any*/),
+                      (v10/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -371,21 +389,43 @@ return {
                         "plural": false,
                         "selections": [
                           (v2/*: any*/),
-                          (v10/*: any*/),
                           (v11/*: any*/),
-                          (v12/*: any*/)
+                          (v12/*: any*/),
+                          (v13/*: any*/),
+                          (v6/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "concreteType": "GroupNodeConnection",
+                            "kind": "LinkedField",
+                            "name": "groups",
+                            "plural": false,
+                            "selections": (v14/*: any*/),
+                            "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "concreteType": "ExpressionNodeConnection",
+                            "kind": "LinkedField",
+                            "name": "expressions",
+                            "plural": false,
+                            "selections": (v14/*: any*/),
+                            "storageKey": null
+                          },
+                          (v15/*: any*/)
                         ],
                         "storageKey": null
                       },
-                      (v13/*: any*/)
+                      (v16/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v14/*: any*/)
+                  (v17/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v15/*: any*/)
+              (v18/*: any*/)
             ],
             "storageKey": "boardMemberships(first:50)"
           },
@@ -410,7 +450,7 @@ return {
         "plural": false,
         "selections": [
           (v2/*: any*/),
-          (v10/*: any*/),
+          (v11/*: any*/),
           (v6/*: any*/),
           (v7/*: any*/),
           {
@@ -441,12 +481,12 @@ return {
             "name": "displayWords",
             "storageKey": null
           },
-          (v16/*: any*/),
-          (v17/*: any*/),
-          (v18/*: any*/),
+          (v19/*: any*/),
+          (v20/*: any*/),
+          (v21/*: any*/),
           {
             "alias": null,
-            "args": (v19/*: any*/),
+            "args": (v22/*: any*/),
             "concreteType": "GroupNodeConnection",
             "kind": "LinkedField",
             "name": "groups",
@@ -503,10 +543,10 @@ return {
                                     "storageKey": null
                                   },
                                   (v6/*: any*/),
-                                  (v16/*: any*/),
-                                  (v17/*: any*/),
-                                  (v18/*: any*/),
+                                  (v19/*: any*/),
                                   (v20/*: any*/),
+                                  (v21/*: any*/),
+                                  (v23/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -747,15 +787,15 @@ return {
                                     ],
                                     "storageKey": null
                                   },
-                                  (v13/*: any*/)
+                                  (v16/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v14/*: any*/)
+                              (v17/*: any*/)
                             ],
                             "storageKey": null
                           },
-                          (v15/*: any*/)
+                          (v18/*: any*/)
                         ],
                         "storageKey": "expressions(first:50)"
                       },
@@ -768,35 +808,29 @@ return {
                         "kind": "LinkedHandle",
                         "name": "expressions"
                       },
-                      (v13/*: any*/)
+                      (v16/*: any*/)
                     ],
                     "storageKey": null
                   },
-                  (v14/*: any*/)
+                  (v17/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v15/*: any*/)
+              (v18/*: any*/)
             ],
             "storageKey": "groups(first:20)"
           },
           {
             "alias": null,
-            "args": (v19/*: any*/),
+            "args": (v22/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "BoardFragment_groups",
             "kind": "LinkedHandle",
             "name": "groups"
           },
+          (v15/*: any*/),
           (v12/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "description",
-            "storageKey": null
-          },
           {
             "alias": null,
             "args": null,
@@ -804,7 +838,7 @@ return {
             "name": "isPublic",
             "storageKey": null
           },
-          (v11/*: any*/),
+          (v13/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -837,7 +871,7 @@ return {
               (v2/*: any*/),
               {
                 "alias": null,
-                "args": (v21/*: any*/),
+                "args": (v24/*: any*/),
                 "concreteType": "LanguageMessageTypeConnection",
                 "kind": "LinkedField",
                 "name": "messages",
@@ -851,7 +885,7 @@ return {
                     "name": "edges",
                     "plural": true,
                     "selections": [
-                      (v14/*: any*/),
+                      (v17/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -860,9 +894,9 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v13/*: any*/),
+                          (v16/*: any*/),
                           (v2/*: any*/),
-                          (v22/*: any*/),
+                          (v25/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -877,7 +911,7 @@ return {
                             "name": "threadId",
                             "storageKey": null
                           },
-                          (v9/*: any*/),
+                          (v10/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -886,11 +920,11 @@ return {
                             "name": "content",
                             "plural": false,
                             "selections": [
-                              (v13/*: any*/),
+                              (v16/*: any*/),
                               {
                                 "kind": "InlineFragment",
                                 "selections": [
-                                  (v20/*: any*/)
+                                  (v23/*: any*/)
                                 ],
                                 "type": "UserLanguageMessageType",
                                 "abstractKey": null
@@ -898,7 +932,7 @@ return {
                               {
                                 "kind": "InlineFragment",
                                 "selections": [
-                                  (v20/*: any*/),
+                                  (v23/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -906,9 +940,9 @@ return {
                                     "name": "suggestions",
                                     "storageKey": null
                                   },
-                                  (v16/*: any*/),
-                                  (v17/*: any*/),
-                                  (v18/*: any*/)
+                                  (v19/*: any*/),
+                                  (v20/*: any*/),
+                                  (v21/*: any*/)
                                 ],
                                 "type": "AssistantLanguageMessageType",
                                 "abstractKey": null
@@ -976,7 +1010,7 @@ return {
               },
               {
                 "alias": null,
-                "args": (v21/*: any*/),
+                "args": (v24/*: any*/),
                 "filters": null,
                 "handle": "connection",
                 "key": "ResetChatButtonFragment_messages",
@@ -985,14 +1019,14 @@ return {
               },
               {
                 "alias": null,
-                "args": (v21/*: any*/),
+                "args": (v24/*: any*/),
                 "filters": null,
                 "handle": "connection",
                 "key": "ThreadFragment_messages",
                 "kind": "LinkedHandle",
                 "name": "messages"
               },
-              (v22/*: any*/)
+              (v25/*: any*/)
             ],
             "storageKey": null
           },
@@ -1028,12 +1062,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e7cd2b893d0bb20aeda59303b10e6062",
+    "cacheID": "1072ca2afad3d55938ab8d39ad14eb17",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...ProviderBoardFragment_3dXtFF\n  ...LoginPageButtonFragment_2Xypug\n  ...HomePageLoginButtonFragment_2Xypug\n  time\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ViewerUpdateFormFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  ...useViewerPreferencesFragment\n  ...useBoardMembershipsFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  description\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment HomePageLoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginPageButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment ModeSelectorFragment on BoardNode {\n  id\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment ProviderBoardFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    displayTranslations\n    displayGeneral\n    displayGrammar\n    displayWords\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...VariantBoardFragment\n    ...ChatFragment\n    ...ModeSelectorFragment\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        createdAt\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment VariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    id\n    actionOnExpressionClick\n  }\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n\nfragment useBoardMembershipsFragment on UserNode {\n  boardMemberships(first: 50) {\n    edges {\n      node {\n        id\n        role\n        board {\n          id\n          name\n          isDefault\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment useViewerPreferencesFragment on UserNode {\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
+    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n  $board: ID\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...ProviderBoardFragment_3dXtFF\n  ...LoginPageButtonFragment_2Xypug\n  ...HomePageLoginButtonFragment_2Xypug\n  time\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment ApplicationQueryAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ViewerUpdateFormFragment\n  ...ApplicationQueryAuthenticationDebugFragment\n  ...useViewerPreferencesFragment\n  ...useBoardMembershipsFragment\n}\n\nfragment AudioButtonFragment on ExpressionNode {\n  id\n  audioUrl\n  isProcessed\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment BoardCardFragment on BoardNode {\n  id\n  name\n  description\n  created\n  groups {\n    count\n  }\n  expressions {\n    count\n  }\n}\n\nfragment BoardFragment on BoardNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  created\n  groups(first: 20) {\n    edges {\n      node {\n        ...DefaultGroupFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment BoardUpdateFormFragment on BoardNode {\n  id\n  name\n  description\n  isPublic\n  isDefault\n  explanationsLanguage\n  explanationsLength\n  displayTranslations\n  displayGeneral\n  displayGrammar\n  displayWords\n  enabledLanguages\n  ...DeleteBoardButtonFragment\n  thread {\n    ...ResetChatButtonFragment\n    id\n  }\n}\n\nfragment BookmarkButtonFragment on ExpressionNode {\n  id\n  isBookmarked\n  isProcessed\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment DefaultExpressionFragment on ExpressionNode {\n  id\n  isProcessed\n  created\n  iso6391\n  iso6392\n  iso6393\n  ...ExpressionFragment\n}\n\nfragment DefaultGroupFragment on GroupNode {\n  id\n  created\n  expressions(first: 50) {\n    edges {\n      node {\n        ...DefaultExpressionFragment\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment DeleteBoardButtonFragment on BoardNode {\n  id\n}\n\nfragment DeleteButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment ExpressionFragment on ExpressionNode {\n  id\n  content\n  iso6391\n  iso6392\n  iso6393\n  correctedContent\n  created\n  isProcessed\n  isBookmarked\n  ...AudioButtonFragment\n  ...DeleteButtonFragment\n  ...BookmarkButtonFragment\n  ...DetailsButtonFragment\n  ...VariantButtonFragment\n  ...DetailsFragment\n  ...VariantFragment\n}\n\nfragment HomePageLoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginPageButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment ModeSelectorFragment on BoardNode {\n  id\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment ProviderBoardFragment_3dXtFF on Query {\n  board(id: $board) {\n    id\n    name\n    created\n    updated\n    displayTranslations\n    displayGeneral\n    displayGrammar\n    displayWords\n    ...BoardFragment\n    ...BoardUpdateFormFragment\n    ...VariantBoardFragment\n    ...ChatFragment\n    ...ModeSelectorFragment\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment ResetChatButtonFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        createdAt\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment VariantBoardFragment on BoardNode {\n  id\n  enabledLanguages\n}\n\nfragment VariantButtonFragment on ExpressionNode {\n  id\n  isProcessed\n}\n\nfragment VariantFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  created\n}\n\nfragment ViewerUpdateFormFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isSuperuser\n  preferences {\n    id\n    actionOnExpressionClick\n  }\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n\nfragment useBoardMembershipsFragment on UserNode {\n  boardMemberships(first: 50) {\n    count\n    edges {\n      node {\n        id\n        role\n        board {\n          id\n          name\n          description\n          isDefault\n          ...BoardCardFragment\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment useViewerPreferencesFragment on UserNode {\n  preferences {\n    actionOnExpressionClick\n    id\n  }\n}\n"
   }
 };
 })();

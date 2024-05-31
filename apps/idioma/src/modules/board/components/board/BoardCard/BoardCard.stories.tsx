@@ -6,14 +6,15 @@ import {
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import { graphql } from 'react-relay'
+import { decorators } from 'story-utils'
 import Component from './BoardCard.js'
 
-// import { decorators } from 'story-utils'
 // import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'board/board/BoardCard',
-  component:Component,
+  title     :'board/board/BoardCard',
+  component :Component,
+  decorators:[decorators.components.Router],
   /*
   decorators: [
     //decorators.app,
@@ -54,8 +55,7 @@ const relay = {
 }
 
 export const Base: StoryObj<typeof Component> = {
-  args:{ children: 'Sample BoardCard' },
-
+  args      :{},
   parameters:{ relay },
 }
 

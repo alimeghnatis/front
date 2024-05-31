@@ -2,9 +2,16 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.board-card{
+.#{bem.$base}.board-card {
+  background: var(--color);
 
+  &:hover {
+    background: var(--soft-color);
+  }
 }
 
+.#{bem.$base}.board-card-group{
+
+}
 
 

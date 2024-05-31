@@ -356,6 +356,9 @@ value as specified by
 scalar Date
 
 type UserNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -449,6 +452,9 @@ type UserNode implements Node {
 }
 
 type UserGroupNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -478,6 +484,9 @@ type UserGroupNode implements Node {
 }
 
 type PermissionNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -1008,6 +1017,9 @@ type BoardNodeEdge {
 }
 
 type UsageStateNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -1025,6 +1037,9 @@ type UsageStateNodeEdge {
 }
 
 type UsageRecordNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -1042,6 +1057,9 @@ type UsageRecordNodeEdge {
 }
 
 type PlanOverrideNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
@@ -1059,6 +1077,9 @@ type PlanOverrideNodeEdge {
 }
 
 type PlanNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 

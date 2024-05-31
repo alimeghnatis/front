@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2b9af3a9c3bb6a3ea386cf887919564b>>
+ * @generated SignedSource<<77225fe97b1924ffc6a88f22a2b06790>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,13 +13,16 @@ export type ExpressionsBoardMembershipRoleChoices = "ADMIN" | "MEMBER" | "OWNER"
 import { FragmentRefs } from "relay-runtime";
 export type useBoardMembershipsFragment$data = {
   readonly boardMemberships: {
+    readonly count: number;
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly board: {
+          readonly description: string | null | undefined;
           readonly id: string;
           readonly isDefault: boolean;
           readonly name: string;
           readonly newExpressionsCount: number | null | undefined;
+          readonly " $fragmentSpreads": FragmentRefs<"BoardCardFragment">;
         };
         readonly id: string;
         readonly role: ExpressionsBoardMembershipRoleChoices;
@@ -69,6 +72,13 @@ return {
         {
           "alias": null,
           "args": null,
+          "kind": "ScalarField",
+          "name": "count",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
           "concreteType": "BoardMembershipNodeEdge",
           "kind": "LinkedField",
           "name": "edges",
@@ -110,8 +120,20 @@ return {
                       "alias": null,
                       "args": null,
                       "kind": "ScalarField",
+                      "name": "description",
+                      "storageKey": null
+                    },
+                    {
+                      "alias": null,
+                      "args": null,
+                      "kind": "ScalarField",
                       "name": "isDefault",
                       "storageKey": null
+                    },
+                    {
+                      "args": null,
+                      "kind": "FragmentSpread",
+                      "name": "BoardCardFragment"
                     },
                     {
                       "kind": "ClientExtension",
@@ -182,6 +204,6 @@ return {
 };
 })();
 
-(node as any).hash = "ea1ec08bc99450667328760bfaebf4ce";
+(node as any).hash = "10e304552d280444cf5caf60fe8d8ea4";
 
 export default node;

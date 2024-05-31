@@ -7,6 +7,7 @@ const FRAGMENT = graphql`
   fragment useBoardMembershipsFragment on UserNode {
     boardMemberships(first: 50)
       @connection(key: "useBoardMembershipsFragment_boardMemberships") {
+      count
       edges {
         node {
           id
@@ -14,8 +15,10 @@ const FRAGMENT = graphql`
           board {
             id
             name
+            description
             newExpressionsCount
             isDefault
+            ...BoardCardFragment
           }
         }
       }

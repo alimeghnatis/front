@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6e11923836026242deb12a82afb94428>>
+ * @generated SignedSource<<d50095a8b7cfe2ffe7494c0cc3dfbf8d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type BoardCardFragment$data = {
   readonly created: any;
+  readonly description: string | null | undefined;
   readonly expressions: {
     readonly count: number;
   };
@@ -61,6 +62,13 @@ return {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "description",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "created",
       "storageKey": null
     },
@@ -90,6 +98,6 @@ return {
 };
 })();
 
-(node as any).hash = "aa85c5c8a76633f7732f0b3948ad095e";
+(node as any).hash = "582189e1f96bef416890540521f1a948";
 
 export default node;

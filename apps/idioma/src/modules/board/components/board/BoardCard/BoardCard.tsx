@@ -4,7 +4,11 @@ import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import { DateTime } from '@aztlan/ui'
+import {
+  DateTime, PrefetchLink, useApplicationContext,
+} from '@aztlan/ui'
+import * as paths from 'modules/paths'
+import { Link } from 'react-router-dom'
 
 import {
   graphql, useFragment,
@@ -19,6 +23,7 @@ const FRAGMENT = graphql`
   fragment BoardCardFragment on BoardNode {
     id
     name
+    description
     created
     groups {
       count
@@ -39,6 +44,7 @@ function BoardCard({
   className: userClassName,
   style,
   data,
+  color = 'near',
 }: // ...otherProps
 
 InferProps<typeof BoardCard.propTypes>): React.ReactElement {
@@ -48,6 +54,8 @@ InferProps<typeof BoardCard.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
+  const { matchRoute } = useApplicationContext()
+  const LinkType = matchRoute ? PrefetchLink : Link
 
   const result = useFragment(
     FRAGMENT, data,
@@ -60,13 +68,29 @@ InferProps<typeof BoardCard.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        color,
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      <p className="h3">{result.name}</p>
+      <p className="h3">
+        <LinkType
+          to={paths.board.generatePath(
+            'BOARD_HOME', { board: result.id },
+          )}
+          key={result.id}
+        >
+          {result.name}
+        </LinkType>
+      </p>
+      {result.description && (
+        <p className="color metadata">
+          {' '}
+          {result.description}
+        </p>
+      )}
       <p>
         {result.expressions?.count
           ? `${result.expressions.count} Expressions in ${result.groups.count} Groups`
@@ -95,6 +119,9 @@ BoardCard.propTypes = {
 
   /** The relay data to use for the component fragment */
   data:PropTypes.any,
+
+  /** The color of the card */
+  color:PropTypes.string,
 }
 
 export default BoardCard

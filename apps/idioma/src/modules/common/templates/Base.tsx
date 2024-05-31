@@ -68,7 +68,9 @@ function Wrapper({
           className="container"
           items={routeMap}
         />
-        <Header right={right}>{title || <MegaMenu />}</Header>
+        <Header right={right}>
+          {title || <MegaMenu className="hide-mobile" />}
+        </Header>
         <div className="abs-special span-6 md-span-4 manual ">
           {absoluteHeaderElements}
           {focus < 2 && <NotificationGroup />}

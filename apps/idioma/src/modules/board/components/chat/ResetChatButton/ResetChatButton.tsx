@@ -63,9 +63,6 @@ function ResetChatButton({
   const result = useFragment(
     FRAGMENT, data,
   )
-  console.log(
-    'RCB', result,
-  )
   const {
     id: boardID, uuid: boardUUID,
   } = useBoardContext()

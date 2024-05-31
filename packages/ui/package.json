@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/ui",
-  "version": "3.12.6",
+  "version": "3.13.0",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -44,7 +44,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@aztlan/base-styles": "^3.11.4",
+    "@aztlan/base-styles": "^3.13.0",
     "@aztlan/bem": "^0.9.20",
     "@aztlan/react-hooks": "^3.8.3",
     "@aztlan/react-relay": "^3.7.1",

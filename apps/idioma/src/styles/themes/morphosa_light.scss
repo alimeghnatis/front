@@ -1,0 +1,18 @@
+// REF 1 : https://coolors.co/cf7789-161032-faff81-ffc53a-ffa21f
+// REF 2 : https://coolors.co/cf7789-adadad-96c9ed-ffc53a-73e7b5
+// REF 3 : https://coolors.co/cf7789-89a8be-96c9ed-cdcce0-73e7b5
+//
+// Last one
+$text-color:var(--morphosa-text, var(--paragraph));
+
+$theme:(
+  "noun":[#FFC53A #FFBC1F #FFD470 $text-color], // Yellow
+  "determiner":[#FAFF81 #FAFF5C #FCFFAD $text-color], //Light yellow
+  "pronoun":[#F58F00 #E08300 #FFA21F $text-color], // Gold
+  "adjective":[#b5b3D0 #8c9ac1 #CDCCE0 $text-color], // Lavender
+  "adverb":[#9DB7C9 #89A8BE #BDCEDB $text-color], // Cadet blue
+  "conjunction":[#73B7E7 #51A5E1 #96C9ED $text-color], // Light blue
+  "preposition":[#d58695 #cf7789 #d195a3 $text-color], // Amaranth
+  "particle":[#c2c2c2 #d6d6d6 #ADADAD $text-color], // Light gray
+  "verb":[#51E1A3 #23D186 #73E7B5 $text-color], // Green
+);

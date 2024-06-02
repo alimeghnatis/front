@@ -8,7 +8,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import {
-  MobilePopup, DateTime,
+  MobilePopup, DateTime, useApplicationContext,
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import {
@@ -71,7 +71,7 @@ const ContentMap: React.FC<InferProps<typeof ContentMap.PropTypes>> = ({
       ].filter(Boolean).join(' ')}
     >
       {validItems.map(({
-        label, payload, marked: isMarked,
+        label, payload, marked: isMarked, className: itemClassName,
       }) => (
         <>
           <div
@@ -88,10 +88,11 @@ const ContentMap: React.FC<InferProps<typeof ContentMap.PropTypes>> = ({
               'field',
               `span-${spanContent}`,
               `md-span-${spanContentDesktop}`,
+              itemClassName,
             ].join(' ')}
             dangerouslySetInnerHTML={
-              isMarked ? { __html: marked.parse(payload) } : undefined
-            }
+                isMarked ? { __html: marked.parse(payload) } : undefined
+              }
             children={!isMarked ? payload : undefined}
           />
         </>
@@ -106,6 +107,7 @@ ContentMap.PropTypes = {
     label    :PropTypes.string.isRequired,
     payload  :PropTypes.string.isRequired,
     marked   :PropTypes.bool,
+    className:PropTypes.string,
   })).isRequired,
   spanLabel         :PropTypes.number.isRequired,
   spanLabelDesktop  :PropTypes.number.isRequired,
@@ -143,6 +145,8 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
 
   const audioRef = useRef<HTMLAudioElement>(null)
 
+  const { theme } = useApplicationContext()
+
   const playAudio = useCallback(
     (): void => {
       if (audioRef.current) {
@@ -159,6 +163,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
           data={result}
           displayHeadOnHover
           displayWordAnalysisOnHover
+          theme={theme === 'dark-theme' ? 'dark' : 'light'}
           // exclude={['function']}
         />
       ),

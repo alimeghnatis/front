@@ -1,6 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
 import { withThemeByClassName } from "@storybook/addon-themes";
-import "local.scss";
+import "styles/local.scss";
 
 const preview = {
   parameters: {

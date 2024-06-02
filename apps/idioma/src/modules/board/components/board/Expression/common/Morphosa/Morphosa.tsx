@@ -66,6 +66,7 @@ function Morphosa({
   displayWordAnalysisOnHover = false,
 
   data,
+  theme = 'light',
 }: // ...otherProps
 
 InferProps<typeof Morphosa.propTypes>): React.ReactElement {
@@ -110,6 +111,7 @@ InferProps<typeof Morphosa.propTypes>): React.ReactElement {
         userClassName,
         (displayHeadOnHover || displayWordAnalysisOnHover) && 'selectable',
         'morphosa grid',
+        `morphosa-${theme}-theme`,
       ]
         .filter((e) => e)
         .join(' ')}
@@ -190,6 +192,12 @@ Morphosa.propTypes = {
 
   /** The flag to display the word analysis on hover */
   displayWordAnalysisOnHover:PropTypes.bool,
+
+  /** The theme to use */
+  theme:PropTypes.oneOf([
+    'light',
+    'dark',
+  ]),
 }
 
 export default Morphosa

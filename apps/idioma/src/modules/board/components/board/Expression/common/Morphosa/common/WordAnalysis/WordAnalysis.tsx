@@ -115,7 +115,7 @@ InferProps<typeof Word.propTypes>): React.ReactElement {
   ]
 
   return (
-    <div
+    <p
       id={id}
       className={[
         baseClassName,
@@ -144,7 +144,7 @@ InferProps<typeof Word.propTypes>): React.ReactElement {
             {i < fields.length - 1 && ' '}
           </>
         ) : null))}
-    </div>
+    </p>
   )
 }
 

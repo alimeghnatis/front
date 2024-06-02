@@ -115,7 +115,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
     () => {
       switch (actionOnExpressionClick) {
         case PREFERENCES.ACTION_ON_EXPRESSION_CLICK.DISPLAY_DETAILS:
-          if (currentExpressionActionSlug) {
+          if (currentExpressionActionSlug && currentExpressionId === result.id) {
             history.push(baseBoardUrl)
           } else {
             history.push(detailsLink)
@@ -134,6 +134,8 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           break
       }
     }, [
+      result.id,
+      currentExpressionId,
       currentExpressionActionSlug,
       detailsLink,
       actionOnExpressionClick,

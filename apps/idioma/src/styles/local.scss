@@ -1,5 +1,6 @@
 @use "@aztlan/bem" as bem;
 @use "@aztlan/base-styles/themes" as themes;
+@use "./themes" as morphosa-themes;
 @use "@aztlan/grid/src/main" as grid with (
   $default-gap:1.5rem,
 );
@@ -8,6 +9,8 @@
     "light-theme":themes.$light-theme,
     "dark-theme":themes.$dark-theme,
     "blue-theme":themes.$blue-theme,
+    "morphosa-light-theme":morphosa-themes.$morphosa-light-theme,
+    "morphosa-dark-theme":morphosa-themes.$morphosa-dark-theme,
   ),
   $extras:(
     "light-theme":(

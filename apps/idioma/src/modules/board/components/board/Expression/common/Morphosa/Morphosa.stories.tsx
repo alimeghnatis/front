@@ -1,10 +1,9 @@
 /* @aztlan/generator-front 3.9.0 */
-// import * as React from 'react'
+import * as React from 'react'
 
 import {
-  Meta, StoryObj,
+  Meta, StoryObj, StoryFn,
 } from '@storybook/react'
-// import { Meta, StoryFn } from '@storybook/react'
 import { graphql } from 'react-relay'
 import Component from './Morphosa.js'
 import testData1 from './testData/test1.json'
@@ -116,3 +115,48 @@ export const Exclude: StoryObj<typeof Component> = {
   },
   parameters:{ relay: getRelayConfigForTest(testData3) },
 }
+
+export const Dark: StoryFn<typeof Component> = (args) => (
+  <div className="dark-theme background near">
+    <Component {...args} />
+  </div>
+)
+Dark.args = {
+  ...Base.args,
+  theme:'dark',
+}
+Dark.parameters = { relay: getRelayConfigForTest(testData1) }
+
+export const DarkInteractive: StoryFn<typeof Component> = (args) => (
+  <div className="dark-theme background near">
+    <Component {...args} />
+  </div>
+)
+DarkInteractive.args = {
+  ...Interactive.args,
+  theme:'dark',
+}
+DarkInteractive.parameters = { relay: getRelayConfigForTest(testData1) }
+
+export const DarkTest2: StoryFn<typeof Component> = (args) => (
+  <div className="dark-theme background near">
+    <Component {...args} />
+  </div>
+)
+
+DarkTest2.args = {
+  ...Test2.args,
+  theme:'dark',
+}
+DarkTest2.parameters = { relay: getRelayConfigForTest(testData2) }
+
+export const DarkTest3: StoryFn<typeof Component> = (args) => (
+  <div className="dark-theme background near">
+    <Component {...args} />
+  </div>
+)
+DarkTest3.args = {
+  ...Test3.args,
+  theme:'dark',
+}
+DarkTest3.parameters = { relay: getRelayConfigForTest(testData3) }

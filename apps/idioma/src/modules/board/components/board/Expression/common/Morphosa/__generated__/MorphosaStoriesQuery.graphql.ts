@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c010eb4e251647d774ab64a3d7d9955a>>
+ * @generated SignedSource<<00aaebeb997da0577e5e3deeb0b578b3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -78,6 +78,13 @@ return {
         "plural": false,
         "selections": [
           (v1/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "textDirection",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -248,12 +255,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "6a42d4573f9977976f749b4f4197ba36",
+    "cacheID": "e40e02db8dae586846ca2fe049c14ff2",
     "id": null,
     "metadata": {},
     "name": "MorphosaStoriesQuery",
     "operationKind": "query",
-    "text": "query MorphosaStoriesQuery {\n  expression(id: \"1\") {\n    ...MorphosaFragment\n    id\n  }\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
+    "text": "query MorphosaStoriesQuery {\n  expression(id: \"1\") {\n    ...MorphosaFragment\n    id\n  }\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  textDirection\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
   }
 };
 })();

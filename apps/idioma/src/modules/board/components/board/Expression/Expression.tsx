@@ -51,6 +51,7 @@ const FRAGMENT = graphql`
     isProcessed
     isBookmarked
     isNew
+    textDirection
     ...AudioButtonFragment
     ...DeleteButtonFragment
     ...BookmarkButtonFragment
@@ -155,6 +156,8 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
 
   const isNewAndUnprocessed = result.isNew && !result.isProcessed
 
+  const languageCode = result.iso6391 || result.iso6392 || result.iso6393
+
   return (
     <div
       id={id || result.id}
@@ -181,9 +184,7 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
       >
         <div className="language manual-mobile-only">
           <span className="">
-            <strong>
-              {result.iso6391 || result.iso6392 || result.iso6393}
-            </strong>
+            <strong>{languageCode}</strong>
           </span>
         </div>
         {extras !== undefined && (
@@ -193,7 +194,12 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
           className="content manual-mobile-only"
           onClick={onContentClick}
         >
-          <p>{result.correctedContent || result.content}</p>
+          <p
+            lang={languageCode}
+            dir={result.textDirection}
+          >
+            {result.correctedContent || result.content}
+          </p>
         </div>
         <div className="tools manual-mobile-only">
           <Button.Group

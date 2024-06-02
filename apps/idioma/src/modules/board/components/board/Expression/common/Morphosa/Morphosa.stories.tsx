@@ -12,6 +12,7 @@ import testData2 from './testData/test2.json'
 import testData3 from './testData/test3.json'
 import testData4 from './testData/test4.json'
 import testData5 from './testData/test5.json'
+import testData6 from './testData/test6.json'
 
 // import { decorators } from 'story-utils'
 // import decorators from "story-utils/decorators.js";
@@ -34,7 +35,9 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-const getRelayConfigForTest = (testData) => ({
+const getRelayConfigForTest = (
+  testData, textDirection = 'ltr',
+) => ({
   query:graphql`
     query MorphosaStoriesQuery {
       expression(id: "1") {
@@ -48,7 +51,10 @@ const getRelayConfigForTest = (testData) => ({
   ],
   variables    :{},
   mockResolvers:{
-    ExpressionNode        :() => ({ id: 'RXhwcmVzc2lvbk5vZGU6MzU2Zjc2NTMtNDhiMS00OWI1LTgzOWEtMjQ5YjczMThlYzlj' }),
+    ExpressionNode:() => ({
+      id:'RXhwcmVzc2lvbk5vZGU6MzU2Zjc2NTMtNDhiMS00OWI1LTgzOWEtMjQ5YjczMThlYzlj',
+      textDirection,
+    }),
     ExpressionAnalysisNode:() => ({
       id       :btoa('ExpressionAnalysisNode:1'),
       payloadV1:testData.words,
@@ -87,6 +93,15 @@ export const Test4: StoryObj<typeof Component> = {
 export const Test5: StoryObj<typeof Component> = {
   args      :Interactive.args,
   parameters:{ relay: getRelayConfigForTest(testData5) },
+}
+
+export const Test6RTL: StoryObj<typeof Component> = {
+  args      :Interactive.args,
+  parameters:{
+    relay:getRelayConfigForTest(
+      testData6, 'rtl',
+    ),
+  },
 }
 
 export const Exclude: StoryObj<typeof Component> = {

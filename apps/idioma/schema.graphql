@@ -762,6 +762,9 @@ type ExpressionNode implements SearchNode & Node {
   Order: Int!
   variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
   usageRecord: UsageRecordNode
+
+  """Whether the content is in rtl direction"""
+  textDirection: String
 }
 
 type ExpressionAnalysisNode implements SearchNode & Node {
@@ -1103,6 +1106,7 @@ type LanguageType {
   pt2t: String!
   pt3: String!
   audio: Boolean!
+  textDirection: String!
 }
 
 """

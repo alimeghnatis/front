@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6a5a08c594312c3b913177f1f06d7529>>
+ * @generated SignedSource<<b07253c0e9a0de8fe7f640f8a0fcbb3d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -45,6 +45,7 @@ export type MorphosaFragment$data = {
     } | null | undefined> | null | undefined;
   } | null | undefined;
   readonly id: string;
+  readonly textDirection: string | null | undefined;
   readonly " $fragmentType": "MorphosaFragment";
 };
 export type MorphosaFragment$key = {
@@ -63,6 +64,13 @@ const node: ReaderFragment = {
       "args": null,
       "kind": "ScalarField",
       "name": "id",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "textDirection",
       "storageKey": null
     },
     {
@@ -238,6 +246,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "4a229e80682818253747b615d002785b";
+(node as any).hash = "2a1ff1e8be5def5e9bffd1e60af7f905";
 
 export default node;

@@ -27,7 +27,26 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-const relay = {
+const defaultNode = {
+  id              :'1',
+  content         :'Sample Expression',
+  correctedContent:'This is an expression that is used as a sample for the storybook.',
+  iso6391         :'es',
+  iso6392         :'spa',
+  iso6393         :'spa',
+  isBookmarked    :false,
+  textDirection   :'ltr',
+}
+
+const farsiNode = {
+  correctedContent:'سلام، حال شما چطور است؟',
+  iso6391         :'fa',
+  iso6392         :'fas',
+  iso6393         :'fas',
+  textDirection   :'rtl',
+}
+
+const getRelay = (node = {}) => ({
   query:graphql`
     query ExpressionStoriesQuery {
       expression(id: "1") {
@@ -42,20 +61,15 @@ const relay = {
   variables    :{},
   mockResolvers:{
     ExpressionNode:() => ({
-      id              :'1',
-      content         :'Sample Expression',
-      correctedContent:'This is an expression that is used as a sample for the storybook.',
-      iso6391         :'es',
-      iso6392         :'spa',
-      iso6393         :'spa',
-      isBookmarked    :false,
+      ...defaultNode,
+      ...node,
     }),
   },
-}
+})
 
 export const Base: StoryObj<typeof Component> = {
   args      :{},
-  parameters:{ relay },
+  parameters:{ relay: getRelay() },
 }
 
 export const Extras: StoryObj<typeof Component> = {
@@ -63,5 +77,10 @@ export const Extras: StoryObj<typeof Component> = {
     extras    :'Extras',
     spanExtras:2,
   },
-  parameters:{ relay },
+  parameters:{ relay: getRelay() },
+}
+
+export const RTL: StoryObj<typeof Component> = {
+  args      :{ ...Base.args },
+  parameters:{ relay: getRelay(farsiNode) },
 }

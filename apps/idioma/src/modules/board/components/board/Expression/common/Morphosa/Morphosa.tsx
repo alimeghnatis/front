@@ -22,6 +22,7 @@ const FRAGMENT = graphql`
   fragment MorphosaFragment on ExpressionNode {
     #@refetchable(queryName: "MorphosaRefetchQuery")
     id
+    textDirection
     analysis {
       payloadV1 {
         word
@@ -116,7 +117,10 @@ InferProps<typeof Morphosa.propTypes>): React.ReactElement {
       onMouseLeave={() => setSelectedWords([])}
       // {...otherProps}
     >
-      <div className="content container">
+      <div
+        className="content container"
+        dir={result.textDirection}
+      >
         {analysedContent.map((
           word, i,
         ) => (

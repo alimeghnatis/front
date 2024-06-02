@@ -15,5 +15,6 @@ export default {
   changes           :'Loading',
   isProcessed       :false,
   isNew             :true,
+  isRtl             :false,
   translation       :null,
 }

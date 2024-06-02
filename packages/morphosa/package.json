@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/morphosa",
-  "version": "3.13.2",
+  "version": "3.13.3",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",

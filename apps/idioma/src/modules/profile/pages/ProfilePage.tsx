@@ -5,7 +5,9 @@ import Template from '../../common/templates/Base.js'
 
 function ProfilePage() {
   return (
-    <Template>
+    <Template
+      mobileTitle={<p className="h3 hide-desktop">Update your profile</p>}
+    >
       <section
         className="no-scrollbar"
         style={{ overflow: 'auto' }}

@@ -3,10 +3,10 @@
 @use "@aztlan/bem";
 @use "@aztlan/mixins/src/media" as media;
 
-$default-option-color: blue;
-$selected-option-color: red;
-$audio-option-color: purple;
-$common-language-option-color: green;
+$default-option-color: metadata;
+$selected-option-color: selected;
+$audio-option-color: important;
+$common-language-option-color: paragraph;
 
 $disabled-color: darkgray;
 
@@ -18,36 +18,33 @@ $disabled-color: darkgray;
 
   padding: 0;
 
-  .filters {
-    //background: red;
-    display: flex;
-    //flex-direction: column;
+  .common-language {
+    --color: var(--#{$common-language-option-color});
+    --hard-color: var(--hard-#{$common-language-option-color});
+    --soft-color: var(--soft-#{$common-language-option-color});
+    --on-color: var(--on-#{$common-language-option-color});
+  }
 
-    input {
-      display: none;
+  .has-audio,
+  .common-language.has-audio {
+    --color: var(--#{$audio-option-color});
+    --hard-color: var(--hard-#{$audio-option-color});
+    --soft-color: var(--soft-#{$audio-option-color});
+    --on-color: var(--on-#{$audio-option-color});
+  }
 
-      &:checked + label {
-        &.common-language {
-          color: $common-language-option-color;
-        }
+  .selected-only {
+    --color: var(--#{$selected-option-color});
+    --hard-color: var(--hard-#{$selected-option-color});
+    --soft-color: var(--soft-#{$selected-option-color});
+    --on-color: var(--on-#{$selected-option-color});
+  }
 
-        &.has-audio {
-          color: $audio-option-color;
-        }
-
-        &.selected-only {
-          color: $selected-option-color;
-        }
-
-        &.less-common {
-          color: $default-option-color;
-        }
-      }
-
-      &:disabled + label {
-        color: $disabled-color;
-      }
-    }
+  .less-common {
+    --color: var(--#{$default-option-color});
+    --hard-color: var(--hard-#{$default-option-color});
+    --soft-color: var(--soft-#{$default-option-color});
+    --on-color: var(--on-#{$default-option-color});
   }
 
   .options {
@@ -65,14 +62,6 @@ $disabled-color: darkgray;
         display: none;
       }
 
-      &.common-language {
-        color: $common-language-option-color;
-      }
-
-      &.has-audio,
-      &.common-language.has-audio {
-        color: $audio-option-color;
-      }
 
       &.less-common {
         color: $default-option-color;
@@ -87,7 +76,15 @@ $disabled-color: darkgray;
       }
 
       input + label {
-        //cursor: pointer;
+        color: var(--color);
+
+        &:hover {
+          color: var(--soft-color);
+        }
+
+        &:focus {
+          color: var(--hard-color);
+        }
       }
 
       input:disabled + label {

@@ -197,9 +197,7 @@ InferProps<typeof Board.propTypes>): React.ReactElement {
         />
         {isLoadingNext && <p className="info">Loading previous expressions.</p>}
         {!hasNext && result?.groups?.edges.length > 0 && (
-          <p className="info">
-            There are no more expressions to load in this board.
-          </p>
+          <p className="info">This is the beginning of the board.</p>
         )}
       </div>
     </div>

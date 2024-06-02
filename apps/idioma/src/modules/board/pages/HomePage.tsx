@@ -11,7 +11,10 @@ function Home({
   return (
     <Template title="board home">
       <div className="grid container">
-        <BoardMembershipsCardGroup className="md-start-2 md-span-12 span-8" />
+        <BoardMembershipsCardGroup
+          className="md-start-2 md-span-12 span-8"
+          style={{ marginTop: 'var(--gap)' }}
+        />
       </div>
     </Template>
   )

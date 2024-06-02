@@ -8,7 +8,9 @@ import { BoardCreateForm } from '../components/index.js'
 
 function NewBoard() {
   return (
-    <Template>
+    <Template
+      mobileTitle={<p className="h3 hide-desktop">Create a new board</p>}
+    >
       <section
         className="no-scrollbar"
         style={{ overflow: 'auto' }}

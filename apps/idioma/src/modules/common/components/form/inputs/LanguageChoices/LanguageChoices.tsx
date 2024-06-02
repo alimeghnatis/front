@@ -127,6 +127,7 @@ function Filters({
           label   :filters[key].label,
           disabled:filters[key].disabled,
           key     :filters[key].label,
+          color   :filters[key].color,
         }))}
         value={selectedFilter}
         setValue={setSelectedFilter}
@@ -187,24 +188,28 @@ function LanguageChoices({
         label    :'Selected Only',
         filter   :(option) => currentValues.includes(option.value),
         disabled :!(currentValues.length > 0),
+        color    :'selected',
       },
       audio:{
         name     :'audio',
         className:'has-audio',
         label    :'+audio',
         filter   :(option) => option.audio,
+        color    :'important',
       },
       common:{
         name     :'common',
         className:'common-language',
         label    :'+common',
         filter   :(option) => option.pt1?.length,
+        color    :'paragraph',
       },
       rare:{
         name     :'rare',
         className:'less-common',
         label    :'+all',
         filter   :(option) => true,
+        color    :'metadata',
       //
       },
     }), [currentValues],

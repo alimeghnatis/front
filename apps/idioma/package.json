@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/idioma",
-  "version": "3.13.1",
+  "version": "3.13.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "@aztlan/assets": "^3.4.6",
     "@aztlan/base-styles": "^3.13.0",
     "@aztlan/bem": "^0.9.20",
-    "@aztlan/morphosa": "^3.10.2",
+    "@aztlan/morphosa": "^3.13.2",
     "@aztlan/react-hooks": "^3.8.3",
     "@aztlan/react-relay": "^3.7.1",
     "@aztlan/react-scripts": "^3.6.3",

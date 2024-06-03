@@ -5,15 +5,15 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import {
+  Button, useNotificationContext,
+} from '@aztlan/ui'
+import {
   graphql,
   useFragment,
   // RecordSourceSelectorProxy,
   ConnectionHandler,
   useMutation,
 } from 'react-relay'
-import {
-  Button, useNotificationContext,
-} from '@aztlan/ui'
 import { useBoardContext } from 'modules/common/components'
 
 const FRAGMENT = graphql`
@@ -54,24 +54,32 @@ function DeleteButton({
       if (!isConfirmed) {
         return
       }
-      /*
       const updater = (store) => {
-        const groupRecord = store.get(groupID)
-        const connectionRecord = ConnectionHandler.getConnection(
-          groupRecord,
-          'GroupFragment_expressions',
+        const root = store.getRoot()
+        const rootViewer = root.getLinkedRecord('viewer')
+        const connection = ConnectionHandler.getConnection(
+          rootViewer,
+          'useBoardMembershipsFragment_boardMemberships',
         )
+        const membershipEdgeRecord = connection
+          .getLinkedRecords('edges')
+          .find((edge) => {
+            const node = edge.getLinkedRecord('node')
+            return node.getLinkedRecord('board').getValue('id') === result.id
+          })
+
+        const membershipRecord = membershipEdgeRecord.getLinkedRecord('node')
+
         ConnectionHandler.deleteNode(
-          connectionRecord, result.id,
+          connection, membershipRecord.getValue('id'),
         )
       }
-        */
 
       deleteBoard({
-        variables  :{ input: { id: atob(result.id).split(':')[1] } },
-        // updater,
-        // optimisticUpdater:updater,
-        onCompleted:() => {
+        variables        :{ input: { id: atob(result.id).split(':')[1] } },
+        updater,
+        optimisticUpdater:updater,
+        onCompleted      :() => {
           history.push(basePath)
           notify.success('Board deleted.')
         },

@@ -39,6 +39,10 @@ InferProps<typeof RawGroup.propTypes>): React.ReactElement {
 
   const boardMemberships = result?.edges || {}
 
+  console.log(
+    'boardMemberships', boardMemberships,
+  )
+
   return (
     <div
       id={id}

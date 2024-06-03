@@ -47,12 +47,8 @@ const MUTATION_UPDATE = graphql`
         explanationsLength
         enabledLanguages
         memberships {
-          edges {
-            node
-              @appendNode(
-                connections: $connections
-                edgeTypeName: "BoardMembershipNodeEdge"
-              ) {
+          edges @appendEdge(connections: $connections) {
+            node {
               id
               role
               board {
@@ -119,6 +115,9 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
       const connectionID = ConnectionHandler.getConnectionID(
         userID,
         'useBoardMembershipsFragment_boardMemberships',
+      )
+      console.log(
+        'connectionID', connectionID,
       )
       const tempId = btoa(`BoardNode:${Math.random()}`)
 

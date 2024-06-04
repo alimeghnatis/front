@@ -118,10 +118,6 @@ function SingleCombobox({
     itemToString:convertItemToString,
   })
 
-  console.log(
-    'COMBOBOX', isOpen, items,
-  )
-
   const inputRef = useRef<HTMLInputElement>(null) // Create your own ref to manage focus
 
   const setCombinedRef = useCallback(

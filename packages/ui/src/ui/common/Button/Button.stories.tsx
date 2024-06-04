@@ -52,6 +52,13 @@ export const VariantNatural: StoryFn<typeof Component> = (args) => (
   </span>
 )
 
+export const Disabled: StoryObj<typeof Component> = {
+  args:{
+    children:'Disabled Button',
+    disabled:true,
+  },
+}
+
 export const AsAnchor: StoryObj<typeof Component> = {
   args:{
     as      :'a',

@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 3.8.3 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
 
 $default-border-radius: 0.25em;
 $default-border-color: var(--on-color);
@@ -14,12 +15,11 @@ $fallback-color-name: error;
 $default-background: var(--color, var(--#{$fallback-color-name}));
 $hover-background: var(--hard-color, var(--hard-#{$fallback-color-name}));
 $focus-background: var(--soft-color, var(--soft-#{$fallback-color-name}));
-$disabled-background: var(--soft-color, var(--soft-#{$fallback-color-name}));
+
 
 $default-color: var(--on-color, var(--on-#{$fallback-color-name}));
 $hover-color: var(--on-color, var(--on-#{$fallback-color-name}));
 $focus-color: var(--on-color, var(--on-#{$fallback-color-name}));
-$disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
 
 
 .#{bem.$base}.button {
@@ -39,6 +39,10 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {
     background: $hover-background;
     color: $hover-color;
+
+    &:focus {
+      @extend %focus;
+    }
   }
 
   &:not(.#{bem.$modifier-disabled}):not(:disabled):focus {
@@ -47,16 +51,8 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
   }
 
 
-  &:disabled {
-    background: $disabled-background;
-    color: $disabled-color;
-
-    &:hover,
-    &:focus {
-      background: $disabled-background;
-      color: $disabled-color;
-    }
-    //cursor: not-allowed;
+  &:disabled, &.#{bem.$modifier-disabled} {
+    @extend %disabled;
   }
 
 
@@ -85,7 +81,7 @@ $disabled-color: var(--on-color, var(--on-#{$fallback-color-name}));
     color: var(--color);
 
     &:disabled {
-      background: transparent;
+      background: var(--disabled-background);
       color: var(--soft-color);
     }
 

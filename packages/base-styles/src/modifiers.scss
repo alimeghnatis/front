@@ -1,0 +1,36 @@
+$disabled-background: var(--disabled-background);
+$disabled-background-size: var(--disabled-background-size);
+$disabled-color: var(--disabled-color);
+
+%disabled-color {
+  color: $disabled-color;
+}
+
+%disabled {
+  background: $disabled-background;
+  background-size: $disabled-background-size;
+  cursor: not-allowed;
+  @extend %disabled-color;
+
+  &:hover,
+  &:focus {
+    background: $disabled-background;
+    background-size: $disabled-background-size;
+    color: $disabled-color;
+  }
+}
+
+.disabled {
+  @extend %disabled;
+}
+
+$focus-border: var(--focus-outline);
+
+%focus {
+  outline: $focus-border;
+}
+
+.focus,
+:focus {
+  @extend %focus;
+}

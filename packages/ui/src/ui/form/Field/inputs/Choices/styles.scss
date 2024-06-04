@@ -2,6 +2,7 @@
 
 @use "@aztlan/bem";
 @use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/modifiers";
 
 .#{bem.$base}.choices {
   --lc: var(--options-columns);
@@ -37,7 +38,7 @@
   }
 
   input:disabled + label {
-    color: darkgray;
+    @extend %disabled;
   }
 
   input:checked + label {

@@ -15,6 +15,7 @@ import useOptionAriaProps from '../../hooks/useOptionAriaProps.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'simple-choices'
+const optionClassName = 'option'
 
 function Option({
   name,
@@ -31,8 +32,13 @@ function Option({
   )
   return (
     <div
-      className="grid"
+      className={[
+        optionClassName,
+        'grid',
+        disabled && styleNames.modifierDisabled,
+      ].filter(Boolean).join(' ')}
       key={value}
+      tabIndex={0}
     >
       <input
         value={value}

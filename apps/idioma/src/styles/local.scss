@@ -17,7 +17,16 @@
       "font-size":18px,
       "light-height":1em,
       "margin":1em,
-    ),
+      "disabled-background":repeating-linear-gradient(
+        - 45deg,
+        var(--soft-metadata) 0,
+        var(--soft-metadata) 1px,
+        transparent 0,
+        transparent 50%
+      ),
+      "disabled-background-size":0.75em 0.75em,
+      "disabled-color":var(--hard-metadata),
+    )
   )
 );
 @use "@aztlan/mixins/src/reset" as reset;

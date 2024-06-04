@@ -70,7 +70,8 @@ export const Multiple: StoryObj<typeof Component> = {
 export const DisabledInput: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
-    name:'region',
+    name    :'region',
+    disabled:true,
   },
 }
 

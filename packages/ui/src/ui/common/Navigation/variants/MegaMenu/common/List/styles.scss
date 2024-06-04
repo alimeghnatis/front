@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 3.9.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
 
 $selected-color:selected;
 $hover-color:important;
@@ -17,7 +18,7 @@ $hover-color:important;
     color: var(--on-color);
     transition: background 0.1s, color 0.1s;
     &.#{bem.$modifier-disabled} {
-      color: var(--metadata);
+      @extend %disabled;
     }
 
     > * {

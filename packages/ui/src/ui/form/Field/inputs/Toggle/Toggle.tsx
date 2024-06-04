@@ -84,6 +84,7 @@ function Toggle({
           <Button
             className="true"
             as="span"
+            tabindex="0"
             {...buttonProps}
           >
             {labelYes}
@@ -91,6 +92,7 @@ function Toggle({
           <Button
             className="false"
             as="span"
+            tabindex="0"
             {...buttonProps}
           >
             {labelNo}

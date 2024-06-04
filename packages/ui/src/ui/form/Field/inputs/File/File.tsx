@@ -8,6 +8,7 @@ import { useFormContext } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
 import { propTypes } from './types.js'
 import type { TProps } from './types.js'
+import { Button } from '../../../../common/index.js'
 
 import withWrapper from '../../wrapper/withWrapper.js'
 
@@ -64,6 +65,7 @@ function File({
   acceptContentTypes,
   sizeLimit = 5 * 1024 * 1024, // 5MB
   registerProps:userRegisterProps,
+  disabled = false,
   // ...otherProps
 
 }: TProps): React.ReactElement {
@@ -126,6 +128,7 @@ function File({
           name, registerProps,
         )}
         accept={accept}
+        disabled={disabled}
       />
     </div>
   )

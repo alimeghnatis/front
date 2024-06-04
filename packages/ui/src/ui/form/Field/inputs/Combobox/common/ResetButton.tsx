@@ -5,6 +5,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
+import { Button } from '../../../../../common/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'reset'
@@ -20,7 +21,7 @@ function ResetButton({
   onClick,
 }: InferProps<typeof ResetButton.propTypes>): React.ReactElement {
   return (
-    <button
+    <Button
       className={[
         baseClassName,
         componentClassName,
@@ -32,9 +33,11 @@ function ResetButton({
       type="button"
       onClick={onClick}
       aria-label="Clear selection"
+      variant="borderless"
+      color="neutral"
     >
       X
-    </button>
+    </Button>
   )
 }
 

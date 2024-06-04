@@ -1,15 +1,19 @@
 /* @aztlan/generator-front 0.8.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
+@use "../shared";
 
 .#{bem.$base}.textarea {
   textarea {
     font-family: inherit;
     resize: vertical;
     width: 100%;
+    @extend %input;
 
     &:disabled {
       resize: none;
+      @extend %disabled;
     }
   }
 }

@@ -47,3 +47,10 @@ export const SizeLimit: StoryObj<typeof Component> = {
     sizeLimit:1024 * 1024 * 1,
   },
 }
+
+export const Disabled: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    disabled:true,
+  },
+}

@@ -5,8 +5,8 @@ import { useInsertionEffect } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
-
 import styleNames from '@aztlan/bem'
+import { Button } from '../Button/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'mobile-popup'
@@ -25,6 +25,7 @@ function MobilePopup({
   closeContent = 'Close',
   fixed = false,
   title,
+  buttonProps,
 }: // ...otherProps
 
 InferProps<typeof MobilePopup.propTypes>): React.ReactElement {
@@ -34,6 +35,10 @@ InferProps<typeof MobilePopup.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
+
+  const {
+    className: buttonClassName, ...otherButtonProps
+  } = buttonProps || {}
 
   return (
     <div
@@ -52,9 +57,19 @@ InferProps<typeof MobilePopup.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <div className="span-8 md-span-0 grid header">
-        <p className="span-2">
-          <Link to={closeLink}>{closeContent}</Link>
-        </p>
+        <Button
+          as={Link}
+          to={closeLink}
+          color="important"
+          variant="borderless"
+          className={[
+            buttonClassName,
+            'span-2',
+          ].filter(Boolean).join(' ')}
+          {...otherButtonProps}
+        >
+          {closeContent}
+        </Button>
         <p className="span-6">{title}</p>
       </div>
       <div className="container grid content">{children}</div>
@@ -86,6 +101,9 @@ MobilePopup.propTypes = {
 
   /** Fixed */
   fixed:PropTypes.bool,
+
+  /** Button props */
+  buttonProps:PropTypes.objectOf(PropTypes.any),
 }
 
 export default MobilePopup

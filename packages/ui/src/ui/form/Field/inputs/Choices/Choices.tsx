@@ -42,7 +42,12 @@ function Option({
         )}
         {...ariaProps.input}
       />
-      <label {...ariaProps.label}>{label}</label>
+      <label
+        {...ariaProps.label}
+        tabIndex="0"
+      >
+        {label}
+      </label>
     </div>
   )
 }

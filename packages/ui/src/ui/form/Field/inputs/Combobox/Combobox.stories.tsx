@@ -48,3 +48,10 @@ export const Base: StoryObj<typeof Component> = {
     ],
   },
 }
+
+export const Disabled: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    disabled:true,
+  },
+}

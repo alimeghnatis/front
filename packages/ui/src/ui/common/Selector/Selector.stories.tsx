@@ -65,3 +65,16 @@ Base.args = {
   // @ts-ignore
   initialValue:'board',
 }
+
+export const DisabledValue: StoryFn<typeof Component> = Template.bind({})
+DisabledValue.args = {
+  ...Base.args,
+  options:[
+    ...Base.args.options,
+    {
+      value   :'disabled',
+      label   :'Disabled',
+      disabled:true,
+    },
+  ],
+}

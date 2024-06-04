@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/main.scss",
     "./initial.scss": "./src/initial.scss",
+    "./modifiers": "./src/modifiers.scss",
     "./themes": "./src/themes/index.scss"
   },
   "scripts": {

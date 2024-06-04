@@ -148,6 +148,14 @@ main.flex {
   flex-direction: column;
 }
 
+.natural-flex {
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
+
 .relative {
   position: relative;
 }

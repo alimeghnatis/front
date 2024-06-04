@@ -136,6 +136,10 @@ a.#{bem.$base}.button {
 .#{bem.$base}.button-group {
   display: inline-flex;
   position: relative;
+
+  > * {
+    flex: 1;
+  }
 }
 
 

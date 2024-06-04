@@ -37,7 +37,7 @@ export default function (props) {
     <Template
       hasSettings
       mobileTitle={<SelectBoardMenu className="hide-desktop" />}
-      right={<SettingsButton className="span-1 md-span-2" />}
+      right={<SettingsButton />}
       absoluteHeaderElements={(
         <div
           style={{

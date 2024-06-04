@@ -74,7 +74,7 @@ function Wrapper({
         />
         <Header
           right={(
-            <div className="grid container">
+            <div className="container natural-flex">
               <HelpButton />
               {right}
             </div>

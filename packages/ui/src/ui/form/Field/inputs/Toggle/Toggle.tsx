@@ -30,6 +30,8 @@ function Toggle({
   labelYes = 'Yes',
   labelNo = 'No',
   buttonProps,
+  spanLabel = 3,
+  spanLabelDesktop,
   ...otherProps
 }: TProps): React.ReactElement {
   useInsertionEffect(
@@ -68,8 +70,17 @@ function Toggle({
         {...otherProps}
         {...ariaProps.input}
       />
-      <label {...ariaProps.label}>
-        <Button.Group variant="borderless">
+      <label
+        {...ariaProps.label}
+        className="grid"
+      >
+        <Button.Group
+          variant="borderless"
+          className={[
+            `span-${spanLabel}`,
+            spanLabelDesktop && `md-span-${spanLabelDesktop}`,
+          ].filter(Boolean).join(' ')}
+        >
           <Button
             className="true"
             as="span"

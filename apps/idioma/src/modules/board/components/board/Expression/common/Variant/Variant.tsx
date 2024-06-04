@@ -20,6 +20,7 @@ import {
   ConnectionHandler,
 } from 'react-relay'
 import { useBoardContext } from 'modules/common/components'
+import { getBoardCountsUpdater } from 'relay/utils'
 import optimisticExpression from '../../../forms/optimisticResponses/Expression.js'
 import useExpressionVariantFields from './useExpressionVariantFields.js'
 
@@ -94,7 +95,10 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
   const history = useHistory()
 
   const {
-    data: boardData, baseBoardUrl, containerRef,
+    data: boardData,
+    baseBoardUrl,
+    containerRef,
+    id: boardID,
   } = useBoardContext()
 
   const [
@@ -158,6 +162,10 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
             top     :positionToScrollTo,
             behavior:'smooth',
           }) */
+          const boardCountsUpdater = getBoardCountsUpdater(
+            boardID, { groupCountChange: 0 },
+          )
+          boardCountsUpdater(store)
         },
         updater:(store) => {
           const root = store.getRoot()
@@ -174,6 +182,10 @@ InferProps<typeof Variant.propTypes>): React.ReactElement {
           } else {
             console.error('Mutation did not return an instance.')
           }
+          const boardCountsUpdater = getBoardCountsUpdater(
+            boardID, { groupCountChange: 0 },
+          )
+          boardCountsUpdater(store)
         },
 
         onCompleted:(response) => {

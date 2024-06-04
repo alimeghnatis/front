@@ -71,9 +71,22 @@ const MUTATION_UPDATE = graphql`
     }
   }
 `
-const updater = getNodeUpdater(
-  'createBoard', { newLinkedRecordName: 'board' },
-)
+const updater = (store) => {
+  const nodeUpdater = getNodeUpdater(
+    'createBoard', { newLinkedRecordName: 'board' },
+  )
+  nodeUpdater(store)
+  const root = store.getRoot()
+  const rootViewer = root.getLinkedRecord('viewer')
+  const connection = ConnectionHandler.getConnection(
+    rootViewer,
+    'useBoardMembershipsFragment_boardMemberships',
+  )
+  const edgesCount = connection.getValue('count')
+  connection.setValue(
+    edgesCount + 1, 'count',
+  )
+}
 
 /**
  * description

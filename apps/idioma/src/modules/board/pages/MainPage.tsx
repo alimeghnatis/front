@@ -6,7 +6,9 @@ import {
 import { SwitchRoutes } from '@aztlan/ui'
 import { SelectBoardMenu } from 'modules/common/components'
 import Template from '../templates/Primary.js'
-import { ModeSelector } from '../components/index.js'
+import {
+  SettingsButton, ModeSelector,
+} from '../components/index.js'
 import { mainRoutes } from '../routes.js'
 
 const QUERY = graphql`
@@ -35,6 +37,7 @@ export default function (props) {
     <Template
       hasSettings
       mobileTitle={<SelectBoardMenu className="hide-desktop" />}
+      right={<SettingsButton className="span-1 md-span-2" />}
       absoluteHeaderElements={(
         <div
           style={{

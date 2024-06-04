@@ -7,6 +7,8 @@ import styleNames from '@aztlan/bem'
 import {
   Button, useNotificationContext,
 } from '@aztlan/ui'
+import { useBoardContext } from 'modules/common/components'
+import { getBoardCountsUpdater } from 'relay/utils'
 
 import {
   graphql,
@@ -46,6 +48,8 @@ function DeleteButton({
     isDeleteInFlight,
   ] = useMutation(MUTATION_DELETE)
 
+  const { id: boardID } = useBoardContext()
+
   const { notify } = useNotificationContext()
 
   const handleDelete = useCallback(
@@ -63,6 +67,10 @@ function DeleteButton({
         ConnectionHandler.deleteNode(
           connectionRecord, result.id,
         )
+        const boardCountsUpdater = getBoardCountsUpdater(
+          boardID, { expressionCountChange: -1 },
+        )
+        boardCountsUpdater(store)
       }
 
       deleteExpression({

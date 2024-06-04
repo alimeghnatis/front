@@ -73,6 +73,11 @@ function DeleteButton({
         ConnectionHandler.deleteNode(
           connection, membershipRecord.getValue('id'),
         )
+
+        const edgesCount = connection.getValue('count')
+        connection.setValue(
+          edgesCount - 1, 'count',
+        )
       }
 
       deleteBoard({

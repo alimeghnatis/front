@@ -14,7 +14,9 @@ import { useNotificationContext } from '@aztlan/ui'
 import {
   useBoardContext, TextareaForm,
 } from 'modules/common/components'
-import getNodeUpdater from 'relay/utils/getNodeUpdater'
+import {
+  getNodeUpdater, getBoardCountsUpdater,
+} from 'relay/utils'
 import optimisticExpression from '../optimisticResponses/Expression.js'
 
 // const baseClassName = styleNames.base
@@ -67,8 +69,6 @@ const MUTATION_APPEND_EXPRESSION = graphql`
   }
 `
 
-const updater = getNodeUpdater('createExpression')
-
 /**
  * description
  * @param {InferProps<typeof ExpressionCreateForm.propTypes>} props -
@@ -108,6 +108,17 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
 
   const isInFlight = isCreateExpressionInFlight || isAppendExpressionInFlight
 
+  const updater = useCallback(
+    (store) => {
+      const nodeUpdater = getNodeUpdater('createExpression')
+      nodeUpdater(store)
+      const boardCountsUpdater = getBoardCountsUpdater(boardID)
+      boardCountsUpdater(store)
+    },
+
+    [boardID],
+  )
+
   const optimisticUpdater = useCallback(
     (store) => {
       setTimeout(
@@ -118,6 +129,7 @@ InferProps<typeof ExpressionCreateForm.propTypes>): React.ReactElement {
           })
         }, 0,
       )
+      updater(store)
     }, [],
   )
 

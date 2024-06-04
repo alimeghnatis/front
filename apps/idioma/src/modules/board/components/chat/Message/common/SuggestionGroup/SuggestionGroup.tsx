@@ -17,6 +17,7 @@ import {
   commitLocalUpdate,
   useRelayEnvironment,
 } from 'react-relay'
+import { getBoardCountsUpdater } from 'relay/utils'
 
 import styleNames from '@aztlan/bem'
 
@@ -161,6 +162,12 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
             errors:[],
           },
         },
+        optimisticUpdater:(store) => {
+          const boardCountsUpdater = getBoardCountsUpdater(
+            boardID, { expressionCountChange: suggestionsToCommit.length },
+          )
+          boardCountsUpdater(store)
+        },
         updater:(store) => {
           const boardRecord = store.get(boardID)
           if (boardRecord) {
@@ -188,12 +195,6 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
 
             if (expressionsConnection) {
               const edges = expressionsConnection.getLinkedRecords('edges')
-              console.log(
-                'expressionsConnection',
-                expressionsConnection,
-                newInstance,
-                edges,
-              )
               edges.forEach((edge) => {
                 const expressionNode = edge.getLinkedRecord('node')
                 if (expressionNode) {
@@ -208,6 +209,10 @@ InferProps<typeof SuggestionGroup.propTypes>): React.ReactElement {
           } else {
             console.error('Mutation did not return an instance.')
           }
+          const boardCountsUpdater = getBoardCountsUpdater(
+            boardID, { expressionCountChange: suggestionsToCommit.length },
+          )
+          boardCountsUpdater(store)
         },
         onCompleted:(response) => {
           notify.success(`Successfully added ${suggestionsToCommit.length} expression(s) to the board`)

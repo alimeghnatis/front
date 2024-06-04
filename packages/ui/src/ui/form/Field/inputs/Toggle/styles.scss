@@ -2,7 +2,7 @@
 
 @use "@aztlan/bem";
 
-$default-color: "metadata";
+$default-color: "neutral";
 
 %default-color {
   --color: var(--#{$default-color});

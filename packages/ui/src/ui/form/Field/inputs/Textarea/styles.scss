@@ -5,8 +5,15 @@
 @use "../shared";
 
 .#{bem.$base}.textarea {
+  display: flex;
+
+  &:focus-within {
+    @extend %focus;
+  }
+
   textarea {
     font-family: inherit;
+    padding: 0;
     resize: vertical;
     width: 100%;
     @extend %input;
@@ -14,6 +21,10 @@
     &:disabled {
       resize: none;
       @extend %disabled;
+    }
+
+    &:focus {
+      outline: unset;
     }
   }
 }

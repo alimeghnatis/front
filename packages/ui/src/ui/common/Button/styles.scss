@@ -34,6 +34,7 @@ $focus-color: var(--on-color, var(--on-#{$fallback-color-name}));
   line-height: $default-line-height;
   padding: 0;
   text-align: center;
+  text-wrap: nowrap;
   transition: all 0.1s;
 
   &:not(.#{bem.$modifier-disabled}):not(:disabled):hover {

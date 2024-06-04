@@ -20,9 +20,6 @@ $disabled-color: var(--disabled-color);
   }
 }
 
-.disabled {
-  @extend %disabled;
-}
 
 $focus-border: var(--focus-outline);
 
@@ -30,7 +27,3 @@ $focus-border: var(--focus-outline);
   outline: $focus-border;
 }
 
-.focus,
-:focus {
-  @extend %focus;
-}

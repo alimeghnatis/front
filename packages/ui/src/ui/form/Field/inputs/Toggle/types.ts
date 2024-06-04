@@ -14,10 +14,10 @@ export const propTypes = {
   labelNo:PropTypes.string,
 
   /** The span for the label */
-  spanLabel:PropTypes.number,
+  spanToggleLabel:PropTypes.number,
 
   /** The span for the label on desktop */
-  spanLabelDesktop:PropTypes.number,
+  spanToggleLabelDesktop:PropTypes.number,
 
   /** Other button props */
   buttonProps:PropTypes.object,

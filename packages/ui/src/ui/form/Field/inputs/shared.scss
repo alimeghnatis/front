@@ -13,7 +13,7 @@ $input-border-radius: var(--input-border-radius, 0);
   background: $input-default-background;
   border: $input-border;
   border-radius: $input-border-radius;
-  line-height: 1rem;
+  line-height: var(--line-height);
   transition: all 0.1s;
 
   &:not(:focus) {

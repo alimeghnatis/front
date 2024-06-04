@@ -171,7 +171,7 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     {
       condition:boardData?.displayTranslations && result.translation?.length,
       label    :'Translation',
-      payload  :result.translation,
+      payload  :<p>{result.translation}</p>,
       // marked   :true,
     },
   ]

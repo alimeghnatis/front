@@ -24,7 +24,7 @@ function Selector({
   options,
   value,
   setValue,
-  defaultColor = 'metadata',
+  defaultColor = 'neutral',
   selectedColor = 'success',
 }: // ...otherProps
 

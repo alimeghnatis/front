@@ -30,8 +30,8 @@ function Toggle({
   labelYes = 'Yes',
   labelNo = 'No',
   buttonProps,
-  spanLabel = 3,
-  spanLabelDesktop,
+  spanToggleLabel = 3,
+  spanToggleLabelDesktop,
   ...otherProps
 }: TProps): React.ReactElement {
   useInsertionEffect(
@@ -77,8 +77,8 @@ function Toggle({
         <Button.Group
           variant="borderless"
           className={[
-            `span-${spanLabel}`,
-            spanLabelDesktop && `md-span-${spanLabelDesktop}`,
+            `span-${spanToggleLabel}`,
+            spanToggleLabelDesktop && `md-span-${spanToggleLabelDesktop}`,
           ].filter(Boolean).join(' ')}
         >
           <Button

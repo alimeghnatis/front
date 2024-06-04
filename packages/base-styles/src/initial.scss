@@ -121,3 +121,13 @@ a {
 .bold {
   font-weight: 700;
 }
+
+
+.disabled {
+  @extend %disabled;
+}
+
+.focus,
+:focus {
+  @extend %focus;
+}

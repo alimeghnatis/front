@@ -26,7 +26,13 @@
       ),
       "disabled-background-size":0.75em 0.75em,
       "disabled-color":var(--hard-metadata),
-    )
+      "focus-outline":3px dashed var(--selected),
+      "input-border":0,
+      "input-default-background":var(--near),
+      "input-focus-background":var(--soft-near),
+      "input-outline":0 dashed var(--important),
+      "input-color":var(--important),
+    ),
   )
 );
 @use "@aztlan/mixins/src/reset" as reset;

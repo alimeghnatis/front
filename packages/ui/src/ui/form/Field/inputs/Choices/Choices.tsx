@@ -44,7 +44,7 @@ function Option({
       />
       <label
         {...ariaProps.label}
-        tabIndex="0"
+        tabIndex={0}
       >
         {label}
       </label>

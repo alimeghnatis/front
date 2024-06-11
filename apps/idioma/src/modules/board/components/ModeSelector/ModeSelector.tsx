@@ -108,7 +108,10 @@ InferProps<typeof ModeSelector.propTypes>): React.ReactElement {
       className={[
         componentClassName,
         userClassName,
-      ].filter(Boolean).join(' ')}
+        'manual span-4',
+      ]
+        .filter(Boolean)
+        .join(' ')}
       options={options}
       value={value}
       setValue={setValue}

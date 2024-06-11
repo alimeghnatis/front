@@ -2,9 +2,8 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.mode-selector{
-
+.#{bem.$base}.mode-selector {
+  //flex-grow: 1;
 }
-
 
 

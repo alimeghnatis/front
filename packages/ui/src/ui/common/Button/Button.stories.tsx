@@ -5,9 +5,14 @@ import {
   Meta, StoryObj, StoryFn,
 } from '@storybook/react'
 import decorators from 'story-utils/decorators.js'
+import { THEME } from 'style-guide/helpers.js'
 import Component from './Button.js'
 
 // import { decorators } from 'story-utils'
+const allColors = [
+  undefined,
+  ...THEME,
+]
 
 const meta: Meta<typeof Component> = {
   title     :'common/Button',
@@ -26,13 +31,45 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
-export const Base: StoryObj<typeof Component> = { args: { children: 'Sample Button' } }
+const ButtonTemplate: StoryFn<typeof Component> = (args) => THEME.map((color) => (
+  <Component
+    color={color}
+    {...args}
+    key={color}
+  />
+))
 
-export const VariantSimple: StoryObj<typeof Component> = {
-  args:{
-    children:'< Go back',
-    variant :'simple',
-  },
+export const Base: StoryFn<typeof Component> = ButtonTemplate.bind({})
+Base.args = { children: 'Sample Button' }
+
+export const Disabled: StoryFn<typeof Component> = ButtonTemplate.bind({})
+Disabled.args = {
+  children:'Disabled Button',
+  disabled:true,
+}
+
+export const VariantBorderless: StoryFn<typeof Component> = ButtonTemplate.bind({})
+VariantBorderless.args = {
+  children:'Borderless Button',
+  variant :'borderless',
+}
+
+export const VariantBorderlessDisabled: StoryFn<typeof Component> = ButtonTemplate.bind({})
+VariantBorderlessDisabled.args = {
+  ...VariantBorderless.args,
+  disabled:true,
+}
+
+export const VariantSimple: StoryFn<typeof Component> = ButtonTemplate.bind({})
+VariantSimple.args = {
+  children:'< Go back',
+  variant :'simple',
+}
+
+export const VariantSimpleDisabled: StoryFn<typeof Component> = ButtonTemplate.bind({})
+VariantSimpleDisabled.args = {
+  ...VariantSimple.args,
+  disabled:true,
 }
 
 export const VariantNatural: StoryFn<typeof Component> = (args) => (
@@ -52,12 +89,8 @@ export const VariantNatural: StoryFn<typeof Component> = (args) => (
   </span>
 )
 
-export const Disabled: StoryObj<typeof Component> = {
-  args:{
-    children:'Disabled Button',
-    disabled:true,
-  },
-}
+export const VariantNaturalDisabled: StoryFn<typeof Component> = VariantNatural.bind({})
+VariantNaturalDisabled.args = { disabled: true }
 
 export const AsAnchor: StoryObj<typeof Component> = {
   args:{

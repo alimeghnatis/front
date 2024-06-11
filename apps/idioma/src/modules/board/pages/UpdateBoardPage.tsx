@@ -9,7 +9,10 @@ import { BoardUpdateForm } from '../components/index.js'
 function BoardSettings() {
   const { data } = useBoardContext()
   return (
-    <Template title="Board Settings">
+    <Template
+      title="Board Settings"
+      style={{ background: 'var(--hard-far)' }}
+    >
       <section
         className="no-scrollbar"
         style={{ overflow: 'auto' }}

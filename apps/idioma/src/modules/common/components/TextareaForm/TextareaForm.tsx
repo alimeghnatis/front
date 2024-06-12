@@ -119,12 +119,14 @@ InferProps<typeof TextareaForm.propTypes>): React.ReactElement {
           */}
       <Button
         disabled={isInFlight}
+        // loading={isInFlight}
+        loading={isInFlight}
         type="submit"
         className="span-2 md-span-3"
-        color={isInFlight ? 'loading' : 'success'}
+        color={isInFlight ? 'disabled' : 'success'}
         variant="borderless"
       >
-        {isInFlight ? 'loading' : buttonLabel}
+        {isInFlight ? 'Loading' : buttonLabel}
       </Button>
     </form>
   )

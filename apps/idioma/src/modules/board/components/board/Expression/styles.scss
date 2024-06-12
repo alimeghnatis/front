@@ -2,6 +2,7 @@
 
 @use "@aztlan/bem";
 @use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/modifiers";
 
 $span-language: 1;
 $span-tools: 3;
@@ -32,6 +33,10 @@ $default-border-width: 1px;
   &,
   * {
     transition: background 0.1s;
+  }
+
+  &.#{bem.$modifier-loading} {
+    @extend %shine;
   }
 
   .general {
@@ -133,7 +138,7 @@ $default-border-width: 1px;
   }
 
   &:hover {
-    &:not(.important) {
+    &:not(.important):not(.#{bem.$modifier-new}) {
       --color: var(--selected);
       --hard-color: var(--hard-selected);
       --soft-color: var(--soft-selected);

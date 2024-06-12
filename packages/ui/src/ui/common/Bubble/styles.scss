@@ -1,0 +1,14 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.bubble {
+  align-self: center;
+
+  background: var(--color);
+  color: var(--on-color);
+  //font-weight: 700;
+  line-height: 1em;
+}
+
+

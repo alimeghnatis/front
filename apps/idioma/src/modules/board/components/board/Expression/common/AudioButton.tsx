@@ -64,7 +64,7 @@ function AudioButton(
 
   const language = result.iso6391 || result.iso6392 || result.iso6393
 
-  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+  // const isNewAndUnprocessed = result.isNew && !result.isProcessed
 
   return (
     <>
@@ -74,7 +74,7 @@ function AudioButton(
         // variant="borderless"
         className={[
           result.isNew && styleNames.modifierNew,
-          !result.isProcessed && styleNames.modifierLoading,
+          //! result.isProcessed && styleNames.modifierLoading,
         ]
           .filter(Boolean)
           .join(' ')}

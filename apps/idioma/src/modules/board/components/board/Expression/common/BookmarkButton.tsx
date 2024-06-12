@@ -79,19 +79,20 @@ function BookmarkButton(
     ],
   )
 
-  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+  // const isNewAndUnprocessed = result.isNew && !result.isProcessed
 
   //
   //
   return (
     <Button
-      disabled={isBookmarkInFlight || result.isNew}
+      // disabled={isBookmarkInFlight || result.isNew}
+      disabled={result.isNew}
       onClick={handleBookmark}
       key={result.id}
       color={result.isBookmarked ? 'important' : undefined}
       className={[
         result.isNew && styleNames.modifierNew,
-        !result.isProcessed && styleNames.modifierLoading,
+        //! result.isProcessed && styleNames.modifierLoading,
       ]
         .filter(Boolean)
         .join(' ')}

@@ -167,10 +167,12 @@ InferProps<typeof Expression.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
-        result.isNew ? styleNames.modifierLoading : 'far',
+        // result.isNew ? styleNames.modifierLoading : 'far',
         //! result.isProcessed && styleNames.modifierLoading,
         result.isBookmarked && 'important',
         result.id === currentExpressionId && styleNames.modifierSelected,
+        !result.isProcessed
+          && `${styleNames.modifierLoading} ${styleNames.modifierNew}`,
         // isRecentAndUnprocessed && styleNames.modifierLoading,
         // 'grid',
       ]

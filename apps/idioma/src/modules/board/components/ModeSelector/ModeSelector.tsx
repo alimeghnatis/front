@@ -6,7 +6,9 @@ import {
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import { Selector } from '@aztlan/ui'
+import {
+  Selector, Bubble,
+} from '@aztlan/ui'
 import { useBoardContext } from 'modules/common/components'
 import {
   graphql, useFragment,
@@ -81,9 +83,20 @@ InferProps<typeof ModeSelector.propTypes>): React.ReactElement {
               'BOARD_HOME', { board: boardId || userBoardId },
             )
             : 'board',
-        label:`Board ${
-          result?.newExpressionsCount ? `(${result.newExpressionsCount})` : ''
-        }`,
+        label:(
+          <>
+            Board
+            {' '}
+            {result?.newExpressionsCount ? (
+              <>
+                {' '}
+                <Bubble color="new">{result.newExpressionsCount}</Bubble>
+              </>
+            ) : (
+              ''
+            )}
+          </>
+        ),
       },
     ],
     [

@@ -56,6 +56,10 @@ $focus-color: var(--on-color, var(--on-#{$fallback-color-name}));
     @extend %disabled;
   }
 
+  &.#{bem.$modifier-loading} {
+    @extend %shine;
+  }
+
 
   &.#{bem.$modifier-natural} {
     background: inherit;

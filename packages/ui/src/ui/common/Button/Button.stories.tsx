@@ -48,6 +48,26 @@ Disabled.args = {
   disabled:true,
 }
 
+export const Loading: StoryFn<typeof Component> = ButtonTemplate.bind({})
+Loading.args = {
+  children:'Loading',
+  loading :true,
+}
+/*
+export function Test() {
+  return (
+    <div
+      className="shine background neutral"
+      style={{
+        width :'10em',
+        height:'3em',
+      }}
+    >
+      Shine
+    </div>
+  )
+} */
+
 export const VariantBorderless: StoryFn<typeof Component> = ButtonTemplate.bind({})
 VariantBorderless.args = {
   children:'Borderless Button',

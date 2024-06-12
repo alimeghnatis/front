@@ -34,3 +34,26 @@ $focus-border-offset: var(--focus-outline-offset);
   outline-offset: $focus-border-offset;
 }
 
+@keyframes shining {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+%shine {
+  animation: shining 2.5s infinite linear !important;
+  background-image: linear-gradient(
+    -45deg,
+    var(--color) 0%,
+    var(--color) 70%,
+    var(--soft-color) 72%,
+    var(--color) 80%,
+    var(--color) 100%
+  ) !important;
+  background-position: left;
+  background-size: 1000% 100% !important;
+}

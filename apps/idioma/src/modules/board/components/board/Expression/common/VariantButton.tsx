@@ -30,7 +30,7 @@ function VariantButton(
     FRAGMENT, data,
   )
 
-  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+  // const isNewAndUnprocessed = result.isNew && !result.isProcessed
 
   const { variantLink } = useExpressionLinks(result.id)
 
@@ -39,7 +39,7 @@ function VariantButton(
       disabled={result.isNew}
       className={[
         result.isNew && styleNames.modifierNew,
-        !result.isProcessed && styleNames.modifierLoading,
+        //! result.isProcessed && styleNames.modifierLoading,
       ]
         .filter(Boolean)
         .join(' ')}

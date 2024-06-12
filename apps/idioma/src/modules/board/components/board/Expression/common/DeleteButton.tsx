@@ -91,7 +91,7 @@ function DeleteButton({
     ],
   )
 
-  const isNewAndUnprocessed = result.isNew && !result.isProcessed
+  // const isNewAndUnprocessed = result.isNew && !result.isProcessed
 
   //
   //
@@ -100,7 +100,7 @@ function DeleteButton({
       disabled={isDeleteInFlight || result.isNew}
       className={[
         result.isNew && styleNames.modifierNew,
-        !result.isProcessed && styleNames.modifierLoading,
+        //! result.isProcessed && styleNames.modifierLoading,
       ]
         .filter(Boolean)
         .join(' ')}

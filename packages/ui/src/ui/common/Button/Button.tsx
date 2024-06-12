@@ -31,6 +31,7 @@ InferProps<typeof Button.propTypes> & { [key: string]: any }
     color,
     variant,
     disabled = false,
+    loading = false,
     ...otherProps
   },
   ref,
@@ -54,6 +55,7 @@ InferProps<typeof Button.propTypes> & { [key: string]: any }
         userClassName,
         color,
         variant && styleNames[`modifier${capitalizedVariant}`],
+        loading && styleNames.modifierLoading,
         !isHTMLButton && disabled && styleNames.modifierDisabled,
         // disabled && styleNames.modifierDisabled,
       ]
@@ -108,6 +110,9 @@ Button.propTypes = {
 
   /** Whether the button is disabled */
   disabled:PropTypes.bool,
+
+  /** Whether the button is loading */
+  loading:PropTypes.bool,
 }
 
 export default Button

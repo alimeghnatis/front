@@ -1,8 +1,9 @@
 /* @aztlan/generator-front 3.9.0 */
-// import * as React from 'react'
+import * as React from 'react'
 
 import {
   Meta, StoryObj,
+  StoryFn
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import Component from './Bubble.js'

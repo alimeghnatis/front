@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/idioma",
-  "version": "3.14.3",
+  "version": "3.14.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@aztlan/assets": "^3.4.6",
-    "@aztlan/base-styles": "^3.14.3",
+    "@aztlan/base-styles": "^3.14.4",
     "@aztlan/bem": "^0.10.0",
     "@aztlan/morphosa": "^3.13.3",
     "@aztlan/react-hooks": "^3.14.3",
@@ -58,7 +58,7 @@
     "@aztlan/react-ssr": "^3.6.3",
     "@aztlan/storybook-config": "^3.14.0",
     "@aztlan/storybook-helpers": "^3.6.3",
-    "@aztlan/ui": "^3.14.3",
+    "@aztlan/ui": "^3.14.4",
     "@fwrlines/assets-k": "^1.0.0",
     "@loadable/component": "^5.16.4",
     "@loadable/server": "^5.16.5",

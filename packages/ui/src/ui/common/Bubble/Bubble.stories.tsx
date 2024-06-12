@@ -2,8 +2,7 @@
 import * as React from 'react'
 
 import {
-  Meta, StoryObj,
-  StoryFn
+  Meta, StoryObj, StoryFn,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
 import Component from './Bubble.js'

@@ -6,6 +6,7 @@
 
 .#{bem.$base}.textarea {
   display: flex;
+  overflow: visible; // For the outline in some situations. Not optimal
 
   textarea {
     font-family: inherit;

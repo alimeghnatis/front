@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1d19fe000aab359a6434ded257a4b36e>>
+ * @generated SignedSource<<4e04535e3dfbdb082bd6f91982e7709a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -233,6 +233,13 @@ return {
                                 "alias": null,
                                 "args": null,
                                 "kind": "ScalarField",
+                                "name": "role",
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
                                 "name": "runId",
                                 "storageKey": null
                               },
@@ -241,13 +248,6 @@ return {
                                 "args": null,
                                 "kind": "ScalarField",
                                 "name": "threadId",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "role",
                                 "storageKey": null
                               },
                               {
@@ -382,12 +382,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ede27e418c550e2cad58830ce4bc1857",
+    "cacheID": "cfba0b42f4f0048e6e37d72ea5d10500",
     "id": null,
     "metadata": {},
     "name": "ResetChatButtonMutation",
     "operationKind": "mutation",
-    "text": "mutation ResetChatButtonMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...ChatFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        createdAt\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "mutation ResetChatButtonMutation(\n  $input: UpdateBoardMutationInput!\n) {\n  updateBoard(input: $input) {\n    instance {\n      ...ChatFragment\n      id\n    }\n    errors {\n      field\n      messages\n    }\n  }\n}\n\nfragment ActionsBarFragment on ThreadNode {\n  id\n  messages(last: 4) {\n    edges {\n      cursor\n    }\n  }\n}\n\nfragment ChatFragment on BoardNode {\n  id\n  openaiThreadId\n  thread {\n    ...ThreadFragment\n    ...ActionsBarFragment\n    id\n  }\n  ...CreateFormFragment\n}\n\nfragment CreateFormFragment on BoardNode {\n  openaiThreadId\n}\n\nfragment MessageFragment on LanguageMessageType {\n  id\n  runId\n  threadId\n  role\n  createdAt\n  content {\n    __typename\n    ... on UserLanguageMessageType {\n      content\n    }\n    ... on AssistantLanguageMessageType {\n      content\n      suggestions\n      ...SuggestionGroupFragment\n    }\n  }\n}\n\nfragment SuggestionGroupFragment on AssistantLanguageMessageType {\n  suggestions\n  iso6391\n  iso6392\n  iso6393\n}\n\nfragment ThreadFragment on ThreadNode {\n  id\n  createdAt\n  messages(last: 4) {\n    edges {\n      node {\n        id\n        createdAt\n        role\n        ...MessageFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

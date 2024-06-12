@@ -3,7 +3,8 @@ import {
 } from 'react'
 
 interface ThemeOptions {
-  storageKey?:string;
+  storageKey?     :string;
+  applyToDocument?:boolean;
   defaultMap?: {
     dark :string;
     light:string;
@@ -19,6 +20,7 @@ export default function useTheme(
       dark :'dark-theme',
       light:'light-theme',
     },
+    applyToDocument = true,
   } = options
   const isClient = typeof window === 'object'
   // Helper function to get system theme
@@ -67,6 +69,22 @@ export default function useTheme(
     }, [
       theme,
       storageKey,
+    ],
+  )
+
+  // Effect for applying theme to document
+  useEffect(
+    () => {
+      if (isClient && applyToDocument) {
+        const { documentElement } = document
+        documentElement.classList.add(theme)
+        return () => {
+          documentElement.classList.remove(theme)
+        }
+      }
+    }, [
+      theme,
+      applyToDocument,
     ],
   )
 

@@ -89,8 +89,10 @@ export const VariantNatural: StoryFn<typeof Component> = (args) => (
   </span>
 )
 
+/* Unsure if this combination should exist
 export const VariantNaturalDisabled: StoryFn<typeof Component> = VariantNatural.bind({})
 VariantNaturalDisabled.args = { disabled: true }
+*/
 
 export const AsAnchor: StoryObj<typeof Component> = {
   args:{

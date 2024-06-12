@@ -10,7 +10,7 @@ import relayEnvironment from './environment.js'
 import Application from './Application.js'
 
 // import "./main.scss";
-import '@aztlan/base-styles'
+// import '@aztlan/base-styles'
 import './styles/local.scss'
 
 const container = document.getElementById('main')

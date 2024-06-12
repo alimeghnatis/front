@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b1cf90eba15ddc07add932448fba7ce0>>
+ * @generated SignedSource<<be8d8f4329826086f1581c2da37fc17d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type DetailsFragment$data = {
   readonly generalExplanation: string | null | undefined;
   readonly grammarExplanation: string | null | undefined;
   readonly id: string;
+  readonly isProcessed: boolean;
   readonly iso6391: string | null | undefined;
   readonly iso6392: string | null | undefined;
   readonly iso6393: string;
@@ -112,6 +113,13 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "isProcessed",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "audioUrl",
       "storageKey": null
     },
@@ -144,6 +152,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "0c1e8fb9defb2c2afb478442cb0dbbea";
+(node as any).hash = "f189bd4574beb42f7b3902de691b06f4";
 
 export default node;

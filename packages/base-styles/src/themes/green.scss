@@ -45,10 +45,15 @@ $theme:(
   "error":[#BB0A21 #9b081C #e90c2a $mono-0],
   "success":[#6cc675 #4fba5a #89d191 $mono-0],
   "warning": [#db8743 #ce7727 #e29d65 $mono-10],
+  "disabled": [$green-15 $green-3 $green-0 $mono-7],
   "neutral": [$mono-5 $mono-6 $mono-4 $mono-0],
   "loading": [#11add0 #0f9dbd #12bce2 $mono-0],
   "new": [#db8743 #ce7727 #e29d65 $mono-10],
 
   "important": [$green-6 $green-7 $green-5 $mono-0],
   "selected": [$green-4 $green-5 $green-3 $mono-10],
+);
+
+$extras:(
+  "focus-outline":3px dashed var(--selected),
 );

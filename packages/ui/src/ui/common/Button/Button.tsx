@@ -55,6 +55,7 @@ InferProps<typeof Button.propTypes> & { [key: string]: any }
         color,
         variant && styleNames[`modifier${capitalizedVariant}`],
         !isHTMLButton && disabled && styleNames.modifierDisabled,
+        // disabled && styleNames.modifierDisabled,
       ]
         .filter((e) => e)
         .join(' ')}

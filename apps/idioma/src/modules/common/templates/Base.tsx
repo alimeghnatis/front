@@ -11,6 +11,7 @@ import {
   useViewer,
   NotificationGroup,
   useTriptychContext,
+  Button,
 } from '@aztlan/ui'
 import {
   Header,
@@ -74,10 +75,13 @@ function Wrapper({
         />
         <Header
           right={(
-            <div className="container natural-flex">
+            <Button.Group
+              className="container natural-flex"
+              style={{ width: '100%' }}
+            >
               <HelpButton />
               {right}
-            </div>
+            </Button.Group>
           )}
         >
           {title || (

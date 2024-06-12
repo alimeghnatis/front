@@ -28,6 +28,11 @@
   .analysis {
     margin-top: var(--gap);
   }
+
+  p.in-progress {
+    margin-bottom: var(--gap);
+    margin-top: var(--gap);
+  }
   @media screen and (min-width: 801px) {
     .content-map {
       gap: 0 var(--gap);

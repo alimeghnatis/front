@@ -28,12 +28,14 @@ import routes, { prefetchRoutes } from './modules/routes.js'
 import * as paths from './modules/paths.js'
 import Layout from './modules/Layout.js'
 
+/*
 function ThemeWrapper({ children }) {
   const { theme } = useApplicationContext()
   return <main className={`${theme || ''} background far`}>{children}</main>
 }
 
 ThemeWrapper.propTypes = { children: PropTypes.any }
+ */
 
 function Application({
   locale,
@@ -79,15 +81,13 @@ function Application({
                     paths.board.absolute.REDIRECT_TO_DEFAULT_BOARD
                   }
                 >
-                  <ThemeWrapper>
-                    <AuthenticationProvider
-                      MUTATION_LOGOUT={MUTATION_LOGOUT}
-                      FRAGMENT_VIEWER={FRAGMENT_VIEWER}
-                      loginPath="/"
-                    >
-                      <Layout />
-                    </AuthenticationProvider>
-                  </ThemeWrapper>
+                  <AuthenticationProvider
+                    MUTATION_LOGOUT={MUTATION_LOGOUT}
+                    FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+                    loginPath="/"
+                  >
+                    <Layout />
+                  </AuthenticationProvider>
                 </ApplicationProvider>
               </React.Suspense>
             </NotificationProvider>

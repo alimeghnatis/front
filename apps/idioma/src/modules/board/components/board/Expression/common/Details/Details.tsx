@@ -34,6 +34,7 @@ const FRAGMENT = graphql`
     grammarExplanation
     generalExplanation
     wordsExplanation
+    isProcessed
     audioUrl
     created
     changes
@@ -220,7 +221,6 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
     <MobilePopup
       id={id}
       className={[
-        baseClassName,
         componentClassName,
         userClassName,
         // 'grid container',
@@ -235,38 +235,46 @@ InferProps<typeof Details.propTypes>): React.ReactElement {
       // {...otherProps}
     >
       <div className="grid container">
-        <ContentMap
-          contentMap={contentMap0}
-          spanLabel={spanLabel}
-          spanLabelDesktop={12}
-          spanContent={spanContent}
-          spanContentDesktop={12}
-          className="analysis md-start-2 span-8 md-span-12"
-        />
-        <ContentMap
-          contentMap={contentMap1}
-          spanLabel={spanLabel}
-          spanLabelDesktop={6}
-          spanContent={spanContent}
-          spanContentDesktop={6}
-          className="explanations md-start-2 span-8 md-span-6"
-        />
-        <ContentMap
-          contentMap={contentMap2}
-          spanLabel={spanLabel}
-          spanLabelDesktop={7}
-          spanContent={spanContent}
-          spanContentDesktop={7}
-          className="details span-8 md-span-7"
-        />
-        <RatingForm
-          data={result}
-          className="md-start-2 span-8 md-span-12"
-          spanLabel={spanLabel}
-          spanLabelDesktop={10}
-          spanContent={spanContent}
-          spanContentDesktop={10}
-        />
+        {result.isProcessed ? (
+          <>
+            <ContentMap
+              contentMap={contentMap0}
+              spanLabel={spanLabel}
+              spanLabelDesktop={12}
+              spanContent={spanContent}
+              spanContentDesktop={12}
+              className="analysis md-start-2 span-8 md-span-12"
+            />
+            <ContentMap
+              contentMap={contentMap1}
+              spanLabel={spanLabel}
+              spanLabelDesktop={6}
+              spanContent={spanContent}
+              spanContentDesktop={6}
+              className="explanations md-start-2 span-8 md-span-6"
+            />
+            <ContentMap
+              contentMap={contentMap2}
+              spanLabel={spanLabel}
+              spanLabelDesktop={7}
+              spanContent={spanContent}
+              spanContentDesktop={7}
+              className="details span-8 md-span-7"
+            />
+            <RatingForm
+              data={result}
+              className="md-start-2 span-8 md-span-12"
+              spanLabel={spanLabel}
+              spanLabelDesktop={10}
+              spanContent={spanContent}
+              spanContentDesktop={10}
+            />
+          </>
+        ) : (
+          <p className="span-7 md-span-10 md-start-2 in-progress">
+            This expression is being processed. It should take a few seconds.
+          </p>
+        )}
       </div>
     </MobilePopup>
   )

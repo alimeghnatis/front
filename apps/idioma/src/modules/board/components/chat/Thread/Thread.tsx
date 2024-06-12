@@ -36,6 +36,7 @@ const FRAGMENT = graphql`
         node {
           id
           createdAt
+          role
           ...MessageFragment
         }
       }
@@ -124,7 +125,7 @@ InferProps<typeof Thread.propTypes>): React.ReactElement {
         ) => (
           <div
             className="grid container message-wrapper"
-            key={edge.node.createdAt}
+            key={`${edge.node.role}${edge.node.createdAt}`}
           >
             {index < messageEdges.length - 1
             && compareDays(

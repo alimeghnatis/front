@@ -82,7 +82,7 @@ const updater = (store) => {
     rootViewer,
     'useBoardMembershipsFragment_boardMemberships',
   )
-  const edgesCount = connection.getValue('count')
+  const edgesCount = connection.getValue('count') as number
   connection.setValue(
     edgesCount + 1, 'count',
   )
@@ -209,6 +209,11 @@ InferProps<typeof BoardCreateForm.propTypes>): React.ReactElement {
         'ita',
         'deu',
       ],
+      displayTranslations:true,
+      displayGeneral     :true,
+      displayGrammar     :true,
+      displayWords       :true,
+      explanationsLength :'MEDIUM',
     }),
     [],
   )

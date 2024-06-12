@@ -8,27 +8,26 @@
     "green-theme":themes.$green-theme,
   ),
   $extras:(
-    "light-theme":(
-      "font-size":18px,
-      "light-height":1em,
-      "margin":1em,
-      "disabled-background":repeating-linear-gradient(
-        - 45deg,
-        var(--soft-metadata) 0,
-        var(--soft-metadata) 1px,
-        transparent 0,
-        transparent 50%
-      ),
-      "disabled-background-size":0.75em 0.75em,
-      "disabled-color":var(--hard-metadata),
-      "focus-outline":3px dashed var(--selected),
-      "input-border":0,
-      "input-default-background":var(--near),
-      "input-focus-background":var(--soft-near),
-      "input-outline":0 dashed var(--important),
-      "input-color":var(--important),
+    "light-theme":map-merge(
+      themes.$light-extras,
+      (
+        "font-size":18px,
+        "light-height":1em,
+        "margin":1em,
+      )
     ),
-  )
+    //"green-theme":themes.$green-extras,
+    //"dark-theme":themes.$dark-extras,
+    //"blue-theme":themes.$blue-extras,
+  ),
+  /*
+  $modifiers:(
+    "light-theme":(
+      "disabled":(
+        "background":red,
+      )
+    )
+  )*/
 );
 @use "@aztlan/mixins/src/reset" as reset;
 @use "@aztlan/mixins/src/font" as font;

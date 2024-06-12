@@ -38,10 +38,15 @@ $theme:(
   "error":[#bd210F #971a0c #e22712 $mono-0],
   "success":[$blue-6 $blue-7 $blue-5 $mono-0],
   "warning": [#facb0f #f0c105 #fbd437 $mono-10],
+  "disabled": [$blue-1 $blue-3 $blue-0 $mono-9],
   "neutral": [$mono-6 $mono-7 $mono-5 $mono-0],
   "loading": [#0B7189 #095e71 #11add0 $mono-0],
   "new": [#ffbb00 #ffcc00 #ffdd00 $mono-0],
 
   "selected": [$blue-5 $blue-6 $blue-4 $mono-0],
   "important": [$blue-6 $blue-7 $blue-5 $mono-0],
+);
+
+$extras:(
+  "focus-outline":3px dashed var(--selected),
 );

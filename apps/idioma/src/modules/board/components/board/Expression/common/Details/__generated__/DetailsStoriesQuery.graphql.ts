@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<521686e0d1cb5c04b92200a675c81cba>>
+ * @generated SignedSource<<f4eb51480e07e20e322bb7b5c3c12de1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -146,6 +146,13 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "wordsExplanation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "isProcessed",
             "storageKey": null
           },
           {
@@ -348,12 +355,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b773eb5d2c40fcd51deda4f6f16a99fe",
+    "cacheID": "60951acd3f49f1bee152058d424dc9ca",
     "id": null,
     "metadata": {},
     "name": "DetailsStoriesQuery",
     "operationKind": "query",
-    "text": "query DetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...DetailsFragment\n    id\n  }\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  textDirection\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
+    "text": "query DetailsStoriesQuery {\n  expression(id: \"1\") {\n    ...DetailsFragment\n    id\n  }\n}\n\nfragment DetailsFragment on ExpressionNode {\n  id\n  iso6391\n  iso6392\n  iso6393\n  content\n  translation\n  correctedContent\n  grammarExplanation\n  generalExplanation\n  wordsExplanation\n  isProcessed\n  audioUrl\n  created\n  changes\n  ...RatingFormFragment\n  ...MorphosaFragment\n}\n\nfragment MorphosaFragment on ExpressionNode {\n  id\n  textDirection\n  analysis {\n    payloadV1 {\n      word\n      lemma\n      pos\n      morphology {\n        tense\n        mood\n        voice\n        aspect\n        person\n        number\n        gender\n        case\n        politeness\n        clusivity\n        register\n      }\n      syntax {\n        function\n        head\n      }\n      ...WordAnalysisFragment\n    }\n    created\n    id\n  }\n}\n\nfragment RatingFormFragment on ExpressionNode {\n  id\n  rating\n  ratingComment\n}\n\nfragment WordAnalysisFragment on Word {\n  word\n  lemma\n  pos\n  morphology {\n    tense\n    mood\n    voice\n    aspect\n    person\n    number\n    gender\n    case\n    politeness\n    clusivity\n    register\n  }\n  syntax {\n    function\n    head\n  }\n}\n"
   }
 };
 })();

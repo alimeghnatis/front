@@ -24,6 +24,7 @@ $theme: (
   "error": [#ff5c53 #ff7b73 #b54d47 $mono-0],
   "success": [#40dd58 #8af59a #3ca14b $mono-0],
   "warning": [#f8f32b #edea07 #fbf874 $mono-0],
+  "disabled": [$mono-8 $mono-7 $mono-9 $mono-5],
   "neutral": [$mono-6 $mono-7 $mono-5 $mono-0],
   "loading": [#0B7189 #095e71 #11add0 $mono-10],
   "new": [#ffbb00 #ffcc00 #ffdd00 $mono-10],
@@ -32,3 +33,6 @@ $theme: (
   "important": [#1565c0 #0d47a1 #42a5f5 $mono-0],
 );
 
+$extras:(
+  "focus-outline":3px dashed var(--selected),
+);

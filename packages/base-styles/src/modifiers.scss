@@ -1,9 +1,10 @@
-$disabled-background: var(--disabled-background);
+$disabled-background: var(--disabled-background, var(--disabled));
 //$disabled-background: var(--soft-color);
 $disabled-background-size: var(--disabled-background-size);
-$disabled-color: var(--disabled-color);
+$disabled-color: var(--on-disabled);
 
 %disabled-color {
+  border-color: $disabled-color;
   color: $disabled-color;
 }
 
@@ -23,8 +24,13 @@ $disabled-color: var(--disabled-color);
 
 
 $focus-border: var(--focus-outline);
+$focus-border-offset: var(--focus-outline-offset);
 
 %focus {
   outline: $focus-border;
+}
+
+%inner-focus {
+  outline-offset: $focus-border-offset;
 }
 

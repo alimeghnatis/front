@@ -15,6 +15,7 @@
 
   > * > input {
     font-family: inherit;
+    padding: 0;
     @extend %input;
 
     &:disabled {

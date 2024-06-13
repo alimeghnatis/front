@@ -1,7 +1,11 @@
 /* @aztlan/generator-front 3.4.0 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useState, ChangeEvent, useRef,
+  useInsertionEffect,
+  useState,
+  ChangeEvent,
+  useRef,
+  useEffect,
 } from 'react'
 
 import * as PropTypes from 'prop-types'
@@ -28,10 +32,12 @@ function Textarea({
 }: // ...otherProps
 
 InferProps<typeof Textarea.propTypes>): React.ReactElement {
-  const [
-    rows,
-    setRows,
-  ] = useState(1)
+  useInsertionEffect(
+    () => {
+    // @ts-ignore
+      import('./styles.scss')
+    }, [],
+  )
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -43,35 +49,28 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
     if (typeof window !== 'undefined') {
       const computedStyle = window.getComputedStyle(textarea)
       textareaLineHeight = parseFloat(computedStyle.lineHeight)
-      console.log(
-        'textareaLineHeight', textareaLineHeight,
-      )
     }
 
-    const previousRows = event.target.rows
-    event.target.rows = 1 // Reset number of rows in textarea
+    // Reset number of rows in textarea to calculate the new height
+    textarea.rows = 1
+    const currentRows = Math.ceil(textarea.scrollHeight / textareaLineHeight)
 
-    const currentRows = Math.floor(event.currentTarget.scrollHeight / textareaLineHeight)
+    console.log(
+      'currentRows:',
+      currentRows,
+      'scrollHeight:',
+      textarea.scrollHeight,
+      'clientHeight:',
+      textarea.clientHeight,
+      'lineHeight:',
+      textareaLineHeight,
+    )
 
-    if (currentRows === previousRows) {
-      event.target.rows = currentRows
-    }
-
-    if (event.currentTarget.value === '') {
-      setRows(1)
-    } else {
-      setRows(currentRows)
-    }
+    // Update the rows directly on the textarea element
+    textarea.rows = currentRows > 1 ? currentRows : 1
 
     setValue(event.target.value)
   }
-
-  useInsertionEffect(
-    () => {
-    // @ts-ignore
-      import('./styles.scss')
-    }, [],
-  )
 
   return (
     <textarea
@@ -84,7 +83,7 @@ InferProps<typeof Textarea.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       // style={style}
-      rows={rows}
+      rows={1}
       value={value}
       placeholder={placeholder}
       onChange={handleChange}

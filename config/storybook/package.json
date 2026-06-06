@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/storybook-config",
-  "version": "1.0.11",
+  "version": "3.14.0",
   "description": "",
   "main": "index.js",
   "author": "",
@@ -9,5 +9,17 @@
     "@aztlan/eslint-config": "^0.2.0",
     "resolve-typescript-plugin": "^2.0.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0"
+  },
+  "dependencies": {
+    "@aztlan/storybook-addon-relay": "^3.14.0",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-storyshots": "^7.6.17",
+    "@storybook/addon-themes": "^7.6.17",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-webpack5": "^7.6.17",
+    "@storybook/testing-library": "^0.2.2"
   }
 }

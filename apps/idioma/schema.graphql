@@ -1,0 +1,1609 @@
+type Query {
+  plan(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): PlanNode
+  plans(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    name: String
+    name_Icontains: String
+  ): PlanNodeConnection
+  planOverride(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): PlanOverrideNode
+  planOverrides(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    plan: ID
+  ): PlanOverrideNodeConnection
+  usageRecord(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): UsageRecordNode
+  usageRecords(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    user: ID
+  ): UsageRecordNodeConnection
+  usageState(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): UsageStateNode
+  usageStates(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    user: ID
+  ): UsageStateNodeConnection
+  iso639pt2(
+    """Optional list of ISO 639-2T codes to filter the results."""
+    codes_In: [String]
+  ): [LanguageType]
+  board(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): BoardNode
+  boards(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    name: String
+    name_Icontains: String
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
+  ): BoardNodeConnection
+  boardMembership(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): BoardMembershipNode
+  boardMemberships(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    board: ID
+    user: ID
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
+  ): BoardMembershipNodeConnection
+  group(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): GroupNode
+  groups(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
+  ): GroupNodeConnection
+  expression(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): ExpressionNode
+  expressions(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+    board: ID
+    created_Gte: DateTime
+    created_Gt: DateTime
+    created_Lte: DateTime
+    created_Lt: DateTime
+    rating: Int
+    rating_Gte: Int
+    rating_Lte: Int
+  ): ExpressionNodeConnection
+  thread(
+    """The ID of the object"""
+    id: ID!
+  ): ThreadNode
+
+  """Search for fruits by label, case-insensitive."""
+  searchFruits(search: String!): [FruitType]
+
+  """Retrieve a list of fruits with optional disabled state."""
+  fruits: [FruitType]
+
+  """Retrieve a fruit by its value."""
+  fruit(value: String!): FruitType
+
+  """Check if the username is available"""
+  isUsernameAvailable(value: String!): Boolean
+
+  """Authenticated greeting"""
+  authHello: String
+
+  """The current time"""
+  time: DateTime
+
+  """Retrieve OAuth2 authentication URLs for various providers"""
+  oAuth2Links(
+    """Resource identifier for the OAuth2 provider"""
+    resource: String!
+
+    """Additional state payload for OAuth2 authentication"""
+    additionalStatePayload: String
+  ): OAuth2LinksProvider
+  viewer: UserNode
+  node(
+    """The ID of the object"""
+    id: ID!
+  ): Node
+}
+
+type PlanNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """
+  The name of the plan, for instance "Basic Plan"
+  """
+  name: String!
+
+  """The maximum number of expressions allowed to be created in the plan."""
+  maxExpressions: Int
+
+  """
+  The maximum number of characters allowed in the plan. This is used to apply limits to voice synthesis.
+  """
+  maxCharacters: Int
+
+  """
+  The maximum number of tokens allowed in the plan. This is used to apply limits to text generation and explanation.
+  """
+  maxTokens: Int
+
+  """The maximum number of boards allowed in the plan."""
+  maxBoards: Int
+
+  """The interval at which the usage limits are reset."""
+  resetInterval: BillingPlanResetIntervalChoices!
+
+  """
+  The version of the plan. It is critical to create a new version of the plan when changing the limits instead of updating the plan directly.
+  """
+  version: Int!
+
+  """
+  The current override for the plan. This is used to apply temporary changes to the plan limits, for instance a Christmas promotion.
+  """
+  currentOverride: PlanOverrideNode
+
+  """
+  The reason for the termination of the plan. This is used to track the reason a plan was terminated, for instance "User requested cancellation".
+  """
+  terminationReason: String
+
+  """The plan the user is subscribed to."""
+  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+
+  """The plan to override the limits of."""
+  overrides(offset: Int, before: String, after: String, first: Int, last: Int, plan: ID): PlanOverrideNodeConnection!
+
+  """
+  The plan the current usage is for. This should never be set manually, but through signals on User.plan changes.
+  """
+  usagesStates(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageStateNodeConnection!
+}
+
+interface SearchNode {
+  """The ID of the object"""
+  id: ID!
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+"""An enumeration."""
+enum BillingPlanResetIntervalChoices {
+  """Monthly"""
+  MONTHLY
+}
+
+type PlanOverrideNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The plan to override the limits of."""
+  plan: PlanNode!
+
+  """The start date of the override."""
+  startDate: Date!
+
+  """The end date of the override. Not compulsary but strongly recommended."""
+  endDate: Date
+
+  """
+  The maximum number of expressions allowed to be created in the plan, overrides the plan limit.
+  """
+  maxExpressions: Int
+
+  """
+  The maximum number of characters allowed in the plan, overrides the plan limit.
+  """
+  maxCharacters: Int
+
+  """
+  The maximum number of tokens allowed in the plan, overrides the plan limit.
+  """
+  maxTokens: Int
+
+  """
+  The maximum number of boards allowed in the plan, overrides the plan limit.
+  """
+  maxBoards: Int
+  currentPlan: PlanNode
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+type UserNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserNodeEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A Relay edge containing a `UserNode` and its cursor."""
+type UserNodeEdge {
+  """The item at the end of the edge"""
+  node: UserNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UserNode implements Node {
+  lastLogin: DateTime
+
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean!
+
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): UserGroupNodeConnection!
+
+  """Specific permissions for this user."""
+  userPermissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
+
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean!
+
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean!
+  dateJoined: DateTime!
+
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The plan the user is subscribed to."""
+  plan: PlanNode
+
+  """The current usage of the user."""
+  currentUsageState: UsageStateNode
+  profilePicture: String
+  preferences: UserPreferencesNode
+  boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
+  boards(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardNodeConnection!
+  defaultBoard: BoardNode
+  expressionCreated(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+
+  """The user the current usage is for."""
+  allUsages(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageStateNodeConnection!
+
+  """The user the usage record is for."""
+  usageRecords(offset: Int, before: String, after: String, first: Int, last: Int, user: ID): UsageRecordNodeConnection!
+}
+
+type UserGroupNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserGroupNodeEdge]!
+}
+
+"""A Relay edge containing a `UserGroupNode` and its cursor."""
+type UserGroupNodeEdge {
+  """The item at the end of the edge"""
+  node: UserGroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UserGroupNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  permissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
+
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+}
+
+type PermissionNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PermissionNodeEdge]!
+}
+
+"""A Relay edge containing a `PermissionNode` and its cursor."""
+type PermissionNodeEdge {
+  """The item at the end of the edge"""
+  node: PermissionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PermissionNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  codename: String!
+  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): UserGroupNodeConnection!
+
+  """Specific permissions for this user."""
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+}
+
+type UsageStateNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The user the current usage is for."""
+  user: UserNode!
+
+  """
+  The plan the current usage is for. This should never be set manually, but through signals on User.plan changes.
+  """
+  plan: PlanNode!
+
+  """
+  The previous usage state. This is used to track the history of the user usage.
+  """
+  previousState: UsageStateNode
+
+  """
+  The start date of the current period. This is used to reset the usage limits at the end of the period.
+  """
+  periodStart: Date!
+
+  """
+  The end date of the period. It represents the first day this State will be invalid. This is used to reset the usage limits at the end of the period.
+  """
+  periodEnd: Date!
+
+  """The number of tokens used in the current period."""
+  usedTokens: Int!
+
+  """The number of characters used in the current period."""
+  usedCharacters: Int!
+
+  """The number of expressions used in the current period."""
+  usedExpressions: Int!
+
+  """The number of tokens remaining in the current period."""
+  remainingTokens: Int
+
+  """The number of characters remaining in the current period."""
+  remainingCharacters: Int
+
+  """The number of expressions remaining in the current period."""
+  remainingExpressions: Int
+
+  """The number of tokens left over from the previous period."""
+  leftoverTokens: Int
+
+  """The number of characters left over from the previous period."""
+  leftoverCharacters: Int
+
+  """The number of expressions left over from the previous period."""
+  leftoverExpressions: Int
+  activeUser: UserNode
+  nextState: UsageStateNode
+  boardCount: Int
+}
+
+type UserPreferencesNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  user: UserNode!
+  actionOnExpressionClick: String!
+}
+
+type BoardMembershipNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BoardMembershipNodeEdge]!
+}
+
+"""A Relay edge containing a `BoardMembershipNode` and its cursor."""
+type BoardMembershipNodeEdge {
+  """The item at the end of the edge"""
+  node: BoardMembershipNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BoardMembershipNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  board: BoardNode!
+  user: UserNode!
+  role: ExpressionsBoardMembershipRoleChoices!
+}
+
+type BoardNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
+  name: String!
+  description: String
+  isPublic: Boolean!
+  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+  defaultForUser: UserNode
+  isDefault: Boolean!
+  explanationsLanguage: String!
+  explanationsLength: String!
+  enabledLanguages: JSONString!
+  openaiThreadId: String
+  displayTranslations: Boolean!
+  displayGeneral: Boolean!
+  displayGrammar: Boolean!
+  displayWords: Boolean!
+  memberships(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, user: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): BoardMembershipNodeConnection!
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): GroupNodeConnection!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+
+  """The thread associated with this board"""
+  thread: ThreadNode
+}
+
+"""
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+type GroupNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupNodeEdge]!
+}
+
+"""A Relay edge containing a `GroupNode` and its cursor."""
+type GroupNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type GroupNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  board: BoardNode!
+  expressions(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+}
+
+type ExpressionNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ExpressionNodeEdge]!
+}
+
+"""A Relay edge containing a `ExpressionNode` and its cursor."""
+type ExpressionNodeEdge {
+  """The item at the end of the edge"""
+  node: ExpressionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ExpressionNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  iso6391: String
+  iso6392: String
+  iso6393: String!
+  group: GroupNode!
+  board: BoardNode!
+  content: String!
+  correctedContent: String
+  translation: String
+  changes: String
+  category: String!
+  audioUrl: String
+  audioKey: String
+  voiceId: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantFrom: ExpressionNode
+  variantWord: String
+  isProcessed: Boolean!
+  isBookmarked: Boolean!
+  hash: String!
+  explanationsLanguage: String!
+  analysis: ExpressionAnalysisNode
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int!
+  tokensUsedPrompt: Int!
+  tokensUsedCompletion: Int!
+  tokensUsedTotal: Int!
+  charactersUsed: Int!
+  createdBy: UserNode
+  Order: Int!
+  variants(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+  usageRecord: UsageRecordNode
+
+  """Whether the content is in rtl direction"""
+  textDirection: String
+}
+
+type ExpressionAnalysisNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  hash: String!
+  content: String!
+  payloadV1: [Word]
+  expressionSet(offset: Int, before: String, after: String, first: Int, last: Int, board: ID, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime, rating: Int, rating_Gte: Int, rating_Lte: Int): ExpressionNodeConnection!
+}
+
+type Word {
+  word: String
+  lemma: [String]
+  pos: String
+  morphology: Morphology
+  syntax: Syntax
+  clitics: [Clitic]
+  composed: ComposedWord
+  prefix: Prefix
+}
+
+type Morphology {
+  tense: String
+  mood: Mood
+  voice: Voice
+  aspect: Aspect
+  person: Int
+  number: Number
+  gender: String
+  case: String
+  evidentiality: Evidentiality
+  politeness: Politeness
+  clusivity: Clusivity
+  register: Register
+  valency: Valency
+  variantForm: String
+}
+
+enum Mood {
+  INDICATIVE
+  IMPERATIVE
+  SUBJUNCTIVE
+  CONDITIONAL
+  OPTATIVE
+  INFINITIVE
+  PARTICIPLE
+  GERUND
+}
+
+enum Voice {
+  ACTIVE
+  PASSIVE
+  MIDDLE
+  REFLEXIVE
+}
+
+enum Aspect {
+  IMPERFECTIVE
+  PERFECTIVE
+  PROGRESSIVE
+}
+
+enum Number {
+  SINGULAR
+  PLURAL
+}
+
+enum Evidentiality {
+  WITNESSED
+  REPORTED
+  INFERRED
+  ASSUMED
+}
+
+enum Politeness {
+  INFORMAL
+  FORMAL
+  HONORIFIC
+}
+
+enum Clusivity {
+  INCLUSIVE
+  EXCLUSIVE
+}
+
+enum Register {
+  SLANG
+  COLLOQUIAL
+  STANDARD
+  FORMAL
+  TECHNICAL
+}
+
+enum Valency {
+  INTRANSITIVE
+  TRANSITIVE
+  DITRANSITIVE
+}
+
+type Syntax {
+  function: String
+  head: Int
+}
+
+type Clitic {
+  clitic: String
+  pos: String
+  morphology: Morphology
+  syntax: Syntax
+}
+
+type ComposedWord {
+  word: String
+  components: [Word]
+}
+
+type Prefix {
+  prefix: String
+  type: PrefixType
+  sense: PrefixLexicalSense
+}
+
+enum PrefixType {
+  SEPARABLE
+  INSEPARABLE
+}
+
+enum PrefixLexicalSense {
+  DIRECTIONAL
+  COMPLETION
+  INTENSIFICATION
+  REVERSAL
+  BEGINNING
+}
+
+type UsageRecordNode implements SearchNode & Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The user the usage record is for."""
+  user: UserNode
+
+  """The expression the usage record tracks."""
+  expression: ExpressionNode
+  metadata: JSONString!
+
+  """The number of OpenAI tokens used."""
+  usedTokens: Int!
+
+  """The number of characters used in the Eleven Labs API."""
+  usedCharacters: Int
+}
+
+type ThreadNode implements Node {
+  messages(before: String, after: String, first: Int, last: Int): LanguageMessageTypeConnection
+  id: ID!
+  createdAt: DateTime
+  metadata: JSONString
+  object: String
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/pagination.py
+"""
+type LanguageMessageTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [LanguageMessageTypeEdge]!
+}
+
+"""A Relay edge containing a `LanguageMessageType` and its cursor."""
+type LanguageMessageTypeEdge {
+  """The item at the end of the edge"""
+  node: LanguageMessageType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type LanguageMessageType {
+  content: LanguageContentType
+  id: ID!
+  assistantId: String
+  attachments: JSONString
+  completedAt: DateTime
+  createdAt: DateTime
+  incompleteAt: DateTime
+  incompleteDetails: JSONString
+  metadata: JSONString
+  object: String
+  role: String
+  runId: String
+  status: String
+  threadId: ID
+}
+
+union LanguageContentType = AssistantLanguageMessageType | UserLanguageMessageType
+
+type AssistantLanguageMessageType {
+  content: String
+  suggestions: [String]
+  iso6393: String
+  iso6392: String
+  iso6391: String
+}
+
+type UserLanguageMessageType {
+  content: String
+}
+
+"""An enumeration."""
+enum ExpressionsBoardMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Member"""
+  MEMBER
+}
+
+type BoardNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BoardNodeEdge]!
+}
+
+"""A Relay edge containing a `BoardNode` and its cursor."""
+type BoardNodeEdge {
+  """The item at the end of the edge"""
+  node: BoardNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UsageStateNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UsageStateNodeEdge]!
+}
+
+"""A Relay edge containing a `UsageStateNode` and its cursor."""
+type UsageStateNodeEdge {
+  """The item at the end of the edge"""
+  node: UsageStateNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UsageRecordNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UsageRecordNodeEdge]!
+}
+
+"""A Relay edge containing a `UsageRecordNode` and its cursor."""
+type UsageRecordNodeEdge {
+  """The item at the end of the edge"""
+  node: UsageRecordNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PlanOverrideNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PlanOverrideNodeEdge]!
+}
+
+"""A Relay edge containing a `PlanOverrideNode` and its cursor."""
+type PlanOverrideNodeEdge {
+  """The item at the end of the edge"""
+  node: PlanOverrideNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PlanNodeConnection {
+  """The total number of items in the connection."""
+  count: Int!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PlanNodeEdge]!
+}
+
+"""A Relay edge containing a `PlanNode` and its cursor."""
+type PlanNodeEdge {
+  """The item at the end of the edge"""
+  node: PlanNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type LanguageType {
+  name: String!
+  pt1: String
+  pt2b: String!
+  pt2t: String!
+  pt3: String!
+  audio: Boolean!
+  textDirection: String!
+}
+
+"""
+Graphene type representing a fruit with value, label, and optional disabled state.
+"""
+type FruitType {
+  """The slug representing the fruit."""
+  value: String
+
+  """The human-readable name of the fruit."""
+  label: String
+
+  """Whether the fruit option is disabled."""
+  disabled: Boolean!
+}
+
+"""
+GraphQL ObjectType for OAuth2LinksProvider.
+
+Utilizes OAuth2LinksProviderMetaclass for dynamic field generation. Each field represents
+an OAuth2 provider's authentication link.
+"""
+type OAuth2LinksProvider {
+  """Login link for google authentication"""
+  google: String!
+}
+
+type Mutation {
+  createMessage(input: CreateMessageInput!): CreateMessagePayload
+  createBoardMessage(input: CreateBoardMessageInput!): CreateBoardMessagePayload
+  createBoard(input: CreateBoardMutationInput!): CreateBoardMutationPayload
+  updateBoard(input: UpdateBoardMutationInput!): UpdateBoardMutationPayload
+  deleteBoard(input: DeleteBoardMutationInput!): DeleteBoardMutationPayload
+  createGroup(input: CreateGroupMutationInput!): CreateGroupMutationPayload
+  updateGroup(input: UpdateGroupMutationInput!): UpdateGroupMutationPayload
+  deleteGroup(input: DeleteGroupMutationInput!): DeleteGroupMutationPayload
+  createExpression(input: CreateExpressionMutationInput!): CreateExpressionMutationPayload
+  updateExpression(input: UpdateExpressionMutationInput!): UpdateExpressionMutationPayload
+  deleteExpression(input: DeleteExpressionMutationInput!): DeleteExpressionMutationPayload
+  verifyToken(input: VerifyInput!): VerifyPayload
+  refreshToken(input: RefreshInput!): RefreshPayload
+  deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
+  deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
+  revokeToken(input: RevokeInput!): RevokePayload
+  updateUser(input: UpdateUserMutationInput!): UpdateUserMutationPayload
+  upload3(input: FileInput!): Upload3Mutation
+}
+
+type CreateMessagePayload {
+  errors: [String]
+  instances: [MessageType]
+  clientMutationId: String
+}
+
+type MessageType {
+  content: [TextContentBlockType]
+  id: ID!
+  assistantId: String
+  attachments: JSONString
+  completedAt: DateTime
+  createdAt: DateTime
+  incompleteAt: DateTime
+  incompleteDetails: JSONString
+  metadata: JSONString
+  object: String
+  role: String
+  runId: String
+  status: String
+  threadId: ID
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/types/beta/threads/text_content_block.py
+"""
+type TextContentBlockType {
+  """Text content of the message."""
+  text: TextType
+
+  """Type of content block, always 'text'."""
+  type: String
+}
+
+"""
+Implements : https://github.com/openai/openai-python/blob/main/src/openai/types/beta/threads/text.py
+"""
+type TextType {
+  """The text value."""
+  value: String
+}
+
+input CreateMessageInput {
+  threadId: ID!
+  content: String!
+  clientMutationId: String
+}
+
+type CreateBoardMessagePayload {
+  errors: [String]
+  instances: [LanguageMessageType]
+  clientMutationId: String
+}
+
+input CreateBoardMessageInput {
+  boardId: ID!
+  content: String!
+  clientMutationId: String
+}
+
+type CreateBoardMutationPayload {
+  """The created/updated instance."""
+  instance: BoardNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+type ErrorType {
+  field: String!
+  messages: [String!]!
+}
+
+input CreateBoardMutationInput {
+  id: String
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  name: String!
+  description: String
+  isPublic: Boolean
+  isDefault: Boolean
+  explanationsLanguage: String
+  explanationsLength: String
+  enabledLanguages: JSONString
+  openaiThreadId: String
+  displayTranslations: Boolean
+  displayGeneral: Boolean
+  displayGrammar: Boolean
+  displayWords: Boolean
+  defaultForUser: String
+  clientMutationId: String
+}
+
+type UpdateBoardMutationPayload {
+  """The created/updated instance."""
+  instance: BoardNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateBoardMutationInput {
+  id: String
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  name: String
+  description: String
+  isPublic: Boolean
+  isDefault: Boolean
+  explanationsLanguage: String
+  explanationsLength: String
+  enabledLanguages: JSONString
+  openaiThreadId: String
+  displayTranslations: Boolean
+  displayGeneral: Boolean
+  displayGrammar: Boolean
+  displayWords: Boolean
+  defaultForUser: String
+  clientMutationId: String
+}
+
+type DeleteBoardMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteBoardMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type CreateGroupMutationPayload {
+  """The created/updated instance."""
+  instance: GroupNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input CreateGroupMutationInput {
+  id: String
+  expressions: [CreateExpressionSerializerInput]
+  board: String!
+  clientMutationId: String
+}
+
+input CreateExpressionSerializerInput {
+  id: String
+  board: String
+  appendAfter: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  content: String
+  correctedContent: String
+  translation: String
+  changes: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  voiceId: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantWord: String
+  isProcessed: Boolean
+  isBookmarked: Boolean
+  explanationsLanguage: String
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
+  Order: Int
+  group: String
+  variantFrom: String
+  analysis: String
+  createdBy: String
+}
+
+type UpdateGroupMutationPayload {
+  """The created/updated instance."""
+  instance: GroupNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateGroupMutationInput {
+  id: String
+  board: String!
+  clientMutationId: String
+}
+
+type DeleteGroupMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteGroupMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type CreateExpressionMutationPayload {
+  """The created/updated instance."""
+  instance: ExpressionNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input CreateExpressionMutationInput {
+  id: String
+  board: String
+  appendAfter: String
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  content: String
+  correctedContent: String
+  translation: String
+  changes: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  voiceId: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantWord: String
+  isProcessed: Boolean
+  isBookmarked: Boolean
+  explanationsLanguage: String
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
+  group: String
+  variantFrom: String
+  analysis: String
+  createdBy: String
+  clientMutationId: String
+}
+
+type UpdateExpressionMutationPayload {
+  """The created/updated instance."""
+  instance: ExpressionNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateExpressionMutationInput {
+  id: String
+  iso6391: String
+  iso6392: String
+  iso6393: String
+  content: String
+  correctedContent: String
+  translation: String
+  changes: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  voiceId: String
+  variant: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variantName: String
+  variantWord: String
+  isProcessed: Boolean
+  isBookmarked: Boolean
+  explanationsLanguage: String
+  rating: Int
+  ratingComment: String
+  rated: DateTime
+  flagIsProcessed: Boolean
+  flagComment: String
+  retriesGeneration: Int
+  tokensUsedPrompt: Int
+  tokensUsedCompletion: Int
+  tokensUsedTotal: Int
+  charactersUsed: Int
+  group: String
+  board: String
+  variantFrom: String
+  analysis: String
+  createdBy: String
+  clientMutationId: String
+}
+
+type DeleteExpressionMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteExpressionMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type VerifyPayload {
+  payload: GenericScalar!
+  clientMutationId: String
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+input VerifyInput {
+  token: String
+  clientMutationId: String
+}
+
+type RefreshPayload {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  clientMutationId: String
+  token: String!
+  refreshToken: String!
+}
+
+input RefreshInput {
+  refreshToken: String
+  clientMutationId: String
+}
+
+type DeleteJSONWebTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteJSONWebTokenCookieInput {
+  clientMutationId: String
+}
+
+type DeleteRefreshTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteRefreshTokenCookieInput {
+  clientMutationId: String
+}
+
+type RevokePayload {
+  revoked: Int!
+  clientMutationId: String
+}
+
+input RevokeInput {
+  refreshToken: String
+  clientMutationId: String
+}
+
+type UpdateUserMutationPayload {
+  """The created/updated instance."""
+  instance: UserNode
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateUserMutationInput {
+  id: String
+  firstName: String
+  lastName: String
+  email: String
+
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String
+  profilePicture: String
+
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean
+
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean
+  preferences: UserPreferencesSerializerInput
+  clientMutationId: String
+}
+
+input UserPreferencesSerializerInput {
+  id: String
+  actionOnExpressionClick: String
+  user: String
+}
+
+type Upload3Mutation {
+  """Indicates if the upload was successful."""
+  success: Boolean
+}
+
+"""
+Aggregated input type for registering an organization, combining owner, place,
+and organization data into a single structure for streamlined processing.
+"""
+input FileInput {
+  file: Upload!
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload

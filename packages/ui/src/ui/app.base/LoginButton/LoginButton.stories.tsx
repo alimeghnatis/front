@@ -2,17 +2,35 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
+import { graphql } from 'react-relay'
+import { QUERY_APPLICATION } from 'story-utils/queries.js'
 import Component from './LoginButton.js'
 
 const meta: Meta<typeof Component> = {
-  title    :'base.authentication/LoginButton',
+  title    :'app.base/LoginButton',
   component:Component,
 }
 
 export default meta
 
+const FRAGMENT = graphql`
+  fragment LoginButtonFragment on Query
+    @argumentDefinitions(resource: { type: "String!" })
+    @refetchable(queryName: "LoginButtonFragmentRefetchQuery") {
+    oAuth2Links(resource: $resource) {
+      google
+    }
+  }
+`
+
+const QUERY = graphql`
+  query LoginButtonQuery($resource: String!) {
+    ...LoginButtonFragment @arguments(resource: $resource)
+  }
+`
+
 const relayConfig = {
-  query            :Component.QUERY,
+  query            :QUERY,
   getReferenceEntry:(data) => [
     'data',
     data,
@@ -27,4 +45,11 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
+export const Default: StoryObj<typeof Component> = {
+  args:{
+    FRAGMENT,
+    resource       :'http://localhost.com',
+    initialResource:'http://localhost.com',
+  },
+  parameters:{ relay: relayConfig },
+}

@@ -1,0 +1,53 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+
+$default-background:transparent;
+$selected-background:var(--near);
+
+$default-separator: var(--separator, "/");
+
+.#{bem.$base}.breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > .#{bem.$element-item} {
+    align-items: center;
+    display: flex;
+    //background: $default-background;
+    position: relative;
+
+    &:last-of-type {
+      font-weight: 600;
+    }
+
+    > a { //UNCLEAN
+      align-items: center;
+      display: flex;
+      text-decoration: none;
+    }
+
+    > * {
+      flex-grow: 1;
+    }
+
+    &.#{bem.$modifier-selected} {
+      background: $selected-background;
+    }
+
+    & + .#{bem.$element-item}::before {
+      background: $default-background;
+      color: var(--paragraph);
+      content: #{$default-separator};
+      display: inline-block;
+      font-weight: 400;
+      left: calc(var(--gap) * -1);
+      position: absolute;
+      width: var(--gap);
+      z-index: 1;
+    }
+  }
+}
+
+

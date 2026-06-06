@@ -1,0 +1,75 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+
+$default-color: "neutral";
+
+%default-color {
+  --color: var(--#{$default-color});
+  --on-color: var(--on-#{$default-color});
+  --hard-color: var(--hard-#{$default-color});
+  --soft-color: var(--soft-#{$default-color});
+}
+
+%disabled-color {
+  --color: var(--disabled);
+  --on-color: var(--on-disabled);
+  --hard-color: var(--hard-disabled);
+  --soft-color: var(--soft-disabled);
+}
+
+.#{bem.$base}.toggle {
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    .true {
+      --color: var(--success);
+      --on-color: var(--on-success);
+      --hard-color: var(--hard-success);
+      --soft-color: var(--soft-success);
+    }
+
+    .false {
+      @extend %default-color;
+    }
+  }
+
+  input:not(:checked) + label {
+    .true {
+      @extend %default-color;
+    }
+
+    .false {
+      --color: var(--error);
+      --on-color: var(--on-error);
+      --hard-color: var(--hard-error);
+      --soft-color: var(--soft-error);
+    }
+  }
+
+  input:disabled {
+    &:checked + label {
+      .true {
+        @extend %disabled-color;
+      }
+
+      .false {
+        @extend %default-color;
+      }
+    }
+
+    &:not(:checked) + label {
+      .true {
+        @extend %default-color;
+      }
+
+      .false {
+        @extend %disabled-color;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,57 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+@use "@aztlan/morphosa";
+
+.#{bem.$base}.morphosa-base {
+  scroll-anchor: auto;
+
+  .content {
+    //align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+  }
+
+  .content span.outer {
+    align-self: stretch;
+    display: flex;
+    line-height: calc(1.5em - 0.3em - 3px);
+
+    .inner {
+      align-self: center;
+    }
+
+    &.#{bem.$modifier-selected} {
+      box-shadow: 0 0 0 2px pink;
+    }
+
+    &.important {
+      box-shadow: 0 0 0 2px blue;
+    }
+  }
+
+  &.selectable .content span {
+    cursor: default;
+  }
+}
+
+.#{bem.$base}.morphosa-word {
+  line-height: 1.5em;
+
+  span {
+    //margin-right: 0.2em;
+  }
+
+
+
+  //div > .field-name {
+  //  font-weight: 700;
+  //  grid-column: 1/span 2;
+  //}
+
+  //div > .payload {
+  //  grid-column: 3/ -1;
+  //}
+}
+

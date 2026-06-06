@@ -1,16 +1,36 @@
+@use "./themes" as themes;
 @use "@aztlan/grid/src/main" as grid;
 @use "@aztlan/swatch/src/main" as swatch with (
+  $themes:(
+    "light-theme":themes.$light-theme,
+    "dark-theme":themes.$dark-theme,
+    "blue-theme":themes.$blue-theme,
+    "green-theme":themes.$green-theme,
+  ),
   $extras:(
-    "light-theme":(
-      "font-size":18px,
-      "light-height":1em,
-      "margin":1em,
+    "light-theme":map-merge(
+      themes.$light-extras,
+      (
+        "font-size":18px,
+        "line-height":1em,
+        "margin":1em,
+      )
     ),
-  )
+    //"green-theme":themes.$green-extras,
+    //"dark-theme":themes.$dark-extras,
+    //"blue-theme":themes.$blue-extras,
+  ),
+  /*
+  $modifiers:(
+    "light-theme":(
+      "disabled":(
+        "background":red,
+      )
+    )
+  )*/
 );
 @use "@aztlan/mixins/src/reset" as reset;
 @use "@aztlan/mixins/src/font" as font;
-@use "@aztlan/mixins/src/media" as media;
 
 $import-font-map:(
   "paragraph":(
@@ -36,118 +56,3 @@ $root-font-map:(
   @include font.root-definitions-from-map($root-font-map);
 }
 
-html {
-  background: var(--far);
-  font-family: var(--font-paragraph);
-  font-size: var(--font-size);
-  font-weight: 400;
-  height: 100%;
-  line-height: var(--line-height);
-}
-
-body,
-#main,
-main {
-  height: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-.h1,
-.h2,
-.h3,
-.h4 {
-  color: var(--heading);
-  font-size: 1em;
-  font-weight: 700;
-  margin-block-end: var(--margin);
-  margin-block-start: 0;
-}
-
-p {
-  color: var(--paragraph);
-  margin-block-end: var(--margin);
-  margin-block-start: 0;
-
-  + h1,
-  + h2,
-  + h3,
-  + h4,
-  + .h1,
-  + .h2,
-  + .h3,
-  + .h4 {
-    margin-block-start: var(--margin);
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-.h1,
-.h2,
-.h3,
-.h4,
-p {
-  &:last-child {
-    margin-block-end: 0;
-  }
-}
-
-.color {
-  color: var(--color);
-}
-
-.background {
-  background: var(--color);
-}
-
-@media screen and (min-width: 801px) {
-  :root {
-    --columns: 14;
-    --column-width: calc((100vw - (14 + 1) * 1rem) / 14);
-  }
-}
-
-@include media.media($to: 800px) {
-  .desktop-only {
-    display: none;
-  }
-}
-
-@include media.media($from: 801px) {
-  .desktop-hidden {
-    display: none;
-  }
-}
-
-ul {
-  &.inline {
-    display: flex;
-    gap: var(--gap);
-    list-style: none;
-    margin-block-end: var(--margin);
-    margin-block-start: 0;
-    padding-left: 0;
-  }
-}
-
-a,
-p {
-  color: var(--paragraph);
-}
-
-a {
-  cursor: pointer;
-}
-
-.fit-content {
-  height: fit-content;
-}
-
-.bold {
-  font-weight: 700;
-}

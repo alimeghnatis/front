@@ -9,6 +9,7 @@ import LoadablePlugin from '@loadable/webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import nodeExternals from 'webpack-node-externals'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 
 import { createRequire } from 'node:module'
 
@@ -41,10 +42,13 @@ export default (inputs) => ({
       '.jsx',
     ],
     alias:{
-      react             :getAbsolutePath('react'),
-      'react-dom'       :getAbsolutePath('react-dom'),
-      'react-router-dom':getAbsolutePath('react-router-dom'),
-      'react-relay'     :getAbsolutePath('react-relay'),
+      react               :getAbsolutePath('react'),
+      'react-dom'         :getAbsolutePath('react-dom'),
+      'react-router-dom'  :getAbsolutePath('react-router-dom'),
+      'react-relay'       :getAbsolutePath('react-relay'),
+      'react-hook-form'   :getAbsolutePath('react-hook-form'),
+      'react-intl'        :getAbsolutePath('react-intl'),
+      'react-helmet-async':getAbsolutePath('react-helmet-async'),
     },
     roots:[
       path.resolve(
@@ -60,6 +64,7 @@ export default (inputs) => ({
         '.graphql.js',
       ],
     },
+    plugins:[new TsconfigPathsPlugin()],
   },
   devServer:{
     static:[
@@ -70,10 +75,11 @@ export default (inputs) => ({
         cwd, location,
       )),
     ],
-    port              :3002,
+    port              :process.env.PORT || 3002,
     host              :'0.0.0.0',
     allowedHosts      :'all',
-    historyApiFallback:true, // allows react app to be served on all routes, not only index
+    // historyApiFallback:true, // allows react app to be served on all routes, not only index
+    historyApiFallback:{ disableDotRule: true },
   },
   output:{
     path:path.resolve(
@@ -101,6 +107,55 @@ export default (inputs) => ({
   experiments :{ outputModule: true },
   optimization:{
     splitChunks:{
+      chunks                :'all',
+      minSize               :20000,
+      maxSize               :60000,
+      minChunks             :1,
+      maxAsyncRequests      :15,
+      maxInitialRequests    :24,
+      automaticNameDelimiter:'~',
+      cacheGroups           :{
+        defaultVendors:{
+          test              :/[\\/]node_modules[\\/]/,
+          priority          :-10,
+          reuseExistingChunk:true,
+          name(module) {
+            const match = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
+            // TODO Investigate why suddenly the package name is not being extracted on some packages,
+            // (with module.context === null)
+            const packageName = match ? match[1] : 'pkg'
+            return `vendor.${packageName.replace(
+              '@', '',
+            )}`
+          },
+        },
+        default:{
+          minChunks         :1,
+          priority          :-20,
+          reuseExistingChunk:true,
+        },
+        jsonFiles:{
+          test    :/\.json$/,
+          type    :'json',
+          priority:10,
+          name(module) {
+            // Keeping the original name for JSON files
+            const moduleName = module.identifier()
+            const baseName = moduleName.split('/').reverse()[0]
+            return baseName.replace(
+              '.json', '',
+            )
+          },
+          chunks :'all',
+          enforce:true,
+        },
+      },
+    },
+  },
+
+  /*
+  optimization:{
+    splitChunks:{
       // We retake here most of the default config
       // https://webpack.js.org/plugins/split-chunks-plugin/
       // We code split for all node_modules
@@ -116,7 +171,7 @@ export default (inputs) => ({
         vendors:{
           test  :/[\\/]node_modules[\\/]/,
           chunks:'all',
-          name  :(module /* chunks, cacheGroupKey */) => {
+          name  :(module /* chunks, cacheGroupKey ) => {
             const moduleFileName = module
               .identifier()
               .split('/')
@@ -126,7 +181,7 @@ export default (inputs) => ({
         },
       },
     },
-  },
+}, */
   externals:[
     NodeExternals({
       additionalModuleDirs:[
@@ -180,6 +235,7 @@ export default (inputs) => ({
       ),
       ext    :'ts,tsx,graphql',
       verbose:true,
+      // args   :[`-p ${process.env.PORT}`],
       // nodeArgs:['--inspect'],
     }),
     LimitChunkCount:new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
@@ -190,13 +246,16 @@ export default (inputs) => ({
       /* eslint-disable-next-line */
       // exclude:/node_modules\/(?!react-intl|@loadable|intl-messageformat|@formatjs\/icu-messageformat-parser)/,
       use :{
-        loader:'babel-loader',
-        /*
+        loader :'babel-loader',
         options:{
           presets:[
-            ['@babel/preset-env', { modules: false }],
+            [
+              '@babel/preset-env',
+              { modules: false },
+            ],
           ],
-        }, */
+          sourceMaps:true,
+        },
       },
     },
     scssDev:{
@@ -229,6 +288,10 @@ export default (inputs) => ({
     htmlRaw:{
       test:/\.html$/,
       use :'raw-loader',
+    },
+    mdx:{
+      test:/\.mdx?$/,
+      use :'@mdx-js/loader',
     },
   },
 })

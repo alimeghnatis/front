@@ -1,0 +1,55 @@
+---
+name: _react-compile_all
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        default: '20'
+        description: The version of Node.js to use
+        type: string
+      GRAPHQL_ENDPOINT:
+        required: false
+        description: The GraphQL endpoint to use for the application
+        type: string
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GRAPHQL_ENDPOINT: ${{ inputs.GRAPHQL_ENDPOINT }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        # if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+      - uses: nelonoel/branch-name@v1.0.1
+      - name: Run build-changed-apps script
+        run: npm run build-changed-apps
+      - name: Configure CI Git User
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Commit and Push Changes
+        run: |
+          git add --force -- ./apps/*
+          git commit --reuse-message ${{ env.BRANCH_NAME }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: build/${{ env.BRANCH_NAME }}
+          force: true

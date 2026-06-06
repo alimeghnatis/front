@@ -65,7 +65,7 @@ class Renderer {
         `${`${
           this.scriptTags
         }<script> window.__RELAY_PAYLOADS__ = ${JSON.stringify(this.queryRecords)}; 
-        window.__LOCALE__ = ${this.locale}
+        window.__LOCALE__ = "${this.locale}";
         </script>`}</body>`,
       )
       .replace(
@@ -98,6 +98,26 @@ class Renderer {
     }
   }
 
+  /* eslint-disable class-methods-use-this  -- for clarity */
+  private getHostname(req) {
+    // Default ports that typically don't need to be included in URLs
+    const defaultPorts = {
+      'http:' :80,
+      'https:':443,
+    }
+    const protocol = `${req.protocol || 'https'}:`
+    const { host: fullHost } = req.headers
+    const [
+      host,
+      port,
+    ] = fullHost.split(':')
+    const hasNonDefaultPort = port && defaultPorts[protocol] !== parseInt(
+      port, 10,
+    )
+
+    return `${protocol}//${host}${hasNonDefaultPort ? `:${port}` : ''}`
+  }
+
   async render(
     req, res,
   ) {
@@ -105,6 +125,7 @@ class Renderer {
     // @ts-ignore
     const helmetContext = {}
     const location = req.originalUrl || req.url
+    const hostname = this.getHostname(req)
     this.prepareRelay()
     await this.prepareLocale(req.headers['accept-language'])
 
@@ -114,6 +135,7 @@ class Renderer {
         location,
         routerContext,
         helmetContext,
+        hostname,
         locale     :this.locale,
         messages   :this.messages,
       },
@@ -124,6 +146,12 @@ class Renderer {
 
     // @ts-ignore
     this.helmet = helmetContext.helmet
+    this.environment.commitUpdate((store) => {
+      const root = store.getRoot()
+      root.setValue(
+        undefined, 'viewer',
+      )
+    })
     this.queryRecords = this.environment
       .getStore()
       .getSource()

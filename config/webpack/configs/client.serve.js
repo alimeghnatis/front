@@ -18,13 +18,13 @@ export default (inputs) => {
     devServer,
 
     plugins:[
-    // plugins.ResolveTypeScript,
       plugins.Dotenv,
       plugins.HtmlWebpack,
     ],
 
     module:{
       rules:[
+        rules.mdx,
         rules.ts,
         rules.scssDev,
       ],

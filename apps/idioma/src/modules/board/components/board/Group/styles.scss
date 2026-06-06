@@ -1,0 +1,26 @@
+/* @aztlan/generator-front 3.4.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.exp-group {
+  //border-bottom: 1px solid var(--on-color);
+
+  //box-shadow: 0 1px 0 0 var(--on-color);
+  //box-sizing: border-box;
+  //margin-bottom: -1px;
+  //scroll-snap-align: end;
+  & + & {
+    margin-top: var(--gap);
+  }
+
+  &:hover {
+    //background-color: #f5f5f5;
+    .#{bem.$base}.expression:not(.important) {
+      background: var(--soft-color);
+    }
+  }
+}
+
+.end {
+  //scroll-snap-align: start;
+}

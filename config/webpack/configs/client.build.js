@@ -13,8 +13,8 @@ export default (inputs) => {
   } = configureSharedConfig(inputs)
 
   return {
-    mode   :'production',
-    devtool:'source-map',
+    mode:'production',
+    // devtool:'source-map',
 
     entry,
     resolve,
@@ -22,6 +22,7 @@ export default (inputs) => {
     // devServer,
 
     optimization,
+    stats:'normal',
 
     plugins:[
       plugins.Copy,
@@ -35,6 +36,7 @@ export default (inputs) => {
 
     module:{
       rules:[
+        rules.mdx,
         rules.ts,
         rules.scssProd,
       ],

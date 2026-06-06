@@ -1,0 +1,160 @@
+/* @aztlan/generator-front 3.4.0 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/modifiers";
+
+$span-language: 1;
+$span-tools: 3;
+$subtotal-span: $span-language + $span-tools;
+
+$default-border-width: 1px;
+
+
+/*
+@keyframes loading-background {
+  0% {
+    background: var(--new);
+    color: var(--on-new);
+  }
+
+  100% {
+    background: var(--far);
+    color: var(--on-far);
+  }
+} */
+
+.#{bem.$base}.expression {
+  background: var(--color);
+  //box-shadow: 0 -1px 0 0 var(--on-color);
+  //border-top: $default-border-width solid var(--on-color);
+  //box-sizing: border-box;
+  //margin-top: -1px;
+  &,
+  * {
+    transition: background 0.1s;
+  }
+
+  &.#{bem.$modifier-loading} {
+    @extend %shine;
+  }
+
+  .general {
+    > .language {
+      color: var(--on-color);
+      //font-family: "nserif";
+      //font-style: italic;
+      grid-column-end: span $span-language;
+    }
+
+    > .extras {
+      grid-column-end: span var(--span-extras, 0);
+    }
+
+    > .content {
+      color: var(--on-color);
+      cursor: default;
+      grid-column-end: span calc(var(--columns) - #{$subtotal-span} - var(--span-extras, 0));
+
+      p {
+        color: var(--on-color);
+      }
+    }
+
+    > .tools {
+      grid-column-end: span $span-tools;
+
+      .#{bem.$base}.button-group {
+        display: flex;
+        height: 100%;
+        //height: calc(100% - #{$default-border-width});
+
+        > .#{bem.$base}.button {
+          border-color: var(--far) !important;
+          flex-grow: 1;
+          font-weight: 400;
+
+          &:first-child {
+            //border-left: 0;
+          }
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* stylelint-disable order/order -- Required */
+  @include media.media($to: 801px) {
+    .general {
+      /*
+    &::-webkit-scrollbar {
+      display: none;
+    } */
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      white-space: nowrap;
+
+      > .language {
+        --columns: 1;
+        scroll-snap-align: start;
+        //grid-column-end: span 1;
+      }
+
+      > .content {
+        --columns: 7;
+
+        p {
+          white-space: normal;
+        }
+        //grid-column-end: span 7;
+      }
+
+      > .tools {
+        --columns: 4;
+        scroll-snap-align: start;
+        //grid-column-end: span 5;
+        > .button-group {
+          //height: 100%;
+        }
+      }
+
+      > .extras {
+        display: none;
+      }
+    }
+  }
+
+  &.#{bem.$modifier-loading} {
+    //animation: loading-background 1s linear forwards;
+  }
+
+  &.bookmarked {
+    //background: var(--important);
+  }
+
+  &:hover {
+    &:not(.important):not(.#{bem.$modifier-new}) {
+      --color: var(--selected);
+      --hard-color: var(--hard-selected);
+      --soft-color: var(--soft-selected);
+      --on-color: var(--on-selected);
+    }
+    background: var(--hard-color) !important;
+  }
+  @media (hover: hover) {
+    &:not(:hover):not(.#{bem.$modifier-selected}) {
+      .general {
+        > .tools {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+

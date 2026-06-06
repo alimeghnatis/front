@@ -1,7 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
 import { withThemeByClassName } from "@storybook/addon-themes";
-// @ts-ignore
-import("local.scss");
+import "local.scss";
 
 const preview = {
   parameters: {
@@ -17,7 +16,9 @@ const preview = {
     withThemeByClassName({
       themes: {
         light: "light-theme",
-        dark: "dark-theme"
+        dark: "dark-theme",
+        blue: "blue-theme",
+        green: "green-theme"
       },
       defaultTheme: "light"
     })

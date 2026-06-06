@@ -2,16 +2,16 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Choices.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/inputs/Choices',
   component :Component,
   decorators:[
-    decorators.relay,
-    decorators.grid,
-    decorators.form,
+    decorators.components.Relay,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
 }
 
@@ -39,52 +39,39 @@ export const Base: StoryObj<typeof Component> = {
         value:'yellow',
         label:'Yellow',
       },
+      {
+        value:'black',
+        label:'Black',
+      },
+      {
+        value:'white',
+        label:'White',
+      },
     ],
+  },
+}
+
+export const Columns: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    columns       :2,
+    columnsDesktop:3,
   },
 }
 
 export const Multiple: StoryObj<typeof Component> = {
   args:{
-    name       :'color2',
-    label      :'Favourite color',
-    description:'This is a select where you can choose your favourite color.',
-    multiple   :true,
-    options    :[
-      {
-        value:'purple',
-        label:'Purple',
-      },
-      {
-        value:'pink',
-        label:'Pink',
-      },
-      {
-        value:'orange',
-        label:'Orange',
-      },
-      {
-        value:'brown',
-        label:'Brown',
-      },
-    ],
+    ...Base.args,
+    name    :'color2',
+    multiple:true,
   },
 }
 
 export const DisabledInput: StoryObj<typeof Component> = {
   args:{
+    ...Base.args,
     name    :'region',
-    label   :'Region',
     disabled:true,
-    options :[
-      {
-        value:'north',
-        label:'North',
-      },
-      {
-        value:'south',
-        label:'South',
-      },
-    ],
   },
 }
 

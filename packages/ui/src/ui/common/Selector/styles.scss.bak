@@ -1,0 +1,44 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+$transition-speed: 0.1s;
+
+.#{bem.$base}.selector {
+  background: var(--near);
+  display: flex;
+  gap: var(--gap);
+  list-style: none;
+  padding: 0 calc(var(--gap) / 2);
+  position: relative;
+  width: max-content;
+
+  li {
+    cursor: pointer;
+    //flex: 1;
+    //text-align: center;
+    &.#{bem.$modifier-selected} {
+      //background: var(--near);
+    }
+
+    &:not(.slider) {
+      color: var(--heading);
+      z-index: 1;
+    }
+  }
+
+  li.slider {
+    background-color: #0000ff;
+    bottom: 0;
+    filter: invert(1);
+    height: 100%;
+    left: var(--slider-left);
+    mix-blend-mode: exclusion;
+    position: absolute;
+    transition: left $transition-speed ease, width $transition-speed ease;
+    width: var(--slider-width);
+    z-index: 2;
+  }
+}
+
+

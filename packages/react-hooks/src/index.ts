@@ -1,5 +1,6 @@
 export { default as useTheme } from './useTheme.js'
 export { default as useLocale } from './useLocale.js'
+export { default as useRemainingTime } from './useRemainingTime.js'
 export { default as UNSTABLE_useURLParameterState } from './UNSTABLE_useURLParameterState.js'
 export {
   default as useSections,

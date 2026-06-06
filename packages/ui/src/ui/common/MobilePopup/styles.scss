@@ -1,0 +1,35 @@
+/* @aztlan/generator-front 3.4.7 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+
+.#{bem.$base}.mobile-popup {
+  @include media.media($to: 801px) {
+    gap: 0;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    overflow: hidden;
+
+    &.fixed {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header {
+      p {
+        margin: 0;
+      }
+    }
+
+    .content {
+      align-items: start;
+      overflow: auto;
+    }
+  }
+}
+
+

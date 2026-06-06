@@ -1,0 +1,18 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.word {
+  gap: 0 var(--gap);
+
+  div > .label {
+    font-weight: 700;
+    grid-column: 1/span 2;
+  }
+
+  div > .payload {
+    grid-column: 3/ -1;
+  }
+}
+
+

@@ -1,6 +1,61 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+export enum DisplayItemsType {
+  list = 'list',
+  custom = 'custom',
+}
+
+export interface ItemsComponentProps {
+  [key: string]:any;
+}
+
+export interface Item {
+  key?                :string; // Either a key or a url should be provided
+  url?                :string; // Use URL for navigable items, key otherwise
+  label?              :string;
+  disabled?           :boolean;
+  className?          :string;
+  items?              :Item[];
+  footerContent?      :React.ReactElement;
+  displayItemsAs?     :string; // TODO To Deprecate
+  displayItemsType    :DisplayItemsType;
+  ItemsComponent?     :React.FunctionComponent;
+  Component?          :React.FunctionComponent; // TODO
+  itemsComponentProps?:ItemsComponentProps;
+}
+
+export interface PreparedItem extends Item {
+  parentUrl:string | null;
+  depth    :number;
+  items?   :PreparedItem[];
+}
+
+export type NavigationIndex = {
+  [url: string]:PreparedItem;
+}
+
+export const itemShape = {
+  key           :PropTypes.string,
+  label         :PropTypes.string,
+  url           :PropTypes.string,
+  disabled      :PropTypes.bool,
+  className     :PropTypes.string,
+  Component     :PropTypes.elementType,
+  displayItemsAs:PropTypes.oneOf([
+    'nested',
+    'group',
+    'list',
+    'columns',
+    'custom',
+  ]),
+  ItemsComponent     :PropTypes.func,
+  items              :PropTypes.array,
+  itemsComponentProps:PropTypes.any,
+}
+
+export const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape).isRequired(...args))
+
 export const htmlShared = {
   /** The HTML id for this element */
   id:PropTypes.string,
@@ -22,14 +77,20 @@ export const fixedShared = {
   fixed:PropTypes.bool,
 }
 
-export const nextShared = {
+export const rightShared = {
   /* A React element to represent the next navigation element */
-  next:PropTypes.node,
+  right:PropTypes.node,
+
+  /* The span of this element on desktop */
+  desktopRightSpan:PropTypes.number,
 }
 
-export const prevShared = {
+export const leftShared = {
   /* A React element to represent the previous navigation element */
-  previous:PropTypes.node,
+  left:PropTypes.node,
+
+  /* The span of this element on desktop */
+  desktopLeftSpan:PropTypes.number,
 }
 
 export const desktopOnlyShared = {
@@ -37,17 +98,33 @@ export const desktopOnlyShared = {
   desktopOnly:PropTypes.bool,
 }
 
-export const footerShared = {
+export const barsShared = {
   ...htmlShared,
   ...asShared,
   ...fixedShared,
-  ...nextShared,
+  ...rightShared,
+  ...leftShared,
 
   /* A React element to represent the current navigation location */
-  content:PropTypes.node.isRequired,
+  children:PropTypes.node,
 
   /* Whether to hide this navigation element on desktop */
-  hideOnDesktop:PropTypes.bool,
+  desktop:PropTypes.bool,
+
+  /* The left span of this element */
+  leftSpan:PropTypes.number,
+
+  /* the left span on desktop */
+  leftSpanDesktop:PropTypes.number,
+
+  /* The right span of this element */
+  rightSpan:PropTypes.number,
+
+  /* the right span on desktop */
+  rightSpanDesktop:PropTypes.number,
+
+  /* Whether to display borders */
+  UNSTABLE_borders:PropTypes.bool,
 
   /* Whether the element is padded */
   UNSTABLE_padded:PropTypes.bool,
@@ -60,8 +137,9 @@ export const SequentialNavigationPropTypes = {
 
   /* The array of navigation elements to be passed to the navigation context */
   items:PropTypes.arrayOf(PropTypes.shape({
-    label:PropTypes.string.isRequired,
-    url  :PropTypes.string.isRequired,
+    label        :PropTypes.string.isRequired,
+    url          :PropTypes.string.isRequired,
+    footerContent:PropTypes.string,
   })),
 
   /** The label of the menu */
@@ -86,6 +164,9 @@ export const SequentialNavigationPropTypes = {
   /* A component to display on the last page instead of the next button.
    * This can for instance be a submit button, or a link to a different place */
   submit:PropTypes.element,
+
+  /* The current footer content */
+  currentFooterContent:PropTypes.string,
 }
 
 export type SequentialNavigationProps = InferProps<

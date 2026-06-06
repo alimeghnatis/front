@@ -1,0 +1,137 @@
+@use "@aztlan/mixins/src/media" as media;
+@use "./modifiers";
+
+html {
+  background: var(--far);
+  font-family: var(--font-default, var(--font-paragraph));
+  font-size: var(--font-size);
+  font-weight: 400;
+  height: 100%;
+  line-height: var(--line-height);
+}
+
+body,
+#main,
+main {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--heading);
+  font-size: 1em;
+  font-weight: 700;
+  margin-block-end: var(--margin);
+  margin-block-start: 0;
+}
+
+p,
+ol,
+ul {
+  color: var(--paragraph);
+  margin-block-end: var(--margin);
+  margin-block-start: 0;
+
+  + h1,
+  + h2,
+  + h3,
+  + h4,
+  + .h1,
+  + .h2,
+  + .h3,
+  + .h4 {
+    margin-block-start: var(--margin);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4,
+p {
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+.color {
+  color: var(--color);
+}
+
+.background {
+  background: var(--color);
+}
+
+
+@media screen and (min-width: 801px) {
+  :root {
+    --columns: 14;
+
+    /* REPLACE columns -1 by +1 in case of sid pd */
+    --column-width: calc((100vw - (var(--columns) - 1) * var(--gap)) / 14);
+  }
+}
+
+@include media.media($to: 800px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@include media.media($from: 801px) {
+  .desktop-hidden {
+    display: none;
+  }
+}
+
+ul {
+  &.inline {
+    display: flex;
+    gap: 0 var(--gap);
+    list-style: none;
+    margin-block-end: var(--margin);
+    margin-block-start: 0;
+    padding-left: 0;
+  }
+}
+
+p {
+  color: var(--paragraph);
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+}
+
+.fit-content {
+  height: fit-content;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+
+.disabled {
+  @extend %disabled;
+}
+
+.focus,
+:focus {
+  @extend %focus;
+}
+
+.shine {
+  @extend %shine;
+}

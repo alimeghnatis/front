@@ -57,6 +57,8 @@ function SingleCombobox({
   name,
   disabled = false,
   openOnReset = false,
+  // stateReducer,// TODO not implemented. Just needs a default boilerplate, without it the hook will say stateReducer is not a fn
+  onInputValueChangeFactory,
   placeholder,
   valueKey = defaultValueKey,
   convertItemToString = defaultConvertItemToString,
@@ -83,6 +85,13 @@ function SingleCombobox({
     [onChange],
   )
 
+  const defaultOnInputValueChangeFactory = useCallback(
+    (stateUpdater) => ({ inputValue }) => stateUpdater((state) => defaultFilterItems(
+      options, inputValue,
+    )),
+    [options],
+  )
+
   const {
     isOpen,
     // inputValue,
@@ -99,10 +108,10 @@ function SingleCombobox({
     items,
     // selectedItem        :RHFValue,
     onSelectedItemChange:handleSelectedItemChange,
-    // stateReducer,
-    onInputValueChange  :({ inputValue }) => setItems(defaultFilterItems(
-      items, inputValue,
-    )),
+    // stateReducer        :stateReducer || defaultStateReducer,
+    onInputValueChange  :(onInputValueChangeFactory
+      || defaultOnInputValueChangeFactory
+    )(setItems),
     initialSelectedItem:convertValueToItem(
       RHFValue, options,
     ),

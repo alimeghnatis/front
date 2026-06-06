@@ -1,10 +1,41 @@
 /* @aztlan/generator-front 0.7.2 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
 
-.#{bem.$base}.simple-choices{
+.#{bem.$base}.simple-choices {
+  border: 0;
+  padding: 0;
 
+
+  .option {
+    &:focus-within {
+      @extend %focus;
+    }
+
+    input {
+      grid-column-end: span 1;
+
+      &:focus {
+        outline: unset;
+      }
+    }
+
+    label {
+      grid-column: 2 / -1;
+    }
+
+    input:disabled {
+      //
+      & + label {
+        @extend %disabled-color;
+      }
+    }
+
+    &.#{bem.$modifier-disabled} {
+      @extend %disabled;
+    }
+  }
 }
-
 
 

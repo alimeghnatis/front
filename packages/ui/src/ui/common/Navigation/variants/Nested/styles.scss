@@ -1,0 +1,63 @@
+/* @aztlan/generator-front 0.9.0 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+
+$transition-duration:0.2s;
+
+.#{bem.$base}.nested-navigation {
+  @include media.media($to: 801px) {
+    &.focus-canvas {
+      .main-row {
+        //margin-left: 200%;
+
+        > * {
+          //left: calc(var(--tree-depth) + 1) * -100%) !important;
+        }
+      }
+    }
+  }
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+
+  .main-row {
+    @include media.media($to: 801px) {
+      background: lightblue;
+      display: flex;
+      gap: 0;
+      //overflow-x: scroll;
+      overflow-x: hidden;
+      //transition: all 0.5s;
+      width: auto;
+
+      > * {
+        flex: 0 0 100%;
+
+        left: calc(var(--offset) * -100%);
+        position: relative;
+        transition: left $transition-duration;
+      }
+
+      .group {
+        display: flex;
+        flex: 0 0 calc((var(--tree-depth) + 1) * 100%);
+        gap: 0;
+
+        > * {
+          flex: 0 0 calc(100% / calc(var(--tree-depth) + 1));
+        }
+      }
+
+      .canvas {
+        flex: 0 0 100%;
+        //left: 100%; //calc((var(--tree-depth) - 1) * -100%);
+        //position: absolute;
+        //left: -100%;
+        //left: calc((var(--tree-depth) - 1) * 100%);
+        //transform: translateX(calc((1 / (var(--tree-depth))) * (var(--current-depth)) * -100%));
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,14 @@
+{
+  "extends":"@aztlan/typescript-config",
+  "compilerOptions":{
+    "baseUrl":"src",
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "resolveJsonModule": true
+  },
+  "include":["src"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

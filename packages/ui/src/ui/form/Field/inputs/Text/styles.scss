@@ -2,6 +2,8 @@
 
 @use "@aztlan/bem";
 @use "@aztlan/mixins/src/media";
+@use "@aztlan/base-styles/modifiers";
+@use "../shared";
 
 .#{bem.$base}.text {
   --current-prefix-span: var(--prefix-span);
@@ -9,6 +11,16 @@
   @include media.media($from: 801px) {
     --current-prefix-span: var(--prefix-span-desktop);
     --current-suffix-span: var(--suffix-span-desktop);
+  }
+
+  > * > input {
+    font-family: inherit;
+    padding: 0;
+    @extend %input;
+
+    &:disabled {
+      @extend %disabled;
+    }
   }
 
   > .grid {

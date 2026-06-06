@@ -20,10 +20,14 @@ function Header({
   style,
   as: Wrapper = 'nav',
   fixed,
-  previous,
-  content,
-  next,
-  hideOnDesktop = true,
+  left,
+  children,
+  right,
+  leftSpan = 2,
+  leftSpanDesktop = 3,
+  rightSpan = 2,
+  rightSpanDesktop = 3,
+  UNSTABLE_borders,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -40,20 +44,27 @@ function Header({
         baseClassName,
         componentClassName,
         userClassName,
-        hideOnDesktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
+        UNSTABLE_borders && 'borders',
         'grid',
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        '--left-span'         :leftSpan,
+        '--left-span-desktop' :leftSpanDesktop,
+        '--right-span'        :rightSpan,
+        '--right-span-desktop':rightSpanDesktop,
+        ...style,
+      } as React.CSSProperties}
       // {...otherProps}
     >
-      <span className="span-2 md-span-3">{previous}</span>
-      <span className="span-4 md-span-8">{content}</span>
-      <span className="span-2 md-span-3">{next}</span>
+      {left && <span className="left">{left}</span>}
+      <span className="center">{children}</span>
+      {right && <span className="right">{right}</span>}
+
     </Wrapper>
   )
 }

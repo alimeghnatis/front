@@ -1,0 +1,101 @@
+/* @aztlan/generator-front 0.7.2 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+
+$default-option-color: metadata;
+$selected-option-color: selected;
+$audio-option-color: important;
+$common-language-option-color: paragraph;
+
+$disabled-color: darkgray;
+
+.#{bem.$base}.lang-choices {
+  //gap: var(--gap);
+  border: 0;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+
+  .common-language {
+    --color: var(--#{$common-language-option-color});
+    --hard-color: var(--hard-#{$common-language-option-color});
+    --soft-color: var(--soft-#{$common-language-option-color});
+    --on-color: var(--on-#{$common-language-option-color});
+  }
+
+  .has-audio,
+  .common-language.has-audio {
+    --color: var(--#{$audio-option-color});
+    --hard-color: var(--hard-#{$audio-option-color});
+    --soft-color: var(--soft-#{$audio-option-color});
+    --on-color: var(--on-#{$audio-option-color});
+  }
+
+  .selected-only {
+    --color: var(--#{$selected-option-color});
+    --hard-color: var(--hard-#{$selected-option-color});
+    --soft-color: var(--soft-#{$selected-option-color});
+    --on-color: var(--on-#{$selected-option-color});
+  }
+
+  .less-common {
+    --color: var(--#{$default-option-color});
+    --hard-color: var(--hard-#{$default-option-color});
+    --soft-color: var(--soft-#{$default-option-color});
+    --on-color: var(--on-#{$default-option-color});
+  }
+
+  .options {
+    --lc: var(--options-columns);
+
+
+    @include media.media($from: 801px) {
+      --lc: var(--options-columns-desktop);
+    }
+    column-count: var(--lc);
+    gap: var(--gap);
+
+    .option {
+      &.hidden {
+        display: none;
+      }
+
+
+      &.less-common {
+        color: $default-option-color;
+      }
+
+      input {
+        //opacity: 0;
+        //position: absolute;
+        //visibility: none;
+        display: none;
+        //z-index: -1;
+      }
+
+      input + label {
+        color: var(--color);
+
+        &:hover {
+          color: var(--soft-color);
+        }
+
+        &:focus {
+          color: var(--hard-color);
+        }
+      }
+
+      input:disabled + label {
+        color: $disabled-color;
+      }
+
+      input:checked + label {
+        color: $selected-option-color;
+      }
+    }
+  }
+}
+
+

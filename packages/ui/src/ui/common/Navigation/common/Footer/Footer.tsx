@@ -20,10 +20,15 @@ function Footer({
   style,
   as: Wrapper = 'nav',
   fixed,
-  content,
-  next,
-  hideOnDesktop = true,
+  left,
+  children,
+  right,
+  leftSpan = 2,
+  leftSpanDesktop = 3,
+  rightSpan = 2,
+  rightSpanDesktop = 3,
   UNSTABLE_padded,
+  UNSTABLE_borders,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -39,19 +44,26 @@ function Footer({
         baseClassName,
         componentClassName,
         userClassName,
-        hideOnDesktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
+        UNSTABLE_borders && 'borders',
         'grid',
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        '--left-span'         :leftSpan,
+        '--left-span-desktop' :leftSpanDesktop,
+        '--right-span'        :rightSpan,
+        '--right-span-desktop':rightSpanDesktop,
+        ...style,
+      } as React.CSSProperties}
       // {...otherProps}
     >
-      <span className="span-6 md-span-11">{content}</span>
-      <span className="span-2 md-span-3">{next}</span>
+      <span className="left">{left}</span>
+      <span className="center">{children}</span>
+      <span className="right">{right}</span>
     </Wrapper>
   )
 }

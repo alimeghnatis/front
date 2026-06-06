@@ -35,8 +35,8 @@ function Description({
       role={isError ? 'alert' : undefined}
       {...otherProps}
     >
-      {loading && <p>Loading...</p>}
-      <p>{children}</p>
+      {loading && <p className="color metadata">Loading...</p>}
+      <p className="color metadata">{children}</p>
     </div>
   )
 }

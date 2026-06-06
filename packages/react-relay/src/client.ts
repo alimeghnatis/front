@@ -9,6 +9,7 @@ import {
   // retryMiddleware,
   errorMiddleware,
   perfMiddleware,
+  uploadMiddleware,
 } from 'react-relay-network-modern'
 
 import { refreshTokenMiddleware } from './authentication/index.js'
@@ -28,6 +29,7 @@ const getEnvironment = (url) => new Environment({
       url,
       credentials:'include',
     }),
+    uploadMiddleware(),
     // loggerMiddleware(),
     errorMiddleware(),
     perfMiddleware(),

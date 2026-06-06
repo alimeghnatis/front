@@ -1,0 +1,13 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.textarea-form {
+  background: var(--color);
+
+  button {
+    //align-self: end;
+  }
+}
+
+

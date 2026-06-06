@@ -4,9 +4,12 @@ import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { useApp } from '../../common/index.js'
+import {
+  useApplicationContext, Button,
+} from '../../common/index.js'
 
 // Local Definitions
 
@@ -14,7 +17,7 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'theme-switcher'
 
-const themes = {
+const defaultThemes = {
   'dark-theme' :'Dark',
   'light-theme':'Light',
 }
@@ -26,9 +29,9 @@ function ThemeSwitcher({
   id,
   className: userClassName,
   style,
-  children,
-  // ...otherProps
-}) {
+  themes = defaultThemes,
+}: // ...otherProps
+InferProps<typeof ThemeSwitcher.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -38,7 +41,7 @@ function ThemeSwitcher({
 
   const {
     theme, isTheme, setTheme,
-  } = useApp()
+  } = useApplicationContext()
 
   return (
     <ul
@@ -59,12 +62,14 @@ function ThemeSwitcher({
       </li>
       {Object.keys(themes).map((themeName) => (
         <li key={themeName}>
-          <a
+          <Button
             onClick={() => setTheme(themeName)}
             className={isTheme(themeName) ? 'bold' : ''}
+            variant="simple"
+            color="paragraph"
           >
             {themes[themeName]}
-          </a>
+          </Button>
         </li>
       ))}
     </ul>
@@ -88,9 +93,9 @@ ThemeSwitcher.propTypes = {
   style:PropTypes.objectOf(PropTypes.string),
 
   /**
-   *  The children JSX
+   * The themes for the theme switcher.
    */
-  children:PropTypes.node,
+  themes:PropTypes.objectOf(PropTypes.string),
 }
 
 export default ThemeSwitcher

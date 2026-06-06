@@ -1,0 +1,10 @@
+/* @aztlan/generator-front 3.8.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.group {
+  display: flex;
+  flex-direction: column;
+}
+
+

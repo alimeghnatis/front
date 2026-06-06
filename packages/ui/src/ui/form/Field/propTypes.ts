@@ -7,22 +7,40 @@ export const globalType = {
   type:PropTypes.oneOf(AVAILABLE_TYPES),
 }
 
+/**
+ * Custom PropType validator for condition prop.
+ * @param {Object} props - The props object.
+ * @param {string} propName - The name of the prop to validate.
+ * @param {string} componentName - The name of the component.
+ * @returns {Error|null} - Returns an Error if validation fails, otherwise null.
+ */
 function conditionPropType(
-  props, propName, componentName,
-) {
+  props: { [key: string]: any },
+  propName: string,
+  componentName: string,
+): Error | null {
   const condition = props[propName]
+
+  if (condition == null) {
+    // Prop is not provided, no validation needed
+    return null
+  }
+
   if (!Array.isArray(condition) || condition.length !== 2) {
     return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`)
   }
+
   if (
     !Array.isArray(condition[0])
     || !condition[0].every((item) => typeof item === 'string')
   ) {
     return new Error(`First element of prop \`${propName}\` supplied to \`${componentName}\` must be an array of strings.`)
   }
+
   if (typeof condition[1] !== 'function') {
     return new Error(`Second element of prop \`${propName}\` supplied to \`${componentName}\` must be a function.`)
   }
+
   return null
 }
 
@@ -35,6 +53,9 @@ export const Field = {
 
   /** A component to render the input */
   Component:PropTypes.elementType,
+
+  /** What Wrapper to use for the Form, default is Wrapper */
+  WrapperComponent:PropTypes.elementType,
 }
 
 /** These are props that are can be safely shared between several fields in the same form */
@@ -63,7 +84,8 @@ export const baseWrapper = {
   name:PropTypes.string.isRequired,
 
   /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
-  registerProps:PropTypes.object,
+  // TODO add validate, object of functions
+  registerProps:PropTypes.any, // shape({ validate: PropTypes.objectOf(PropTypes.func) }),
 
   /** Register props to pass down the tree when the input displays nested inputs
    * For instance : (place.streetAddress, place.city)
@@ -90,6 +112,12 @@ export const Wrapper = {
    */
   mockLabel:PropTypes.bool,
 
+  /** The position of the description */
+  descriptionPosition:PropTypes.oneOf([
+    'top',
+    'bottom',
+  ]),
+
   /** Whether the input requires a nested grid */
   nested:PropTypes.bool,
 
@@ -112,7 +140,10 @@ export const inputShared = {
   style:PropTypes.objectOf(PropTypes.string),
 
   /** Whether some loading state is in progress */
-  loading:PropTypes.bool,
+  loading:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 }
 
 const optionType = PropTypes.shape({
@@ -149,7 +180,10 @@ export const optionsShared = {
   options:optionsWithExtensionsValidator,
 
   /** Whether the component is in a loading state */
-  loading:PropTypes.bool,
+  loading:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 }
 
 export const comboboxShared = {

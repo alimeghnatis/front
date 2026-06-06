@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import {
   useLazyLoadQuery, GraphQLTaggedNode,
 } from 'react-relay'
@@ -16,8 +17,9 @@ type InputOptions = Array<InferProps<typeof optionsPropType>>
 type ComponentProps = InferProps<typeof componentPropTypes>
 
 interface ExtensionOptions {
-  variables?:{ [key: string]: any };
-  fallback? :React.ReactNode;
+  variables?    :{ [key: string]: any };
+  fallback?     :React.ReactNode;
+  transformData?:(options) => InputOptions;
 }
 
 /**
@@ -35,7 +37,7 @@ const addGraphQLOptions = (
   options: ExtensionOptions = {},
 ) => {
   const {
-    variables, fallback = <span>Loading</span>,
+    variables, fallback = <span>Loading</span>, transformData,
   } = options
 
   return (WrappedComponent: React.ComponentType<ComponentProps>) => {
@@ -44,10 +46,19 @@ const addGraphQLOptions = (
         QUERY, variables || {}, { fetchPolicy: 'store-and-network' },
       )
 
+      const transformedData = useMemo(
+        () => {
+          if (transformData) {
+            return transformData(data[accessor])
+          }
+          return data[accessor]
+        }, [data[accessor]],
+      )
+
       return (
         <WrappedComponent
           {...props}
-          options={data[accessor] as InputOptions}
+          options={transformedData as InputOptions}
         />
       )
     }

@@ -1,0 +1,356 @@
+/**
+ * General logic
+ * Background explains word type (noun, verb, adjective, adverb, etc.)
+ * ...
+ * Determiners :
+ * - background related to nouns
+ * Pronouns :
+ * - background related to nouns
+ * Adjectives :
+ * Adverbs :
+ * - background independent of other words
+ * Verbs :
+ * - Variantions in background explains tense
+
+ 
+*/
+
+$default-class: "morphosa"!default;
+
+@mixin DEPRECATED-color($default, $hard, $soft) {
+  --color: #{$default};
+  --hard-color: black;//#{$hard};
+  --soft-color: #{$soft};
+}
+
+@mixin set-color($name) {
+  --color: var(--#{$name});
+  --hard-color: var(--hard-#{$name});
+  --soft-color: var(--soft-#{$name});
+  --on-color: var(--on-#{$name});
+}
+
+@mixin set-and-consume-color($name) {
+  @include set-color($name);
+  background:var(--color);
+  color: var(--on-color);
+}
+
+@mixin pseudo-content-before($content) {
+  &::before {
+    content: $content;
+    align-self:center;
+    //color:var(--hard-color, #000000);
+    opacity:1;
+  }
+}
+
+/**
+ * Gender Classes
+ */
+$gender-masculine-class: "masculine"!default;
+$gender-feminine-class: "feminine"!default;
+$gender-neuter-class: "neuter"!default;
+
+//$gender-masculine-before-content: "♂"!default;
+//$gender-feminine-before-content: "♀"!default;
+//$gender-neuter-before-content: "⚲"!default;
+
+$gender-masculine-before-content: "■"!default;
+$gender-feminine-before-content: "●"!default;
+$gender-neuter-before-content: "◆"!default;
+
+$gender-default-border-color: #000000;
+
+@mixin genders() {
+  .#{$gender-masculine-class} {
+    @include pseudo-content-before($gender-masculine-before-content);
+  }
+  .#{$gender-feminine-class} { 
+    @include pseudo-content-before($gender-feminine-before-content);
+  }
+  .#{$gender-neuter-class} { 
+    @include pseudo-content-before($gender-neuter-before-content);
+  }
+}
+
+/**
+ * Number Classes
+ */
+$number-singular-class: "singular"!default;
+$number-plural-class: "plural"!default;
+
+@mixin numbers() {
+  .#{$number-singular-class} { }
+  .#{$number-plural-class} { }
+}
+
+/**
+ * Case Classes
+ */
+$case-class: "case"!default;
+$case-nominative-class: "nominative"!default;
+$case-accusative-class: "accusative"!default;
+$case-dative-class: "dative"!default;
+$case-genitive-class: "genitive"!default;
+$case-locative-class: "locative"!default;
+$case-instrumental-class: "instrumental"!default;
+$case-prepositional-class: "prepositional"!default;
+$case-vocative-class: "vocative"!default;
+
+$case-border-width: 3px!default;
+$case-border-color: var(--on-color, #000000)!default;
+
+$case-nominative-border-style: none!default;
+$case-accusative-border-style: solid!default;
+$case-dative-border-style: dotted!default;
+$case-genitive-border-style: dashed!default;
+$case-locative-border-style: double!default;
+$case-instrumental-border-style: groove!default;
+$case-prepositional-border-style: ridge!default;
+$case-vocative-border-style: inset!default;
+
+
+%case {
+  border-width: $case-border-width;
+  border-color: #{$case-border-color};
+}
+
+@mixin cases() {
+  .#{$case-class} {
+    box-sizing:border-box;
+    &.#{$case-nominative-class} { 
+      @extend %case;
+      border-style: $case-nominative-border-style;
+    }
+    &.#{$case-accusative-class} {
+      @extend %case;
+      border-style: $case-accusative-border-style;
+    }
+    &.#{$case-dative-class} { 
+      @extend %case;
+      border-style: $case-dative-border-style;
+    }
+    &.#{$case-genitive-class} {
+      @extend %case;
+      border-style: $case-genitive-border-style;
+    }
+    &.#{$case-locative-class} {
+      @extend %case;
+      border-style: $case-locative-border-style;
+    }
+    &.#{$case-instrumental-class} {
+      @extend %case;
+      border-style: $case-instrumental-border-style;
+    }
+    &.#{$case-prepositional-class} {
+      @extend %case;
+      border-style: $case-prepositional-border-style;
+    }
+    &.#{$case-vocative-class} {
+      @extend %case;
+      border-style: $case-vocative-border-style;
+    
+    }
+  }
+}
+
+/**
+ * Noun
+ */
+$noun-class: "noun"!default;
+
+$noun-color-name: "noun"!default;
+
+@mixin noun() {
+  .#{$noun-class} {
+    @include set-and-consume-color($noun-color-name);
+  }
+}
+
+/**
+ * Determiners
+ */
+
+$determiner-class: "determiner"!default;
+
+$determiner-color-name: "determiner"!default;
+
+@mixin determiner() {
+  .#{$determiner-class}{
+    @include set-and-consume-color($determiner-color-name);
+  }
+} 
+
+/**
+ * Pronouns
+ */
+
+$pronoun-class: "pronoun"!default;
+
+$pronoun-color-name: "pronoun"!default;
+
+@mixin pronoun() {
+  .#{$pronoun-class}{
+    @include set-and-consume-color($pronoun-color-name);
+  }
+}
+
+/**
+ * Adjectives
+ */
+$adjective-class: "adjective"!default;
+
+$adjective-color-name: "adjective"!default;
+
+@mixin adjective() {
+  .#{$adjective-class} {
+    @include set-and-consume-color($adjective-color-name);
+  }
+}
+
+/**
+ * Adverbs
+ */
+$adverb-class: "adverb"!default;
+
+$adverb-color-name: "adverb"!default;
+
+@mixin adverb() {
+  .#{$adverb-class} { 
+    @include set-and-consume-color($adverb-color-name);
+  }
+}
+
+/**
+ * Conjunctions
+ */
+$conjunction-class: "conjunction"!default;
+
+$conjunction-color-name: "conjunction"!default;
+
+@mixin conjunction() {
+  .#{$conjunction-class} {
+    @include set-and-consume-color($conjunction-color-name);
+  }
+}
+
+
+/**
+ * Prepositions
+ */
+
+$preposition-class: "preposition"!default;
+
+$preposition-color-name: "preposition"!default;
+
+@mixin preposition() {
+  .#{$preposition-class} {
+    @include set-and-consume-color($preposition-color-name);
+  }
+}
+
+/**
+ * Particles
+ */
+$particle-class: "particle"!default;
+
+$particle-color-name: "particle"!default;
+
+@mixin particle() {
+  .#{$particle-class} {
+    @include set-and-consume-color($particle-color-name);
+  }
+}
+
+/**
+ * Verbs
+ */
+$verb-class: "verb"!default;
+$verb-tense-class: "tense"!default;
+$verb-tense-present-class: "present"!default;
+$verb-tense-past-class: "past"!default;
+$verb-tense-future-class: "future"!default;
+$verb-tense-perfect-class: "perfect"!default;
+$verb-tense-imperfect-class: "imperfect"!default;
+$verb-tense-pluperfect-class: "pluperfect"!default;
+$verb-tense-future-perfect-class: "future-perfect"!default;
+$verb-mood-class: "mood"!default;
+$verb-mood-indicative-class: "indicative"!default;
+$verb-mood-subjunctive-class: "subjunctive"!default;
+$verb-mood-imperative-class: "imperative"!default;
+$verb-mood-conditional-class: "conditional"!default;
+$verb-mood-optative-class: "optative"!default;
+$verb-mood-infinitive-class: "infinitive"!default;
+$verb-mood-participle-class: "participle"!default;
+$verb-mood-gerund-class: "gerund"!default;
+
+$verb-color-name: "verb"!default;
+$verb-tense-present-background:var(--color)!default;
+$verb-tense-past-background:var(--soft-color)!default;
+$verb-tense-future-background:var(--hard-color)!default;
+
+@mixin verb() {
+  .#{$verb-class} {
+    @include set-color($verb-color-name);
+    color:var(--on-color);
+    &.#{$verb-tense-class} {
+      &.#{$verb-tense-present-class} {
+        background: $verb-tense-present-background;
+      }
+      &.#{$verb-tense-past-class} { 
+        background: $verb-tense-past-background;
+      }
+      &.#{$verb-tense-future-class} {
+        background: $verb-tense-future-background;
+      }
+    }
+    &.#{$verb-mood-class} {
+      &.#{$verb-mood-indicative-class} { }
+      &.#{$verb-mood-subjunctive-class} { }
+      &.#{$verb-mood-imperative-class} { }
+      &.#{$verb-mood-conditional-class} { }
+      &.#{$verb-mood-optative-class} { }
+      &.#{$verb-mood-infinitive-class} { 
+        background-color: var(--color);
+        background-size: .5em .5em;
+        background-image: repeating-linear-gradient(45deg, 
+          var(--soft-color) 0, 
+          var(--soft-color) 1px, 
+          var(--color) 0, 
+          var(--color) 50%
+        );
+      }
+      &.#{$verb-mood-participle-class} {
+
+        background-color: var(--color);
+        background-image:  radial-gradient(var(--hard-color) 0.5px, transparent 0.5px), radial-gradient(var(--hard-color) 0.5px, var(--color) 0.5px);
+        background-size: .5em .5em;
+        background-position: 0 0,.25em .25em;
+
+      }
+      &.#{$verb-mood-gerund-class} { }
+    }
+  }
+}
+
+/**
+ * Applying the mixins to the default container class.
+ * This setup allows easy extension and modification within the container.
+ */
+.#{$default-class} {
+  @include cases;
+  @include genders;
+  @include numbers;
+
+  @include adjective;
+  @include adverb;
+  @include conjunction;
+  @include determiner;
+  @include noun;
+  @include particle;
+  @include preposition;
+  @include pronoun;
+  @include verb;
+}
+

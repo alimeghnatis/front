@@ -1,0 +1,110 @@
+{
+  "expression": "Il bambino gioca con il suo nuovo giocattolo.",
+  "language": "Italian",
+  "words": [
+    {
+      "word": "Il",
+      "lemma": ["il"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 1
+      }
+    },
+    {
+      "word": "bambino",
+      "lemma": ["bambino"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 2
+      }
+    },
+    {
+      "word": "gioca",
+      "lemma": ["giocare"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PRESENT",
+        "mood": "INDICATIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "con",
+      "lemma": ["con"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "il",
+      "lemma": ["il"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 5
+      }
+    },
+    {
+      "word": "suo",
+      "lemma": ["suo"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "POSSESSIVE_MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "nuovo",
+      "lemma": ["nuovo"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "ADJECTIVAL_MODIFIER",
+        "head": 5
+      }
+    },
+    {
+      "word": "giocattolo",
+      "lemma": ["giocattolo"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 2
+      }
+    }
+  ]
+}

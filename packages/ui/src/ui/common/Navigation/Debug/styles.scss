@@ -1,0 +1,22 @@
+/* @aztlan/generator-front 1.2.22 */
+
+@use "@aztlan/bem";
+
+@mixin background {
+  background-color: var(--near);
+  background-image: repeating-linear-gradient(45deg, var(--hard-near) 0, var(--hard-near) 1px, transparent 0, transparent 50%);
+  background-size: 10px 10px;
+}
+
+.#{bem.$base}.navigation-debug-bar {
+  @include background;
+  font-weight: 700;
+  height: min-content;
+
+  ul.inline {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+

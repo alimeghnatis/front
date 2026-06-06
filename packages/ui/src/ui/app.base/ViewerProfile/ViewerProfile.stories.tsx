@@ -4,26 +4,47 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
+import { QUERY_APPLICATION } from 'story-utils/queries.js'
+import { graphql } from 'react-relay'
 import { RawViewerProfile as Component } from './ViewerProfile.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'base.profile/ViewerProfile',
+  title     :'app.base/ViewerProfile',
   component :Component,
   decorators:[
     // Needed for storyshots, not for storybook itself
-    decorators.auth,
   ],
   // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 export default meta
 
+const FRAGMENT = graphql`
+  fragment ViewerProfileFragment on UserNode
+    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
+    firstName
+    lastName
+    created
+    updated
+    email
+    profilePicture
+  }
+`
+
+const QUERY = graphql`
+  query ViewerProfileQuery {
+    viewer {
+      ...ViewerProfileFragment
+    }
+  }
+`
+
 const relayConfig = {
-  query            :Component.QUERY,
+  query            :QUERY,
   getReferenceEntry:(data) => [
     'data',
-    data,
+    data.viewer,
   ],
   variables    :{},
   mockResolvers:{
@@ -36,4 +57,7 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
+export const Default: StoryObj<typeof Component> = {
+  args      :{ FRAGMENT },
+  parameters:{ relay: relayConfig },
+}

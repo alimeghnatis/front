@@ -1,0 +1,38 @@
+/* @aztlan/generator-front 0.9.0 */
+
+@use "@aztlan/bem";
+
+$span-submit-actions: var(--sus);
+
+.#{bem.$base}.modular-form {
+  --sus: var(--submit-span);
+  align-items: start;
+  //grid-template-rows: 1fr auto;
+  height: 100%;
+  overflow: hidden;
+  @media screen and (min-width: 801px) {
+    --sus: var(--submit-span-desktop);
+  }
+  .#{bem.$base}.form-section {
+    //grid-auto-rows: max-content;
+    //height: 100%;
+    //overflow: auto;
+  }
+  .#{bem.$base}.submit-bar {
+    align-items: end;
+
+    > .content {
+      grid-column: 1/calc(-1 - var(--sus));
+    }
+
+    > .actions {
+      grid-column-end: span $span-submit-actions;
+
+      > .#{bem.$base}.button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+

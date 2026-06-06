@@ -1,0 +1,61 @@
+## Welcome
+
+Thank you for taking the time to test this small application. Your help is greatly appreciated and I will take into account all your feedback to improve the app and make it as useful as it can be !
+
+## What is this app ?
+
+This app is a small tool to help you learn new languages. You can add new expressions, and get explanations in your native language. You can also listen to the pronunciation of the expressions.
+
+This app is not meant to replace learning methods, but only to be a complement to them. It is meant to bridge the gap between the theoretical knowledge of a language and the practical use of it. A way to think of it is an enhanced notepad where you can store expressions and their meanings.
+
+## How to use it ?
+
+The main section of the app are the `Boards`. The `Boards` are a collection of `Expression` arranged by `Group`. You can add an `Expression` to a `Board` by writing in the bottom Textarea and clicking on the `Add` button. 
+
+You can now (01.05) also chat with AI to get help on expressions. The chat is available in the `Chat` section. You can ask questions to the AI specifying the kind of vocabulary you are interestd in and the language, for instance "Help me order a pizza in Italian" and it will try to help you. The AI is not perfect and might not understand everything, but it should be able to help you with most of your questions.
+
+`Expressions` can be interacted with in several ways. You can click on the `<` or the `65` button to listen to the pronunciation of the expression. You can click on the `*` button to generate variants the expression. The `?` button will display the explanations of the expression. You can click on the `x` button to remove the expression from the board. The `!` button will bookmark the expression.
+
+You can configure the explanation language in the `Settings` section. You can also configure the languages available for variants generation the same `Settings` section.
+
+## New features 
+
+- 14.05 : Improved messages in buttons, etc.
+- 14.05 : Reorganized the expression details on desktop.
+- 14.05 : Added the base of the themes. There are 4 themes currently in beta. You can select them in the left menu : `light`, `dark`, `blue`, `green`.
+- 13.05 : Added notifications on action success or error.
+- 13.05 : Added a better language selector in board settings
+- 13.05 : Fixed Logout button not working in menu
+- 13.05 : Corrected the rare bug where two messages would be sent in the chat at once and one would be missing.
+- 12.05 : Added notifications on successful actions and errors
+- 11.05 : Added a usage section in profile
+- 07.05 : Fixed the bug where there would be a layout shift when loading more expressions
+- 07.05 : On desktop, when an expression is selected ( details open ), the sentence added will be appended to the group instead of creating a new group
+- 07.05 : Added a setting in the profile to choose the default action when clicking on an expression : display details, play audio, bookmark
+- 07.05 : Submission of forms is now possible by pressing `Enter` in the textarea.
+- 06.05 : Fixed layout issues when adding a new expression. It should be much smoother
+- 02.05 : Added a setting to display translations in the expression details.
+- 01.05 : Chat section is now fully working and connected to the Board.
+- 30.04 : Added a base chat feature (Board/Chat). Not fully implemented (not possible ATM to add to board)
+- 28.04 : Fixed styling and refetching on expression and variant creation
+- 28.04 : Fixed bug of interface "jump" on logout
+- 27.04 : The audio or the explanations are more resilient to errors while generating, retries are put in place and replaced hard fail by soft fail.
+- 27.04 : Scroll after expression addition in board should be fixed
+- 27.04 : Changed default voices in English and other languages. There are more voices, they are now more natural and better selected..
+- 27.04 : Fixed scroll bug on multiple choice options in form
+- 25.04 : Updated the profile page with a basic form.
+- 23.04 : Added a board setting to select the explanation length desired (short, medium, long).
+- 23.04 : Separated the form actions from the form. Now the actions are always visible at the bottom of forms, it should make them easier to use.
+- 22.04 : Added a new section in the details to rate and flag an expression.
+- 22.04 : Added (untested) variants for language levels (A2, B1, B2, C1).
+- 21.04 : Audio can be stopped by clicking a second time on the play button.
+- 21.04 : When playing an audio, all other audios are stopped.
+- 21.04 : On mobile, the Expression Variants and Expression Details are shown in a mobile-friendly popup.
+- 21.04 : On mobile, slide an expression to the right to display actions.
+
+## Known issues
+
+- The app relying on a nondeterministic API response, sometimes when adding an Expression, the language is not detected properly, leading to an error where the Expression is not saved. In this case, please try again. Sometimes, it helps to try with a longer sentence, or adding punctuation. For instance `Let's go to the beach` is more likely to be detected as English than `Let's go`.
+- In some cases, the explanations are not written using the right language. This is a known issue and we are working on it.
+- When using rare languages, the explanations might not function properly. 
+- In some cases, the audio is not saved properly. If you experience this issue, please try again.

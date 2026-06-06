@@ -1,8 +1,13 @@
 /* @aztlan/generator-front 0.9.1 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
+@use "../shared";
 
 .#{bem.$base}.combobox {
+  &:focus-within {
+    @extend %focus;
+  }
   .#{bem.$base}.#{bem.$element-list} {
     &:not(.#{bem.$modifier-open}) {
       display: none;
@@ -10,6 +15,18 @@
   }
   .#{bem.$base}.#{bem.$element-item}{
 
+  }
+
+  input {
+    @extend %input;
+
+    &:disabled {
+      @extend %disabled;
+    }
+
+    &:focus {
+      outline: unset;
+    }
   }
 }
 

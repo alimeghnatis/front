@@ -1,0 +1,34 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+$actions-column-span:1;
+
+.#{bem.$base}.suggestion {
+  &.#{bem.$modifier-selected} {
+    background: var(--selected);
+
+    p {
+      color: var(--on-selected);
+    }
+  }
+
+  > .language {
+    //grid-column: 1/-1;
+  }
+
+  > .content {
+    grid-column: 2/#{- $actions-column-span - 1};
+  }
+
+  > .actions {
+    display: flex;
+    grid-column: #{- $actions-column-span - 1}/-1;
+
+    > * {
+      flex-grow: 1;
+    }
+  }
+}
+
+

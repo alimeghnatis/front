@@ -1,0 +1,19 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.suggestion-group {
+  gap: 0;
+
+  > .actions {
+    > .content {
+      grid-column: 1/-2;
+    }
+
+    > button {
+      grid-column: -2/-1;
+    }
+  }
+}
+
+

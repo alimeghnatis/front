@@ -1,0 +1,77 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+$infinite-scroll-offset: 1000px;
+
+.#{bem.$base}.thread {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+  gap: var(--gap);
+  grid-auto-rows: min-content;
+  overflow: auto;
+  .#{bem.$base}.thread-message {
+    &.user {
+      grid-column: 2/-1;
+    }
+
+    &.assistant {
+      grid-column: 1/-2;
+    }
+    @media screen and (min-width: 801px) {
+      --columns: 9;
+
+      &.user {
+        grid-column: 5/-2;
+      }
+
+      &.assistant {
+        grid-column: 2/-5;
+      }
+    }
+
+    > .suggestions {
+      //--tmp: var(--columns);
+      //--columns: calc(var(--tmp) - 1);
+      grid-column: 2/ -1;
+    }
+  }
+
+  > .message-wrapper {
+    &:first-of-type {
+      margin-bottom: var(--gap);
+    }
+  }
+
+  .empty {
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+  }
+
+  p.info {
+    color: var(--metadata);
+    text-align: center;
+  }
+
+  #load-more {
+    position: relative;
+
+    p {
+      margin-top: calc(var(--gap) * 3);
+    }
+
+    .ref {
+      //background: red;
+      bottom: -$infinite-scroll-offset;
+      height: $infinite-scroll-offset;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+    }
+  }
+}
+
+

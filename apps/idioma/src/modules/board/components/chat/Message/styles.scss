@@ -1,0 +1,40 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/bem";
+
+
+.#{bem.$base}.thread-message {
+  .message-head {
+    .role {
+      grid-column: 1/-3;
+    }
+
+    .date-time {
+      grid-column-end: span 2;
+    }
+  }
+
+  .role {
+    color: var(--label);
+  }
+
+  &.user {
+    background: var(--soft-near);
+  }
+
+  &.assistant {
+    background: var(--near);
+  }
+
+  > .suggestions {
+    --tmp: calc(var(--columns) - 1);
+    grid-column: 2/ -1;
+
+    > * {
+      --columns: var(--tmp);
+    }
+    //--columns: calc(var(--tmp) - 1);
+  }
+}
+
+

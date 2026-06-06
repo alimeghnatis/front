@@ -1,0 +1,59 @@
+$disabled-background: var(--disabled-background, var(--disabled));
+//$disabled-background: var(--soft-color);
+$disabled-background-size: var(--disabled-background-size);
+$disabled-color: var(--on-disabled);
+
+%disabled-color {
+  border-color: $disabled-color;
+  color: $disabled-color;
+}
+
+%disabled {
+  background: $disabled-background;
+  background-size: $disabled-background-size;
+  cursor: not-allowed;
+  @extend %disabled-color;
+
+  &:hover,
+  &:focus {
+    background: $disabled-background;
+    background-size: $disabled-background-size;
+    color: $disabled-color;
+  }
+}
+
+
+$focus-border: var(--focus-outline);
+$focus-border-offset: var(--focus-outline-offset);
+
+%focus {
+  outline: $focus-border;
+}
+
+%inner-focus {
+  outline-offset: $focus-border-offset;
+}
+
+@keyframes shining {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+%shine {
+  animation: shining 2.5s infinite linear !important;
+  background-image: linear-gradient(
+    -45deg,
+    var(--color) 0%,
+    var(--color) 70%,
+    var(--soft-color) 72%,
+    var(--color) 80%,
+    var(--color) 100%
+  ) !important;
+  background-position: left;
+  background-size: 1000% 100% !important;
+}

@@ -1,7 +1,7 @@
 {
   "name": "@aztlan/storybook-addon-relay",
   "type": "commonjs",
-  "version": "1.4.1",
+  "version": "3.14.0",
   "description": "A Storybook add-on to write stories for Relay components.",
   "main": "dist/preset.js",
   "types": "dist/index.d.ts",
@@ -30,14 +30,14 @@
   "license": "MIT",
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.14",
-    "@storybook/addon-interactions": "^7.6.14",
-    "@storybook/addon-links": "^7.6.14",
-    "@storybook/addons": "^7.6.14",
-    "@storybook/blocks": "^7.6.14",
-    "@storybook/preview-api": "^7.6.14",
-    "@storybook/react": "^7.6.14",
-    "@storybook/react-vite": "^7.6.14",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addons": "^7.6.17",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/preview-api": "^7.6.17",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
     "@storybook/testing-library": "^0.2.2",
     "@types/react-relay": "^16",
     "@types/relay-runtime": "^14.1.23",
@@ -48,8 +48,8 @@
     "react-dom": "^18.2.0",
     "react-relay": "^16",
     "relay-test-utils": "^16.2.0",
-    "storybook": "^7.6.14",
-    "typescript": "^5.3.3",
+    "storybook": "^7.6.17",
+    "typescript": "^5.4.5",
     "vite": "^4.5.1",
     "vite-plugin-dts": "^2.0.2"
   },
@@ -76,6 +76,6 @@
   },
   "dependencies": {
     "0": "^0.0.0",
-    "type-fest": "^4.10.2"
+    "type-fest": "^4.17.0"
   }
 }

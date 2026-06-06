@@ -5,12 +5,14 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.js'
 
 import { Field } from '../../Field/index.js'
+import {
+  basePropTypes, fieldPropTypes,
+} from '../types.js'
 
 const baseClassName = styleNames.base
-const componentClassName = 'form'
+const componentClassName = 'form-section'
 
 /**
  * A section of a form that renders a set of fields.
@@ -26,9 +28,9 @@ function Section({
   label,
   description,
   fields,
+  sharedFieldProps,
+  children,
 }: InferProps<typeof Section.propTypes>): React.ReactElement {
-  const { sharedFieldProps } = useForm()
-
   return (
     <Element
       id={id}
@@ -43,15 +45,15 @@ function Section({
       style={style}
       // {...otherProps}
     >
-      <div className="container">
-        <h2>
-          {index + 1}
-          .
-          {label}
-          {' '}
-        </h2>
-        {description && <p>{description}</p>}
-      </div>
+      {label && (
+        <div className="container">
+          <h2>
+            {index ? '{index + 1}.' : ''}
+            {label}
+          </h2>
+          {description && <p>{description}</p>}
+        </div>
+      )}
       {fields.map((fieldProps) => (
         <Field
           key={fieldProps.name}
@@ -59,6 +61,7 @@ function Section({
           {...fieldProps}
         />
       ))}
+      {children}
     </Element>
   )
 }
@@ -77,16 +80,23 @@ Section.propTypes = {
   as:PropTypes.elementType,
 
   /** The index of the form section */
-  index:PropTypes.number.isRequired,
+  index:PropTypes.number,
 
   /** The label of the form section */
-  label:PropTypes.string.isRequired,
+  label:PropTypes.string,
 
   /** The description of the form section */
   description:PropTypes.string,
 
   /** The fields to be rendered */
-  fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
+  // fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)).isRequired,
+  fields:PropTypes.arrayOf(fieldPropTypes).isRequired,
+
+  /** The shared field props */
+  sharedFieldProps:basePropTypes.fieldProps,
+
+  /** The children to render */
+  children:PropTypes.node,
 }
 
 export default Section

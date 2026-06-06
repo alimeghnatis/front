@@ -1,0 +1,66 @@
+/* @aztlan/generator-front 3.4.0 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+
+.#{bem.$base}.expression-details {
+  background: var(--near);
+  scroll-anchor: auto;
+
+  .label {
+    color: var(--paragraph);
+    font-weight: 700;
+    //grid-column-end: span 3;
+  }
+
+  .field {
+    //grid-column: 4 / -1;
+  }
+
+  .content-map {
+    display: grid;
+  }
+
+  .field ol {
+    margin-top: 0;
+  }
+
+  .analysis {
+    margin-top: var(--gap);
+  }
+
+  p.in-progress {
+    margin-bottom: var(--gap);
+    margin-top: var(--gap);
+  }
+  @media screen and (min-width: 801px) {
+    .content-map {
+      gap: 0 var(--gap);
+      grid-auto-rows: min-content;
+
+      .label:not(:first-child) {
+        margin-top: var(--gap);
+      }
+
+      &.explanations {
+        & + .details {
+          grid-column-start: 9;
+        }
+      }
+    }
+
+    .rating-form {
+      margin-bottom: var(--gap);
+    }
+
+    .grid.container > .label {
+      //grid-column: 1/span 2;
+    }
+
+    .grid.container > .field {
+      //grid-column: 3/span 12;
+    }
+  }
+}
+
+

@@ -1,34 +1,145 @@
-/* @aztlan/generator-front 1.2.22 */
+// REF 15.1: VerticalMenu.tsx Adjusted for Recursion and Original className API
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
-
-import { Link } from 'react-router-dom'
+import {
+  useInsertionEffect,
+  useMemo,
+} from 'react'
+import {
+  Link, useLocation,
+} from 'react-router-dom'
+import { useSelect } from 'downshift'
 import styleNames from '@aztlan/bem'
-import { ComponentPropTypes } from './types.js'
-import type { ComponentProps } from './types.js'
+import {
+  ComponentPropTypes, ComponentItemPropTypes,
+  ComponentListPropTypes,
+} from './types.js' // Keep original import
+import type {
+  ComponentProps, ComponentItemProps,
+  ComponentListProps,
+} from './types.js' // Keep original import for TypeScript types
 
 const baseClassName = styleNames.base
 const componentClassName = 'vertical-menu'
+const componentItemClassName = styleNames.elementItem
+const componentListClassName = styleNames.elementList
 
-/**
- * description
- * @param {InferProps<typeof VerticalMenu.propTypes>} props -
- * @returns {React.ReactElement} - Rendered VerticalMenu
- */
+function Item({
+  id,
+  className: userClassName,
+  style,
+  item,
+  onItemMouseEnterHandler,
+  onItemMouseLeaveHandler,
+  ...otherProps
+}:ComponentItemProps) {
+  const location = useLocation()
+
+  return (
+    <li
+      // key={item.key || item.label}
+      id={id}
+      className={[
+        baseClassName,
+        componentItemClassName,
+        userClassName,
+        item.disabled && styleNames.modifierDisabled,
+        item.url && (location.pathname === item.url) && styleNames.modifierActive,
+        // isItemAGroupHeader(item) && styleNames.elementGroup,
+        item.className,
+      ].filter(Boolean).join(' ')}
+      style={style}
+      {...otherProps}
+    >
+      {item.Component ? <item.Component item={item} /> : item.url ? (
+        <Link
+          to={item.url}
+          onMouseEnter={() => onItemMouseEnterHandler?.(item)}
+        >
+          {item.label}
+        </Link>
+      ) : item.label}
+      {item.items && !item.url && (
+        // @ts-ignore
+        <List
+          items={item.items}
+          className="container"
+          onItemMouseEnterHandler={onItemMouseEnterHandler}
+          onItemMouseLeaveHandler={onItemMouseLeaveHandler}
+        />
+      )}
+    </li>
+  )
+}
+
+Item.propTypes = ComponentItemPropTypes
+
+function List({
+  id,
+  className: userClassName,
+  style,
+  items,
+  onItemMouseEnterHandler,
+  onItemMouseLeaveHandler,
+  ...otherProps
+}:ComponentListProps) {
+  return (
+    <ul
+      id={id}
+      className={[
+        baseClassName,
+        componentListClassName,
+        userClassName,
+      ].filter(Boolean).join(' ')}
+      style={style}
+      // {...getMenuProps()}
+      {...otherProps}
+    >
+      {items.map((
+        item, index,
+      ) => (
+        <Item
+          key={item.key || item.label}
+          item={item}
+          onItemMouseEnterHandler={onItemMouseEnterHandler}
+          onItemMouseLeaveHandler={onItemMouseLeaveHandler}
+        />
+      ))}
+    </ul>
+  )
+}
+
+List.propTypes = ComponentListPropTypes
+
 function VerticalMenu({
   id,
   className: userClassName,
   style,
   as: Wrapper = 'nav',
-  label,
-  items,
-  desktopOnly = true,
+  rootItem,
+  appendItems,
+  spaced,
+  onItemMouseEnterHandler,
+  onItemMouseLeaveHandler,
+  hideRootItem = false,
+  ...otherProps
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
       import('./styles.scss')
     }, [],
+  )
+
+  const {
+    items:baseItems,
+    ...rootItemWithoutItems
+  } = rootItem
+
+  const finalItems = useMemo(
+    () => (appendItems ? baseItems.concat(appendItems) : rootItem.items), [
+      appendItems,
+      rootItem.items,
+    ],
   )
 
   return (
@@ -38,29 +149,21 @@ function VerticalMenu({
         baseClassName,
         componentClassName,
         userClassName,
-        desktopOnly && 'desktop-only',
-        'grid',
+        spaced && styleNames.modifierSpaced,
       ]
-        .filter((e) => e)
+        .filter(Boolean)
         .join(' ')}
       style={style}
-      // {...otherProps}
+      {...otherProps}
     >
-      {label && <span>{label}</span>}
-      <ul className="grid container">
-        {items?.map((item) => (
-          <li
-            key={`${item.label}${item.url || ''}`}
-            className={item.disabled ? 'disabled container' : 'container'}
-          >
-            {item.url && !item.disabled ? (
-              <Link to={item.url}>{item.label}</Link>
-            ) : (
-              item.label
-            )}
-          </li>
-        ))}
-      </ul>
+      <List
+        items={[
+          !hideRootItem && rootItemWithoutItems,
+          ...finalItems,
+        ].filter(Boolean)}
+        onItemMouseEnterHandler={onItemMouseEnterHandler}
+        onItemMouseLeaveHandler={onItemMouseLeaveHandler}
+      />
     </Wrapper>
   )
 }

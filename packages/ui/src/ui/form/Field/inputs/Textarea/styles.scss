@@ -1,14 +1,24 @@
 /* @aztlan/generator-front 0.8.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
+@use "../shared";
 
 .#{bem.$base}.textarea {
+  display: flex;
+  overflow: visible; // For the outline in some situations. Not optimal
+
   textarea {
+    font-family: inherit;
+    padding: 0;
+    position: relative;
     resize: vertical;
     width: 100%;
+    @extend %input;
 
     &:disabled {
       resize: none;
+      @extend %disabled;
     }
   }
 }

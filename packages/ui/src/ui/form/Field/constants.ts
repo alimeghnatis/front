@@ -20,6 +20,11 @@ export const AVAILABLE_TYPES = [
   'simple-choices',
   'textarea',
   'checkbox',
+  'combobox',
+  'toggle',
+
+  // For custom components
+  'custom',
   // 'query-combobox',
   // 'query-select',
 ]

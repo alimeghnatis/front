@@ -7,8 +7,7 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { useFragment } from 'react-relay'
-import { graphql } from 'relay-runtime'
-import { useViewer } from '../AuthContextProvider/index.js'
+import { useViewer } from '../Authentication/index.js'
 import { ViewerProfileFragment$key } from './__generated__/ViewerProfileFragment.graphql.js'
 
 // Local Definitions
@@ -17,25 +16,6 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'viewer-profile'
 
-const FRAGMENT = graphql`
-  fragment ViewerProfileFragment on UserNode
-    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
-    firstName
-    lastName
-    created
-    updated
-    email
-    profilePicture
-  }
-`
-const QUERY = graphql`
-  query ViewerProfileQuery {
-    viewer {
-      ...ViewerProfileFragment
-    }
-  }
-`
-
 /**
  * This is the component description.
  */
@@ -43,6 +23,7 @@ function RawViewerProfile({
   id,
   className: userClassName,
   style,
+  FRAGMENT,
   data,
   // ...otherProps
 }) {
@@ -53,9 +34,8 @@ function RawViewerProfile({
     }, [],
   )
   const result = useFragment(
-    FRAGMENT,
-    data.viewer,
-  ) as ViewerProfileFragment$key
+    FRAGMENT, data,
+  )
 
   return (
     <div
@@ -73,14 +53,14 @@ function RawViewerProfile({
     >
       {result
         && Object.keys(result).map((k) => (
-          <>
+          <React.Fragment key={k}>
             <div className="span-3">
               <h2>{k}</h2>
             </div>
             <div className="span-5">
               <p>{result[k]}</p>
             </div>
-          </>
+          </React.Fragment>
         ))}
     </div>
   )
@@ -107,19 +87,35 @@ RawViewerProfile.propTypes = {
       profilePicture:PropTypes.string,
     }),
   }),
+
+  /** The fragment for this component */
+  FRAGMENT:PropTypes.any,
 }
 
-RawViewerProfile.QUERY = QUERY
-RawViewerProfile.FRAGMENT = FRAGMENT
-
-function ViewerProfile(props) {
+function ViewerProfile({
+  data: userData, ...props
+}) {
   const { data } = useViewer()
   return (
     <RawViewerProfile
-      data={data}
+      data={userData || data}
       {...props}
     />
   )
+}
+
+ViewerProfile.propTypes = {
+  /** The data for this component */
+  data:PropTypes.shape({
+    viewer:PropTypes.shape({
+      firstName     :PropTypes.string,
+      lastName      :PropTypes.string,
+      created       :PropTypes.string,
+      updated       :PropTypes.string,
+      email         :PropTypes.string,
+      profilePicture:PropTypes.string,
+    }),
+  }),
 }
 
 export { RawViewerProfile }

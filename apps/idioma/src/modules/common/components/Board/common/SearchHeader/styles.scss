@@ -1,0 +1,19 @@
+/* @aztlan/generator-front 1.8.1 */
+
+@use "@aztlan/bem";
+
+@mixin background {
+  background-color: var(--near);
+  background-image: repeating-linear-gradient(45deg, var(--hard-near) 0, var(--hard-near) 1px, transparent 0, transparent 50%);
+  background-size: 10px 10px;
+}
+
+.#{bem.$base}.search-header {
+  @include background;
+
+  div > .label {
+    display: none;
+  }
+}
+
+

@@ -1,10 +1,26 @@
 /* @aztlan/generator-front 0.5.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
+@use "../shared";
 
 .#{bem.$base}.select {
   select {
+    font-family: inherit;
     width: 100%;
+    @extend %input;
+
+    option {
+      font-family: inherit;
+
+      &:disabled {
+        color: var(--disabled-color);
+      }
+    }
+
+    &:disabled {
+      @extend %disabled;
+    }
   }
 }
 

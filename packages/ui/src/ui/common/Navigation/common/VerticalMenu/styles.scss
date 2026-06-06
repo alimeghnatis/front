@@ -3,11 +3,44 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.vertical-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  &.#{bem.$modifier-spaced} {
+    > ul {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    > ul > :nth-last-child(2) {
+      flex-grow: 1;
+    }
+  }
+
+
+  li.#{bem.$element-group} {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-child) {
+      margin-bottom: var(--gap);
+    }
+
+    &:not(:first-child) {
+      margin-top: var(--gap);
+    }
+  }
+
   ul {
     align-content: baseline;
     list-style: none;
     margin: 0;
+    overflow: auto;
     padding: 0;
+    scrollbar-width: none;
   }
 }
 

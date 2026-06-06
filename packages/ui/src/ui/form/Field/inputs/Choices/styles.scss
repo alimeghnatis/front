@@ -1,17 +1,36 @@
 /* @aztlan/generator-front 0.7.2 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/modifiers";
 
 .#{bem.$base}.choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+  --lc: var(--options-columns);
+  @include media.media($from: 801px) {
+    --lc: var(--options-columns-desktop);
+  }
+  border: 0;
+  padding: 0;
+
+  > .options {
+    gap: 0 var(--gap);
+  }
+
+  &.flex-wrap > .options {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &.grid > .options {
+    column-count: var(--lc);
+  }
 
   input {
-    opacity: 0;
-    position: absolute;
-    visibility: none;
-    z-index: -1;
+    //opacity: 0;
+    //position: absolute;
+    //visibility: none;
+    display: none;
+    //z-index: -1;
   }
 
   input + label {
@@ -19,11 +38,11 @@
   }
 
   input:disabled + label {
-    color: darkgray;
+    @extend %disabled;
   }
 
   input:checked + label {
-    color: red;
+    color: var(--selected);
   }
 }
 

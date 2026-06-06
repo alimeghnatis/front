@@ -1,0 +1,250 @@
+@use "@aztlan/bem" as bem;
+@use "@aztlan/base-styles/themes" as themes;
+@use "./themes" as morphosa-themes;
+@use "@aztlan/grid/src/main" as grid with (
+  $default-gap:1.5rem,
+);
+@use "@aztlan/swatch/src/main" as swatch with (
+  $themes:(
+    "light-theme":themes.$light-theme,
+    "dark-theme":themes.$dark-theme,
+    "blue-theme":themes.$blue-theme,
+    "green-theme":themes.$green-theme,
+    "morphosa-light-theme":morphosa-themes.$morphosa-light-theme,
+    "morphosa-dark-theme":morphosa-themes.$morphosa-dark-theme,
+  ),
+  $extras:(
+    "light-theme":map-merge(
+      themes.$light-extras,
+      (
+        "font-size":18px,
+        "line-height":1.5em,
+        "margin":1em,
+      )
+    ),
+    //"blue-theme":themes.$blue-extras,
+  )
+);
+@use "@aztlan/mixins/src/reset" as reset;
+@use "@aztlan/mixins/src/font" as font;
+@use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/base-styles/initial.scss";
+
+$import-font-map:(
+  "nsans":(
+    "400-normal":"sans_book",
+    "400-italic":"sans_book_italic",
+    "500-normal":"sans_regular",
+    "500-italic":"sans_regular_italic",
+    "700-normal":"sans_semibold",
+    "700-italic":"sans_semibold_italic",
+  ),
+  "nserif":(
+    "400-normal":"serif_book",
+    "400-italic":"serif_book_italic",
+    "500-normal":"serif_regular",
+    "500-italic":"serif_regular_italic",
+  ),
+  "icons":(
+    "default":"icons",
+  )
+);
+
+$root-font-map:(
+  "nsans":"helvetica neue, helvetica, sans-serif",
+  "nserif":"Georgia, serif",
+  "icons":"sans-serif",
+);
+
+@include font.import-from-map($import-font-map);
+@include reset.reset();
+
+:root {
+  //--gap: 1.5em;
+  @include font.root-definitions-from-map($root-font-map);
+}
+
+@include media.media($to: 800px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+@include media.media($from: 801px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+
+html {
+  --gap: 1.3em;
+
+  @include media.media($from: 801px) {
+    --gap: 1.5rem;
+    //font-size: 1.7vw;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+  @include media.media($from: 1500px) {
+    //font-size: 1.5vw;
+  }
+  font-family: "nsans";
+  font-size: 19px;
+  line-height: 1.37em;
+}
+
+* {
+  transition: color 0.1s, background 0.1s;
+}
+
+p {
+  font-family: "nsans";
+}
+
+strong {
+  font-weight: 500;
+}
+
+/*
+main.grid {
+  grid-template-rows: auto 1fr auto;
+
+  > nav {
+    height: 100%;
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      > :last-child {
+        margin-top: auto !important;
+      }
+    }
+  }
+
+  > .canvas {
+    height: 100%;
+    overflow: hidden;
+
+    > .container {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+} */
+
+main.flex {
+  > section {
+    flex: 1;
+  }
+}
+
+#nav-wrapper {
+  height: 100%;
+
+  > .vertical-menu {
+    flex: 1;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.natural-flex {
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.grow {
+  flex: 1;
+}
+
+.margin-vertical {
+  margin-block-end: var(--gap);
+  margin-block-start: var(--gap);
+}
+
+.scrollbox {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.main-row {
+  overflow: hidden;
+}
+
+.canvas {
+  //overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
+
+  > .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    //overflow: auto;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+
+.no-scrollbar {
+  scrollbar-width: none;
+
+  //&::-webkit-scrollbar {
+  //  display: none;
+  //}
+}
+
+.abs-special {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%) translateY(calc(var(--gap)));
+  //width: 100%;
+  z-index: 10;
+
+  ul {
+    margin: 0;
+  }
+}
+
+button {
+  &.#{bem.$modifier-loading} {
+    //background: blue;
+  }
+  &.#{bem.$modifier-new} {
+    //background: green;
+  }
+  &.#{bem.$modifier-loading}.#{bem.$modifier-new} {
+    //background: yellow;
+  }
+}
+
+.light-theme,
+.blue-theme,
+.green-theme {
+  .night {
+    // 
+  }
+}
+
+

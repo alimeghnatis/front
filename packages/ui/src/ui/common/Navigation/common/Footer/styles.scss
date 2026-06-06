@@ -1,14 +1,43 @@
 /* @aztlan/generator-front 1.2.22 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
 
-.#{bem.$base}.navigation-footer {
-  border-top: 2px solid black;
+.#{bem.$base}.navigation-header {
+  --ls: var(--left-span);
+  --rs: var(--right-span);
+  --cs: calc(var(--columns) - var(--ls) - var(--rs));
+
+  @include media.media($from: 801px) {
+    --cs: calc(var(--columns) - var(--left-span-desktop) - var(--right-span-desktop));
+    --ls: var(--left-span-desktop);
+    --rs: var(--right-span-desktop);
+  }
+  background: var(--near);
+
+  > .left {
+    --columns: var(--ls);
+    grid-column: 1 / span var(--ls);
+  }
+
+  > .center {
+    --columns: var(--cs);
+    grid-column: calc(var(--ls) + 1) / span var(--cs);
+  }
+
+  > .right {
+    --columns: var(--rs);
+    grid-column: calc(var(--ls) + var(--cs) + 1) / span var(--rs);
+  }
   &.#{bem.$modifier-fixed} {
     bottom: 0;
     left: 0;
     position: fixed;
     width: 100%;
+  }
+
+  &.border {
+    border-top: 2px solid black;
   }
 
   //> span > button {

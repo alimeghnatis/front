@@ -1,0 +1,108 @@
+{
+  "name": "@aztlan/idioma",
+  "version": "3.14.5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-storybook": "storybook build",
+    "compile:all": "npm run client:build && npm run ssr:build && npm run sitemap:build",
+    "formatjs:extract": "formatjs extract 'src/**/*.{ts,tsx}' --out-file src/extracted-locales/en.json --format simple",
+    "formatjs:compile:en": "formatjs compile src/extracted-locales/en.json --ast --out-file src/locales/en.json --format simple",
+    "formatjs:compile:es": "formatjs compile src/extracted-locales/es.json --ast --out-file src/locales/es.json --format simple",
+    "relay": "relay-compiler",
+    "relay:debug": "relay-compiler --output debug",
+    "schema:development": "fetch-schema",
+    "schema:production": "fetch-schema --ref production",
+    "client:base": "webpack-execute -t client -a @fwrlines/assets-k/fonts -a @aztlan/assets/favicons -e ./src/client.ts",
+    "client:serve": "npm run client:base -- -c serve -p 3001",
+    "client:build": "npm run client:base -- -c build",
+    "client:build:development": "npm run client:base -- -c build -m development",
+    "start": "npm run client:serve",
+    "sitemap:serve": "webpack-execute -t sitemap -c serve -e ./src/sitemap/server.ts -o tmp/sitemap.js && node tmp/sitemap.js",
+    "sitemap:build": "webpack-execute -t sitemap -c build -e ./src/sitemap/renderer.ts -o api/sitemap.js",
+    "ssr:serve": "webpack-execute -t ssr -c serve -e ./src/ssr/server.ts -o tmp/ssr.js && node tmp/ssr.js -p 3005",
+    "ssr:build": "webpack-execute -t ssr -c build -e ./src/ssr/renderer.ts -o api/ssr.js",
+    "storybook": "storybook dev -p 6007 --no-open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc",
+    "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
+    "lint:stylelint": "stylelint 'src/**/*.scss' --rd --rdd --risd --color --formatter verbose",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:stylelint": "npm run lint:stylelint -- --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@aztlan/babel-preset-react-relay-app": "^3.6.3",
+    "@aztlan/eslint-config-base": "^3.6.3",
+    "@aztlan/stylelint-config": "^0.9.0",
+    "@aztlan/typescript-config": "^3.6.3",
+    "@aztlan/webpack-config": "^3.8.0",
+    "@formatjs/cli": "^6.2.9",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "eslint": "^8.57.0",
+    "graphql": "^16.8.1",
+    "relay-compiler": "^16.2.0",
+    "storybook": "^7.6.17",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@aztlan/assets": "^3.4.6",
+    "@aztlan/base-styles": "^3.14.5",
+    "@aztlan/bem": "^0.10.0",
+    "@aztlan/morphosa": "^3.13.3",
+    "@aztlan/react-hooks": "^3.14.3",
+    "@aztlan/react-relay": "^3.7.1",
+    "@aztlan/react-scripts": "^3.6.3",
+    "@aztlan/react-ssr": "^3.6.3",
+    "@aztlan/storybook-config": "^3.14.0",
+    "@aztlan/storybook-helpers": "^3.6.3",
+    "@aztlan/ui": "^3.14.5",
+    "@fwrlines/assets-k": "^1.0.0",
+    "@loadable/component": "^5.16.4",
+    "@loadable/server": "^5.16.5",
+    "@mdx-js/mdx": "^3.0.1",
+    "date-fns": "^3.6.0",
+    "marked": "^12.0.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.4",
+    "react-intl": "^6.6.5",
+    "react-relay": "^16.2.0",
+    "react-relay-network-modern": "^6.2.2",
+    "react-router-dom": "^5.3.4",
+    "relay-runtime": "^16.2.0"
+  },
+  "relay": {
+    "src": "./src",
+    "schema": "./schema.graphql",
+    "language": "typescript",
+    "eagerEsModules": true,
+    "schemaExtensions": [
+      "./src/relay/extensions"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@aztlan/react-relay-app"
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ]
+        }
+      ]
+    ]
+  },
+  "stylelint": {
+    "extends": "@aztlan/stylelint-config"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
+  }
+}

@@ -4,12 +4,40 @@
 @use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.navigation-header {
-  border-bottom: 2px solid black;
+  --ls: var(--left-span);
+  --rs: var(--right-span);
+  --cs: calc(var(--columns) - var(--ls) - var(--rs));
+
+  @include media.media($from: 801px) {
+    --cs: calc(var(--columns) - var(--left-span-desktop) - var(--right-span-desktop));
+    --ls: var(--left-span-desktop);
+    --rs: var(--right-span-desktop);
+  }
+  background: var(--near);
+
+  > .left {
+    --columns: var(--ls);
+    grid-column: 1 / span var(--ls);
+  }
+
+  > .center {
+    --columns: var(--cs);
+    grid-column: calc(var(--ls) + 1) / span var(--cs);
+  }
+
+  > .right {
+    --columns: var(--rs);
+    grid-column: calc(var(--ls) + var(--cs) + 1) / span var(--rs);
+  }
   &.#{bem.$modifier-fixed} {
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
+  }
+
+  &.border {
+    border-bottom: 2px solid black;
   }
 
   //> span > button {

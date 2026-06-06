@@ -84,11 +84,30 @@ class WebpackExecutor {
           ),
         },
       )
+      .option(
+        'port', {
+          alias   :'p',
+          describe:'Port number',
+          type    :'number',
+        },
+      )
+      // Add mode development|production string, default undefined
+      .option(
+        'mode', {
+          alias   :'m',
+          describe:'Mode <development|production>',
+          type    :'string',
+        },
+      )
       .help()
       .alias(
         'help', 'h',
       )
       .parse()
+    // Required for the SSR server only
+    if (this.argv.port) {
+      process.env.PORT = this.argv.port.toString()
+    }
   }
 
   async loadConfig() {
@@ -102,6 +121,9 @@ class WebpackExecutor {
     )
     this.baseConfig = m.default(this.argv)
     this.config = this.baseConfig
+    if (this.argv.mode) {
+      this.config.mode = this.argv.mode
+    }
   }
 
   prepareCompiler() {
@@ -112,7 +134,7 @@ class WebpackExecutor {
     ]
     this.compiler = Webpack(this.config)
     if (!this.argv.quiet) {
-      console.log('Adding progress plugin')
+      // console.log('Adding progress plugin')
       /* Not working atm */
       new ProgressPlugin((
         percentage, msg,
@@ -126,7 +148,8 @@ class WebpackExecutor {
 
   runDevServer() {
     const server = new WebpackDevServer(
-      this.config.devServer, this.compiler,
+      this.config.devServer,
+      this.compiler,
     )
     server.start()
   }
@@ -136,6 +159,7 @@ class WebpackExecutor {
     compiler.run((
       err, stats,
     ) => {
+      console.log(stats)
       if (err) {
         console.error(err)
         return
@@ -154,6 +178,7 @@ class WebpackExecutor {
     console.log(
       'EXE', this.config,
     )
+
     if (this.config.devServer) {
       await this.runDevServer()
     } else {

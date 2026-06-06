@@ -1,20 +1,20 @@
 {
   "name": "@aztlan/eslint-config-relay",
-  "version": "1.4.1",
+  "version": "3.6.3",
   "description": "",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.10",
+    "@babel/eslint-parser": "^7.24.1",
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
     "eslint-plugin-graphql": "^4.0.0"
   },
   "dependencies": {
-    "@aztlan/eslint-config-base": "^1.4.1",
+    "@aztlan/eslint-config-base": "^3.6.3",
     "eslint-plugin-babel": "^5.3.1"
   }
 }

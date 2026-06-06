@@ -1,0 +1,33 @@
+$input-border:var(--input-border);
+$input-outline: var(--input-outline);
+$input-default-background: var(--input-default-background);
+$input-focus-background: var(--input-focus-background);
+$input-default-color: var(--input-default-color);
+$input-border-radius: var(--input-border-radius, 0);
+
+%input-color {
+  color: $input-default-color;
+}
+
+%input {
+  background: $input-default-background;
+  border: $input-border;
+  border-radius: $input-border-radius;
+  line-height: var(--line-height);
+  transition: all 0.1s;
+
+  &:not(:focus) {
+    outline: $input-outline;
+  }
+
+  &:hover {
+    //background: red;
+    background: $input-focus-background;
+  }
+
+  &:focus {
+    background: $input-focus-background;
+  }
+  @extend %input-color;
+}
+

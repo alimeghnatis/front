@@ -1,0 +1,31 @@
+/* @aztlan/generator-front 3.4.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.textarea {
+  background: var(--color);
+  border-radius: 0;
+  font-family: inherit;
+  line-height: var(--line-height);
+  overflow: hidden;
+  padding: 0;
+  resize: none;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--metadata);
+  }
+
+  &,
+  &:hover,
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+
+  &:focus {
+    background: var(--soft-color);
+  }
+}
+
+

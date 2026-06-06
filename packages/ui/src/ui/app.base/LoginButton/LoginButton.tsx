@@ -1,34 +1,23 @@
 /* @aztlan/generator-front 0.2.0 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import {
+  useInsertionEffect, useEffect,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useFragment } from 'react-relay'
-import { graphql } from 'relay-runtime'
-import { LoginButtonFragment$data } from './__generated__/LoginButtonFragment.graphql.js'
+import {
+  useRefetchableFragment, graphql,
+} from 'react-relay'
+import { useAuthenticationResource } from '../Authentication/index.js'
+// import { LoginButtonFragment$data } from './__generated__/LoginButtonFragment.graphql.js'
 
 // Local Definitions
 const baseClassName = styleNames.base
 const componentClassName = 'login-button'
-
-const FRAGMENT = graphql`
-  fragment LoginButtonFragment on Query
-    @argumentDefinitions(resource: { type: "String!" }) {
-    oAuth2Links(resource: $resource) {
-      google
-    }
-  }
-`
-
-const QUERY = graphql`
-  query LoginButtonQuery($resource: String!) {
-    ...LoginButtonFragment @arguments(resource: $resource)
-  }
-`
 
 /**
  * This is the LoginButton component description.
@@ -37,7 +26,10 @@ function LoginButton({
   id,
   className: userClassName,
   style,
+  FRAGMENT,
   data,
+  resource,
+  initialResource,
   ...otherProps
 }) {
   useInsertionEffect(
@@ -47,11 +39,26 @@ function LoginButton({
     }, [],
   )
 
-  const { oAuth2Links } = useFragment(
+  const [
+    { oAuth2Links },
+    refetch,
+  ] = useRefetchableFragment(
     FRAGMENT,
     data,
-  ) as LoginButtonFragment$data
+  ) as any
   const { google } = oAuth2Links
+
+  useEffect(
+    () => {
+      if (initialResource !== resource) {
+        refetch({ resource })
+      }
+    }, [
+      initialResource,
+      resource,
+      refetch,
+    ],
+  )
 
   return (
     <button
@@ -91,9 +98,21 @@ LoginButton.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
 
-LoginButton.FRAGMENT = FRAGMENT
-LoginButton.QUERY = QUERY
+  /**
+   * The fragment to use
+   */
+  FRAGMENT:PropTypes.any,
+
+  /**
+   * The data to use
+   */
+  data:PropTypes.any,
+
+  /**
+   * The resource to use
+   */
+  resource:PropTypes.string,
+}
 
 export default LoginButton

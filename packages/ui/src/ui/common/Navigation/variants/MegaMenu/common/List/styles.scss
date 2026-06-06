@@ -1,0 +1,56 @@
+/* @aztlan/generator-front 3.9.0 */
+
+@use "@aztlan/bem";
+@use "@aztlan/base-styles/modifiers";
+
+$selected-color:selected;
+$hover-color:important;
+
+.#{bem.$base}.mega-menu-list {
+  column-count: var(--content-columns);
+  gap: var(--gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    background: var(--color);
+    color: var(--on-color);
+    transition: background 0.1s, color 0.1s;
+    &.#{bem.$modifier-disabled} {
+      @extend %disabled;
+    }
+
+    > * {
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      display: block;
+      text-decoration: none;
+    }
+
+    &:not(.#{bem.$modifier-disabled}) {
+      &.#{bem.$modifier-selected} {
+        --color: var(--#{$selected-color});
+        --hard-color: var(--hard-#{$selected-color});
+        --soft-color: var(--soft-#{$selected-color});
+        --on-color: var(--on-#{$selected-color});
+      }
+
+      &.hover {
+        --color: var(--#{$hover-color});
+        --hard-color: var(--hard-#{$hover-color});
+        --soft-color: var(--soft-#{$hover-color});
+        --on-color: var(--on-#{$hover-color});
+      }
+
+      &:hover {
+        background: var(--hard-color) !important;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,19 @@
+/* @aztlan/generator-front 3.8.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.notification {
+  background: var(--color);
+  color: var(--on-color);
+  cursor: default;
+
+  &:hover {
+    background: var(--hard-color);
+  }
+
+  &:focus {
+    background: var(--soft-color);
+  }
+}
+
+

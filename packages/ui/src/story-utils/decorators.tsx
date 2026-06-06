@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Suspense } from 'react'
 import { useLocale } from '@aztlan/react-hooks'
 import { IntlProvider } from 'react-intl'
 import { RelayEnvironmentProvider } from 'react-relay'
@@ -7,15 +8,18 @@ import environment from '@aztlan/storybook-addon-relay/src/decorators/environmen
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
-import { HashRouter as Router } from 'react-router-dom'
-import { AppContextProvider } from '../ui/common/index.js'
-import { AuthContextProvider } from '../ui/app.base/index.js'
+import {
+  HashRouter,
+  StaticRouter as ReactRouterStaticRouter,
+  Route,
+} from 'react-router-dom'
 
-export const app = (StoryFn) => (
-  <AppContextProvider>
-    <StoryFn />
-  </AppContextProvider>
-)
+import { ApplicationProvider } from '../ui/common/index.js'
+import { AuthenticationProvider } from '../ui/app.base/index.js'
+import {
+  MUTATION_LOGOUT, FRAGMENT_VIEWER,
+} from './graphql.js'
+import { QUERY_APPLICATION } from './queries.js'
 
 function loadLocaleData(locale: string) {
   switch (locale) {
@@ -26,77 +30,234 @@ function loadLocaleData(locale: string) {
   }
 }
 
-export const relay = (StoryFn) => (
-  <RelayEnvironmentProvider environment={environment}>
-    {StoryFn()}
-  </RelayEnvironmentProvider>
+function Application(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    ApplicationProvider,
+    {
+      ...params,
+      QUERY_APPLICATION,
+    },
+    StoryFn(),
+  )
+}
+
+const application = (params) => (StoryFn) => Application(
+  StoryFn, params,
 )
 
-export const intlApp = (StoryFn) => {
+function Authentication(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    AuthenticationProvider,
+    // @ts-ignore
+    params,
+    StoryFn(),
+  )
+}
+
+const authentication = (params) => (StoryFn) => Authentication(
+  StoryFn, params,
+)
+
+function BaseForm(
+  StoryFn, params,
+) {
+  const methods = useForm({
+    mode         :'onChange',
+    defaultValues:params.defaultValues,
+  })
+  const onSubmit = (data) => console.log(
+    '[FORM SUBMIT]', data,
+  )
+
+  return React.createElement(
+    FormProvider,
+    // @ts-ignore
+    methods,
+    React.createElement(
+      'form',
+      {
+        onSubmit:methods.handleSubmit(onSubmit),
+        // className:'grid',
+      },
+      [
+        React.createElement(
+          StoryFn, { key: 'story' },
+        ),
+        React.createElement(
+          'br', { key: 'br' },
+        ),
+        React.createElement(
+          'input', {
+            type :'submit',
+            value:'Print in console',
+            key  :'submit',
+          },
+        ),
+      ],
+    ),
+  )
+}
+
+const Form = (
+  StoryFn, params = {},
+) => BaseForm(
+  StoryFn, params,
+)
+
+const form = (params) => (StoryFn) => Form(
+  StoryFn, params,
+)
+
+function Grid(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    'div',
+    {
+      className:'grid container',
+      // ...params,
+    },
+    StoryFn(),
+  )
+}
+
+const grid = (params) => (StoryFn) => Grid(
+  StoryFn, params,
+)
+
+function Intl(
+  StoryFn, params = {},
+) {
   const {
     locale, messages, ...useLocaleProps
   } = useLocale(
     'es',
     loadLocaleData,
   )
-  return (
-    <IntlProvider
-      locale={locale}
-      messages={messages}
-    >
-      <AppContextProvider
-        value={{
+  return React.createElement(
+    IntlProvider,
+    {
+      locale,
+      messages,
+    },
+    StoryFn(),
+  )
+}
+
+const intl = (params) => (StoryFn) => Intl(
+  StoryFn, params,
+)
+
+function IntlApp(
+  StoryFn, params = {},
+) {
+  const {
+    locale, messages, ...useLocaleProps
+  } = useLocale(
+    'es',
+    loadLocaleData,
+  )
+  return React.createElement(
+    IntlProvider,
+    {
+      locale,
+      messages,
+    },
+    React.createElement(
+      ApplicationProvider,
+      {
+        QUERY_APPLICATION,
+        value:{
           locale,
           ...useLocaleProps,
-        }}
-      >
-        <StoryFn />
-      </AppContextProvider>
-    </IntlProvider>
+        },
+      },
+      StoryFn(),
+    ),
   )
 }
 
-export const auth = (StoryFn) => (
-  <AuthContextProvider>
-    <StoryFn />
-  </AuthContextProvider>
+const intlApp = (params) => (StoryFn) => IntlApp(
+  StoryFn, params,
 )
 
-export const router = (StoryFn) => (
-  <Router>
-    <StoryFn />
-  </Router>
-)
-
-export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>
-
-const baseFormDecorator = (
-  StoryFn, defaultValues = { color: 'red' },
-) => {
-  const methods = useForm({
-    mode:'onChange',
-    defaultValues,
-  })
-  const onSubmit = (data) => console.log(
-    '[FORM SUBMIT]', data,
-  )
-
-  return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        {StoryFn()}
-        <br />
-        <input
-          type="submit"
-          value="Print in console"
-        />
-      </form>
-    </FormProvider>
+function Relay(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    RelayEnvironmentProvider,
+    // @ts-ignore
+    { environment },
+    StoryFn(),
   )
 }
 
-export const form = (StoryFn) => baseFormDecorator(StoryFn)
-
-export const getFormDecorator = (defaultValues) => (StoryFn) => baseFormDecorator(
-  StoryFn, defaultValues,
+const relay = (params) => (StoryFn) => Relay(
+  StoryFn, params,
 )
+
+function Router(
+  StoryFn, params = {},
+) {
+  return React.createElement(
+    HashRouter, params, StoryFn(),
+  )
+}
+
+const router = (params) => (StoryFn) => Router(
+  StoryFn, params,
+)
+
+function StaticRouter(
+  StoryFn,
+  params: Partial<{ location: string; path: string }> = {},
+) {
+  return React.createElement(
+    ReactRouterStaticRouter, params.location, [
+      React.createElement(
+        Route, {
+          path     :params.path || '/',
+          component:StoryFn,
+        },
+      ),
+    ],
+  )
+}
+
+const staticRouter = (params) => (StoryFn) => StaticRouter(
+  StoryFn, params,
+)
+
+const all = {
+  components:{
+    Application,
+    Authentication,
+    Form,
+    Grid,
+    Intl,
+    IntlApp,
+    Relay,
+    Router,
+    StaticRouter,
+    Suspense,
+    // Template,
+  },
+  getters:{
+    application,
+    authentication,
+    form,
+    grid,
+    intl,
+    intlApp,
+    relay,
+    router,
+    staticRouter,
+    // template,
+  },
+}
+
+export default all

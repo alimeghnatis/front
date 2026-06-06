@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import DefaultWrapper from './Wrapper.js'
+import MockWrapper from './WrapperContent.js'
 import type { FieldProps } from '../types.js'
 import type { TWrapperProps } from './types.js'
 import withConditionalDisplay from './withConditionalDisplay.js'
@@ -29,6 +30,7 @@ const withWrapper = (
         .reduce<React.ComponentType<any>>(
         (
           AccumulatedComponent, hoc,
+          c,
         ) => hoc(AccumulatedComponent),
         MemoizedComponent,
       ),
@@ -38,8 +40,10 @@ const withWrapper = (
       ],
     )
 
+    const { WrapperComponent = Wrapper } = props
+
     return (
-      <Wrapper
+      <WrapperComponent
         Component={ExtendedComponent}
         {...props}
         {...options}
@@ -49,4 +53,16 @@ const withWrapper = (
   return withConditionalDisplay(WrappedComponent)
 }
 
+const withMockWrapper = (
+  Component: React.ComponentType<any>,
+  options?: TWrapperProps,
+) => withWrapper(
+  Component, {
+    mockLabel:true,
+    ...options,
+  }, MockWrapper,
+)
+
 export default withWrapper
+
+export { withMockWrapper }

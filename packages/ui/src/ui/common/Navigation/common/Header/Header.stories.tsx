@@ -28,10 +28,10 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    content      :'Shipping information',
-    next         :'Next',
-    previous     :'Previous',
-    hideOnDesktop:false,
+    children:'Shipping information',
+    right   :'Next',
+    left    :'Previous',
+    desktop :true,
   },
 }
 
@@ -46,5 +46,15 @@ export const Padded: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     UNSTABLE_padded:true,
+  },
+}
+
+export const CustomSpan: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    leftSpan        :3,
+    leftSpanDesktop :4,
+    rightSpan       :3,
+    rightSpanDesktop:4,
   },
 }

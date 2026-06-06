@@ -1,0 +1,442 @@
+{
+  "expression": "Mientras la joven ingeniera explicaba los complicados planos a los obreros en el sitio de construcción, el jefe de obra revisaba cuidadosamente los materiales entregados, que eran esenciales para la siguiente fase del proyecto.",
+  "language": "Spanish",
+  "words": [
+    {
+      "word": "Mientras",
+      "lemma": ["mientras"],
+      "pos": "CONJUNCTION",
+      "morphology": {},
+      "syntax": {
+        "function": "SUBORDINATING_CONJUNCTION",
+        "head": 4
+      }
+    },
+    {
+      "word": "la",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 3
+      }
+    },
+    {
+      "word": "joven",
+      "lemma": ["joven"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 3
+      }
+    },
+    {
+      "word": "ingeniera",
+      "lemma": ["ingeniero"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 4
+      }
+    },
+    {
+      "word": "explicaba",
+      "lemma": ["explicar"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "los",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 6
+      }
+    },
+    {
+      "word": "complicados",
+      "lemma": ["complicado"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 7
+      }
+    },
+    {
+      "word": "planos",
+      "lemma": ["plano"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 4
+      }
+    },
+    {
+      "word": "a",
+      "lemma": ["a"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 9
+      }
+    },
+    {
+      "word": "los",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 10
+      }
+    },
+    {
+      "word": "obreros",
+      "lemma": ["obrero"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "DATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 8
+      }
+    },
+    {
+      "word": "en",
+      "lemma": ["en"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 9
+      }
+    },
+    {
+      "word": "el",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 13
+      }
+    },
+    {
+      "word": "sitio",
+      "lemma": ["sitio"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 11
+      }
+    },
+    {
+      "word": "de",
+      "lemma": ["de"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 14
+      }
+    },
+    {
+      "word": "construcción",
+      "lemma": ["construcción"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 14
+      }
+    },
+    {
+      "word": "el",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 19
+      }
+    },
+    {
+      "word": "jefe",
+      "lemma": ["jefe"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "NOMINATIVE"
+      },
+      "syntax": {
+        "function": "SUBJECT",
+        "head": 19
+      }
+    },
+    {
+      "word": "de",
+      "lemma": ["de"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 18
+      }
+    },
+    {
+      "word": "obra",
+      "lemma": ["obra"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 18
+      }
+    },
+    {
+      "word": "revisaba",
+      "lemma": ["revisar"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MAIN_VERB",
+        "head": 0
+      }
+    },
+    {
+      "word": "cuidadosamente",
+      "lemma": ["cuidadosamente"],
+      "pos": "ADVERB",
+      "morphology": {},
+      "syntax": {
+        "function": "ADVERBIAL",
+        "head": 20
+      }
+    },
+    {
+      "word": "los",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 22
+      }
+    },
+    {
+      "word": "materiales",
+      "lemma": ["material"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 20
+      }
+    },
+    {
+      "word": "entregados",
+      "lemma": ["entregar"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 22
+      }
+    },
+    {
+      "word": "que",
+      "lemma": ["que"],
+      "pos": "PRONOUN",
+      "morphology": {},
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 22
+      }
+    },
+    {
+      "word": "eran",
+      "lemma": ["ser"],
+      "pos": "VERB",
+      "morphology": {
+        "tense": "PAST",
+        "mood": "INDICATIVE",
+        "aspect": "IMPERFECTIVE",
+        "voice": "ACTIVE",
+        "person": 3,
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "RELATIVE_CLAUSE",
+        "head": 24
+      }
+    },
+    {
+      "word": "esenciales",
+      "lemma": ["esencial"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "NEUTER",
+        "number": "PLURAL"
+      },
+      "syntax": {
+        "function": "PREDICATE",
+        "head": 24
+      }
+    },
+    {
+      "word": "para",
+      "lemma": ["para"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 25
+      }
+    },
+    {
+      "word": "la",
+      "lemma": ["el"],
+      "pos": "DETERMINER",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "DETERMINATIVE",
+        "head": 28
+      }
+    },
+    {
+      "word": "siguiente",
+      "lemma": ["siguiente"],
+      "pos": "ADJECTIVE",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR"
+      },
+      "syntax": {
+        "function": "MODIFIER",
+        "head": 28
+      }
+    },
+    {
+      "word": "fase",
+      "lemma": ["fase"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "FEMININE",
+        "number": "SINGULAR",
+        "case": "ACCUSATIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 28
+      }
+    },
+    {
+      "word": "del",
+      "lemma": ["de", "el"],
+      "pos": "PREPOSITION",
+      "morphology": {},
+      "syntax": {
+        "function": "PREPOSITIONAL_MODIFIER",
+        "head": 28
+      }
+    },
+    {
+      "word": "proyecto",
+      "lemma": ["proyecto"],
+      "pos": "NOUN",
+      "morphology": {
+        "gender": "MASCULINE",
+        "number": "SINGULAR",
+        "case": "GENITIVE"
+      },
+      "syntax": {
+        "function": "OBJECT",
+        "head": 28
+      }
+    }
+  ]
+}

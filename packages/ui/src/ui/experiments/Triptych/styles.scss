@@ -1,0 +1,76 @@
+/* @aztlan/generator-front 3.6.3 */
+
+@use "@aztlan/mixins/src/media" as media;
+@use "@aztlan/bem";
+
+.#{bem.$base}.triptych {
+  --offset: 0;
+  --ns: var(--navigation-span);
+  --ss: var(--secondary-span);
+  @media screen and (min-width: 801px) {
+    --ns: var(--navigation-span-desktop);
+    --ss: var(--secondary-span-desktop);
+  }
+
+  --navigation-span: 14;
+  --secondary-span: 14;
+  --navigation-offset:calc(
+    var(--ns) * var(--column-width)
+    + (var(--ns) - 1) * var(--gap)
+  );
+  --secondary-width:calc(
+    var(--ss) * var(--column-width)
+    + (var(--ss) - 1) * var(--gap)
+  );
+  --content-offset:calc(
+    var(--navigation-offset) + var(--secondary-width)
+  );
+  display: flex;
+  height: 100%;
+  //left: calc(-1 * var(--offset));
+  overflow-x: hidden;
+
+  &.focus-0 {
+    --offset: 0%;
+  }
+
+  &.focus-1 {
+    --offset: var(--navigation-offset);
+  }
+
+  &.focus-2 {
+    --offset: var(--content-offset);
+  }
+
+  > div {
+    height: 100%;
+    left: calc(-1 * var(--offset));
+    overflow: hidden;
+    position: relative;
+    transition: left 0.2s;
+    //width: calc(100%);
+
+    &.navigation {
+      //background: grey;
+    }
+
+    &.content {
+      //background: lightblue;
+      position: relative;
+    }
+
+    &.secondary {
+      //background: lightcyan;
+    }
+  }
+
+  .stop-propagator {
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+  }
+}
+
+
